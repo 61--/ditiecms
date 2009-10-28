@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.Web", "DTCMS.Web\DTCMS.Web.csproj", "{420F16C8-006A-494F-A5B7-953A77B8FC4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.SqlServerDAL", "DTCMS.SqlServerDAL\DTCMS.SqlServerDAL.csproj", "{9F059D8B-A236-42B0-A489-63425C9B0FA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.DBUtility", "DTCMS.DBUtility\DTCMS.DBUtility.csproj", "{BC95C4E2-B941-462B-8890-D3E801CD0BD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.Entity", "DTCMS.Entity\DTCMS.Entity.csproj", "{BDC92784-44FF-4CF2-9770-2C87F01E5627}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.IDAL", "DTCMS.IDAL\DTCMS.IDAL.csproj", "{82577BD7-C7FE-43FB-95A1-EA1E1FF919C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.Common", "DTCMS.Common\DTCMS.Common.csproj", "{95AC40C5-11A4-4C41-BD49-3ADC905869FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{420F16C8-006A-494F-A5B7-953A77B8FC4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{420F16C8-006A-494F-A5B7-953A77B8FC4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{420F16C8-006A-494F-A5B7-953A77B8FC4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{420F16C8-006A-494F-A5B7-953A77B8FC4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F059D8B-A236-42B0-A489-63425C9B0FA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F059D8B-A236-42B0-A489-63425C9B0FA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F059D8B-A236-42B0-A489-63425C9B0FA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F059D8B-A236-42B0-A489-63425C9B0FA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC95C4E2-B941-462B-8890-D3E801CD0BD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC95C4E2-B941-462B-8890-D3E801CD0BD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC95C4E2-B941-462B-8890-D3E801CD0BD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC95C4E2-B941-462B-8890-D3E801CD0BD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDC92784-44FF-4CF2-9770-2C87F01E5627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC92784-44FF-4CF2-9770-2C87F01E5627}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC92784-44FF-4CF2-9770-2C87F01E5627}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC92784-44FF-4CF2-9770-2C87F01E5627}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82577BD7-C7FE-43FB-95A1-EA1E1FF919C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82577BD7-C7FE-43FB-95A1-EA1E1FF919C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82577BD7-C7FE-43FB-95A1-EA1E1FF919C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82577BD7-C7FE-43FB-95A1-EA1E1FF919C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95AC40C5-11A4-4C41-BD49-3ADC905869FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95AC40C5-11A4-4C41-BD49-3ADC905869FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95AC40C5-11A4-4C41-BD49-3ADC905869FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95AC40C5-11A4-4C41-BD49-3ADC905869FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

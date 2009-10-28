@@ -1,0 +1,5 @@
+C:\Documents and Settings\JWFENG520\My Documents\Visual Studio 2008\Projects\DTCMS.Web\DTCMS.DBUtility\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\JWFENG520\My Documents\Visual Studio 2008\Projects\DTCMS.Web\DTCMS.DBUtility\bin\Debug\DTCMS.DBUtility.dll
+C:\Documents and Settings\JWFENG520\My Documents\Visual Studio 2008\Projects\DTCMS.Web\DTCMS.DBUtility\bin\Debug\DTCMS.DBUtility.pdb
+C:\Documents and Settings\JWFENG520\My Documents\Visual Studio 2008\Projects\DTCMS.Web\DTCMS.DBUtility\obj\Debug\DTCMS.DBUtility.dll
+C:\Documents and Settings\JWFENG520\My Documents\Visual Studio 2008\Projects\DTCMS.Web\DTCMS.DBUtility\obj\Debug\DTCMS.DBUtility.pdb
