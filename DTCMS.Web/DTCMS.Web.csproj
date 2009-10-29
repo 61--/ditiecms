@@ -125,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Manage\images\blue\admin_tlogo.psd" />
+    <Content Include="ValidateCode.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
