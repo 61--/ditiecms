@@ -88,7 +88,7 @@
     <Content Include="Manage\images\loading.gif" />
     <Content Include="Manage\images\title_bg.gif" />
     <Content Include="Manage\images\title_head.gif" />
-    <Content Include="Manage\index.html" />
+    <Content Include="Manage\index.aspx" />
     <Content Include="Manage\js\calendar.js" />
     <Content Include="Manage\js\calendar2.js" />
     <Content Include="Manage\js\cn_utf8.js" />
@@ -111,12 +111,15 @@
       <DependentUpon>main_index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Manage\ShowBuildInfo.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="Manage\main_index.aspx.designer.cs">
+      <DependentUpon>main_index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Manage\top_index.aspx.cs">
       <DependentUpon>top_index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manage\top_index.aspx.designer.cs">
+      <DependentUpon>top_index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
