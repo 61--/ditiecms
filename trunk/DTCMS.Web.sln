@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.Config", "DTCMS.Confi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.DALFactory", "DTCMS.DALFactory\DTCMS.DALFactory.csproj", "{6681CBE6-A3EE-4607-A1B3-3A19947226A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.DBUtility", "DTCMS.DBUtility\DTCMS.DBUtility.csproj", "{BC95C4E2-B941-462B-8890-D3E801CD0BD5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.DBUtility", "DTCMS.DBUtility\DTCMS.DBUtility.csproj", "{B925723C-29AC-4BE0-9919-DF4C1780B1E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.Entity", "DTCMS.Entity\DTCMS.Entity.csproj", "{DF2F902E-45F7-4760-9214-981A56E202B9}"
 EndProject
@@ -20,6 +20,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.BLL", "DTCMS.BLL\DTCMS.BLL.csproj", "{DDDF40F6-5CBE-4CD3-9890-4648C8CEBB04}"
 EndProject
 Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -37,10 +41,10 @@ Global
 		{6681CBE6-A3EE-4607-A1B3-3A19947226A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6681CBE6-A3EE-4607-A1B3-3A19947226A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6681CBE6-A3EE-4607-A1B3-3A19947226A7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BC95C4E2-B941-462B-8890-D3E801CD0BD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC95C4E2-B941-462B-8890-D3E801CD0BD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC95C4E2-B941-462B-8890-D3E801CD0BD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC95C4E2-B941-462B-8890-D3E801CD0BD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B925723C-29AC-4BE0-9919-DF4C1780B1E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B925723C-29AC-4BE0-9919-DF4C1780B1E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B925723C-29AC-4BE0-9919-DF4C1780B1E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B925723C-29AC-4BE0-9919-DF4C1780B1E8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DF2F902E-45F7-4760-9214-981A56E202B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DF2F902E-45F7-4760-9214-981A56E202B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF2F902E-45F7-4760-9214-981A56E202B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -64,9 +68,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal
