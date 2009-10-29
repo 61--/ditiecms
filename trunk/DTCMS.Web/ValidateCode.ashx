@@ -13,7 +13,7 @@ public class ValidateCode : IHttpHandler, IRequiresSessionState
     {
         context.Response.Cache.SetCacheability(HttpCacheability.NoCache);   //特别注意，如不加，单击验证图片＇看不清换一张＇，无效果．
         CreateValidateImage(context);
-        context.Response.Write("hello");
+        //context.Response.Write("hello");
     }
 
     public bool IsReusable
