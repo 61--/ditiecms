@@ -43,10 +43,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DTCMS.DBUtility\DTCMS.DBUtility.csproj">
-      <Project>{B925723C-29AC-4BE0-9919-DF4C1780B1E8}</Project>
-      <Name>DTCMS.DBUtility</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DTCMS.IDAL\DTCMS.IDAL.csproj">
       <Project>{781AE6C8-31B1-48C0-B1C6-04F5EDA522D9}</Project>
       <Name>DTCMS.IDAL</Name>
