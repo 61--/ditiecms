@@ -17,7 +17,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.SqlServerDAL", "DTCMS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.Web", "DTCMS.Web\DTCMS.Web.csproj", "{7DBA0670-7419-4E7A-BCB7-92A8C7151733}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.BLL", "DTCMS.BLL\DTCMS.BLL.csproj", "{DDDF40F6-5CBE-4CD3-9890-4648C8CEBB04}"
+EndProject
 Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -55,6 +61,10 @@ Global
 		{7DBA0670-7419-4E7A-BCB7-92A8C7151733}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DBA0670-7419-4E7A-BCB7-92A8C7151733}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DBA0670-7419-4E7A-BCB7-92A8C7151733}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDDF40F6-5CBE-4CD3-9890-4648C8CEBB04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDDF40F6-5CBE-4CD3-9890-4648C8CEBB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDDF40F6-5CBE-4CD3-9890-4648C8CEBB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDDF40F6-5CBE-4CD3-9890-4648C8CEBB04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
