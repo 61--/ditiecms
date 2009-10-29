@@ -42,6 +42,61 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="Manage\css\blue_body.css" />
+    <Content Include="Manage\css\blue_left.css" />
+    <Content Include="Manage\css\blue_top.css" />
+    <Content Include="Manage\css\calendar-blue.css" />
+    <Content Include="Manage\css\calendar-brown.css" />
+    <Content Include="Manage\css\calendar-green.css" />
+    <Content Include="Manage\images\132.png" />
+    <Content Include="Manage\images\blue\admin_tlogo.jpg" />
+    <Content Include="Manage\images\blue\body_title_bg.gif" />
+    <Content Include="Manage\images\blue\body_title_cen.gif" />
+    <Content Include="Manage\images\blue\body_title_left.gif" />
+    <Content Include="Manage\images\blue\body_title_right.gif" />
+    <Content Include="Manage\images\blue\botton.gif" />
+    <Content Include="Manage\images\blue\calendar.gif" />
+    <Content Include="Manage\images\blue\class_sclose.gif" />
+    <Content Include="Manage\images\blue\class_sopen.gif" />
+    <Content Include="Manage\images\blue\class_ssr.gif" />
+    <Content Include="Manage\images\blue\close.gif" />
+    <Content Include="Manage\images\blue\frame-l.gif" />
+    <Content Include="Manage\images\blue\frame-r.gif" />
+    <Content Include="Manage\images\blue\frame_on.gif" />
+    <Content Include="Manage\images\blue\ico_1.gif" />
+    <Content Include="Manage\images\blue\ico_2.gif" />
+    <Content Include="Manage\images\blue\ico_3.gif" />
+    <Content Include="Manage\images\blue\inputbut_bg.gif" />
+    <Content Include="Manage\images\blue\left_bg_top.gif" />
+    <Content Include="Manage\images\blue\login_input_bg.gif" />
+    <Content Include="Manage\images\blue\mb_bg.gif" />
+    <Content Include="Manage\images\blue\menu_title_bg.jpg" />
+    <Content Include="Manage\images\blue\mico_1.gif" />
+    <Content Include="Manage\images\blue\mico_l.gif" />
+    <Content Include="Manage\images\blue\rcbox_title.gif" />
+    <Content Include="Manage\images\blue\top_bg_hr.jpg" />
+    <Content Include="Manage\images\blue\top_nav_bg.jpg" />
+    <Content Include="Manage\images\blue\top_nav_left.jpg" />
+    <Content Include="Manage\images\blue\top_nav_on.gif" />
+    <Content Include="Manage\images\blue\top_nav_right.jpg" />
+    <Content Include="Manage\images\blue\top_nav_sr.gif" />
+    <Content Include="Manage\images\blue\top_sitelink_bg.gif" />
+    <Content Include="Manage\images\botton.gif" />
+    <Content Include="Manage\images\close.gif" />
+    <Content Include="Manage\images\close_hover.gif" />
+    <Content Include="Manage\images\gf.gif" />
+    <Content Include="Manage\images\loading.gif" />
+    <Content Include="Manage\images\title_bg.gif" />
+    <Content Include="Manage\images\title_head.gif" />
+    <Content Include="Manage\index.html" />
+    <Content Include="Manage\js\calendar.js" />
+    <Content Include="Manage\js\calendar2.js" />
+    <Content Include="Manage\js\cn_utf8.js" />
+    <Content Include="Manage\js\floatDiv.js" />
+    <Content Include="Manage\js\left.js" />
+    <Content Include="Manage\left_index.aspx" />
+    <Content Include="Manage\main_index.aspx" />
+    <Content Include="Manage\top_index.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -52,7 +107,21 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Manage\main_index.aspx.cs">
+      <DependentUpon>main_index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manage\ShowBuildInfo.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manage\top_index.aspx.cs">
+      <DependentUpon>top_index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Manage\images\blue\admin_tlogo.psd" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
