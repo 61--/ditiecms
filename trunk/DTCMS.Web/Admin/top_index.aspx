@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="top_index.aspx.cs" Inherits="DTCMS.Web.Manage.top_index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="top_index.aspx.cs" Inherits="DTCMS.Web.Admin.top_index" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
