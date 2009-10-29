@@ -128,8 +128,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Manage\images\blue\admin_tlogo.psd" />
     <Content Include="ValidateCode.ashx" />
+    <None Include="Manage\images\blue\admin_tlogo.psd" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
