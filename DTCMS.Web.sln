@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.Common", "DTCMS.Common\DTCMS.Common.csproj", "{086A7F54-1A11-42E1-BE0D-33863EAEF4A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.Common", "DTCMS.Common\DTCMS.Common.csproj", "{95AC40C5-11A4-4C41-BD49-3ADC905869FA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.Config", "DTCMS.Config\DTCMS.Config.csproj", "{A4CC57ED-9E99-4FF5-95E9-A7BBB3C3FB43}"
 EndProject
@@ -29,10 +29,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{086A7F54-1A11-42E1-BE0D-33863EAEF4A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{086A7F54-1A11-42E1-BE0D-33863EAEF4A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{086A7F54-1A11-42E1-BE0D-33863EAEF4A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{086A7F54-1A11-42E1-BE0D-33863EAEF4A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95AC40C5-11A4-4C41-BD49-3ADC905869FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95AC40C5-11A4-4C41-BD49-3ADC905869FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95AC40C5-11A4-4C41-BD49-3ADC905869FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95AC40C5-11A4-4C41-BD49-3ADC905869FA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A4CC57ED-9E99-4FF5-95E9-A7BBB3C3FB43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A4CC57ED-9E99-4FF5-95E9-A7BBB3C3FB43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4CC57ED-9E99-4FF5-95E9-A7BBB3C3FB43}.Release|Any CPU.ActiveCfg = Release|Any CPU
