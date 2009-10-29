@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.IDAL", "DTCMS.IDAL\DT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.Common", "DTCMS.Common\DTCMS.Common.csproj", "{95AC40C5-11A4-4C41-BD49-3ADC905869FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.Config", "DTCMS.Config\DTCMS.Config.csproj", "{35C2635E-C3AF-4989-8BD6-E38CDC90D8AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.DALFactory", "DTCMS.DALFactory\DTCMS.DALFactory.csproj", "{A5E85648-E49F-4D54-918D-C73AF18F8580}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +47,14 @@ Global
 		{95AC40C5-11A4-4C41-BD49-3ADC905869FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95AC40C5-11A4-4C41-BD49-3ADC905869FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95AC40C5-11A4-4C41-BD49-3ADC905869FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35C2635E-C3AF-4989-8BD6-E38CDC90D8AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35C2635E-C3AF-4989-8BD6-E38CDC90D8AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35C2635E-C3AF-4989-8BD6-E38CDC90D8AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35C2635E-C3AF-4989-8BD6-E38CDC90D8AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5E85648-E49F-4D54-918D-C73AF18F8580}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5E85648-E49F-4D54-918D-C73AF18F8580}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5E85648-E49F-4D54-918D-C73AF18F8580}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5E85648-E49F-4D54-918D-C73AF18F8580}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
