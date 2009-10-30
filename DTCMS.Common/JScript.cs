@@ -7,9 +7,9 @@ namespace DTCMS.Common
     /// <summary>
     /// 消息对话框通用类，不允许继承或实例化
     /// </summary>
-    public sealed class Message
+    public sealed class JScript
     {
-        private Message()
+        private JScript()
         {
             //私有构造函数，不允许实例化
         }
