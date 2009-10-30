@@ -10,6 +10,11 @@ namespace DTCMS.DBUtility
 {
     public abstract class SqlHelper
     {
+        private SqlHelper()
+        {
+            //私有构造函数，不允许实例化
+        }
+
         //获取数据库连接字符串，其属于静态变量且只读，项目中所有文档可以直接使用，但不能修改
         public static readonly string connectionString = ConfigurationManager.ConnectionStrings["DTCMSConnString"].ConnectionString;
 
