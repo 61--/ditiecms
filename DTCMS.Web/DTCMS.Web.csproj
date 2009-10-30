@@ -145,6 +145,8 @@
     <Content Include="admin\images\login_toptitle.gif" />
     <Content Include="admin\images\logo_01.gif" />
     <Content Include="admin\login.aspx" />
+    <Content Include="css\message.css" />
+    <Content Include="images\message.gif" />
     <Content Include="ValidateCode.ashx" />
     <None Include="admin\images\blue\admin_tlogo.psd" />
   </ItemGroup>
@@ -165,9 +167,6 @@
       <Project>{DF2F902E-45F7-4760-9214-981A56E202B9}</Project>
       <Name>DTCMS.Entity</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="css\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
