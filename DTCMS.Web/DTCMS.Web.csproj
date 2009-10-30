@@ -46,72 +46,72 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
-    <Content Include="Admin\css\blue_body.css" />
-    <Content Include="Admin\css\blue_left.css" />
-    <Content Include="Admin\css\blue_top.css" />
-    <Content Include="Admin\css\calendar-blue.css" />
-    <Content Include="Admin\css\calendar-brown.css" />
-    <Content Include="Admin\css\calendar-green.css" />
-    <Content Include="Admin\images\132.png" />
-    <Content Include="Admin\images\blue\admin_tlogo.jpg" />
-    <Content Include="Admin\images\blue\body_title_bg.gif" />
-    <Content Include="Admin\images\blue\body_title_cen.gif" />
-    <Content Include="Admin\images\blue\body_title_left.gif" />
-    <Content Include="Admin\images\blue\body_title_right.gif" />
-    <Content Include="Admin\images\blue\botton.gif" />
-    <Content Include="Admin\images\blue\calendar.gif" />
-    <Content Include="Admin\images\blue\class_sclose.gif" />
-    <Content Include="Admin\images\blue\class_sopen.gif" />
-    <Content Include="Admin\images\blue\class_ssr.gif" />
-    <Content Include="Admin\images\blue\close.gif" />
-    <Content Include="Admin\images\blue\frame-l.gif" />
-    <Content Include="Admin\images\blue\frame-r.gif" />
-    <Content Include="Admin\images\blue\frame_on.gif" />
-    <Content Include="Admin\images\blue\ico_1.gif" />
-    <Content Include="Admin\images\blue\ico_2.gif" />
-    <Content Include="Admin\images\blue\ico_3.gif" />
-    <Content Include="Admin\images\blue\inputbut_bg.gif" />
-    <Content Include="Admin\images\blue\left_bg_top.gif" />
-    <Content Include="Admin\images\blue\login_input_bg.gif" />
-    <Content Include="Admin\images\blue\mb_bg.gif" />
-    <Content Include="Admin\images\blue\menu_title_bg.jpg" />
-    <Content Include="Admin\images\blue\mico_1.gif" />
-    <Content Include="Admin\images\blue\mico_l.gif" />
-    <Content Include="Admin\images\blue\rcbox_title.gif" />
-    <Content Include="Admin\images\blue\top_bg_hr.jpg" />
-    <Content Include="Admin\images\blue\top_nav_bg.jpg" />
-    <Content Include="Admin\images\blue\top_nav_left.jpg" />
-    <Content Include="Admin\images\blue\top_nav_on.gif" />
-    <Content Include="Admin\images\blue\top_nav_right.jpg" />
-    <Content Include="Admin\images\blue\top_nav_sr.gif" />
-    <Content Include="Admin\images\blue\top_sitelink_bg.gif" />
-    <Content Include="Admin\images\botton.gif" />
-    <Content Include="Admin\images\close.gif" />
-    <Content Include="Admin\images\close_hover.gif" />
-    <Content Include="Admin\images\gf.gif" />
-    <Content Include="Admin\images\loading.gif" />
-    <Content Include="Admin\images\title_bg.gif" />
-    <Content Include="Admin\images\title_head.gif" />
-    <Content Include="Admin\index.aspx" />
-    <Content Include="Admin\js\calendar.js" />
-    <Content Include="Admin\js\calendar2.js" />
-    <Content Include="Admin\js\cn_utf8.js" />
-    <Content Include="Admin\js\floatDiv.js" />
-    <Content Include="Admin\js\left.js" />
-    <Content Include="Admin\left_index.aspx" />
-    <Content Include="Admin\main_index.aspx" />
-    <Content Include="Admin\top_index.aspx" />
+    <Content Include="admin\css\blue_body.css" />
+    <Content Include="admin\css\blue_left.css" />
+    <Content Include="admin\css\blue_top.css" />
+    <Content Include="admin\css\calendar-blue.css" />
+    <Content Include="admin\css\calendar-brown.css" />
+    <Content Include="admin\css\calendar-green.css" />
+    <Content Include="admin\images\132.png" />
+    <Content Include="admin\images\blue\admin_tlogo.jpg" />
+    <Content Include="admin\images\blue\body_title_bg.gif" />
+    <Content Include="admin\images\blue\body_title_cen.gif" />
+    <Content Include="admin\images\blue\body_title_left.gif" />
+    <Content Include="admin\images\blue\body_title_right.gif" />
+    <Content Include="admin\images\blue\botton.gif" />
+    <Content Include="admin\images\blue\calendar.gif" />
+    <Content Include="admin\images\blue\class_sclose.gif" />
+    <Content Include="admin\images\blue\class_sopen.gif" />
+    <Content Include="admin\images\blue\class_ssr.gif" />
+    <Content Include="admin\images\blue\close.gif" />
+    <Content Include="admin\images\blue\frame-l.gif" />
+    <Content Include="admin\images\blue\frame-r.gif" />
+    <Content Include="admin\images\blue\frame_on.gif" />
+    <Content Include="admin\images\blue\ico_1.gif" />
+    <Content Include="admin\images\blue\ico_2.gif" />
+    <Content Include="admin\images\blue\ico_3.gif" />
+    <Content Include="admin\images\blue\inputbut_bg.gif" />
+    <Content Include="admin\images\blue\left_bg_top.gif" />
+    <Content Include="admin\images\blue\login_input_bg.gif" />
+    <Content Include="admin\images\blue\mb_bg.gif" />
+    <Content Include="admin\images\blue\menu_title_bg.jpg" />
+    <Content Include="admin\images\blue\mico_1.gif" />
+    <Content Include="admin\images\blue\mico_l.gif" />
+    <Content Include="admin\images\blue\rcbox_title.gif" />
+    <Content Include="admin\images\blue\top_bg_hr.jpg" />
+    <Content Include="admin\images\blue\top_nav_bg.jpg" />
+    <Content Include="admin\images\blue\top_nav_left.jpg" />
+    <Content Include="admin\images\blue\top_nav_on.gif" />
+    <Content Include="admin\images\blue\top_nav_right.jpg" />
+    <Content Include="admin\images\blue\top_nav_sr.gif" />
+    <Content Include="admin\images\blue\top_sitelink_bg.gif" />
+    <Content Include="admin\images\botton.gif" />
+    <Content Include="admin\images\close.gif" />
+    <Content Include="admin\images\close_hover.gif" />
+    <Content Include="admin\images\gf.gif" />
+    <Content Include="admin\images\loading.gif" />
+    <Content Include="admin\images\title_bg.gif" />
+    <Content Include="admin\images\title_head.gif" />
+    <Content Include="admin\index.aspx" />
+    <Content Include="admin\js\calendar.js" />
+    <Content Include="admin\js\calendar2.js" />
+    <Content Include="admin\js\cn_utf8.js" />
+    <Content Include="admin\js\floatDiv.js" />
+    <Content Include="admin\js\left.js" />
+    <Content Include="admin\left_index.aspx" />
+    <Content Include="admin\main_index.aspx" />
+    <Content Include="admin\top_index.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\App_Code\AdminPage.cs">
+    <Compile Include="admin\App_Code\AdminPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\login.aspx.cs">
+    <Compile Include="admin\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\login.aspx.designer.cs">
+    <Compile Include="admin\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
@@ -121,32 +121,32 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\main_index.aspx.cs">
+    <Compile Include="admin\main_index.aspx.cs">
       <DependentUpon>main_index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\main_index.aspx.designer.cs">
+    <Compile Include="admin\main_index.aspx.designer.cs">
       <DependentUpon>main_index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\top_index.aspx.cs">
+    <Compile Include="admin\top_index.aspx.cs">
       <DependentUpon>top_index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\top_index.aspx.designer.cs">
+    <Compile Include="admin\top_index.aspx.designer.cs">
       <DependentUpon>top_index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Admin\css\login.css" />
-    <Content Include="Admin\images\login_input_bg.gif" />
-    <Content Include="Admin\images\login_input_hr.gif" />
-    <Content Include="Admin\images\login_submit.gif" />
-    <Content Include="Admin\images\login_toptitle.gif" />
-    <Content Include="Admin\images\logo_01.gif" />
-    <Content Include="Admin\login.aspx" />
+    <Content Include="admin\css\login.css" />
+    <Content Include="admin\images\login_input_bg.gif" />
+    <Content Include="admin\images\login_input_hr.gif" />
+    <Content Include="admin\images\login_submit.gif" />
+    <Content Include="admin\images\login_toptitle.gif" />
+    <Content Include="admin\images\logo_01.gif" />
+    <Content Include="admin\login.aspx" />
     <Content Include="ValidateCode.ashx" />
-    <None Include="Admin\images\blue\admin_tlogo.psd" />
+    <None Include="admin\images\blue\admin_tlogo.psd" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTCMS.BLL\DTCMS.BLL.csproj">
@@ -165,6 +165,9 @@
       <Project>{DF2F902E-45F7-4760-9214-981A56E202B9}</Project>
       <Name>DTCMS.Entity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="css\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
