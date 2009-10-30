@@ -8,7 +8,7 @@ namespace DTCMS.DBUtility
 {
     /// <summary>
     /// 数据库的通用访问代码
-    /// 此类为抽象类，不允许实例化，在应用时直接调用即可
+    /// 此类为抽象类，不允许实例化，在应用时直接调用即可 
     /// </summary>
     public abstract class SqlHelper
     {
