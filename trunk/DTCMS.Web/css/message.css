@@ -13,42 +13,49 @@ ul{
 
 #container{
 	width:600px;
+	text-align:left;
 	margin:135px auto auto auto;
-	border:1px #AACCEE solid;
+	background:#B3D4FC;
+}
+#message_box
+{
+	margin:9px;
+	background:#F8F8F8;
 }
 #title{
-	width:598px;
-	height:25px;
-	text-align:left;
-	background:url(../images/common/message_title.gif) repeat-x;
-	margin-top:1px;
+	width:560px;
+	height:40px;
 	margin-left:auto;
 	margin-right:auto;
+	border-bottom:1px #CCC solid;
 }
 #title h1{
-	font-size:13px;
-	line-height:25px;
+	font-size:14px;
+	line-height:40px;
 	text-indent:15px;
 }
-#content{
-	padding:20px;
-	font-size:14px;
+#content
+{
+	padding:10px;
 }
-#content .bottom{
+#message_icon{
+	width:100px;
+	height:100px;
+	float:left;
+}
+#message{
+	padding:15px;
+	font-size:13px;
+	float:left;
+}
+#content .link{
 	text-align:center;
-	margin-top:40px;
 }
-#content .bottom a{
+#content .link a{
 	width:300px;
 	height:20px;
 	line-height:20px;
 	font-size:13px;
 	display:block;
-	text-decoration:none;
-	color:#FFFFFF;
-	background:#4791C5;
-	border-left:1px #629DC5 solid;
-	border-top:1px #629DC5 solid;
-	border-right:1px #0C5280 solid;
-	border-bottom:1px #0C5280 solid;
+	color:#333;
 }

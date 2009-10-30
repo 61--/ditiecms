@@ -16,15 +16,7 @@ namespace DTCMS.Web
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-
-                MessageBox.ShowMessage("测试", "测试方法");
-            }
-            catch
-            {
-                MessageBox.ShowMessage("测试", "测试方法2");
-            }
+            Message.Show("test", "-1", MessageIcon.Information);
         }
     }
 }
