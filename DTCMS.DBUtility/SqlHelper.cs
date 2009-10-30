@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Data;
-using System.Configuration;
-using System.Web;
-using System.Web.Security;
-using System.Collections;
 using System.Data.SqlClient;
+using System.Configuration;
+using System.Collections;
 
 namespace DTCMS.DBUtility
 {
+    /// <summary>
+    /// 数据库的通用访问代码
+    /// 此类为抽象类，不允许实例化，在应用时直接调用即可
+    /// </summary>
     public abstract class SqlHelper
     {
-        private SqlHelper()
-        {
-            //私有构造函数，不允许实例化
-        }
-
         //获取数据库连接字符串，其属于静态变量且只读，项目中所有文档可以直接使用，但不能修改
-        public static readonly string connectionString = ConfigurationManager.ConnectionStrings["DTCMSConnString"].ConnectionString;
+        public static readonly string _sqlConnectionString = ConfigurationManager.ConnectionStrings["sqlConnectionString"].ConnectionString;
 
         // 哈希表用来存储缓存的参数信息，哈希表可以存储任意类型的参数。
         private static Hashtable parmCache = Hashtable.Synchronized(new Hashtable());
@@ -34,7 +31,7 @@ namespace DTCMS.DBUtility
         /// <param name="commandText">存储过程的名字或者 T-SQL 语句</param>
         /// <param name="commandParameters">以数组形式提供SqlCommand命令中用到的参数列表</param>
         /// <returns>返回一个数值表示此SqlCommand命令执行后影响的行数</returns>
-        public static int ExecuteNonQuery(string connectionString, CommandType cmdType, string cmdText, params SqlParameter[] commandParameters)
+        public static int ExecuteNonQuery(string connectionString, CommandType cmdType, string cmdText, params SqlParameter[] cmdParameters)
         {
 
             SqlCommand cmd = new SqlCommand();
@@ -42,7 +39,7 @@ namespace DTCMS.DBUtility
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 //通过PrePareCommand方法将参数逐个加入到SqlCommand的参数集合中
-                PrepareCommand(cmd, conn, null, cmdType, cmdText, commandParameters);
+                PrepareCommand(cmd, conn, null, cmdType, cmdText, cmdParameters);
                 int val = cmd.ExecuteNonQuery();
 
                 //清空SqlCommand中的参数列表
@@ -64,12 +61,12 @@ namespace DTCMS.DBUtility
         /// <param name="commandText">存储过程的名字或者 T-SQL 语句</param>
         /// <param name="commandParameters">以数组形式提供SqlCommand命令中用到的参数列表</param>
         /// <returns>返回一个数值表示此SqlCommand命令执行后影响的行数</returns>
-        public static int ExecuteNonQuery(SqlConnection connection, CommandType cmdType, string cmdText, params SqlParameter[] commandParameters)
+        public static int ExecuteNonQuery(SqlConnection connection, CommandType cmdType, string cmdText, params SqlParameter[] cmdParameters)
         {
 
             SqlCommand cmd = new SqlCommand();
 
-            PrepareCommand(cmd, connection, null, cmdType, cmdText, commandParameters);
+            PrepareCommand(cmd, connection, null, cmdType, cmdText, cmdParameters);
             int val = cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
             return val;
@@ -88,10 +85,10 @@ namespace DTCMS.DBUtility
         /// <param name="commandText">存储过程的名字或者 T-SQL 语句</param>
         /// <param name="commandParameters">以数组形式提供SqlCommand命令中用到的参数列表</param>
         /// <returns>返回一个数值表示此SqlCommand命令执行后影响的行数</returns>
-        public static int ExecuteNonQuery(SqlTransaction trans, CommandType cmdType, string cmdText, params SqlParameter[] commandParameters)
+        public static int ExecuteNonQuery(SqlTransaction trans, CommandType cmdType, string cmdText, params SqlParameter[] cmdParameters)
         {
             SqlCommand cmd = new SqlCommand();
-            PrepareCommand(cmd, trans.Connection, trans, cmdType, cmdText, commandParameters);
+            PrepareCommand(cmd, trans.Connection, trans, cmdType, cmdText, cmdParameters);
             int val = cmd.ExecuteNonQuery();
             cmd.Parameters.Clear();
             return val;
@@ -110,7 +107,7 @@ namespace DTCMS.DBUtility
         /// <param name="commandText">存储过程的名字或者 T-SQL 语句</param>
         /// <param name="commandParameters">以数组形式提供SqlCommand命令中用到的参数列表</param>
         /// <returns>返回一个包含结果的SqlDataReader</returns>
-        public static SqlDataReader ExecuteReader(string connectionString, CommandType cmdType, string cmdText, params SqlParameter[] commandParameters)
+        public static SqlDataReader ExecuteReader(string connectionString, CommandType cmdType, string cmdText, params SqlParameter[] cmdParameters)
         {
             SqlCommand cmd = new SqlCommand();
             SqlConnection conn = new SqlConnection(connectionString);
@@ -120,7 +117,7 @@ namespace DTCMS.DBUtility
             //关闭数据库连接，并通过throw再次引发捕捉到的异常。
             try
             {
-                PrepareCommand(cmd, conn, null, cmdType, cmdText, commandParameters);
+                PrepareCommand(cmd, conn, null, cmdType, cmdText, cmdParameters);
                 SqlDataReader rdr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 cmd.Parameters.Clear();
                 return rdr;
@@ -145,13 +142,13 @@ namespace DTCMS.DBUtility
         /// <param name="commandText">存储过程的名字或者 T-SQL 语句</param>
         /// <param name="commandParameters">以数组形式提供SqlCommand命令中用到的参数列表</param>
         /// <returns>返回一个object类型的数据，可以通过 Convert.To{Type}方法转换类型</returns>
-        public static object ExecuteScalar(string connectionString, CommandType cmdType, string cmdText, params SqlParameter[] commandParameters)
+        public static object ExecuteScalar(string connectionString, CommandType cmdType, string cmdText, params SqlParameter[] cmdParameters)
         {
             SqlCommand cmd = new SqlCommand();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                PrepareCommand(cmd, connection, null, cmdType, cmdText, commandParameters);
+                PrepareCommand(cmd, connection, null, cmdType, cmdText, cmdParameters);
                 object val = cmd.ExecuteScalar();
                 cmd.Parameters.Clear();
                 return val;
@@ -171,12 +168,12 @@ namespace DTCMS.DBUtility
         /// <param name="commandText">存储过程的名字或者 T-SQL 语句</param>
         /// <param name="commandParameters">以数组形式提供SqlCommand命令中用到的参数列表</param>
         /// <returns>返回一个object类型的数据，可以通过 Convert.To{Type}方法转换类型</returns>
-        public static object ExecuteScalar(SqlConnection connection, CommandType cmdType, string cmdText, params SqlParameter[] commandParameters)
+        public static object ExecuteScalar(SqlConnection connection, CommandType cmdType, string cmdText, params SqlParameter[] cmdParameters)
         {
 
             SqlCommand cmd = new SqlCommand();
 
-            PrepareCommand(cmd, connection, null, cmdType, cmdText, commandParameters);
+            PrepareCommand(cmd, connection, null, cmdType, cmdText, cmdParameters);
             object val = cmd.ExecuteScalar();
             cmd.Parameters.Clear();
             return val;
@@ -187,9 +184,9 @@ namespace DTCMS.DBUtility
         /// </summary>
         /// <param name="cacheKey">参数缓存的键值</param>
         /// <param name="cmdParms">被缓存的参数列表</param>
-        public static void CacheParameters(string cacheKey, params SqlParameter[] commandParameters)
+        public static void CacheParameters(string cacheKey, params SqlParameter[] cmdParameters)
         {
-            parmCache[cacheKey] = commandParameters;
+            parmCache[cacheKey] = cmdParameters;
         }
 
         /// <summary>
