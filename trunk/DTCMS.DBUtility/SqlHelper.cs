@@ -11,7 +11,7 @@ namespace DTCMS.DBUtility
     public abstract class SqlHelper
     {
         //获取数据库连接字符串，其属于静态变量且只读，项目中所有文档可以直接使用，但不能修改
-        public static readonly string ConnectionStringLocalTransaction = ConfigurationManager.ConnectionStrings["pubsConnectionString"].ConnectionString;
+        public static readonly string connectionString = ConfigurationManager.ConnectionStrings["DTCMSConnString"].ConnectionString;
 
         // 哈希表用来存储缓存的参数信息，哈希表可以存储任意类型的参数。
         private static Hashtable parmCache = Hashtable.Synchronized(new Hashtable());
