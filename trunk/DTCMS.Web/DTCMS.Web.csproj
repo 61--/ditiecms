@@ -123,12 +123,14 @@
     </Compile>
     <Compile Include="admin\main_index.aspx.cs">
       <DependentUpon>main_index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\main_index.aspx.designer.cs">
       <DependentUpon>main_index.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\top_index.aspx.cs">
       <DependentUpon>top_index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\top_index.aspx.designer.cs">
       <DependentUpon>top_index.aspx</DependentUpon>
@@ -182,7 +184,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>10171</DevelopmentServerPort>
+          <DevelopmentServerPort>13509</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
