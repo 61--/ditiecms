@@ -59,44 +59,17 @@ namespace DTCMS.Common
             sb.Append("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/message.css\" />\r\n");
             sb.Append("</head>\r\n");
             sb.Append("<body>\r\n");
-            sb.Append("<div class=\"message_container\">\r\n");
-            sb.Append("<div class=\"message_wraper\">\r\n");
-            sb.Append("<dl class=\"message_fr\">\r\n");
-            sb.Append("<dt class=\"fr_tt\">\r\n");
-            sb.Append("<span class=\"l_bg spl\">&nbsp;</span>\r\n");
-            sb.Append("<span class=\"m_bg spl\">" + title + "</span>\r\n");
-            sb.Append("<span class=\"r_bg spl toClose\">&nbsp;</span>\r\n");
-            sb.Append("</dt>\r\n");
-            sb.Append("<dd class=\"fr_ct\">\r\n");
+            sb.Append("<div id=\"container\">\r\n");
+            sb.Append("<div id=\"title\"><h1>" + title + "</h1></div>\r\n");
+            sb.Append("<div id=\"content\">\r\n");
             sb.Append(message);
-
-            switch (icon)
-            {
-                case MessageIcon.Error:
-                    sb.Append("error");
-                    break;
-                case MessageIcon.Information:
-                    sb.Append("info");
-                    break;
-                case MessageIcon.Question:
-                    sb.Append("question");
-                    break;
-                case MessageIcon.Stop:
-                    sb.Append("stop");
-                    break;
-                case MessageIcon.Warning:
-                    sb.Append("warning");
-                    break;
-            }
-
+            sb.Append(MessageIcon.Stop);
             if (time > 0)
                 sb.Append("<div class=\"bottom\"><a href=\"" + (url == "-1" ? "javascript:history.go(-1)" : url) + "\">如果页面没有自动跳转，请点击这里...</a></div>\r\n");
             else if (url == "-1")
                 sb.Append("<div class=\"bottom\"><a href=\"javascript:history.go(-1);\">点击这里返回上一级操作</a></div>\r\n");
             else
                 sb.Append("<div class=\"bottom\"><a href=\"" + url + "\">请点击这里进行下一步操作...</a></div>\r\n");
-            sb.Append("</dd>\r\n");
-            sb.Append("</dl>\r\n");
             sb.Append("</div>\r\n");
             sb.Append("</div>\r\n");
             sb.Append("</body>\r\n");

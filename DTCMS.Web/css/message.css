@@ -1,148 +1,54 @@
 
-
-body
-{
-    margin: 0 auto;
-    font: 12px Verdana, Geneva, sans-serif, Helvetica, sans-serif;
-    color: #666;
+*{
+	padding:0px;
+	margin:0px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
 }
-body, a
-{
-    color: #666;
-    text-decoration: none;
+html,body {
+	text-align:center;
 }
-li
-{
-    list-style: none;
+ul{
+	list-style:none;
 }
 
-.message_container
-{
-    height: 100%;
-    margin: 0 auto;
-    left: 0;
-    top: 0;
-    position: absolute;
-    width: 100%;
-    padding-top: 200px;
+#container{
+	width:600px;
+	margin:135px auto auto auto;
+	border:1px #AACCEE solid;
 }
-.message_wraper
-{
-    margin: 0 auto;
+#title{
+	width:598px;
+	height:25px;
+	text-align:left;
+	background:url(../images/common/message_title.gif) repeat-x;
+	margin-top:1px;
+	margin-left:auto;
+	margin-right:auto;
 }
-
-.message_fr
-{
+#title h1{
+	font-size:13px;
+	line-height:25px;
+	text-indent:15px;
 }
-.message_fr .fr_tt
-{
-    border: 0;
-    width: 100% !important;
-    line-height: 29px !important;
-    height: 29px;
+#content{
+	padding:20px;
+	font-size:14px;
 }
-.message_fr .fr_tt .l_bg, .message_fr .fr_tt .m_bg, .message_fr .fr_tt .r_bg
-{
-    margin: 0 !important;
+#content .bottom{
+	text-align:center;
+	margin-top:40px;
 }
-.message_fr .fr_tt .l_bg
-{
-    background: url(messageInfo.gif) left top no-repeat;
-    width: 30px;
+#content .bottom a{
+	width:300px;
+	height:20px;
+	line-height:20px;
+	font-size:13px;
+	display:block;
+	text-decoration:none;
+	color:#FFFFFF;
+	background:#4791C5;
+	border-left:1px #629DC5 solid;
+	border-top:1px #629DC5 solid;
+	border-right:1px #0C5280 solid;
+	border-bottom:1px #0C5280 solid;
 }
-.message_fr .fr_tt .m_bg
-{
-    color: #fff;
-    font-weight: bold;
-    font-size: 12px !important;
-    background: url(messageInfo.gif) 0 -29px repeat-x;
-}
-.message_fr .fr_tt .m_bg span
-{
-    cursor: text;
-}
-.message_fr .fr_tt .r_bg
-{
-    cursor: pointer;
-    width: 30px;
-    background: url(messageInfo.gif) left -58px no-repeat;
-}
-.message_fr .fr_ct .in
-{
-    border: 1px solid #ccc;
-}
-.message_fr .fr_ct
-{
-    background: #fff;
-    border: 1px solid #ba3232;
-    padding-top: 10px;
-    border-top: 0 !important;
-}
-.message_fr .fr_content
-{
-    padding-bottom: 11px;
-}
-.message_fr .fr_content, .message_fr .button_div
-{
-    float: left;
-    overflow: hidden;
-    width: 100%;
-}
-.message_fr .button_div
-{
-    padding-bottom: 11px;
-    border-top: 1px solid #e0ccc5;
-}
-.message_fr .button_ok
-{
-    height: 20px;
-    line-height: 20px;
-    float: right;
-    border: 1px solid #c0855d;
-    background: url(messageInfo.gif) left -87px repeat-x;
-    padding: 0 15px;
-    margin: 13px 10px 0px 0px;
-    letter-spacing: 6px;
-    cursor: pointer;
-}
-.message_fr .button_ok2
-{
-    background: url(messageInfo.gif) left -107px repeat-x !important;
-}
-.message_fr .button_ok a:hover
-{
-    text-decoration: none;
-}
-
-
-
-.vetical_img_bottom .img
-{
-    vertical-align: bottom;
-}
-.vetical_img_bottom .img i
-{
-    display: inline-block;
-    vertical-align: bottom;
-    height: 100%;
-}
-.vetical_img_bottom img
-{
-    vertical-align: bottom;
-}
-
-.vetical_img_middle .img
-{
-    vertical-align: middle;
-}
-.vetical_img_middle .img i
-{
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
-}
-.vetical_img_middle img
-{
-    vertical-align: middle;
-}
-
