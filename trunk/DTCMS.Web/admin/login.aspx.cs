@@ -17,7 +17,7 @@ namespace DTCMS.Web.Admin
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             //Message message = new Message();
-            Message.Show("提示信息", "消息内容", "-1", MessageIcon.Error, 5);
+            Message.Show("提示信息", "消息内容", "-1", MessageIcon.Error, 0);
         }
     }
 }
