@@ -107,6 +107,13 @@
     <Compile Include="Admin\App_Code\AdminPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Admin\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
@@ -131,6 +138,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\css\login.css" />
+    <Content Include="Admin\images\login_input_bg.gif" />
+    <Content Include="Admin\images\login_input_hr.gif" />
+    <Content Include="Admin\images\login_submit.gif" />
+    <Content Include="Admin\images\login_toptitle.gif" />
+    <Content Include="Admin\images\logo_01.gif" />
+    <Content Include="Admin\login.aspx" />
     <Content Include="ValidateCode.ashx" />
     <None Include="Admin\images\blue\admin_tlogo.psd" />
   </ItemGroup>
