@@ -10,20 +10,20 @@
 function $(elem){
     return document.getElementById(elem);
 }
-function CheckLogin(){
-    if($("username").value==""){
-        alert('用户名不能为空！');
-        return false;
-    }
-    if($("password").value==""){
-        alert('用户密码不能为空！');
-        return false;
-    }
-    if($("checkcode").value==""){
-        alert('验证码不能为空！');
-        return false;
-    } 
-}
+//function CheckLogin(){
+//    if($("username").value==""){
+//        alert('用户名不能为空！');
+//        return false;
+//    }
+//    if($("password").value==""){
+//        alert('用户密码不能为空！');
+//        return false;
+//    }
+//    if($("checkcode").value==""){
+//        alert('验证码不能为空！');
+//        return false;
+//    } 
+//}
 </script>
 </head>
 <body>

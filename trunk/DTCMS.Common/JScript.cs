@@ -5,7 +5,7 @@ using System.Text;
 namespace DTCMS.Common
 {
     /// <summary>
-    /// 消息对话框通用类，不允许继承或实例化
+    /// Javascript通用类，不允许继承或实例化
     /// </summary>
     public sealed class JScript
     {
