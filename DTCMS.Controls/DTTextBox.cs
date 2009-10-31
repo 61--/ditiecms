@@ -38,12 +38,16 @@ namespace DTCMS.Controls
     {
         //得到焦点后的背景颜色
         private Color _EnterBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+
         //失去焦点后的背景颜色
         private Color _LeaveBackColor = System.Drawing.SystemColors.Window;
+
         //是否允许内容为空
         private bool _allowempty = true;
+
         //输入样式
         private InputStyle _inputstyle = InputStyle.Text;
+
         //是否在焦点离开后进行内容验证
         private bool _autovalidate = true;
 
@@ -112,75 +116,36 @@ namespace DTCMS.Controls
                 return (strTxt.Length > 0);
             }
         }
+
         /// <summary>
         /// 验证输入框中的数据
         /// </summary>
         public bool DataValidate()
         {
-            if (DataAllowEmpty())
+            if (AllowEmpty())
             {
                 string strTxt = this.Text.Trim();
 
                 switch (_inputstyle)
                 {
-
                     case InputStyle.Number:
-                        {
-                            return RegexValidate.IsNumeric(strTxt);
-                        }
-
+                        return RegexValidate.IsNumeric(strTxt);
                     case InputStyle.Double:
-                        {
-                            return RegexValidate.IsDouble(strTxt);
-                        }
-
+                        return RegexValidate.IsDouble(strTxt);
                     case InputStyle.Email:
-                        {
-
-                            return RegexValidate.EmailValidator(strTxt);
-
-                        }
-
+                        return RegexValidate.EmailValidator(strTxt);
                     case InputStyle.FixPhone:
-                        {
-
-                            return RegexValidate.FixPhoneValidator(strTxt);
-
-                        }
-
+                        return RegexValidate.FixPhoneValidator(strTxt);
                     case InputStyle.Mobile:
-                        {
-
-
-                            return RegexValidate.MobilePhoneValidator(strTxt);
-
-                        }
-
+                        return RegexValidate.MobilePhoneValidator(strTxt);
                     case InputStyle.PhoneOrMobile:
-                        {
-
-                            return RegexValidate.FixMobilePhoneValidator(strTxt);
-
-                        }
-
+                        return RegexValidate.FixMobilePhoneValidator(strTxt);
                     case InputStyle.PostCode:
-                        {
-
-                            return RegexValidate.PostCodeValidator(strTxt);
-
-                        }
-
+                        return RegexValidate.PostCodeValidator(strTxt);
                     case InputStyle.IPAddress:
-                        {
-
-                            return RegexValidate.IPAddressValidator(strTxt);
-
-                        }
-
+                        return RegexValidate.IPAddressValidator(strTxt);
                     default:
-
                         return (strTxt.Length > 0);
-
                 }
             }
             else
