@@ -11,12 +11,12 @@ namespace DTCMS.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Message.Show("用户密码错误！", "-1", MessageIcon.Error);
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Message.Show("test", "-1", MessageIcon.Information);
+
         }
     }
 }
