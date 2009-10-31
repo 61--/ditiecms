@@ -9,6 +9,28 @@ using DTCMS.Common;
 
 namespace DTCMS.Controls
 {
+    public enum InputStyle
+    {
+        [Description("文本类型")]
+        Text = 0,
+        [Description("数值型")]
+        Number = 1,
+        [Description("浮点型")]
+        Double = 2,
+        [Description("Email")]
+        Email = 3,
+        [Description("固定电话")]
+        FixPhone = 4,
+        [Description("手机")]
+        Mobile = 5,
+        [Description("固定电话与手机")]
+        PhoneOrMobile = 6,
+        [Description("邮政编码")]
+        PostCode = 7,
+        [Description("IP地址")]
+        IPAddress = 8,
+    }
+
     /// <summary>
     ///DTTextBox 的摘要说明
     /// </summary>
@@ -168,27 +190,5 @@ namespace DTCMS.Controls
         }
 
         #endregion
-    }
-
-    public enum InputStyle
-    {
-        [Description("文本类型")]
-        Text = 0,
-        [Description("数值型")]
-        Number = 1,
-        [Description("浮点型")]
-        Double = 2,
-        [Description("Email")]
-        Email = 3,
-        [Description("固定电话")]
-        FixPhone = 4,
-        [Description("手机")]
-        Mobile = 5,
-        [Description("固定电话与手机")]
-        PhoneOrMobile = 6,
-        [Description("邮政编码")]
-        PostCode = 7,
-        [Description("IP地址")]
-        IPAddress = 8,
     }
 }
