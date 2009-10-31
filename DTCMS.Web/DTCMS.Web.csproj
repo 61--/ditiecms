@@ -146,7 +146,12 @@
     <Content Include="admin\images\logo_01.gif" />
     <Content Include="admin\login.aspx" />
     <Content Include="css\message.css" />
+    <Content Include="images\common\Information.png" />
+    <Content Include="images\common\Error.png" />
+    <Content Include="images\common\Stop.png" />
+    <Content Include="images\common\Success.png" />
     <Content Include="images\common\message_title.gif" />
+    <Content Include="images\common\Warning.png" />
     <Content Include="ValidateCode.ashx" />
     <None Include="admin\images\blue\admin_tlogo.psd" />
   </ItemGroup>

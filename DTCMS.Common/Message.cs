@@ -8,29 +8,34 @@ namespace DTCMS.Common
     public enum MessageIcon
     {
         /// <summary>
+        /// 成功
+        /// </summary>
+        Success,
+
+        /// <summary>
         /// 错误
         /// </summary>
-        Error = 1,
+        Error,
 
         /// <summary>
         /// 警告
         /// </summary>
-        Warning = 2,
+        Warning,
 
         /// <summary>
         /// 停止
         /// </summary>
-        Stop = 3,
+        Stop,
 
         /// <summary>
         /// 问号
         /// </summary>
-        Question = 4,
+        Question,
 
         /// <summary>
         /// 信息
         /// </summary>
-        Information = 5
+        Information
     }
 
     public class Message
@@ -71,7 +76,6 @@ namespace DTCMS.Common
             sb.Append("</head>\r\n");
             sb.Append("<body>\r\n");
             sb.Append("<div id=\"container\">\r\n");
-            sb.Append("<div id=\"message_box\">\r\n");
             sb.Append("<div id=\"title\"><h1>" + title + "</h1></div>\r\n");
             sb.Append("<div id=\"content\">\r\n");
             sb.Append("<div id=\"message_icon\" class=\"" + icon.ToString() + "\"></div>\r\n");
@@ -85,7 +89,7 @@ namespace DTCMS.Common
                 sb.Append("<div class=\"link\"><a href=\"javascript:history.go(-1);\">点击这里返回上一级操作</a></div>\r\n");
             else
                 sb.Append("<div class=\"link\"><a href=\"" + url + "\">请点击这里进行下一步操作...</a></div>\r\n");
-            sb.Append("</div>\r\n</div>\r\n</div>\r\n");
+            sb.Append("</div>\r\n</div>\r\n");
             sb.Append("</html>\r\n");
 
             HttpContext.Current.Response.Write(sb.ToString());
