@@ -104,7 +104,7 @@ namespace DTCMS.Controls
         /// 验证输入框是否为空
         /// </summary>
         /// <returns></returns>
-        public bool AllowEmpty()
+        public bool AllowEmptyValidate()
         {
             string strTxt = this.Text.Trim();
             if (_allowempty)
@@ -122,7 +122,7 @@ namespace DTCMS.Controls
         /// </summary>
         public bool DataValidate()
         {
-            if (AllowEmpty())
+            if (AllowEmptyValidate())
             {
                 string strTxt = this.Text.Trim();
 
