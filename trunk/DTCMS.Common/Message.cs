@@ -76,8 +76,11 @@ namespace DTCMS.Common
             sb.Append("</head>\r\n");
             sb.Append("<body>\r\n");
             sb.Append("<div id=\"container\">\r\n");
-            sb.Append("<div id=\"title\"><h1>" + title + "</h1></div>\r\n");
+            sb.Append("<div id=\"title\"><h1>" + title + "</h1>\r\n");
+            sb.Append("<a href=\"javascript:window.close()\" class=\"close\"></a>\r\n");
+            sb.Append("<div class=\"title_r\">\r\n</div>\r\n</div>\r\n");
             sb.Append("<div id=\"content\">\r\n");
+            sb.Append("<div class=\"content_r\">\r\n");
             sb.Append("<div id=\"message_icon\" class=\"" + icon.ToString() + "\"></div>\r\n");
             sb.Append("<div id=\"message\">");
             sb.Append(message);
@@ -90,6 +93,7 @@ namespace DTCMS.Common
             else
                 sb.Append("<div class=\"link\"><a href=\"" + url + "\">请点击这里进行下一步操作...</a></div>\r\n");
             sb.Append("</div>\r\n</div>\r\n");
+            sb.Append("<div id=\"bottom\"><div class=\"bottom_r\"></div></div>\r\n");
             sb.Append("</html>\r\n");
 
             HttpContext.Current.Response.Write(sb.ToString());
