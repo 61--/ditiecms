@@ -90,7 +90,7 @@ namespace DTCMS.Controls
 
         [Description("是否在焦点离开后进行内容验证"), DefaultValue(true)]
         [Category("DTCMS")]
-        public bool AutoValidate
+        public bool ValidateAuto
         {
             get { return _autovalidate; }
             set { _autovalidate = value; }
@@ -104,7 +104,7 @@ namespace DTCMS.Controls
         /// 验证输入框是否为空
         /// </summary>
         /// <returns></returns>
-        public bool AllowEmptyValidate()
+        public bool ValidateAllowEmpty()
         {
             string strTxt = this.Text.Trim();
             if (_allowempty)
@@ -120,9 +120,9 @@ namespace DTCMS.Controls
         /// <summary>
         /// 验证输入框中的数据
         /// </summary>
-        public bool DataValidate()
+        public bool ValidateData()
         {
-            if (AllowEmptyValidate())
+            if (ValidateAllowEmpty())
             {
                 string strTxt = this.Text.Trim();
 

@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7DBA0670-7419-4E7A-BCB7-92A8C7151733}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -174,6 +174,10 @@
       <Project>{086A7F54-1A11-42E1-BE0D-33863EAEF4A3}</Project>
       <Name>DTCMS.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DTCMS.Controls\DTCMS.Controls.csproj">
+      <Project>{B9352D26-CB19-4327-97CD-7FE93BD1CC4B}</Project>
+      <Name>DTCMS.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DTCMS.DALFactory\DTCMS.DALFactory.csproj">
       <Project>{6681CBE6-A3EE-4607-A1B3-3A19947226A7}</Project>
       <Name>DTCMS.DALFactory</Name>
@@ -203,9 +207,6 @@
           <IISUrl>
           </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

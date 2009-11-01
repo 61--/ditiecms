@@ -19,6 +19,8 @@ ul{
 	width:500px;
 	height:33px;
 	background:url(../images/common/dialog_tl.png) no-repeat;
+	_background: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_tl.png', sizingMethod='crop');
 	position:relative;
 }
 #title .close{
@@ -36,6 +38,8 @@ ul{
 	right:0px;
 	position:absolute;
 	background:url(../images/common/dialog_tr.png) no-repeat #FFF;
+	_background: #FFF;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_tr.png', sizingMethod='crop');
 }
 #title h1{
 	color:#FFF;
@@ -47,10 +51,14 @@ ul{
 #content
 {
 	background:url(../images/common/dialog_ml.png) no-repeat;
+	_background: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_ml.png', sizingMethod='crop');
 }
 #content .content_r{
 	padding:13px;
 	background:url(../images/common/dialog_mr.png) top right no-repeat;
+	_background: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_mr.png', sizingMethod='crop');
 }
 #message_icon{
 	width:100px;
@@ -70,7 +78,6 @@ ul{
 #content .link{
 	text-align:center;
 	background:#F6F6F6;
-	padding-top:6px;
 	border-top:1px #DADEE5 solid;
 }
 #content .link a{
@@ -82,6 +89,8 @@ ul{
 	height:13px;
 	position:relative;
 	background:url(../images/common/dialog_bl.png) no-repeat;
+	_background: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_bl.png', sizingMethod='crop');
 }
 #bottom .bottom_r{
 	height:13px;
@@ -90,6 +99,8 @@ ul{
 	top:0px;
 	right:0px;
 	background:url(../images/common/dialog_br.png) no-repeat #FFF;
+	_background: #FFF;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_br.png', sizingMethod='crop');
 }
 .Success{
 	background:url(../images/common/ico_Success.png) 16px 16px no-repeat;
