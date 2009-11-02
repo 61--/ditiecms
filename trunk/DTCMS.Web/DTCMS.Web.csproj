@@ -146,6 +146,7 @@
     <Content Include="admin\images\logo_01.gif" />
     <Content Include="admin\login.aspx" />
     <Content Include="css\message.css" />
+    <Content Include="images\common\blank.gif" />
     <Content Include="images\common\btnout_bg_left.gif" />
     <Content Include="images\common\btnout_bg_right.gif" />
     <Content Include="images\common\dialog_bl.png" />
@@ -162,7 +163,8 @@
     <Content Include="images\common\ico_Stop.png" />
     <Content Include="images\common\ico_Success.png" />
     <Content Include="images\common\ico_Warning.png" />
-    <Content Include="message.html" />
+    <Content Include="js\iepngfix.htc" />
+    <Content Include="js\iepngfix.js" />
     <Content Include="ValidateCode.ashx" />
     <None Include="admin\images\blue\admin_tlogo.psd" />
   </ItemGroup>

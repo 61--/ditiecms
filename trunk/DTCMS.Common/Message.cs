@@ -73,28 +73,30 @@ namespace DTCMS.Common
             if (time > 0)
                 sb.Append("<meta http-equiv='refresh' content='" + time + "; url=" + (url == "-1" ? "javascript:history.go(-1)" : url) + "' />\r\n");
             sb.Append("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/message.css\" />\r\n");
+            sb.Append("<script type=\"text/javascript\" src=\"js/iepngfix.js\"></script>");
             sb.Append("</head>\r\n");
             sb.Append("<body>\r\n");
             sb.Append("<div id=\"container\">\r\n");
-            sb.Append("<div id=\"title\"><h1>" + title + "</h1>\r\n");
+            sb.Append("<div id=\"header\"><h1>" + title + "</h1>\r\n");
             sb.Append("<a href=\"javascript:window.close()\" class=\"close\"></a>\r\n");
-            sb.Append("<div class=\"title_r\">\r\n</div>\r\n</div>\r\n");
-            sb.Append("<div id=\"content\">\r\n");
-            sb.Append("<div class=\"content_r\">\r\n");
+            sb.Append("<div class=\"header_r\"></div>\r\n</div>\r\n");
+            sb.Append("<table id=\"content\" cellpadding=\"0\" cellspacing=\"0\"><tr>\r\n");
+            sb.Append("<td class=\"content_l\"></td>\r\n");
+            sb.Append("<td class=\"content_c\">\r\n");
             sb.Append("<div id=\"message_icon\" class=\"" + icon.ToString() + "\"></div>\r\n");
-            sb.Append("<div id=\"message\">");
-            sb.Append(message);
-            sb.Append("</div>\r\n");
-            sb.Append("<div style=\"clear:left;\"></div>");
+            sb.Append("<div id=\"message\">" + message + "</div>\r\n");
+            sb.Append("<div style=\"clear: left;\"></div>\r\n");
             if (time > 0)
                 sb.Append("<div class=\"link\"><a href=\"" + (url == "-1" ? "javascript:history.go(-1)" : url) + "\">如果页面没有自动跳转，请点击这里...</a></div>\r\n");
             else if (url == "-1")
                 sb.Append("<div class=\"link\"><a href=\"javascript:history.go(-1);\">点击这里返回上一级操作</a></div>\r\n");
             else
                 sb.Append("<div class=\"link\"><a href=\"" + url + "\">请点击这里进行下一步操作...</a></div>\r\n");
-            sb.Append("</div>\r\n</div>\r\n");
+            sb.Append("</td>\r\n");
+            sb.Append("<td class=\"content_r\"></td>\r\n");
+            sb.Append("</tr></table>\r\n");
             sb.Append("<div id=\"bottom\"><div class=\"bottom_r\"></div></div>\r\n");
-            sb.Append("</html>\r\n");
+            sb.Append("</div>\r\n</body>\r\n</html>\r\n");
 
             HttpContext.Current.Response.Write(sb.ToString());
             HttpContext.Current.Response.End();
