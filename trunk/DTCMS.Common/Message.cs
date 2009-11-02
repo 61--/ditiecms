@@ -46,7 +46,7 @@ namespace DTCMS.Common
         /// <param name="message">消息内容</param>
         /// <param name="url">链接地址</param>
         /// <param name="icon">提示图标</param>
-        public static void Show(string message, string url, MessageIcon icon)
+        public static void Dialog(string message, string url, MessageIcon icon)
         {
             Show("DTCMS提示信息", message, url, icon, 3);
         }
@@ -59,7 +59,7 @@ namespace DTCMS.Common
         /// <param name="url">链接地址</param>
         /// <param name="icon">提示图标</param>
         /// <param name="time">自动跳转时间（0为不自动跳转）</param>
-        public static void Show(string title, string message, string url, MessageIcon icon, int time)
+        public static void Dialog(string title, string message, string url, MessageIcon icon, int time)
         {
             HttpContext.Current.Response.ContentType = "text/html";
             HttpContext.Current.Response.AddHeader("Content-Type", "text/html");
