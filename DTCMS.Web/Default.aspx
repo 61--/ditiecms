@@ -10,11 +10,22 @@
     <form id="form1" runat="server">
     <%--<div>
         <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
-       <DT:DTTextBox ID="dtTxtValidate" runat="server" InputStyle="Number"></DT:DTTextBox>
+       <%--<DT:DTTextBox ID="dtTxtValidate" runat="server" InputStyle="Number"></DT:DTTextBox>--%>
     </div>--%>
+    
     <fieldset>
         <legend style="height: 19px">oo</legend>
     </fieldset>
     </form>
+    <table cellpadding="0" cellspacing="0" class="style1">
+        <tr>
+            <td>
+                &nbsp;</td>
+            <td>
+                &nbsp;</td>
+            <td>
+                &nbsp;</td>
+        </tr>
+    </table>
 </body>
 </html>
