@@ -2,6 +2,7 @@
 	padding:0px;
 	margin:0px;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
+	_behavior: url(../js/iepngfix.htc);
 }
 html,body {
 	text-align:center;
@@ -9,21 +10,18 @@ html,body {
 ul{
 	list-style:none;
 }
-
 #container{
 	width:500px;
 	text-align:left;
 	margin:135px auto auto auto;
 }
-#title{
+#header{
 	width:500px;
 	height:33px;
-	background:url(../images/common/dialog_tl.png) no-repeat;
-	_background: none;
-	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_tl.png', sizingMethod='crop');
+	background-image:url(../images/common/dialog_tl.png);
 	position:relative;
 }
-#title .close{
+#header .close{
 	top:8px;
 	right:15px;
 	width:28px;
@@ -31,34 +29,32 @@ ul{
 	position:absolute;
 	background:url(../images/common/dialog_close.gif) no-repeat;
 }
-#title .title_r{
+#header .header_r{
 	width:13px;
 	height:33px;
 	top:0px;
 	right:0px;
 	position:absolute;
 	background:url(../images/common/dialog_tr.png) no-repeat #FFF;
-	_background: #FFF;
-	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_tr.png', sizingMethod='crop');
 }
-#title h1{
+#header h1{
 	color:#FFF;
 	font-size:12px;
 	padding-top:13px;
 	text-indent:35px;
 	background:url(../images/common/icon_dialog.gif) 18px 15px no-repeat;
 }
-#content
+#content{
+	width:100%;
+}
+#content .content_l
 {
+	width:13px;
 	background:url(../images/common/dialog_ml.png) no-repeat;
-	/*_background: none;
-	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_ml.png', sizingMethod='crop');*/
 }
 #content .content_r{
-	padding:13px;
+	width:13px;
 	background:url(../images/common/dialog_mr.png) top right no-repeat;
-	/*_background: none;
-	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_mr.png', sizingMethod='crop');*/
 }
 #message_icon{
 	width:100px;
@@ -77,6 +73,7 @@ ul{
 }
 #content .link{
 	text-align:center;
+	padding:8px;
 	background:#F6F6F6;
 	border-top:1px #DADEE5 solid;
 }
@@ -89,8 +86,6 @@ ul{
 	height:13px;
 	position:relative;
 	background:url(../images/common/dialog_bl.png) no-repeat;
-	_background: none;
-	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_bl.png', sizingMethod='crop');
 }
 #bottom .bottom_r{
 	height:13px;
@@ -99,8 +94,6 @@ ul{
 	top:0px;
 	right:0px;
 	background:url(../images/common/dialog_br.png) no-repeat #FFF;
-	_background: #FFF;
-	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_br.png', sizingMethod='crop');
 }
 .Success{
 	background:url(../images/common/ico_Success.png) 16px 16px no-repeat;
