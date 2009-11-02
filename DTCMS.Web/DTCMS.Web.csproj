@@ -152,6 +152,7 @@
     <Content Include="images\common\dialog_bl.png" />
     <Content Include="images\common\dialog_br.png" />
     <Content Include="images\common\dialog_close.gif" />
+    <Content Include="images\common\dialog_close_h.gif" />
     <Content Include="images\common\dialog_ml.png" />
     <Content Include="images\common\dialog_mr.png" />
     <Content Include="images\common\dialog_tl.png" />

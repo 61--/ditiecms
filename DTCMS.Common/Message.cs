@@ -48,7 +48,7 @@ namespace DTCMS.Common
         /// <param name="icon">提示图标</param>
         public static void Dialog(string message, string url, MessageIcon icon)
         {
-            Show("DTCMS提示信息", message, url, icon, 3);
+            Dialog("DTCMS提示信息", message, url, icon, 3);
         }
 
         /// <summary>
