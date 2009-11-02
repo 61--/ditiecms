@@ -47,10 +47,12 @@ ul{
 #content{
 	width:100%;
 }
-#content .content_l
-{
+#content .content_l{
 	width:13px;
 	background:url(../images/common/dialog_ml.png) no-repeat;
+}
+#content .content_c{
+    padding-top:5px;
 }
 #content .content_r{
 	width:13px;
@@ -62,8 +64,7 @@ ul{
 	margin-left:5px;
 	float:left;
 }
-#message
-{
+#message{
 	width:330px;
 	padding:15px;
 	font-size:12px;
@@ -96,20 +97,20 @@ ul{
 	background:url(../images/common/dialog_br.png) no-repeat #FFF;
 }
 .Success{
-	background:url(../images/common/ico_Success.png) 16px 16px no-repeat;
+	background:url(../images/common/ico_Success.gif) 16px 16px no-repeat;
 }
 .Error{
-	background:url(../images/common/ico_Error.png) 16px 16px no-repeat;
+	background:url(../images/common/ico_Error.gif) 16px 16px no-repeat;
 }
 .Warning{
-	background:url(../images/common/ico_Warning.png) 16px 16px no-repeat;
+	background:url(../images/common/ico_Warning.gif) 16px 16px no-repeat;
 }
 .Stop{
-	background:url(../images/common/ico_Stop.png) 16px 16px no-repeat;
+	background:url(../images/common/ico_Stop.gif) 16px 16px no-repeat;
 }
 .Question{
-	background:url(../images/common/ico_Question.png) 16px 16px no-repeat;
+	background:url(../images/common/ico_Question.gif) 16px 16px no-repeat;
 }
 .Information{
-	background:url(../images/common/ico_Information.png) 16px 16px no-repeat;
+	background:url(../images/common/ico_Information.gif) 16px 16px no-repeat;
 }

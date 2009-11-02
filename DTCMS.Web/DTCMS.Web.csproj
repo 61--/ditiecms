@@ -157,11 +157,17 @@
     <Content Include="images\common\dialog_tl.png" />
     <Content Include="images\common\dialog_tr.png" />
     <Content Include="images\common\icon_dialog.gif" />
+    <Content Include="images\common\ico_Error.gif" />
     <Content Include="images\common\ico_Error.png" />
+    <Content Include="images\common\ico_Information.gif" />
     <Content Include="images\common\ico_Information.png" />
+    <Content Include="images\common\ico_Question.gif" />
     <Content Include="images\common\ico_Question.png" />
+    <Content Include="images\common\ico_Stop.gif" />
     <Content Include="images\common\ico_Stop.png" />
+    <Content Include="images\common\ico_Success.gif" />
     <Content Include="images\common\ico_Success.png" />
+    <Content Include="images\common\ico_Warning.gif" />
     <Content Include="images\common\ico_Warning.png" />
     <Content Include="js\iepngfix.htc" />
     <Content Include="js\iepngfix.js" />
