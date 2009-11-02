@@ -51,14 +51,14 @@ ul{
 #content
 {
 	background:url(../images/common/dialog_ml.png) no-repeat;
-	_background: none;
-	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_ml.png', sizingMethod='crop');
+	/*_background: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_ml.png', sizingMethod='crop');*/
 }
 #content .content_r{
 	padding:13px;
 	background:url(../images/common/dialog_mr.png) top right no-repeat;
-	_background: none;
-	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_mr.png', sizingMethod='crop');
+	/*_background: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_mr.png', sizingMethod='crop');*/
 }
 #message_icon{
 	width:100px;
