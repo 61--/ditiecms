@@ -238,7 +238,7 @@ namespace DTCMS.Common
         /// <param name="ReplaceString">要替换成的字符串</param>
         /// <param name="IsCaseInsensetive">是否区分大小写true 不区分</param>
         /// <returns>替换后的字符串</returns>
-
+ 
         public static string ReplaceString(string SourceString, string SearchString, string ReplaceString, bool IsCaseInsensetive)
         {
             return Regex.Replace(SourceString, Regex.Escape(SearchString), ReplaceString, IsCaseInsensetive ? RegexOptions.IgnoreCase : RegexOptions.None);
@@ -278,68 +278,7 @@ namespace DTCMS.Common
             return str;
         }
         #endregion
-
-        #region 字符串格式验证
-        /// <summary>
-        /// 检测是否符合email格式
-        /// </summary>
-        /// <param name="strEmail">要判断的email字符串</param>
-        /// <returns>判断结果</returns>
-        public static bool IsValidEmail(string strEmail)
-        {
-            return Regex.IsMatch(strEmail, @"^[\w\.]+([-]\w+)*@[A-Za-z0-9-_]+[\.][A-Za-z0-9-_]");
-        }
-
-        /// <summary>
-        /// 检测是否是正确的Url
-        /// </summary>
-        /// <param name="strUrl">要验证的Url</param>
-        /// <returns>判断结果</returns>
-        public static bool IsValidURL(string strUrl)
-        {
-            return Regex.IsMatch(strUrl, @"^(http|https)\://([a-zA-Z0-9\.\-]+(\:[a-zA-Z0-9\.&%\$\-]+)*@)*((25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])|localhost|([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9\-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{1,10}))(\:[0-9]+)*(/($|[a-zA-Z0-9\.\,\?\'\\\+&%\$#\=~_\-]+))*$");
-        }
-        /// <summary>
-        /// 判断字符串是否是yy-mm-dd字符串
-        /// </summary>
-        /// <param name="str">待判断字符串</param>
-        /// <returns>判断结果</returns>
-        public static bool IsDateString(string str)
-        {
-            return Regex.IsMatch(str, @"(\d{4})-(\d{1,2})-(\d{1,2})");
-        }
-        /// <summary>
-        /// 验证是否为正整数
-        /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
-        public static bool IsValidInt(string str)
-        {
-            return Regex.IsMatch(str, @"^[0-9]*$");
-        }
-        /// <summary>
-        /// 是否为ip
-        /// </summary>
-        /// <param name="ip"></param>
-        /// <returns></returns>
-        public static bool IsValidIP(string ip)
-        {
-            return Regex.IsMatch(ip, @"^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$");
-        }
-
-        /// <summary>
-        /// 检测是否有Sql危险字符
-        /// </summary>
-        /// <param name="str">要判断字符串</param>
-        /// <returns>判断结果</returns>
-        public static bool IsSafeSqlString(string str)
-        {
-            return !Regex.IsMatch(str, @"[-|;|,|\/|\(|\)|\[|\]|\}|\{|%|@|\*|!|\']");
-        }
-
-
-        #endregion
-
+        
         #region html url 编解码
         /// <summary>
         /// 返回 HTML 字符串的编码结果
@@ -348,7 +287,7 @@ namespace DTCMS.Common
         /// <returns>编码结果</returns>
         public static string HtmlEncode(string str)
         {
-
+          
             return HttpUtility.HtmlEncode(str);
         }
 
