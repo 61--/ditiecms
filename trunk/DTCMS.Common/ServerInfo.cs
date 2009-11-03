@@ -28,7 +28,7 @@ namespace DTCMS.Common
                     //安装在虚拟子目录下   
                     AppPath = UrlAuthority + Req.ApplicationPath;
             }
-            return AppPath;
+            return AppPath+"/";
         }
         /// <summary>
         /// 获取网站根目录的物理路径
