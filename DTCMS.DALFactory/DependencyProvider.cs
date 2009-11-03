@@ -25,7 +25,6 @@ namespace DTCMS.DALFactory
             {
                 string dalName = ConfigurationManager.AppSettings["DAL"];
                 string fullClassName = dalName + "." + className;
-
                 CacheDependency fileDependency = new CacheDependency(HttpContext.Current.Server.MapPath("Web.Config"));
                 dalObject = Assembly.Load(dalName).CreateInstance(fullClassName);
                 CacheAccess.SaveToCache(className, dalObject, fileDependency);
