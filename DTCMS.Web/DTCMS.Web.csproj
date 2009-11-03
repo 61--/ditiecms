@@ -151,6 +151,7 @@
     <Content Include="admin\images\login_submit.gif" />
     <Content Include="admin\images\login_toptitle.gif" />
     <Content Include="admin\images\logo_01.gif" />
+    <Content Include="admin\js\common.js" />
     <Content Include="admin\login.aspx" />
     <Content Include="css\message.css" />
     <Content Include="images\common\blank.gif" />
