@@ -9,10 +9,10 @@
 <body>
     <form id="form1" runat="server">
     <%--<div>
-        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
+        
        <%--<DT:DTTextBox ID="dtTxtValidate" runat="server" InputStyle="Number"></DT:DTTextBox>--%>
     </div>--%>
-    
+    <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
     <fieldset>
         <legend style="height: 19px">oo</legend>
     </fieldset>
@@ -22,7 +22,7 @@
             <td>
                 &nbsp;</td>
             <td>
-                &nbsp;</td>
+                <textarea></textarea></td>
             <td>
                 &nbsp;</td>
         </tr>
