@@ -262,21 +262,6 @@ namespace DTCMS.Common
             return (str == "") ? "" : str.Substring(0, str.Length - 1);
         }
 
-        /// <summary>
-        /// 进行指定的替换(脏字过滤)
-        /// </summary>
-        public static string StrFilter(string str, string bantext)
-        {
-            string text1 = "", text2 = "";
-            string[] textArray1 = SplitString(bantext, "\r\n");
-            for (int num1 = 0; num1 < textArray1.Length; num1++)
-            {
-                text1 = textArray1[num1].Substring(0, textArray1[num1].IndexOf("="));
-                text2 = textArray1[num1].Substring(textArray1[num1].IndexOf("=") + 1);
-                str = str.Replace(text1, text2);
-            }
-            return str;
-        }
         #endregion
         
         #region html url 编解码
