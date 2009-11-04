@@ -85,7 +85,7 @@ namespace DTCMS.Common
             sb.Append("<td class=\"content_c\">\r\n");
             sb.Append("<div id=\"message_icon\" class=\"" + icon.ToString() + "\"></div>\r\n");
             sb.Append("<div id=\"message\">" + message + "</div>\r\n");
-            sb.Append("<div style=\"clear: left;\"></div>\r\n");
+            sb.Append("<div style=\"clear:left\"></div>\r\n");
             if (time > 0)
                 sb.Append("<div class=\"link\"><a href=\"" + (url == "-1" ? "javascript:history.go(-1)" : url) + "\">如果页面没有自动跳转，请点击这里...</a></div>\r\n");
             else if (url == "-1")
