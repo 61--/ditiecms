@@ -1,3 +1,7 @@
+/*
+	CopyRight (C) www.fzditie.com
+	Auther LinPanxing
+*/
 *{
 	padding:0px;
 	margin:0px;
@@ -13,6 +17,18 @@ ul{
 	width:500px;
 	text-align:left;
 	margin:135px auto auto auto;
+	position:relative;
+}
+#container a.close{
+	top:8px;
+	right:15px;
+	width:28px;
+	height:17px;
+	position:absolute;
+	background:url(../images/common/dialog_close.gif) no-repeat;
+}
+#container a.close:hover{
+	background:url(../images/common/dialog_close_h.gif) no-repeat;	
 }
 #header{
 	width:500px;
@@ -20,15 +36,6 @@ ul{
 	background-image:url(../images/common/dialog_tl.png) !important;
 	_background: none;
  	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_tl.png', sizingMethod='crop');
-	position:relative;
-}
-#header .close{
-	top:8px;
-	right:15px;
-	width:28px;
-	height:17px;
-	position:absolute;
-	background:url(../images/common/dialog_close.gif) no-repeat;
 }
 #header .header_r{
 	width:13px;

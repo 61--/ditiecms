@@ -11,7 +11,7 @@ namespace DTCMS.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           // Message.Dialog("用户密码错误！", "-1", MessageIcon.Warning);
+            Message.Dialog("用户密码错误！", "-1", MessageIcon.Warning);
            
         }
 
