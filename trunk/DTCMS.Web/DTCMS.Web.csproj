@@ -178,8 +178,6 @@
     <Content Include="images\common\ico_Success.png" />
     <Content Include="images\common\ico_Warning.gif" />
     <Content Include="images\common\ico_Warning.png" />
-    <Content Include="js\iepngfix.htc" />
-    <Content Include="js\iepngfix.js" />
     <Content Include="Test.aspx" />
     <Content Include="ValidateCode.ashx" />
     <None Include="admin\images\blue\admin_tlogo.psd" />
@@ -213,6 +211,9 @@
       <Project>{C7E7D0AF-4A77-4653-B335-F3CB0B4D128E}</Project>
       <Name>DTCMS.SqlServerDAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="js\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
