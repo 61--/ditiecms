@@ -73,7 +73,6 @@ namespace DTCMS.Common
             if (time > 0)
                 sb.Append("<meta http-equiv='refresh' content='" + time + "; url=" + (url == "-1" ? "javascript:history.go(-1)" : url) + "' />\r\n");
             sb.Append("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/message.css\" />\r\n");
-            sb.Append("<script type=\"text/javascript\" src=\"js/iepngfix.js\"></script>");
             sb.Append("</head>\r\n");
             sb.Append("<body>\r\n");
             sb.Append("<div id=\"container\">\r\n");
