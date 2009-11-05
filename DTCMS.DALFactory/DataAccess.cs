@@ -32,10 +32,10 @@ namespace DTCMS.DALFactory
         // //获取用户数据访问类
         // //</summary>
         // //<returns></returns>
-        public static I CreateFactoryDAL(string)
-        {
-            return (I)DependencyProvider.GetDALObject();
-        }
+        //public static I CreateFactoryDAL(string)
+        //{
+        //    return (I)DependencyProvider.GetDALObject();
+        //}
     }
 
 }
