@@ -28,7 +28,16 @@ namespace DTCMS.DALFactory
     public sealed class DataAccess<I>
     {
 
-        // //<summary>
+<<<<<<< .mine        /// <summary>
+        /// 获取用户数据访问类
+        /// </summary>
+        /// <param name="className">数据层类DAL名称</param>
+        /// <returns>数据访问类对象</returns>
+        public static I CreateFactoryDAL(string className)
+        {
+            return (I)DependencyProvider.GetDALObject(className);
+        }
+=======        // //<summary>
         // //获取用户数据访问类
         // //</summary>
         // //<returns></returns>
@@ -36,6 +45,6 @@ namespace DTCMS.DALFactory
         //{
         //    return (I)DependencyProvider.GetDALObject();
         //}
-    }
+>>>>>>> .theirs    }
 
 }
