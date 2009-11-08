@@ -33,7 +33,7 @@ namespace DTCMS.DBUtility
             {
                 try
                 {
-                    if (connection != null)
+                    if (connection == null)
                     {
                         connection = new SqlConnection(ConnString);
                     }
@@ -67,11 +67,11 @@ namespace DTCMS.DBUtility
         /// <summary>
         /// 执无参SQL语句,返回执行行数
         /// </summary>
-        public static int ExecuteCommand(string safeSql)
+        public static int ExecuteNonQuery(string sql)
         {
             try
             {
-                SqlCommand cmd = new SqlCommand(safeSql, Connection);
+                SqlCommand cmd = new SqlCommand(sql, Connection);
                 int result = cmd.ExecuteNonQuery();
                 return result;
             }
@@ -85,20 +85,34 @@ namespace DTCMS.DBUtility
             }
         }
         /// <summary>
+        /// 执行事务
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <param name="tran">执行事务</param>
+        /// <returns></returns>
+        public static int ExecuteNonQueryTran(string sql, SqlTransaction tran)
+        {
+            SqlCommand cmd = new SqlCommand(sql, Connection);
+            cmd.Transaction = tran;
+            int result = cmd.ExecuteNonQuery();
+            return result;
+
+        }
+        /// <summary>
         /// 执行带参SQL语句,返回执行行数
         /// </summary>
-        public static int ExecuteCommand(string sql, params SqlParameter[] values)
+        public static int ExecuteNonQuery(string sql, SqlParameter[] prams)
         {
             try
             {
                 SqlCommand cmd = new SqlCommand(sql, Connection);
-
-                foreach (SqlParameter param in values)
+                if (prams != null)
                 {
-                    cmd.Parameters.Add(param);
+                    cmd.Parameters.AddRange(prams);
                 }
-                int result = cmd.ExecuteNonQuery();
-                return result;
+                int iResult = cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+                return iResult;
             }
             catch (Exception ex)
             {
@@ -108,18 +122,36 @@ namespace DTCMS.DBUtility
             {
                 CloseSqlConn();
             }
+        }
+        /// <summary>
+        /// 执行事务
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <param name="tran">执行事务</param>
+        /// <returns></returns>
+        public static int ExecuteNonQueryTran(string sql, SqlParameter[] prams, SqlTransaction tran)
+        {
+            SqlCommand cmd = new SqlCommand(sql, Connection);
+            if (prams != null)
+            {
+                cmd.Parameters.AddRange(prams);
+            }
+            cmd.Transaction = tran;
+            int iResult = cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            return iResult;
+
         }
 
         /// <summary>
         /// 执行无参SQL语句，并返回首行首列
         /// </summary>
-        public static object GetScalar(string safeSql)
+        public static object ExecuteScalar(string sql)
         {
             try
             {
-                SqlCommand cmd = new SqlCommand(safeSql, Connection);
-                object result = Convert.ToInt32(cmd.ExecuteScalar());
-                return result;
+                SqlCommand cmd = new SqlCommand(sql, Connection);
+                return cmd.ExecuteScalar();
             }
             catch (Exception ex)
             {
@@ -133,14 +165,15 @@ namespace DTCMS.DBUtility
         /// <summary>
         /// 执行带参SQL语句，并返回首行首列
         /// </summary>
-        public static object GetScalar(string sql, params SqlParameter[] values)
+        public static object ExecuteScalar(string sql, SqlParameter[] prams)
         {
             try
             {
                 SqlCommand cmd = new SqlCommand(sql, Connection);
-                cmd.Parameters.AddRange(values);
-                object result = Convert.ToInt32(cmd.ExecuteScalar());
-                return result;
+                cmd.Parameters.AddRange(prams);
+                object iResult = cmd.ExecuteScalar();
+                cmd.Parameters.Clear();
+                return iResult;
             }
             catch (Exception ex)
             {
@@ -155,13 +188,12 @@ namespace DTCMS.DBUtility
         /// <summary>
         /// 执行无参SQL语句，并返回SqlDataReader
         /// </summary>
-        public static SqlDataReader GetReader(string safeSql)
+        public static SqlDataReader ExecuteReader(string sql)
         {
             try
             {
-                SqlCommand cmd = new SqlCommand(safeSql, Connection);
-                SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                return reader;
+                SqlCommand cmd = new SqlCommand(sql, Connection);
+                return cmd.ExecuteReader(CommandBehavior.CloseConnection);
             }
             catch (Exception ex)
             {
@@ -171,14 +203,18 @@ namespace DTCMS.DBUtility
         /// <summary>
         /// 执行带参SQL语句，并返回SqlDataReader
         /// </summary>
-        public static SqlDataReader GetReader(string sql, params SqlParameter[] values)
+        public static SqlDataReader ExecuteReader(string sql,SqlParameter[] prams)
         {
             try
             {
                 SqlCommand cmd = new SqlCommand(sql, Connection);
-                cmd.Parameters.AddRange(values);
-                SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                return reader;
+                if (prams != null)
+                {
+                    cmd.Parameters.AddRange(prams);
+                }
+                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                cmd.Parameters.Clear();
+                return dr;
             }
             catch (Exception ex)
             {
@@ -191,12 +227,12 @@ namespace DTCMS.DBUtility
         /// </summary>
         /// <param name="safeSql"></param>
         /// <returns></returns>
-        public static DataSet GetDataSet(string safeSql)
+        public static DataSet ExecuteDataSet(string sql)
         {
             try
             {
                 DataSet ds = new DataSet();
-                SqlCommand cmd = new SqlCommand(safeSql, Connection);
+                SqlCommand cmd = new SqlCommand(sql, Connection);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(ds);
                 return ds;
@@ -216,13 +252,18 @@ namespace DTCMS.DBUtility
         /// </summary>
         /// <param name="safeSql"></param>
         /// <returns></returns>
-        public static DataSet GetDataSet(string sql, params SqlParameter[] values)
+        public static DataSet ExecuteDataSet(string sql, SqlParameter[] prams)
         {
+            DataSet ds = new DataSet();
+            SqlCommand cmd = null;
+
             try
             {
-                DataSet ds = new DataSet();
-                SqlCommand cmd = new SqlCommand(sql, Connection);
-                cmd.Parameters.AddRange(values);
+                cmd = new SqlCommand(sql, Connection);
+                if (prams != null)
+                {
+                    cmd.Parameters.AddRange(prams);
+                }
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(ds);
                 return ds;
@@ -233,6 +274,7 @@ namespace DTCMS.DBUtility
             }
             finally
             {
+                cmd.Parameters.Clear();
                 CloseSqlConn();
             }
         }
