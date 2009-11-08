@@ -25,7 +25,7 @@ namespace DTCMS.DBUtility
         }
 
         /// <summary>
-        /// 数据库连接已打开对象
+        /// 数据库连接对象,已打开连接
         /// </summary>
         public static SqlConnection Connection
         {
@@ -65,7 +65,7 @@ namespace DTCMS.DBUtility
         #region SQL语句
 
         /// <summary>
-        /// 执无参SQL语句,返回执行行数
+        /// 执SQL语句,返回执行行数
         /// </summary>
         public static int ExecuteNonQuery(string sql)
         {
@@ -99,7 +99,7 @@ namespace DTCMS.DBUtility
 
         }
         /// <summary>
-        /// 执行带参SQL语句,返回执行行数
+        /// 执行SQL语句,返回执行行数
         /// </summary>
         public static int ExecuteNonQuery(string sql, SqlParameter[] prams)
         {
@@ -144,7 +144,7 @@ namespace DTCMS.DBUtility
         }
 
         /// <summary>
-        /// 执行无参SQL语句，并返回首行首列
+        /// 执行SQL语句，并返回首行首列
         /// </summary>
         public static object ExecuteScalar(string sql)
         {
@@ -163,7 +163,7 @@ namespace DTCMS.DBUtility
             }
         }
         /// <summary>
-        /// 执行带参SQL语句，并返回首行首列
+        /// 执行SQL语句，并返回首行首列
         /// </summary>
         public static object ExecuteScalar(string sql, SqlParameter[] prams)
         {
@@ -201,7 +201,7 @@ namespace DTCMS.DBUtility
             }
         }
         /// <summary>
-        /// 执行带参SQL语句，并返回SqlDataReader
+        /// 执行SQL语句，并返回SqlDataReader
         /// </summary>
         public static SqlDataReader ExecuteReader(string sql,SqlParameter[] prams)
         {
@@ -223,7 +223,7 @@ namespace DTCMS.DBUtility
         }
 
         /// <summary>
-        /// 执行无参sql语句，并返回DataSet
+        /// 执行sql语句，并返回DataSet
         /// </summary>
         /// <param name="safeSql"></param>
         /// <returns></returns>
@@ -248,7 +248,7 @@ namespace DTCMS.DBUtility
         }
 
         /// <summary>
-        /// 执行带参sql语句，并返回DataSet
+        /// 执行sql语句，并返回DataSet
         /// </summary>
         /// <param name="safeSql"></param>
         /// <returns></returns>
