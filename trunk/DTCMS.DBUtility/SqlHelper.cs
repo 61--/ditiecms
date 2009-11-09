@@ -31,22 +31,15 @@ namespace DTCMS.DBUtility
         {
             get
             {
-                try
+                if (connection == null)
                 {
-                    if (connection == null)
-                    {
-                        connection = new SqlConnection(ConnString);
-                    }
-                    if (connection.State == ConnectionState.Closed)
-                    {
-                        connection.Open();
-                    }
-                    return connection;
+                    connection = new SqlConnection(ConnString);
                 }
-                catch (Exception ex)
+                if (connection.State == ConnectionState.Closed)
                 {
-                    throw new Exception(ex.Message);
+                    connection.Open();
                 }
+                return connection;
             }
         }
 
@@ -69,20 +62,10 @@ namespace DTCMS.DBUtility
         /// </summary>
         public static int ExecuteNonQuery(string sql)
         {
-            try
-            {
-                SqlCommand cmd = new SqlCommand(sql, Connection);
-                int result = cmd.ExecuteNonQuery();
-                return result;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                CloseSqlConn();
-            }
+            SqlCommand cmd = new SqlCommand(sql, Connection);
+            int result = cmd.ExecuteNonQuery();
+            CloseSqlConn();
+            return result;
         }
         /// <summary>
         /// 执行事务
@@ -103,25 +86,16 @@ namespace DTCMS.DBUtility
         /// </summary>
         public static int ExecuteNonQuery(string sql, SqlParameter[] prams)
         {
-            try
+
+            SqlCommand cmd = new SqlCommand(sql, Connection);
+            if (prams != null)
             {
-                SqlCommand cmd = new SqlCommand(sql, Connection);
-                if (prams != null)
-                {
-                    cmd.Parameters.AddRange(prams);
-                }
-                int iResult = cmd.ExecuteNonQuery();
-                cmd.Parameters.Clear();
-                return iResult;
+                cmd.Parameters.AddRange(prams);
             }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                CloseSqlConn();
-            }
+            int iResult = cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
+            CloseSqlConn();
+            return iResult;
         }
         /// <summary>
         /// 执行事务
@@ -148,41 +122,24 @@ namespace DTCMS.DBUtility
         /// </summary>
         public static object ExecuteScalar(string sql)
         {
-            try
-            {
-                SqlCommand cmd = new SqlCommand(sql, Connection);
-                return cmd.ExecuteScalar();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                CloseSqlConn();
-            }
+
+            SqlCommand cmd = new SqlCommand(sql, Connection);
+            object iResult = cmd.ExecuteScalar();
+            CloseSqlConn();
+            return iResult;
+
         }
         /// <summary>
         /// 执行SQL语句，并返回首行首列
         /// </summary>
         public static object ExecuteScalar(string sql, SqlParameter[] prams)
         {
-            try
-            {
-                SqlCommand cmd = new SqlCommand(sql, Connection);
-                cmd.Parameters.AddRange(prams);
-                object iResult = cmd.ExecuteScalar();
-                cmd.Parameters.Clear();
-                return iResult;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                CloseSqlConn();
-            }
+            SqlCommand cmd = new SqlCommand(sql, Connection);
+            cmd.Parameters.AddRange(prams);
+            object iResult = cmd.ExecuteScalar();
+            cmd.Parameters.Clear();
+            CloseSqlConn();
+            return iResult;
         }
 
         /// <summary>
@@ -190,36 +147,22 @@ namespace DTCMS.DBUtility
         /// </summary>
         public static SqlDataReader ExecuteReader(string sql)
         {
-            try
-            {
-                SqlCommand cmd = new SqlCommand(sql, Connection);
-                return cmd.ExecuteReader(CommandBehavior.CloseConnection);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            SqlCommand cmd = new SqlCommand(sql, Connection);
+            return cmd.ExecuteReader(CommandBehavior.CloseConnection);
         }
         /// <summary>
         /// 执行SQL语句，并返回SqlDataReader
         /// </summary>
-        public static SqlDataReader ExecuteReader(string sql,SqlParameter[] prams)
+        public static SqlDataReader ExecuteReader(string sql, SqlParameter[] prams)
         {
-            try
+            SqlCommand cmd = new SqlCommand(sql, Connection);
+            if (prams != null)
             {
-                SqlCommand cmd = new SqlCommand(sql, Connection);
-                if (prams != null)
-                {
-                    cmd.Parameters.AddRange(prams);
-                }
-                SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                cmd.Parameters.Clear();
-                return dr;
+                cmd.Parameters.AddRange(prams);
             }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            cmd.Parameters.Clear();
+            return dr;
         }
 
         /// <summary>
@@ -229,22 +172,12 @@ namespace DTCMS.DBUtility
         /// <returns></returns>
         public static DataSet ExecuteDataSet(string sql)
         {
-            try
-            {
-                DataSet ds = new DataSet();
-                SqlCommand cmd = new SqlCommand(sql, Connection);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(ds);
-                return ds;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                CloseSqlConn();
-            }
+            DataSet ds = new DataSet();
+            SqlCommand cmd = new SqlCommand(sql, Connection);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            CloseSqlConn();
+            return ds;
         }
 
         /// <summary>
@@ -257,26 +190,16 @@ namespace DTCMS.DBUtility
             DataSet ds = new DataSet();
             SqlCommand cmd = null;
 
-            try
+            cmd = new SqlCommand(sql, Connection);
+            if (prams != null)
             {
-                cmd = new SqlCommand(sql, Connection);
-                if (prams != null)
-                {
-                    cmd.Parameters.AddRange(prams);
-                }
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(ds);
-                return ds;
+                cmd.Parameters.AddRange(prams);
             }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                cmd.Parameters.Clear();
-                CloseSqlConn();
-            }
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            cmd.Parameters.Clear();
+            CloseSqlConn();
+            return ds;
         }
         #endregion
     }
