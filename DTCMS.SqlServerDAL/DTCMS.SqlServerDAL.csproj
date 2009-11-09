@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C7E7D0AF-4A77-4653-B335-F3CB0B4D128E}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -43,6 +43,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DTCMS.DBUtility\DTCMS.DBUtility.csproj">
+      <Project>{B925723C-29AC-4BE0-9919-DF4C1780B1E8}</Project>
+      <Name>DTCMS.DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTCMS.Entity\DTCMS.Entity.csproj">
+      <Project>{DF2F902E-45F7-4760-9214-981A56E202B9}</Project>
+      <Name>DTCMS.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DTCMS.IDAL\DTCMS.IDAL.csproj">
       <Project>{781AE6C8-31B1-48C0-B1C6-04F5EDA522D9}</Project>
       <Name>DTCMS.IDAL</Name>
