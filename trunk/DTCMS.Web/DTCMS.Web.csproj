@@ -142,13 +142,6 @@
       <DependentUpon>top_index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test.aspx.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test.aspx.designer.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\css\login.css" />
@@ -157,7 +150,7 @@
     <Content Include="admin\images\login_submit.gif" />
     <Content Include="admin\images\login_toptitle.gif" />
     <Content Include="admin\images\logo_01.gif" />
-    <Content Include="admin\js\common.js" />
+    <Content Include="admin\js\jquery.min.js" />
     <Content Include="admin\js\jquery.min.js" />
     <Content Include="admin\login.aspx" />
     <Content Include="admin\news\Class_add.aspx" />
@@ -187,9 +180,12 @@
     <Content Include="images\common\ico_Success.png" />
     <Content Include="images\common\ico_Warning.gif" />
     <Content Include="images\common\ico_Warning.png" />
+<<<<<<< .mine
+=======
     <Content Include="js\iepngfix.htc" />
     <Content Include="js\iepngfix.js" />
     <Content Include="Test.aspx" />
+>>>>>>> .r150
     <Content Include="ValidateCode.ashx" />
     <None Include="admin\images\blue\admin_tlogo.psd" />
   </ItemGroup>
