@@ -180,12 +180,7 @@
     <Content Include="images\common\ico_Success.png" />
     <Content Include="images\common\ico_Warning.gif" />
     <Content Include="images\common\ico_Warning.png" />
-<<<<<<< .mine
-=======
-    <Content Include="js\iepngfix.htc" />
-    <Content Include="js\iepngfix.js" />
     <Content Include="Test.aspx" />
->>>>>>> .r150
     <Content Include="ValidateCode.ashx" />
     <None Include="admin\images\blue\admin_tlogo.psd" />
   </ItemGroup>
