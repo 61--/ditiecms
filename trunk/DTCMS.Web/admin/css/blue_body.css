@@ -25,6 +25,7 @@ input
 	height:20px;
 	line-height:20px;
 	text-indent:2px;
+	width:200px;
 }
 img{
 	border:0px;
@@ -144,16 +145,15 @@ a:hover{
 .main_bleft{
 	line-height:30px;
 	padding-right:10px;
-	font-weight:bold;
-	letter-spacing:2px;
+	letter-spacing:1px;
 	text-align:right;
 	background:#f5fafe;
 	width:22%;
-	color:#006699;
+	color:#069;
 }
 .main_bright{
 	line-height:30px;
-	padding-left:12px;
+	padding-left:10px;
 	background:#FFF;
 	width:78%;
 }
