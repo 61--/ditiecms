@@ -18,17 +18,14 @@ input
 {
 	vertical-align:middle;
 }
-input[type=text]
+.textbox
 {
 	background: url(../images/blue/login_input_bg.gif) left top no-repeat;
 	border:1px solid #bdbcbd;
-	padding:3px 0 3px 5px;
+	height:20px;
+	line-height:20px;
+	text-indent:2px;
 }
-
-input[type=image]{ border:none }
-input[type=checkbox]{ border:none }
-input[type=radio]{ border:none }
-
 img{
 	border:0px;
 }
