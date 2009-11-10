@@ -9,7 +9,6 @@
 <body>
     <form id="form1" runat="server">
     <div class="form_table">
-<<<<<<< .mine
         <table width="96%" align="center" cellpadding="10" cellspacing="1" class="tab1">
             <tr>
                 <td class="main_bleft">
@@ -49,7 +48,6 @@
                 </td>
             </tr>
         </table>
-=======
             <table width="96%" align="center" cellpadding="10" cellspacing="1" class="tab1">
                  <tr>
                      <td class="main_bleft">是否隐藏栏目:</td>
@@ -80,7 +78,6 @@
                       </td>
                  </tr>   
             </table>
->>>>>>> .r155
             <!--高级-->
             <table>
                 <tr>
