@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.DBUtility", "DTCMS.DB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.Controls", "DTCMS.Controls\DTCMS.Controls.csproj", "{B9352D26-CB19-4327-97CD-7FE93BD1CC4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.Pages", "DTCMS.Pages\DTCMS.Pages.csproj", "{619F3C0B-AD24-4F16-83D9-DDFB120425DE}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -71,6 +73,10 @@ Global
 		{B9352D26-CB19-4327-97CD-7FE93BD1CC4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9352D26-CB19-4327-97CD-7FE93BD1CC4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9352D26-CB19-4327-97CD-7FE93BD1CC4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{619F3C0B-AD24-4F16-83D9-DDFB120425DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{619F3C0B-AD24-4F16-83D9-DDFB120425DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{619F3C0B-AD24-4F16-83D9-DDFB120425DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{619F3C0B-AD24-4F16-83D9-DDFB120425DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
