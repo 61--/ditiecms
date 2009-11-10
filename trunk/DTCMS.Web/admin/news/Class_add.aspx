@@ -30,7 +30,7 @@
                  <tr>
                       <td class="main_bleft">栏目属性:</td>
                       <td class="main_bright">
-                          <input type="radio" name="radAttribute" id="rad_AttributeCover" />频道封面<br />  
+                          <input type="radio" name="radAttribute" id="rad_AttributeCover" /><label for="rad_AttributeCover">频道封面</label><br />  
                           <input type="radio" name="radAttribute" id="rad_AttributeList" />最终列表栏目<br />  
                           <input type="radio" name="radAttribute" id="rad_AttributeUrl" />外部连接<br />  
                       </td>
