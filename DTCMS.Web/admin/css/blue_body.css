@@ -47,7 +47,7 @@ a:hover{
 	width:4px;
 	height:200px;
 	position:absolute;
-	background:url(../images/blue/conbg_right.gif) no-repeat;
+	background:url(../images/blue/conbg_right.gif) no-repeat #FFF;
 }
 
 /* 首页信息表格 */
