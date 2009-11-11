@@ -51,7 +51,6 @@
     <Content Include="admin\css\calendar-blue.css" />
     <Content Include="admin\css\calendar-brown.css" />
     <Content Include="admin\css\calendar-green.css" />
-    <Content Include="admin\images\132.png" />
     <Content Include="admin\images\blue\admin_tlogo.jpg" />
     <Content Include="admin\images\blue\body_title_bg.gif" />
     <Content Include="admin\images\blue\body_title_cen.gif" />
@@ -84,13 +83,6 @@
     <Content Include="admin\images\blue\top_nav_right.jpg" />
     <Content Include="admin\images\blue\top_nav_sr.gif" />
     <Content Include="admin\images\blue\top_sitelink_bg.gif" />
-    <Content Include="admin\images\botton.gif" />
-    <Content Include="admin\images\close.gif" />
-    <Content Include="admin\images\close_hover.gif" />
-    <Content Include="admin\images\gf.gif" />
-    <Content Include="admin\images\loading.gif" />
-    <Content Include="admin\images\title_bg.gif" />
-    <Content Include="admin\images\title_head.gif" />
     <Content Include="admin\index.aspx" />
     <Content Include="admin\js\calendar.js" />
     <Content Include="admin\js\calendar2.js" />
@@ -145,6 +137,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\css\login.css" />
+    <Content Include="admin\images\blue\conbg_left.gif" />
+    <Content Include="admin\images\blue\conbg_right.gif" />
     <Content Include="admin\images\login_input_bg.gif" />
     <Content Include="admin\images\login_input_hr.gif" />
     <Content Include="admin\images\login_submit.gif" />
