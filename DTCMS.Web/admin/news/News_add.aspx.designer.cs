@@ -23,6 +23,15 @@ namespace DTCMS.Web.admin.news {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// txt_Title 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_Title;
+        
+        /// <summary>
         /// chk_Headline 控件。
         /// </summary>
         /// <remarks>
@@ -68,24 +77,6 @@ namespace DTCMS.Web.admin.news {
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_Scroll;
         
         /// <summary>
-        /// txt_Title 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_Title;
-        
-        /// <summary>
-        /// txt_ShortTitle 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_ShortTitle;
-        
-        /// <summary>
         /// txt_Tags 控件。
         /// </summary>
         /// <remarks>
@@ -93,6 +84,15 @@ namespace DTCMS.Web.admin.news {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_Tags;
+        
+        /// <summary>
+        /// txt_Source 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_Source;
         
         /// <summary>
         /// file_ImageUrl 控件。
@@ -122,15 +122,6 @@ namespace DTCMS.Web.admin.news {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtEditor;
         
         /// <summary>
-        /// txt_Source 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_Source;
-        
-        /// <summary>
         /// txt_Templet 控件。
         /// </summary>
         /// <remarks>
@@ -140,24 +131,6 @@ namespace DTCMS.Web.admin.news {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_Templet;
         
         /// <summary>
-        /// txt_Keywords 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_Keywords;
-        
-        /// <summary>
-        /// txt_Description 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_Description;
-        
-        /// <summary>
         /// txt_Content 控件。
         /// </summary>
         /// <remarks>
@@ -165,23 +138,5 @@ namespace DTCMS.Web.admin.news {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_Content;
-        
-        /// <summary>
-        /// txt_Readaccess 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_Readaccess;
-        
-        /// <summary>
-        /// txt_FieldPath 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_FieldPath;
     }
 }
