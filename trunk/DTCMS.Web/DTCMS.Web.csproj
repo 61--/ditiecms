@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\css\login.css" />
+    <Content Include="admin\images\blue\ico_01.gif" />
     <Content Include="admin\images\blue\conbg_left.gif" />
     <Content Include="admin\images\blue\conbg_right.gif" />
     <Content Include="admin\images\login_input_bg.gif" />
