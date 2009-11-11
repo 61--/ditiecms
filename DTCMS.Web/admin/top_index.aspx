@@ -83,12 +83,12 @@ function resetBT(){
 	    <div class="leftnav">
 		    <ul>
 			    <li class="navleft"></li>
-			    <li id='d1' style="margin-left:-1px"><a href="javascript:OpenMenu(1,'','BuildInfo.aspx',1)">房产管理</a></li>
-			    <li id='d2'><a href="javascript:OpenMenu(2,'','main_index.aspx',2)">住房管理</a></li>
-			    <li id='d3'><a href="javascript:OpenMenu(3,'','main_index.aspx',3)">收费管理</a></li>
-			    <li id='d4'><a href="javascript:OpenMenu(4,'','main_index.aspx',4)">综合管理</a></li>
-                <li id='d5'><a href="javascript:OpenMenu(5,'','main_index.aspx',5)">综合查询</a></li>
-			    <li id='d6'><a href="javascript:OpenMenu(6,'','main_index.aspx',6)">统计报表</a></li>
+			    <li id='d1' style="margin-left:-1px"><a href="javascript:OpenMenu(1,'','BuildInfo.aspx',1)">频道管理</a></li>
+			    <li id='d2'><a href="javascript:OpenMenu(2,'','main_index.aspx',2)">内容管理</a></li>
+			    <li id='d3'><a href="javascript:OpenMenu(3,'','main_index.aspx',3)">生成管理</a></li>
+			    <li id='d4'><a href="javascript:OpenMenu(4,'','main_index.aspx',4)">采集管理</a></li>
+                <li id='d5'><a href="javascript:OpenMenu(5,'','main_index.aspx',5)">用户管理</a></li>
+			    <li id='d6'><a href="javascript:OpenMenu(6,'','main_index.aspx',6)">插件管理</a></li>
 			    <li id='d7' style="margin-right:-1px"><a href="javascript:OpenMenu(7,'','main_index.aspx',7)">系统管理</a></li>
 			    <li class="navright"></li>
 		    </ul>
