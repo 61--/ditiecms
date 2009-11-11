@@ -13,7 +13,10 @@ namespace DTCMS.IDAL
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
-		bool Exists(int CID);
+        /// <param name="CID">类别主键</param>
+        /// <param name="FiledName">字段名称</param>
+        /// <param name="FiledValue">字段值</param>
+		bool Exists(int CID,string filedName,string filedValue);
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
@@ -21,11 +24,11 @@ namespace DTCMS.IDAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-        void Update(Arc_Class model);
+        int Update(Arc_Class model);
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		void Delete(int CID);
+		int Delete(int CID);
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
