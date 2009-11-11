@@ -36,7 +36,7 @@ a:hover{
 #container
 {
 	margin:6px;
-	padding:10px;
+	padding:10px 8px;
 	background:url(../images/blue/conbg_left.gif) no-repeat;
 	position:relative;
 }
@@ -49,7 +49,15 @@ a:hover{
 	position:absolute;
 	background:url(../images/blue/conbg_right.gif) no-repeat #FFF;
 }
-
+#cur_place
+{
+	text-indent:22px;
+	height:20px;
+	line-height:20px;
+	font-size:13px;
+	margin-bottom:8px;
+	background:url(../images/blue/ico_01.gif) no-repeat;
+}
 /* 首页信息表格 */
 .main_bleft{
 	line-height:30px;

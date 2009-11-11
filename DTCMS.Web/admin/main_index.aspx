@@ -9,6 +9,7 @@
 <body>
     <form id="form1" runat="server">
     <div id="container">
+        <div id="cur_place">当前位置：</div>
         <div id="container_r"></div>
         <table width="100%" align="center" cellpadding="10" cellspacing="1" class="tab1">
             <tr>
