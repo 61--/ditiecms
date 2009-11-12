@@ -145,7 +145,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\css\login.css" />
-<<<<<<< .mine
     <Content Include="admin\dtree\base.gif" />
     <Content Include="admin\dtree\dtree.css" />
     <Content Include="admin\dtree\dtree.js" />
@@ -161,9 +160,7 @@
     <Content Include="admin\dtree\plus.gif" />
     <Content Include="admin\dtree\plusbottom.gif" />
     <Content Include="admin\Test.aspx" />
-=======
     <Content Include="admin\images\blue\ico_01.gif" />
->>>>>>> .r172
     <Content Include="admin\images\blue\conbg_left.gif" />
     <Content Include="admin\images\blue\conbg_right.gif" />
     <Content Include="admin\images\login_input_bg.gif" />
