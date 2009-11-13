@@ -70,12 +70,13 @@ namespace DTCMS.Web.admin.dtree
         protected void Page_Load(object sender, EventArgs e)
         {
             tvTest.Nodes.Add(new TreeNode("全部", "-1"));
-            WebPublic.WriteDynTree(returnDT(), tvTest.Nodes[0], "PID", 0, "NAME", "ID");
+            WebTools.WriteDynTree(returnDT(), tvTest.Nodes[0], "PID", 0, "NAME", "ID");
         }
         public string A()
         {
-            WebPublic.WriteStaticDTree(returnDT(), "PID", 0, "NAME", "ID", "http://www.baidu.com");
-            return WebPublic.ReadStaticDTTree("DTTree");
+
+            //return WebTools.WriteStaticDTree(returnDT(), "PID", 0, "NAME", "ID", "javascript:window.alert('{0}')","","DTTree");
+            return WebTools.GetStaticDTree(returnDT(), "PID", 0, "NAME", "ID", "http://pc123.org", "", "DTTree");
         }
     }
 }
