@@ -141,7 +141,7 @@
       <DependentUpon>top_index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\WebPublic.cs" />
+    <Compile Include="Utils\WebTools.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\css\login.css" />

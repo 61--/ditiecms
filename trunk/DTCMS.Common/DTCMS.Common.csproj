@@ -45,6 +45,7 @@
     <Compile Include="JScript.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Regular.cs" />
     <Compile Include="ServerInfo.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
