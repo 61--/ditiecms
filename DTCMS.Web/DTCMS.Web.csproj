@@ -141,24 +141,24 @@
       <DependentUpon>top_index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="test.cs" />
+    <Compile Include="Utils\WebPublic.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\css\login.css" />
-    <Content Include="admin\dtree\base.gif" />
-    <Content Include="admin\dtree\dtree.css" />
-    <Content Include="admin\dtree\dtree.js" />
-    <Content Include="admin\dtree\empty.gif" />
-    <Content Include="admin\dtree\folder.gif" />
-    <Content Include="admin\dtree\folderopen.gif" />
-    <Content Include="admin\dtree\join.gif" />
-    <Content Include="admin\dtree\joinbottom.gif" />
-    <Content Include="admin\dtree\line.gif" />
-    <Content Include="admin\dtree\minus.gif" />
-    <Content Include="admin\dtree\minusbottom.gif" />
-    <Content Include="admin\dtree\page.gif" />
-    <Content Include="admin\dtree\plus.gif" />
-    <Content Include="admin\dtree\plusbottom.gif" />
+    <Content Include="admin\DTTree\base.gif" />
+    <Content Include="admin\DTTree\dtree.css" />
+    <Content Include="admin\DTTree\dtree.js" />
+    <Content Include="admin\DTTree\empty.gif" />
+    <Content Include="admin\DTTree\folder.gif" />
+    <Content Include="admin\DTTree\folderopen.gif" />
+    <Content Include="admin\DTTree\join.gif" />
+    <Content Include="admin\DTTree\joinbottom.gif" />
+    <Content Include="admin\DTTree\line.gif" />
+    <Content Include="admin\DTTree\minus.gif" />
+    <Content Include="admin\DTTree\minusbottom.gif" />
+    <Content Include="admin\DTTree\page.gif" />
+    <Content Include="admin\DTTree\plus.gif" />
+    <Content Include="admin\DTTree\plusbottom.gif" />
     <Content Include="admin\Test.aspx" />
     <Content Include="admin\images\blue\ico_01.gif" />
     <Content Include="admin\images\blue\conbg_left.gif" />
@@ -199,7 +199,7 @@
     <Content Include="images\common\ico_Warning.gif" />
     <Content Include="images\common\ico_Warning.png" />
     <Content Include="ValidateCode.ashx" />
-    <None Include="admin\dtree\Thumbs.db" />
+    <None Include="admin\DTTree\Thumbs.db" />
     <None Include="admin\images\blue\admin_tlogo.psd" />
   </ItemGroup>
   <ItemGroup>
