@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.UI;
 using System.Data;
 using System.Web.UI.WebControls;
+using DTCMS.Web.Utils;
 
 namespace DTCMS.Web.admin.dtree
 {
@@ -69,12 +70,12 @@ namespace DTCMS.Web.admin.dtree
         protected void Page_Load(object sender, EventArgs e)
         {
             tvTest.Nodes.Add(new TreeNode("全部", "-1"));
-            test.GetTree(returnDT(), tvTest.Nodes[0], "PID", 0, "NAME", "ID");
+            WebPublic.WriteDynTree(returnDT(), tvTest.Nodes[0], "PID", 0, "NAME", "ID");
         }
         public string A()
         {
-            test.WriteDTree(returnDT(), "PID", 0, "NAME", "ID", "http://www.baidu.com");
-            return test.ReadDTTree();
+            WebPublic.WriteStaticDTree(returnDT(), "PID", 0, "NAME", "ID", "http://www.baidu.com");
+            return WebPublic.ReadStaticDTTree("DTTree");
         }
     }
 }
