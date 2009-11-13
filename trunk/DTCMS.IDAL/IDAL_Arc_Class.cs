@@ -22,7 +22,7 @@ namespace DTCMS.IDAL
 		/// </summary>
         int Add(Arc_Class model);
 		/// <summary>
-		/// 更新一条数据
+		/// 更新一条数据`
 		/// </summary>
         int Update(Arc_Class model);
 		/// <summary>
