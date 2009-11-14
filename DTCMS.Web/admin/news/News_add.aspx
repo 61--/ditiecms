@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="News_add.aspx.cs" Inherits="DTCMS.Web.admin.news.News_add" %>
-
+<%@ Register Assembly="FredCK.FCKeditorV2" Namespace="FredCK.FCKeditorV2" TagPrefix="FCKeditorV2" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
@@ -91,6 +91,10 @@
             <td class="main_bright" colspan="3">
                 <input type="text" id="txt_Content" class="textbox" style="width:520px; height:200px;" runat="server" />
             </td>
+        </tr>
+        <tr>
+            <td class="main_bleft">内容</td>
+            <td class="main_bright"><FCKeditorV2:FCKeditor ID="Content" Height="400px" runat="server"></FCKeditorV2:FCKeditor></td>
         </tr>
     </table>
     </div>
