@@ -3,7 +3,7 @@
 	margin:0px;
 }
 body{
-	font-family:"宋体", Verdana, Arial, Helvetica, sans-serif;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:12px;
 	height:100%;
 	color: #555;
@@ -33,57 +33,52 @@ a:hover{
 	text-decoration:underline;
 }
 
+/*头部信息*/
 #container
 {
-	margin:6px;
-	padding:10px 8px;
-	background:url(../images/blue/conbg_left.gif) no-repeat;
-	position:relative;
+	margin:10px 15px;
 }
-#container_r
-{
-	top:0px;
-	right:6px;
-	width:4px;
-	height:200px;
-	position:absolute;
-	background:url(../images/blue/conbg_right.gif) no-repeat #FFF;
+.bodytitle{
+	width:100%;
+	height:40px;
+	background:url(../images/blue/body_title_bg.gif) top left repeat-x;
+	margin-left:auto;
+	margin-right:auto;
+	clear:both;
 }
-#cur_place
-{
-	text-indent:22px;
-	height:20px;
-	line-height:20px;
-	font-size:13px;
-	margin-bottom:8px;
-	background:url(../images/blue/ico_01.gif) no-repeat;
+.bodytitleleft{
+	width:30px;
+	height:33px;
+	float:left;
+	background:url(../images/blue/body_title_left.gif) right bottom no-repeat;
+}
+.bodytitletxt{
+	height:27px;
+	float:left;
+	margin-top:6px;
+	line-height:27px;
+	font-size:14px;
+	font-weight:bold;
+	letter-spacing:2px;
+	padding-left:8px;
+	padding-right:8px;
+	background:#FFF url(../images/blue/body_title_right.gif) right bottom no-repeat;
 }
 /* 首页信息表格 */
 .main_bleft{
-	line-height:30px;
-	padding-right:10px;
 	letter-spacing:1px;
-	text-align:right;
-	background:#f5fafe;
-	width:22%;
-	color:#069;
+	text-indent:10px;
+	width:130px;
 }
 .main_bright{
+	text-indent:10px;
+}
+.split
+{
+	border-bottom:1px #cad9ea dotted;
+}
+.table_form {
 	line-height:30px;
-	padding-left:10px;
-	background:#FFF;
-	width:78%;
-}
-
-.ct_td{
-  padding:3px;
-  padding-left:6px;
-}
-.tab1 {
-	line-height:18px;
 	margin-top:5px;
-	background:#cad9ea;
-}
-.tab1 strong {
-	font-weight: normal;
+	border:1px #cad9ea solid;
 }
