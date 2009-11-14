@@ -159,6 +159,7 @@
     <Content Include="admin\DTTree\page.gif" />
     <Content Include="admin\DTTree\plus.gif" />
     <Content Include="admin\DTTree\plusbottom.gif" />
+    <Content Include="admin\js\common.js" />
     <Content Include="admin\Test.aspx" />
     <Content Include="admin\images\login_input_bg.gif" />
     <Content Include="admin\images\login_input_hr.gif" />
