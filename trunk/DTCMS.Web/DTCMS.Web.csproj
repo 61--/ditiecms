@@ -160,9 +160,6 @@
     <Content Include="admin\DTTree\plus.gif" />
     <Content Include="admin\DTTree\plusbottom.gif" />
     <Content Include="admin\Test.aspx" />
-    <Content Include="admin\images\blue\ico_01.gif" />
-    <Content Include="admin\images\blue\conbg_left.gif" />
-    <Content Include="admin\images\blue\conbg_right.gif" />
     <Content Include="admin\images\login_input_bg.gif" />
     <Content Include="admin\images\login_input_hr.gif" />
     <Content Include="admin\images\login_submit.gif" />

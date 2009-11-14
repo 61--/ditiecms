@@ -9,19 +9,21 @@
 <body>
     <form id="form1" runat="server">
     <div id="container">
-        <div id="cur_place">当前位置：</div>
-        <div id="container_r"></div>
-        <table width="100%" align="center" cellpadding="10" cellspacing="1" class="tab1">
+        <div class="bodytitle">
+            <div class="bodytitleleft"></div>
+            <div class="bodytitletxt">HTML更新</div>
+        </div>
+        <table width="100%" align="center" cellpadding="0" cellspacing="0" class="table_form">
             <tr>
-                <td class="main_bleft">
+                <td class="main_bleft split">
                     您的级别：
                 </td>
-                <td class="main_bright">
+                <td class="main_bright split">
                     <strong>超级管理员</strong>
                 </td>
             </tr>
             <tr>
-                <td rowspan="5" class="main_bleft">
+                <td rowspan="5" class="main_bleft split">
                     服务器环境：
                 </td>
                 <td class="main_bright">
@@ -44,15 +46,15 @@
                 </td>
             </tr>
             <tr>
-                <td class="main_bright">
+                <td class="main_bright split">
                     系统域名：
                 </td>
             </tr>
             <tr>
-                <td class="main_bleft">
+                <td class="main_bleft split">
                     软件版本：
                 </td>
-                <td class="main_bright">
+                <td class="main_bright split">
                     <strong>版本号：</strong>V2.0
                 </td>
             </tr>
