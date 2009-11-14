@@ -10,17 +10,9 @@ body{
 }
 input
 {
-	vertical-align:middle;
+	/*vertical-align:middle;*/
 }
-.textbox
-{
-	background: url(../images/blue/login_input_bg.gif) left top no-repeat;
-	border:1px solid #bdbcbd;
-	height:20px;
-	line-height:20px;
-	text-indent:2px;
-	width:200px;
-}
+
 img{
 	border:0px;
 }
@@ -28,9 +20,18 @@ a{
 	color:#555;
 	text-decoration:none;
 }
-a:hover{
-	color:#FF0000;
-	text-decoration:underline;
+.textbox
+{
+	background: url(../images/blue/login_input_bg.gif) no-repeat scroll left top #F7FAFC ;
+	/*border:1px solid #bdbcbd;*/
+	border-top:1px outset #778899;
+	border-left:1px outset #778899;
+	border-right:1px solid #bdbcbd;
+	border-bottom:1px solid #bdbcbd;
+	height:20px;
+	line-height:20px;
+	text-indent:2px;
+	width:340px;
 }
 
 /*头部信息*/
@@ -52,7 +53,7 @@ a:hover{
 	float:left;
 	background:url(../images/blue/body_title_left.gif) right bottom no-repeat;
 }
-.bodytitletxt{
+.tab_on{
 	height:27px;
 	float:left;
 	margin-top:6px;
@@ -64,14 +65,30 @@ a:hover{
 	padding-right:8px;
 	background:#FFF url(../images/blue/body_title_right.gif) right bottom no-repeat;
 }
+
+.tab_off
+{
+    float:left;
+    padding:0 0 0 15px;
+    font-weight:bold;
+    font-size:14px;
+    color:#FFF;
+    height:30px;
+    line-height:39px;
+}
+.off a:hover
+{
+    cursor:pointer;
+}
 /* 首页信息表格 */
 .main_bleft{
 	letter-spacing:1px;
 	text-indent:10px;
+	text-align:right;
 	width:130px;
 }
 .main_bright{
-	text-indent:10px;
+	padding:0 0 0 15px;
 }
 .split
 {
@@ -80,5 +97,28 @@ a:hover{
 .table_form {
 	line-height:30px;
 	margin-top:5px;
-	border:1px #cad9ea solid;
+    border:1px #cad9ea solid;
+	empty-cells:show;
+	width:100%;
+}
+.select
+{
+    padding:0 8px 0 0;
+}
+.help
+{
+    padding:0 0 0 7px;
+    cursor:help;
+}
+.help:hover
+{
+    text-decoration:underline;
+}
+.tab_show
+{
+    display:block;
+}
+.tab_hiden
+{
+    display:none;
 }
