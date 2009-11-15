@@ -69,14 +69,11 @@ namespace DTCMS.Web.admin.dtree
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            tvTest.Nodes.Add(new TreeNode("全部", "-1"));
-            WebTools.WriteDynTree(returnDT(), tvTest.Nodes[0], "PID", 0, "NAME", "ID");
         }
         public string A()
         {
-
             //return WebTools.WriteStaticDTree(returnDT(), "PID", 0, "NAME", "ID", "javascript:window.alert('{0}')","","DTTree");
-            return WebTools.GetStaticDTree(returnDT(), "PID", 0, "NAME", "ID", "http://pc123.org", "", "DTTree");
+            return WebTools.GetStaticDTree(returnDT(), "PID", 0, "NAME", "ID", "javascript:window.alert('{0}')", "", "DTTree/folder.gif", "DTTree/folder.gif", "DTTree/folder.gif", "DTTree");
         }
     }
 }

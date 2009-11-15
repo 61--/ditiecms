@@ -120,15 +120,7 @@ dTree.prototype.addNode = function(pNode) {
 // Creates the node icon, url and text
 dTree.prototype.node = function(node, nodeId) {
 	var str = '<div class="dTreeNode">' + this.indent(node, nodeId);
-	if (this.config.useIcons) {
-		if (!node.icon) node.icon = (this.root.id == node.pid) ? this.icon.root : ((node._hc) ? this.icon.folder : this.icon.node);
-		if (!node.iconOpen) node.iconOpen = (node._hc) ? this.icon.folderOpen : this.icon.node;
-		if (this.root.id == node.pid) {
-			node.icon = this.icon.root;
-			node.iconOpen = this.icon.root;
-		}
-		str += '<img id="i' + this.obj + nodeId + '" src="' + ((node._io) ? node.iconOpen : node.icon) + '" alt="" />';
-	}
+	
 	if (node.url) {
 		str += '<a id="s' + this.obj + nodeId + '" class="' + ((this.config.useSelection) ? ((node._is ? 'nodeSel' : 'node')) : 'node') + '" href="' + node.url + '"';
 		if (node.title) str += ' title="' + node.title + '"';
@@ -139,7 +131,18 @@ dTree.prototype.node = function(node, nodeId) {
 		str += '>';
 	}
 	else if ((!this.config.folderLinks || !node.url) && node._hc && node.pid != this.root.id)
-		str += '<a href="javascript: ' + this.obj + '.o(' + nodeId + ');" class="node">';
+	    str += '<a href="javascript: ' + this.obj + '.o(' + nodeId + ');" class="node">';
+
+	if (this.config.useIcons) {
+	    if (!node.icon) node.icon = (this.root.id == node.pid) ? this.icon.root : ((node._hc) ? this.icon.folder : this.icon.node);
+	    if (!node.iconOpen) node.iconOpen = (node._hc) ? this.icon.folderOpen : this.icon.node;
+	    if (this.root.id == node.pid) {
+	        node.icon = this.icon.root;
+	        node.iconOpen = this.icon.root;
+	    }
+	    str += '<img id="i' + this.obj + nodeId + '" src="' + ((node._io) ? node.iconOpen : node.icon) + '" alt="" />';
+	}
+		
 	str += node.name;
 	if (node.url || ((!this.config.folderLinks || !node.url) && node._hc)) str += '</a>';
 	str += '</div>';

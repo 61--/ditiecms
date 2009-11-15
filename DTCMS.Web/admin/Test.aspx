@@ -5,15 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title></title>
-        <LINK href="DTTree/dtree.css" type=text/css rel=stylesheet>
-        <script src="DTTree/dtree.js" type=text/javascript></script>
+        <link href="DTTree/dtree.css" type="text/css" rel="Stylesheet"  />
+        <script src="DTTree/dtree.js" type="text/javascript"></script>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:TreeView ID="tvTest" runat="server">
-        </asp:TreeView>
-        <%= A ()%>
+        <%= A ()%><br />
     </div>
     </form>
 </body>
