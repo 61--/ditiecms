@@ -19,6 +19,7 @@
                 <li><a onclick="selectTab('tab3',this)" href="javascript:void(0)">栏目内容</a></li>
             </ul>
         </div>
+        <div>保存</div>
         <div id="content">
             <!--基本-->
             <div id="tab1" class="tab_show">
@@ -62,7 +63,7 @@
                     </tr>
                     <tr>
                         <td class="main_bleft split">
-                            栏目权限:
+                            阅读权限:
                         </td>
                         <td class="main_bright split">
                             <select id="slt_Readaccess" runat="server" style="width: 185px; background: #F7FAFC;">
@@ -90,7 +91,7 @@
                     </tr>
                     <tr>
                         <td class="main_bleft split">
-                            栏目属性:
+                            栏目类型:
                         </td>
                         <td class="main_bright split">
                             <input type="radio" id="rdo_Cover" runat="server" />
@@ -106,6 +107,7 @@
                     </tr>
                     <tr>
                         <td class="main_bleft">
+                            
                         </td>
                         <td class="main_bright">
                             <input type="checkbox" name="chk_ISHiden" id="chk_ISHiden" runat="server" />
