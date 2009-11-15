@@ -33,7 +33,7 @@ a{
 {
 	margin:10px 15px;
 }
-.bodytitle{
+.tabs{
 	width:100%;
 	height:40px;
 	background:url(../images/blue/body_title_bg.gif) top left repeat-x;
@@ -41,13 +41,28 @@ a{
 	margin-right:auto;
 	clear:both;
 }
-.bodytitleleft{
-	width:30px;
-	height:33px;
-	float:left;
-	background:url(../images/blue/body_title_left.gif) right bottom no-repeat;
+.tabs ul
+{
+	margin-left:15px;
 }
-.tab_on{
+.tabs ul li{
+	float:left;
+	height:33px;
+	overflow:hidden;
+	text-align:center;
+	padding-left:3px;
+	margin-right:3px;
+}
+.tabs ul li.tab_on
+{
+	background:url(../images/blue/body_title_left.gif) left bottom no-repeat;
+}
+.tabs ul li.tab_on a
+{
+	color:#333;
+	background:#FFF url(../images/blue/body_title_right.gif) right bottom no-repeat;	
+}
+.tabs ul li a{
 	height:27px;
 	float:left;
 	margin-top:6px;
@@ -57,7 +72,7 @@ a{
 	letter-spacing:2px;
 	padding-left:8px;
 	padding-right:8px;
-	background:#FFF url(../images/blue/body_title_right.gif) right bottom no-repeat;
+	color:#FFF;
 }
 .tab_show
 {
@@ -66,20 +81,6 @@ a{
 .tab_hiden
 {
     display:none;
-}
-.tab_off
-{
-    float:left;
-    padding:0 0 0 15px;
-    font-weight:bold;
-    font-size:14px;
-    color:#FFF;
-    height:30px;
-    line-height:39px;
-}
-.off a:hover
-{
-    cursor:pointer;
 }
 /* 首页信息表格 */
 .main_bleft{
