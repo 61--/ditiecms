@@ -27,7 +27,7 @@
                     </td>
                     <td class="main_bright">
                         <input type="text" id="txt_ParentClassName" class="textbox" runat="server" />
-                        <a href="##" class="help">帮助</a>
+                        <a href="##" class="help" title="查看帮助">帮助</a>
                     </td>
                 </tr>
                 <tr>
@@ -36,7 +36,7 @@
                     </td>
                     <td class="main_bright">
                         <input type="text" id="txt_ClassName" class="textbox" runat="server" />
-                        <a href="##" class="help">帮助</a>
+                        <a href="##" class="help" title="查看帮助">帮助</a>
                     </td>
                 </tr>
                 <tr>
@@ -45,7 +45,7 @@
                     </td>
                     <td class="main_bright">
                         <input type="text" id="txt_ClassUrl" class="textbox" runat="server" />
-                        <a href="##" class="help">帮助</a>
+                        <a href="##" class="help" title="查看帮助">帮助</a>
                     </td>
                 </tr>
                 <tr>
@@ -54,7 +54,8 @@
                     </td>
                     <td class="main_bright">
                         <input type="text" id="txt_CorssID" class="textbox" runat="server" />
-                        <a href="##" class="help">帮助</a>
+                        <img src="../images/blue/s.gif" class="s" alt="选择交叉栏目" title="选择交叉栏目" />
+                        <a href="##" class="help" title="查看帮助">帮助</a>
                     </td>
                 </tr>
                 <tr>
@@ -62,8 +63,8 @@
                         栏目权限:
                     </td>
                     <td class="main_bright">
-                        <select id="slt_Readaccess" runat="server" style="width:185px;"></select>
-                        <a href="##" class="help">帮助</a>
+                        <select id="slt_Readaccess" runat="server" style="width:185px; background:#F7FAFC;"></select>
+                        <a href="##" class="help" title="查看帮助">帮助</a>
                     </td>
                 </tr>
                 <tr>
@@ -72,7 +73,7 @@
                     </td>
                     <td class="main_bright">
                         <input type="text" id="txt_ClassPage" class="textbox" style="width:180px;" runat="server" />
-                        <a href="##" class="help">帮助</a>
+                        <a href="##" class="help" title="查看帮助">帮助</a>
                     </td>
                 </tr>
                 <tr>
@@ -86,7 +87,6 @@
                         <label for="rdo_List" class="select">列表</label>
                         <input type ="radio" id="rdo_Link" runat="server" />
                         <label for="rdo_Link" class="select">连接地址</label>
-                        <a href="##" class="help">帮助</a>
                     </td>
                 </tr>
                 <tr>
@@ -113,7 +113,7 @@
                         </td>
                         <td class="main_bright">
                             <input type="text" id="txt_SiteID" class="textbox" runat="server" />
-                            <a href="##" class="help">帮助</a>
+                            <a href="##" class="help" title="查看帮助">帮助</a>
                         </td>
                     </tr>
                      <tr>
@@ -122,7 +122,8 @@
                         </td>
                         <td class="main_bright">
                             <input type="text" id="txt_IndexTemplet" class="textbox" runat="server" />
-                            <a href="##" class="help">帮助</a>
+                            <img src="../images/blue/s.gif" class="s" alt="选择封面模版" title="选择封面模版" />
+                            <a href="##" class="help" title="查看帮助">帮助</a>
                         </td>
                     </tr>
                     <tr>
@@ -131,7 +132,8 @@
                         </td>
                         <td class="main_bright">
                             <input type="text" id="txt_ListTemplet" class="textbox" runat="server" />
-                            <a href="##" class="help">帮助</a>
+                            <img src="../images/blue/s.gif" class="s" alt="选择列表模版" title="选择列表模版" />
+                            <a href="##" class="help" title="查看帮助">帮助</a>
                         </td>
                     </tr>
                     <tr>
@@ -140,7 +142,8 @@
                         </td>
                         <td class="main_bright">
                             <input type="text" id="txt_ArchiveTemplet" class="textbox" runat="server" />
-                            <a href="##" class="help">帮助</a>
+                            <img src="../images/blue/s.gif" class="s" alt="选择文档模版" title="选择文档模版" />
+                            <a href="##" class="help" title="查看帮助">帮助</a>
                         </td>
                     </tr>
                     <tr>
@@ -149,7 +152,7 @@
                         </td>
                         <td class="main_bright">
                             <input type="text" id="txt_ClassPath" class="textbox" runat="server" />
-                            <a href="##" class="help">帮助</a>
+                            <a href="##" class="help" title="查看帮助">帮助</a>
                         </td>
                     </tr>
                     <tr>
@@ -158,7 +161,7 @@
                         </td>
                         <td class="main_bright">
                             <input type="text" id="txt_ListRule" class="textbox" runat="server" />
-                            <a href="##" class="help">帮助</a>
+                            <a href="##" class="help" title="查看帮助">帮助</a>
                         </td>
                     </tr>
                     <tr>
@@ -167,7 +170,7 @@
                         </td>
                         <td class="main_bright">
                             <input type="text" id="txt_ArchiveRule" class="textbox" runat="server" />
-                            <a href="##" class="help">帮助</a>
+                            <a href="##" class="help" title="查看帮助">帮助</a>
                         </td>
                     </tr>
                     <tr>
@@ -176,7 +179,7 @@
                     </td>
                     <td class="main_bright">
                         <input type="text" id="txt_Keywords" class="textbox" runat="server" />
-                        <a href="##" class="help">帮助</a>
+                        <a href="##" class="help" title="查看帮助">帮助</a>
                     </td>
                 </tr>
                  <tr>
@@ -184,8 +187,8 @@
                         Meta描述:
                     </td>
                     <td class="main_bright">
-                        <input type="text" id="txt_Description" class="textbox" runat="server" />
-                        <a href="##" class="help">帮助</a>
+                        <textarea id="txts_Description" runat="server" style="width:430px; height:106px;"></textarea>
+                        <a href="##" class="help" title="查看帮助">帮助</a>
                     </td>
                 </tr>
                </table>

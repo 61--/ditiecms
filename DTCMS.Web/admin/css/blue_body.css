@@ -8,11 +8,6 @@ body{
 	height:100%;
 	color: #555;
 }
-input
-{
-	/*vertical-align:middle;*/
-}
-
 img{
 	border:0px;
 }
@@ -23,9 +18,8 @@ a{
 .textbox
 {
 	background: url(../images/blue/login_input_bg.gif) no-repeat scroll left top #F7FAFC ;
-	/*border:1px solid #bdbcbd;*/
-	border-top:1px outset #778899;
-	border-left:1px outset #778899;
+	border-top:1px solid #778899;
+	border-left:1px solid #778899;
 	border-right:1px solid #bdbcbd;
 	border-bottom:1px solid #bdbcbd;
 	height:20px;
@@ -65,7 +59,14 @@ a{
 	padding-right:8px;
 	background:#FFF url(../images/blue/body_title_right.gif) right bottom no-repeat;
 }
-
+.tab_show
+{
+    display:block;
+}
+.tab_hiden
+{
+    display:none;
+}
 .tab_off
 {
     float:left;
@@ -114,11 +115,10 @@ a{
 {
     text-decoration:underline;
 }
-.tab_show
+.s
 {
-    display:block;
-}
-.tab_hiden
-{
-    display:none;
+    cursor:pointer;
+    width:18px;
+    height:16px;
+    margin:0 -5px 0 0;
 }
