@@ -14,13 +14,13 @@
 	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; WHITE-SPACE: nowrap
 }
 .dtree A.node:hover {
-	COLOR: #333; TEXT-DECORATION: underline
+	COLOR: #333; 
 }
 .dtree A.nodeSel:hover {
-	COLOR: #333; TEXT-DECORATION: underline
+	COLOR: #333; 
 }
 .dtree A.nodeSel {
-	BACKGROUND-COLOR: #c0d2ec
+	background:url(nodeSel_bg.gif) repeat-x scroll 0 0 transparent;
 }
 .dtree .clip {
 	OVERFLOW: hidden
