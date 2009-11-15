@@ -5,6 +5,7 @@ using System.Web.UI;
 using System.Data;
 using System.Web.UI.WebControls;
 using DTCMS.Web.Utils;
+using DTCMS.BLL;
 
 namespace DTCMS.Web.admin.dtree
 {
@@ -69,6 +70,18 @@ namespace DTCMS.Web.admin.dtree
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            Arc_ClassBLL blAarcClass = new Arc_ClassBLL();
+
+            bool iBool= blAarcClass.Exists(1, "", "");
+            if (iBool == false)
+            {
+                if (blAarcClass.HasError())
+                {
+                    Entity.CustomError error = blAarcClass.GetErrorMessage();
+                    Response.Write(error.Message+">>"+error.Source+">>"+error.TargetSite);
+                }
+            }
+            //
         }
         public string A()
         {
