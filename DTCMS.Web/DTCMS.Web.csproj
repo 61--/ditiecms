@@ -145,10 +145,8 @@
       <DependentUpon>top_index.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\TTEditor\editor\filemanager\browser\default\connectors\aspx\Connerctor.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\TTEditor\editor\filemanager\upload\aspx\TTUpLoad.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\WebTools.cs" />
