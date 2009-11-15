@@ -4,6 +4,7 @@ using System.Text;
 using System.Web;
 using DTCMS.Entity;
 using System.Reflection;
+using DTCMS.Common;
 
 
 namespace DTCMS.BLL
@@ -31,8 +32,37 @@ namespace DTCMS.BLL
                 modCustomErr.StackTrace = ex.StackTrace;
                 modCustomErr.TargetSite = ex.TargetSite;
 
-                //写入日志
+                WriteErrorLog();
             }
+        }
+
+        /// <summary>
+        /// 错误写入日志
+        /// </summary>
+        public void WriteErrorLog()
+        {
+            StringBuilder sbLog = new StringBuilder();
+            sbLog.Append("\r\n");
+            sbLog.Append("===========================【" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "】===========================");
+            sbLog.Append("\r\n\r\n");
+            sbLog.Append("===============================错误信息===========================");
+            sbLog.Append("\r\n\r\n");
+            sbLog.Append(modCustomErr.Message);
+            sbLog.Append("\r\n\r\n");
+            sbLog.Append("================================错误原===========================");
+            sbLog.Append("\r\n\r\n");
+            sbLog.Append(modCustomErr.Source);
+            sbLog.Append("\r\n\r\n");
+            sbLog.Append("================================错误方法===========================");
+            sbLog.Append("\r\n\r\n");
+            sbLog.Append(modCustomErr.TargetSite);
+            sbLog.Append("\r\n\r\n");
+            sbLog.Append("================================错误堆栈信息===========================");
+            sbLog.Append("\r\n\r\n");
+            sbLog.Append(modCustomErr.StackTrace);
+            sbLog.Append("\r\n\r\n\r\n\r\n\r\n");
+            string logPath = ServerInfo.GetRootPath() + "admin\\Log\\" + DateTime.Now.ToShortDateString() + ".txt";
+            FileAccessHelper.WriteTextAppendFile(logPath, sbLog.ToString());
         }
 
         /// <summary>
