@@ -47,6 +47,16 @@ namespace DTCMS.Common
         /// </summary>
         /// <param name="fileName">文件路径</param>
         /// <param name="text">文本内容</param>
+        public static void WriteTextAppendFile(string fileName, string text)
+        {
+            WriteTextFile(fileName, text, true, true, defaultEncoding);
+        }
+
+        /// <summary>
+        /// WriteTextFile
+        /// </summary>
+        /// <param name="fileName">文件路径</param>
+        /// <param name="text">文本内容</param>
         public static void WriteTextFile(string fileName, string text)
         {
             WriteTextFile(fileName, text, false, true, defaultEncoding);
