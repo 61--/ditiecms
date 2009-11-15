@@ -36,14 +36,14 @@ namespace DTCMS.Pages
             }
             else
             {
-                strHtml.Append(string.Format("<a href=\"#\" onclick=\"{0}({1})\">首页</a>",ajaxLoad,1));
-                strHtml.Append(string.Format("<a href=\"#\" onclick=\"{0}({1})\">上一页</a>",ajaxLoad,pageIndex-1));
+                strHtml.Append(string.Format("<a href=\"javascript:void(0);\" onclick=\"{0}({1})\">首页</a>",ajaxLoad,1));
+                strHtml.Append(string.Format("<a href=\"javascript:void(0);\" onclick=\"{0}({1})\">上一页</a>",ajaxLoad,pageIndex-1));
             }
             if (pageIndex < pageCount)
             {
-                
-                strHtml.Append(string.Format("<a href=\"#\" onclick=\"{0}({1})\">下一页</a>", ajaxLoad, pageIndex+1));
-                strHtml.Append(string.Format("<a href=\"#\" onclick=\"{0}({1})\">尾页</a>", ajaxLoad,pageCount));
+
+                strHtml.Append(string.Format("<a href=\"javascript:void(0);\" onclick=\"{0}({1})\">下一页</a>", ajaxLoad, pageIndex + 1));
+                strHtml.Append(string.Format("<a href=\"javascript:void(0);\" onclick=\"{0}({1})\">尾页</a>", ajaxLoad, pageCount));
             }
             else
             {
