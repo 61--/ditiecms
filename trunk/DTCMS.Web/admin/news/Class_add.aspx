@@ -7,11 +7,11 @@
     <title>栏目添加</title>
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../js/common.js"></script>
-
 </head>
 <body>
     <form id="form1" runat="server">
     <div id="container">
+        <div style="line-height:28px;">当前位置：栏目添加</div>
         <div id="tab_menu" class="tabs">
             <ul>
                 <li class="tab_on"><a onclick="selectTab('tab1',this)" href="javascript:void(0)">基本信息</a></li>
@@ -19,18 +19,17 @@
                 <li><a onclick="selectTab('tab3',this)" href="javascript:void(0)">栏目内容</a></li>
             </ul>
         </div>
-        <div>保存</div>
         <div id="content">
             <!--基本-->
             <div id="tab1" class="tab_show">
-                <table cellpadding="10" cellspacing="1" class="table_form">
+                <table cellpadding="10" cellspacing="0" class="table_form">
                     <tr>
                         <td class="main_bleft split">
                             上级栏目:
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_ParentClassName" class="textbox" runat="server" />
-                            <a href="javascript:void(0);" class="help" title="查看帮助">帮助</a>
+                            <img src="../images/blue/s.gif" class="select" alt="选择上级栏目" />
                         </td>
                     </tr>
                     <tr>
@@ -39,26 +38,42 @@
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_ClassName" class="textbox" runat="server" />
-                            <a href="javascript:void(0);" class="help" title="查看帮助">帮助</a>
                         </td>
                     </tr>
                     <tr>
                         <td class="main_bleft split">
-                            栏目地址:
+                            栏目英文名称:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ClassUrl" class="textbox" runat="server" />
-                            <a href="javascript:void(0);" class="help" title="查看帮助">帮助</a>
+                            <input type="text" id="txt_ClassEName" class="textbox" runat="server" />
                         </td>
                     </tr>
                     <tr>
                         <td class="main_bleft split">
-                            交叉栏目:
+                            栏目目录:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_CorssID" class="textbox" runat="server" />
-                            <img src="../images/blue/s.gif" class="s" alt="选择交叉栏目" title="选择交叉栏目" />
-                            <a href="javascript:void(0);" class="help" title="查看帮助">帮助</a>
+                            <input type="text" id="txt_ClassPath" value="{#cmsPath}/archive/" class="textbox" runat="server" />
+                            <input type="checkbox" name="chk_IsClassEName" id="chk_IsClassEName" checked="checked" runat="server" /><label for="chk_IsClassEName">栏目英文名</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main_bleft split">
+                            栏目类型:
+                        </td>
+                        <td class="main_bright split">
+                            <select id="slt_ClassType" runat="server" style="width: 185px; background: #F7FAFC;">
+                                <option>普通文章（Article）</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main_bleft split">
+                            栏目排序:
+                        </td>
+                        <td class="main_bright split">
+                            <input type="text" id="txt_OrderID" class="textbox short" value="50" runat="server" />
+                            
                         </td>
                     </tr>
                     <tr>
@@ -68,7 +83,15 @@
                         <td class="main_bright split">
                             <select id="slt_Readaccess" runat="server" style="width: 185px; background: #F7FAFC;">
                             </select>
-                            <a href="javascript:void(0);" class="help" title="查看帮助">帮助</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main_bleft split">
+                            审核机制:
+                        </td>
+                        <td class="main_bright split">
+                            <select id="slt_CheckLevel" runat="server" style="width: 185px; background: #F7FAFC;">
+                            </select>
                         </td>
                     </tr>
                     <tr>
@@ -76,63 +99,57 @@
                             栏目分页:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ClassPage" class="textbox" style="width: 180px;" runat="server" />
-                            <a href="javascript:void(0);" class="help" title="查看帮助">帮助</a>
+                            <input type="text" id="txt_ClassPage" value="20" class="textbox short" runat="server" />
                         </td>
                     </tr>
                     <tr>
                         <td class="main_bleft split">
-                            栏目排序:
+                            栏目属性:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_OrderID" class="textbox" style="width: 180px;" runat="server" />
-                            <a href="javascript:void(0);" class="help" title="查看帮助">帮助</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="main_bleft split">
-                            栏目类型:
-                        </td>
-                        <td class="main_bright split">
-                            <input type="radio" id="rdo_Cover" runat="server" />
-                            <label for="rdo_Cover" class="select">
-                                封面</label>
-                            <input type="radio" id="rdo_List" runat="server" />
-                            <label for="rdo_List" class="select">
-                                列表</label>
-                            <input type="radio" id="rdo_Link" runat="server" />
-                            <label for="rdo_Link" class="select">
-                                连接地址</label>
+                            <input type="radio" name="rdo_Attribute" id="rdo_Index" checked="true" runat="server" />
+                            <label for="rdo_Index">封面（栏目本身不允许发布文档）</label><br />
+                            <input type="radio" name="rdo_Attribute" id="rdo_List" runat="server" />
+                            <label for="rdo_List">列表（允许在本栏目发布文档，并生成文档列表）</label><br />
+                            <input type="radio" name="rdo_Attribute" id="rdo_Singl" runat="server" />
+                            <label for="rdo_Singl">单独页面（栏目本身不允许发布文档）</label><br />
+                            <input type="radio" name="rdo_Attribute" id="rdo_Link" runat="server" />
+                            <label for="rdo_Link">链接地址</label><input type="text" id="txt_Link" class="textbox" style="display:none" runat="server" />
                         </td>
                     </tr>
                     <tr>
                         <td class="main_bleft">
-                            
+                            其他属性:
                         </td>
                         <td class="main_bright">
-                            <input type="checkbox" name="chk_ISHiden" id="chk_ISHiden" runat="server" />
-                            <label for="chk_ISHiden" class="select">
-                                是否隐藏栏目</label>
-                            <input type="checkbox" name="chk_ISHtml" id="chk_ISHtml" runat="server" />
-                            <label for="chk_ISHtml" class="select">
-                                允许生成静态页</label>
-                            <input type="checkbox" name="chk_ISComment" id="chk_ISComment" runat="server" />
-                            <label for="chk_ISComment" class="select">
-                                是否允许评论</label>
+                            <input type="checkbox" name="chk_ISContribute" id="chk_ISContribute" checked="true" runat="server" /><label for="chk_ISContribute">是否允许投稿</label>
+                            <input type="checkbox" name="chk_ISHtml" id="chk_ISHtml" checked="true" runat="server" /><label for="chk_ISHtml">是否生成静态页</label>
+                            <input type="checkbox" name="chk_ISComment" id="chk_ISComment" checked="true" runat="server" /><label for="chk_ISComment">是否允许评论</label>
+                            <input type="checkbox" name="chk_ISHiden" id="chk_ISHiden" runat="server" /><label for="chk_ISHiden">是否隐藏栏目</label>
                         </td>
                     </tr>
                 </table>
             </div>
             <!--高级-->
             <div id="tab2" class="tab_hiden">
-                <table cellpadding="10" cellspacing="1" class="table_form">
+                <table cellpadding="10" cellspacing="0" class="table_form">
                     <tr>
                         <td class="main_bleft split">
-                            站点ID:
+                            栏目二级域名:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_SiteID" class="textbox" runat="server" />
-                            <a href="javascript:void(0);" class="help" title="查看帮助">帮助</a>
+                            <input type="text" id="txt_ClassDomain" class="textbox" runat="server" />
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main_bleft split">
+                            交叉栏目:
+                        </td>
+                        <td class="main_bright split">
+                            <input type="text" id="txt_CorssID" class="textbox" runat="server" />
+                            <img src="../images/blue/s.gif" class="select" alt="选择交叉栏目" title="选择交叉栏目" />
+                            
                         </td>
                     </tr>
                     <tr>
@@ -140,9 +157,9 @@
                             封面模版:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_IndexTemplet" class="textbox" runat="server" />
-                            <img src="../images/blue/s.gif" class="s" alt="选择封面模版" title="选择封面模版" />
-                            <a href="javascript:void(0);" class="help" title="查看帮助">帮助</a>
+                            <input type="text" id="txt_IndexTemplet" class="textbox long" value="/{#Templet}/article/index.html" runat="server" />
+                            <img src="../images/blue/s.gif" class="select" alt="选择封面模版" title="选择封面模版" />
+                            
                         </td>
                     </tr>
                     <tr>
@@ -150,9 +167,9 @@
                             列表模版:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ListTemplet" class="textbox" runat="server" />
-                            <img src="../images/blue/s.gif" class="s" alt="选择列表模版" title="选择列表模版" />
-                            <a href="javascript:void(0);" class="help" title="查看帮助">帮助</a>
+                            <input type="text" id="txt_ListTemplet" class="textbox long" value="/{#Templet}/article/list.html" runat="server" />
+                            <img src="../images/blue/s.gif" class="select" alt="选择列表模版" title="选择列表模版" />
+                            
                         </td>
                     </tr>
                     <tr>
@@ -160,18 +177,17 @@
                             文档模版:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ArchiveTemplet" class="textbox" runat="server" />
-                            <img src="../images/blue/s.gif" class="s" alt="选择文档模版" title="选择文档模版" />
-                            <a href="javascript:void(0);" class="help" title="查看帮助">帮助</a>
+                            <input type="text" id="txt_ArchiveTemplet" class="textbox long" value="/{#Templet}/article/article.html" runat="server" />
+                            <img src="../images/blue/s.gif" class="select" alt="选择文档模版" title="选择文档模版" />
+                            
                         </td>
                     </tr>
                     <tr>
                         <td class="main_bleft split">
-                            栏目目录:
+                            封面页规则:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ClassPath" class="textbox" runat="server" />
-                            <a href="javascript:void(0);" class="help" title="查看帮助">帮助</a>
+                            <input type="text" id="txt_IndexRule" class="textbox long" value="{#ClassPath}/index.html" runat="server" />
                         </td>
                     </tr>
                     <tr>
@@ -179,8 +195,7 @@
                             列表页规则:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ListRule" class="textbox" runat="server" />
-                            <a href="javascript:void(0);" class="help" title="查看帮助">帮助</a>
+                            <input type="text" id="txt_ListRule" class="textbox long" value="{#ClassPath}/list_{#page}.html" runat="server" />
                         </td>
                     </tr>
                     <tr>
@@ -188,8 +203,8 @@
                             文档页规则:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ArchiveRule" class="textbox" runat="server" />
-                            <a href="javascript:void(0);" class="help" title="查看帮助">帮助</a>
+                            <input type="text" id="txt_ArchiveRule" class="textbox long" value="{#ClassPath}/{#DateTime Format=yyyyMM}/{#AID}.html" runat="server" />
+                            
                         </td>
                     </tr>
                     <tr>
@@ -198,8 +213,8 @@
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_ImgUrl" class="textbox" runat="server" />
-                            <img src="../images/blue/s.gif" class="s" alt="上传栏目图片" title="上传栏目图片" />
-                            <a href="javascript:void(0);" class="help" title="查看帮助">帮助</a>
+                            <img src="../images/blue/s.gif" class="select" alt="上传栏目图片" title="上传栏目图片" />
+                            
                         </td>
                     </tr>
                     <tr>
@@ -207,8 +222,8 @@
                             Meta关键字:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_Keywords" class="textbox" runat="server" />
-                            <a href="javascript:void(0);" class="help" title="查看帮助">帮助</a>
+                            <input type="text" id="txt_Keywords" class="textbox long" runat="server" />
+                            
                         </td>
                     </tr>
                     <tr>
@@ -216,8 +231,8 @@
                             Meta描述:
                         </td>
                         <td class="main_bright">
-                            <textarea id="txts_Description" runat="server" style="width: 430px; height: 106px;"></textarea>
-                            <a href="javascript:void(0);" class="help" title="查看帮助">帮助</a>
+                            <textarea id="txts_Description" runat="server" rows="6" cols="50"></textarea>
+                            
                         </td>
                     </tr>
                 </table>
@@ -226,6 +241,11 @@
             <div id="tab3" class="tab_hiden">
                 <FCKeditorV2:FCKeditor ID="txt_Content" runat="server" Height="407px">
                 </FCKeditorV2:FCKeditor>
+            </div>
+            <!--操作按钮-->
+            <div style="margin:10px;text-align:center;">
+                <input id="btn_Submit" type="button" value="保存" class="button_s" runat="server" />
+                <input id="btn_Cancel" type="button" value="取消" class="button_s" runat="server" />
             </div>
         </div>
     </div>
