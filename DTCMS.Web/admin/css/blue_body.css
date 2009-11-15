@@ -88,9 +88,12 @@ a{
 	text-indent:10px;
 	text-align:right;
 	width:130px;
+	height:30px;
 }
 .main_bright{
 	padding:0 0 0 15px;
+	line-height:30px;
+	height:30px;
 }
 .split
 {
@@ -102,6 +105,7 @@ a{
     border:1px #cad9ea solid;
 	empty-cells:show;
 	width:100%;
+	line-height:30px;
 }
 .select
 {
