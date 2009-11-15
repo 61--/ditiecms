@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Class_add.aspx.cs" Inherits="DTCMS.Web.admin.news.Class_add" %>
+<%@ Register Assembly="FredCK.FCKeditorV2" Namespace="FredCK.FCKeditorV2" TagPrefix="FCKeditorV2" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -73,6 +74,15 @@
                     </td>
                     <td class="main_bright">
                         <input type="text" id="txt_ClassPage" class="textbox" style="width:180px;" runat="server" />
+                        <a href="##" class="help" title="查看帮助">帮助</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="main_bleft">
+                        栏目排序:
+                    </td>
+                    <td class="main_bright">
+                        <input type="text" id="txt_OrderID" class="textbox" style="width:180px;" runat="server" />
                         <a href="##" class="help" title="查看帮助">帮助</a>
                     </td>
                 </tr>
@@ -174,29 +184,39 @@
                         </td>
                     </tr>
                     <tr>
-                    <td class="main_bleft">
-                        Meta关键字:
-                    </td>
-                    <td class="main_bright">
-                        <input type="text" id="txt_Keywords" class="textbox" runat="server" />
-                        <a href="##" class="help" title="查看帮助">帮助</a>
-                    </td>
-                </tr>
-                 <tr>
-                    <td class="main_bleft">
-                        Meta描述:
-                    </td>
-                    <td class="main_bright">
-                        <textarea id="txts_Description" runat="server" style="width:430px; height:106px;"></textarea>
-                        <a href="##" class="help" title="查看帮助">帮助</a>
-                    </td>
-                </tr>
+                        <td class="main_bleft">
+                            栏目图片地址:
+                        </td>
+                        <td class="main_bright">
+                            <input type="text" id="txt_ImgUrl" class="textbox" runat="server" />
+                            <img src="../images/blue/s.gif" class="s" alt="上传栏目图片" title="上传栏目图片" />
+                            <a href="##" class="help" title="查看帮助">帮助</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main_bleft">
+                            Meta关键字:
+                        </td>
+                        <td class="main_bright">
+                            <input type="text" id="txt_Keywords" class="textbox" runat="server" />
+                            <a href="##" class="help" title="查看帮助">帮助</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main_bleft">
+                            Meta描述:
+                        </td>
+                        <td class="main_bright">
+                            <textarea id="txts_Description" runat="server" style="width:430px; height:106px;"></textarea>
+                            <a href="##" class="help" title="查看帮助">帮助</a>
+                        </td>
+                    </tr>
                </table>
             </div>
             
             <!--栏目内容-->
             <div id="classContent" class="tab_hiden">
-                
+                <FCKeditorV2:FCKeditor ID="txt_Content" runat="server" Height="407px"></FCKeditorV2:FCKeditor>
             </div>
         </div>
     </div>
