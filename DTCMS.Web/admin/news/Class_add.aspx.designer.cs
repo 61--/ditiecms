@@ -41,40 +41,40 @@ namespace DTCMS.Web.admin.news {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_ClassName;
         
         /// <summary>
-        /// txt_ClassUrl 控件。
+        /// txt_ClassEName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_ClassUrl;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_ClassEName;
         
         /// <summary>
-        /// txt_CorssID 控件。
+        /// txt_ClassPath 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_CorssID;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_ClassPath;
         
         /// <summary>
-        /// slt_Readaccess 控件。
+        /// chk_IsClassEName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect slt_Readaccess;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_IsClassEName;
         
         /// <summary>
-        /// txt_ClassPage 控件。
+        /// slt_ClassType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_ClassPage;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect slt_ClassType;
         
         /// <summary>
         /// txt_OrderID 控件。
@@ -86,13 +86,40 @@ namespace DTCMS.Web.admin.news {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_OrderID;
         
         /// <summary>
-        /// rdo_Cover 控件。
+        /// slt_Readaccess 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_Cover;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect slt_Readaccess;
+        
+        /// <summary>
+        /// slt_CheckLevel 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect slt_CheckLevel;
+        
+        /// <summary>
+        /// txt_ClassPage 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_ClassPage;
+        
+        /// <summary>
+        /// rdo_Index 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_Index;
         
         /// <summary>
         /// rdo_List 控件。
@@ -104,6 +131,15 @@ namespace DTCMS.Web.admin.news {
         protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_List;
         
         /// <summary>
+        /// rdo_Singl 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_Singl;
+        
+        /// <summary>
         /// rdo_Link 控件。
         /// </summary>
         /// <remarks>
@@ -113,13 +149,22 @@ namespace DTCMS.Web.admin.news {
         protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_Link;
         
         /// <summary>
-        /// chk_ISHiden 控件。
+        /// txt_Link 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_ISHiden;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_Link;
+        
+        /// <summary>
+        /// chk_ISContribute 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_ISContribute;
         
         /// <summary>
         /// chk_ISHtml 控件。
@@ -140,13 +185,31 @@ namespace DTCMS.Web.admin.news {
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_ISComment;
         
         /// <summary>
-        /// txt_SiteID 控件。
+        /// chk_ISHiden 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_SiteID;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_ISHiden;
+        
+        /// <summary>
+        /// txt_ClassDomain 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_ClassDomain;
+        
+        /// <summary>
+        /// txt_CorssID 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_CorssID;
         
         /// <summary>
         /// txt_IndexTemplet 控件。
@@ -176,13 +239,13 @@ namespace DTCMS.Web.admin.news {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_ArchiveTemplet;
         
         /// <summary>
-        /// txt_ClassPath 控件。
+        /// txt_IndexRule 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_ClassPath;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_IndexRule;
         
         /// <summary>
         /// txt_ListRule 控件。
@@ -237,5 +300,23 @@ namespace DTCMS.Web.admin.news {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::FredCK.FCKeditorV2.FCKeditor txt_Content;
+        
+        /// <summary>
+        /// btn_Submit 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton btn_Submit;
+        
+        /// <summary>
+        /// btn_Cancel 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton btn_Cancel;
     }
 }

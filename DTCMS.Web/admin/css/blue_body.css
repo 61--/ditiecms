@@ -17,7 +17,7 @@ a{
 }
 .textbox
 {
-	background: url(../images/blue/login_input_bg.gif) no-repeat scroll left top #F7FAFC ;
+	background: url(../images/blue/login_input_bg.gif) no-repeat left top #F7FAFC ;
 	border-top:1px solid #778899;
 	border-left:1px solid #778899;
 	border-right:1px solid #bdbcbd;
@@ -25,9 +25,36 @@ a{
 	height:20px;
 	line-height:20px;
 	text-indent:2px;
-	width:340px;
+	width:300px;
 }
-
+.button_s
+{
+	border:0px;
+	height:24px;
+	width:60px;
+	letter-spacing:3px;
+	color:#555;
+	margin-right:5px;
+	background:url(../images/blue/botton_s.gif) no-repeat;
+}
+.button_l
+{
+	border:0px;
+	height:24px;
+	width:60px;
+	letter-spacing:3px;
+	color:#555;
+	margin-right:5px;
+	background:url(../images/blue/botton_l.gif) no-repeat;
+}
+.short
+{
+	width:180px;	
+}
+.long
+{
+	width:420px;
+}
 /*头部信息*/
 #container
 {
@@ -69,7 +96,7 @@ a{
 	line-height:27px;
 	font-size:14px;
 	font-weight:bold;
-	letter-spacing:2px;
+	letter-spacing:1px;
 	padding-left:8px;
 	padding-right:8px;
 	color:#FFF;
@@ -109,7 +136,7 @@ a{
 }
 .select
 {
-    padding:0 8px 0 0;
+    padding:0 5px 0 0;
 }
 .help
 {
@@ -120,7 +147,7 @@ a{
 {
     text-decoration:underline;
 }
-.s
+.select
 {
     cursor:pointer;
     width:18px;

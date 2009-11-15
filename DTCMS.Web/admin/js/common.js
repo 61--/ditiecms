@@ -11,4 +11,5 @@ function selectTab(showContent, selfObj) {
         document.getElementById('tab' + j).style.display = "none";
     }
     document.getElementById(showContent).style.display = "block";
+    selfObj.blur();
 }

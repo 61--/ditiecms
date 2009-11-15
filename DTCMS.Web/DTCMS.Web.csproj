@@ -170,6 +170,9 @@
     <Content Include="admin\component\DTTree\page.gif" />
     <Content Include="admin\component\DTTree\plus.gif" />
     <Content Include="admin\component\DTTree\plusbottom.gif" />
+    <Content Include="admin\images\blue\botton_l.gif" />
+    <Content Include="admin\images\blue\botton_s.gif" />
+    <Content Include="admin\images\blue\help.gif" />
     <Content Include="admin\images\blue\s.gif" />
     <Content Include="admin\js\common.js" />
     <Content Include="admin\component\message\demo.html" />
