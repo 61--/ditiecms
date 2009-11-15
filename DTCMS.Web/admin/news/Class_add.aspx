@@ -23,74 +23,74 @@
             <div id="baseInfo"class="tab_show">
                 <table cellpadding="10" cellspacing="1" class="table_form">
                 <tr>
-                    <td class="main_bleft">
+                    <td class="main_bleft split">
                         上级栏目:
                     </td>
-                    <td class="main_bright">
+                    <td class="main_bright split">
                         <input type="text" id="txt_ParentClassName" class="textbox" runat="server" />
                         <a href="##" class="help" title="查看帮助">帮助</a>
                     </td>
                 </tr>
                 <tr>
-                    <td class="main_bleft">
+                    <td class="main_bleft split">
                         栏目名称:
                     </td>
-                    <td class="main_bright">
+                    <td class="main_bright split">
                         <input type="text" id="txt_ClassName" class="textbox" runat="server" />
                         <a href="##" class="help" title="查看帮助">帮助</a>
                     </td>
                 </tr>
                 <tr>
-                    <td class="main_bleft">
+                    <td class="main_bleft split">
                         栏目地址:
                     </td>
-                    <td class="main_bright">
+                    <td class="main_bright split">
                         <input type="text" id="txt_ClassUrl" class="textbox" runat="server" />
                         <a href="##" class="help" title="查看帮助">帮助</a>
                     </td>
                 </tr>
                 <tr>
-                    <td class="main_bleft">
+                    <td class="main_bleft split">
                         交叉栏目:
                     </td>
-                    <td class="main_bright">
+                    <td class="main_bright split">
                         <input type="text" id="txt_CorssID" class="textbox" runat="server" />
                         <img src="../images/blue/s.gif" class="s" alt="选择交叉栏目" title="选择交叉栏目" />
                         <a href="##" class="help" title="查看帮助">帮助</a>
                     </td>
                 </tr>
                 <tr>
-                    <td class="main_bleft">
+                    <td class="main_bleft split">
                         栏目权限:
                     </td>
-                    <td class="main_bright">
+                    <td class="main_bright split">
                         <select id="slt_Readaccess" runat="server" style="width:185px; background:#F7FAFC;"></select>
                         <a href="##" class="help" title="查看帮助">帮助</a>
                     </td>
                 </tr>
                 <tr>
-                    <td class="main_bleft">
+                    <td class="main_bleft split">
                         栏目分页:
                     </td>
-                    <td class="main_bright">
+                    <td class="main_bright split">
                         <input type="text" id="txt_ClassPage" class="textbox" style="width:180px;" runat="server" />
                         <a href="##" class="help" title="查看帮助">帮助</a>
                     </td>
                 </tr>
                 <tr>
-                    <td class="main_bleft">
+                    <td class="main_bleft split">
                         栏目排序:
                     </td>
-                    <td class="main_bright">
+                    <td class="main_bright split">
                         <input type="text" id="txt_OrderID" class="textbox" style="width:180px;" runat="server" />
                         <a href="##" class="help" title="查看帮助">帮助</a>
                     </td>
                 </tr>
                 <tr>
-                    <td class="main_bleft">
+                    <td class="main_bleft split">
                         栏目属性:
                     </td>
-                    <td class="main_bright">
+                    <td class="main_bright split">
                         <input type ="radio" id="rdo_Cover" runat="server" />
                         <label for="rdo_Cover" class="select">封面</label>
                         <input type ="radio" id="rdo_List" runat="server" />
@@ -118,86 +118,86 @@
             <div id="advancedSeting" class="tab_hiden">
                 <table cellpadding="10" cellspacing="1" class="table_form">
                     <tr>
-                        <td class="main_bleft">
+                        <td class="main_bleft split">
                             站点ID:
                         </td>
-                        <td class="main_bright">
+                        <td class="main_bright split">
                             <input type="text" id="txt_SiteID" class="textbox" runat="server" />
                             <a href="##" class="help" title="查看帮助">帮助</a>
                         </td>
                     </tr>
                      <tr>
-                        <td class="main_bleft">
+                        <td class="main_bleft split">
                             封面模版:
                         </td>
-                        <td class="main_bright">
+                        <td class="main_bright split">
                             <input type="text" id="txt_IndexTemplet" class="textbox" runat="server" />
                             <img src="../images/blue/s.gif" class="s" alt="选择封面模版" title="选择封面模版" />
                             <a href="##" class="help" title="查看帮助">帮助</a>
                         </td>
                     </tr>
                     <tr>
-                        <td class="main_bleft">
+                        <td class="main_bleft split">
                             列表模版:
                         </td>
-                        <td class="main_bright">
+                        <td class="main_bright split">
                             <input type="text" id="txt_ListTemplet" class="textbox" runat="server" />
                             <img src="../images/blue/s.gif" class="s" alt="选择列表模版" title="选择列表模版" />
                             <a href="##" class="help" title="查看帮助">帮助</a>
                         </td>
                     </tr>
                     <tr>
-                        <td class="main_bleft">
+                        <td class="main_bleft split">
                             文档模版:
                         </td>
-                        <td class="main_bright">
+                        <td class="main_bright split">
                             <input type="text" id="txt_ArchiveTemplet" class="textbox" runat="server" />
                             <img src="../images/blue/s.gif" class="s" alt="选择文档模版" title="选择文档模版" />
                             <a href="##" class="help" title="查看帮助">帮助</a>
                         </td>
                     </tr>
                     <tr>
-                        <td class="main_bleft">
+                        <td class="main_bleft split">
                             栏目目录:
                         </td>
-                        <td class="main_bright">
+                        <td class="main_bright split">
                             <input type="text" id="txt_ClassPath" class="textbox" runat="server" />
                             <a href="##" class="help" title="查看帮助">帮助</a>
                         </td>
                     </tr>
                     <tr>
-                        <td class="main_bleft">
+                        <td class="main_bleft split">
                             列表页规则:
                         </td>
-                        <td class="main_bright">
+                        <td class="main_bright split">
                             <input type="text" id="txt_ListRule" class="textbox" runat="server" />
                             <a href="##" class="help" title="查看帮助">帮助</a>
                         </td>
                     </tr>
                     <tr>
-                        <td class="main_bleft">
+                        <td class="main_bleft split">
                             文档页规则:
                         </td>
-                        <td class="main_bright">
+                        <td class="main_bright split">
                             <input type="text" id="txt_ArchiveRule" class="textbox" runat="server" />
                             <a href="##" class="help" title="查看帮助">帮助</a>
                         </td>
                     </tr>
                     <tr>
-                        <td class="main_bleft">
+                        <td class="main_bleft split">
                             栏目图片地址:
                         </td>
-                        <td class="main_bright">
+                        <td class="main_bright split">
                             <input type="text" id="txt_ImgUrl" class="textbox" runat="server" />
                             <img src="../images/blue/s.gif" class="s" alt="上传栏目图片" title="上传栏目图片" />
                             <a href="##" class="help" title="查看帮助">帮助</a>
                         </td>
                     </tr>
                     <tr>
-                        <td class="main_bleft">
+                        <td class="main_bleft split">
                             Meta关键字:
                         </td>
-                        <td class="main_bright">
+                        <td class="main_bright split">
                             <input type="text" id="txt_Keywords" class="textbox" runat="server" />
                             <a href="##" class="help" title="查看帮助">帮助</a>
                         </td>
