@@ -73,7 +73,8 @@ namespace DTCMS.Web.admin.dtree
         public string A()
         {
             //return WebTools.WriteStaticDTree(returnDT(), "PID", 0, "NAME", "ID", "javascript:window.alert('{0}')","","DTTree");
-            return WebTools.GetStaticDTree(returnDT(), "PID", 0, "NAME", "ID", "javascript:window.alert('{0}')", "", "DTTree/folder.gif", "DTTree/folder.gif", "DTTree/folder.gif", "DTTree");
+            return WebTools.GetStaticDTree(returnDT(), "PID", 0, "NAME", "ID", "javascript:window.alert('{0}')", "", "component/DTTree/folder.gif",
+                "component/DTTree/folder.gif", "component/DTTree/folder.gif", "component/DTTree");
         }
     }
 }

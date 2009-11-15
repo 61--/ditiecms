@@ -6,21 +6,20 @@ namespace DTCMS.Entity
 	/// </summary>
 	public class Arc_Article
 	{
-		public Arc_Article()
-		{}
-		#region Model
-		private int _id;
+        public Arc_Article()
+		{ }
+        #region Entity
+        private int _id;
 		private int _classid;
 		private string _title;
 		private string _shorttitle;
 		private string _titlestyle;
-		private int? _orderid;
 		private string _tags;
 		private string _imgurl;
 		private string _author;
 		private string _editor;
 		private string _publisher;
-		private string _souce;
+		private string _source;
 		private string _templet;
 		private string _keywords;
 		private string _description;
@@ -40,6 +39,7 @@ namespace DTCMS.Entity
 		private string _filepath;
 		private DateTime _adddate;
 		private DateTime _pubdate;
+		private int? _orderid;
 		/// <summary>
 		/// 
 		/// </summary>
@@ -79,14 +79,6 @@ namespace DTCMS.Entity
 		{
 			set{ _titlestyle=value;}
 			get{return _titlestyle;}
-		}
-		/// <summary>
-		/// 文章排序
-		/// </summary>
-		public int? OrderID
-		{
-			set{ _orderid=value;}
-			get{return _orderid;}
 		}
 		/// <summary>
 		/// 文章TAG
@@ -131,10 +123,10 @@ namespace DTCMS.Entity
 		/// <summary>
 		/// 文章来源
 		/// </summary>
-		public string Souce
+		public string Source
 		{
-			set{ _souce=value;}
-			get{return _souce;}
+			set{ _source=value;}
+			get{return _source;}
 		}
 		/// <summary>
 		/// 文章模版
@@ -288,8 +280,16 @@ namespace DTCMS.Entity
 			set{ _pubdate=value;}
 			get{return _pubdate;}
 		}
-		#endregion Model
+		/// <summary>
+		/// 文章排序
+		/// </summary>
+		public int? OrderID
+		{
+			set{ _orderid=value;}
+			get{return _orderid;}
+        }
+        #endregion Entity
 
-	}
+    }
 }
 
