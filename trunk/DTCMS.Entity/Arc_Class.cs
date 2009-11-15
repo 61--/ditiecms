@@ -7,9 +7,9 @@ namespace DTCMS.Entity
 	public class Arc_Class
 	{
 		public Arc_Class()
-		{}
-		#region Model
-		private int _cid;
+		{ }
+        #region Entity
+        private int _cid;
 		private string _classname;
 		private int _classtype;
 		private int _parentid;
@@ -251,9 +251,9 @@ namespace DTCMS.Entity
 		{
 			set{ _orderid=value;}
 			get{return _orderid;}
-		}
-		#endregion Model
+        }
+        #endregion Entity
 
-	}
+    }
 }
 
