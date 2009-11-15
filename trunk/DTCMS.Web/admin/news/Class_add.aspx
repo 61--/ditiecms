@@ -6,7 +6,7 @@
 <head runat="server">
     <title>栏目添加</title>
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="../js/tab.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
