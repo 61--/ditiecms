@@ -47,7 +47,7 @@
 		Enabled = CheckAuthentication();
 
 		// URL path to user files.
-		UserFilesPath = "/userfiles/";
+		UserFilesPath = "/uploads/";
 
 		// The connector tries to resolve the above UserFilesPath automatically.
 		// Use the following setting it you prefer to explicitely specify the
