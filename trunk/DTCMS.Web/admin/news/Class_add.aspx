@@ -6,7 +6,16 @@
 <head runat="server">
     <title>栏目添加</title>
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
+    <link href="/css/J.dialog.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="/js/J.min.js"></script>
+    <script type="text/javascript" src="/js/J.validate.js"></script>
+    <script type="text/javascript">
+    J.check.rules = [
+        { name: 'txt_ClassName', mid: 'msg_ClassName', requir: true, type: 'ajax', url: 'admin/ajax/existClassName.aspx', warn: '栏目名称不能为空!|系统已存在相同名称的栏目!' },
+        { name: 'txt_ClassEName', mid: 'msg_ClassEName', requir: true, type: '', warn: '栏目英文名称不能为空!' }
+    ];
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -37,7 +46,8 @@
                             栏目名称:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ClassName" class="textbox" runat="server" />
+                            <input type="text" id="txt_ClassName" maxlength="50" class="textbox" runat="server" />
+                            <span id="msg_ClassName"></span>
                         </td>
                     </tr>
                     <tr>
@@ -45,7 +55,8 @@
                             栏目英文名称:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ClassEName" class="textbox" runat="server" />
+                            <input type="text" id="txt_ClassEName" maxlength="50" class="textbox" runat="server" />
+                            <span id="msg_ClassEName"></span>
                         </td>
                     </tr>
                     <tr>
@@ -65,6 +76,7 @@
                             <select id="slt_ClassType" runat="server" style="width: 185px; background: #F7FAFC;">
                                 <option>普通文章（Article）</option>
                             </select>
+                            <span id="msg_ClassType"></span>
                         </td>
                     </tr>
                     <tr>
@@ -73,7 +85,7 @@
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_OrderID" class="textbox short" value="50" runat="server" />
-                            
+                            <span id="msg_OrderID"></span>
                         </td>
                     </tr>
                     <tr>
@@ -100,6 +112,7 @@
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_ClassPage" value="20" class="textbox short" runat="server" />
+                            <span id="msg_ClassPage"></span>
                         </td>
                     </tr>
                     <tr>
@@ -232,7 +245,6 @@
                         </td>
                         <td class="main_bright">
                             <textarea id="txts_Description" runat="server" rows="6" cols="50"></textarea>
-                            
                         </td>
                     </tr>
                 </table>
@@ -244,7 +256,7 @@
             </div>
             <!--操作按钮-->
             <div style="margin:10px;text-align:center;">
-                <input id="btn_Submit" type="button" value="保存" class="button_s" runat="server" />
+                <input id="btn_Submit" type="button" value="保存" onclick="J.check.regform('form1');" class="button_s" runat="server" />
                 <input id="btn_Cancel" type="button" value="取消" class="button_s" runat="server" />
             </div>
         </div>
