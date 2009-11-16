@@ -473,7 +473,6 @@
     <Content Include="Editor\editor\wsc\tmpFrameset.html" />
     <Content Include="Editor\editor\wsc\w.html" />
     <Content Include="Editor\fckconfig.js" />
-    <Content Include="Editor\fckeditor.asp" />
     <Content Include="Editor\fckeditor.js" />
     <Content Include="Editor\fckpackager.xml" />
     <Content Include="Editor\fckstyles.xml" />

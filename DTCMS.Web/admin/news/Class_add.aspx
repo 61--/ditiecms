@@ -239,7 +239,7 @@
             </div>
             <!--栏目内容-->
             <div id="tab3" class="tab_hiden">
-                <FCKeditorV2:FCKeditor ID="txt_Content" runat="server" Height="407px">
+                <FCKeditorV2:FCKeditor ID="txt_Content" runat="server" Height="420px">
                 </FCKeditorV2:FCKeditor>
             </div>
             <!--操作按钮-->
