@@ -1,1 +1,0 @@
-<%@ Page language="c#" Trace="false" CodeFile="Connerctor.aspx.cs" Inherits="Connerctor" AutoEventWireup="false" %>
