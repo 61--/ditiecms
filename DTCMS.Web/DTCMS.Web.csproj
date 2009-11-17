@@ -199,7 +199,6 @@
     <Content Include="admin\login.aspx" />
     <Content Include="admin\news\Class_add.aspx" />
     <Content Include="admin\news\News_add.aspx" />
-    <Content Include="admin\_samples1.html" />
     <Content Include="bin\DTCMS.BLL.dll" />
     <Content Include="bin\DTCMS.BLL.pdb" />
     <Content Include="bin\DTCMS.Common.dll" />
@@ -514,7 +513,7 @@
     <Content Include="images\Jmin\disk.gif" />
     <Content Include="images\Jmin\d_bg.gif" />
     <Content Include="images\Jmin\ico.gif" />
-    <Content Include="images\Jmin\info.gif" />
+    <Content Include="images\Jmin\info.png" />
     <Content Include="images\Jmin\time.gif" />
     <Content Include="images\Jmin\wait.gif" />
     <Content Include="js\J.dialog.js" />
