@@ -43,7 +43,7 @@ J.exend( J.check, {
 	
 	chkajax : function( val, r )
 	{
-	    J(r.mid).html('Ajax验证中...').acls('chkaj');
+	    J(r.mid).html('正在验证数据...').acls('chkajax');
 		var ret = J.A.send( r.url + val ); return (ret == 0) ? false : true;
 	},
 	
@@ -78,45 +78,6 @@ J.exend( J.check, {
 		}
 		return ( cn >= min && cn <= max );
 	},
-		
-	/*regform : function(f)
-	{
-	    var frm = document.forms[f]; if( this.rules.length == 0 ) return false;
-		
-		for( var i = 0; i < this.rules.length; i++ )
-		{
-		    var r = this.rules[i];
-		    if( !J(r.name) )
-			{
-			    alert( '名称为' + r.name + '的字段不存在' ); return; 
-			}
-		    if( !J(r.mid) )
-			{
-			    alert( '显示错误信息的id为' + r.mid + '的元素不存在' ); return; 
-			}
-			if(r.requir) J(frm[r.name]).blur(this.blurchk);
-		}
-		
-		J(frm).submit(function()
-		{
-		    var c = J.check; c.msgid = []; c.ermsg = []; c.sucid = []; c.sucmg = [];
-			for( var i = 0; i < c.rules.length; i++ )
-			{
-			    var r = c.rules[i], el = frm[r.name];
-				if(el.disabled) continue; var msgs = c.formchk(el,r);
-				if( msgs.length > 0 )
-				    for( var n in msgs ) c.adderrs( r.mid, msgs[n] );
-				else
-				    c.addsucc( r.mid, r.okmsg );
-			}
-			if( c.ermsg.length > 0 )
-			{
-			    c.showerrs( c.msgid, c.ermsg );
-				c.showsucc( c.sucid, c.sucmg ); return false;
-			}
-			else return true;
-		});
-    },*/
 
 	regform: function(f) {
 	    var frm = document.forms[f]; if (this.rules.length == 0) return false;
@@ -132,7 +93,7 @@ J.exend( J.check, {
 	        if (r.requir) J(frm[r.name]).blur(this.blurchk);
 	    }
 
-	    J(frm).click(function() {
+	    J(frm).submit(function() {
 	        var c = J.check; c.msgid = []; c.ermsg = []; c.sucid = []; c.sucmg = [];
 	        for (var i = 0; i < c.rules.length; i++) {
 	            var r = c.rules[i], el = frm[r.name];
@@ -157,7 +118,7 @@ J.exend( J.check, {
 		    var r = J.check.rules[i];
 			if( r.name == this.name || r.name == this.id ) break;
 		}
-		var c = J.check, msgs = c.formchk( this, r ), okmg = r.okmsg || '验证通过'; 
+		var c = J.check, msgs = c.formchk( this, r ), okmg = r.okmsg || '填写正确!'; 
 		c.ermsg = msgs; c.msgid = [r.mid]; c.sucmg = [okmg];
 		
 		if( msgs.length > 0 )
@@ -171,7 +132,7 @@ J.exend( J.check, {
 	    var einfo = []; if(!r.warn) r.warn = J(r.mid).html();
 		
 		if( r.requir && e.length == undefined && J(e).isnl() )
-		    einfo.push('必填内容，不能为空');
+		    einfo.push('必填，不能为空!');
 		else if( !r.requir && ( e.length != undefined || J(e).isnl() ) )
 		    return [];
 		else
@@ -196,7 +157,7 @@ J.exend( J.check, {
 	
 	showerrs : function(id,msg)
 	{
-	    for( var i = 0; i < msg.length; i++ ) J(id[i]).html(msg[i]).acls('chker');
+	    for( var i = 0; i < msg.length; i++ ) J(id[i]).html(msg[i]).acls('chkerr');
 	},
 	
 	showsucc : function(id,msg)
@@ -206,5 +167,5 @@ J.exend( J.check, {
 	
     chkregex : function(val,reg){ return reg.test(val); },
 	adderrs : function(e,m){ this.msgid.push(e); this.ermsg.push(m); },
-	addsucc : function(e,m){ m = m || '验证通过'; this.sucid.push(e); this.sucmg.push(m); }
+	addsucc : function(e,m){ m = m || '填写正确'; this.sucid.push(e); this.sucmg.push(m); }
 });	

@@ -1,24 +1,21 @@
-﻿/* 表单验证用到的样式开始 */
-/* chker是错误提示信息样式，chkok是成功提示信息样式 */
+﻿/* 表单验证用到样式 */
 .chkerr, .chkok
 {
 	margin-left: 5px;
-	padding-left: 20px;
-	font-weight: bold;
-	background-image: url(/images/info.gif);
-	background-repeat: no-repeat;
-	
+	padding:1px 5px 0px 18px;
+	font-size:12px;display: inline;
+	background: url(/images/Jmin/info.png) no-repeat;
 }
 
-.chkerr{ color: #f00; background-position: 0 0; }
-.chkok{ color: #00f; background-position: 0 -16px; }
+.chkerr{ color: #8B2B34;border:1px #F60 solid;background-color:#FFFCF6; background-position: 3px -78px; }
+.chkok{ color: #008800;border:1px #00BE00 solid;background-color:#E6FFE6; background-position: 3px 2px; }
 
-/* chkaj是AJAX验证时等待时的样式 */
+/* AJAX验证时等待时样式 */
 .chkajax
 {
 	margin-left: 5px;
 	padding-left: 20px;
 	font-weight: bold;
-	background-image: url(/images/wait.gif);
+	background-image: url(/images/Jmin/wait.gif);
 	background-repeat: no-repeat;
 }
