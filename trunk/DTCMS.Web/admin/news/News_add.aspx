@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
     <div id="container">
-        <div style="line-height: 28px;">当前位置:添加文章</div>
+        <div style="line-height:25px;">当前位置：文章添加</div>
         <div id="tab_menu" class="tabs">
             <ul>
                 <li class="tab_on"><a onclick="selectTab('tab1',this)" href="javascript:void(0)">基本信息</a></li>
@@ -77,15 +77,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="main_bleft split">
-                            内容
-                        </td>
-                        <td class="main_bright split">
-                        </td>
-                    </tr>
-                    <tr>
                         <td colspan="2">
-                            <FCKeditorV2:FCKeditor ID="txt_Content" Height="400px" Width="50%" runat="server"></FCKeditorV2:FCKeditor>
+                            <FCKeditorV2:FCKeditor ID="txt_Content" Height="500px" Width="100%" runat="server"></FCKeditorV2:FCKeditor>
                         </td>
                     </tr>
                 </table>
