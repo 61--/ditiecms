@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using DTCMS.DALFactory;
 using DTCMS.IDAL;
-
+using DTCMS.Entity;
 namespace DTCMS.BLL
 {
     public class Arc_ClassBLL : BaseBLL
@@ -27,6 +27,20 @@ namespace DTCMS.BLL
                 SetErrorMessage(ex);
                 return false;
             }
+        }
+        public Arc_Class GetModel(int CID)
+        {
+           return   dalArcClass.GetModel(CID);
+        }
+
+        public int Add(Arc_Class model)
+        {
+            return dalArcClass.Add(model);
+        }
+
+        public int Update(Arc_Class model)
+        {
+            return dalArcClass.Update(model);
         }
     }
 }
