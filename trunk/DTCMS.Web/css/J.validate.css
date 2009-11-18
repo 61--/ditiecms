@@ -2,6 +2,7 @@
 .chkerr, .chkok
 {
 	margin-left: 5px;
+	width:300px;
 	padding:1px 5px 0px 18px;
 	font-size:12px;display: inline;
 	background: url(/images/Jmin/info.png) no-repeat;
