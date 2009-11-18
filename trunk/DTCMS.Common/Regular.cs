@@ -8,6 +8,7 @@ namespace DTCMS.Common
     //正则
     public class Regular
     {
+        private static string regNum = @"^([-]|[0-9])[0-9]*(\.\w*)?$";
         /// <summary>
         /// 正则表达式验证
         /// </summary>
@@ -19,7 +20,15 @@ namespace DTCMS.Common
             Regex iRegex = new Regex(reg, RegexOptions.Compiled);
             return iRegex.Match(regValue).Success;
         }
-
+        /// <summary>
+        /// 验证是否是整数
+        /// </summary>
+        /// <param name="regValue">验证的字符串</param>
+        /// <returns></returns>
+        public static bool ValidateNum(string regValue)
+        {
+            return ValidateReg(regValue,regNum); 
+        }
         /// <summary>
         /// URL验证
         /// </summary>

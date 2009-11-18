@@ -18,6 +18,8 @@
     window.onload = function() {
         J.check.regform('form1');
     }
+  
+
     </script>
 </head>
 <body>
@@ -259,8 +261,9 @@
             </div>
             <!--操作按钮-->
             <div style="margin:10px;text-align:center;">
-                <input id="btn_Submit" type="submit" value="保存" class="button_s" runat="server" />
+                <input id="btn_Submit" type="submit" value="保存" class="button_s" runat="server" onclick="" onserverclick="Btn_Submit_Click" />
                 <input id="btn_Cancel" type="button" value="取消" class="button_s" runat="server" />
+                <input id="hidden_ClassId" type="hidden" value="0" runat="server" />
             </div>
         </div>
     </div>

@@ -8,6 +8,29 @@ namespace DTCMS.Common
 {
     public class Utils
     {
+        #region
+        public static string GetQueryString(string queryName)
+        {
+            if (HttpContext.Current.Request.QueryString[queryName] != null)
+                return HttpContext.Current.Request.QueryString[queryName].ToString();
+            else
+                return "";
+        }
+        public static int GetQueryInt(string queryName)
+        {
+            if (HttpContext.Current.Request.QueryString[queryName] != null)
+            {
+                if (Regular.ValidateNum(HttpContext.Current.Request.QueryString[queryName]))
+                    return int.Parse(HttpContext.Current.Request.QueryString[queryName].ToString());
+                else
+                    return -1;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+        #endregion
         #region 字符串操作
         /// <summary>
         /// 从字符串的指定位置截取指定长度的子字符串
