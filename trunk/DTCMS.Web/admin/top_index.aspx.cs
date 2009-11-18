@@ -15,7 +15,7 @@ namespace DTCMS.Web.Admin
         protected void hlkExi_Click(object sender, EventArgs e)
         {
             Session.RemoveAll();
-            Response.Write("<script type=\"text/javascript\">top.document.frames.top.location.href='../login.html?action=logout'</script>");
+            Response.Write("<script type=\"text/javascript\">top.document.frames.top.location.href='../login.aspx?action=logout'</script>");
         }
     }
 }

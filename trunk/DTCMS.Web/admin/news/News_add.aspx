@@ -14,8 +14,8 @@
         <div style="line-height:25px;">当前位置：文章添加</div>
         <div id="tab_menu" class="tabs">
             <ul>
-                <li class="tab_on"><a onclick="selectTab('tab1',this)" href="javascript:void(0)">基本信息</a></li>
-                <li><a onclick="selectTab('tab2',this)" href="javascript:void(0)">其他参数</a></li>
+                <li class="tab_on"><a onclick="selectTab('tab1',this)" href="javascript:void(0)">基本内容</a></li>
+                <li><a onclick="selectTab('tab2',this)" href="javascript:void(0)">其他信息</a></li>
             </ul>
         </div>
         <div id="content">
