@@ -73,7 +73,7 @@
                             文章缩略图:
                         </td>
                         <td class="main_bright split">
-                            <input type="file" id="file_ImageUrl" style="width: 480px;" runat="server" />
+                            <input type="file" id="file_ImageUrl" class="textbox" runat="server" />
                         </td>
                     </tr>
                     <tr>
