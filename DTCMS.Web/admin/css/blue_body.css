@@ -7,7 +7,8 @@ body{
 	font-size:12px;
 	height:100%;
 	color: #555;
-	overflow-y:auto;
+	overflow-x:hidden;
+	overflow-y:scroll;
 }
 img{
 	border:0px;
@@ -132,7 +133,7 @@ a{
 	border-bottom:1px #cad9ea dotted;
 }
 .table_form {
-	line-height:30px;
+	line-height:35px;
 	margin-top:5px;
     border:1px #cad9ea solid;
 	empty-cells:show;
