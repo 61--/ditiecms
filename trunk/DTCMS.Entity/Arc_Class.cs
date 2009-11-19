@@ -13,18 +13,23 @@ namespace DTCMS.Entity
         private int _parentid;
         private int _attribute;
         private string _classname;
-        private string _classurl;
+        private string _classename;
+        private int _classtype;
+        private string _classdomain;
         private string _classpath;
         private string _indextemplet;
         private string _listtemplet;
         private string _archivetemplet;
+        private string _indexrule;
         private string _listrule;
         private string _archiverule;
         private int? _classpage;
         private string _description;
-        private int? _ishidden;
-        private int? _ishtml;
-        private int? _iscomment;
+        private int _ishidden;
+        private int _ishtml;
+        private int _checklevel;
+        private int _iscontribute;
+        private int _iscomment;
         private int? _readaccess;
         private int? _siteid;
         private DateTime _adddate;
@@ -67,12 +72,28 @@ namespace DTCMS.Entity
             get { return _classname; }
         }
         /// <summary>
-        /// 栏目地址
+        /// 栏目英文名称
         /// </summary>
-        public string ClassUrl
+        public string ClassEName
         {
-            set { _classurl = value; }
-            get { return _classurl; }
+            set { _classename = value; }
+            get { return _classename; }
+        }
+        /// <summary>
+        /// 栏目类型
+        /// </summary>
+        public int ClassType
+        {
+            set { _classtype = value; }
+            get { return _classtype; }
+        }
+        /// <summary>
+        /// 栏目二级域名
+        /// </summary>
+        public string ClassDomain
+        {
+            set { _classdomain = value; }
+            get { return _classdomain; }
         }
         /// <summary>
         /// 栏目目录，{#CmsPath}/Archive/
@@ -105,6 +126,14 @@ namespace DTCMS.Entity
         {
             set { _archivetemplet = value; }
             get { return _archivetemplet; }
+        }
+        /// <summary>
+        /// 封面页规则
+        /// </summary>
+        public string IndexRule
+        {
+            set { _indexrule = value; }
+            get { return _indexrule; }
         }
         /// <summary>
         /// 列表页规则，访问路径
@@ -141,7 +170,7 @@ namespace DTCMS.Entity
         /// <summary>
         /// 是否隐藏，1启用，0隐藏
         /// </summary>
-        public int? IsHidden
+        public int IsHidden
         {
             set { _ishidden = value; }
             get { return _ishidden; }
@@ -149,15 +178,31 @@ namespace DTCMS.Entity
         /// <summary>
         /// 是否允许生成静态页，1生成静态，0动态访问
         /// </summary>
-        public int? IsHtml
+        public int IsHtml
         {
             set { _ishtml = value; }
             get { return _ishtml; }
         }
         /// <summary>
+        /// 审核机制
+        /// </summary>
+        public int CheckLevel
+        {
+            set { _checklevel = value; }
+            get { return _checklevel; }
+        }
+        /// <summary>
+        /// 是否允许投稿，1允许，0不允许
+        /// </summary>
+        public int IsContribute
+        {
+            set { _iscontribute = value; }
+            get { return _iscontribute; }
+        }
+        /// <summary>
         /// 本栏目文章是否允许评论，1允许，0不允许
         /// </summary>
-        public int? IsComment
+        public int IsComment
         {
             set { _iscomment = value; }
             get { return _iscomment; }

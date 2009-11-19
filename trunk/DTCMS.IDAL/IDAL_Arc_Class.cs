@@ -33,6 +33,19 @@ namespace DTCMS.IDAL
 		/// 得到一个对象实体
 		/// </summary>
 		Arc_Class GetModel(int CID);
+
+        /// <summary>
+        /// 获取栏目关系
+        /// </summary>
+        /// <param name="ParentID"></param>
+        /// <returns></returns>
+        string GetRelation(int ParentID);
+        /// <summary>
+        /// 获取父栏目名称
+        /// </summary>
+        /// <param name="ParentID"></param>
+        /// <returns></returns>
+        string GetParentName(int ParentID);
 		#endregion  成员方法
 	}
 }
