@@ -8,7 +8,13 @@ namespace DTCMS.Common
 {
     public class Utils
     {
-        #region
+        #region 获取URL传值
+
+       /// <summary>
+        /// 获取URL传值
+       /// </summary>
+       /// <param name="queryName">参数名</param>
+       /// <returns>失败返回空</returns>
         public static string GetQueryString(string queryName)
         {
             if (HttpContext.Current.Request.QueryString[queryName] != null)
@@ -16,6 +22,12 @@ namespace DTCMS.Common
             else
                 return "";
         }
+
+        /// <summary>
+        /// 获取URL传值
+        /// </summary>
+        /// <param name="queryName">参数名</param>
+        /// <returns>失败返回-1</returns>
         public static int GetQueryInt(string queryName)
         {
             if (HttpContext.Current.Request.QueryString[queryName] != null)
@@ -30,7 +42,9 @@ namespace DTCMS.Common
                 return -1;
             }
         }
-        #endregion
+
+        #endregion 获取URL传真
+
         #region 字符串操作
         /// <summary>
         /// 从字符串的指定位置截取指定长度的子字符串

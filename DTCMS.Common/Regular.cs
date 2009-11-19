@@ -9,6 +9,7 @@ namespace DTCMS.Common
     public class Regular
     {
         private static string regNum = @"^([-]|[0-9])[0-9]*(\.\w*)?$";
+
         /// <summary>
         /// 正则表达式验证
         /// </summary>
@@ -29,6 +30,7 @@ namespace DTCMS.Common
         {
             return ValidateReg(regValue,regNum); 
         }
+
         /// <summary>
         /// URL验证
         /// </summary>

@@ -12,7 +12,7 @@
     <script type="text/javascript" src="/js/J.validate.js"></script>
     <script type="text/javascript">
     J.check.rules = [
-        { name: 'txt_ClassName', mid: 'msg_ClassName', requir: true, type: 'ajax', url: 'admin/ajax/existClassName.aspx', warn: '系统已存在相同名称的栏目!' },
+//        { name: 'txt_ClassName', mid: 'msg_ClassName', requir: true, type: 'ajax', url: 'admin/ajax/existClassName.aspx', warn: '系统已存在相同名称的栏目!' },
         { name: 'txt_ClassEName', mid: 'msg_ClassEName', requir: true, type: '', warn: '栏目英文名称不能为空!' }
     ];
     window.onload = function() {
@@ -43,6 +43,7 @@
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_ParentClassName" class="textbox" runat="server" />
+                            <input id="hidden_ParentClassID" type="hidden" value="0" runat="server" />
                             <img src="../images/blue/s.gif" class="select" alt="选择上级栏目" />
                         </td>
                     </tr>
@@ -79,7 +80,7 @@
                         </td>
                         <td class="main_bright split">
                             <select id="slt_ClassType" runat="server" style="width: 185px; background: #F7FAFC;">
-                                <option>普通文章（Article）</option>
+                                <option value="0">普通文章（Article）</option>
                             </select>
                             <span id="msg_ClassType"></span>
                         </td>
@@ -249,7 +250,7 @@
                             Meta描述:
                         </td>
                         <td class="main_bright">
-                            <textarea id="txts_Description" runat="server" rows="6" cols="50"></textarea>
+                            <textarea id="txt_Description" runat="server" rows="6" cols="50"></textarea>
                         </td>
                     </tr>
                 </table>
@@ -261,7 +262,7 @@
             </div>
             <!--操作按钮-->
             <div style="margin:10px;text-align:center;">
-                <input id="btn_Submit" type="submit" value="保存" class="button_s" runat="server" onclick="" onserverclick="Btn_Submit_Click" />
+                <input id="btn_Submit" type="submit" value="保存" class="button_s" runat="server" onserverclick="Btn_Submit_Click" />
                 <input id="btn_Cancel" type="button" value="取消" class="button_s" runat="server" />
                 <input id="hidden_ClassId" type="hidden" value="0" runat="server" />
             </div>
