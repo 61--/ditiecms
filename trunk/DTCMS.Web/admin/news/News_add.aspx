@@ -76,7 +76,17 @@
                             文章缩略图:
                         </td>
                         <td class="main_bright split">
-                            <input type="file" id="file_ImageUrl" class="textbox" runat="server" />
+                            <input type="text" id="txt_ImageUrl" class="textbox" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" />
+                            <input type="checkbox" name="chk_IsRemoteUrl" id="chk_IsRemoteUrl" runat="server" /><label for="chk_IsRemoteUrl">远程图片</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main_bleft split">
+                            文章分页:
+                        </td>
+                        <td class="main_bright split">
+                            <input type="radio" id="rdo_Autopage" value="自动分页" /><label for="chk_IsRemoteUrl">自动分页，每页字数:</label><input type="text" id="txt_AutopageNum" value="5000" class="textbox" style="width:60px;" runat="server" />
+                            <input type="radio" id="Radio1" value="手动分页" /><label for="chk_IsRemoteUrl">手动分页</label>
                         </td>
                     </tr>
                     <tr>
@@ -160,7 +170,7 @@
                             文章摘要:
                         </td>
                         <td class="main_bright split">
-                            <textarea cols="50" rows="5"></textarea>
+                            <textarea cols="50" rows="5"></textarea> 不大于500个字
                         </td>
                     </tr>
                     <tr>
@@ -168,12 +178,17 @@
                             其他设置:
                         </td>
                         <td class="main_bright">
-                            <input type="checkbox" name="chk_ISHtml" id="chk_ISHtml" checked="true" runat="server" /><label for="chk_ISHtml">生成静态页(不选择动态访问)</label>
-                            <input type="checkbox" name="chk_ISComment" id="chk_ISComment" checked="true" runat="server" /><label for="chk_ISComment">允许评论</label>
-                            <input type="checkbox" name="chk_ISHiden" id="chk_ISChecked" runat="server" /><label for="chk_ISChecked">已审核</label>
+                            <input type="checkbox" name="chk_IsHtml" id="chk_IsHtml" checked="true" runat="server" /><label for="chk_IsHtml">生成静态页(不选择动态访问)</label>
+                            <input type="checkbox" name="chk_IsComment" id="chk_IsComment" checked="true" runat="server" /><label for="chk_IsComment">允许评论</label>
+                            <input type="checkbox" name="chk_IsChecked" id="chk_IsChecked" runat="server" /><label for="chk_IsChecked">已审核</label>
                         </td>
                     </tr>
                 </table>
+            </div>
+            <!--操作按钮-->
+            <div style="margin:10px;text-align:center;">
+                <input id="btn_Submit" type="submit" value="保存" class="button_s" runat="server" />
+                <input id="btn_Cancel" type="button" value="取消" class="button_s" runat="server" />
             </div>
         </div>
     </div>

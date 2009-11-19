@@ -29,6 +29,15 @@ a{
 	text-indent:2px;
 	width:300px;
 }
+textarea
+{
+	background: url(../images/blue/login_input_bg.gif) no-repeat left top #F7FAFC ;
+	border-top:1px solid #778899;
+	border-left:1px solid #778899;
+	border-right:1px solid #bdbcbd;
+	border-bottom:1px solid #bdbcbd;
+	text-indent:2px;
+}
 .button_s
 {
 	border:0px;
