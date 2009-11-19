@@ -140,6 +140,33 @@ namespace DTCMS.Web.admin.news {
         protected global::FredCK.FCKeditorV2.FCKeditor txt_Content;
         
         /// <summary>
+        /// txt_ShortTitle 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_ShortTitle;
+        
+        /// <summary>
+        /// txt_ViceClassID 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_ViceClassID;
+        
+        /// <summary>
+        /// txt_OrderID 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_OrderID;
+        
+        /// <summary>
         /// txt_Templet 控件。
         /// </summary>
         /// <remarks>
@@ -149,12 +176,75 @@ namespace DTCMS.Web.admin.news {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_Templet;
         
         /// <summary>
-        /// txt_ 控件。
+        /// txt_FilePath 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_FilePath;
+        
+        /// <summary>
+        /// txt_PubDate 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_PubDate;
+        
+        /// <summary>
+        /// txt_Money 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_Money;
+        
+        /// <summary>
+        /// txt_SimilarArticle 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_SimilarArticle;
+        
+        /// <summary>
+        /// Text5 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text5;
+        
+        /// <summary>
+        /// chk_ISHtml 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_ISHtml;
+        
+        /// <summary>
+        /// chk_ISComment 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_ISComment;
+        
+        /// <summary>
+        /// chk_ISChecked 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_ISChecked;
     }
 }

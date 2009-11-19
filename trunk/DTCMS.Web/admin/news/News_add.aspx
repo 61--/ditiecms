@@ -26,7 +26,10 @@
                         <td class="main_bleft split">文章标题:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_Title" class="textbox long" runat="server" />
+                            <select id="slt_TitleFlag">
+                                <option>无</option><option>原创</option><option>转载</option>
+                            </select>
+                            <input type="text" id="txt_Title" class="textbox long" maxlength="100" runat="server" />
                         </td>
                     </tr>
                     <tr>
@@ -47,7 +50,7 @@
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_Tags" class="textbox" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" />
-                            (多个TAG用逗号,隔开)
+                            多个TAG用逗号,隔开
                         </td>
                     </tr>
                     <tr>
@@ -88,18 +91,86 @@
                 <table cellpadding="0" cellspacing="0" class="table_form">
                     <tr>
                         <td class="main_bleft split">
-                            文章模板:
+                            缩略标题:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_Templet" class="textbox" style="width: 480px;" runat="server" />
+                            <input type="text" id="txt_ShortTitle" class="textbox long" runat="server" />
                         </td>
                     </tr>
                     <tr>
                         <td class="main_bleft split">
-                            文章内容:
+                            副栏目:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_" class="textbox" style="width: 520px; height: 200px;" runat="server" />
+                            <input type="text" id="txt_ViceClassID" class="textbox short" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" />
+                            <span class="main_bleft">权重: </span><input type="text" id="txt_OrderID" class="textbox" style="width:120px;" runat="server" /> 权重越大，排序越前
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main_bleft split">
+                            文章模版:
+                        </td>
+                        <td class="main_bright split">
+                            <input type="text" id="txt_Templet" class="textbox" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" />留空则按照栏目默认设置
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main_bleft split">
+                            保存路劲:
+                        </td>
+                        <td class="main_bright split">
+                            <input type="text" id="txt_FilePath" class="textbox" runat="server" /> 留空则按照栏目默认设置
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main_bleft split">
+                            发布时间:
+                        </td>
+                        <td class="main_bright split">
+                            <input type="text" id="txt_PubDate" class="textbox short" runat="server" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main_bleft split">
+                            阅读权限:
+                        </td>
+                        <td class="main_bright split">
+                            <select class="textbox short"></select>
+                            <span class="main_bleft">消费点数: </span><input type="text" id="txt_Money" class="textbox" style="width:120px;" runat="server" /> 不大于1000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main_bleft split">
+                            相关文章:
+                        </td>
+                        <td class="main_bright split">
+                            <input type="text" id="txt_SimilarArticle" class="textbox long" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" /> 多个ID用逗号,隔开
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main_bleft split">
+                            文章关键字:
+                        </td>
+                        <td class="main_bright split">
+                            <input type="text" id="Text5" class="textbox long" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" /> 多个关键字用逗号,隔开
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main_bleft split">
+                            文章摘要:
+                        </td>
+                        <td class="main_bright split">
+                            <textarea cols="50" rows="5"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main_bleft">
+                            其他设置:
+                        </td>
+                        <td class="main_bright">
+                            <input type="checkbox" name="chk_ISHtml" id="chk_ISHtml" checked="true" runat="server" /><label for="chk_ISHtml">生成静态页(不选择动态访问)</label>
+                            <input type="checkbox" name="chk_ISComment" id="chk_ISComment" checked="true" runat="server" /><label for="chk_ISComment">允许评论</label>
+                            <input type="checkbox" name="chk_ISHiden" id="chk_ISChecked" runat="server" /><label for="chk_ISChecked">已审核</label>
                         </td>
                     </tr>
                 </table>

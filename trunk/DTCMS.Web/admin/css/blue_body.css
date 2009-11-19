@@ -121,24 +121,20 @@ a{
 	text-indent:10px;
 	text-align:right;
 	width:120px;
-	height:30px;
 }
 .main_bright{
 	padding:0 0 0 10px;
-	line-height:30px;
-	height:30px;
 }
 .split
 {
 	border-bottom:1px #cad9ea dotted;
 }
 .table_form {
-	line-height:35px;
 	margin-top:5px;
     border:1px #cad9ea solid;
 	empty-cells:show;
 	width:100%;
-	line-height:30px;
+	line-height:32px;
 }
 .select
 {
