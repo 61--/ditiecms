@@ -85,8 +85,8 @@
                             文章分页:
                         </td>
                         <td class="main_bright split">
-                            <input type="radio" id="rdo_Autopage" value="自动分页" /><label for="chk_IsRemoteUrl">自动分页，每页字数:</label><input type="text" id="txt_AutopageNum" value="5000" class="textbox" style="width:60px;" runat="server" />
-                            <input type="radio" id="Radio1" value="手动分页" /><label for="chk_IsRemoteUrl">手动分页</label>
+                            <input type="radio" id="rdo_Autopage" value="自动分页" /><label for="rdo_Autopage">自动分页，每页字数:</label><input type="text" id="txt_AutopageNum" value="5000" class="textbox" style="width:60px;" runat="server" />
+                            <input type="radio" id="rdo_Manualpage" value="手动分页" /><label for="rdo_Manualpage">手动分页</label>
                         </td>
                     </tr>
                     <tr>
