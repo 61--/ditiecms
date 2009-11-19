@@ -122,13 +122,31 @@ namespace DTCMS.Web.admin.news {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtEditor;
         
         /// <summary>
-        /// file_ImageUrl 控件。
+        /// txt_ImageUrl 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile file_ImageUrl;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_ImageUrl;
+        
+        /// <summary>
+        /// chk_IsRemoteUrl 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_IsRemoteUrl;
+        
+        /// <summary>
+        /// txt_AutopageNum 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_AutopageNum;
         
         /// <summary>
         /// txt_Content 控件。
@@ -221,30 +239,48 @@ namespace DTCMS.Web.admin.news {
         protected global::System.Web.UI.HtmlControls.HtmlInputText Text5;
         
         /// <summary>
-        /// chk_ISHtml 控件。
+        /// chk_IsHtml 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_ISHtml;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_IsHtml;
         
         /// <summary>
-        /// chk_ISComment 控件。
+        /// chk_IsComment 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_ISComment;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_IsComment;
         
         /// <summary>
-        /// chk_ISChecked 控件。
+        /// chk_IsChecked 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_ISChecked;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_IsChecked;
+        
+        /// <summary>
+        /// btn_Submit 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit btn_Submit;
+        
+        /// <summary>
+        /// btn_Cancel 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton btn_Cancel;
     }
 }
