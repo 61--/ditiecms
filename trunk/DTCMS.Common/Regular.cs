@@ -30,13 +30,5 @@ namespace DTCMS.Common
         {
             return ValidateReg(regValue,regNum); 
         }
-
-        /// <summary>
-        /// URL验证
-        /// </summary>
-        public static string URL
-        {
-            get { return @"([\w-]+\.)+[\w-]+.([^a-z])(/[\w- ./?%&=]*)?|[a-zA-Z0-9\-\.][\w-]+.([^a-z])(/[\w- ./?%&=]*)? "; }
-        }
     }
 }
