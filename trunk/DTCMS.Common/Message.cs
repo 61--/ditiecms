@@ -51,6 +51,11 @@ namespace DTCMS.Common
             Dialog("DTCMS提示信息", message, url, icon, 3);
         }
 
+        public static void Dialog(string message, string url, MessageIcon icon, int time)
+        {
+            Dialog("DTCMS提示信息", message, url, icon, time);
+        }
+
         /// <summary>
         /// 页面提示信息方法
         /// </summary>
