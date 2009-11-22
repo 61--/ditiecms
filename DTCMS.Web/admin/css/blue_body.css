@@ -146,7 +146,10 @@ textarea {
 	line-height: 28px;
 	height: 28px;
 	font-weight: bold;
-	border-left:1px #D0D0D0 solid;
+	background:url(../images/blue/th_split.gif) left bottom no-repeat;
+}
+.table_data th.left{
+	background:none;
 }
 .table_data tbody td {
 	border-top: 1px solid #DDD;
