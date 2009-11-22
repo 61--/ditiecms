@@ -11,6 +11,7 @@ using System.Web.UI.WebControls.WebParts;
 using DTCMS.Entity;
 using DTCMS.BLL;
 using DTCMS.Common;
+
 namespace DTCMS.Web.admin.news
 {
     public partial class Class_add : System.Web.UI.Page
@@ -38,11 +39,11 @@ namespace DTCMS.Web.admin.news
 
                 if (n > 0)
                 {
-                    Message.Dialog("更新栏目成功！", "Class.aspx", MessageIcon.Success);
+                    Message.Dialog("更新栏目成功！", "Class_list.aspx", MessageIcon.Success, 0);
                 }
                 else
                 {
-                    Message.Dialog("更新栏目失败！请检查数据是否完整。", null, MessageIcon.Error);
+                    Message.Dialog("更新栏目失败！请检查数据是否完整。", null, MessageIcon.Error, 0);
                 }
             }
             else
@@ -51,11 +52,11 @@ namespace DTCMS.Web.admin.news
 
                 if (n > 0)
                 {
-                    Message.Dialog("添加栏目成功！", "Class.aspx", MessageIcon.Success);
+                    Message.Dialog("添加栏目成功！", "Class_list.aspx", MessageIcon.Success, 0);
                 }
                 else
                 {
-                    Message.Dialog("添加栏目失败！请检查数据是否完整。", null, MessageIcon.Error);
+                    Message.Dialog("添加栏目失败！请检查数据是否完整。", null, MessageIcon.Error, 0);
                 }
             }
         }
@@ -193,7 +194,7 @@ namespace DTCMS.Web.admin.news
             switch (attribute)
             {
                 case 1:
-                    rdo_Index.Checked=true;
+                    rdo_Index.Checked = true;
                     break;
                 case 2: rdo_List.Checked = true;
                     break;
