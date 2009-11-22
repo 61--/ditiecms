@@ -109,6 +109,13 @@
     <Compile Include="admin\news\Class_list.aspx.designer.cs">
       <DependentUpon>Class_list.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\news\News_list.aspx.cs">
+      <DependentUpon>News_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\news\News_list.aspx.designer.cs">
+      <DependentUpon>News_list.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -175,6 +182,7 @@
     <Content Include="admin\images\blue\botton_s.gif" />
     <Content Include="admin\images\blue\help.gif" />
     <Content Include="admin\images\blue\s.gif" />
+    <Content Include="admin\images\blue\th_bg.gif" />
     <Content Include="admin\js\common.js" />
     <Content Include="admin\component\message\demo.html" />
     <Content Include="admin\component\message\skin\qq\images\ask.gif" />
@@ -196,6 +204,7 @@
     <Content Include="admin\component\message\ymPrompt.js" />
     <Content Include="admin\js\lhgcore.js" />
     <Content Include="admin\news\Class_list.aspx" />
+    <Content Include="admin\news\News_list.aspx" />
     <Content Include="admin\Test.aspx" />
     <Content Include="admin\images\login_input_bg.gif" />
     <Content Include="admin\images\login_input_hr.gif" />

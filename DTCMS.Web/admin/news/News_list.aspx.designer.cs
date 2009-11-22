@@ -11,7 +11,7 @@
 namespace DTCMS.Web.admin.news {
     
     
-    public partial class Class_list {
+    public partial class News_list {
         
         /// <summary>
         /// form1 控件。
