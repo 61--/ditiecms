@@ -205,6 +205,7 @@
     <Content Include="admin\js\lhgcore.js" />
     <Content Include="admin\news\Class_list.aspx" />
     <Content Include="admin\news\News_list.aspx" />
+    <Content Include="admin\news\News_list.html" />
     <Content Include="admin\Test.aspx" />
     <Content Include="admin\images\login_input_bg.gif" />
     <Content Include="admin\images\login_input_hr.gif" />
