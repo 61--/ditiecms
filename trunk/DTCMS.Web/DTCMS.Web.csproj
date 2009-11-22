@@ -102,6 +102,13 @@
     <Compile Include="admin\App_Code\AdminPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="admin\news\Class_list.aspx.cs">
+      <DependentUpon>Class_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\news\Class_list.aspx.designer.cs">
+      <DependentUpon>Class_list.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -188,6 +195,7 @@
     <Content Include="admin\component\message\skin\qq\ymPrompt.css" />
     <Content Include="admin\component\message\ymPrompt.js" />
     <Content Include="admin\js\lhgcore.js" />
+    <Content Include="admin\news\Class_list.aspx" />
     <Content Include="admin\Test.aspx" />
     <Content Include="admin\images\login_input_bg.gif" />
     <Content Include="admin\images\login_input_hr.gif" />

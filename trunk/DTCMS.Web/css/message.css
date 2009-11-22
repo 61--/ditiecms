@@ -25,17 +25,17 @@ ul{
 	width:28px;
 	height:17px;
 	position:absolute;
-	background:url(../images/common/dialog_close.gif) no-repeat;
+	background:url(/images/common/dialog_close.gif) no-repeat;
 }
 #container a.close:hover{
-	background:url(../images/common/dialog_close_h.gif) no-repeat;	
+	background:url(/images/common/dialog_close_h.gif) no-repeat;	
 }
 #header{
 	width:500px;
 	height:33px;
-	background-image:url(../images/common/dialog_tl.png) !important;
+	background-image:url(/images/common/dialog_tl.png) !important;
 	_background: none;
- 	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_tl.png', sizingMethod='crop');
+ 	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/common/dialog_tl.png', sizingMethod='crop');
 }
 #header .header_r{
 	width:13px;
@@ -43,25 +43,25 @@ ul{
 	top:0px;
 	right:0px;
 	position:absolute;
-	background:url(../images/common/dialog_tr.png) no-repeat #FFF !important;
+	background:url(/images/common/dialog_tr.png) no-repeat #FFF !important;
 	_background:#FFF;
- 	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_tr.png', sizingMethod='crop');
+ 	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/common/dialog_tr.png', sizingMethod='crop');
 }
 #header h1{
 	color:#FFF;
 	font-size:12px;
 	padding-top:13px;
 	text-indent:35px;
-	background:url(../images/common/icon_dialog.gif) 18px 15px no-repeat;
+	background:url(/images/common/icon_dialog.gif) 18px 15px no-repeat;
 }
 #content{
 	width:100%;
 }
 #content .content_l{
 	width:13px;
-	background:url(../images/common/dialog_ml.png) no-repeat !important;
+	background:url(/images/common/dialog_ml.png) no-repeat !important;
 	_background: none;
- 	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_ml.png', sizingMethod='crop');
+ 	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/common/dialog_ml.png', sizingMethod='crop');
 
 }
 #content .content_c{
@@ -69,9 +69,9 @@ ul{
 }
 #content .content_r{
 	width:13px;
-	background:url(../images/common/dialog_mr.png) no-repeat !important;
+	background:url(/images/common/dialog_mr.png) no-repeat !important;
 	_background: none;
- 	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_mr.png', sizingMethod='crop');
+ 	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/common/dialog_mr.png', sizingMethod='crop');
 }
 #message_icon{
 	width:100px;
@@ -101,9 +101,9 @@ ul{
 #bottom{
 	height:13px;
 	position:relative;
-	background:url(../images/common/dialog_bl.png) no-repeat !important;
+	background:url(/images/common/dialog_bl.png) no-repeat !important;
 	_background: none;
- 	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_bl.png', sizingMethod='crop');
+ 	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/common/dialog_bl.png', sizingMethod='crop');
 
 }
 #bottom .bottom_r{
@@ -112,25 +112,25 @@ ul{
 	position:absolute;
 	top:0px;
 	right:0px;
-	background:url(../images/common/dialog_br.png) no-repeat #FFF !important;
+	background:url(/images/common/dialog_br.png) no-repeat #FFF !important;
 	_background:#FFF;
- 	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/common/dialog_br.png', sizingMethod='crop');
+ 	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/common/dialog_br.png', sizingMethod='crop');
 }
 .Success{
-	background:url(../images/common/ico_Success.gif) 16px 16px no-repeat;
+	background:url(/images/common/ico_Success.gif) 16px 16px no-repeat;
 }
 .Error{
-	background:url(../images/common/ico_Error.gif) 16px 16px no-repeat;
+	background:url(/images/common/ico_Error.gif) 16px 16px no-repeat;
 }
 .Warning{
-	background:url(../images/common/ico_Warning.gif) 16px 16px no-repeat;
+	background:url(/images/common/ico_Warning.gif) 16px 16px no-repeat;
 }
 .Stop{
-	background:url(../images/common/ico_Stop.gif) 16px 16px no-repeat;
+	background:url(/images/common/ico_Stop.gif) 16px 16px no-repeat;
 }
 .Question{
-	background:url(../images/common/ico_Question.gif) 16px 16px no-repeat;
+	background:url(/images/common/ico_Question.gif) 16px 16px no-repeat;
 }
 .Information{
-	background:url(../images/common/ico_Information.gif) 16px 16px no-repeat;
+	background:url(/images/common/ico_Information.gif) 16px 16px no-repeat;
 }
