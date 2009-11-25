@@ -17,6 +17,9 @@ a {
 	color: #555;
 	text-decoration: none;
 }
+ul li{
+	list-style:none;
+}
 .textbox {
 	background: url(../images/blue/login_input_bg.gif) no-repeat left top #F7FAFC;
 	border-top: 1px solid #778899;
