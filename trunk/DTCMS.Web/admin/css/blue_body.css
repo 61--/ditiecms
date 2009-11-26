@@ -6,7 +6,7 @@ body {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	height: 100%;
-	color: #555;
+	color: #333;
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
@@ -14,7 +14,7 @@ img {
 	border: 0px;
 }
 a {
-	color: #555;
+	color: #333;
 	text-decoration: none;
 }
 ul li{
@@ -138,35 +138,39 @@ textarea {
 .table_data {
 	width: 100%;
 	font-size: 12px;
-	border:1px #C6C6C6 solid;
+	border:1px #CAD9EA solid;
 	text-align: center;
-	border-collapse: collapse; /*细线表格*/
+	border-collapse: collapse; 
 }
 .table_data thead {
-	background:url(../images/blue/th_bg.gif) left bottom repeat-x;
 }
 .table_data th {
 	line-height: 28px;
 	height: 28px;
 	font-weight: bold;
-	background:url(../images/blue/th_split.gif) left bottom no-repeat;
+	background:url(../images/blue/th_bg.gif) right bottom no-repeat;
 }
-.table_data th.left{
-	background:none;
+.table_data th.bleft
+{
+	background-position:left bottom;
+}
+.table_data tbody td.tleft{
+	text-indent:10px;
+	text-align:left;
 }
 .table_data tbody td {
-	border-top: 1px solid #DDD;
-	border-bottom: 1px solid #DDD;
+	border-top: 1px solid #D3E0ED;
+	border-bottom: 1px solid #D3E0ED;
 	height: 25px;
 }
 .table_data tr.t1 td {
-	background-color: #fff;
+	background-color: #FFF;
 }
 .table_data tr.t2 td {
-	background-color: #EFF3FB;
+	background-color: #F6FBFE;
 }
 .table_data tr.t3 td {
-	background-color: #D0DFF0;
+	background-color: #E0F0FD;
 }
 .table_data tfoot tr td {
 	background: #fff;
