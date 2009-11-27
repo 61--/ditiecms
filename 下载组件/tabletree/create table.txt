@@ -1,0 +1,37 @@
+create table tabletree
+(
+node_id int identity not null,
+parent_id int,
+node_text varchar(32),
+has_child varchar(1)
+)
+
+go
+
+insert into tabletree
+(parent_id,node_text,has_child)
+values
+(0,'1级子节点1','1')
+
+go
+
+insert into tabletree
+(parent_id,node_text,has_child)
+values
+(1,'2级子节点1','1')
+
+go
+
+insert into tabletree
+(parent_id,node_text,has_child)
+values
+(2,'3级子节点1','0')
+
+go
+
+insert into tabletree
+(parent_id,node_text,has_child)
+values
+(0,'1子节点2','0')
+
+go
