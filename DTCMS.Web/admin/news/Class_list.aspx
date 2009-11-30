@@ -5,18 +5,83 @@
 <head runat="server">
     <title>栏目列表</title>
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../js/J.min2.js"></script>
+    <script type="text/javascript" src="../component/treetable/TableTree4J.js"></script>
+    <script type="text/javascript">
+        J(document).ready(function(){
+           LoadData();
+        });
+        function LoadData(){
+            J.ajax({
+                url:"/admin/ajax/class_ajax.aspx",
+                type:"get",              
+                data:"action=load&page=1",
+                fn:function(json){ 
+                    
+                    var data=eval("data="+json);debugger;
+                    showGridTree(data);  
+                }
+            });
+        }
+        var gridTree;	
+	    function showGridTree(json){
+	     
+		    gridTree=new TableTree4J("gridTree","../");	
+		    showExampleSetting(gridTree,"Grid");
+		    gridTree.tableDesc="<table class=\"table_data\">";	
+		    var headerDataList=new Array("选择","编号","栏目名称","创建时间","所属类型","排序");
+		    var widthList=new Array("5%","10%","35%","20%","20%","10%");
+		    //参数: arrayHeader,id,headerWidthList,booleanOpen,classStyle,hrefTip,hrefStatusText,icon,iconOpen
+		    gridTree.setHeader(headerDataList,-1,widthList,true,"GridHead","This is a tipTitle of head href!","header status text","","");				
+
+		    //设置列样式
+		    gridTree.gridHeaderColStyleArray=new Array("","","","centerClo");
+		    gridTree.gridDataCloStyleArray=new Array("","","","centerClo");	
+    	  
+	       J.each(json,function(i,n){
+	           var dataList=new Array("",i,n.classname,n.classtype,n.adddate,n.orderid);
+	           gridTree.addGirdNode(dataList,n.cid,n.parentid==0?-1:n.parentid,null,n.orderid);
+	       });
+	       gridTree.printTableTreeToElement("content");		
+    	
+	    }
+	
+        
+    </script>
+    
 </head>
 <body>
-    <form id="form1" runat="server">
     <div id="container">
-        <div id="tab_menu" class="tabs">
-            <ul>
-                <li class="tab_on"><a href="javascript:;">栏目列表</a></li>
-            </ul>
-        </div>
-        <div id="content">
-        </div>
-    </div>
-    </form>
+		<div id="tab_menu" class="tabs">
+			<ul>
+				<li class="tab_on"><a href="javascript:;">栏目管理</a></li>
+			</ul>
+		</div>
+		<div id="content">
+			
+	
+		</div>
+	</div>
 </body>
 </html>
+		<script type="text/javascript">
+
+                var Ptr = document.getElementById("tab").getElementsByTagName("tr");
+                function $() {
+                    for (i = 1; i < Ptr.length + 1; i++) {
+                        Ptr[i - 1].className = (i % 2 > 0) ? "t1" : "t2";
+                    }
+                }
+                window.onload = $;
+                for (var i = 0; i < Ptr.length; i++) {
+                    Ptr[i].onmouseover = function() {
+                        this.tmpClass = this.className;
+                        this.className = "t3";
+
+                    };
+                    Ptr[i].onmouseout = function() {
+                        this.className = this.tmpClass;
+                    };
+                }
+
+            </script>
