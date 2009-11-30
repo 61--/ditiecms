@@ -46,6 +46,13 @@ namespace DTCMS.IDAL
         /// <param name="ParentID"></param>
         /// <returns></returns>
         string GetParentName(int ParentID);
+
+        /// <summary>
+        /// 获取栏目数据
+        /// </summary>
+        /// <param name="Fileds">要查询的字段</param>
+        /// <returns></returns>
+        DataTable  GetDataTable(string Fileds);
 		#endregion  成员方法
 	}
 }
