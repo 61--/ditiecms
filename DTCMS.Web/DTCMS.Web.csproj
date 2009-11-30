@@ -537,6 +537,7 @@
     <Content Include="js\J.dialog.js" />
     <Content Include="js\J.min.js" />
     <Content Include="js\J.menu.js" />
+    <Content Include="js\J.min2.js" />
     <Content Include="js\J.validate.js" />
     <Content Include="ValidateCode.ashx" />
     <None Include="admin\images\blue\admin_tlogo.psd" />
