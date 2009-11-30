@@ -379,5 +379,80 @@ namespace DTCMS.Common
         }
 
         #endregion
+
+        #region DataTable转Json
+        /// <summary>
+        /// 将数据表转换成JSON类型串
+        /// </summary>
+        /// <param name="dt">要转换的数据表</param>
+        /// <param name="dispose">数据表转换结束后是否dispose掉</param>
+        /// <returns></returns>
+        public static StringBuilder DataTableToJson(System.Data.DataTable dt)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append("[\r\n");
+
+            //数据表字段名和类型数组
+            string[] dt_field = new string[dt.Columns.Count];
+            int i = 0;
+            string formatStr = "{{";
+            string fieldtype = "";
+            foreach (System.Data.DataColumn dc in dt.Columns)
+            {
+                dt_field[i] = dc.Caption.ToLower().Trim();
+                formatStr += "'" + dc.Caption.ToLower().Trim() + "':";
+                fieldtype = dc.DataType.ToString().Trim().ToLower();
+                if (fieldtype.IndexOf("int") > 0 || fieldtype.IndexOf("deci") > 0 ||
+                    fieldtype.IndexOf("floa") > 0 || fieldtype.IndexOf("doub") > 0 ||
+                    fieldtype.IndexOf("bool") > 0)
+                {
+                    formatStr += "{" + i + "}";
+                }
+                else
+                {
+                    formatStr += "'{" + i + "}'";
+                }
+                formatStr += ",";
+                i++;
+            }
+
+            if (formatStr.EndsWith(","))
+                formatStr = formatStr.Substring(0, formatStr.Length - 1);//去掉尾部","号
+
+            formatStr += "}},";
+
+            i = 0;
+            object[] objectArray = new object[dt_field.Length];
+            foreach (System.Data.DataRow dr in dt.Rows)
+            {
+
+                foreach (string fieldname in dt_field)
+                {   //对 \ , ' 符号进行转换 
+                    objectArray[i] = dr[dt_field[i]].ToString().Trim().Replace("\\", "\\\\").Replace("'", "\\'");
+                    switch (objectArray[i].ToString())
+                    {
+                        case "True":
+                            {
+                                objectArray[i] = "true"; break;
+                            }
+                        case "False":
+                            {
+                                objectArray[i] = "false"; break;
+                            }
+                        default: break;
+                    }
+                    i++;
+                }
+                i = 0;
+                stringBuilder.Append(string.Format(formatStr, objectArray));
+            }
+            if (stringBuilder.ToString().EndsWith(","))
+                stringBuilder.Remove(stringBuilder.Length - 1, 1);//去掉尾部","号
+
+            dt.Dispose();
+
+            return stringBuilder.Append("\r\n];");
+        }
+        #endregion
     }
 }
