@@ -8,8 +8,8 @@
 <link href="css/blue_top.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 function $Nav(){
-	if(window.navigator.userAgent.indexOf("MSIE")>=1) return 'IE';
-  else if(window.navigator.userAgent.indexOf("Firefox")>=1) return 'FF';
+	if(window.navigator.userAgent.indexOf("MSIE")>0) return 'IE';
+  else if(window.navigator.userAgent.indexOf("Firefox")>0) return 'FF';
   else return "OT";
 }
 
