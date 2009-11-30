@@ -361,6 +361,18 @@ namespace DTCMS.SqlServerDAL
                 return "";
             }
         }
+        /// <summary>
+        /// 根据查询字段查询栏目数据
+        /// </summary>
+        /// <param name="Fileds">要查询的字段</param>
+        /// <returns>DataTable数据集合</returns>
+        public DataTable GetDataTable(string Fileds)
+        {
+           string strSql = string.Format("SELECT {0} FROM DT_ARC_CLASS ",Fileds);
+           DataTable dt= SqlHelper.ExecuteDataSet(strSql).Tables[0];
+           return dt;
+
+        }
         #endregion
     }
 }
