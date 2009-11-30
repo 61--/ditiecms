@@ -84,7 +84,7 @@ function resetBT(){
 		    <ul>
 			    <li class="navleft"></li>
 			    <li id='d1' style="margin-left:-1px"><a href="javascript:OpenMenu(1,'','news/Class_list.aspx',1)">频道管理</a></li>
-			    <li id='d2'><a href="javascript:OpenMenu(2,'','news/News_list.aspx',2)">内容管理</a></li>
+			    <li id='d2'><a href="javascript:OpenMenu(2,'','news/News_add.aspx',2)">内容管理</a></li>
 			    <li id='d3'><a href="javascript:OpenMenu(3,'','news/news_list.html',3)">生成管理</a></li>
 			    <li id='d4'><a href="javascript:OpenMenu(4,'','main_index.aspx',4)">采集管理</a></li>
                 <li id='d5'><a href="javascript:OpenMenu(5,'','main_index.aspx',5)">用户管理</a></li>
