@@ -5,7 +5,8 @@
 <head runat="server">
     <title>栏目列表</title>
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="../../js/J.min2.js"></script>
+    <link href="../component/treetable/css/tabletree4j.css" type="text/css" />
+    <script type="text/javascript" src="/js/J.min2.js"></script>
     <script type="text/javascript" src="../component/treetable/TableTree4J.js"></script>
     <script type="text/javascript">
         J(document).ready(function(){
@@ -17,20 +18,22 @@
                 type:"get",              
                 data:"action=load&page=1",
                 fn:function(json){ 
-                    
-                    var data=eval("data="+json);debugger;
+                    //debugger;
+                    var data=eval("data="+json);
                     showGridTree(data);  
                 }
             });
         }
         var gridTree;	
 	    function showGridTree(json){
-	     
-		    gridTree=new TableTree4J("gridTree","../");	
-		    showExampleSetting(gridTree,"Grid");
-		    gridTree.tableDesc="<table class=\"table_data\">";	
-		    var headerDataList=new Array("选择","编号","栏目名称","创建时间","所属类型","排序");
-		    var widthList=new Array("5%","10%","35%","20%","20%","10%");
+	   // alert("ss");
+	        debugger;
+		    gridTree=new TableTree4J("gridTree","../component/treetable/");	
+		    gridTree.config.useIcon=true;
+		    //showExampleSetting(gridTree,"Grid");
+		    gridTree.tableDesc="<table class=\"table_data0\">";	
+		    var headerDataList=new Array("栏目名称","创建时间","所属类型","排序");
+		    var widthList=new Array("50%","20%","20%","10%");
 		    //参数: arrayHeader,id,headerWidthList,booleanOpen,classStyle,hrefTip,hrefStatusText,icon,iconOpen
 		    gridTree.setHeader(headerDataList,-1,widthList,true,"GridHead","This is a tipTitle of head href!","header status text","","");				
 
@@ -39,7 +42,8 @@
 		    gridTree.gridDataCloStyleArray=new Array("","","","centerClo");	
     	  
 	       J.each(json,function(i,n){
-	           var dataList=new Array("",i,n.classname,n.classtype,n.adddate,n.orderid);
+	   
+	           var dataList=new Array(n.classname,n.classtype,n.adddate,n.orderid);
 	           gridTree.addGirdNode(dataList,n.cid,n.parentid==0?-1:n.parentid,null,n.orderid);
 	       });
 	       gridTree.printTableTreeToElement("content");		
@@ -64,7 +68,7 @@
 	</div>
 </body>
 </html>
-		<script type="text/javascript">
+		<%--<script type="text/javascript">
 
                 var Ptr = document.getElementById("tab").getElementsByTagName("tr");
                 function $() {
@@ -84,4 +88,4 @@
                     };
                 }
 
-            </script>
+            </script>--%>
