@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
+using DTCMS.Common;
 using DTCMS.DALFactory;
 using DTCMS.IDAL;
 using DTCMS.Entity;
@@ -87,6 +89,15 @@ namespace DTCMS.BLL
         public string GetParentName(int ParentID)
         {
             return dalArcClass.GetParentName(ParentID);
+        }
+        public string  GetDataTableJoson()
+        {
+            DataTable dt= dalArcClass.GetDataTable("CID,ClassName,ClassType,AddDate,OrderID,ParentID");
+            if (dt != null)
+            {
+              return  Utils.DataTableToJson(dt).ToString();
+            }
+            return "";
         }
     }
 }
