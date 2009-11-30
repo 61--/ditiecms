@@ -144,7 +144,7 @@ textarea {
 }
 .table_data thead {
 }
-.table_data th {
+.table_data thead th {
 	line-height: 28px;
 	height: 28px;
 	font-weight: bold;
@@ -158,10 +158,10 @@ textarea {
 	text-indent:10px;
 	text-align:left;
 }
-.table_data tbody td {
+.table_data tbody td ,.table_data tbody th{
 	border-top: 1px solid #D3E0ED;
 	border-bottom: 1px solid #D3E0ED;
-	height: 25px;
+	height: 26px;
 }
 .table_data tr.t1 td {
 	background-color: #FFF;
