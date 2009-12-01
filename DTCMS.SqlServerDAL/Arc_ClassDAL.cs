@@ -12,6 +12,7 @@ namespace DTCMS.SqlServerDAL
     public class Arc_ClassDAL:IDAL_Arc_Class
     {
         #region IDAL_Arc_Class 成员
+
         /// <summary>
         /// 判断某个字段值是否存在
         /// </summary>
@@ -32,6 +33,7 @@ namespace DTCMS.SqlServerDAL
                 return SqlHelper.ExecuteNonQuery(string.Format(strSql,CID)) > 0;
             }
         }
+
         /// <summary>
         /// 添加栏目
         /// </summary>
@@ -107,6 +109,7 @@ namespace DTCMS.SqlServerDAL
 
             return SqlHelper.ExecuteNonQuery(strSql.ToString(), parameters);
         }
+
         /// <summary>
         /// 更新栏目
         /// </summary>
@@ -211,6 +214,7 @@ namespace DTCMS.SqlServerDAL
             return SqlHelper.ExecuteNonQuery(strSql.ToString(), parameters);
 		
         }
+
         /// <summary>
         /// 删除数据
         /// </summary>
@@ -228,6 +232,7 @@ namespace DTCMS.SqlServerDAL
             return SqlHelper.ExecuteNonQuery(strSql.ToString(), parameters);
 		
         }
+
         /// <summary>
         /// 得到一条数据
         /// </summary>
@@ -325,6 +330,7 @@ namespace DTCMS.SqlServerDAL
                 return null;
             }
         }
+
         /// <summary>
         /// 获取栏目关系
         /// </summary>
@@ -343,6 +349,7 @@ namespace DTCMS.SqlServerDAL
                 return "";
             }
         }
+
         /// <summary>
         /// 获取符栏目名称
         /// </summary>
@@ -361,6 +368,7 @@ namespace DTCMS.SqlServerDAL
                 return "";
             }
         }
+
         /// <summary>
         /// 根据查询字段查询栏目数据
         /// </summary>
