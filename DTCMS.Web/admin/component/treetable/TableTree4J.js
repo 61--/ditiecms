@@ -1,37 +1,3 @@
-/*--------------------------------------------------|
-
-| TableTree4j 1.1 Release                           |
-
-| IE Mozilla  Opera  FireFox  Netscape  Safari      |
-
-| www.xcode-studio.cn                               |
-
-|---------------------------------------------------|
-
-| authod : Lanner.K       YuBiao Ke                 |
-
-| QQ:214392346  E-Mail:lannerk@qq.com               |
-
-| http://www.xcode-studio.cn                        |
-
-|---------------------------------------------------|
-
-| Copyright (c) 2007-2008 xcode-studio              |
-
-| This script can be used freely as long as all     |
-
-| copyright messages are intact.                    |
-
-| Create Date: 2008.5.7                             |
-
-| Updated: 2008.5.17                                |
-
-|--------------------------------------------------*/
-
-
-
-
-//TableTree4J Object
 function TableTree4J(objectName,tableTree4JDir){
 	//vars-------------------------------------------------------------------	
     this.tableTree4JDir=tableTree4JDir;	
