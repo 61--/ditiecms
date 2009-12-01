@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7DBA0670-7419-4E7A-BCB7-92A8C7151733}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -169,7 +169,32 @@
     <Compile Include="Utils\WebTools.cs" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< .mine
     <Content Include="admin\ajax\class_ajax.aspx" />
+    <Content Include="admin\component\treetable\css\tabletree4j.css" />
+    <Content Include="admin\component\treetable\img\base.gif" />
+    <Content Include="admin\component\treetable\img\cd.gif" />
+    <Content Include="admin\component\treetable\img\empty.gif" />
+    <Content Include="admin\component\treetable\img\folder.gif" />
+    <Content Include="admin\component\treetable\img\folderopen.gif" />
+    <Content Include="admin\component\treetable\img\globe.gif" />
+    <Content Include="admin\component\treetable\img\imgfolder.gif" />
+    <Content Include="admin\component\treetable\img\join.gif" />
+    <Content Include="admin\component\treetable\img\joinbottom.gif" />
+    <Content Include="admin\component\treetable\img\line.gif" />
+    <Content Include="admin\component\treetable\img\minus.gif" />
+    <Content Include="admin\component\treetable\img\minusbottom.gif" />
+    <Content Include="admin\component\treetable\img\musicfolder.gif" />
+    <Content Include="admin\component\treetable\img\nolines_minus.gif" />
+    <Content Include="admin\component\treetable\img\nolines_plus.gif" />
+    <Content Include="admin\component\treetable\img\page.gif" />
+    <Content Include="admin\component\treetable\img\plus.gif" />
+    <Content Include="admin\component\treetable\img\plusbottom.gif" />
+    <Content Include="admin\component\treetable\img\question.gif" />
+    <Content Include="admin\component\treetable\img\trash.gif" />
+=======
+    <Content Include="admin\ajax\class_ajax.aspx" />
+>>>>>>> .r292
     <Content Include="admin\css\login.css" />
     <Content Include="admin\component\DTTree\base.gif" />
     <Content Include="admin\component\DTTree\dtree.css" />
@@ -210,7 +235,7 @@
     <Content Include="admin\component\message\skin\qq\images\win_rb.gif" />
     <Content Include="admin\component\message\skin\qq\ymPrompt.css" />
     <Content Include="admin\component\message\ymPrompt.js" />
-    <Content Include="admin\js\lhgcore.js" />
+    <Content Include="admin\component\treetable\TableTree4J.js" />
     <Content Include="admin\news\Class_list.aspx" />
     <Content Include="admin\news\News_list.aspx" />
     <Content Include="admin\news\News_list.html" />
@@ -607,13 +632,10 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>13509</DevelopmentServerPort>
+          <DevelopmentServerPort>1273</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/DTCMS_Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
