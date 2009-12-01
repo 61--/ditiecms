@@ -169,6 +169,7 @@
     <Compile Include="Utils\WebTools.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\ajax\class_ajax.aspx" />
     <Content Include="admin\component\treetable\css\tabletree4j.css" />
     <Content Include="admin\component\treetable\img\base.gif" />
     <Content Include="admin\component\treetable\img\cd.gif" />
