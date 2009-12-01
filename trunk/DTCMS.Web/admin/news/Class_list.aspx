@@ -9,14 +9,15 @@
     <script type="text/javascript" src="/js/J.min2.js"></script>
     <script type="text/javascript" src="../component/treetable/TableTree4J.js"></script>
     <script type="text/javascript">
+
         J(document).ready(function(){
            LoadData();
         });
         function LoadData(){
             J.ajax({
-                url:"/admin/ajax/class_ajax.aspx",
+                url:"/admin/ajax/class_list.aspx",
                 type:"get",              
-                data:"action=load&page=1",
+                data:"action=load",
                 fn:function(json){ 
                     //debugger;
                     var data=eval("data="+json);
@@ -26,12 +27,10 @@
         }
         var gridTree;	
 	    function showGridTree(json){
-	   // alert("ss");
-	        debugger;
+
 		    gridTree=new TableTree4J("gridTree","../component/treetable/");	
 		    gridTree.config.useIcon=true;
-		    //showExampleSetting(gridTree,"Grid");
-		    gridTree.tableDesc="<table class=\"table_data0\">";	
+		    gridTree.tableDesc="<table class=\"table_data\">";	
 		    var headerDataList=new Array("栏目名称","创建时间","所属类型","排序");
 		    var widthList=new Array("50%","20%","20%","10%");
 		    //参数: arrayHeader,id,headerWidthList,booleanOpen,classStyle,hrefTip,hrefStatusText,icon,iconOpen
@@ -62,7 +61,7 @@
 			</ul>
 		</div>
 		<div id="content">
-			
+
 	
 		</div>
 	</div>
