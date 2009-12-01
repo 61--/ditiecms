@@ -11,7 +11,8 @@ namespace DTCMS.BLL
     public class Arc_ClassBLL : BaseBLL
     {
         IDAL_Arc_Class dalArcClass = DataAccess.CreateFactoryDAL<IDAL_Arc_Class>("Arc_ClassDAL");
-         /// <summary>
+
+        /// <summary>
         /// 判断某个字段值是否存在
         /// </summary>
         /// <param name="CID">栏目编号</param>
@@ -22,6 +23,7 @@ namespace DTCMS.BLL
         {
            return dalArcClass.Exists(CID, filedName, filedValue);
         }
+
         /// <summary>
         /// 添加栏目
         /// </summary>
@@ -31,7 +33,8 @@ namespace DTCMS.BLL
         {
             return dalArcClass.Add(model);
         }
-         /// <summary>
+
+        /// <summary>
         /// 更新栏目
         /// </summary>
         /// <param name="Entity">栏目实体对象</param>
@@ -40,7 +43,8 @@ namespace DTCMS.BLL
         {
             return dalArcClass.Update(model);
         }
-         /// <summary>
+
+        /// <summary>
         /// 删除数据
         /// </summary>
         /// <param name="CID">栏目编号</param>
@@ -49,6 +53,7 @@ namespace DTCMS.BLL
         {
             return dalArcClass.Delete(CID);
         }
+
         /// <summary>
         /// 得到一条数据
         /// </summary>
@@ -58,7 +63,8 @@ namespace DTCMS.BLL
         {
             return dalArcClass.GetModel(CID);
         }
-         /// <summary>
+
+        /// <summary>
         /// 获取栏目关系
         /// </summary>
         /// <param name="ParentID">父栏目ID</param>
@@ -67,6 +73,7 @@ namespace DTCMS.BLL
         {
             return dalArcClass.GetRelation(ParentID);
         }
+
         /// <summary>
         /// 获取栏目深度
         /// </summary>
@@ -81,7 +88,8 @@ namespace DTCMS.BLL
             }
             return iRelation.Split('.').Length + 1;
         }
-         /// <summary>
+
+        /// <summary>
         /// 获取符栏目名称
         /// </summary>
         /// <param name="ParentID">父栏目ID</param>
@@ -90,6 +98,7 @@ namespace DTCMS.BLL
         {
             return dalArcClass.GetParentName(ParentID);
         }
+
         public string  GetDataTableJoson()
         {
             DataTable dt= dalArcClass.GetDataTable("CID,ClassName,ClassType,AddDate,OrderID,ParentID");
