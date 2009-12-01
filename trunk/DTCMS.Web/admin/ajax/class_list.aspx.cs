@@ -13,7 +13,7 @@ using DTCMS.Common;
 using DTCMS.BLL;
 namespace DTCMS.Web.admin.ajax
 {
-    public partial class class_ajax : System.Web.UI.Page
+    public partial class class_list : System.Web.UI.Page
     {
         protected Arc_ClassBLL bllClass = new Arc_ClassBLL();
         protected void Page_Load(object sender, EventArgs e)
@@ -26,6 +26,7 @@ namespace DTCMS.Web.admin.ajax
             //        break;
 
             //}
+            
 
         }
         public string GetClassListJson()
