@@ -147,11 +147,7 @@ textarea {
 	line-height: 28px;
 	height: 28px;
 	font-weight: bold;
-<<<<<<< .mine
-	background:url(../images/blue/th_split.gif) left top no-repeat;
-=======
 	background:url(../images/blue/th_bg.gif) right bottom no-repeat;
->>>>>>> .r267
 }
 .table_data th.bleft
 {
