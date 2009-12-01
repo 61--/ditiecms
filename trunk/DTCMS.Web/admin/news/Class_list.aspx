@@ -70,10 +70,6 @@
         .GridHighLightRow td{
             background: #E0F0FD;
         }
-        .333
-        {
-            background: #ccc;
-        }
     </style>
 </head>
 <body>
