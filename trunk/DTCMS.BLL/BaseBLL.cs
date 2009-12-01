@@ -137,7 +137,7 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-        /// 清楚当前异常
+        /// 清除当前异常
         /// </summary>
         public void ClearError()
         {
