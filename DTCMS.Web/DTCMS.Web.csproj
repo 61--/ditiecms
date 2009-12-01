@@ -169,8 +169,6 @@
     <Compile Include="Utils\WebTools.cs" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< .mine
-    <Content Include="admin\ajax\class_ajax.aspx" />
     <Content Include="admin\component\treetable\css\tabletree4j.css" />
     <Content Include="admin\component\treetable\img\base.gif" />
     <Content Include="admin\component\treetable\img\cd.gif" />
@@ -192,9 +190,6 @@
     <Content Include="admin\component\treetable\img\plusbottom.gif" />
     <Content Include="admin\component\treetable\img\question.gif" />
     <Content Include="admin\component\treetable\img\trash.gif" />
-=======
-    <Content Include="admin\ajax\class_ajax.aspx" />
->>>>>>> .r292
     <Content Include="admin\css\login.css" />
     <Content Include="admin\component\DTTree\base.gif" />
     <Content Include="admin\component\DTTree\dtree.css" />
