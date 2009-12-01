@@ -99,6 +99,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\ajax\class_ajax.aspx.cs">
+      <DependentUpon>class_ajax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ajax\class_ajax.aspx.designer.cs">
+      <DependentUpon>class_ajax.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\App_Code\AdminPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -162,6 +169,7 @@
     <Compile Include="Utils\WebTools.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\ajax\class_ajax.aspx" />
     <Content Include="admin\css\login.css" />
     <Content Include="admin\component\DTTree\base.gif" />
     <Content Include="admin\component\DTTree\dtree.css" />
