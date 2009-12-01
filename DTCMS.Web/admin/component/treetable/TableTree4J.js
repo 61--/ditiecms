@@ -32,7 +32,7 @@ function TableTree4J(objectName,tableTree4JDir){
 		treeMode:"GRID",//"MENU"
 		treeStyle:"GRIDTREESTYLE",//"MENUTREESTYLE"
 		dafultTarget:null,
-		rootNodeBtn:true,
+		rootNodeBtn:false,
 		folderAutoUrl:false,
 		nodeHrefSelectBg:false,
 		hrefOnfouceLine:false,
@@ -40,9 +40,9 @@ function TableTree4J(objectName,tableTree4JDir){
 		showTipTitle:true,
 		showStatusText:true,
 		inOrder:true,
-		useCookies:false,
+		useCookies:true,
 		cookieTime:30*24*60*60*1000,
-		useIcon:false,
+		useIcon:true,
 		useLine:true,
 		booleanInitOpenAll:false,
 		booleanHighLightRow:true,
