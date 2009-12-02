@@ -9,18 +9,18 @@
     <script type="text/javascript" src="../component/treetable/TableTree4J.js"></script>
     <script type="text/javascript">
         J(document).ready(function() {
-            alert("d");
             LoadData();
         });
         function LoadData() {
             J.ajax({
                 url: "/admin/ajax/class_list.aspx",
-                type: "get",
-                data: "action=load&ran="+Math.random(),
+                type: "GET",
+                data: "action=load&ran=" + Math.random(),
                 fn: function(json) {
                     var data = eval("data=" + json);
                     showGridTree(data);
-                }
+                },
+                ret:"text"
             });
         }
         var gridTree;
@@ -35,7 +35,7 @@
             gridTree.gridHeaderColStyleArray = new Array("", "", "", "bleft");
             gridTree.gridDataCloStyleArray = new Array("", "", "", "");
             J.each(json, function(i, n) {
-                var dataList = new Array(n.classname, n.classtype, n.adddate, n.orderid);
+            var dataList = new Array("<a href='Class_add.aspx?Id="+n.cid+"'>" + n.classname + "</a>", n.classtype, n.adddate, n.orderid);
                 gridTree.addGirdNode(dataList, n.cid, n.parentid == 0 ? -1 : n.parentid, null, n.orderid);
             });
             gridTree.printTableTreeToElement("gridTreeDiv");

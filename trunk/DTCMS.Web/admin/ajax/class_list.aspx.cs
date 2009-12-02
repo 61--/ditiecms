@@ -22,7 +22,7 @@ namespace DTCMS.Web.admin.ajax
             //switch (action)
             //{ 
             //    case "load":
-            Response.Write(GetClassListJson());
+                     Response.Write(GetClassListJson());
             //        break;
 
             //}
