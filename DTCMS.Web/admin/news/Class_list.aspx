@@ -34,7 +34,7 @@
             //设置列样式
             gridTree.gridHeaderColStyleArray = new Array("", "", "", "bleft");
             gridTree.gridDataCloStyleArray = new Array("", "", "", "");
-            J.each(json, function(i, n) {
+            $.each(json, function(i, n) {
             var dataList = new Array("<a href='Class_add.aspx?Id="+n.cid+"'>" + n.classname + "</a>", n.classtype, n.adddate, n.orderid);
                 gridTree.addGirdNode(dataList, n.cid, n.parentid == 0 ? -1 : n.parentid, null, n.orderid);
             });
