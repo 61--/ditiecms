@@ -22,10 +22,10 @@ namespace DTCMS.SqlServerDAL
         /// <returns>成功返回true，失败返回false</returns>
         public bool Exists(int CID, string filedName, string filedValue)
         {
-            string strSql = "select count(1) from DT_Arc_Class where CID={0} ";
+            string strSql = "select count(CID) from DT_Arc_Class where CID!={0} ";
             if (filedName != "")
             {
-                strSql += "{1}='{2}'";
+                strSql += " and {1}='{2}'";
                 return SqlHelper.ExecuteNonQuery(string.Format(strSql, CID, filedName, filedValue)) > 0;
             }
             else

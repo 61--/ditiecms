@@ -10,10 +10,16 @@ namespace DTCMS.IDAL
 	public interface IDAL_Arc_Article
 	{
 		#region  成员方法
-		/// <summary>
-		/// 是否存在该记录
-		/// </summary>
-		bool Exists(int ID);
+	
+		 /// <summary>
+        /// 判断某个字段值是否存在
+        /// </summary>
+        /// <param name="CID">栏目编号</param>
+        /// <param name="filedName">字段名称</param>
+        /// <param name="filedValue">字段值</param>
+        /// <returns>成功返回true，失败返回false</returns>
+        bool Exists(int CID, string filedName, string filedValue);
+        
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
@@ -21,11 +27,11 @@ namespace DTCMS.IDAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-        void Update(Arc_Article model);
+        int Update(Arc_Article model);
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		void Delete(int ID);
+		int Delete(int ID);
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
