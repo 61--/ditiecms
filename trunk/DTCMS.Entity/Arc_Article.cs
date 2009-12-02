@@ -9,11 +9,14 @@ namespace DTCMS.Entity
         public Arc_Article()
 		{ }
         #region Entity
-        private int _id;
+
+		private int _id;
 		private int _classid;
+		private int? _viceclassid;
 		private string _title;
 		private string _shorttitle;
 		private string _titlestyle;
+		private int? _titleflag;
 		private string _tags;
 		private string _imgurl;
 		private string _author;
@@ -37,6 +40,7 @@ namespace DTCMS.Entity
 		private int? _ishtml;
 		private int? _ispaging;
 		private string _filepath;
+		private string _similararticle;
 		private DateTime _adddate;
 		private DateTime _pubdate;
 		private int? _orderid;
@@ -55,6 +59,14 @@ namespace DTCMS.Entity
 		{
 			set{ _classid=value;}
 			get{return _classid;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public int? ViceClassID
+		{
+			set{ _viceclassid=value;}
+			get{return _viceclassid;}
 		}
 		/// <summary>
 		/// 文章标题
@@ -79,6 +91,14 @@ namespace DTCMS.Entity
 		{
 			set{ _titlestyle=value;}
 			get{return _titlestyle;}
+		}
+		/// <summary>
+		/// 标题标签，如原创、转载
+		/// </summary>
+		public int? TitleFlag
+		{
+			set{ _titleflag=value;}
+			get{return _titleflag;}
 		}
 		/// <summary>
 		/// 文章TAG
@@ -265,6 +285,14 @@ namespace DTCMS.Entity
 			get{return _filepath;}
 		}
 		/// <summary>
+		/// 
+		/// </summary>
+		public string SimilarArticle
+		{
+			set{ _similararticle=value;}
+			get{return _similararticle;}
+		}
+		/// <summary>
 		/// 添加时间
 		/// </summary>
 		public DateTime AddDate
@@ -287,7 +315,7 @@ namespace DTCMS.Entity
 		{
 			set{ _orderid=value;}
 			get{return _orderid;}
-        }
+		}
         #endregion Entity
 
     }
