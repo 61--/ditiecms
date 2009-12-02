@@ -8,7 +8,7 @@
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="../component/treetable/TableTree4J.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(function() {
             LoadData();
         });
         function LoadData() {
@@ -16,11 +16,9 @@
                 url: "/admin/ajax/class_list.aspx",
                 type: "GET",
                 data: "action=load&ran=" + Math.random(),
-                fn: function(json) {
-                    var data = eval("data=" + json);
-                    showGridTree(data);
-                },
-                ret:"text"
+                success: function(json) {                 
+                    showGridTree(json);
+                }               
             });
         }
         var gridTree;
@@ -34,10 +32,13 @@
             //设置列样式
             gridTree.gridHeaderColStyleArray = new Array("", "", "", "bleft");
             gridTree.gridDataCloStyleArray = new Array("", "", "", "");
-            $.each(json, function(i, n) {
+            if(json!=""){
+            var data = eval("data=" + json);
+            $.each(data, function(i, n) {
             var dataList = new Array("<a href='Class_add.aspx?Id="+n.cid+"'>" + n.classname + "</a>", n.classtype, n.adddate, n.orderid);
                 gridTree.addGirdNode(dataList, n.cid, n.parentid == 0 ? -1 : n.parentid, null, n.orderid);
             });
+            }
             gridTree.printTableTreeToElement("gridTreeDiv");
         }
     </script>
