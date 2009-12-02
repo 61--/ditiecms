@@ -5,14 +5,14 @@
 <head runat="server">
     <title>栏目列表</title>
     <link href="../css/blue_body.css" type="text/css" rel="StyleSheet" />
-    <script type="text/javascript" src="/js/J.min2.js"></script>
+    <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="../component/treetable/TableTree4J.js"></script>
     <script type="text/javascript">
-        J(document).ready(function() {
+        $(document).ready(function() {
             LoadData();
         });
         function LoadData() {
-            J.ajax({
+            $.ajax({
                 url: "/admin/ajax/class_list.aspx",
                 type: "GET",
                 data: "action=load&ran=" + Math.random(),

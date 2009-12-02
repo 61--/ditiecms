@@ -560,11 +560,7 @@
     <Content Include="images\Jmin\info.png" />
     <Content Include="images\Jmin\time.gif" />
     <Content Include="images\Jmin\wait.gif" />
-    <Content Include="js\J.dialog.js" />
-    <Content Include="js\J.min.js" />
-    <Content Include="js\J.menu.js" />
-    <Content Include="js\J.min2.js" />
-    <Content Include="js\J.validate.js" />
+    <Content Include="js\jquery.js" />
     <Content Include="ValidateCode.ashx" />
     <None Include="admin\images\blue\admin_tlogo.psd" />
     <None Include="Editor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
