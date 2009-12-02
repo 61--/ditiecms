@@ -9,13 +9,14 @@
     <script type="text/javascript" src="../component/treetable/TableTree4J.js"></script>
     <script type="text/javascript">
         J(document).ready(function() {
+            alert("d");
             LoadData();
         });
         function LoadData() {
             J.ajax({
                 url: "/admin/ajax/class_list.aspx",
-                type: "post",
-                data: "action=load",
+                type: "get",
+                data: "action=load&ran="+Math.random(),
                 fn: function(json) {
                     var data = eval("data=" + json);
                     showGridTree(data);
