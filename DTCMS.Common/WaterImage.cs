@@ -18,7 +18,7 @@ namespace DTCMS.Common
     /// </summary>
     public class WaterImage
     {
-        public static string randName = DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + DateTime.Now.Millisecond.ToString() + "YXShp_";
+        public static string randName = DateTime.Now.ToString("yyyyMMddHHmmss")+ DateTime.Now.Millisecond.ToString() +"DTShp_";
 
         #region 生成图片水印和缩略图
         /// <summary>
@@ -39,7 +39,9 @@ namespace DTCMS.Common
         /// <param name="isCharaterImage">是否生成文字水印</param>
         /// <param name="isMakeThumbnail">是否生成缩略图</param>
         /// <returns></returns>
-        public static string waterImage(FileUpload fu, string serverPath, string ThumbnailPath, string waterPath, string waterImgSave, string waterCharater, int width, int height, double xPercent, double yPercent, double xPer, double yPer, bool isWaterImg, bool isCharaterImage, bool isMakeThumbnail)
+        public static string waterImage(FileUpload fu, string serverPath, string ThumbnailPath, string waterPath
+            , string waterImgSave, string waterCharater, int width, int height, double xPercent, double yPercent
+            , double xPer, double yPer, bool isWaterImg, bool isCharaterImage, bool isMakeThumbnail)
         {
             if (fu.HasFile)
             {

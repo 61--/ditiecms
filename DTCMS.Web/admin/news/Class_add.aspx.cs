@@ -17,22 +17,25 @@ namespace DTCMS.Web.admin.news
     public partial class Class_add : System.Web.UI.Page
     {
         private Arc_ClassBLL bllClass = new Arc_ClassBLL();
-        private int cid;
+        private int cid=0;//栏目ID
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            cid = Common.Utils.GetQueryInt("Id");
+
             if (!IsPostBack)
             {
-                cid = Common.Utils.GetQueryInt("Id");
-
-                SetPageData(cid);
+                if (cid > 0)
+                {
+                    SetPageData(cid);//更新数据赋值
+                }
             }
         }
 
         protected void Btn_Submit_Click(object sender, EventArgs e)
         {
-            int n = 0;
-
+            int n = 0;//更新是否成功
+            
             if (cid > 0)
             {
                 n = bllClass.Update(GetClassModel());
