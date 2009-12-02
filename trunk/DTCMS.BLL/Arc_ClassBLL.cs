@@ -8,7 +8,7 @@ using DTCMS.IDAL;
 using DTCMS.Entity;
 namespace DTCMS.BLL
 {
-    public class Arc_ClassBLL : BaseBLL
+    public class Arc_ClassBLL
     {
         IDAL_Arc_Class dalArcClass = DataAccess.CreateFactoryDAL<IDAL_Arc_Class>("Arc_ClassDAL");
 
@@ -99,6 +99,10 @@ namespace DTCMS.BLL
             return dalArcClass.GetParentName(ParentID);
         }
 
+        /// <summary>
+        /// 获取DataTable，并转换成Joson数据
+        /// </summary>
+        /// <returns>Joson数据</returns>
         public string  GetDataTableJoson()
         {
             DataTable dt= dalArcClass.GetDataTable("CID,ClassName,ClassType,AddDate,OrderID,ParentID");
