@@ -263,7 +263,7 @@
             <!--操作按钮-->
             <div style="margin:10px;text-align:center;">
                 <input id="btn_Submit" type="submit" value="保存" class="button_s" runat="server" onserverclick="Btn_Submit_Click" />
-                <input id="btn_Cancel" type="button" value="取消" class="button_s" runat="server" />
+                <input id="btn_Cancel" type="button" value="取消" class="button_s" onclick="history.back(-1);" />
                 <input id="hidden_ClassId" type="hidden" value="0" runat="server" />
             </div>
         </div>
