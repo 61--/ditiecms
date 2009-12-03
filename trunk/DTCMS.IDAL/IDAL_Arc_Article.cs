@@ -31,7 +31,7 @@ namespace DTCMS.IDAL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		int Delete(int ID);
+		int Delete(string ID);
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
