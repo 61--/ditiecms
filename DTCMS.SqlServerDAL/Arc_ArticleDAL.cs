@@ -246,7 +246,7 @@ namespace DTCMS.SqlServerDAL
                 foreach (string cid in arrId)
                 {
                     SqlParameter[] parameters = {new SqlParameter("@CID", SqlDbType.Int,4)};
-                    parameters[0].Value = CID;
+                    parameters[0].Value =cid;
                     n=n+SqlHelper.ExecuteNonQueryTran(string.Format(sql, cid),parameters,tran);
                 }
                 tran.Commit();
