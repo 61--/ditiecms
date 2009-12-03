@@ -10,7 +10,7 @@ namespace DTCMS.Web.admin.news
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+         
         }
     }
 }
