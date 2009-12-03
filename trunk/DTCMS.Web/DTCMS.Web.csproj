@@ -60,7 +60,6 @@
     <Content Include="admin\images\blue\body_title_cen.gif" />
     <Content Include="admin\images\blue\body_title_left.gif" />
     <Content Include="admin\images\blue\body_title_right.gif" />
-    <Content Include="admin\images\blue\botton.gif" />
     <Content Include="admin\images\blue\calendar.gif" />
     <Content Include="admin\images\blue\class_sclose.gif" />
     <Content Include="admin\images\blue\class_sopen.gif" />
@@ -206,8 +205,6 @@
     <Content Include="admin\component\DTTree\page.gif" />
     <Content Include="admin\component\DTTree\plus.gif" />
     <Content Include="admin\component\DTTree\plusbottom.gif" />
-    <Content Include="admin\images\blue\botton_l.gif" />
-    <Content Include="admin\images\blue\botton_s.gif" />
     <Content Include="admin\images\blue\help.gif" />
     <Content Include="admin\images\blue\s.gif" />
     <Content Include="admin\images\blue\th_bg.gif" />

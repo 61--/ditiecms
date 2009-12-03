@@ -43,16 +43,21 @@ textarea {
 	height: 22px;
 	letter-spacing: 2px;
 	color: #555;
-	text-align:center;
 	margin-right: 5px;
-	line-height:22px;
-	display:inline-block;
+	overflow:hidden;
 	background: url(../images/blue/botton.jpg) no-repeat;
+}
+a.button
+{
+	line-height: 22px;
+	vertical-align:middle;
+	text-align:center;
+	display:inline-block;
 }
 .button img
 {
-	vertical-align:middle;
-	line-height:22px;
+	padding-top:5px;
+	line-height: 22px;
 }
 .b1
 {
