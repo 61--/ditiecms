@@ -9,9 +9,9 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using DTCMS.Entity;
+using DTCMS.Entity.Enum;
 using DTCMS.BLL;
 using DTCMS.Common;
-using DTCMS.Common.Enum;
 
 namespace DTCMS.Web.admin.news
 {
@@ -170,19 +170,19 @@ namespace DTCMS.Web.admin.news
         {
             if (rdo_List.Checked)
             {//列表
-                return Convert.ToInt32(EClassAttribute.List);
+                return (int)EClassAttribute.List;
             }
             else if (rdo_Singl.Checked)
             {//单页面
-                return Convert.ToInt32(EClassAttribute.Singl);
+                return (int)EClassAttribute.Singl;
             }
             else if (rdo_Link.Checked)
             {//链接
-                return Convert.ToInt32(EClassAttribute.Link);
+                return (int)EClassAttribute.Link;
             }
             else//rdo_Index.Checked
             {//封面
-                return Convert.ToInt32(EClassAttribute.Cover);
+                return (int)EClassAttribute.Cover;
             }
             
         }
@@ -192,15 +192,15 @@ namespace DTCMS.Web.admin.news
         /// <param name="attribute"></param>
         private void SetClassAttribute(int attribute)
         {
-            if (attribute == Convert.ToInt32(EClassAttribute.List))
+            if (attribute == (int)EClassAttribute.List)
             {//列表
                 rdo_List.Checked = true;
             }
-            else if (attribute == Convert.ToInt32(EClassAttribute.Singl))
+            else if (attribute == (int)EClassAttribute.Singl)
             {//单页面
                 rdo_Singl.Checked = true;
             }
-            else if (attribute == Convert.ToInt32(EClassAttribute.Link))
+            else if (attribute == (int)EClassAttribute.Link)
             {//链接
                 rdo_Link.Checked = true;
             }
