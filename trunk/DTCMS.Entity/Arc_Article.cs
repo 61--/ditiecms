@@ -61,7 +61,7 @@ namespace DTCMS.Entity
 			get{return _classid;}
 		}
 		/// <summary>
-		/// 
+		/// ¸±À¸Ä¿ID
 		/// </summary>
 		public int? ViceClassID
 		{
