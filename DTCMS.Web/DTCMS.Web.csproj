@@ -208,6 +208,12 @@
     <Content Include="admin\images\blue\help.gif" />
     <Content Include="admin\images\blue\s.gif" />
     <Content Include="admin\images\blue\th_bg.gif" />
+    <Content Include="admin\images\ico\i_01.gif" />
+    <Content Include="admin\images\ico\i_02.gif" />
+    <Content Include="admin\images\ico\i_03.gif" />
+    <Content Include="admin\images\ico\i_04.gif" />
+    <Content Include="admin\images\ico\i_05.gif" />
+    <Content Include="admin\images\ico\i_06.gif" />
     <Content Include="admin\js\common.js" />
     <Content Include="admin\component\message\demo.html" />
     <Content Include="admin\component\message\skin\qq\images\ask.gif" />
