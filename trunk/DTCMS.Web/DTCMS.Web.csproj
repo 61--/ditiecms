@@ -262,9 +262,6 @@
     <Content Include="bin\DTCMS.SqlServerDAL.dll" />
     <Content Include="bin\DTCMS.SqlServerDAL.pdb" />
     <Content Include="bin\FredCK.FCKeditorV2.dll" />
-    <Content Include="css\J.validate.css" />
-    <Content Include="css\J.dialog.css" />
-    <Content Include="css\J.menu.css" />
     <Content Include="css\message.css" />
     <Content Include="Editor\editor\css\behaviors\disablehandles.htc" />
     <Content Include="Editor\editor\css\behaviors\showtableborders.htc" />

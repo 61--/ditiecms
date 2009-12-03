@@ -6,21 +6,7 @@
 <head runat="server">
     <title>栏目添加</title>
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
-    <link href="/css/J.validate.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../js/common.js"></script>
-    <script type="text/javascript" src="/js/J.min.js"></script>
-    <script type="text/javascript" src="/js/J.validate.js"></script>
-    <script type="text/javascript">
-    J.check.rules = [
-//        { name: 'txt_ClassName', mid: 'msg_ClassName', requir: true, type: 'ajax', url: 'admin/ajax/existClassName.aspx', warn: '系统已存在相同名称的栏目!' },
-        { name: 'txt_ClassEName', mid: 'msg_ClassEName', requir: true, type: '', warn: '栏目英文名称不能为空!' }
-    ];
-    window.onload = function() {
-        J.check.regform('form1');
-    }
-  
-
-    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -262,8 +248,8 @@
             </div>
             <!--操作按钮-->
             <div style="margin:10px;text-align:center;">
-                <input id="btn_Submit" type="submit" value="保存" class="button_s" runat="server" onserverclick="Btn_Submit_Click" />
-                <input id="btn_Cancel" type="button" value="取消" class="button_s" onclick="history.back(-1);" />
+                <input id="btn_Submit" type="submit" value="保存" class="button b1" runat="server" onserverclick="Btn_Submit_Click" />
+                <input id="btn_Cancel" type="button" value="取消" class="button b1" onclick="history.back(-1);" />
                 <input id="hidden_ClassId" type="hidden" value="0" runat="server" />
             </div>
         </div>
