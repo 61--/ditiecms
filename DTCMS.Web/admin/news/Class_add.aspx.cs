@@ -11,6 +11,7 @@ using System.Web.UI.WebControls.WebParts;
 using DTCMS.Entity;
 using DTCMS.BLL;
 using DTCMS.Common;
+using DTCMS.Common.Enum;
 
 namespace DTCMS.Web.admin.news
 {
@@ -167,26 +168,23 @@ namespace DTCMS.Web.admin.news
         /// <returns></returns>
         private int GetClassAttribute()
         {
-            if (rdo_Index.Checked)
-            {//封面
-                return 1;
-            }
-            else if (rdo_List.Checked)
+            if (rdo_List.Checked)
             {//列表
-                return 2;
+                return Convert.ToInt32(EClassAttribute.List);
             }
             else if (rdo_Singl.Checked)
             {//单页面
-                return 3;
+                return Convert.ToInt32(EClassAttribute.Singl);
             }
             else if (rdo_Link.Checked)
             {//链接
-                return 4;
+                return Convert.ToInt32(EClassAttribute.Link);
             }
-            else
-            {
-                return 0;
+            else//rdo_Index.Checked
+            {//封面
+                return Convert.ToInt32(EClassAttribute.Cover);
             }
+            
         }
         /// <summary>
         /// 设置栏目属性
@@ -194,21 +192,21 @@ namespace DTCMS.Web.admin.news
         /// <param name="attribute"></param>
         private void SetClassAttribute(int attribute)
         {
-            switch (attribute)
-            {
-                case 1:
-                    rdo_Index.Checked = true;
-                    break;
-                case 2: rdo_List.Checked = true;
-                    break;
-                case 3:
-                    rdo_Singl.Checked = true;
-                    break;
-                case 4: rdo_Link.Checked = true;
-                    break;
-                default:
-                    rdo_Index.Checked = true;
-                    break;
+            if (attribute == Convert.ToInt32(EClassAttribute.List))
+            {//列表
+                rdo_List.Checked = true;
+            }
+            else if (attribute == Convert.ToInt32(EClassAttribute.Singl))
+            {//单页面
+                rdo_Singl.Checked = true;
+            }
+            else if (attribute == Convert.ToInt32(EClassAttribute.Link))
+            {//链接
+                rdo_Link.Checked = true;
+            }
+            else//EClassAttribute.Cover
+            {//封面
+                rdo_Index.Checked = true;
             }
         }
 
