@@ -4,7 +4,10 @@ using System.Text;
 
 namespace DTCMS.Entity.Enum
 {
-    public enum EClassAttribute
+    /// <summary>
+    /// 栏目属性
+    /// </summary>
+    public enum EClassAttribute : int
     {
         /// <summary>
         /// 列表
