@@ -41,15 +41,63 @@ textarea {
 .button {
 	border: 0px;
 	height: 22px;
-	letter-spacing: 3px;
+	letter-spacing: 2px;
 	color: #555;
+	text-align:center;
 	margin-right: 5px;
+	line-height:22px;
+	display:inline-block;
 	background: url(../images/blue/botton.jpg) no-repeat;
+}
+.button img
+{
+	vertical-align:middle;
+	line-height:22px;
 }
 .b1
 {
 	width:51px;	
 	background-position:0px 0px;
+}
+a.b1:hover
+{
+	background-position:-99px -88px;
+}
+.b2
+{
+	width:63px;	
+	background-position:0px -22px;
+}
+a.b2:hover
+{
+	background-position:-87px -66px;
+}
+.b3
+{
+	width:75px;	
+	background-position:0px -44px;
+}
+a.b3:hover
+{
+	background-position:-75px -44px;
+}
+.b4
+{
+	width:87px;	
+	background-position:0px -66px;
+}
+a.b4:hover
+{
+	background-position:-63px -22px;
+}
+.b5
+{
+	width:99px;	
+	background-position:0px -88px;
+}
+a.b5:hover
+{
+	background-position:-51px 0px;
 }
 .short {
 	width: 180px;
@@ -107,6 +155,13 @@ textarea {
 }
 .tab_hiden {
 	display: none;
+}
+/*Toolbar样式*/
+.toolbar
+{
+	background:#DBEBFA;	
+	padding:6px 10px;
+	margin-bottom:1px;
 }
 /* 表单表格样式 */
 .table_form {
@@ -200,7 +255,7 @@ textarea {
 	padding: 2px 5px;
 	margin: 2px;
 	color: #000;
-	text-decoration: none; ;
+	text-decoration: none; 
 	border: 1px#c0c0c0solid;
 }
 .grayr a:hover {

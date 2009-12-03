@@ -81,6 +81,9 @@
                 <li class="tab_on"><a href="javascript:;">栏目管理</a></li>
             </ul>
         </div>
+        <div class="toolbar">
+            <a href="Class_Add.aspx" class="button b2">新建栏目</a><a href="Class_Add.aspx" class="button b3">新建栏目</a><a href="Class_Add.aspx" class="button b4">新建栏目</a><a href="Class_Add.aspx" class="button b5">新建栏目</a><a href="Class_Edit.aspx" class="button b1">编辑</a>
+        </div>
         <div id="gridTreeDiv">
         </div>
     </div>
