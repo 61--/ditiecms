@@ -38,23 +38,18 @@ textarea {
 	border-bottom: 1px solid #bdbcbd;
 	text-indent: 2px;
 }
-.button_s {
+.button {
 	border: 0px;
-	height: 24px;
-	width: 60px;
+	height: 22px;
 	letter-spacing: 3px;
 	color: #555;
 	margin-right: 5px;
-	background: url(../images/blue/botton_s.gif) no-repeat;
+	background: url(../images/blue/botton.jpg) no-repeat;
 }
-.button_l {
-	border: 0px;
-	height: 24px;
-	width: 60px;
-	letter-spacing: 3px;
-	color: #555;
-	margin-right: 5px;
-	background: url(../images/blue/botton_l.gif) no-repeat;
+.b1
+{
+	width:51px;	
+	background-position:0px 0px;
 }
 .short {
 	width: 180px;
