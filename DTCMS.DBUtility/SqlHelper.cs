@@ -73,11 +73,29 @@ namespace DTCMS.DBUtility
         /// <param name="sql">sql语句</param>
         /// <param name="tran">执行事务</param>
         /// <returns></returns>
-        public static int ExecuteNonQueryTran(string sql, SqlTransaction tran)
+        public static int ExecuteNonQueryTran(string sql,SqlTransaction tran)
         {
             SqlCommand cmd = new SqlCommand(sql, Connection);
             cmd.Transaction = tran;
             int result = cmd.ExecuteNonQuery();
+            return result;
+
+        }
+        /// <summary>
+        /// 执行事务
+        /// </summary>
+        /// <param name="sql">sql语句</param>
+        /// <param name="prams">参数</param>
+        /// <param name="tran">执行事务</param>
+        /// <returns></returns>
+        public static int ExecuteNonQueryTran(string sql, SqlParameter[] prams, SqlTransaction tran)
+        {
+            SqlCommand cmd = new SqlCommand(sql, Connection);
+            if (prams != null)
+                cmd.Parameters.AddRange(prams);
+            cmd.Transaction = tran;
+            int result = cmd.ExecuteNonQuery();
+            cmd.Parameters.Clear();
             return result;
 
         }
@@ -96,25 +114,6 @@ namespace DTCMS.DBUtility
             cmd.Parameters.Clear();
             CloseSqlConn();
             return iResult;
-        }
-        /// <summary>
-        /// 执行事务
-        /// </summary>
-        /// <param name="sql">sql语句</param>
-        /// <param name="tran">执行事务</param>
-        /// <returns></returns>
-        public static int ExecuteNonQueryTran(string sql, SqlParameter[] prams, SqlTransaction tran)
-        {
-            SqlCommand cmd = new SqlCommand(sql, Connection);
-            if (prams != null)
-            {
-                cmd.Parameters.AddRange(prams);
-            }
-            cmd.Transaction = tran;
-            int iResult = cmd.ExecuteNonQuery();
-            cmd.Parameters.Clear();
-            return iResult;
-
         }
 
         /// <summary>
