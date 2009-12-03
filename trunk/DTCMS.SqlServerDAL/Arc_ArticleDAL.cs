@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.Data;
 namespace DTCMS.SqlServerDAL
 {
-    public class Arc_ArticleDAL:IDAL_Arc_Article
+    public class Arc_ArticleDAL : IDAL_Arc_Article
     {
         #region IDAL_Arc_Article 成员
 
@@ -265,7 +265,7 @@ namespace DTCMS.SqlServerDAL
 
         public Arc_Article GetModel(int ID)
         {
-            Arc_Article model =new Arc_Article ();
+            Arc_Article model = new Arc_Article();
             return model; //throw new NotImplementedException();
         }
 

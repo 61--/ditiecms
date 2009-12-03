@@ -187,8 +187,8 @@
             </div>
             <!--操作按钮-->
             <div style="margin:10px;text-align:center;">
-                <input id="btn_Submit" type="submit" value="保存" class="button_s" runat="server" />
-                <input id="btn_Cancel" type="button" value="取消" class="button_s" runat="server" />
+                <input id="btn_Submit" type="submit" value="保存" class="button b2" runat="server" />
+                <input id="btn_Cancel" type="button" value="取消" class="button b1" runat="server" />
             </div>
         </div>
     </div>
