@@ -8,7 +8,6 @@ using System.Data.SqlClient;
 using System.Data;
 namespace DTCMS.SqlServerDAL
 {
-    public class Arc_ArticleDAL:IDAL_Arc_Article
     public class Arc_ArticleDAL : IDAL_Arc_Article
     {
         #region IDAL_Arc_Article 成员
