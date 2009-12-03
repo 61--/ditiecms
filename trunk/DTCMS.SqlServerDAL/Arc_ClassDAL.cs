@@ -22,7 +22,7 @@ namespace DTCMS.SqlServerDAL
         /// <returns>成功返回true，失败返回false</returns>
         public bool Exists(int CID, string filedName, string filedValue)
         {
-            string strSql = "select count(CID) from DT_Arc_Class where CID!={0} ";
+            string strSql = "select count(CID) from DT_Arc_Class where CID<>{0} ";
             if (filedName != "")
             {
                 strSql += " and {1}='{2}'";
