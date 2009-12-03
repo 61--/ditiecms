@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Arc_Article.cs" />
     <Compile Include="Arc_Class.cs" />
+    <Compile Include="Enum\EClassAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
