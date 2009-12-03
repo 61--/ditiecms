@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Data;
 namespace DTCMS.SqlServerDAL
 {
+    public class Arc_ArticleDAL:IDAL_Arc_Article
     public class Arc_ArticleDAL : IDAL_Arc_Article
     {
         #region IDAL_Arc_Article 成员
@@ -34,7 +35,7 @@ namespace DTCMS.SqlServerDAL
         }
 
         /// <summary>
-        /// 
+        /// 添加文章
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -116,7 +117,12 @@ namespace DTCMS.SqlServerDAL
 
             return SqlHelper.ExecuteNonQuery(strSql.ToString(), parameters);
         }
-
+        
+        /// <summary>
+        /// 更新文章
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public int Update(Arc_Article model)
         {
 
@@ -235,40 +241,156 @@ namespace DTCMS.SqlServerDAL
         /// <returns></returns>
         public int Delete(string ID)
         {
-            int n= 0;
-            string[] arrId = ID.Split(',');
-            string sql = "DELETE DT_Arc_Class WHERE CID={0}";
-            SqlConnection con = new SqlConnection(SqlHelper.ConnString);
-            SqlTransaction tran = con.BeginTransaction();
-            try
-            {
-                
-                foreach (string cid in arrId)
-                {
-                    SqlParameter[] parameters = {new SqlParameter("@CID", SqlDbType.Int,4)};
-                    parameters[0].Value =cid;
-                    n=n+SqlHelper.ExecuteNonQueryTran(string.Format(sql, cid),parameters,tran);
-                }
-                tran.Commit();
-            }
-            catch
-            {
-                tran.Rollback();
-            }
-            finally
-            {
-                tran.Dispose();
-                con.Close();
-            }
-            return n;
+            int n = 0;
+            string strSql =string.Format( " delete DT_Arc_ArticleDAL where ID in({0}) ", ID);
+            return SqlHelper.ExecuteNonQuery(strSql.ToString());
         }
-
+        /// <summary>
+        /// 得到文章实体
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
         public Arc_Article GetModel(int ID)
         {
-            Arc_Article model = new Arc_Article();
-            return model; //throw new NotImplementedException();
+           
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select  top 1 ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,Content,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID from DT_Arc_Article ");
+            strSql.Append(" where ID=@ID ");
+            SqlParameter[] parameters = {
+					new SqlParameter("@ID", SqlDbType.Int,4)};
+            parameters[0].Value = ID;
+
+            DataSet ds = SqlHelper.ExecuteDataSet(strSql.ToString(), parameters);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                Arc_Article model = new Arc_Article();
+                if (ds.Tables[0].Rows[0]["ID"].ToString() != "")
+                {
+                    model.ID = int.Parse(ds.Tables[0].Rows[0]["ID"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["ClassID"].ToString() != "")
+                {
+                    model.ClassID = int.Parse(ds.Tables[0].Rows[0]["ClassID"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["ViceClassID"].ToString() != "")
+                {
+                    model.ViceClassID = int.Parse(ds.Tables[0].Rows[0]["ViceClassID"].ToString());
+                }
+                model.Title = ds.Tables[0].Rows[0]["Title"].ToString();
+                model.ShortTitle = ds.Tables[0].Rows[0]["ShortTitle"].ToString();
+                model.TitleStyle = ds.Tables[0].Rows[0]["TitleStyle"].ToString();
+                if (ds.Tables[0].Rows[0]["TitleFlag"].ToString() != "")
+                {
+                    model.TitleFlag = int.Parse(ds.Tables[0].Rows[0]["TitleFlag"].ToString());
+                }
+                model.Tags = ds.Tables[0].Rows[0]["Tags"].ToString();
+                model.ImgUrl = ds.Tables[0].Rows[0]["ImgUrl"].ToString();
+                model.Author = ds.Tables[0].Rows[0]["Author"].ToString();
+                model.Editor = ds.Tables[0].Rows[0]["Editor"].ToString();
+                model.PubLisher = ds.Tables[0].Rows[0]["PubLisher"].ToString();
+                model.Source = ds.Tables[0].Rows[0]["Source"].ToString();
+                model.Templet = ds.Tables[0].Rows[0]["Templet"].ToString();
+                model.Keywords = ds.Tables[0].Rows[0]["Keywords"].ToString();
+                model.Description = ds.Tables[0].Rows[0]["Description"].ToString();
+                model.Content = ds.Tables[0].Rows[0]["Content"].ToString();
+                if (ds.Tables[0].Rows[0]["Click"].ToString() != "")
+                {
+                    model.Click = int.Parse(ds.Tables[0].Rows[0]["Click"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["Good"].ToString() != "")
+                {
+                    model.Good = int.Parse(ds.Tables[0].Rows[0]["Good"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["Bad"].ToString() != "")
+                {
+                    model.Bad = int.Parse(ds.Tables[0].Rows[0]["Bad"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["Readaccess"].ToString() != "")
+                {
+                    model.Readaccess = int.Parse(ds.Tables[0].Rows[0]["Readaccess"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["Money"].ToString() != "")
+                {
+                    model.Money = int.Parse(ds.Tables[0].Rows[0]["Money"].ToString());
+                }
+                model.Attribute = ds.Tables[0].Rows[0]["Attribute"].ToString();
+                if (ds.Tables[0].Rows[0]["IsComment"].ToString() != "")
+                {
+                    model.IsComment = int.Parse(ds.Tables[0].Rows[0]["IsComment"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["IsChecked"].ToString() != "")
+                {
+                    model.IsChecked = int.Parse(ds.Tables[0].Rows[0]["IsChecked"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["IsRecycle"].ToString() != "")
+                {
+                    model.IsRecycle = int.Parse(ds.Tables[0].Rows[0]["IsRecycle"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["IsRedirect"].ToString() != "")
+                {
+                    model.IsRedirect = int.Parse(ds.Tables[0].Rows[0]["IsRedirect"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["IsHtml"].ToString() != "")
+                {
+                    model.IsHtml = int.Parse(ds.Tables[0].Rows[0]["IsHtml"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["IsPaging"].ToString() != "")
+                {
+                    model.IsPaging = int.Parse(ds.Tables[0].Rows[0]["IsPaging"].ToString());
+                }
+                model.FilePath = ds.Tables[0].Rows[0]["FilePath"].ToString();
+                model.SimilarArticle = ds.Tables[0].Rows[0]["SimilarArticle"].ToString();
+                if (ds.Tables[0].Rows[0]["AddDate"].ToString() != "")
+                {
+                    model.AddDate = DateTime.Parse(ds.Tables[0].Rows[0]["AddDate"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["PubDate"].ToString() != "")
+                {
+                    model.PubDate = DateTime.Parse(ds.Tables[0].Rows[0]["PubDate"].ToString());
+                }
+                if (ds.Tables[0].Rows[0]["OrderID"].ToString() != "")
+                {
+                    model.OrderID = int.Parse(ds.Tables[0].Rows[0]["OrderID"].ToString());
+                }
+                return model;
+            }
+            else
+            {
+                return null;
+            }
+           
         }
 
+        /// <summary>
+        /// 文章列表分页
+        /// </summary>
+        /// <param name="pageSize">每页显示几条</param>
+        /// <param name="currentPage">当前页</param>
+        /// <param name="search">查询条件</param>
+        /// <returns></returns>
+        public DataTable GetDataTable(int pageSize,int currentPage,string search)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(string.Format("SELECT Top {0} A.ID,A.ClassID,A.Title,A.PubLisher,A.AddDate,C.ClassName ",pageSize));
+            strSql.Append(" FROM  DT_Arc_Article AS A,DT_Arc_Class AS C ");
+            strSql.Append("WHERE A.ClassID=C.CID AND A.ID >=( ");
+            strSql.Append("SELECT MAX([ID]) FROM (");
+            strSql.Append(string.Format(" SELECT TOP {0} A.ID FROM DT_Arc_Article AS A,DT_Arc_Class AS C ", pageSize * (currentPage - 1) + 1));
+            strSql.Append(" WHERE A.ClassID=C.CID  ");
+            if(!string.IsNullOrEmpty(search))
+            {
+                strSql.Append(string.Format(" AND {0} ",search));
+            }
+            strSql.Append("ORDER BY A.ID DESC ) AS T)");
+            if(!string.IsNullOrEmpty(search))
+            {
+                strSql.Append(string.Format(" AND {0} ",search));
+            }
+            strSql.Append("ORDER BY A.ID DESC ");
+
+            return SqlHelper.ExecuteDataSet(strSql.ToString()).Tables[0];
+          
+        }
         #endregion
     }
 }
