@@ -3,34 +3,7 @@
 <head>
 <title>表格</title>
 <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript">
-        function selectAll() {
-            if (this.checked == true) {
-                checkAll('test');
-            }
-            else {
-                clearAll('test');
-            }
-        }
-        function checkAll(name) {
-            var el = document.getElementsByTagName('input');
-            var len = el.length;
-            for (var i = 0; i < len; i++) {
-                if ((el[i].type == "checkbox") && (el[i].name == name)) {
-                    el[i].checked = true;
-                }
-            }
-        }
-        function clearAll(name) {
-            var el = document.getElementsByTagName('input');
-            var len = el.length;
-            for (var i = 0; i < len; i++) {
-                if ((el[i].type == "checkbox") && (el[i].name == name)) {
-                    el[i].checked = false;
-                }
-            }
-        }
-    </script>
+<script type="text/javascript" src="../js/common.js"></script>
 </head>
 
 <body>
@@ -48,7 +21,7 @@
 					<tr>
 						<th>ID </th>
 						<th>
-						<input onclick="if(this.checked==true) { checkAll('test'); } else { clearAll('test'); }" type="checkbox" value="" name="test" title="全选/取消" />
+						<input onclick="selectAll(this,'tab')" type="checkbox" value="" name="test" title="全选/取消" />
 						</th>
 						<th>标题 </th>
 						<th>栏目 </th>
