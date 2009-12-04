@@ -265,7 +265,7 @@ a.b5:hover
 	margin: 2px;
 	color: #000;
 	text-decoration: none; 
-	border: 1px#c0c0c0solid;
+	border: 1px #c0c0c0 solid;
 }
 .grayr a:hover {
 	color: #000;
