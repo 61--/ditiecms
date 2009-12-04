@@ -11,7 +11,7 @@
         $(function() {
             LoadData();
         });
-        function LoadData() {
+        function LoadData() { 
             $.ajax({
                 url: "/admin/ajax/class_list.aspx",
                 type: "GET",

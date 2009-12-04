@@ -90,7 +90,6 @@
     <Content Include="admin\js\calendar.js" />
     <Content Include="admin\js\calendar2.js" />
     <Content Include="admin\js\cn_utf8.js" />
-    <Content Include="admin\js\floatDiv.js" />
     <Content Include="admin\js\left.js" />
     <Content Include="admin\left_index.aspx" />
     <Content Include="admin\main_index.aspx" />
