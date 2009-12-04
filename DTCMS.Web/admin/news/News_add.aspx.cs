@@ -7,7 +7,8 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
+using DTCMS.BLL;
+using DTCMS.Entity;
 
 namespace DTCMS.Web.admin.news
 {
@@ -17,5 +18,23 @@ namespace DTCMS.Web.admin.news
         {
 
         }
+        //private void SetPageData()
+        //{
+        //     if (CID <= 0)
+        //    {
+        //        return;
+        //    }
+
+        //    Arc_Class model = bllClass.GetModel(CID);
+
+        //    if (model != null)
+        //    { 
+        //        slt_TitleFlag.Value=model.
+        //    }
+        //}
+        //private Arc_Article GetClassModel()
+        //{ 
+        
+        //}
     }
 }
