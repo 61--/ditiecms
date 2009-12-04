@@ -26,8 +26,8 @@
             gridTree = new TableTree4J("gridTree", "../component/treetable/");
             gridTree.config.useLine = false;
             gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
-            var headerDataList = new Array("栏目名称", "创建时间", "所属类型", "排序");
-            var widthList = new Array("50%", "20%", "20%", "10%");
+            var headerDataList = new Array("栏目名称", "所属类型", "创建时间", "排序");
+            var widthList = new Array("45%", "25%", "20%", "10%");
             gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "展开/折叠", "header status text", "", "");
             //设置列样式
             gridTree.gridHeaderColStyleArray = new Array("", "", "", "bleft");

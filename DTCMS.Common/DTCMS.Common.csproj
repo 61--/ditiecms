@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CacheAccess.cs" />
+    <Compile Include="Enum\ClassAttribute.cs" />
     <Compile Include="FileAccessHelper.cs" />
     <Compile Include="JScript.cs" />
     <Compile Include="Message.cs" />
