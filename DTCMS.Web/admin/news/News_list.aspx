@@ -131,6 +131,10 @@
             background: #c1c1c1;
             border: 1px #c1c1c1 solid;
         }
+        .style1
+        {
+            height: 30px;
+        }
     </style>
 
     <script type="text/javascript">
@@ -177,32 +181,32 @@
             <table>
                 <thead>
                     <tr>
-                        <th>
+                        <th class="style1">
                             <input onclick="if(this.checked==true) { checkAll('test'); } else { clearAll('test'); }"
                                 type="checkbox" value="" name="test" title="全选/取消" />
                         </th>
-                        <th>
+                        <th class="style1">
                             姓名
                         </th>
-                        <th>
+                        <th class="style1">
                             性别
                         </th>
-                        <th>
+                        <th class="style1">
                             年龄
                         </th>
-                        <th>
+                        <th class="style1">
                             生日
                         </th>
-                        <th>
+                        <th class="style1">
                             住址
                         </th>
-                        <th>
+                        <th class="style1">
                             电话
                         </th>
-                        <th>
+                        <th class="style1">
                             电邮
                         </th>
-                        <th>
+                        <th class="style1">
                             网址
                         </th>
                     </tr>
@@ -477,17 +481,7 @@
                                 type="checkbox" value="" name="test" title="全选/取消" />
                         </td>
                         <td colspan="8">
-                            <div class="grayr">
-                                <span class="disabled">< </span><span class="current">1</span><a href="#?page=2"
-                                    _fcksavedurl="#?page=2">2</a><a href="#?page=3" _fcksavedurl="#?page=3">3</a><a href="#?page=4"
-                                        _fcksavedurl="#?page=4">4</a><a href="#?page=5" _fcksavedurl="#?page=5">5</a><a href="#?page=6"
-                                            _fcksavedurl="#?page=6">6</a><a href="#?page=7" _fcksavedurl="#?page=7">7</a>...<a
-                                                href="#?page=199" _fcksavedurl="#?page=199">199</a><a href="#?page=200" _fcksavedurl="#?page=200">200</a><a
-                                                    href="#?page=2" _fcksavedurl="#?page=2"> > </a>
-                            </div>
-                            <!--
-<div id="page">
-<a href="">首　页</a><a href="">上一页</a><a href="">下一页</a><a href="">末　页</a></div>-->
+                           
                         </td>
                     </tr>
                 </tfoot>
