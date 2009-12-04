@@ -46,7 +46,8 @@ function TableTree4J(objectName,tableTree4JDir){
 		useLine:true,
 		booleanInitOpenAll:false,
 		booleanHighLightRow:true,
-		highLightRowClassName:"GridHighLightRow"
+		highLightRowClassName:"GridHighLightRow",
+		defultCloumnTree:2
 	}
 	
 	//set img root path
@@ -227,7 +228,6 @@ function TableTree4J(objectName,tableTree4JDir){
 		this.initNodes();
 		//alert(this.htmlCode);
 		document.write(this.tableDesc+this.htmlCode+"</table>");
-		document.close();
 
 	}	
 	
@@ -333,7 +333,7 @@ function TableTree4J(objectName,tableTree4JDir){
 						imgstr=this.codeDonyImgByPath(this.icon.nlPlus,node.id);
 					}								
 				}										
-		}
+		}		
 		return imgstr;
 	}
 	
@@ -461,10 +461,12 @@ function TableTree4J(objectName,tableTree4JDir){
 
 	//node data change to html code
 	TableTree4J.prototype.dataChangeToHtmlCode=function(node){
-		
+	
 		var str="";
+		var strTree="";
 		var tipTitleMark="";
 		var hrefStatusTextMark="";
+		
 		if(this.config.showTipTitle==true&&node.hrefTip!=null&&node.hrefTip!=""){
 			tipTitleMark="title=\""+node.hrefTip+"\"";
 		}
@@ -504,8 +506,10 @@ function TableTree4J(objectName,tableTree4JDir){
 		}else{	
 			str="<a onfocus=\"this.blur()\"  "+tipTitleMark+" "+hrefStatusTextMark+"   href=\"javascript:clickNode('"+node.id+"',"+this.obj+")\">"+node.dataList[0]+"</a>";
 		}
-		
 		str=str+"</td>";
+//		strTree=str+"</td>";
+//		str="";
+////		//str=str+"</td>";
 		if(node.dataList.length>1){
 			//col style	
 			var clostyleMark="";
@@ -514,6 +518,8 @@ function TableTree4J(objectName,tableTree4JDir){
 					if(this.gridHeaderColStyleArray[i]!=null&&this.gridHeaderColStyleArray[i]!=""){
 						clostyleMark="class=\""+this.gridHeaderColStyleArray[i]+"\"";
 					}
+//											if(i==2){
+//					    str=str+strTree;}		
 					str=str+"<td "+clostyleMark+" width=\""+this.headerWidthList[i]+"\">"+node.dataList[i]+"</td>"
 					clostyleMark="";
 				}					
@@ -521,7 +527,9 @@ function TableTree4J(objectName,tableTree4JDir){
 				for(var i=1;i<node.dataList.length;i++){
 					if(this.gridDataCloStyleArray[i]!=null&&this.gridDataCloStyleArray[i]!=""){
 						clostyleMark="class=\""+this.gridDataCloStyleArray[i]+"\"";
-					}					
+					}	
+//						if(i==2){
+//					    str=str+strTree;}				
 					str=str+"<td "+clostyleMark+" >"+node.dataList[i]+"</td>"
 					clostyleMark="";
 				}			
@@ -620,6 +628,7 @@ function TableTree4J(objectName,tableTree4JDir){
 		var allNodes=this.treeNodes;
 		var rootNod=this.rootNode;
 		var codes=this.codeNodeTR(rootNod);
+		
 		if(this.headerWidthList!=null&&this.headerWidthList!=""){
 			codes=codes+"<td width=\""+this.headerWidthList[0]+"\">"
 		}else{
