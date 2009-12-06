@@ -23,6 +23,20 @@ a:hover{
 img{
   border:0;
 }
+/*---- Ajax Loading --------------*/
+#ajaxloading
+{
+	color:#FFF;
+	height:20px;
+	line-height:20px;
+	width:120px;
+	text-indent:24px;
+	position:absolute;
+	top:0px;
+	right:0px;
+	display:none;
+	background:url(../images/ico/i_loading_green.gif) 5px 2px no-repeat #4B981D;
+}
 /*---- Top Nav --------------*/
 .topnav{
 	width:100%;
@@ -136,6 +150,7 @@ img{
 	width:152px;
 	margin-left:auto;
 	margin-right:auto;
+	text-align:left;
 }
 .menu dl{
 	margin-top:2px;
