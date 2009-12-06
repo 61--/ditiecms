@@ -74,7 +74,7 @@ namespace DTCMS.Web.admin.ajax
 
                 if (bllClass.Delete(id) > 0)
                 {
-                    return "栏目删除成功！";
+                    return "True";
                 }
                 else
                 {

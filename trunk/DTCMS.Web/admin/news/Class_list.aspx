@@ -66,8 +66,12 @@
                     type: "GET",
                     data: "action=delete&Id=" + cid + "&ran=" + Math.random(),
                     success: function(responseText) {//提示
-                        LoadData();
-                        alert(responseText);                   
+                        if (responseText.toString().toUpperCase() == "TRUE") {
+                            LoadData();
+                            alert("栏目删除成功！");
+                        } else {
+                            alert(responseText);
+                        }
                     },
                     error: function() {
                         alert("Ajax请求失败！");
@@ -119,7 +123,7 @@
         </div>
         <div class="toolbar">
             <a href="Class_Add.aspx" class="button b2">新建栏目</a><a href="Class_Add.aspx" class="button b3">新建栏目</a><a href="Class_Add.aspx" class="button b4"><img src="../images/ico/i_02.gif" />新建栏目</a><a href="Class_Add.aspx" class="button b5">新建栏目</a><a href="Class_Edit.aspx" class="button b1">编辑</a>
-            <input type ="button" onclick="DeleteData(-1,true)" value="test" />
+            <input type ="button" onclick="DeleteData(-1,true)" value="批删除" />
         </div>
         <div id="gridTreeDiv">
         </div>
