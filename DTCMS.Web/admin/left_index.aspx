@@ -3,37 +3,6 @@
 protected void Page_Load(object sender, EventArgs e)
 {
     StringBuilder sb = new StringBuilder();
-    sb.Append("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n");
-    sb.Append("<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n");
-    sb.Append("<head>\r\n");
-    sb.Append("<title>小分类栏目</title>\r\n");
-    sb.Append("<link href=\"css/blue_left.css\" rel=\"stylesheet\" type=\"text/css\" />\r\n");
-    sb.Append("<script type=\"text/javascript\">\r\n");
-    sb.Append("function getObject(objectId) {\r\n");
-    sb.Append(" if(document.getElementById && document.getElementById(objectId)) {\r\n");
-    sb.Append(" return document.getElementById(objectId);\r\n");
-    sb.Append(" }\r\n");
-    sb.Append(" else if (document.all && document.all(objectId)) {\r\n");
-    sb.Append(" return document.all(objectId);\r\n");
-    sb.Append(" }\r\n");
-    sb.Append(" else if (document.layers && document.layers[objectId]) {\r\n");
-    sb.Append(" return document.layers[objectId];\r\n");
-    sb.Append(" }\r\n");
-    sb.Append(" else {\r\n");
-    sb.Append(" return false;\r\n");
-    sb.Append(" }\r\n");
-    sb.Append("}\r\n");
-    sb.Append("function showHide(objname){\r\n");
-    sb.Append("    var obj = getObject(objname);\r\n");
-    sb.Append("    if(obj.style.display == \"none\"){\r\n");
-    sb.Append("		obj.style.display = \"block\";\r\n");
-    sb.Append("	}else{\r\n");
-    sb.Append("		obj.style.display = \"none\";\r\n");
-    sb.Append("	}\r\n");
-    sb.Append("}\r\n");
-    sb.Append("<" + "/script>\r\n");
-    sb.Append("</head>\r\n");
-    sb.Append("<body>\r\n");
     sb.Append("<div class=\"menu\">\r\n");
 
     //GET提交，c为栏目ID
@@ -55,8 +24,6 @@ protected void Page_Load(object sender, EventArgs e)
                 sb.Append("		 </dd>\r\n");
                 sb.Append(" </dl>\r\n");
                 sb.Append("</div>\r\n");
-                sb.Append("</body>\r\n");
-                sb.Append("</html>\r\n");
                 break;
             }
         case 1:
@@ -72,8 +39,6 @@ protected void Page_Load(object sender, EventArgs e)
                 sb.Append("		 </dd>\r\n");
                 sb.Append("	</dl>\r\n");
                 sb.Append("</div>\r\n");
-                sb.Append("</body>\r\n");
-                sb.Append("</html>\r\n");
                 break;
             }
         case 2:
@@ -90,8 +55,6 @@ protected void Page_Load(object sender, EventArgs e)
                 sb.Append("		 </dd>\r\n");
                 sb.Append("	</dl>\r\n");
                 sb.Append("</div>\r\n");
-                sb.Append("</body>\r\n");
-                sb.Append("</html>\r\n");
                 break;
             }
         case 3:
@@ -108,8 +71,6 @@ protected void Page_Load(object sender, EventArgs e)
                 sb.Append("		 </dd>\r\n");
                 sb.Append("	</dl>\r\n");
                 sb.Append("</div>\r\n");
-                sb.Append("</body>\r\n");
-                sb.Append("</html>\r\n");
                 break;
             }
         case 4:
@@ -126,8 +87,6 @@ protected void Page_Load(object sender, EventArgs e)
                 sb.Append("		 </dd>\r\n");
                 sb.Append("	</dl>\r\n");
                 sb.Append("</div>\r\n");
-                sb.Append("</body>\r\n");
-                sb.Append("</html>\r\n");
                 break;
             }
         case 5:
@@ -144,8 +103,6 @@ protected void Page_Load(object sender, EventArgs e)
                 sb.Append("		 </dd>\r\n");
                 sb.Append("	</dl>\r\n");
                 sb.Append("</div>\r\n");
-                sb.Append("</body>\r\n");
-                sb.Append("</html>\r\n");
                 break;
             }
         case 6:
@@ -162,8 +119,6 @@ protected void Page_Load(object sender, EventArgs e)
                 sb.Append("		 </dd>\r\n");
                 sb.Append("	</dl>\r\n");
                 sb.Append("</div>\r\n");
-                sb.Append("</body>\r\n");
-                sb.Append("</html>\r\n");
                 break;
             }
         case 7:
@@ -180,8 +135,6 @@ protected void Page_Load(object sender, EventArgs e)
                 sb.Append("		 </dd>\r\n");
                 sb.Append("	</dl>\r\n");
                 sb.Append("</div>\r\n");
-                sb.Append("</body>\r\n");
-                sb.Append("</html>\r\n");
                 break;
             }
     }

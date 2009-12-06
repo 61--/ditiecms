@@ -86,7 +86,6 @@
     <Content Include="admin\images\blue\top_nav_right.jpg" />
     <Content Include="admin\images\blue\top_nav_sr.gif" />
     <Content Include="admin\images\blue\top_sitelink_bg.gif" />
-    <Content Include="admin\index.aspx" />
     <Content Include="admin\js\calendar.js" />
     <Content Include="admin\js\calendar2.js" />
     <Content Include="admin\js\cn_utf8.js" />
@@ -113,6 +112,13 @@
     </Compile>
     <Compile Include="admin\App_Code\AdminPage.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\news\Class_list.aspx.cs">
       <DependentUpon>Class_list.aspx</DependentUpon>
@@ -196,6 +202,7 @@
     <Content Include="admin\component\treetable\img\plusbottom.gif" />
     <Content Include="admin\component\treetable\img\question.gif" />
     <Content Include="admin\component\treetable\img\trash.gif" />
+    <Content Include="admin\css\blue_index.css" />
     <Content Include="admin\css\login.css" />
     <Content Include="admin\component\DTTree\base.gif" />
     <Content Include="admin\component\DTTree\dtree.css" />
@@ -221,6 +228,7 @@
     <Content Include="admin\images\ico\i_04.gif" />
     <Content Include="admin\images\ico\i_05.gif" />
     <Content Include="admin\images\ico\i_06.gif" />
+    <Content Include="admin\index.aspx" />
     <Content Include="admin\js\common.js" />
     <Content Include="admin\component\message\demo.html" />
     <Content Include="admin\component\message\skin\qq\images\ask.gif" />
