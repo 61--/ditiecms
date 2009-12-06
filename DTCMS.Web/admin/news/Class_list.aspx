@@ -16,7 +16,7 @@
                 url: "/admin/ajax/class_list.aspx",
                 type: "GET",
                 data: "action=load&ran=" + Math.random(),
-                success: function(json) {                 
+                success: function(json) {
                     showGridTree(json);
                 }               
             });
