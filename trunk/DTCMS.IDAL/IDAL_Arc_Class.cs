@@ -28,7 +28,7 @@ namespace DTCMS.IDAL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		int Delete(int CID);
+        int Delete(string CID);
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
@@ -53,6 +53,14 @@ namespace DTCMS.IDAL
         /// <param name="Fileds">要查询的字段</param>
         /// <returns></returns>
         DataTable  GetDataTable(string Fileds);
+
+        /// <summary>
+        /// 判断当前节点是否存在子节点
+        /// </summary>
+        /// <param name="ParentID"></param>
+        /// <returns></returns>
+        bool ExistsChildNode(int CID);
+
 		#endregion  成员方法
 	}
 }
