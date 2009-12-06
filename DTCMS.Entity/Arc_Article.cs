@@ -285,7 +285,7 @@ namespace DTCMS.Entity
 			get{return _filepath;}
 		}
 		/// <summary>
-		/// 
+        /// оЮ╧ьндуб
 		/// </summary>
 		public string SimilarArticle
 		{
