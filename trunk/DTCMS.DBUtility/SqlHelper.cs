@@ -11,7 +11,8 @@ namespace DTCMS.DBUtility
         /// <summary>
         /// 数据库连接对象
         /// </summary>
-        private static SqlConnection connection;
+        private  static SqlConnection connection;
+        private static object objConn = new object();
 
         /// <summary>
         /// 数据库连接串
@@ -33,8 +34,15 @@ namespace DTCMS.DBUtility
             {
                 if (connection == null)
                 {
-                    connection = new SqlConnection(ConnString);
+                    lock (objConn)
+                    {
+                        if (connection == null)
+                        {
+                            connection = new SqlConnection(ConnString);
+                        }
+                    }
                 }
+
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
