@@ -26,3 +26,33 @@ function selectAll(elem,cid) {
         }
     }
 }
+
+/***全选反选*name=items**/
+function CheckSelAll(elem) {
+    var input = document.getElementsByName("items");
+    var len = input.length;
+    for (var i = 0; i < len; i++) {
+        if (elem.checked) {
+            input[i].checked = true;
+        }
+        else {
+            input[i].checked = false;
+        }
+    }
+}
+/***获取选择ID*name=items**/
+function GetCheckId() {
+    var iValue = ""; //返回值
+    var input = document.getElementsByName("items");
+    var len = input.length;
+    for (var i = 0; i < len; i++) {
+        if (input[i].checked) {
+            if (iValue == "") {
+                iValue = input[i].value;
+            } else {
+                iValue = iValue + "," + input[i].value;
+            }
+        }
+    }
+    return iValue;
+}
