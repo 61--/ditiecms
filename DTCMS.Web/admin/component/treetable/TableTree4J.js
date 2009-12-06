@@ -73,7 +73,7 @@ function TableTree4J(objectName, tableTree4JDir) {
         hrefIconOnfouceLine: false,
         showTipTitle: true,
         showStatusText: true,
-        inOrder: true,
+        inOrder: true, //不排序，firefox同级不排序
         useCookies: false,
         cookieTime: 30 * 24 * 60 * 60 * 1000,
         useIcon: false,
@@ -440,7 +440,7 @@ function TableTree4J(objectName, tableTree4JDir) {
             if (childs.length > 0) {
                 pnode.childNodes = childs;
                 if (this.config.inOrder == true) {
-                    pnode.childNodes.sort(this.nodeSortByOrder);
+                    pnode.childNodes.sort(this.nodeSortByOrder);  //排序
                 }
                 var lastnum = childs.length - 1;
                 pnode.childNodes[lastnum].booleanLastNode = true;
@@ -482,7 +482,7 @@ function TableTree4J(objectName, tableTree4JDir) {
                 }
 
                 nods[i].htmlcode = nodeimgs + nods[i].htmlcode;
-                nods[i].htmlcode = this.codeNodeTR(nods[i]) + "<td class=\"" + this.config.treeStyle + "\">" + nods[i].htmlcode;
+                nods[i].htmlcode = this.codeNodeTR(nods[i]) + "<td ><input type=\"checkbox\" name=\"items\" value=\"" + nods[i].id + "\"  /></td><td class=\"" + this.config.treeStyle + "\">" + nods[i].htmlcode;   //checkbox
                 this.htmlCode = this.htmlCode + nods[i].htmlcode;
                 if (childNodes.length > 0) {
                     this.flowInitChildNodes(nods[i]);
@@ -654,17 +654,19 @@ function TableTree4J(objectName, tableTree4JDir) {
         var allNodes = this.treeNodes;
         var rootNod = this.rootNode;
         var codes = this.codeNodeTR(rootNod);
+        codes = codes + "<td width=\"4%\"><input type=\"checkbox\" onclick=\"CheckSelAll(this)\" name=\"title\" /></td>";   //checkbox
+
         if (this.headerWidthList != null && this.headerWidthList != "") {
             codes = codes + "<td width=\"" + this.headerWidthList[0] + "\">"
         } else {
             codes = codes + "<td>";
         }
-
+        
         if (allNodes.length > 0) {
             var dImgcode = "";
             this.findChildsToPnode(rootNod);
             dImgcode = this.codeNodeImg(rootNod);
-            if (rootNod.childNodes.length == 0) {
+            if (rootNod.childNodes != null && rootNod.childNodes.length == 0) {
                 dImgcode = "";
             }
             codes = codes + dImgcode;
