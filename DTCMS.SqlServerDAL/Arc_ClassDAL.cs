@@ -220,17 +220,10 @@ namespace DTCMS.SqlServerDAL
         /// </summary>
         /// <param name="CID">栏目编号</param>
         /// <returns>返回影响的行数</returns>
-        public int Delete(int CID)
+        public int Delete(string CID)
         {
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("delete DT_Arc_Class ");
-            strSql.Append(" where CID=@CID ");
-            SqlParameter[] parameters = {
-					new SqlParameter("@CID", SqlDbType.Int,4)};
-            parameters[0].Value = CID;
-
-            return SqlHelper.ExecuteNonQuery(strSql.ToString(), parameters);
-		
+            string strSql = string.Format("delete DT_Arc_Class  where CID in ({0})",CID);
+            return SqlHelper.ExecuteNonQuery(strSql);	
         }
 
         /// <summary>
@@ -380,6 +373,17 @@ namespace DTCMS.SqlServerDAL
            DataTable dt= SqlHelper.ExecuteDataSet(strSql).Tables[0];
            return dt;
 
+        }
+
+        /// <summary>
+        /// 判断当前节点是否存在子节点
+        /// </summary>
+        /// <param name="ParentID"></param>
+        /// <returns></returns>
+        public bool ExistsChildNode(int CID)
+        {
+            string strSql = string.Format("select count(1) from DT_Arc_Class where ParentID={0} ",CID);
+            return (Convert.ToInt32(SqlHelper.ExecuteScalar(strSql)) > 0);
         }
 
 
