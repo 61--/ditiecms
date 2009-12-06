@@ -12,12 +12,7 @@
         });
         function ChangeMenu(n) {
             if (n == 0) {
-                if ($("#left_menu").css("display") == "block") {
-                    $("#left_menu").hide();
-                }
-                else{
-                    $("#left_menu").show();
-                }
+                $("#left_menu").toggle();
             } else {
                 $("#left_menu").width($("#left_menu").width() + n);
             }
@@ -35,9 +30,12 @@
                 },
                 success: function(data) {
                     $("#left_menu").html(data);
-                    $("#ajaxloading").hide();
+                    $("#ajaxloading").fadeOut(500);
                 }
             });
+        }
+        function showHide(item) {
+            $("#" + item).slideToggle(200);
         }
     </script>
 </head>
@@ -80,8 +78,8 @@
         <tr style="text-align:center;vertical-align:top;height:100%;">
             <td id="left_menu" style="width:176px;padding-top:8px;border-right:1px #4294D0 solid;">
             </td>
-            <td>
-                <iframe id="main_body" frameborder="0" width="100%" height="100%" src='news/class_list.aspx' scrolling="auto"></iframe>
+            <td style="height:100%;">
+                <iframe id="main_body" frameborder="0" width="100%" height="100%" src="news/class_list.aspx" scrolling="auto"></iframe>
             </td>
         </tr>
     </table>

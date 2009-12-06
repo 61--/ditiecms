@@ -10,7 +10,7 @@
     <script type="text/javascript" src="../component/treetable/TableTree4J.js"></script>
     <script type="text/javascript">
         $(function() {
-            LoadData();
+            LoadData(); 
         });
         function LoadData() { 
             $.ajax({
