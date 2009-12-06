@@ -49,7 +49,7 @@ namespace DTCMS.BLL
         /// </summary>
         /// <param name="CID">栏目编号</param>
         /// <returns>返回影响行数</returns>
-        public int Delete(int CID)
+        public int Delete(string CID)
         {
             return dalArcClass.Delete(CID);
         }
@@ -111,6 +111,16 @@ namespace DTCMS.BLL
               return  Utils.DataTableToJson(dt).ToString();
             }
             return "";
+        }
+
+        /// <summary>
+        /// 判断当前节点是否存在子节点
+        /// </summary>
+        /// <param name="ParentID"></param>
+        /// <returns></returns>
+        public bool ExistsChildNode(int CID)
+        {
+            return dalArcClass.ExistsChildNode(CID);
         }
     }
 }
