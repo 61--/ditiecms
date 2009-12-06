@@ -7,7 +7,7 @@ protected void Page_Load(object sender, EventArgs e)
 
     //GET提交，c为栏目ID
     int col = 0;
-    col = Convert.ToInt32(Request.QueryString["c"]);
+    col = Convert.ToInt32(Request.QueryString["cid"]);
     switch (col)
     {
         case 0:
