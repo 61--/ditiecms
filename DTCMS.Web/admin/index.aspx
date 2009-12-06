@@ -44,7 +44,7 @@
         <tr>
             <td colspan="2" style="height:76px;">
                 <div class="topnav">
-                    <div id="ajaxloading">正在加载数据...</div>
+                    <div id="ajaxloading">正在加载数据,请稍候...</div>
 	                <div class="sitenav">
 		                <div class="welcome">
 			                你好<span class="username"></span>

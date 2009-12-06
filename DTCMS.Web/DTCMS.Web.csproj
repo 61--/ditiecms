@@ -50,8 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\css\blue_body.css" />
-    <Content Include="admin\css\blue_left.css" />
-    <Content Include="admin\css\blue_top.css" />
     <Content Include="admin\css\calendar-blue.css" />
     <Content Include="admin\css\calendar-brown.css" />
     <Content Include="admin\css\calendar-green.css" />
