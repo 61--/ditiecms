@@ -1,5 +1,5 @@
-F:\DiTieCMS\DTCMS.Pages\bin\Debug\DTCMS.Pages.dll
-F:\DiTieCMS\DTCMS.Pages\bin\Debug\DTCMS.Pages.pdb
-F:\DiTieCMS\DTCMS.Pages\obj\Debug\ResolveAssemblyReference.cache
-F:\DiTieCMS\DTCMS.Pages\obj\Debug\DTCMS.Pages.dll
-F:\DiTieCMS\DTCMS.Pages\obj\Debug\DTCMS.Pages.pdb
+E:\DiTieCMS\DTCMS.Pages\bin\Debug\DTCMS.Pages.dll
+E:\DiTieCMS\DTCMS.Pages\bin\Debug\DTCMS.Pages.pdb
+E:\DiTieCMS\DTCMS.Pages\obj\Debug\ResolveAssemblyReference.cache
+E:\DiTieCMS\DTCMS.Pages\obj\Debug\DTCMS.Pages.dll
+E:\DiTieCMS\DTCMS.Pages\obj\Debug\DTCMS.Pages.pdb

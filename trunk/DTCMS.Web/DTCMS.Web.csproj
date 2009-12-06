@@ -104,6 +104,13 @@
     <Compile Include="admin\ajax\class_list.aspx.designer.cs">
       <DependentUpon>class_list.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\ajax\Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ajax\Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\App_Code\AdminPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -168,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\ajax\class_list.aspx" />
+    <Content Include="admin\ajax\Test.aspx" />
     <Content Include="admin\component\treetable\img\base.gif" />
     <Content Include="admin\component\treetable\img\cd.gif" />
     <Content Include="admin\component\treetable\img\empty.gif" />
