@@ -1,17 +1,17 @@
-/* Powered by http://www.91aspx.com */
+﻿/* Powered by http://www.91aspx.com */
 *{
 	padding:0px;
 	margin:0px;
 }
-body{
+html,body{
 	color:#333333;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:12px;
 	height:76px;
 	overflow:hidden;
+	height:100%;
 	background:url(../images/blue/top_bg_hr.jpg) left top repeat-x;
 }
-
 /*---- link --------------*/
 a{
 	color:#000;
@@ -28,20 +28,19 @@ img{
 	width:100%;
 	height:76px;
 	background:url(../images/blue/admin_tlogo.jpg) left top no-repeat;
-	text-align:right;
 	overflow:hidden;
-	float:right;
+	position:relative;
 }
-.sitenav{
-	float:right;
+.sitenav
+{
 	line-height:31px;
-	margin-top:5px;
-	clear:both;
-	margin-right:10px;
+	top:15px;
+	right:10px;
+	position:absolute;
 }
 .sitenav .welcome{
-	float:left;
 	color:#333333;
+	float:left;
 	margin-right:10px;
 }
 .sitenav .welcome a{
@@ -74,50 +73,51 @@ img{
 
 .leftnav{
 	display:block;
-	clear:both;
-	float:right;
-	margin-top:10px;
+	position:absolute;
+	right:10px;
+	top:46px;
 	height:30px;
-	width:100%;
 }
 .leftnav ul{
 	height:30px;
 	list-style:none;
 	display:block;
-	float:right;
 	margin-right:4px;
-	background-image: url(../images/blue/top_nav_bg.jpg);
-	background-repeat: repeat-x;
-	background-position: left bottom;
+	background-image: url(../images/blue/top_nav_bg.jpg) repeat-x left bottom;
+}
+.leftnav ul li{
+	float:left;
+	height:30px;
+	background-image: url(../images/blue/top_nav_sr.gif);
+	background-repeat: no-repeat;
+	background-position: center bottom;
 }
 .leftnav ul li.navleft{
 	width:10px;
 	height:30px;
+	margin-right:-1px;
 	background-image: url(../images/blue/top_nav_left.jpg);
 	background-repeat: no-repeat;
-	background-position: right bottom;
+	background-position: left bottom;
 }
 .leftnav ul li.navright{
 	width:10px;
 	height:30px;
+	margin-left:-1px;
 	background-image: url(../images/blue/top_nav_right.jpg);
 	background-repeat: no-repeat;
 	background-position: right bottom;
 }
-.leftnav ul li{
-	float:left;
-}
 .leftnav ul li a{
 	display:block;
-	line-height:28px;
+	line-height:30px;
+	height:30px;
 	color:#006699;
 	width:74px;
 	text-align:center;
 	text-decoration: none;
-	background-image: url(../images/blue/top_nav_sr.gif);
-	background-repeat: no-repeat;
-	background-position: center bottom;
-	padding-top: 2px;
+	
+
 }
 .leftnav ul li a:hover,.leftnav ul li.thisclass a{
 	color:#fff;
@@ -130,4 +130,57 @@ img{
 	background-position: center bottom;
 	padding-top: 0px;
 
+}
+/*---- menu style --------------*/
+.menu{
+	width:152px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.menu dl{
+	margin-top:2px;
+}
+.menu dl dt{
+	background:url(../images/blue/menu_title_bg.jpg) top left repeat-x;
+}
+.menu dl dt a{
+	height:20px;
+	padding-top:3px;
+	line-height:19px;
+	width:152px;
+	display:block;
+	color:#FFF;
+	font-weight:bold;
+	text-decoration:none;
+	background:url(../images/blue/ico_1.gif) 10px 7px no-repeat;
+	text-indent:30px;
+	letter-spacing:2px;
+}
+.menu dl dt a:hover{
+	color:#e8f3fd;
+}
+.menu dl dd ul{
+	list-style:none;
+}
+.menu dl dd ul li a{
+	height:22px;
+	width:152px;
+	display:block;
+	line-height:22px;
+	text-indent:28px;
+	color: #000;
+	text-decoration: none;
+	border:1px #CAD9EA solid;
+	background-color: #f2f9fd;
+	background-image: url(../images/blue/ico_2.gif);
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	border-top-color: #f2f9fd;
+}
+.menu dl dd ul li a:hover{
+	color:#239fe3;
+	background-color: #e8f3fd;
+	background-image: url(../images/blue/ico_3.gif);
+	background-repeat: no-repeat;
+	background-position: 10px center;
 }
