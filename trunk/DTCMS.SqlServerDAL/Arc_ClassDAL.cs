@@ -385,6 +385,16 @@ namespace DTCMS.SqlServerDAL
             string strSql = string.Format("select count(1) from DT_Arc_Class where ParentID={0} ",CID);
             return (Convert.ToInt32(SqlHelper.ExecuteScalar(strSql)) > 0);
         }
+        /// <summary>
+        /// 判断栏目是否已经存在
+        /// </summary>
+        /// <param name="ClassName"></param>
+        /// <returns></returns>
+        public bool ExistsClassName(string ClassName)
+        {
+            string strSql = string.Format("select count(1) from DT_Arc_Class where ClassName='{0}'",ClassName);
+            return (Convert.ToInt32(SqlHelper.ExecuteScalar(strSql)) > 0);
+        }
 
 
         #endregion
