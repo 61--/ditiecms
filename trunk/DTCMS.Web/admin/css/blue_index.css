@@ -54,6 +54,7 @@ html { *padding:76px 0px 25px 0px;}
 	height:76px;
 	background:url(../images/blue/admin_tlogo.jpg) left top no-repeat;
 	overflow:hidden;
+	position:relative;
 }
 .sitenav
 {
