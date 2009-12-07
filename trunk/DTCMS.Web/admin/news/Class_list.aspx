@@ -7,7 +7,7 @@
     <link href="../css/blue_body.css" type="text/css" rel="StyleSheet" />
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
-    <script type="text/javascript" src="../component/treetable/TableTree4J.js"></script>
+    <script type="text/javascript" src="../Inc/treetable/TableTree4J.js"></script>
     <script type="text/javascript">
         $(function() {
             LoadData();
@@ -26,7 +26,7 @@
         
         var gridTree;
         function showGridTree(json) {
-            gridTree = new TableTree4J("gridTree", "../component/treetable/");
+            gridTree = new TableTree4J("gridTree", "../Inc/treetable/");
             gridTree.config.useLine = false;
             gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
             
