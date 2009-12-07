@@ -86,6 +86,15 @@ namespace DTCMS.Web.admin.news {
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_JumpUrl;
         
         /// <summary>
+        /// hide_Attribute 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hide_Attribute;
+        
+        /// <summary>
         /// txt_Tags 控件。
         /// </summary>
         /// <remarks>
@@ -149,6 +158,15 @@ namespace DTCMS.Web.admin.news {
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_IsRemoteUrl;
         
         /// <summary>
+        /// rdo_Autopage 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_Autopage;
+        
+        /// <summary>
         /// txt_AutopageNum 控件。
         /// </summary>
         /// <remarks>
@@ -156,6 +174,15 @@ namespace DTCMS.Web.admin.news {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_AutopageNum;
+        
+        /// <summary>
+        /// rdo_Manualpage 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_Manualpage;
         
         /// <summary>
         /// txt_Content 控件。
@@ -239,13 +266,22 @@ namespace DTCMS.Web.admin.news {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_SimilarArticle;
         
         /// <summary>
-        /// Text5 控件。
+        /// txt_Keywords 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Text5;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_Keywords;
+        
+        /// <summary>
+        /// txt_Description 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txt_Description;
         
         /// <summary>
         /// chk_IsHtml 控件。

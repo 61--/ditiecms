@@ -44,6 +44,7 @@
                             <input type="checkbox" id="chk_LightMagic" runat="server" /><label for="chk_LightMagic">幻灯片</label>
                             <input type="checkbox" id="chk_Scroll" runat="server" /><label for="chk_Scroll">滚动</label>
                             <input type="checkbox" id="chk_JumpUrl" runat="server" /><label for="chk_JumpUrl">跳转网址</label>
+                            <input type="hidden" id="hide_Attribute" runat="server" />
                         </td>
                     </tr>
                     <tr>
@@ -87,8 +88,8 @@
                             文章分页:
                         </td>
                         <td class="main_bright split">
-                            <input type="radio" id="rdo_Autopage" value="自动分页" /><label for="rdo_Autopage">自动分页，每页字数:</label><input type="text" id="txt_AutopageNum" value="5000" class="textbox" style="width:60px;" runat="server" />
-                            <input type="radio" id="rdo_Manualpage" value="手动分页" /><label for="rdo_Manualpage">手动分页</label>
+                            <input type="radio" id="rdo_Autopage" runat="server" value="自动分页" /><label for="rdo_Autopage">自动分页，每页字数:</label><input type="text" id="txt_AutopageNum" value="5000" class="textbox" style="width:60px;" runat="server" />
+                            <input type="radio" id="rdo_Manualpage" runat="server" value="手动分页" /><label for="rdo_Manualpage">手动分页</label>
                         </td>
                     </tr>
                     <tr>
@@ -147,7 +148,7 @@
                             阅读权限:
                         </td>
                         <td class="main_bright split">
-                            <select class="textbox short"></select>
+                            <select class="textbox short" id=""></select>
                             <span class="main_bleft">消费点数: </span><input type="text" id="txt_Money" class="textbox" style="width:120px;" runat="server" /> 不大于1000
                         </td>
                     </tr>
@@ -164,7 +165,7 @@
                             文章关键字:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="Text5" class="textbox long" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" /> 多个关键字用逗号,隔开
+                            <input type="text" id="txt_Keywords" class="textbox long" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" /> 多个关键字用逗号,隔开
                         </td>
                     </tr>
                     <tr>
@@ -172,7 +173,7 @@
                             文章摘要:
                         </td>
                         <td class="main_bright split">
-                            <textarea cols="50" rows="5"></textarea> 不大于500个字
+                            <textarea cols="50" id="txt_Description" runat="server" rows="5"></textarea> 不大于500个字
                         </td>
                     </tr>
                     <tr>
