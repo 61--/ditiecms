@@ -27,8 +27,14 @@
             gridTree = new TableTree4J("gridTree", "../component/treetable/");
             gridTree.config.useLine = false;
             gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
+<<<<<<< .mine
+            var headerDataList = new Array("编号","栏目名称", "创建时间", "所属类型", "排序");
+            var widthList = new Array("10%","40%", "20%", "20%", "10%");
+
+=======
             var headerDataList = new Array("栏目名称", "所属类型", "创建时间", "排序","操作");
             var widthList = new Array("36%", "20%", "20%", "10%","10%");
+>>>>>>> .r366
             gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "展开/折叠", "header status text", "", "");
             //设置列样式
             gridTree.gridHeaderColStyleArray = new Array("", "", "", "bleft");
@@ -36,9 +42,15 @@
             if(json!=""){
             var data = eval("data=" + json);
             $.each(data, function(i, n) {
+<<<<<<< .mine
+            var dataList = new Array("1","<a href='Class_add.aspx?Id="+n.cid+"'>" + n.classname + "</a>", n.classtype, n.adddate, n.orderid);
+                gridTree.addGirdNode(dataList, n.cid, n.parentid == 0 ? -1 : n.parentid, null, n.orderid);
+            });
+=======
             var dataList = new Array("<a href='Class_add.aspx?Id=" + n.cid + "'>" + n.classname + "</a>", n.classtype, n.adddate, n.orderid, "<a href=\"Class_add.aspx?Id=" + n.cid + "\">修改</a>&nbsp;&nbsp;<a href=\"##\" onclick=\"DeleteData("+n.cid+",true)\">删除</a>");
                 gridTree.addGirdNode(dataList, n.cid, n.parentid == 0 ? -1 : n.parentid, null, n.orderid, "");
                });
+>>>>>>> .r366
             }
             gridTree.printTableTreeToElement("gridTreeDiv");
         }
@@ -119,6 +131,7 @@
         <div id="tab_menu" class="tabs">
             <ul>
                 <li class="tab_on"><a href="javascript:;">栏目管理</a></li>
+                
             </ul>
         </div>
         <div class="toolbar">
