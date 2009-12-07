@@ -57,7 +57,7 @@
                     return;
                 }
             }
-            alert("请选择修改栏目！");
+            alert("请选择要修改的栏目！");
         }
 
         /*
@@ -140,8 +140,8 @@
         </div>
         <div class="toolbar">
             <a href="Class_Add.aspx" class="button b2"><img src="../images/add.gif" alt="" />新建</a>
-            <a href="##" class="button b2" onclick="UpdateData()"><img src="../images/update.gif" alt="" />修改</a>
-            <a href="##" class="button b4" onclick="DeleteData(-1,true)"><img src="../images/delete.gif" alt="" />批量删除</a>
+            <a href="javascript:UpdateData();" class="button b2"><img src="../images/update.gif" alt="" />修改</a>
+            <a href="javascript:DeleteData(-1,true);" class="button b4"><img src="../images/delete.gif" alt="" />批量删除</a>
         </div>
         <div id="gridTreeDiv">
         </div>
