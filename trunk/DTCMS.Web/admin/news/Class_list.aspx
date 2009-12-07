@@ -27,14 +27,10 @@
             gridTree = new TableTree4J("gridTree", "../component/treetable/");
             gridTree.config.useLine = false;
             gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
-<<<<<<< .mine
-            var headerDataList = new Array("编号","栏目名称", "创建时间", "所属类型", "排序");
-            var widthList = new Array("10%","40%", "20%", "20%", "10%");
-
-=======
+            
             var headerDataList = new Array("栏目名称", "所属类型", "创建时间", "排序","操作");
             var widthList = new Array("36%", "20%", "20%", "10%","10%");
->>>>>>> .r366
+
             gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "展开/折叠", "header status text", "", "");
             //设置列样式
             gridTree.gridHeaderColStyleArray = new Array("", "", "", "bleft");
@@ -42,17 +38,26 @@
             if(json!=""){
             var data = eval("data=" + json);
             $.each(data, function(i, n) {
-<<<<<<< .mine
-            var dataList = new Array("1","<a href='Class_add.aspx?Id="+n.cid+"'>" + n.classname + "</a>", n.classtype, n.adddate, n.orderid);
-                gridTree.addGirdNode(dataList, n.cid, n.parentid == 0 ? -1 : n.parentid, null, n.orderid);
-            });
-=======
-            var dataList = new Array("<a href='Class_add.aspx?Id=" + n.cid + "'>" + n.classname + "</a>", n.classtype, n.adddate, n.orderid, "<a href=\"Class_add.aspx?Id=" + n.cid + "\">修改</a>&nbsp;&nbsp;<a href=\"##\" onclick=\"DeleteData("+n.cid+",true)\">删除</a>");
+                var dataList = new Array("<a href='Class_add.aspx?Id=" + n.cid + "'>" + n.classname + "</a>", n.classtype, n.adddate, n.orderid, "<a href=\"Class_add.aspx?Id=" + n.cid + "\">修改</a>&nbsp;&nbsp;<a href=\"##\" onclick=\"DeleteData("+n.cid+",true)\">删除</a>");
                 gridTree.addGirdNode(dataList, n.cid, n.parentid == 0 ? -1 : n.parentid, null, n.orderid, "");
                });
->>>>>>> .r366
             }
             gridTree.printTableTreeToElement("gridTreeDiv");
+        }
+
+        /*
+        *cid:  栏目编号
+        */
+        function UpdateData() {
+            var input = document.getElementsByName("items");
+            var len = input.length;
+            for (var i = 0; i < len; i++) {
+                if ((input[i].type == "checkbox") && input[i].checked) {
+                    window.location.href = "Class_add.aspx?Id=" + input[i].value;
+                    return;
+                }
+            }
+            alert("请选择修改栏目！");
         }
 
         /*
@@ -89,8 +94,7 @@
                         alert("Ajax请求失败！");
                     }
                 });
-            }
-            
+            }            
         }
         
     </script>
@@ -135,8 +139,9 @@
             </ul>
         </div>
         <div class="toolbar">
-            <a href="Class_Add.aspx" class="button b2">新建栏目</a><a href="Class_Add.aspx" class="button b3">新建栏目</a><a href="Class_Add.aspx" class="button b4"><img src="../images/ico/i_02.gif" />新建栏目</a><a href="Class_Add.aspx" class="button b5">新建栏目</a><a href="Class_Edit.aspx" class="button b1">编辑</a>
-            <input type ="button" onclick="DeleteData(-1,true)" value="批删除" />
+            <a href="Class_Add.aspx" class="button b2"><img src="../images/add.gif" alt="" />新建</a>
+            <a href="##" class="button b2" onclick="UpdateData()"><img src="../images/update.gif" alt="" />修改</a>
+            <a href="##" class="button b4" onclick="DeleteData(-1,true)"><img src="../images/delete.gif" alt="" />批量删除</a>
         </div>
         <div id="gridTreeDiv">
         </div>

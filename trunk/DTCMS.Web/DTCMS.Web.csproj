@@ -209,9 +209,11 @@
     <Content Include="admin\component\DTTree\page.gif" />
     <Content Include="admin\component\DTTree\plus.gif" />
     <Content Include="admin\component\DTTree\plusbottom.gif" />
+    <Content Include="admin\images\add.gif" />
     <Content Include="admin\images\blue\help.gif" />
     <Content Include="admin\images\blue\s.gif" />
     <Content Include="admin\images\blue\th_bg.gif" />
+    <Content Include="admin\images\delete.gif" />
     <Content Include="admin\images\ico\i_01.gif" />
     <Content Include="admin\images\ico\i_02.gif" />
     <Content Include="admin\images\ico\i_03.gif" />
@@ -219,6 +221,7 @@
     <Content Include="admin\images\ico\i_05.gif" />
     <Content Include="admin\images\ico\i_06.gif" />
     <Content Include="admin\images\ico\i_loading_green.gif" />
+    <Content Include="admin\images\update.gif" />
     <Content Include="admin\index.aspx" />
     <Content Include="admin\js\common.js" />
     <Content Include="admin\component\message\demo.html" />
