@@ -60,11 +60,11 @@ namespace DTCMS.Web.admin.news
                 }
                 else if (n == -3)
                 {
-                    Message.Dialog("添加栏目失败！该栏目已经存在。", null, MessageIcon.Error, 0);
+                    Message.Dialog("添加栏目失败！该栏目已经存在。", "Class_list.aspx", MessageIcon.Error, 0);
                 }
                 else
                 {
-                    Message.Dialog("添加栏目失败！请检查数据是否完整。", null, MessageIcon.Error, 0);
+                    Message.Dialog("添加栏目失败！请检查数据是否完整。", "Class_list.aspx", MessageIcon.Error, 0);
                 }
             }
         }
