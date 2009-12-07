@@ -241,8 +241,8 @@ namespace DTCMS.SqlServerDAL
         /// <returns></returns>
         public int Delete(string ID)
         {
-            int n = 0;
-            string strSql =string.Format( " delete DT_Arc_ArticleDAL where ID in({0}) ", ID);
+            
+            string strSql =string.Format( " delete DT_Arc_Article where ID in({0}) ", ID);
             return SqlHelper.ExecuteNonQuery(strSql.ToString());
         }
         /// <summary>
