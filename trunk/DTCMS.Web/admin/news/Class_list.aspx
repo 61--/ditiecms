@@ -10,8 +10,9 @@
     <script type="text/javascript" src="../component/treetable/TableTree4J.js"></script>
     <script type="text/javascript">
         $(function() {
-            LoadData(); 
+            LoadData();
         });
+        
         function LoadData() { 
             $.ajax({
                 url: "/admin/ajax/class_list.aspx",
@@ -22,6 +23,7 @@
                 }               
             });
         }
+        
         var gridTree;
         function showGridTree(json) {
             gridTree = new TableTree4J("gridTree", "../component/treetable/");
@@ -33,70 +35,17 @@
 
             gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "展开/折叠", "header status text", "", "");
             //设置列样式
-            gridTree.gridHeaderColStyleArray = new Array("", "", "", "bleft");
-            gridTree.gridDataCloStyleArray = new Array("", "", "", "");
+            gridTree.gridHeaderColStyleArray = new Array("", "", "","","bleft");
+            gridTree.gridDataCloStyleArray = new Array("", "", "","","");
             if(json!=""){
             var data = eval("data=" + json);
             $.each(data, function(i, n) {
-                var dataList = new Array("<a href='Class_add.aspx?Id=" + n.cid + "'>" + n.classname + "</a>", n.classtype, n.adddate, n.orderid, "<a href=\"Class_add.aspx?Id=" + n.cid + "\">修改</a>&nbsp;&nbsp;<a href=\"##\" onclick=\"DeleteData("+n.cid+",true)\">删除</a>");
+            var dataList = new Array("<a href='Class_add.aspx?Id=" + n.cid + "'>" + n.classname + "</a>", n.classtype, n.adddate, "<input type=\"text\" onfocus=\"GetCurValue(this)\" onblur=\"UpdateSort(" + n.cid + ")\" id=\"order_" + n.cid + "\" class=\"class_order\" value=\"" + n.orderid + "\">", "<a href=\"Class_add.aspx?Id=" + n.cid + "\">修改</a>&nbsp;&nbsp;<a href=\"##\" onclick=\"DeleteData(" + n.cid + ",true)\">删除</a>");
                 gridTree.addGirdNode(dataList, n.cid, n.parentid == 0 ? -1 : n.parentid, null, n.orderid, "");
                });
             }
             gridTree.printTableTreeToElement("gridTreeDiv");
         }
-
-        /*
-        *cid:  栏目编号
-        */
-        function UpdateData() {
-            var input = document.getElementsByName("items");
-            var len = input.length;
-            for (var i = 0; i < len; i++) {
-                if ((input[i].type == "checkbox") && input[i].checked) {
-                    window.location.href = "Class_add.aspx?Id=" + input[i].value;
-                    return;
-                }
-            }
-            alert("请选择要修改的栏目！");
-        }
-
-        /*
-        *cid:  栏目编号
-        *flag:  是否批量删除，表示true:批量删除，false:单个删除
-        */
-        function DeleteData(cid, flag) {//删除栏目
-            if (flag) {
-                var id = GetCheckId();           
-                if (id == "") {
-                    alert("请选择你要删除的数据！");
-                    return;
-                }
-                else {
-                    cid = id;
-                }
-
-            }
-
-            if (window.confirm("确定要删除？")) {
-                $.ajax({
-                    url: "/admin/ajax/class_list.aspx",
-                    type: "GET",
-                    data: "action=delete&Id=" + cid + "&ran=" + Math.random(),
-                    success: function(responseText) {//提示
-                        if (responseText.toString().toUpperCase() == "TRUE") {
-                            LoadData();
-                            alert("栏目删除成功！");
-                        } else {
-                            alert(responseText);
-                        }
-                    },
-                    error: function() {
-                        alert("Ajax请求失败！");
-                    }
-                });
-            }            
-        }
-        
     </script>
     <style type="text/css">
         .GridView{
@@ -128,23 +77,115 @@
         .GridHighLightRow td{
             background: #E0F0FD;
         }
+        .class_order
+        {
+            width:60px;
+        }
     </style>
 </head>
 <body>
-    <div id="container">
-        <div id="tab_menu" class="tabs">
-            <ul>
-                <li class="tab_on"><a href="javascript:;">栏目管理</a></li>
-                
-            </ul>
+    <form id="form1" runat="server">
+        <div id="container">  
+            <div id="tab_menu" class="tabs">
+                <ul>
+                    <li class="tab_on"><a href="javascript:;">栏目管理</a></li>
+                    
+                </ul>
+            </div>
+            <div class="toolbar">
+                <a href="Class_Add.aspx" class="button b4"><img src="../images/ico/i_add.gif" alt="" />新建栏目</a>
+                <a href="javascript:UpdateData();" class="button b4"><img src="../images/ico/i_edit.gif" alt="" />修改栏目</a>
+                <a href="javascript:DeleteData(-1,true);" class="button b4"><img src="../images/ico/i_allDelete.gif" alt="" />批量删除</a>
+            </div>
+            <div id="gridTreeDiv">
+            </div>
+            <input type="hidden" id="curOrder" value="" />
         </div>
-        <div class="toolbar">
-            <a href="Class_Add.aspx" class="button b2"><img src="../images/add.gif" alt="" />新建</a>
-            <a href="javascript:UpdateData();" class="button b2"><img src="../images/update.gif" alt="" />修改</a>
-            <a href="javascript:DeleteData(-1,true);" class="button b4"><img src="../images/delete.gif" alt="" />批量删除</a>
-        </div>
-        <div id="gridTreeDiv">
-        </div>
-    </div>
+    </form>
+    
+    <script type"text/javascript">
+
+        /*
+        *cid:  栏目编号
+        */
+        function UpdateData() {
+            var input = document.getElementsByName("items");
+            var len = input.length;
+            for (var i = 0; i < len; i++) {
+                if ((input[i].type == "checkbox") && input[i].checked) {
+                    window.location.href = "Class_add.aspx?Id=" + input[i].value;
+                    return;
+                }
+            }
+            alert("请选择要修改的栏目！");
+        }
+
+        /*
+        *cid:  栏目编号
+        *flag:  是否批量删除，表示true:批量删除，false:单个删除
+        */
+        function DeleteData(cid, flag) {//删除栏目
+            if (flag) {
+                var id = GetCheckId();
+                if (id == "") {
+                    alert("请选择你要删除的数据！");
+                    return;
+                }
+                else {
+                    cid = id;
+                }
+
+            }
+
+            if (window.confirm("确定要删除？")) {
+                $.ajax({
+                    url: "/admin/ajax/class_list.aspx",
+                    type: "GET",
+                    data: "action=delete&Id=" + cid + "&ran=" + Math.random(),
+                    success: function(responseText) {//提示
+                        if (responseText.toString().toUpperCase() == "TRUE") {
+                            LoadData();
+                            alert("栏目删除成功！");
+                        } else {
+                            alert(responseText);
+                        }
+                    },
+                    error: function() {
+                        alert("Ajax请求失败！");
+                    }
+                });
+            }
+        }
+
+        //获取当前排序号
+        function GetCurValue(obj) {
+            $("#curOrder").val(obj.value);
+        }
+
+        //更新排序
+        function UpdateSort(cid) {
+            var curVal = $("#order_" + cid).val();
+            if (curVal != $("#curOrder").val()) {
+                $.ajax({
+                    url: "/admin/ajax/class_list.aspx",
+                    type: "GET",
+                    data: "action=order&Id=" + cid + "&orderId=" + curVal + "&ran=" + Math.random(),
+                    success: function(responseText) {
+                        if (responseText > 0) {
+                            LoadData();
+                        } else if (responseText == -1) {
+                            alert("栏目排序更新出错！");
+                            $("#order_" + cid).val($("#curOrder").val());
+                        } else {
+
+                            alert("栏目排序更新失败！");
+                            $("#order_" + cid).val($("#curOrder").val());
+                        }
+                    }
+                });
+            }
+        }
+        
+</script>
 </body>
 </html>

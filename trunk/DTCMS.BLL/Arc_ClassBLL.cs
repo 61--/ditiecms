@@ -49,6 +49,17 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
+        /// 更新排序
+        /// </summary>
+        /// <param name="cid">栏目ID</param>
+        /// <param name="order">排序编号</param>
+        /// <returns></returns>
+        public int UpdateOrder(int cid, int order)
+        {
+            return dalArcClass.UpdateOrder(cid, order);
+        }
+
+        /// <summary>
         /// 删除数据
         /// </summary>
         /// <param name="CID">栏目编号</param>

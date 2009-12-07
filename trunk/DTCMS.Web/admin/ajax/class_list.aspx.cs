@@ -15,7 +15,7 @@ namespace DTCMS.Web.admin.ajax
 {
     public partial class class_list : System.Web.UI.Page
     {
-        private Arc_ClassBLL bllClass = new Arc_ClassBLL(); //栏目
+        private Arc_ClassBLL bllClass = new Arc_ClassBLL();     //栏目
         private Arc_ArticleBLL bllArticle = new Arc_ArticleBLL();   //文章
 
         protected void Page_Load(object sender, EventArgs e)
@@ -28,6 +28,9 @@ namespace DTCMS.Web.admin.ajax
                     break;
                 case "delete":
                     Response.Write(Delete());
+                    break;
+                case "order":
+                    Response.Write(UpdateOrder().ToString());
                     break;
                 default:
                     break;
@@ -44,6 +47,7 @@ namespace DTCMS.Web.admin.ajax
         {
             return bllClass.GetDataTableJoson();
         }
+
         /// <summary>
         /// 删除栏目
         /// </summary>
@@ -86,6 +90,25 @@ namespace DTCMS.Web.admin.ajax
                 return "删除栏目出现未知错误！";
             }
 
+        }
+
+        /// <summary>
+        /// 更新栏目排序
+        /// </summary>
+        /// <returns>成功返回影响行数，异常返回-1，失败返回0</returns>
+        public int UpdateOrder()
+        {
+            try
+            {
+                int id = int.Parse(Common.Utils.GetQueryString("Id"));
+                int orderId = int.Parse(Common.Utils.GetQueryString("orderId"));
+
+                return bllClass.UpdateOrder(id, orderId);
+            }
+            catch
+            {
+                return -1;
+            }
         }
     }
 
