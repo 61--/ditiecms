@@ -82,6 +82,6 @@
 	<iframe id="main_body" name="main_body" frameborder="0" src="news/class_list.aspx"></iframe>
 </div>
 <div class="bottom">
-	CopyRight &copy; 2009 www.91aspx.com </div>
+	CopyRight &copy; 2009 <a href="http://www.91aspx.com" target="_blank">www.91aspx.com</a> All rights reserved. Powered by <a href="http://www.91aspx.com" target="_blank">DTCMS V1.0</a></div>
 </body>
 </html>
