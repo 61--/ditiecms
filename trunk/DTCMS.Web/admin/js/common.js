@@ -56,3 +56,21 @@ function GetCheckId() {
     }
     return iValue;
 }
+//获取鼠标坐标
+function mouseCoords(ev) {
+    ev = ev || window.event;
+    if (ev.pageX || ev.pageY) {
+        return { x: ev.pageX, y: ev.pageY };
+    }
+    return {
+        x: ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+        y: ev.clientY + document.body.scrollTop - document.body.clientTop
+    }
+}
+//获取标签坐标
+function getElementCoords(px, py) {
+    return {
+        x: event.clientX - event.offsetX + px,
+        y: event.clientY - event.offsetY + py
+    }
+}

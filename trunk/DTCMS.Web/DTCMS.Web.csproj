@@ -200,6 +200,7 @@
     <Content Include="admin\images\ico\i_select.gif" />
     <Content Include="admin\images\ico\i_sort.gif" />
     <Content Include="admin\index.aspx" />
+    <Content Include="admin\js\color.js" />
     <Content Include="admin\js\common.js" />
     <Content Include="admin\Inc\treetable\TableTree4J.js" />
     <Content Include="admin\news\Class_list.aspx" />
