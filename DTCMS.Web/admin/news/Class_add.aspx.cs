@@ -38,7 +38,7 @@ namespace DTCMS.Web.admin.news
             int n = 0;//更新是否成功
             
             if (cid > 0)
-            {
+            {//修改栏目
                 n = bllClass.Update(GetClassModel());
 
                 if (n > 0)
@@ -51,12 +51,16 @@ namespace DTCMS.Web.admin.news
                 }
             }
             else
-            {
+            {//添加栏目
                 n = bllClass.Add(GetClassModel());
 
                 if (n > 0)
                 {
                     Message.Dialog("添加栏目成功！", "Class_list.aspx", MessageIcon.Success, 0);
+                }
+                else if (n == -3)
+                {
+                    Message.Dialog("添加栏目失败！该栏目已经存在。", null, MessageIcon.Error, 0);
                 }
                 else
                 {
@@ -82,6 +86,7 @@ namespace DTCMS.Web.admin.news
             {
                 hidden_ClassId.Value = model.CID.ToString();
                 hidden_ParentClassID.Value = model.ParentID.ToString();
+                txt_ParentClassName.Value = model.ParentID.ToString();
                 txt_ParentClassName.Value = bllClass.GetParentName(model.ParentID);
                 SetClassAttribute(model.Attribute);
                 txt_ClassName.Value = model.ClassName;
