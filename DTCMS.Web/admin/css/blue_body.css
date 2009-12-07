@@ -7,6 +7,7 @@ body {
 	font-size: 12px;
 	height: 100%;
 	color: #333;
+	_overflow-y: scroll;
 }
 img {
 	border: 0px;
@@ -115,7 +116,7 @@ a.b5:hover
 }
 #container {
 	margin-top: 10px;
-	width:98%;
+	width:96%;
 	margin-left:auto;
 	margin-right:auto;
 	overflow: hidden;
