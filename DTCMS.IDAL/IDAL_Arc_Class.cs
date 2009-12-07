@@ -61,6 +61,12 @@ namespace DTCMS.IDAL
         /// <returns></returns>
         bool ExistsChildNode(int CID);
 
+        /// <summary>
+        /// 判断栏目是否已经存在
+        /// </summary>
+        /// <param name="ClassName"></param>
+        /// <returns></returns>
+        bool ExistsClassName(string ClassName);
 		#endregion  成员方法
 	}
 }
