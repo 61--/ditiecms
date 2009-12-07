@@ -25,6 +25,13 @@ namespace DTCMS.IDAL
 		/// 更新一条数据`
 		/// </summary>
         int Update(Arc_Class model);
+         /// <summary>
+        /// 更新排序
+        /// </summary>
+        /// <param name="cid">栏目ID</param>
+        /// <param name="order">排序编号</param>
+        /// <returns></returns>
+        int UpdateOrder(int cid, int order);
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
