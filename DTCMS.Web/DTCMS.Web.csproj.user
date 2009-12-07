@@ -6,7 +6,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <StartPageUrl>admin/index.aspx</StartPageUrl>
+          <StartPageUrl>admin/news/News_list.aspx</StartPageUrl>
           <StartAction>SpecificPage</StartAction>
           <AspNetDebugging>True</AspNetDebugging>
           <NativeDebugging>False</NativeDebugging>
@@ -26,7 +26,6 @@
           </StartWorkingDirectory>
           <EnableENC>False</EnableENC>
           <AlwaysStartWebServerOnDebug>True</AlwaysStartWebServerOnDebug>
-          <EnableWcfTestClientForSVC>False</EnableWcfTestClientForSVC>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
