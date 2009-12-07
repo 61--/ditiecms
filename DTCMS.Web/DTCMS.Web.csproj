@@ -125,13 +125,6 @@
     <Compile Include="admin\news\News_list.aspx.designer.cs">
       <DependentUpon>News_list.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\Test.aspx.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\Test.aspx.designer.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-    </Compile>
     <Compile Include="admin\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -141,7 +134,6 @@
     </Compile>
     <Compile Include="admin\main_index.aspx.cs">
       <DependentUpon>main_index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\main_index.aspx.designer.cs">
       <DependentUpon>main_index.aspx</DependentUpon>
@@ -162,7 +154,6 @@
     </Compile>
     <Compile Include="admin\top_index.aspx.cs">
       <DependentUpon>top_index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\top_index.aspx.designer.cs">
       <DependentUpon>top_index.aspx</DependentUpon>
@@ -172,43 +163,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\ajax\class_list.aspx" />
-    <Content Include="admin\component\treetable\img\base.gif" />
-    <Content Include="admin\component\treetable\img\cd.gif" />
-    <Content Include="admin\component\treetable\img\empty.gif" />
-    <Content Include="admin\component\treetable\img\folder.gif" />
-    <Content Include="admin\component\treetable\img\folderopen.gif" />
-    <Content Include="admin\component\treetable\img\globe.gif" />
-    <Content Include="admin\component\treetable\img\imgfolder.gif" />
-    <Content Include="admin\component\treetable\img\join.gif" />
-    <Content Include="admin\component\treetable\img\joinbottom.gif" />
-    <Content Include="admin\component\treetable\img\line.gif" />
-    <Content Include="admin\component\treetable\img\minus.gif" />
-    <Content Include="admin\component\treetable\img\minusbottom.gif" />
-    <Content Include="admin\component\treetable\img\musicfolder.gif" />
-    <Content Include="admin\component\treetable\img\nolines_minus.gif" />
-    <Content Include="admin\component\treetable\img\nolines_plus.gif" />
-    <Content Include="admin\component\treetable\img\page.gif" />
-    <Content Include="admin\component\treetable\img\plus.gif" />
-    <Content Include="admin\component\treetable\img\plusbottom.gif" />
-    <Content Include="admin\component\treetable\img\question.gif" />
-    <Content Include="admin\component\treetable\img\trash.gif" />
+    <Content Include="admin\Inc\treetable\img\base.gif" />
+    <Content Include="admin\Inc\treetable\img\cd.gif" />
+    <Content Include="admin\Inc\treetable\img\empty.gif" />
+    <Content Include="admin\Inc\treetable\img\folder.gif" />
+    <Content Include="admin\Inc\treetable\img\folderopen.gif" />
+    <Content Include="admin\Inc\treetable\img\globe.gif" />
+    <Content Include="admin\Inc\treetable\img\imgfolder.gif" />
+    <Content Include="admin\Inc\treetable\img\join.gif" />
+    <Content Include="admin\Inc\treetable\img\joinbottom.gif" />
+    <Content Include="admin\Inc\treetable\img\line.gif" />
+    <Content Include="admin\Inc\treetable\img\minus.gif" />
+    <Content Include="admin\Inc\treetable\img\minusbottom.gif" />
+    <Content Include="admin\Inc\treetable\img\musicfolder.gif" />
+    <Content Include="admin\Inc\treetable\img\nolines_minus.gif" />
+    <Content Include="admin\Inc\treetable\img\nolines_plus.gif" />
+    <Content Include="admin\Inc\treetable\img\page.gif" />
+    <Content Include="admin\Inc\treetable\img\plus.gif" />
+    <Content Include="admin\Inc\treetable\img\plusbottom.gif" />
+    <Content Include="admin\Inc\treetable\img\question.gif" />
+    <Content Include="admin\Inc\treetable\img\trash.gif" />
     <Content Include="admin\css\blue_index.css" />
     <Content Include="admin\css\login.css" />
-    <Content Include="admin\component\DTTree\base.gif" />
-    <Content Include="admin\component\DTTree\dtree.css" />
-    <Content Include="admin\component\DTTree\dtree.js" />
-    <Content Include="admin\component\DTTree\empty.gif" />
-    <Content Include="admin\component\DTTree\folder.gif" />
-    <Content Include="admin\component\DTTree\folderopen.gif" />
-    <Content Include="admin\component\DTTree\join.gif" />
-    <Content Include="admin\component\DTTree\joinbottom.gif" />
-    <Content Include="admin\component\DTTree\line.gif" />
-    <Content Include="admin\component\DTTree\minus.gif" />
-    <Content Include="admin\component\DTTree\minusbottom.gif" />
-    <Content Include="admin\component\DTTree\nodeSel_bg.gif" />
-    <Content Include="admin\component\DTTree\page.gif" />
-    <Content Include="admin\component\DTTree\plus.gif" />
-    <Content Include="admin\component\DTTree\plusbottom.gif" />
     <Content Include="admin\images\blue\help.gif" />
     <Content Include="admin\images\blue\s.gif" />
     <Content Include="admin\images\blue\th_bg.gif" />
@@ -225,29 +201,10 @@
     <Content Include="admin\images\ico\i_sort.gif" />
     <Content Include="admin\index.aspx" />
     <Content Include="admin\js\common.js" />
-    <Content Include="admin\component\message\demo.html" />
-    <Content Include="admin\component\message\skin\qq\images\ask.gif" />
-    <Content Include="admin\component\message\skin\qq\images\btn_bg.gif" />
-    <Content Include="admin\component\message\skin\qq\images\content_bg.gif" />
-    <Content Include="admin\component\message\skin\qq\images\err.gif" />
-    <Content Include="admin\component\message\skin\qq\images\ico.gif" />
-    <Content Include="admin\component\message\skin\qq\images\info.gif" />
-    <Content Include="admin\component\message\skin\qq\images\right.gif" />
-    <Content Include="admin\component\message\skin\qq\images\title_bg_center.gif" />
-    <Content Include="admin\component\message\skin\qq\images\title_bg_left.gif" />
-    <Content Include="admin\component\message\skin\qq\images\title_bg_right.gif" />
-    <Content Include="admin\component\message\skin\qq\images\win_b.gif" />
-    <Content Include="admin\component\message\skin\qq\images\win_l.gif" />
-    <Content Include="admin\component\message\skin\qq\images\win_lb.gif" />
-    <Content Include="admin\component\message\skin\qq\images\win_r.gif" />
-    <Content Include="admin\component\message\skin\qq\images\win_rb.gif" />
-    <Content Include="admin\component\message\skin\qq\ymPrompt.css" />
-    <Content Include="admin\component\message\ymPrompt.js" />
-    <Content Include="admin\component\treetable\TableTree4J.js" />
+    <Content Include="admin\Inc\treetable\TableTree4J.js" />
     <Content Include="admin\news\Class_list.aspx" />
     <Content Include="admin\news\News_list.aspx" />
     <Content Include="admin\news\News_list.html" />
-    <Content Include="admin\Test.aspx" />
     <Content Include="admin\images\login_input_bg.gif" />
     <Content Include="admin\images\login_input_hr.gif" />
     <Content Include="admin\images\login_submit.gif" />
@@ -631,7 +588,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1833</DevelopmentServerPort>
+          <DevelopmentServerPort>4412</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/DTCMS_Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
