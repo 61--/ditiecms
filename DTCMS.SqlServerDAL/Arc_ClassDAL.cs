@@ -216,6 +216,28 @@ namespace DTCMS.SqlServerDAL
         }
 
         /// <summary>
+        /// 更新排序
+        /// </summary>
+        /// <param name="cid">栏目ID</param>
+        /// <param name="order">排序编号</param>
+        /// <returns></returns>
+        public int UpdateOrder(int cid,int order)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("update DT_Arc_Class set ");
+            strSql.Append("OrderID=@OrderID ");
+            strSql.Append(" where CID=@CID ");
+            SqlParameter[] parameters = {
+                new SqlParameter("@OrderID", SqlDbType.SmallInt,2),
+                new SqlParameter("@CID", SqlDbType.Int,4)
+            };
+            parameters[0].Value = order;
+            parameters[1].Value = cid;
+
+            return SqlHelper.ExecuteNonQuery(strSql.ToString(), parameters);
+        }
+
+        /// <summary>
         /// 删除数据
         /// </summary>
         /// <param name="CID">栏目编号</param>
