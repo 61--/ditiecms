@@ -15,22 +15,23 @@ namespace DTCMS.Web.admin.news
     public partial class News_add : System.Web.UI.Page
     {
         Arc_ArticleBLL bllArticle = new Arc_ArticleBLL();
+        int NewID = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
         private void SetPageData()
         {
-             if (CID <= 0)
+            if (NewID <= 0)
             {
                 return;
             }
 
-            Arc_Article model = bllClass.GetModel(CID);
+             Arc_Article model = bllArticle.GetModel(NewID);
 
             if (model != null)
             {
-                slt_TitleFlag.Value = model.TitleFlag;
+                slt_TitleFlag.Value = model.TitleFlag.HasValue?model.TitleFlag.ToString():"0";
                 txt_Title.Value = model.Title;
                 hide_Attribute.Value = model.Attribute;
                 txt_Tags.Value = model.Tags;
@@ -51,8 +52,8 @@ namespace DTCMS.Web.admin.news
                 txt_OrderID.Value=model.OrderID.HasValue?model.OrderID.Value.ToString():"0";
                 txt_Templet.Value=model.Templet;
                 txt_FilePath.Value=model.FilePath;
-                txt_PubDate.Value=model.PubDate.ToString();model.
-                txt_Money.Value=model.Money.HasValue?model.Money.Value.ToString():"0";
+                txt_PubDate.Value=model.PubDate.ToString();
+                txt_Money.Value = model.Money.HasValue ? model.Money.Value.ToString() : "0";
                 txt_SimilarArticle.Value = model.SimilarArticle;
                 txt_Keywords.Value = model.Keywords.Trim();
                 txt_Description.Value = model.Description;
@@ -71,13 +72,16 @@ namespace DTCMS.Web.admin.news
                     else
                         chk_IsComment.Checked=false;
                 }
-                if(model.IsChecked.HasValue)//是否审核
+
+                if (model.IsChecked == 1)//是否审核
                 {
-                    if (model.IsChecked == 1)
-                        chk_IsChecked.Checked=true;
-                    else
-                        chk_IsChecked.Checked=false;
+                    chk_IsChecked.Checked = true;
                 }
+                else
+                {
+                    chk_IsChecked.Checked = false;
+                }
+               
                 
                     
             }
