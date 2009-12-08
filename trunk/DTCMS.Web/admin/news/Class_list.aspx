@@ -103,11 +103,8 @@
         </div>
     </form>
     
-    <script type"text/javascript">
-
-        /*
-        *cid:  栏目编号
-        */
+    <script type="text/javascript">
+        //*cid:  栏目编号
         function UpdateData() {
             var input = document.getElementsByName("items");
             var len = input.length;
@@ -119,11 +116,8 @@
             }
             alert("请选择要修改的栏目！");
         }
-
-        /*
-        *cid:  栏目编号
-        *flag:  是否批量删除，表示true:批量删除，false:单个删除
-        */
+        //cid:  栏目编号
+        //flag:  是否批量删除，表示true:批量删除，false:单个删除
         function DeleteData(cid, flag) {//删除栏目
             if (flag) {
                 var id = GetCheckId();
