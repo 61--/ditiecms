@@ -194,7 +194,6 @@ namespace DTCMS.SqlServerDAL
 					new SqlParameter("@IsPaging", SqlDbType.TinyInt,1),
 					new SqlParameter("@FilePath", SqlDbType.NVarChar,200),
 					new SqlParameter("@SimilarArticle", SqlDbType.NChar,10),
-					new SqlParameter("@AddDate", SqlDbType.DateTime),
 					new SqlParameter("@PubDate", SqlDbType.DateTime),
 					new SqlParameter("@OrderID", SqlDbType.TinyInt,1)};
             parameters[0].Value = model.ID;
@@ -228,9 +227,8 @@ namespace DTCMS.SqlServerDAL
             parameters[28].Value = model.IsPaging;
             parameters[29].Value = model.FilePath;
             parameters[30].Value = model.SimilarArticle;
-            parameters[31].Value = model.AddDate;
-            parameters[32].Value = model.PubDate;
-            parameters[33].Value = model.OrderID;
+            parameters[31].Value = model.PubDate;
+            parameters[32].Value = model.OrderID;
             return SqlHelper.ExecuteNonQuery(strSql.ToString(), parameters);
         }
 
