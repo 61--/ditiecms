@@ -18,17 +18,17 @@ namespace DTCMS.Web.admin.news
     public partial class Class_add : System.Web.UI.Page
     {
         private Arc_ClassBLL bllClass = new Arc_ClassBLL();
-        private int cid=0;//栏目ID
+        private int CID=0;  //栏目ID
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            cid = Common.Utils.GetQueryInt("Id");
+            CID = Common.Utils.GetQueryInt("Id");
 
             if (!IsPostBack)
             {
-                if (cid > 0)
+                if (CID > 0)
                 {
-                    SetPageData(cid);//更新数据赋值
+                    SetPageData();  //更新数据赋值
                 }
             }
         }
@@ -36,14 +36,19 @@ namespace DTCMS.Web.admin.news
         protected void Btn_Submit_Click(object sender, EventArgs e)
         {
             int n = 0;//更新是否成功
-            
-            if (cid > 0)
+
+            if (CID > 0)
             {//修改栏目
                 n = bllClass.Update(GetClassModel());
 
                 if (n > 0)
                 {
                     Message.Dialog("更新栏目成功！", "Class_list.aspx", MessageIcon.Success, 0);
+                }
+
+                else if (n == -3)
+                {
+                    Message.Dialog("更新栏目失败！该栏目已经存在。", "Class_list.aspx", MessageIcon.Error, 0);
                 }
                 else
                 {
@@ -70,10 +75,10 @@ namespace DTCMS.Web.admin.news
         }
 
         /// <summary>
-        ///  更新数据赋值
+        ///  更新，初始化页面数据
         /// </summary>
-        /// <param name="CID"></param>
-        private void SetPageData(int CID)
+        /// <param name="CID">栏目ID</param>
+        private void SetPageData()
         {
             if (CID <= 0)
             {
@@ -84,7 +89,6 @@ namespace DTCMS.Web.admin.news
 
             if (model != null)
             {
-                hidden_ClassId.Value = model.CID.ToString();
                 hidden_ParentClassID.Value = model.ParentID.ToString();
                 txt_ParentClassName.Value = model.ParentID.ToString();
                 txt_ParentClassName.Value = bllClass.GetParentName(model.ParentID);
@@ -117,14 +121,14 @@ namespace DTCMS.Web.admin.news
         }
 
         /// <summary>
-        /// 获取实体
+        /// 获取栏目实体，添加，修改
         /// </summary>
-        /// <returns></returns>
+        /// <returns>栏目实体</returns>
         private Arc_Class GetClassModel()
         {
             Arc_Class model = new Arc_Class();
 
-            model.CID = int.Parse(hidden_ClassId.Value);
+            model.CID = CID;
             model.ParentID = Convert.ToInt32(hidden_ParentClassID.Value == "" ? "0" : hidden_ParentClassID.Value.Trim());
             model.Attribute = GetClassAttribute();
             model.ClassName = txt_ClassName.Value;
