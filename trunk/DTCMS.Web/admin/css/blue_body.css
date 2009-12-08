@@ -113,10 +113,12 @@ a.b5:hover
 	width: 420px;
 }
 #container {
+	_width:98%;
 	margin-top: 10px;
-	width:96%;
-	margin-left:auto;
-	margin-right:auto;
+	_margin-left:auto;
+	_margin-right:auto;
+	margin-left:12px !important;
+	margin-right:12px !important;
 	overflow: hidden;
 }
 .tabs {
