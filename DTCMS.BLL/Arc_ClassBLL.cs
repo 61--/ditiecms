@@ -45,6 +45,11 @@ namespace DTCMS.BLL
         /// <returns>返回影响行数</returns>
         public int Update(Arc_Class model)
         {
+            if (ExistsClassName(model.ClassName))
+            {//存在该栏目
+                return -3;
+            }
+
             return dalArcClass.Update(model);
         }
 
