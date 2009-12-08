@@ -32,6 +32,7 @@
                                 <option>转载</option>
                             </select>
                             <input type="text" id="txt_Title" class="textbox long" maxlength="100" runat="server" />
+                            <input type="hidden" id="hide_TitleStyle" runat="server" />     <%--标题样式--%>
                         </td>
                     </tr>
                     <tr>
@@ -45,6 +46,14 @@
                             <input type="checkbox" id="chk_Scroll" runat="server" /><label for="chk_Scroll">滚动</label>
                             <input type="checkbox" id="chk_JumpUrl" runat="server" /><label for="chk_JumpUrl">跳转网址</label>
                             <input type="hidden" id="hide_Attribute" runat="server" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main_bleft split">
+                            跳转地址:
+                        </td>
+                        <td class="main_bright split">
+                            <input type="text" id="txt_Redirect" class="textbox long" runat="server" />                        
                         </td>
                     </tr>
                     <tr>
@@ -71,7 +80,7 @@
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_Author" class="textbox" style="width:120px;" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" />
-                            <span class="main_bleft">责任编辑: </span><input type="text" id="txtEditor" class="textbox" style="width:120px;" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" />
+                            <span class="main_bleft">责任编辑: </span><input type="text" id="txt_Editor" class="textbox" style="width:120px;" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" />
                         </td>
                     </tr>
                     <tr>
@@ -148,7 +157,7 @@
                             阅读权限:
                         </td>
                         <td class="main_bright split">
-                            <select class="textbox short" id=""></select>
+                            <select class="textbox short" id="slt_Readaccess" runat="server"></select>
                             <span class="main_bleft">消费点数: </span><input type="text" id="txt_Money" class="textbox" style="width:120px;" runat="server" /> 不大于1000
                         </td>
                     </tr>
@@ -190,7 +199,7 @@
             </div>
             <!--操作按钮-->
             <div style="margin:10px;text-align:center;">
-                <input id="btn_Submit" type="submit" value="保存" class="button b2" runat="server" />
+                <input id="btn_Submit" type="submit" value="保存" class="button b2" runat="server" onserverclick="Btn_Submit_Click" />
                 <input id="btn_Cancel" type="button" value="取消" class="button b1" runat="server" />
             </div>
         </div>
