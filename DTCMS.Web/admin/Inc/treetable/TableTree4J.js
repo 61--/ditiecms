@@ -365,16 +365,16 @@ function TableTree4J(objectName, tableTree4JDir) {
         }
         return imgstr;
     }
-
+    
     //init node TR
     TableTree4J.prototype.codeNodeTR = function(node) {//changeClassName
         var str = "";
         var changeClassMark = "";
         if (this.config.booleanHighLightRow == true && node.booleanRoot == false) {
             if (node.classStyle != null && node.classStyle != "") {
-                changeClassMark = "onmouseover=\"changeClassName(this,'" + this.config.highLightRowClassName + "')\" onmouseout=\"changeClassName(this,'" + node.classStyle + "')\"";
+                changeClassMark = " onclick=\"select(this)\" onmouseover=\"changeClassName(this,'" + this.config.highLightRowClassName + "')\" onmouseout=\"changeClassName(this,'" + node.classStyle + "')\"";
             } else {
-                changeClassMark = "onmouseover=\"changeClassName(this,'" + this.config.highLightRowClassName + "')\" onmouseout=\"changeClassName(this,'')\"";
+            changeClassMark = " onclick=\"select(this)\"  onmouseover=\"changeClassName(this,'" + this.config.highLightRowClassName + "')\" onmouseout=\"changeClassName(this,'')\"";
             }
         }
 
@@ -810,8 +810,12 @@ function flowChildNodesByClickPnode(node, treeObjName) {
     }
 }
 
-function changeClassName(objectChange, classN) {
+function changeClassName(objectChange, classN) {       
     objectChange.className = classN;
+}
+
+function select(object) {   //单击选择当前行
+    object.getElementsByTagName("input")[0].checked = !object.getElementsByTagName("input")[0].checked;
 }
 
 function clearNoUseCookieMark(tree) {
