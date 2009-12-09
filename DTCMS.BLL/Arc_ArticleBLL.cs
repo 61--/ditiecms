@@ -11,6 +11,8 @@ namespace DTCMS.BLL
     public class Arc_ArticleBLL
     {
         IDAL_Arc_Article dalArticle = DataAccess.CreateFactoryDAL<IDAL_Arc_Article>("Arc_ArticleDAL");
+        IDAL_Arc_Class dalClass = DataAccess.CreateFactoryDAL<IDAL_Arc_Class>("Arc_ClassDAL");
+
         /// <summary>
         /// 判断某个字段值是否存在
         /// </summary>
@@ -27,9 +29,21 @@ namespace DTCMS.BLL
         /// 添加文章
         /// </summary>
         /// <param name="Entity">栏目实体对象</param>
-        /// <returns>返回影响行数</returns>
+        /// <returns>返回影响行数，-1：栏目ID不存在，-2：文章标题为空,-3：文章已经存在</returns>
         public int Add(Arc_Article model)
         {
+            if (model.ClassID < 0 || (model.ClassID!=0 && !dalClass.Exists(model.ClassID,"","")))
+            {//栏目不存在
+                return -1;
+            }
+            if (model.Title.Trim() == "")
+            {//文章标题为空
+                return -2;
+            }
+            if (ExistsArticleName(-1, model.Title))
+            {//文章已经存在
+                return -3;
+            }
             return dalArticle.Add(model);
         }
 
@@ -69,7 +83,16 @@ namespace DTCMS.BLL
         /// <returns>true存在,false不存在</returns>
         public bool ExistAtricleToClass(int CID)
         {
-            return false;
+            return dalArticle.ExistAtricleToClass(CID);
+        }
+        /// <summary>
+        /// 判断文章是否已经存在
+        /// </summary>
+        /// <param name="ClassName"></param>
+        /// <returns></returns>
+        public bool ExistsArticleName(int ArticleID, string Title)
+        {
+            return dalArticle.ExistsArticleName(ArticleID, Title);
         }
 
     }

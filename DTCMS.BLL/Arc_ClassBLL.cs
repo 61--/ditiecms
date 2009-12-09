@@ -28,10 +28,14 @@ namespace DTCMS.BLL
         /// 添加栏目
         /// </summary>
         /// <param name="Entity">栏目实体对象</param>
-        /// <returns>返回影响行数,存在该栏目返回-3，否则返回影响的行数</returns>
+        /// <returns>返回影响行数,存在该栏目返回-3，栏目名称为空返回-2，否则返回影响的行数</returns>
         public int Add(Arc_Class model)
         {
-            if (ExistsClassName(model.ClassName))
+            if (model.ClassName.Trim() == "")
+            {//栏目名称不能为空
+                return -2;
+            }
+            if (ExistsClassName(-1,model.ClassName))
             {//存在该栏目
                 return -3;
             }
@@ -42,10 +46,14 @@ namespace DTCMS.BLL
         /// 更新栏目
         /// </summary>
         /// <param name="Entity">栏目实体对象</param>
-        /// <returns>返回影响行数</returns>
+        /// <returns>返回影响行数，存在该栏目返回-3，栏目名称为空返回-2，</returns>
         public int Update(Arc_Class model)
         {
-            if (ExistsClassName(model.ClassName))
+            if (model.ClassName.Trim() == "")
+            {//栏目名称不能为空
+                return -2;
+            }
+            if (ExistsClassName(model.CID,model.ClassName))
             {//存在该栏目
                 return -3;
             }
@@ -148,9 +156,9 @@ namespace DTCMS.BLL
         /// </summary>
         /// <param name="ClassName"></param>
         /// <returns></returns>
-        public bool ExistsClassName(string ClassName)
+        public bool ExistsClassName(int CID,string ClassName)
         {
-            return dalArcClass.ExistsClassName(ClassName);
+            return dalArcClass.ExistsClassName(CID, ClassName);
         }
     }
 }
