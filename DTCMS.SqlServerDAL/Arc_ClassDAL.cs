@@ -353,8 +353,15 @@ namespace DTCMS.SqlServerDAL
         /// <returns>栏目关系</returns>
         public string GetRelation(int ParentID)
         {
-            string strSql = string.Format("select Relation from  DT_ARC_CLASS where CID='{0}'",ParentID);
-            object iObj = SqlHelper.ExecuteScalar(strSql);
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select Relation from DT_ARC_CLASS where CID=@CID");
+            SqlParameter[] parameters = {
+                new SqlParameter("@CID", SqlDbType.Int,4)
+            };
+            parameters[0].Value = ParentID;
+
+            object iObj = SqlHelper.ExecuteScalar(strSql.ToString(), parameters);
+
             if (iObj != null)
             {
                 return iObj.ToString();
@@ -372,8 +379,13 @@ namespace DTCMS.SqlServerDAL
         /// <returns>父栏目名称</returns>
         public string GetParentName(int ParentID)
         {
-            string strSql = string.Format("select ClassName from  DT_ARC_CLASS where CID='{0}'", ParentID);
-            object iObj = SqlHelper.ExecuteScalar(strSql);
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select ClassName from DT_ARC_CLASS where CID=@CID");
+            SqlParameter[] parameters = {
+                new SqlParameter("@CID", SqlDbType.Int,4)
+            };
+            parameters[0].Value = ParentID;
+            object iObj = SqlHelper.ExecuteScalar(strSql.ToString(),parameters);
             if (iObj != null)
             {
                 return iObj.ToString();
@@ -412,9 +424,9 @@ namespace DTCMS.SqlServerDAL
         /// </summary>
         /// <param name="ClassName"></param>
         /// <returns></returns>
-        public bool ExistsClassName(string ClassName)
+        public bool ExistsClassName(int CID,string ClassName)
         {
-            string strSql = string.Format("select count(1) from DT_Arc_Class where ClassName='{0}'",ClassName);
+            string strSql = string.Format("select count(1) from DT_Arc_Class where ClassName='{0}' and CID<>{1}",ClassName,CID);
             return (Convert.ToInt32(SqlHelper.ExecuteScalar(strSql)) > 0);
         }
 
