@@ -45,14 +45,17 @@ namespace DTCMS.Web.admin.news
                 {
                     Message.Dialog("更新栏目成功！", "Class_list.aspx", MessageIcon.Success, 0);
                 }
-
+                else if (n == -2)
+                {
+                    Message.Dialog("更新栏目失败！栏目名称不能为空。", "Class_list.aspx", MessageIcon.Error, 0);
+                }
                 else if (n == -3)
                 {
                     Message.Dialog("更新栏目失败！该栏目已经存在。", "Class_list.aspx", MessageIcon.Error, 0);
                 }
                 else
                 {
-                    Message.Dialog("更新栏目失败！请检查数据是否完整。", null, MessageIcon.Error, 0);
+                    Message.Dialog("更新栏目失败！请检查数据是否完整。", "Class_list.aspx", MessageIcon.Error, 0);
                 }
             }
             else
@@ -63,13 +66,17 @@ namespace DTCMS.Web.admin.news
                 {
                     Message.Dialog("添加栏目成功！", "Class_list.aspx", MessageIcon.Success, 0);
                 }
+                else if (n == -2)
+                {
+                    Message.Dialog("添加栏目失败！栏目名称不能为空。", "Class_add.aspx", MessageIcon.Error, 0);
+                }
                 else if (n == -3)
                 {
-                    Message.Dialog("添加栏目失败！该栏目已经存在。", "Class_list.aspx", MessageIcon.Error, 0);
+                    Message.Dialog("添加栏目失败！该栏目已经存在。", "Class_add.aspx", MessageIcon.Error, 0);
                 }
                 else
                 {
-                    Message.Dialog("添加栏目失败！请检查数据是否完整。", "Class_list.aspx", MessageIcon.Error, 0);
+                    Message.Dialog("添加栏目失败！请检查数据是否完整。", "Class_add.aspx", MessageIcon.Error, 0);
                 }
             }
         }
