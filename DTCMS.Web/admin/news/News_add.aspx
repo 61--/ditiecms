@@ -27,7 +27,7 @@
                         </td>
                         <td class="main_bright split">
                             <select id="slt_TitleFlag" runat="server">
-                                <option>无</option>
+                                <option></option>
                                 <option>原创</option>
                                 <option>转载</option>
                             </select>

@@ -43,9 +43,13 @@ namespace DTCMS.Web.admin.news
                 {
                     Message.Dialog("更新文章成功！", "News_list.aspx", MessageIcon.Success, 0);
                 }
-                else if (n == -3)
+                else if (n == -1)
                 {
-                    Message.Dialog("添加文章失败！该文章已经存在。", "Class_list.aspx", MessageIcon.Error, 0);
+                    Message.Dialog("更新文章失败！请选择文章所在栏目。", "News_list.aspx", MessageIcon.Error, 0);
+                }
+                else if (n == -2)
+                {
+                    Message.Dialog("更新文章失败！文章标题不能为空。", "News_list.aspx", MessageIcon.Error, 0);
                 }
                 else
                 {
@@ -61,13 +65,21 @@ namespace DTCMS.Web.admin.news
                 {
                     Message.Dialog("添加文章成功！", "News_list.aspx", MessageIcon.Success, 0);
                 }
+                else if (n == -1)
+                {
+                    Message.Dialog("添加文章失败！请选择文章所在栏目。", "News_add.aspx", MessageIcon.Error, 0);
+                }
+                else if (n == -2)
+                {
+                    Message.Dialog("添加文章失败！文章标题不能为空。", "News_add.aspx", MessageIcon.Error, 0);
+                }
                 else if (n == -3)
                 {
-                    Message.Dialog("添加文章失败！该文章已经存在。", "News_list.aspx", MessageIcon.Error, 0);
+                    Message.Dialog("添加文章失败！该文章已经存在。", "News_add.aspx", MessageIcon.Error, 0);
                 }
                 else
                 {
-                    Message.Dialog("添加文章失败！请检查数据是否完整。", "News_list.aspx", MessageIcon.Success, 0);
+                    Message.Dialog("添加文章失败！请检查数据是否完整。", "News_add.aspx", MessageIcon.Success, 0);
                 }
             }
         }
@@ -83,49 +95,50 @@ namespace DTCMS.Web.admin.news
                 return;
             }
 
-             Arc_Article model = bllArticle.GetModel(NewID);
+            Arc_Article model = bllArticle.GetModel(NewID);
 
-             if (model != null)
-             {
-                 slt_TitleFlag.Value = model.TitleFlag.HasValue ? model.TitleFlag.ToString() : "0";
-                 txt_Title.Value = model.Title;
-                 hide_Attribute.Value = model.Attribute;
-                 hide_TitleStyle.Value = model.TitleStyle;
-                 txt_Tags.Value = model.Tags;
-                 txt_ClassID.Value = model.ClassID.ToString();  //栏目ID
-                 txt_Source.Value = model.Source;
-                 txt_Author.Value = model.Author;
-                 txt_Editor.Value = model.Editor;
-                 txt_ImageUrl.Value = model.ImgUrl;
-                 if (model.IsPaging.HasValue)   //是否分页
-                 {
-                     rdo_Autopage.Checked = (model.IsPaging == 0);
-                 }
-                 txt_Content.Value = model.Content;
-                 txt_ShortTitle.Value = model.ShortTitle.Trim();
-                 txt_ViceClassID.Value = model.ViceClassID.ToString();
-                 txt_OrderID.Value = model.OrderID.HasValue ? model.OrderID.Value.ToString() : "0";
-                 txt_Templet.Value = model.Templet;
-                 txt_FilePath.Value = model.FilePath;
-                 txt_PubDate.Value = model.PubDate.ToString();
-                 slt_Readaccess.Value = model.Readaccess.ToString();
-                 txt_Money.Value = model.Money.HasValue ? model.Money.Value.ToString() : "0";
-                 txt_SimilarArticle.Value = model.SimilarArticle;
-                 txt_Keywords.Value = model.Keywords.Trim();
-                 txt_Description.Value = model.Description;
+            if (model != null)
+            {
+                slt_TitleFlag.Value = model.TitleFlag.HasValue ? model.TitleFlag.ToString() : "0";
+                txt_Title.Value = model.Title;
+                hide_Attribute.Value = model.Attribute;
+                hide_TitleStyle.Value = model.TitleStyle;
+                txt_Tags.Value = model.Tags;
+                txt_ClassID.Value = model.ClassID.ToString();  //栏目ID
+                txt_Source.Value = model.Source;
+                txt_Author.Value = model.Author;
+                txt_Editor.Value = model.Editor;
+                txt_ImageUrl.Value = model.ImgUrl;
+                if (model.IsPaging.HasValue)   //是否分页
+                {
+                    rdo_Autopage.Checked = (model.IsPaging == 0);
+                }
+                txt_Content.Value = model.Content;
+                txt_ShortTitle.Value = model.ShortTitle.Trim();
+                txt_ViceClassID.Value = model.ViceClassID.ToString();
+                txt_OrderID.Value = model.OrderID.HasValue ? model.OrderID.Value.ToString() : "0";
+                txt_Templet.Value = model.Templet;
+                txt_FilePath.Value = model.FilePath;
+                txt_PubDate.Value = model.PubDate.ToString();
+                slt_Readaccess.Value = model.Readaccess.ToString();
+                txt_Money.Value = model.Money.HasValue ? model.Money.Value.ToString() : "0";
+                txt_SimilarArticle.Value = model.SimilarArticle;
+                txt_Keywords.Value = model.Keywords.Trim();
+                txt_Description.Value = model.Description;
 
-                 if (model.IsHtml.HasValue)  //是否生成静态页
-                 {
-                     chk_IsHtml.Checked = (model.IsHtml == 1);
-                 }
-                 if (model.IsComment.HasValue)   //是否评论
-                 {
-                     chk_IsComment.Checked = (model.IsComment == 1);
-                 }
-                 
-                 chk_IsChecked.Checked = (model.IsChecked == 1); //是否审核             
-             }
+                if (model.IsHtml.HasValue)  //是否生成静态页
+                {
+                    chk_IsHtml.Checked = (model.IsHtml == 1);
+                }
+                if (model.IsComment.HasValue)   //是否评论
+                {
+                    chk_IsComment.Checked = (model.IsComment == 1);
+                }
+
+                chk_IsChecked.Checked = (model.IsChecked == 1); //是否审核             
+            }
         }
+
         /// <summary>
         /// 获取文章实体，添加，修改
         /// </summary>
@@ -135,14 +148,7 @@ namespace DTCMS.Web.admin.news
             Arc_Article model = new Arc_Article();
 
             model.ID = NewID;
-            if (slt_TitleFlag.Value.Trim() == "")
-            {
-                model.TitleFlag = null;
-            }
-            else
-            {
-                model.TitleFlag = int.Parse(slt_TitleFlag.Value.Trim());
-            }
+            model.TitleFlag = int.Parse(slt_TitleFlag.Value.Trim() == "" ? "0" : slt_TitleFlag.Value.Trim());
             model.TitleStyle = hide_TitleStyle.Value.Trim();
             model.Title = txt_Title.Value.Trim();
             model.Attribute = hide_Attribute.Value.Trim();  //文章属性
@@ -155,30 +161,12 @@ namespace DTCMS.Web.admin.news
             model.IsPaging = rdo_Autopage.Checked ? 1 : 0;
             model.Content = txt_Content.Value.Trim();
             model.ShortTitle = txt_ShortTitle.Value.Trim();
-            if (txt_ViceClassID.Value.Trim() == "")
-            {
-                model.ViceClassID = null;
-            }
-            else
-            {
-                model.ViceClassID = int.Parse(txt_ViceClassID.Value.Trim());
-            }
-            if (txt_OrderID.Value.Trim() == "")
-            {
-                model.OrderID = null;
-            }
-            model.OrderID = int.Parse(txt_OrderID.Value.Trim());
+            model.ViceClassID = int.Parse(txt_ViceClassID.Value.Trim() == "" ? "-1" : txt_ViceClassID.Value.Trim());
+            model.OrderID = int.Parse(txt_OrderID.Value.Trim() == "" ? "0" : txt_OrderID.Value.Trim());
             model.Templet = txt_Templet.Value.Trim();
             model.FilePath = txt_FilePath.Value.Trim();
             model.PubDate = Convert.ToDateTime(txt_PubDate.Value.Trim() == "" ? DateTime.Now.ToString("yyyy-MM-dd HH:ss:mm") : txt_PubDate.Value.Trim());
-            if (slt_Readaccess.Value.Trim() == "")
-            {
-                model.Readaccess = null;
-            }
-            else
-            {
-                model.Readaccess = int.Parse(slt_Readaccess.Value.Trim());
-            }
+            model.Readaccess = int.Parse(slt_Readaccess.Value.Trim() == "" ? "0" : slt_Readaccess.Value.Trim());
             model.Money = int.Parse(txt_Money.Value.Trim() == "" ? "0" : txt_Money.Value.Trim());
             model.SimilarArticle = txt_SimilarArticle.Value.Trim();
             model.Keywords = txt_Keywords.Value.Trim();
@@ -187,8 +175,8 @@ namespace DTCMS.Web.admin.news
             model.IsComment = chk_IsComment.Checked ? 1 : 0;
             model.IsChecked = chk_IsChecked.Checked ? 1 : 0;
             model.AddDate =Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-
+            model.PubLisher = "";   //当前用户
             return model;
-        }
+            }
     }
 }
