@@ -165,6 +165,33 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\ajax\class_list.aspx" />
+    <Content Include="admin\Inc\Dialog\images\dialog_bg.jpg" />
+    <Content Include="admin\Inc\Dialog\images\dialog_cb.gif" />
+    <Content Include="admin\Inc\Dialog\images\dialog_cb.png" />
+    <Content Include="admin\Inc\Dialog\images\dialog_closebtn.gif" />
+    <Content Include="admin\Inc\Dialog\images\dialog_closebtn_over.gif" />
+    <Content Include="admin\Inc\Dialog\images\dialog_ct.gif" />
+    <Content Include="admin\Inc\Dialog\images\dialog_ct.png" />
+    <Content Include="admin\Inc\Dialog\images\dialog_lb.gif" />
+    <Content Include="admin\Inc\Dialog\images\dialog_lb.png" />
+    <Content Include="admin\Inc\Dialog\images\dialog_lt.gif" />
+    <Content Include="admin\Inc\Dialog\images\dialog_lt.png" />
+    <Content Include="admin\Inc\Dialog\images\dialog_mlm.gif" />
+    <Content Include="admin\Inc\Dialog\images\dialog_mlm.png" />
+    <Content Include="admin\Inc\Dialog\images\dialog_mrm.gif" />
+    <Content Include="admin\Inc\Dialog\images\dialog_mrm.png" />
+    <Content Include="admin\Inc\Dialog\images\dialog_rb.gif" />
+    <Content Include="admin\Inc\Dialog\images\dialog_rb.png" />
+    <Content Include="admin\Inc\Dialog\images\dialog_rt.gif" />
+    <Content Include="admin\Inc\Dialog\images\dialog_rt.png" />
+    <Content Include="admin\Inc\Dialog\images\dir.txt" />
+    <Content Include="admin\Inc\Dialog\images\icon_alert.gif" />
+    <Content Include="admin\Inc\Dialog\images\icon_dialog.gif" />
+    <Content Include="admin\Inc\Dialog\images\icon_query.gif" />
+    <Content Include="admin\Inc\Dialog\images\window.gif" />
+    <Content Include="admin\Inc\Dialog\test.html" />
+    <Content Include="admin\Inc\Dialog\Dialog.js" />
+    <Content Include="admin\Inc\Dialog\zDialogDemo.html" />
     <Content Include="admin\Inc\treetable\img\base.gif" />
     <Content Include="admin\Inc\treetable\img\cd.gif" />
     <Content Include="admin\Inc\treetable\img\empty.gif" />
