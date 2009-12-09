@@ -6,6 +6,7 @@
     <title>栏目列表</title>
     <link href="../css/blue_body.css" type="text/css" rel="StyleSheet" />
     <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="../Inc/Dialog/Dialog.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
     <script type="text/javascript" src="../Inc/treetable/TableTree4J.js"></script>
     <script type="text/javascript">
@@ -114,7 +115,7 @@
                     return;
                 }
             }
-            alert("请选择要修改的栏目！");
+            Dialog.alert("请选择要修改的栏目!");
         }
         //cid:  栏目编号
         //flag:  是否批量删除，表示true:批量删除，false:单个删除
@@ -122,13 +123,12 @@
             if (flag) {
                 var id = GetCheckId();
                 if (id == "") {
-                    alert("请选择你要删除的数据！");
+                    Dialog.alert("请选择你要删除的数据!");
                     return;
                 }
                 else {
                     cid = id;
                 }
-
             }
 
             if (window.confirm("确定要删除？")) {
@@ -139,13 +139,13 @@
                     success: function(responseText) {//提示
                         if (responseText.toString().toUpperCase() == "TRUE") {
                             LoadData();
-                            alert("栏目删除成功！");
+                            Dialog.alert("栏目删除成功!");
                         } else {
                             alert(responseText);
                         }
                     },
                     error: function() {
-                        alert("Ajax请求失败！");
+                        Dialog.alert("Ajax请求失败！");
                     }
                 });
             }
@@ -168,11 +168,10 @@
                         if (responseText > 0) {
                             LoadData();
                         } else if (responseText == -1) {
-                            alert("栏目排序更新出错！");
+                            Dialog.alert("栏目排序更新出错！");
                             $("#order_" + cid).val($("#curOrder").val());
                         } else {
-
-                            alert("栏目排序更新失败！");
+                            Dialog.alert("栏目排序更新失败！");
                             $("#order_" + cid).val($("#curOrder").val());
                         }
                     }
