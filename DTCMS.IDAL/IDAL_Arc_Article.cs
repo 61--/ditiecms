@@ -36,6 +36,18 @@ namespace DTCMS.IDAL
 		/// 得到一个对象实体
 		/// </summary>
 		Arc_Article GetModel(int ID);
+        /// <summary>
+        /// 根据栏目id 判断此栏目是否存在文章
+        /// </summary>
+        /// <param name="CID">栏目编号</param>
+        /// <returns>true存在,false不存在</returns>
+        bool ExistAtricleToClass(int CID);
+        /// <summary>
+        /// 判断文章是否已经存在
+        /// </summary>
+        /// <param name="ClassName"></param>
+        /// <returns></returns>
+        bool ExistsArticleName(int ArticleID, string Title);
 		#endregion  成员方法
 	}
 }
