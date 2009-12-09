@@ -101,6 +101,14 @@
     <Compile Include="admin\ajax\class_list.aspx.designer.cs">
       <DependentUpon>class_list.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\ajax\DTTable.cs" />
+    <Compile Include="admin\ajax\news_list.aspx.cs">
+      <DependentUpon>news_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ajax\news_list.aspx.designer.cs">
+      <DependentUpon>news_list.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\App_Code\AdminPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -165,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\ajax\class_list.aspx" />
+    <Content Include="admin\ajax\news_list.aspx" />
     <Content Include="admin\Inc\Dialog\images\dialog_bg.jpg" />
     <Content Include="admin\Inc\Dialog\images\dialog_cb.gif" />
     <Content Include="admin\Inc\Dialog\images\dialog_cb.png" />
