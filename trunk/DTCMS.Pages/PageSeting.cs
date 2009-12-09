@@ -16,43 +16,54 @@ namespace DTCMS.Pages
         /// <returns></returns>
         public static string  CreateAjaxPageHtml(int recordTotalCount,int pageSize,int pageIndex,string ajaxLoad)
         {
-            int pageCount = GetPageCount(recordTotalCount,pageSize);
-            if (pageIndex < 1)
-            {
-                pageIndex = 1;
-            }
-            if (pageIndex > pageCount)
-            {
-                pageIndex = pageCount;
-            }
+            //int pageCount = GetPageCount(recordTotalCount,pageSize);
+            //if (pageIndex < 1)
+            //{
+            //    pageIndex = 1;
+            //}
+            //if (pageIndex > pageCount)
+            //{
+            //    pageIndex = pageCount;
+            //}
+            //int start = pageIndex - pageIndexCount / 2;
+            //int end = CurrentPageIndex + pageIndexCount / 2;
+            //if ((PageCount - currentPageIndex) < pageIndexCount / 2)
+            //    start = PageCount - 10;
+            //if (end < pageIndexCount)
+            //    end = pageIndexCount;
+            //if ((currentPageIndex - (pageIndexCount / 2) + 1) >= 0 && (currentPageIndex + pageIndexCount / 2) < PageCount)
+            //    end = end - 1;
+
+            //start = start <= 0 ? 1 : start;
+            //end = end > PageCount ? PageCount : end;
             StringBuilder strHtml = new StringBuilder();
             strHtml.Append("<div class=\"ajaxpage\">");
-            strHtml.Append(string.Format("<span>共{0}条记录 - 每页{1}条 -当前第 {2}/{3}页</span>",recordTotalCount,pageSize,pageIndex,pageCount));
-            strHtml.Append("<label>");
-            if (pageIndex <= 1)
-            {
-                strHtml.Append("首页");
-                strHtml.Append("上一页");
-            }
-            else
-            {
-                strHtml.Append(string.Format("<a href=\"javascript:void(0);\" onclick=\"{0}({1})\">首页</a>",ajaxLoad,1));
-                strHtml.Append(string.Format("<a href=\"javascript:void(0);\" onclick=\"{0}({1})\">上一页</a>",ajaxLoad,pageIndex-1));
-            }
-            if (pageIndex < pageCount)
-            {
+            //strHtml.Append(string.Format("<span>共{0}条记录 - 每页{1}条 -当前第 {2}/{3}页</span>",recordTotalCount,pageSize,pageIndex,pageCount));
+            //strHtml.Append("<label>");
+            //if (pageIndex <= 1)
+            //{
+            //    strHtml.Append("首页");
+            //    strHtml.Append("上一页");
+            //}
+            //else
+            //{
+            //    strHtml.Append(string.Format("<a href=\"javascript:void(0);\" onclick=\"{0}({1})\">首页</a>",ajaxLoad,1));
+            //    strHtml.Append(string.Format("<a href=\"javascript:void(0);\" onclick=\"{0}({1})\">上一页</a>",ajaxLoad,pageIndex-1));
+            //}
+            //if (pageIndex < pageCount)
+            //{
 
-                strHtml.Append(string.Format("<a href=\"javascript:void(0);\" onclick=\"{0}({1})\">下一页</a>", ajaxLoad, pageIndex + 1));
-                strHtml.Append(string.Format("<a href=\"javascript:void(0);\" onclick=\"{0}({1})\">尾页</a>", ajaxLoad, pageCount));
-            }
-            else
-            {
-                strHtml.Append("下一页");
-                strHtml.Append("尾页");
-            }
-            strHtml.Append("<input type=\"text\" size=\"10\" id=\"txtPageIndex\"/>");
-            strHtml.Append("<input type=\"button\" value=\"GO\" onclick=\"GoPage()\"/>");
-            strHtml.Append("<lable>");
+            //    strHtml.Append(string.Format("<a href=\"javascript:void(0);\" onclick=\"{0}({1})\">下一页</a>", ajaxLoad, pageIndex + 1));
+            //    strHtml.Append(string.Format("<a href=\"javascript:void(0);\" onclick=\"{0}({1})\">尾页</a>", ajaxLoad, pageCount));
+            //}
+            //else
+            //{
+            //    strHtml.Append("下一页");
+            //    strHtml.Append("尾页");
+            //}
+            //strHtml.Append("<input type=\"text\" size=\"10\" id=\"txtPageIndex\"/>");
+            //strHtml.Append("<input type=\"button\" value=\"GO\" onclick=\"GoPage()\"/>");
+            //strHtml.Append("<lable>");
             strHtml.Append("</div>");
             return strHtml.ToString();
         }
