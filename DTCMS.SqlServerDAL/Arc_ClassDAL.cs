@@ -23,7 +23,8 @@ namespace DTCMS.SqlServerDAL
         public bool Exists(int CID, string filedName, string filedValue)
         {
             string strSql = "select count(CID) from DT_Arc_Class where CID<>{0} ";
-            if (filedName != "")
+
+            if (filedName != "" && filedValue != "")
             {
                 strSql += " and {1}='{2}'";
                 return SqlHelper.ExecuteNonQuery(string.Format(strSql, CID, filedName, filedValue)) > 0;
@@ -416,8 +417,12 @@ namespace DTCMS.SqlServerDAL
         /// <returns></returns>
         public bool ExistsChildNode(int CID)
         {
-            string strSql = string.Format("select count(1) from DT_Arc_Class where ParentID={0} ",CID);
-            return (Convert.ToInt32(SqlHelper.ExecuteScalar(strSql)) > 0);
+            string strSql = "select count(1) from DT_Arc_Class where ParentID=@ParentID";
+            SqlParameter[] parameter ={
+                                          new SqlParameter("@ParentID",SqlDbType.Int,4)
+                                     };
+            parameter[0].Value = CID;
+            return (Convert.ToInt32(SqlHelper.ExecuteScalar(strSql, parameter)) > 0);
         }
         /// <summary>
         /// 判断栏目是否已经存在
@@ -426,8 +431,14 @@ namespace DTCMS.SqlServerDAL
         /// <returns></returns>
         public bool ExistsClassName(int CID,string ClassName)
         {
-            string strSql = string.Format("select count(1) from DT_Arc_Class where ClassName='{0}' and CID<>{1}",ClassName,CID);
-            return (Convert.ToInt32(SqlHelper.ExecuteScalar(strSql)) > 0);
+            string strSql = "select count(1) from DT_Arc_Class where ClassName=@ClassName and CID<>@CID";
+            SqlParameter[] parameter ={
+                                          new SqlParameter("@ClassName",SqlDbType.NVarChar,100),
+                                          new SqlParameter("@CID",SqlDbType.Int,4)
+                                     };
+            parameter[0].Value = ClassName;
+            parameter[1].Value = CID;
+            return (Convert.ToInt32(SqlHelper.ExecuteScalar(strSql,parameter)) > 0);
         }
 
 
