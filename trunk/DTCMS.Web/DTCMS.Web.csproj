@@ -181,6 +181,7 @@
   <ItemGroup>
     <Content Include="admin\ajax\class_list.aspx" />
     <Content Include="admin\ajax\news_list.aspx" />
+    <Content Include="admin\images\blue\button.jpg" />
     <Content Include="admin\Inc\Dialog\images\dialog_bg.jpg" />
     <Content Include="admin\Inc\Dialog\images\dialog_cb.gif" />
     <Content Include="admin\Inc\Dialog\images\dialog_cb.png" />
