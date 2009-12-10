@@ -16,7 +16,8 @@ namespace DTCMS.Web.admin.news
     public partial class News_add : System.Web.UI.Page
     {
         private Arc_ArticleBLL bllArticle = new Arc_ArticleBLL();
-        private int NewID = 0;  //文章ID
+        private Arc_ClassBLL bllClass = new Arc_ClassBLL();
+        private int NewID = -1;  //文章ID
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,49 +34,58 @@ namespace DTCMS.Web.admin.news
 
         protected void Btn_Submit_Click(object sender, EventArgs e)
         {
-            int n = 0;  //更新是否成功
+            int updateStart = 0;  //更新是否成功
+            Arc_Article modelArticle = GetArticleModel();
+
+            #region 数据验证
+
+            if (modelArticle.ClassID <= 0 ||  bllClass.Exists(modelArticle.ClassID, "", ""))
+            {//栏目不存在
+                Message.Dialog("操作失败！请选择文章所在栏目。", "News_add.aspx", MessageIcon.Error, 0);
+            }
+            if (modelArticle.Title.Trim() == "")
+            {//文章标题为空
+                Message.Dialog("操作失败！文章标题不能为空。", "News_add.aspx", MessageIcon.Error, 0);
+            }
+            if (bllArticle.ExistsArticleName(NewID, modelArticle.Title))
+            {//文章已经存在
+                Message.Dialog("操作失败！该文章已经存在。", "News_add.aspx", MessageIcon.Error, 0);
+            }
+
+            #endregion 数据验证
 
             if (NewID > 0)
             {
-                n = bllArticle.Update(GetArticleModel());
+                updateStart = bllArticle.Update(modelArticle);
 
-                if (n > 0)
+                if (updateStart > 0)
                 {
                     Message.Dialog("更新文章成功！", "News_list.aspx", MessageIcon.Success, 0);
                 }
-                else if (n == -1)
-                {
-                    Message.Dialog("更新文章失败！请选择文章所在栏目。", "News_list.aspx", MessageIcon.Error, 0);
-                }
-                else if (n == -2)
-                {
-                    Message.Dialog("更新文章失败！文章标题不能为空。", "News_list.aspx", MessageIcon.Error, 0);
-                }
                 else
                 {
-                    Message.Dialog("更新文章失败！请检查数据是否完整。", "News_list.aspx", MessageIcon.Success, 0);
+                    Message.Dialog("更新文章失败！请检查数据是否完整。", "News_add.aspx", MessageIcon.Success, 0);
                 }
 
             }
             else
             {
-                n = bllArticle.Add(GetArticleModel());
+                if (modelArticle.IsRedirect == 1)
+                {//是否是跳转地址
+                    if (txt_Redirect.Value.Trim() == "")
+                    {
+                        Message.Dialog("操作失败！跳转地址不能为空。", "News_add.aspx", MessageIcon.Error, 0);
+                    }
 
-                if (n > 0)
+                    modelArticle.FilePath = txt_Redirect.Value.Trim();
+                    modelArticle.Content = "";
+                }
+                
+                updateStart = bllArticle.Add(modelArticle);
+
+                if (updateStart > 0)
                 {
                     Message.Dialog("添加文章成功！", "News_list.aspx", MessageIcon.Success, 0);
-                }
-                else if (n == -1)
-                {
-                    Message.Dialog("添加文章失败！请选择文章所在栏目。", "News_add.aspx", MessageIcon.Error, 0);
-                }
-                else if (n == -2)
-                {
-                    Message.Dialog("添加文章失败！文章标题不能为空。", "News_add.aspx", MessageIcon.Error, 0);
-                }
-                else if (n == -3)
-                {
-                    Message.Dialog("添加文章失败！该文章已经存在。", "News_add.aspx", MessageIcon.Error, 0);
                 }
                 else
                 {
@@ -148,35 +158,41 @@ namespace DTCMS.Web.admin.news
             Arc_Article model = new Arc_Article();
 
             model.ID = NewID;
-            model.TitleFlag = int.Parse(slt_TitleFlag.Value.Trim() == "" ? "0" : slt_TitleFlag.Value.Trim());
-            model.TitleStyle = hide_TitleStyle.Value.Trim();
-            model.Title = txt_Title.Value.Trim();
-            model.Attribute = hide_Attribute.Value.Trim();  //文章属性
-            model.Tags = txt_Tags.Value.Trim();
             model.ClassID = int.Parse(txt_ClassID.Value.Trim() == "" ? "0" : txt_ClassID.Value.Trim());
-            model.Source = txt_Source.Value.Trim();
+            model.ViceClassID = int.Parse(txt_ViceClassID.Value.Trim() == "" ? "-1" : txt_ViceClassID.Value.Trim());
+            model.Title = txt_Title.Value.Trim();
+            model.ShortTitle = txt_ShortTitle.Value.Trim();
+            model.TitleStyle = hide_TitleStyle.Value.Trim();
+            model.TitleFlag = int.Parse(slt_TitleFlag.Value.Trim() == "" ? "0" : slt_TitleFlag.Value.Trim());
+            model.Tags = txt_Tags.Value.Trim();
+            model.ImgUrl = txt_ImageUrl.Value.Trim();
             model.Author = txt_Author.Value.Trim();
             model.Editor = txt_Editor.Value.Trim();
-            model.ImgUrl = txt_ImageUrl.Value.Trim();
-            model.IsPaging = rdo_Autopage.Checked ? 1 : 0;
-            model.Content = txt_Content.Value.Trim();
-            model.ShortTitle = txt_ShortTitle.Value.Trim();
-            model.ViceClassID = int.Parse(txt_ViceClassID.Value.Trim() == "" ? "-1" : txt_ViceClassID.Value.Trim());
-            model.OrderID = int.Parse(txt_OrderID.Value.Trim() == "" ? "0" : txt_OrderID.Value.Trim());
+            model.PubLisher = "";   //当前用户
+            model.Source = txt_Source.Value.Trim();
             model.Templet = txt_Templet.Value.Trim();
-            model.FilePath = txt_FilePath.Value.Trim();
-            model.PubDate = Convert.ToDateTime(txt_PubDate.Value.Trim() == "" ? DateTime.Now.ToString("yyyy-MM-dd HH:ss:mm") : txt_PubDate.Value.Trim());
-            model.Readaccess = int.Parse(slt_Readaccess.Value.Trim() == "" ? "0" : slt_Readaccess.Value.Trim());
-            model.Money = int.Parse(txt_Money.Value.Trim() == "" ? "0" : txt_Money.Value.Trim());
-            model.SimilarArticle = txt_SimilarArticle.Value.Trim();
             model.Keywords = txt_Keywords.Value.Trim();
             model.Description = txt_Description.Value.Trim();
-            model.IsHtml = chk_IsHtml.Checked ? 1 : 0;
+            model.Content = txt_Content.Value.Trim();
+            model.Click = 0;
+            model.Good = 0;
+            model.Bad = 0;
+            model.Readaccess = int.Parse(slt_Readaccess.Value.Trim() == "" ? "0" : slt_Readaccess.Value.Trim());
+            model.Money = int.Parse(txt_Money.Value.Trim() == "" ? "0" : txt_Money.Value.Trim());
+            model.Attribute = hide_Attribute.Value.Trim();  //文章属性
             model.IsComment = chk_IsComment.Checked ? 1 : 0;
             model.IsChecked = chk_IsChecked.Checked ? 1 : 0;
-            model.AddDate =Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-            model.PubLisher = "";   //当前用户
+            model.IsRecycle = 0;
+            model.IsRedirect = chk_JumpUrl.Checked ? 1 : 0;
+            model.IsHtml = chk_IsHtml.Checked ? 1 : 0;
+            model.IsPaging = rdo_Autopage.Checked ? 1 : 0;
+            model.FilePath = txt_FilePath.Value.Trim();
+            model.SimilarArticle = txt_SimilarArticle.Value.Trim();
+            model.AddDate = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            model.PubDate = Convert.ToDateTime(txt_PubDate.Value.Trim() == "" ? DateTime.Now.ToString("yyyy-MM-dd HH:ss:mm") : txt_PubDate.Value.Trim());
+            model.OrderID = int.Parse(txt_OrderID.Value.Trim() == "" ? "0" : txt_OrderID.Value.Trim());
+
             return model;
-            }
+        }  
     }
 }

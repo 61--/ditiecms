@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Data;
 using System.Text;
+using DTCMS.Pages;
 
 namespace DTCMS.Web.admin.ajax
 {
@@ -96,15 +97,14 @@ namespace DTCMS.Web.admin.ajax
         /// Ajax分页
         /// </summary>
         /// <returns></returns>
-        public static string CreateAjaxPage()
+        public static string CreateAjaxPage(int curPage, int countPage, string callback, int extendPage)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("<ifoot>");
             sb.Append("<tr>");
             sb.Append("<td colspan=\"9\">");
             sb.Append("<div class=\"grayr\">");
-            sb.Append("<span class=\"disabled\">&lt; </span>");
-            //分页。。。
+            sb.Append(PageSeting.GetAjaxPage(curPage, countPage, callback, extendPage));    //分页            
             sb.Append("</div>");
             sb.Append("</td>");
             sb.Append("</tr>");

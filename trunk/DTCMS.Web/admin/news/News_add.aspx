@@ -44,11 +44,11 @@
                             <input type="checkbox" id="chk_Recommended" runat="server" /><label for="chk_Recommended">推荐</label>
                             <input type="checkbox" id="chk_LightMagic" runat="server" /><label for="chk_LightMagic">幻灯片</label>
                             <input type="checkbox" id="chk_Scroll" runat="server" /><label for="chk_Scroll">滚动</label>
-                            <input type="checkbox" id="chk_JumpUrl" runat="server" /><label for="chk_JumpUrl">跳转网址</label>
+                            <input type="checkbox" id="chk_JumpUrl" runat="server" onclick="IsRedirect(this)" /><label for="chk_JumpUrl">跳转网址</label>
                             <input type="hidden" id="hide_Attribute" runat="server" />
                         </td>
                     </tr>
-                    <tr>
+                    <tr id="IsRedirect" style="display:none;">
                         <td class="main_bleft split">
                             跳转地址:
                         </td>
@@ -205,5 +205,16 @@
         </div>
     </div>
     </form>
+    
+    <script type="text/javascript">
+        function IsRedirect(obj) {  //是否跳转地址
+            var redirect = document.getElementById("IsRedirect");
+            if (obj.checked) {
+                redirect.style.display = "block";
+            } else {
+                redirect.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
