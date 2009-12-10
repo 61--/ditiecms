@@ -5,6 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
 using DTCMS.BLL;
+using System.Data;
 
 namespace DTCMS.Web.admin.ajax
 {
@@ -17,7 +18,8 @@ namespace DTCMS.Web.admin.ajax
             string action = Common.Utils.GetQueryString("action");
             switch (action)
             {
-                case "load": 
+                case "load":
+                    Response.Write(CreateArticleTable());
                     break;
                 default:
                     break;
@@ -30,8 +32,12 @@ namespace DTCMS.Web.admin.ajax
         /// </summary>
         public string CreateArticleTable()
         {
+            int pagesum = 1;
             StringBuilder sb = new StringBuilder();
             Dictionary<string, string> table = new Dictionary<string, string>();
+            table.Add("Title","标题");
+            DataTable dt = bllArticle.GetData("Title", 10, 10, 0, null, "ID", "id desc", 1,ref pagesum);
+            sb.Append(DTTable.CreateTable(dt, table));
             return sb.ToString();
         }
     }

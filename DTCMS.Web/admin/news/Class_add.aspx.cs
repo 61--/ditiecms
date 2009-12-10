@@ -18,14 +18,14 @@ namespace DTCMS.Web.admin.news
     public partial class Class_add : System.Web.UI.Page
     {
         private Arc_ClassBLL bllClass = new Arc_ClassBLL();
-        private int CID=0;  //栏目ID
+        private int CID=-1;  //栏目ID
 
         protected void Page_Load(object sender, EventArgs e)
         {
             CID = Common.Utils.GetQueryInt("Id");
 
             if (!IsPostBack)
-            {
+            {                
                 if (CID > 0)
                 {
                     SetPageData();  //更新数据赋值
@@ -35,44 +35,42 @@ namespace DTCMS.Web.admin.news
 
         protected void Btn_Submit_Click(object sender, EventArgs e)
         {
-            int n = 0;//更新是否成功
+            int updateStatus = 0;//更新是否成功
+            Arc_Class modelClass = GetClassModel();
+
+            #region 数据验证
+            if (modelClass.ClassName.Trim() == "")
+            {
+                Message.Dialog("操作失败！栏目名称不能为空。", "Class_add.aspx", MessageIcon.Error, 0);
+            }
+            if (bllClass.ExistsClassName(CID, modelClass.ClassName))
+            {
+                Message.Dialog("操作失败！该栏目已经存在。", "Class_add.aspx", MessageIcon.Error, 0);
+            }
+
+            #endregion 数据验证
 
             if (CID > 0)
             {//修改栏目
-                n = bllClass.Update(GetClassModel());
 
-                if (n > 0)
+                updateStatus = bllClass.Update(modelClass);
+
+                if (updateStatus > 0)
                 {
                     Message.Dialog("更新栏目成功！", "Class_list.aspx", MessageIcon.Success, 0);
                 }
-                else if (n == -2)
-                {
-                    Message.Dialog("更新栏目失败！栏目名称不能为空。", "Class_list.aspx", MessageIcon.Error, 0);
-                }
-                else if (n == -3)
-                {
-                    Message.Dialog("更新栏目失败！该栏目已经存在。", "Class_list.aspx", MessageIcon.Error, 0);
-                }
                 else
                 {
-                    Message.Dialog("更新栏目失败！请检查数据是否完整。", "Class_list.aspx", MessageIcon.Error, 0);
+                    Message.Dialog("更新栏目失败！请检查数据是否完整。", "Class_add.aspx", MessageIcon.Error, 0);
                 }
             }
             else
             {//添加栏目
-                n = bllClass.Add(GetClassModel());
+                updateStatus = bllClass.Add(modelClass);
 
-                if (n > 0)
+                if (updateStatus > 0)
                 {
                     Message.Dialog("添加栏目成功！", "Class_list.aspx", MessageIcon.Success, 0);
-                }
-                else if (n == -2)
-                {
-                    Message.Dialog("添加栏目失败！栏目名称不能为空。", "Class_add.aspx", MessageIcon.Error, 0);
-                }
-                else if (n == -3)
-                {
-                    Message.Dialog("添加栏目失败！该栏目已经存在。", "Class_add.aspx", MessageIcon.Error, 0);
                 }
                 else
                 {
@@ -98,7 +96,7 @@ namespace DTCMS.Web.admin.news
             {
                 hidden_ParentClassID.Value = model.ParentID.ToString();
                 txt_ParentClassName.Value = model.ParentID.ToString();
-                txt_ParentClassName.Value = bllClass.GetParentName(model.ParentID);
+                txt_ParentClassName.Value = bllClass.GetClassName(model.ParentID);
                 SetClassAttribute(model.Attribute);
                 txt_ClassName.Value = model.ClassName;
                 txt_ClassEName.Value = model.ClassEName;
@@ -202,6 +200,7 @@ namespace DTCMS.Web.admin.news
             }
             
         }
+
         /// <summary>
         /// 设置栏目属性
         /// </summary>
