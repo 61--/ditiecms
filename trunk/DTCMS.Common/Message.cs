@@ -80,11 +80,11 @@ namespace DTCMS.Common
             sb.Append("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/message.css\" />\r\n");
             sb.Append("</head>\r\n");
             sb.Append("<body>\r\n");
-            sb.Append("<div id=\"container\">\r\n");
+            sb.Append("<div class=\"container\">\r\n");
             sb.Append("<a href=\"javascript:window.close()\" class=\"close\"></a>\r\n");
-            sb.Append("<div id=\"header\"><h1>" + title + "</h1>\r\n");
+            sb.Append("<div class=\"header\"><h1>" + title + "</h1>\r\n");
             sb.Append("<div class=\"header_r\"></div>\r\n</div>\r\n");
-            sb.Append("<table id=\"content\" cellpadding=\"0\" cellspacing=\"0\"><tr>\r\n");
+            sb.Append("<table class=\"content\" cellpadding=\"0\" cellspacing=\"0\"><tr>\r\n");
             sb.Append("<td class=\"content_l\"></td>\r\n");
             sb.Append("<td class=\"content_c\">\r\n");
             sb.Append("<div id=\"message_icon\" class=\"" + icon.ToString() + "\"></div>\r\n");
@@ -99,7 +99,7 @@ namespace DTCMS.Common
             sb.Append("</td>\r\n");
             sb.Append("<td class=\"content_r\"></td>\r\n");
             sb.Append("</tr></table>\r\n");
-            sb.Append("<div id=\"bottom\"><div class=\"bottom_r\"></div></div>\r\n");
+            sb.Append("<div class=\"bottom\"><div class=\"bottom_r\"></div></div>\r\n");
             sb.Append("</div>\r\n</body>\r\n</html>\r\n");
 
             HttpContext.Current.Response.Write(sb.ToString());

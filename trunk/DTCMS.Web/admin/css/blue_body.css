@@ -30,6 +30,11 @@ ul li{
 	text-indent: 2px;
 	width: 300px;
 }
+sup a
+{
+	letter-spacing:0;
+	padding-left:2px;
+}
 textarea {
 	background: url(../images/blue/login_input_bg.gif) no-repeat left top #F7FAFC;
 	border-top: 1px solid #778899;
