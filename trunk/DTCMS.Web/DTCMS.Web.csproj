@@ -161,6 +161,13 @@
     <Compile Include="admin\news\News_add.aspx.designer.cs">
       <DependentUpon>News_add.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\top_index.aspx.cs">
       <DependentUpon>top_index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -252,6 +259,7 @@
     <Content Include="admin\login.aspx" />
     <Content Include="admin\news\Class_add.aspx" />
     <Content Include="admin\news\News_add.aspx" />
+    <Content Include="admin\Test.aspx" />
     <Content Include="bin\DTCMS.BLL.dll" />
     <Content Include="bin\DTCMS.BLL.pdb" />
     <Content Include="bin\DTCMS.Common.dll" />

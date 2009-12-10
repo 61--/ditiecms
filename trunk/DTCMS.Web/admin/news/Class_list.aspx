@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>栏目列表</title>
     <link href="../css/blue_body.css" type="text/css" rel="StyleSheet" />
     <script type="text/javascript" src="/js/jquery.js"></script>
@@ -131,7 +132,7 @@
                 }
             }
 
-            if (window.confirm("确定要删除？")) {
+            Dialog.confirm("确定要删除栏目吗？", function() {
                 $.ajax({
                     url: "/admin/ajax/class_list.aspx",
                     type: "GET",
@@ -148,7 +149,7 @@
                         Dialog.alert("Ajax请求失败！");
                     }
                 });
-            }
+            });
         }
 
         //获取当前排序号
