@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>DTCMS内容管理系统</title>
     <link href="css/blue_index.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="Inc/Dialog/Dialog.js"></script>
@@ -65,7 +66,7 @@
                 <ul>
                     <li class="navleft"></li>
                     <li id="d1"><a href="javascript:OpenMenu(1,'news/Class_list.aspx')">频道管理</a></li>
-                    <li id="d2"><a href="javascript:OpenMenu(2,'news/News_add.aspx')">内容管理</a></li>
+                    <li id="d2"><a href="javascript:OpenMenu(2,'news/News_list.aspx')">内容管理</a></li>
                     <li id="d3"><a href="javascript:OpenMenu(3,'news/news_list.html')">生成管理</a></li>
                     <li id="d4"><a href="javascript:OpenMenu(4,'main_index.aspx')">采集管理</a></li>
                     <li id="d5"><a href="javascript:OpenMenu(5,'main_index.aspx')">用户管理</a></li>
@@ -81,7 +82,7 @@
         </div>
     </div>
     <div id="main" class="main">
-        <iframe id="main_body" name="main_body" frameborder="0" src="news/class_list.aspx">
+        <iframe id="main_body" name="main_body" style="width:100%;height:100%" frameborder="0" src="news/class_list.aspx">
         </iframe>
     </div>
     <div class="bottom">

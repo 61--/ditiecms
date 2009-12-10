@@ -78,7 +78,7 @@ var fadeEffect = function(element, start, end, speed, callback){//透明度渐�
 			if(callback)
 				callback.call(element);
 		}
-	}, 10);
+	}, 20);
 }
 
 /*************************弹出框类实现****************************/
@@ -223,7 +223,7 @@ Dialog.prototype.create = function () {
     <tr id="_Draghandle_' + this.ID + '" style="' + (this.Drag ? "cursor: move;" : "") + '">\
       <td width="13" height="33" style="background-image: url(' + IMAGESPATH + 'dialog_lt.png) !important;background: url(' + IMAGESPATH + 'dialog_lt.gif) no-repeat 0 0;"><div style="width: 13px;"></div></td>\
       <td height="33" style="background-image:url(' + IMAGESPATH + 'dialog_ct.png) !important;background: url(' + IMAGESPATH + 'dialog_ct.gif) repeat-x top;"><div style="padding: 9px 0 0 4px; float: left; font-weight: bold; color:#fff;"><img align="absmiddle" src="' + IMAGESPATH + 'icon_dialog.gif"/><span id="_Title_' + this.ID + '">' + this.Title + '</span></div>\
-        <div onclick="Dialog.getInstance(\'' + this.ID + '\').cancelButton.onclick.apply(Dialog.getInstance(\'' + this.ID + '\').cancelButton,[]);" onmouseout="this.style.backgroundImage=\'url(' + IMAGESPATH + 'dialog_closebtn.gif)\'" onmouseover="this.style.backgroundImage=\'url(' + IMAGESPATH + 'dialog_closebtn_over.gif)\'" style="margin: 3px 0 0; position: relative; cursor: pointer; float: right; height: 17px; width: 28px; background-image: url(' + IMAGESPATH + 'dialog_closebtn.gif);' + (this.ShowCloseButton ? "" : "display:none;") + '"></div></td>\
+        <div onclick="Dialog.getInstance(\'' + this.ID + '\').cancelButton.onclick.apply(Dialog.getInstance(\'' + this.ID + '\').cancelButton,[]);" onmouseout="this.style.backgroundImage=\'url(' + IMAGESPATH + 'dialog_closebtn.gif)\'" onmouseover="this.style.backgroundImage=\'url(' + IMAGESPATH + 'dialog_closebtn_over.gif)\'" style="margin: 5px 0 0; position: relative; cursor: pointer; float: right; height: 17px; width: 28px; background-image: url(' + IMAGESPATH + 'dialog_closebtn.gif);' + (this.ShowCloseButton ? "" : "display:none;") + '"></div></td>\
       <td width="13" height="33" style="background-image: url(' + IMAGESPATH + 'dialog_rt.png) !important;background: url(' + IMAGESPATH + 'dialog_rt.gif) no-repeat right 0;"><div style="width: 13px;"><a id="_forTab_' + this.ID + '" href="#;"></a></div></td>\
     </tr>\
     <tr valign="top">\
@@ -332,10 +332,10 @@ Dialog.prototype.setSize = function (w, h) {
     }
     this.setPosition();
 };
-Dialog.prototype.show = function() {
+Dialog.prototype.show = function () {
     this.create();
     var bgdiv = Dialog.getBgdiv(),
-		thisdialogDiv = this.getDialogDiv();
+		thisdialogDiv=this.getDialogDiv();
     this.zindex = thisdialogDiv.style.zIndex = Dialog.bgDiv.style.zIndex + 1;
     if (topWin.Dialog._Array.length > 0) {
         this.zindex = thisdialogDiv.style.zIndex = topWin.Dialog._Array[topWin.Dialog._Array.length - 1].zindex + 2;
@@ -346,34 +346,34 @@ Dialog.prototype.show = function() {
         bgdiv.style.display = "none";
     }
     topWin.Dialog._Array.push(this);
-    if (this.Modal >= 0) {
+    if (this.Modal>=0) {
         bgdiv.style.zIndex = topWin.Dialog._Array[topWin.Dialog._Array.length - 1].zindex - 1;
         Dialog.setBgDivSize();
-        if (bgdiv.style.display == "none") {
-            if (this.Animator) {
-                var bgMask = topWin.$id("_DialogBGMask");
-                bgMask.style.opacity = 0;
-                bgMask.style.filter = "alpha(opacity=0)";
-                bgdiv.style.display = "";
-                fadeEffect(bgMask, 0, this.Modal, isIE6 ? 20 : 10);
-                bgMask = null;
-            } else {
-                bgdiv.style.display = "";
-            }
-        }
+		if(bgdiv.style.display == "none"){
+			if(this.Animator){
+				var bgMask=topWin.$id("_DialogBGMask");
+				bgMask.style.opacity = 0;
+				bgMask.style.filter = "alpha(opacity=0)";
+        		bgdiv.style.display = "";
+				fadeEffect(bgMask,0,this.Modal,isIE6?20:10);
+				bgMask=null;
+			}else{
+        		bgdiv.style.display = "";
+			}
+		}
     }
     this.setPosition();
     if (this.CancelEvent) {
         this.cancelButton.onclick = this.CancelEvent;
-        if (this.ShowButtonRow) this.cancelButton.focus();
+        if(this.ShowButtonRow)this.cancelButton.focus();
     }
     if (this.OKEvent) {
         this.okButton.onclick = this.OKEvent;
-        if (this.ShowButtonRow) this.okButton.focus();
+        if(this.ShowButtonRow)this.okButton.focus();
     }
     if (this.AutoClose && this.AutoClose > 0) this.autoClose();
     this.opened = true;
-    bgdiv = null;
+	bgdiv=null;
 };
 Dialog.prototype.close = function () {
 	var thisdialogDiv=this.getDialogDiv();
@@ -590,81 +590,80 @@ if (isIE) {
 } else {
     window.addEventListener("load", Dialog.attachBehaviors, false);
 }
-//Drag
-var Drag = {
-    "obj": null,
-    "init": function(handle, dragBody, e) {
-        if (e == null) {
-            handle.onmousedown = Drag.start;
-        }
-        handle.root = dragBody;
+var Drag={
+    "obj":null,
+	"init":function(handle, dragBody, e){
+		if (e == null) {
+			handle.onmousedown=Drag.start;
+		}
+		handle.root = dragBody;
 
-        if (isNaN(parseInt(handle.root.style.left))) handle.root.style.left = "0px";
-        if (isNaN(parseInt(handle.root.style.top))) handle.root.style.top = "0px";
-        handle.root.onDragStart = new Function();
-        handle.root.onDragEnd = new Function();
-        handle.root.onDrag = new Function();
-        if (e != null) {
-            var handle = Drag.obj = handle;
-            e = Drag.fixe(e);
-            var top = parseInt(handle.root.style.top);
-            var left = parseInt(handle.root.style.left);
-            handle.root.onDragStart(left, top, e.pageX, e.pageY);
-            handle.lastMouseX = e.pageX;
-            handle.lastMouseY = e.pageY;
-            document.onmousemove = Drag.drag;
-            document.onmouseup = Drag.end;
-        }
-    },
-    "start": function(e) {
-        var handle = Drag.obj = this;
-        e = Drag.fixEvent(e);
-        var top = parseInt(handle.root.style.top);
-        var left = parseInt(handle.root.style.left);
-        //alert(left)
-        handle.root.onDragStart(left, top, e.pageX, e.pageY);
-        handle.lastMouseX = e.pageX;
-        handle.lastMouseY = e.pageY;
-        document.onmousemove = Drag.drag;
-        document.onmouseup = Drag.end;
-        return false;
-    },
-    "drag": function(e) {
-        e = Drag.fixEvent(e);
+		if(isNaN(parseInt(handle.root.style.left)))handle.root.style.left="0px";
+		if(isNaN(parseInt(handle.root.style.top)))handle.root.style.top="0px";
+		handle.root.onDragStart=new Function();
+		handle.root.onDragEnd=new Function();
+		handle.root.onDrag=new Function();
+		if (e !=null) {
+			var handle=Drag.obj=handle;
+			e=Drag.fixe(e);
+			var top=parseInt(handle.root.style.top);
+			var left=parseInt(handle.root.style.left);
+			handle.root.onDragStart(left,top,e.pageX,e.pageY);
+			handle.lastMouseX=e.pageX;
+			handle.lastMouseY=e.pageY;
+			document.onmousemove=Drag.drag;
+			document.onmouseup=Drag.end;
+		}
+	},
+	"start":function(e){
+		var handle=Drag.obj=this;
+		e=Drag.fixEvent(e);
+		var top=parseInt(handle.root.style.top);
+		var left=parseInt(handle.root.style.left);
+		//alert(left)
+		handle.root.onDragStart(left,top,e.pageX,e.pageY);
+		handle.lastMouseX=e.pageX;
+		handle.lastMouseY=e.pageY;
+		document.onmousemove=Drag.drag;
+		document.onmouseup=Drag.end;
+		return false;
+	},
+	"drag":function(e){
+		e=Drag.fixEvent(e);
+							
+		var handle=Drag.obj;
+		var mouseY=e.pageY;
+		var mouseX=e.pageX;
+		var top=parseInt(handle.root.style.top);
+		var left=parseInt(handle.root.style.left);
+		
+		if(document.all){Drag.obj.setCapture();}else{e.preventDefault();};//作用是将所有鼠标事件捕获到handle对象，对于firefox，以用preventDefault来取消事件的默认动作：
 
-        var handle = Drag.obj;
-        var mouseY = e.pageY;
-        var mouseX = e.pageX;
-        var top = parseInt(handle.root.style.top);
-        var left = parseInt(handle.root.style.left);
-
-        if (document.all) { Drag.obj.setCapture(); } else { e.preventDefault(); }; //作用是将所有鼠标事件捕获到handle对象，对于firefox，以用preventDefault来取消事件的默认动作：
-
-        var currentLeft, currentTop;
-        currentLeft = left + mouseX - handle.lastMouseX;
-        currentTop = top + (mouseY - handle.lastMouseY);
-        handle.root.style.left = currentLeft + "px";
-        handle.root.style.top = currentTop + "px";
-        handle.lastMouseX = mouseX;
-        handle.lastMouseY = mouseY;
-        handle.root.onDrag(currentLeft, currentTop, e.pageX, e.pageY);
-        return false;
-    },
-    "end": function() {
-        if (document.all) { Drag.obj.releaseCapture(); }; //取消所有鼠标事件捕获到handle对象
-        document.onmousemove = null;
-        document.onmouseup = null;
-        Drag.obj.root.onDragEnd(parseInt(Drag.obj.root.style.left), parseInt(Drag.obj.root.style.top));
-        Drag.obj = null;
-    },
-    "fixEvent": function(e) {//格式化事件参数对象
-        var sl = Math.max(document.documentElement.scrollLeft, document.body.scrollLeft);
-        var st = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
-        if (typeof e == "undefined") e = window.event;
-        if (typeof e.layerX == "undefined") e.layerX = e.offsetX;
-        if (typeof e.layerY == "undefined") e.layerY = e.offsetY;
-        if (typeof e.pageX == "undefined") e.pageX = e.clientX + sl - document.body.clientLeft;
-        if (typeof e.pageY == "undefined") e.pageY = e.clientY + st - document.body.clientTop;
-        return e;
-    }
+		var currentLeft,currentTop;
+		currentLeft=left+mouseX-handle.lastMouseX;
+		currentTop=top+(mouseY-handle.lastMouseY);
+		handle.root.style.left=currentLeft +"px";
+		handle.root.style.top=currentTop+"px";
+		handle.lastMouseX=mouseX;
+		handle.lastMouseY=mouseY;
+		handle.root.onDrag(currentLeft,currentTop,e.pageX,e.pageY);
+		return false;
+	},
+	"end":function(){
+		if(document.all){Drag.obj.releaseCapture();};//取消所有鼠标事件捕获到handle对象
+		document.onmousemove=null;
+		document.onmouseup=null;
+		Drag.obj.root.onDragEnd(parseInt(Drag.obj.root.style.left),parseInt(Drag.obj.root.style.top));
+		Drag.obj=null;
+	},
+	"fixEvent":function(e){//格式化事件参数对象
+		var sl = Math.max(document.documentElement.scrollLeft, document.body.scrollLeft);
+		var st = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
+		if(typeof e=="undefined")e=window.event;
+		if(typeof e.layerX=="undefined")e.layerX=e.offsetX;
+		if(typeof e.layerY=="undefined")e.layerY=e.offsetY;
+		if(typeof e.pageX == "undefined")e.pageX = e.clientX + sl - document.body.clientLeft;
+		if(typeof e.pageY == "undefined")e.pageY = e.clientY + st - document.body.clientTop;
+		return e;
+	}
 };
