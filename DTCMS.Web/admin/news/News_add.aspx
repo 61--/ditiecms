@@ -7,6 +7,7 @@
     <title>添加新闻</title>
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="../Inc/Dialog/Dialog.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -58,11 +59,10 @@
                     </tr>
                     <tr>
                         <td class="main_bleft split">
-                            TAG标签:
+                            TAG标签<sup><a href="javascript:;" onmouseover="javascript:Dialog.alert('多个TAG用逗号,隔开')">[?]</a></sup>:
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_Tags" class="textbox" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" />
-                            多个TAG用逗号,隔开
                         </td>
                     </tr>
                     <tr>
