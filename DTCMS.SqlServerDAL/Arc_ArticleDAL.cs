@@ -9,7 +9,7 @@ using System.Data;
 namespace DTCMS.SqlServerDAL
 {
 
-    public class Arc_ArticleDAL : IDAL_Arc_Article
+    public class Arc_ArticleDAL :BaseDAL,IDAL_Arc_Article
     {
         #region IDAL_Arc_Article 成员
 
@@ -43,9 +43,9 @@ namespace DTCMS.SqlServerDAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into DT_Arc_Article(");
-            strSql.Append("ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,Content,Readaccess,Money,Attribute,IsComment,IsChecked,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID)");
+            strSql.Append("ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,Content,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID)");
             strSql.Append(" values (");
-            strSql.Append("@ClassID,@ViceClassID,@Title,@ShortTitle,@TitleStyle,@TitleFlag,@Tags,@ImgUrl,@Author,@Editor,@PubLisher,@Source,@Templet,@Keywords,@Description,@Content,@Readaccess,@Money,@Attribute,@IsComment,@IsChecked,@IsRedirect,@IsHtml,@IsPaging,@FilePath,@SimilarArticle,@AddDate,@PubDate,@OrderID)");
+            strSql.Append("@ClassID,@ViceClassID,@Title,@ShortTitle,@TitleStyle,@TitleFlag,@Tags,@ImgUrl,@Author,@Editor,@PubLisher,@Source,@Templet,@Keywords,@Description,@Content,@Click,@Good,@Bad,@Readaccess,@Money,@Attribute,@IsComment,@IsChecked,@IsRedirect,@IsHtml,@IsPaging,@FilePath,@SimilarArticle,@AddDate,@PubDate,@OrderID)");
             strSql.Append(";select @@IDENTITY");
             SqlParameter[] parameters = {
 					new SqlParameter("@ClassID", SqlDbType.Int,4),
@@ -64,12 +64,16 @@ namespace DTCMS.SqlServerDAL
 					new SqlParameter("@Keywords", SqlDbType.NVarChar,200),
 					new SqlParameter("@Description", SqlDbType.NVarChar,255),
 					new SqlParameter("@Content", SqlDbType.NText),
+                    new SqlParameter("@Click", SqlDbType.Int,4),
+                    new SqlParameter("@Good", SqlDbType.Int,4),
+                    new SqlParameter("@Bad", SqlDbType.Int,4),
 					new SqlParameter("@Readaccess", SqlDbType.SmallInt,2),
 					new SqlParameter("@Money", SqlDbType.SmallInt,2),
 					new SqlParameter("@Attribute", SqlDbType.Char,1),
 					new SqlParameter("@IsComment", SqlDbType.TinyInt,1),
 					new SqlParameter("@IsChecked", SqlDbType.TinyInt,1),
-					new SqlParameter("@IsRedirect", SqlDbType.TinyInt,1),
+                    new SqlParameter("@IsRecycle",SqlDbType.TinyInt,1),
+					new SqlParameter("@IsRedirect", SqlDbType.Int,4),
 					new SqlParameter("@IsHtml", SqlDbType.TinyInt,1),
 					new SqlParameter("@IsPaging", SqlDbType.TinyInt,1),
 					new SqlParameter("@FilePath", SqlDbType.NVarChar,200),
@@ -95,11 +99,15 @@ namespace DTCMS.SqlServerDAL
             parameters[n++].Value = model.Keywords;
             parameters[n++].Value = model.Description;
             parameters[n++].Value = model.Content;
+            parameters[n++].Value = model.Click;
+            parameters[n++].Value = model.Good;
+            parameters[n++].Value = model.Bad;
             parameters[n++].Value = model.Readaccess;
             parameters[n++].Value = model.Money;
             parameters[n++].Value = model.Attribute;
             parameters[n++].Value = model.IsComment;
             parameters[n++].Value = model.IsChecked;
+            parameters[n++].Value = model.IsRecycle;
             parameters[n++].Value = model.IsRedirect;
             parameters[n++].Value = model.IsHtml;
             parameters[n++].Value = model.IsPaging;

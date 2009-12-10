@@ -250,7 +250,7 @@ namespace DTCMS.SqlServerDAL
         }
 
         /// <summary>
-        /// 得到一条数据
+        /// 获取栏目实体
         /// </summary>
         /// <param name="CID">栏目ID</param>
         /// <returns>栏目实体</returns>
@@ -374,18 +374,18 @@ namespace DTCMS.SqlServerDAL
         }
 
         /// <summary>
-        /// 获取符栏目名称
+        /// 获取栏目名称
         /// </summary>
-        /// <param name="ParentID">父栏目ID</param>
-        /// <returns>父栏目名称</returns>
-        public string GetParentName(int ParentID)
+        /// <param name="ParentID">栏目ID</param>
+        /// <returns>栏目名称</returns>
+        public string GetClassName(int CID)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select ClassName from DT_ARC_CLASS where CID=@CID");
             SqlParameter[] parameters = {
                 new SqlParameter("@CID", SqlDbType.Int,4)
             };
-            parameters[0].Value = ParentID;
+            parameters[0].Value = CID;
             object iObj = SqlHelper.ExecuteScalar(strSql.ToString(),parameters);
             if (iObj != null)
             {
@@ -424,6 +424,7 @@ namespace DTCMS.SqlServerDAL
             parameter[0].Value = CID;
             return (Convert.ToInt32(SqlHelper.ExecuteScalar(strSql, parameter)) > 0);
         }
+
         /// <summary>
         /// 判断栏目是否已经存在
         /// </summary>
@@ -431,13 +432,14 @@ namespace DTCMS.SqlServerDAL
         /// <returns></returns>
         public bool ExistsClassName(int CID,string ClassName)
         {
-            string strSql = "select count(1) from DT_Arc_Class where ClassName=@ClassName and CID<>@CID";
+            string strSql = "select count(CID) from DT_Arc_Class where ClassName=@ClassName and CID<>@CID";
             SqlParameter[] parameter ={
                                           new SqlParameter("@ClassName",SqlDbType.NVarChar,100),
                                           new SqlParameter("@CID",SqlDbType.Int,4)
                                      };
             parameter[0].Value = ClassName;
             parameter[1].Value = CID;
+
             return (Convert.ToInt32(SqlHelper.ExecuteScalar(strSql,parameter)) > 0);
         }
 
