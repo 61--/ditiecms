@@ -208,6 +208,49 @@ namespace DTCMS.DBUtility
             CloseSqlConn();
             return ds;
         }
-        #endregion
+        #endregion SQL语句
+
+        #region 存储过程
+
+        /// <summary>
+        /// 执行存储过程，返回DataSet
+        /// </summary>
+        /// <param name="proc">存储过程名</param>
+        /// <returns>第一行第一列</returns>
+        public static DataSet ExecuteProcDataSet(string proc)
+        {
+            DataSet ds = new DataSet();
+            SqlCommand cmd = new SqlCommand(proc, Connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            cmd.Parameters.Clear();
+            CloseSqlConn();
+            return ds;
+        }
+        /// <summary>
+        /// 执行存储过程，返回DataSet
+        /// </summary>
+        /// <param name="proc"></param>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        public static DataSet ExecuteProcDataSet(string proc, params SqlParameter[] parames)
+        {
+            DataSet ds = new DataSet();
+            SqlCommand cmd = new SqlCommand(proc, Connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            if (parames != null)
+            {
+                cmd.Parameters.AddRange(parames);
+            }
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            cmd.Parameters.Clear();
+            CloseSqlConn();
+            return ds;
+        }
+
+        #endregion 存储过程
+
     }
 }

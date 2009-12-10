@@ -9,24 +9,25 @@ namespace DTCMS.Entity.Enum
     /// </summary>
     public enum EClassAttribute : int
     {
+        
+        /// <summary>
+        /// 封面
+        /// </summary>
+        Cover=1,
+
         /// <summary>
         /// 列表
         /// </summary>
-        List,
+        List=2,
 
         /// <summary>
         /// 单页面
         /// </summary>
-        Singl,
+        Singl=3,
 
         /// <summary>
         /// 链接
         /// </summary>
-        Link,
-
-        /// <summary>
-        /// 封面
-        /// </summary>
-        Cover
+        Link=4
     }
 }

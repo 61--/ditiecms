@@ -48,11 +48,11 @@ namespace DTCMS.IDAL
         /// <returns></returns>
         string GetRelation(int ParentID);
         /// <summary>
-        /// 获取父栏目名称
+        /// 获取栏目名称
         /// </summary>
-        /// <param name="ParentID"></param>
+        /// <param name="ParentID">栏目ID</param>
         /// <returns></returns>
-        string GetParentName(int ParentID);
+        string GetClassName(int CID);
 
         /// <summary>
         /// 获取栏目数据
