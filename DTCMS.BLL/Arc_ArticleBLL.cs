@@ -31,19 +31,7 @@ namespace DTCMS.BLL
         /// <param name="Entity">栏目实体对象</param>
         /// <returns>返回影响行数，-1：栏目ID不存在，-2：文章标题为空,-3：文章已经存在</returns>
         public int Add(Arc_Article model)
-        {
-            if (model.ClassID < 0 || (model.ClassID!=0 && !dalClass.Exists(model.ClassID,"","")))
-            {//栏目不存在
-                return -1;
-            }
-            if (model.Title.Trim() == "")
-            {//文章标题为空
-                return -2;
-            }
-            if (ExistsArticleName(-1, model.Title))
-            {//文章已经存在
-                return -3;
-            }
+        {            
             return dalArticle.Add(model);
         }
 
@@ -93,6 +81,25 @@ namespace DTCMS.BLL
         public bool ExistsArticleName(int ArticleID, string Title)
         {
             return dalArticle.ExistsArticleName(ArticleID, Title);
+        }
+
+        /// <summary>
+        /// 获取数据
+        /// </summary>
+        /// <param name="colist">-要查询出的字段列表,*表示全部字段</param>
+        /// <param name="top">最多读取记录数 </param>
+        /// <param name="pagesize">每页记录数</param>
+        /// <param name="page">指定页</param>
+        /// <param name="condition">查询条件</param>
+        /// <param name="sql_key">用于排序的主键</param>
+        /// <param name="col">-用于排序，如：id desc (多个id desc,dt asc)</param>
+        /// <param name="orderby">排序,0-顺序,1-倒序</param>
+        /// <param name="pages">总页数</param>
+        /// <returns>数据表</returns>
+        public DataTable GetData(string collist, int top, int pagesize, int page
+            , string condition, string sql_key, string col, int orderby, ref int pagesum)
+        {
+            return dalArticle.GetData("DT_Arc_Article", collist, top, pagesize, page, condition, sql_key, col, orderby, ref pagesum);
         }
 
     }
