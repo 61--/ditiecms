@@ -250,8 +250,8 @@ Dialog.prototype.create = function () {
           </tr>\
           <tr id="_ButtonRow_' + this.ID + '" style="' + (this.ShowButtonRow ? "" : "display:none") + '">\
             <td height="36"><div id="_DialogButtons_' + this.ID + '" style="border-top: 1px solid #DADEE5; padding: 8px 20px; text-align: right; background-color:#f6f6f6;">\
-                <a href="javascript:;" class="button" id="_ButtonOK_' + this.ID + '">确 定</a>\
-                <a href="javascript:;" class="button" onclick="Dialog.getInstance(\'' + this.ID + '\').close();" id="_ButtonCancel_' + this.ID + '">取 消</a>\
+                <input type="button" class="button" value="确 定" id="_ButtonOK_' + this.ID + '"/>\
+                <input type="button" class="button" value="取 消" onclick="Dialog.getInstance(\'' + this.ID + '\').close();" id="_ButtonCancel_' + this.ID + '"/>\
               </div></td>\
           </tr>\
         </table></td>\
@@ -540,8 +540,8 @@ Dialog.alert = function (msg, func, w, h) {
         diag.close();
         if (func) func();
     };
-    diag.InnerHtml = '<table height="100%" border="0" align="center" cellpadding="10" cellspacing="0">\
-		<tr><td align="center"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'icon_alert.gif" width="34" height="34" align="absmiddle"></td>\
+    diag.InnerHtml = '<table height="100%" border="0" align="left" cellpadding="10" cellspacing="10">\
+		<tr><td align="center" width="70px"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'icon_alert.gif" style="padding-left:20px;width:34px;height:34px;"></td>\
 			<td align="left" id="Message_' + this.ID + '" style="font-size:9pt">' + msg + '</td></tr>\
 	</table>';
     diag.show();
@@ -572,8 +572,8 @@ Dialog.confirm = function (msg, funcOK, funcCal, w, h) {
             funcOK();
         }
     };
-    diag.InnerHtml = '<table height="100%" border="0" align="center" cellpadding="10" cellspacing="0">\
-		<tr><td align="right"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'icon_query.gif" width="34" height="34" align="absmiddle"></td>\
+    diag.InnerHtml = '<table height="100%" border="0" align="left" cellpadding="10" cellspacing="10">\
+		<tr><td align="center" width="70px"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'icon_query.gif" style="padding-left:20px;width:34px;height:34px;"></td>\
 			<td align="left" id="Message_' + this.ID + '" style="font-size:9pt">' + msg + '</td></tr>\
 	</table>';
     diag.show();
