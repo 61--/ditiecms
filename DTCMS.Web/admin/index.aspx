@@ -19,9 +19,14 @@
                 $("#left_menu").width($("#left_menu").width() + n);
             }
         }
+        var preID = 0;
         function OpenMenu(cid, url) {
-            if (url != '') {
-                document.frames.main_body.location = url;
+            $("#d" + cid).attr("class","thisclass");
+            if (preID > 0 && preID != cid)
+                $("#d" + preID).attr("class","");
+            preID = cid;
+            if (url != "") {
+                document.getElementById("main_body").src = url;
             }
             $.ajax({
                 url: "menu.aspx",
