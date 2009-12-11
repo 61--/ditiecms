@@ -15,7 +15,7 @@
 function TableTree4J(objectName, tableTree4JDir) {
     //vars-------------------------------------------------------------------
     var sequencenum = 0;    //序列
-    var widthList = 0;
+    var widthList = 0;  //列百分比
 
     this.tableTree4JDir = tableTree4JDir;
     this.obj = objectName;
