@@ -51,7 +51,7 @@ namespace DTCMS.SqlServerDAL
             parameters[n++].Value = orderby;
 
             parameters[n].Direction = ParameterDirection.Output;
-            DataSet ds = SqlHelper.ExecuteProcDataSet("pagehelper", parameters);
+            DataSet ds = SqlHelper.FillDataset(CommandType.StoredProcedure,"pagehelper", parameters);
             pagesum = int.Parse(parameters[n].Value.ToString());
             if (ds != null && ds.Tables.Count > 0)
             {
