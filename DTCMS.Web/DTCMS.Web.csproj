@@ -250,6 +250,7 @@
     <Content Include="admin\js\common.js" />
     <Content Include="admin\Inc\treetable\TableTree4J.js" />
     <Content Include="admin\news\Class_list.aspx" />
+    <Content Include="admin\news\Message.html" />
     <Content Include="admin\news\News_list.aspx" />
     <Content Include="admin\news\News_list.html" />
     <Content Include="admin\images\login_input_bg.gif" />
@@ -636,7 +637,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1215</DevelopmentServerPort>
+          <DevelopmentServerPort>4996</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/DTCMS_Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
