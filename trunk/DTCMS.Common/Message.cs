@@ -80,26 +80,26 @@ namespace DTCMS.Common
             sb.Append("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/message.css\" />\r\n");
             sb.Append("</head>\r\n");
             sb.Append("<body>\r\n");
-            sb.Append("<div class=\"container\">\r\n");
+            sb.Append("<div class=\"dialog_blue\">\r\n");
             sb.Append("<a href=\"javascript:window.close()\" class=\"close\"></a>\r\n");
-            sb.Append("<div class=\"header\"><h1>" + title + "</h1>\r\n");
-            sb.Append("<div class=\"header_r\"></div>\r\n</div>\r\n");
-            sb.Append("<table class=\"content\" cellpadding=\"0\" cellspacing=\"0\"><tr>\r\n");
-            sb.Append("<td class=\"content_l\"></td>\r\n");
-            sb.Append("<td class=\"content_c\">\r\n");
-            sb.Append("<div id=\"message_icon\" class=\"" + icon.ToString() + "\"></div>\r\n");
-            sb.Append("<div id=\"message\">" + message + "</div>\r\n");
+            sb.Append("<div class=\"dialog_header\"><h1>" + title + "</h1>\r\n");
+            sb.Append("<div class=\"h_r\"></div>\r\n</div>\r\n");
+            sb.Append("<table class=\"dialog_content\"><tr>\r\n");
+            sb.Append("<td class=\"c_l\"></td>\r\n");
+            sb.Append("<td class=\"c_c\">\r\n");
+            sb.Append("<div class=\"icon " + icon.ToString() + "\"></div>\r\n");
+            sb.Append("<div class=\"message\">" + message + "</div>\r\n");
             sb.Append("<div style=\"clear:left\"></div>\r\n");
             if (time > 0)
-                sb.Append("<div class=\"link\"><a href=\"" + (url == "-1" ? "javascript:history.go(-1)" : url) + "\">如果页面没有自动跳转，请点击这里...</a></div>\r\n");
+                sb.Append("<div class=\"buttonRow\"><a href=\"" + (url == "-1" ? "javascript:history.go(-1)" : url) + "\">如果页面没有自动跳转，请点击这里...</a></div>\r\n");
             else if (url == "-1")
-                sb.Append("<div class=\"link\"><a href=\"javascript:history.go(-1);\">点击这里返回上一级操作</a></div>\r\n");
+                sb.Append("<div class=\"buttonRow\"><a href=\"javascript:history.go(-1);\">点击这里返回上一级操作</a></div>\r\n");
             else
-                sb.Append("<div class=\"link\"><a href=\"" + url + "\">请点击这里进行下一步操作...</a></div>\r\n");
+                sb.Append("<div class=\"buttonRow\"><a href=\"" + url + "\">请点击这里进行下一步操作...</a></div>\r\n");
             sb.Append("</td>\r\n");
-            sb.Append("<td class=\"content_r\"></td>\r\n");
+            sb.Append("<td class=\"c_r\"></td>\r\n");
             sb.Append("</tr></table>\r\n");
-            sb.Append("<div class=\"bottom\"><div class=\"bottom_r\"></div></div>\r\n");
+            sb.Append("<div class=\"dialog_bottom\"><div class=\"b_r\"></div></div>\r\n");
             sb.Append("</div>\r\n</body>\r\n</html>\r\n");
 
             HttpContext.Current.Response.Write(sb.ToString());

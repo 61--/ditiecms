@@ -1,4 +1,4 @@
-/*
+﻿/*
 	CopyRight (C) www.fzditie.com
 	Auther LinPanxing
 */
@@ -13,13 +13,13 @@ html,body {
 ul{
 	list-style:none;
 }
-#container{
+.dialog_blue{
 	width:500px;
 	text-align:left;
 	margin:135px auto auto auto;
 	position:relative;
 }
-#container a.close{
+.dialog_blue a.close{
 	top:8px;
 	right:15px;
 	width:28px;
@@ -27,17 +27,17 @@ ul{
 	position:absolute;
 	background:url(/images/common/dialog_close.gif) no-repeat;
 }
-#container a.close:hover{
+.dialog_blue a.close:hover{
 	background:url(/images/common/dialog_close_h.gif) no-repeat;	
 }
-#header{
+.dialog_blue .dialog_header{
 	width:500px;
 	height:33px;
 	background-image:url(/images/common/dialog_tl.png) !important;
 	_background: none;
  	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/common/dialog_tl.png', sizingMethod='crop');
 }
-#header .header_r{
+.dialog_blue .dialog_header .h_r{
 	width:13px;
 	height:33px;
 	top:0px;
@@ -47,39 +47,40 @@ ul{
 	_background:#FFF;
  	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/common/dialog_tr.png', sizingMethod='crop');
 }
-#header h1{
+.dialog_blue .dialog_header h1{
 	color:#FFF;
 	font-size:12px;
 	padding-top:13px;
 	text-indent:35px;
 	background:url(/images/common/icon_dialog.gif) 18px 15px no-repeat;
 }
-#content{
+.dialog_blue .dialog_content{
 	width:100%;
+	border-collapse: collapse;
 }
-#content .content_l{
+.dialog_blue .dialog_content .c_l{
 	width:13px;
 	background:url(/images/common/dialog_ml.png) no-repeat !important;
 	_background: none;
  	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/common/dialog_ml.png', sizingMethod='crop');
 
 }
-#content .content_c{
+.dialog_blue .dialog_content .c_c{
     padding-top:5px;
 }
-#content .content_r{
+.dialog_blue .dialog_content .c_r{
 	width:13px;
 	background:url(/images/common/dialog_mr.png) no-repeat !important;
 	_background: none;
  	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/common/dialog_mr.png', sizingMethod='crop');
 }
-#message_icon{
+.dialog_blue .icon{
 	width:100px;
 	height:100px;
 	margin-left:5px;
 	float:left;
 }
-#message{
+.dialog_blue .message{
 	width:330px;
 	padding:15px;
 	font-size:12px;
@@ -87,18 +88,18 @@ ul{
 	float:left;
 	color:#333;
 }
-#content .link{
+.dialog_blue .dialog_content .buttonRow{
 	text-align:center;
 	padding:8px;
 	background:#F6F6F6;
 	border-top:1px #DADEE5 solid;
 }
-#content .link a{
+.dialog_blue .dialog_content .buttonRow a{
 	font-size:13px;
 	color:#0386CC;
 	text-decoration:none;
 }
-#bottom{
+.dialog_blue .dialog_bottom{
 	height:13px;
 	position:relative;
 	background:url(/images/common/dialog_bl.png) no-repeat !important;
@@ -106,7 +107,7 @@ ul{
  	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/common/dialog_bl.png', sizingMethod='crop');
 
 }
-#bottom .bottom_r{
+.dialog_blue .dialog_bottom .b_r{
 	height:13px;
 	width:13px;
 	position:absolute;
