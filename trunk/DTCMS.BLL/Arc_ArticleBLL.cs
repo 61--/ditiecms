@@ -97,9 +97,9 @@ namespace DTCMS.BLL
         /// <param name="pages">总页数</param>
         /// <returns>数据表</returns>
         public DataTable GetData(string collist, int top, int pagesize, int page
-            , string condition, string sql_key, string col, int orderby, ref int pagesum)
+            , string condition, string sql_key, string col, int orderby, out int pagesum)
         {
-            return dalArticle.GetData("DT_Arc_Article", collist, top, pagesize, page, condition, sql_key, col, orderby, ref pagesum);
+            return dalArticle.GetData("DT_Arc_Article", collist, top, pagesize, page, condition, sql_key, col, orderby, out pagesum);
         }
 
     }

@@ -52,7 +52,7 @@ namespace DTCMS.IDAL
 
         #region »ù·½·¨
         DataTable GetData(string tb, string collist, int top, int pagesize, int page
-            , string condition, string sql_key, string col, int orderby, ref int pagesum);
+            , string condition, string sql_key, string col, int orderby, out int pagesum);
         #endregion
 
     }

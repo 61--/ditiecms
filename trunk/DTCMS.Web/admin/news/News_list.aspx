@@ -20,9 +20,35 @@
                 data: "action=load&ran=" + Math.random(),
                 success: function(responseText) {
                     $("#table").html(responseText);
-                    alert(responseText);
+                    SetTrtyle();
                 }
-            }); 
+            });
+        }
+        /**
+        *设置行样式
+        */
+        function SetTrtyle() {
+            var Ptr = document.getElementById("tab").getElementsByTagName("tr");
+            for (i = 1; i < Ptr.length + 1; i++) {
+                Ptr[i - 1].className = (i % 2 > 0) ? "t1" : "t2";
+            }
+            for (var i = 0; i < Ptr.length; i++) {
+                Ptr[i].onmouseover = function() {
+                    this.tmpClass = this.className;
+                    this.className = "t3";
+
+                };
+                Ptr[i].onmouseout = function() {
+                    this.className = this.tmpClass;
+                };
+                
+                Ptr[i].onclick = function() {
+                    var input = this.getElementsByTagName("input");
+                    if (input) {
+                        input[0].checked = !input[0].checked;
+                    }
+                };
+            }
         }
     </script>
 </head>
@@ -30,7 +56,7 @@
     <form id="form1" runat="server"><div id="container">
 		<div id="tab_menu" class="tabs">
 			<ul>
-				<li class="tab_on"><a href="javascript:;">后台首页</a></li>
+				<li class="tab_on"><a href="javascript:;" >后台首页</a></li>
 			</ul>
 		</div>
 		<div id="content">
@@ -41,25 +67,9 @@
             </div>
 			<div id="table"></div>
 			
-			<%--<script type="text/javascript">
-			    var Ptr = document.getElementById("tab").getElementsByTagName("tr");
-			    function $() {
-			        for (i = 1; i < Ptr.length + 1; i++) {
-			            Ptr[i - 1].className = (i % 2 > 0) ? "t1" : "t2";
-			        }
-			    }
-			    window.onload = $;
-			    for (var i = 0; i < Ptr.length; i++) {
-			        Ptr[i].onmouseover = function() {
-			            this.tmpClass = this.className;
-			            this.className = "t3";
-
-			        };
-			        Ptr[i].onmouseout = function() {
-			            this.className = this.tmpClass;
-			        };
-			    }
-            </script>--%>
+			<script type="text/javascript">
+			    			    			    
+            </script>
 		</div>
 	</div>
     </form>
