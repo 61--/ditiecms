@@ -26,11 +26,11 @@ namespace DTCMS.SqlServerDAL
             if (filedName != "")
             {
                 strSql += " and {1}='{2}'";
-                return SqlHelper.ExecuteNonQuery(string.Format(strSql, CID, filedName, filedValue)) > 0;
+                return Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text,string.Format(strSql, CID, filedName, filedValue))) > 0;
             }
             else
             {
-                return SqlHelper.ExecuteNonQuery(string.Format(strSql, CID)) > 0;
+                return Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text,string.Format(strSql, CID))) > 0;
             }
         }
 
@@ -117,7 +117,7 @@ namespace DTCMS.SqlServerDAL
             parameters[n++].Value = model.PubDate;
             parameters[n].Value = model.OrderID;
 
-            return SqlHelper.ExecuteNonQuery(strSql.ToString(), parameters);
+            return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters);
         }
         
         /// <summary>
@@ -218,7 +218,7 @@ namespace DTCMS.SqlServerDAL
             parameters[n++].Value = model.PubDate;
             parameters[n].Value = model.OrderID;
 
-            return SqlHelper.ExecuteNonQuery(strSql.ToString(), parameters);
+            return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters);
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace DTCMS.SqlServerDAL
         public int Delete(string ID)
         {            
             string strSql =string.Format( " delete DT_Arc_Article where ID in({0}) ", ID);
-            return SqlHelper.ExecuteNonQuery(strSql.ToString());
+            return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString());
         }
         /// <summary>
         /// 得到文章实体
@@ -246,7 +246,7 @@ namespace DTCMS.SqlServerDAL
 					new SqlParameter("@ID", SqlDbType.Int,4)};
             parameters[0].Value = ID;
 
-            DataSet ds = SqlHelper.ExecuteDataSet(strSql.ToString(), parameters);
+            DataSet ds = SqlHelper.FillDataset(CommandType.Text,strSql.ToString(), parameters);
             if (ds.Tables[0].Rows.Count > 0)
             {
                 Arc_Article model = new Arc_Article();
@@ -348,49 +348,18 @@ namespace DTCMS.SqlServerDAL
         }
 
         /// <summary>
-        /// 文章列表分页
-        /// </summary>
-        /// <param name="pageSize">每页显示几条</param>
-        /// <param name="currentPage">当前页</param>
-        /// <param name="search">查询条件</param>
-        /// <returns></returns>
-        public DataTable GetDataTable(int pageSize,int currentPage,string search)
-        {
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append(string.Format("SELECT Top {0} A.ID,A.ClassID,A.Title,A.PubLisher,A.AddDate,C.ClassName ",pageSize));
-            strSql.Append(" FROM  DT_Arc_Article AS A,DT_Arc_Class AS C ");
-            strSql.Append("WHERE A.ClassID=C.CID AND A.ID >=( ");
-            strSql.Append("SELECT MAX([ID]) FROM (");
-            strSql.Append(string.Format(" SELECT TOP {0} A.ID FROM DT_Arc_Article AS A,DT_Arc_Class AS C ", pageSize * (currentPage - 1) + 1));
-            strSql.Append(" WHERE A.ClassID=C.CID  ");
-            if(!string.IsNullOrEmpty(search))
-            {
-                strSql.Append(string.Format(" AND {0} ",search));
-            }
-            strSql.Append("ORDER BY A.ID DESC ) AS T)");
-            if(!string.IsNullOrEmpty(search))
-            {
-                strSql.Append(string.Format(" AND {0} ",search));
-            }
-            strSql.Append("ORDER BY A.ID DESC ");
-
-            return SqlHelper.ExecuteDataSet(strSql.ToString()).Tables[0];
-          
-        }
-
-        /// <summary>
         /// 根据栏目id 判断此栏目是否存在文章
         /// </summary>
         /// <param name="CID">栏目编号</param>
         /// <returns>true存在,false不存在</returns>
         public bool ExistAtricleToClass(int CID)
         {
-            string strSql = "select count(1) from DT_Arc_Article where ClassID=@ClassID";
+            string strSql = "select count(ID) from DT_Arc_Article where ClassID=@ClassID";
             SqlParameter[] parameter ={
                                           new SqlParameter("@ClassID",SqlDbType.Int,4)
                                      };
             parameter[0].Value = CID;
-            return (Convert.ToInt32(SqlHelper.ExecuteScalar(strSql, parameter))>0);
+            return Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text, strSql, parameter))>0;
         }
 
         /// <summary>
@@ -400,14 +369,14 @@ namespace DTCMS.SqlServerDAL
         /// <returns>添加ArticleID：-1</returns>
         public bool ExistsArticleName(int ArticleID, string Title)
         {
-            string strSql = "select count(1) from DT_Arc_Article where Title=@Title and ID<>@ID";
+            string strSql = "select count(ID) from DT_Arc_Article where Title=@Title and ID<>@ID";
             SqlParameter[] parameter ={
                                           new SqlParameter("@Title",SqlDbType.NVarChar,100),
                                           new SqlParameter("@ID",SqlDbType.Int,4)
                                      };
             parameter[0].Value = Title;
             parameter[1].Value = ArticleID;
-            return (Convert.ToInt32(SqlHelper.ExecuteScalar(strSql, parameter)) > 0);
+            return Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text, strSql, parameter))>0;
         }
         #endregion
     }

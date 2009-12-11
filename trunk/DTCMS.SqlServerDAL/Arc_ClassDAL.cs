@@ -27,11 +27,11 @@ namespace DTCMS.SqlServerDAL
             if (filedName != "" && filedValue != "")
             {
                 strSql += " and {1}='{2}'";
-                return SqlHelper.ExecuteNonQuery(string.Format(strSql, CID, filedName, filedValue)) > 0;
+                return Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text,string.Format(strSql, CID, filedName, filedValue))) > 0;
             }
             else
             {
-                return SqlHelper.ExecuteNonQuery(string.Format(strSql,CID)) > 0;
+                return Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text,string.Format(strSql,CID))) > 0;
             }
         }
 
@@ -108,7 +108,7 @@ namespace DTCMS.SqlServerDAL
             parameters[27].Value = model.CrossID;
             parameters[28].Value = model.Content;
 
-            return SqlHelper.ExecuteNonQuery(strSql.ToString(), parameters);
+            return SqlHelper.ExecuteNonQuery(CommandType.Text,strSql.ToString(), parameters);
         }
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace DTCMS.SqlServerDAL
             parameters[28].Value = model.CrossID;
             parameters[29].Value = model.Content;
 
-            return SqlHelper.ExecuteNonQuery(strSql.ToString(), parameters);
+            return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters);
 		
         }
 
@@ -235,7 +235,7 @@ namespace DTCMS.SqlServerDAL
             parameters[0].Value = order;
             parameters[1].Value = cid;
 
-            return SqlHelper.ExecuteNonQuery(strSql.ToString(), parameters);
+            return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters);
         }
 
         /// <summary>
@@ -246,7 +246,7 @@ namespace DTCMS.SqlServerDAL
         public int Delete(string CID)
         {
             string strSql = string.Format("delete DT_Arc_Class  where CID in ({0})",CID);
-            return SqlHelper.ExecuteNonQuery(strSql);	
+            return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql);	
         }
 
         /// <summary>
@@ -264,7 +264,7 @@ namespace DTCMS.SqlServerDAL
             parameters[0].Value = CID;
 
             DTCMS.Entity.Arc_Class Entity = new DTCMS.Entity.Arc_Class();
-            DataSet ds = SqlHelper.ExecuteDataSet(strSql.ToString(), parameters);
+            DataSet ds = SqlHelper.FillDataset(CommandType.Text,strSql.ToString(), parameters);
             if (ds.Tables[0].Rows.Count > 0)
             {
                 if (ds.Tables[0].Rows[0]["CID"].ToString() != "")
@@ -361,7 +361,7 @@ namespace DTCMS.SqlServerDAL
             };
             parameters[0].Value = ParentID;
 
-            object iObj = SqlHelper.ExecuteScalar(strSql.ToString(), parameters);
+            object iObj = SqlHelper.ExecuteScalar(CommandType.Text,strSql.ToString(), parameters);
 
             if (iObj != null)
             {
@@ -386,7 +386,7 @@ namespace DTCMS.SqlServerDAL
                 new SqlParameter("@CID", SqlDbType.Int,4)
             };
             parameters[0].Value = CID;
-            object iObj = SqlHelper.ExecuteScalar(strSql.ToString(),parameters);
+            object iObj = SqlHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), parameters);
             if (iObj != null)
             {
                 return iObj.ToString();
@@ -405,8 +405,15 @@ namespace DTCMS.SqlServerDAL
         public DataTable GetDataTable(string Fileds)
         {
            string strSql = string.Format("SELECT {0} FROM DT_ARC_CLASS ",Fileds);
-           DataTable dt= SqlHelper.ExecuteDataSet(strSql).Tables[0];
-           return dt;
+           DataSet ds = SqlHelper.FillDataset(CommandType.Text, strSql);
+           if (ds != null && ds.Tables.Count > 0)
+           {
+               return ds.Tables[0];
+           }
+           else
+           {
+               return null;
+           }
 
         }
 
@@ -417,12 +424,12 @@ namespace DTCMS.SqlServerDAL
         /// <returns></returns>
         public bool ExistsChildNode(int CID)
         {
-            string strSql = "select count(1) from DT_Arc_Class where ParentID=@ParentID";
+            string strSql = "select count(CID) from DT_Arc_Class where ParentID=@ParentID";
             SqlParameter[] parameter ={
                                           new SqlParameter("@ParentID",SqlDbType.Int,4)
                                      };
             parameter[0].Value = CID;
-            return (Convert.ToInt32(SqlHelper.ExecuteScalar(strSql, parameter)) > 0);
+            return Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text, strSql, parameter))>0;
         }
 
         /// <summary>
@@ -440,7 +447,7 @@ namespace DTCMS.SqlServerDAL
             parameter[0].Value = ClassName;
             parameter[1].Value = CID;
 
-            return (Convert.ToInt32(SqlHelper.ExecuteScalar(strSql,parameter)) > 0);
+            return Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text, strSql,parameter))>0;
         }
 
 
