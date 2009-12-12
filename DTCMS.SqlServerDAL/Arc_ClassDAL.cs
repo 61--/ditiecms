@@ -22,15 +22,17 @@ namespace DTCMS.SqlServerDAL
         /// <returns>成功返回true，失败返回false</returns>
         public bool Exists(int CID, string filedName, string filedValue)
         {
-            string strSql = "select count(CID) from DT_Arc_Class where CID<>{0} ";
+            string strSql = "";
 
             if (filedName != "" && filedValue != "")
             {
+                strSql += "select count(CID) from DT_Arc_Class where CID<>{0} ";
                 strSql += " and {1}='{2}'";
                 return Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text,string.Format(strSql, CID, filedName, filedValue))) > 0;
             }
             else
             {
+                strSql += "select count(CID) from DT_Arc_Class where CID={0} ";
                 return Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text,string.Format(strSql,CID))) > 0;
             }
         }

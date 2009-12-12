@@ -51,7 +51,7 @@ namespace DTCMS.IDAL
 		#endregion  成员方法
 
         #region 基方法
-        DataTable GetData(string tb, string collist, int top, int pagesize, int page
+        DataTable GetDataTable(string tb, string collist, int top, int pagesize, int page
             , string condition, string sql_key, string col, int orderby, out int pagesum);
         #endregion
 

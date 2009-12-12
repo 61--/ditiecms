@@ -39,9 +39,9 @@ namespace DTCMS.Web.admin.news
 
             #region 数据验证
 
-            if (modelArticle.ClassID <= 0 ||  bllClass.Exists(modelArticle.ClassID, "", ""))
+            if (modelArticle.ClassID <= 0 ||  !bllClass.Exists(modelArticle.ClassID, "", ""))
             {//栏目不存在
-                Message.Dialog("操作失败！请选择文章所在栏目。", "News_add.aspx", MessageIcon.Error, 0);
+                Message.Dialog("操作失败！文章所选栏目不存在。", "News_add.aspx", MessageIcon.Error, 0);
             }
             if (modelArticle.Title.Trim() == "")
             {//文章标题为空

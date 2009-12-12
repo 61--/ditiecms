@@ -116,7 +116,7 @@ namespace DTCMS.BLL
         /// <returns>Joson数据</returns>
         public string  GetDataTableJoson()
         {
-            DataTable dt= dalArcClass.GetDataTable("CID,ClassName,ClassType,AddDate,OrderID,ParentID");
+            DataTable dt = dalArcClass.GetDataTable("CID,ClassName,ClassType,AddDate,OrderID,ParentID");
             if (dt != null)
             {
               return  Utils.DataTableToJson(dt).ToString();
