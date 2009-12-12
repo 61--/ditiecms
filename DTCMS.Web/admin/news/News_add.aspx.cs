@@ -41,15 +41,15 @@ namespace DTCMS.Web.admin.news
 
             if (modelArticle.ClassID <= 0 ||  !bllClass.Exists(modelArticle.ClassID, "", ""))
             {//栏目不存在
-                Message.Dialog("操作失败！文章所选栏目不存在。", "News_add.aspx", MessageIcon.Error, 0);
+                Message.Dialog("操作失败！文章所选栏目不存在。", "-1", MessageIcon.Error, 0);
             }
             if (modelArticle.Title.Trim() == "")
             {//文章标题为空
-                Message.Dialog("操作失败！文章标题不能为空。", "News_add.aspx", MessageIcon.Error, 0);
+                Message.Dialog("操作失败！文章标题不能为空。", "-1", MessageIcon.Error, 0);
             }
             if (bllArticle.ExistsArticleName(NewID, modelArticle.Title))
             {//文章已经存在
-                Message.Dialog("操作失败！该文章已经存在。", "News_add.aspx", MessageIcon.Error, 0);
+                Message.Dialog("操作失败！该文章已经存在。", "-1", MessageIcon.Error, 0);
             }
 
             #endregion 数据验证
@@ -64,7 +64,7 @@ namespace DTCMS.Web.admin.news
                 }
                 else
                 {
-                    Message.Dialog("更新文章失败！请检查数据是否完整。", "News_add.aspx", MessageIcon.Success, 0);
+                    Message.Dialog("更新文章失败！请检查数据是否完整。", "-1", MessageIcon.Success, 0);
                 }
 
             }
@@ -74,7 +74,7 @@ namespace DTCMS.Web.admin.news
                 {//是否是跳转地址
                     if (txt_Redirect.Value.Trim() == "")
                     {
-                        Message.Dialog("操作失败！跳转地址不能为空。", "News_add.aspx", MessageIcon.Error, 0);
+                        Message.Dialog("操作失败！跳转地址不能为空。", "-1", MessageIcon.Error, 0);
                     }
 
                     modelArticle.FilePath = txt_Redirect.Value.Trim();
@@ -89,7 +89,7 @@ namespace DTCMS.Web.admin.news
                 }
                 else
                 {
-                    Message.Dialog("添加文章失败！请检查数据是否完整。", "News_add.aspx", MessageIcon.Success, 0);
+                    Message.Dialog("添加文章失败！请检查数据是否完整。", "-1", MessageIcon.Success, 0);
                 }
             }
         }
