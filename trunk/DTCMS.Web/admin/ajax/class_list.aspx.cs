@@ -100,9 +100,8 @@ namespace DTCMS.Web.admin.ajax
         {
             try
             {
-                int id = int.Parse(Common.Utils.GetQueryString("Id"));
-                int orderId = int.Parse(Common.Utils.GetQueryString("orderId"));
-
+                int id = Common.Utils.GetQueryInt("Id");
+                int orderId = Common.Utils.GetQueryInt("orderId");
                 return bllClass.UpdateOrder(id, orderId);
             }
             catch

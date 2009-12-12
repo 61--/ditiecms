@@ -41,11 +41,11 @@ namespace DTCMS.Web.admin.news
             #region 数据验证
             if (modelClass.ClassName.Trim() == "")
             {
-                Message.Dialog("操作失败！栏目名称不能为空。", "Class_add.aspx", MessageIcon.Error, 0);
+                Message.Dialog("操作失败！栏目名称不能为空。", "-1", MessageIcon.Error, 0);
             }
             if (bllClass.ExistsClassName(CID, modelClass.ClassName))
             {
-                Message.Dialog("操作失败！该栏目已经存在。", "Class_add.aspx", MessageIcon.Error, 0);
+                Message.Dialog("操作失败！该栏目已经存在。", "-1", MessageIcon.Error, 0);
             }
 
             #endregion 数据验证
@@ -61,7 +61,7 @@ namespace DTCMS.Web.admin.news
                 }
                 else
                 {
-                    Message.Dialog("更新栏目失败！请检查数据是否完整。", "Class_add.aspx", MessageIcon.Error, 0);
+                    Message.Dialog("更新栏目失败！请检查数据是否完整。", "-1", MessageIcon.Error, 0);
                 }
             }
             else
@@ -74,7 +74,7 @@ namespace DTCMS.Web.admin.news
                 }
                 else
                 {
-                    Message.Dialog("添加栏目失败！请检查数据是否完整。", "Class_add.aspx", MessageIcon.Error, 0);
+                    Message.Dialog("添加栏目失败！请检查数据是否完整。", "-1", MessageIcon.Error, 0);
                 }
             }
         }
