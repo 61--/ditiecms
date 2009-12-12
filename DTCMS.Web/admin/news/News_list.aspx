@@ -27,7 +27,7 @@
         }
         var gridTree;
         function showGridTree(json) {
-            gridTree = new TableTree4J("gridTree", "../Inc/treetable/",true,true);
+            gridTree = new TableTree4J("gridTree", "/Inc/treetable/",true,true);
             gridTree.config.useLine = false;
             gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
 
