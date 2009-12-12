@@ -4,7 +4,7 @@
  * QQ：4845587 E-mail:wzh@wangzhaohui.com
  * 最后修正：2009-12-4
  **/
-var IMAGESPATH = '/admin/Inc/Dialog/images/'; //图片路径配置
+var IMAGESPATH = '/Inc/Dialog/images/'; //图片路径配置
 /*************************公用方法和属性****************************/
 var isIE = navigator.userAgent.indexOf('MSIE') != -1;
 var isIE6 = navigator.userAgent.indexOf('MSIE 6.0') != -1;
@@ -84,13 +84,14 @@ var fadeEffect = function(element, start, end, speed, callback){//透明度渐�
 /*************************弹出框类实现****************************/
 var topWin = $topWindow();
 var topDoc = topWin.document;
-var Dialog = function () {
+var Dialog = function() {
     /****以下属性以大写开始，可以在调用show方法前自定义****/
     this.ID = null;
     this.Width = null;
     this.Height = null;
+    this.Skin = "dialog_blue";
     this.URL = null;
-	this.OnLoad=null;
+    this.OnLoad = null;
     this.InnerHtml = ""
     this.InvokeElementId = ""
     this.Top = "50%";
@@ -99,18 +100,17 @@ var Dialog = function () {
     this.OKEvent = null; //点击确定后调用的方法
     this.CancelEvent = null; //点击取消及关闭后调用的方法
     this.ShowButtonRow = false;
-    this.MessageIcon = "window.gif";
-    this.MessageTitle = "";
-    this.Message = "";
-    this.ShowMessageRow = false;
+    this.TipTitle = "";
+    this.Tip = "";
+    this.ShowTipRow = false;
     this.Modal = 40;
     this.Drag = true;
     this.AutoClose = null;
     this.ShowCloseButton = true;
-	this.Animator = true;
+    this.Animator = true;
     /****以下属性以小写开始，不要自行改变****/
     this.dialogDiv = null;
-	this.bgDiv=null;
+    this.bgDiv = null;
     this.parentWindow = null;
     this.innerFrame = null;
     this.innerWin = null;
@@ -119,12 +119,12 @@ var Dialog = function () {
     this.cancelButton = null;
     this.okButton = null;
 
-    if (arguments.length > 0 && typeof(arguments[0]) == "string") { //兼容旧写法
+    if (arguments.length > 0 && typeof (arguments[0]) == "string") { //兼容旧写法
         this.ID = arguments[0];
-    } else if (arguments.length > 0 && typeof(arguments[0]) == "object") {
+    } else if (arguments.length > 0 && typeof (arguments[0]) == "object") {
         Dialog.setOptions(this, arguments[0])
     }
-	if(!this.ID)
+    if (!this.ID)
         this.ID = topWin.Dialog._Array.length + "";
 
 };
@@ -206,65 +206,45 @@ Dialog.resetPosition = function () {
         topWin.Dialog._Array[i].setPosition();
     }
 };
-Dialog.prototype.create = function () {
+Dialog.prototype.create = function() {
     var bd = $bodyDimensions(topWin);
-    if (typeof(this.OKEvent)== "function") this.ShowButtonRow = true;
+    if (typeof (this.OKEvent) == "function") this.ShowButtonRow = true;
     if (!this.Width) this.Width = Math.round(bd.clientWidth * 4 / 10);
     if (!this.Height) this.Height = Math.round(this.Width / 2);
-    if (this.MessageTitle || this.Message) this.ShowMessageRow = true;
+    if (this.TipTitle || this.Tip) this.ShowTipRow = true;
     var DialogDivWidth = this.Width + 13 + 13;
-    var DialogDivHeight = this.Height + 33 + 13 + (this.ShowButtonRow ? 40 : 0) + (this.ShowMessageRow ? 50 : 0);
+    var DialogDivHeight = this.Height + 33 + 13 + (this.ShowButtonRow ? 40 : 0) + (this.ShowTipRow ? 50 : 0);
 
     if (DialogDivWidth > bd.clientWidth) this.Width = Math.round(bd.clientWidth - 26);
-    if (DialogDivHeight > bd.clientHeight) this.Height = Math.round(bd.clientHeight - 46 - (this.ShowButtonRow ? 40 : 0) - (this.ShowMessageRow ? 50 : 0));
+    if (DialogDivHeight > bd.clientHeight) this.Height = Math.round(bd.clientHeight - 46 - (this.ShowButtonRow ? 40 : 0) - (this.ShowTipRow ? 50 : 0));
 
     var html = '\
-  <table id="_DialogTable_' + this.ID + '" width="' + (this.Width + 26) + '" cellspacing="0" cellpadding="0" border="0" onselectstart="return false;" style="-moz-user-select: none; font-size:12px; line-height:1.4;">\
-    <tr id="_Draghandle_' + this.ID + '" style="' + (this.Drag ? "cursor: move;" : "") + '">\
-      <td width="13" height="33" style="background-image: url(' + IMAGESPATH + 'dialog_lt.png) !important;background: url(' + IMAGESPATH + 'dialog_lt.gif) no-repeat 0 0;"><div style="width: 13px;"></div></td>\
-      <td height="33" style="background-image:url(' + IMAGESPATH + 'dialog_ct.png) !important;background: url(' + IMAGESPATH + 'dialog_ct.gif) repeat-x top;"><div style="padding: 9px 0 0 4px; float: left; font-weight: bold; color:#fff;"><img align="absmiddle" src="' + IMAGESPATH + 'icon_dialog.gif"/><span id="_Title_' + this.ID + '">' + this.Title + '</span></div>\
-        <div onclick="Dialog.getInstance(\'' + this.ID + '\').cancelButton.onclick.apply(Dialog.getInstance(\'' + this.ID + '\').cancelButton,[]);" onmouseout="this.style.backgroundImage=\'url(' + IMAGESPATH + 'dialog_closebtn.gif)\'" onmouseover="this.style.backgroundImage=\'url(' + IMAGESPATH + 'dialog_closebtn_over.gif)\'" style="margin: 5px 0 0; position: relative; cursor: pointer; float: right; height: 17px; width: 28px; background-image: url(' + IMAGESPATH + 'dialog_closebtn.gif);' + (this.ShowCloseButton ? "" : "display:none;") + '"></div></td>\
-      <td width="13" height="33" style="background-image: url(' + IMAGESPATH + 'dialog_rt.png) !important;background: url(' + IMAGESPATH + 'dialog_rt.gif) no-repeat right 0;"><div style="width: 13px;"><a id="_forTab_' + this.ID + '" href="#;"></a></div></td>\
-    </tr>\
-    <tr valign="top">\
-      <td width="13" style="background-image: url(' + IMAGESPATH + 'dialog_mlm.png) !important;background: url(' + IMAGESPATH + 'dialog_mlm.gif) repeat-y left;"></td>\
-      <td align="center"><table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff">\
-          <tr id="_MessageRow_' + this.ID + '" style="' + (this.ShowMessageRow ? "" : "display:none") + '">\
-            <td valign="top" height="50"><table width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#eaece9 url(' + IMAGESPATH + 'dialog_bg.jpg) no-repeat scroll right top;" id="_MessageTable_' + this.ID + '">\
-                <tr>\
-                  <td width="50" height="50" align="center"><img width="32" height="32" src="' + IMAGESPATH + this.MessageIcon + '" id="_MessageIcon_' + this.ID + '"/></td>\
-                  <td align="left" style="line-height: 16px;"><div id="_MessageTitle_' + this.ID + '" style="font-weight:bold">' + this.MessageTitle + '</div>\
-                    <div id="_Message_' + this.ID + '">' + this.Message + '</div></td>\
-                </tr>\
-              </table></td>\
-          </tr>\
-          <tr>\
-            <td valign="top" align="center"><div id="_Container_' + this.ID + '" style="position: relative; width: ' + this.Width + 'px; height: ' + this.Height + 'px;">\
-                <div style="position: absolute; height: 100%; width: 100%; display: none; background-color:#fff; opacity: 0.5;" id="_Covering_' + this.ID + '">&nbsp;</div>\
-	' + (function (obj) {
-        if (obj.InnerHtml) return obj.InnerHtml;
-        if (obj.URL) return '<iframe width="100%" height="100%" frameborder="0" style="border:none 0;" allowtransparency="true" id="_DialogFrame_' + obj.ID + '" src="' + obj.displacePath() + '"></iframe>';
-        return "";
-    })(this) + '\
-              </div></td>\
-          </tr>\
-          <tr id="_ButtonRow_' + this.ID + '" style="' + (this.ShowButtonRow ? "" : "display:none") + '">\
-            <td height="36"><div id="_DialogButtons_' + this.ID + '" style="border-top: 1px solid #DADEE5; padding: 8px 20px; text-align: right; background-color:#f6f6f6;">\
+    <table class="' + this.Skin + '" id="_Dialog_' + this.ID + '" style="width:' + (this.Width + 26) + 'px;">\
+      <tr class="dialog_header" align="right" id="_Draghandle_' + this.ID + '" style="' + (this.Drag ? "cursor: move;" : "") + '"><td class="h_l"></td>\
+        <td class="h_c"><h2 id="_Title_' + this.ID + '">' + this.Title + '</h2>\
+        <a href="javascript:;" onclick="Dialog.getInstance(\'' + this.ID + '\').cancelButton.onclick.apply(Dialog.getInstance(\'' + this.ID + '\').cancelButton,[]);" style="' + (this.ShowCloseButton ? "" : "display:none;") + '" class="close"></a></td>\
+        <td class="h_r"><a id="_forTab_' + this.ID + '" href="#;"></a></td></tr>\
+      <tr class="dialog_content"><td class="c_l"></td>\
+        <td class="c_c">\
+          <div class="tipRow" id="_TipRow_' + this.ID + '" style="' + (this.ShowTipRow ? "" : "display:none") + '">\
+            <div id="_TipTitle_' + this.ID + '">' + this.TipTitle + '</div>\
+            <div id="_Tip_' + this.ID + '">' + this.Tip + '</div></div>\
+          <div id="_Container_' + this.ID + '" style="width: ' + this.Width + 'px; height: ' + this.Height + 'px;">\
+            <div style="position: absolute; height: 100%; width: 100%; display: none; background-color:#fff; opacity: 0.5;" id="_Covering_' + this.ID + '">&nbsp;</div>\
+	' + (function(obj) {
+	    if (obj.InnerHtml) return obj.InnerHtml;
+	    if (obj.URL) return '<iframe width="100%" height="100%" frameborder="0" allowtransparency="true" id="_DialogFrame_' + obj.ID + '" src="' + obj.displacePath() + '"></iframe>';
+	    return "";
+	})(this) + '\
+          </div>\
+          <div class="buttonRow" id="_ButtonRow_' + this.ID + '" style="' + (this.ShowButtonRow ? "" : "display:none") + '">\
+            <div id="_DialogButtons_' + this.ID + '">\
                 <input type="button" class="button" value="确 定" id="_ButtonOK_' + this.ID + '"/>\
                 <input type="button" class="button" value="取 消" onclick="Dialog.getInstance(\'' + this.ID + '\').close();" id="_ButtonCancel_' + this.ID + '"/>\
-              </div></td>\
-          </tr>\
-        </table></td>\
-      <td width="13" style="background-image: url(' + IMAGESPATH + 'dialog_mrm.png) !important;background: url(' + IMAGESPATH + 'dialog_mrm.gif) repeat-y right;"></td>\
-    </tr>\
-    <tr>\
-      <td width="13" height="13" style="background-image: url(' + IMAGESPATH + 'dialog_lb.png) !important;background: url(' + IMAGESPATH + 'dialog_lb.gif) no-repeat 0 bottom;"></td>\
-      <td style="background-image: url(' + IMAGESPATH + 'dialog_cb.png) !important;background: url(' + IMAGESPATH + 'dialog_cb.gif) repeat-x bottom;"></td>\
-      <td width="13" height="13" style="background-image: url(' + IMAGESPATH + 'dialog_rb.png) !important;background: url(' + IMAGESPATH + 'dialog_rb.gif) no-repeat right bottom;"><a onfocus=\'$id("_forTab_' + this.ID + '").focus();\' href="#;"></a></td>\
-    </tr>\
-  </table>\
-</div>\
-'
+            </div></div>\
+        </td><td class="c_r"></td></tr>\
+      <tr class="dialog_bottom"><td class="b_l"></td><td class="b_c"></td><td class="b_r"><a onfocus=\'$id("_forTab_' + this.ID + '").focus();\' href="#;"></a></td></tr>\
+    </table>';
     var div = topWin.$id("_DialogDiv_" + this.ID);
     if (!div) {
         div = topDoc.createElement("div");
@@ -294,18 +274,18 @@ Dialog.prototype.create = function () {
             this.innerFrame = topWin.$id("_DialogFrame_" + this.ID);
         };
         var self = this;
-        innerFrameOnload = function () {
+        innerFrameOnload = function() {
             try {
-				self.innerWin = self.innerFrame.contentWindow;
-				self.innerWin.parentDialog = self;
+                self.innerWin = self.innerFrame.contentWindow;
+                self.innerWin.parentDialog = self;
                 self.innerDoc = self.innerWin.document;
                 if (!self.Title && self.innerDoc && self.innerDoc.title) {
                     if (self.innerDoc.title) topWin.$id("_Title_" + self.ID).innerHTML = self.innerDoc.title;
                 };
-            } catch(e) {
+            } catch (e) {
                 if (console && console.log) console.log("可能存在访问限制，不能获取到iframe中的对象。")
             }
-            if (typeof(self.OnLoad)== "function")self.OnLoad();
+            if (typeof (self.OnLoad) == "function") self.OnLoad();
         };
         if (this.innerFrame.attachEvent) {
             this.innerFrame.attachEvent("onload", innerFrameOnload);
@@ -318,7 +298,7 @@ Dialog.prototype.create = function () {
     this.attachBehaviors();
     this.okButton = topWin.$id("_ButtonOK_" + this.ID);
     this.cancelButton = topWin.$id("_ButtonCancel_" + this.ID);
-	div=null;
+    div = null;
 };
 Dialog.prototype.setSize = function (w, h) {
     if (w && +w > 20) {
@@ -527,7 +507,7 @@ Dialog.close = function (id) {
     }
 };
 Dialog.alert = function (msg, func, w, h) {
-    var w = w || 300,
+    var w = w || 320,
         h = h || 110;
     var diag = new Dialog({
         Width: w,
@@ -535,13 +515,13 @@ Dialog.alert = function (msg, func, w, h) {
         Modal: 10
     });
     diag.ShowButtonRow = true;
-    diag.Title = "系统提示";
+    diag.Title = "DTCMS提示信息";
     diag.CancelEvent = function () {
         diag.close();
         if (func) func();
     };
     diag.InnerHtml = '<table height="100%" border="0" align="left" cellpadding="10" cellspacing="10">\
-		<tr><td align="center" width="70px"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'icon_alert.gif" style="padding-left:20px;width:34px;height:34px;"></td>\
+		<tr><td align="center" width="70px"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'ico_alert.gif" style="padding-left:20px;width:34px;height:34px;"></td>\
 			<td align="left" id="Message_' + this.ID + '" style="font-size:9pt">' + msg + '</td></tr>\
 	</table>';
     diag.show();
@@ -551,7 +531,7 @@ Dialog.alert = function (msg, func, w, h) {
     diag.cancelButton.focus();
 };
 Dialog.confirm = function (msg, funcOK, funcCal, w, h) {
-    var w = w || 300,
+    var w = w || 320,
         h = h || 110;
     var diag = new Dialog({
         Width: w,
@@ -559,7 +539,7 @@ Dialog.confirm = function (msg, funcOK, funcCal, w, h) {
         Modal: 10
     });
     diag.ShowButtonRow = true;
-    diag.Title = "信息确认";
+    diag.Title = "DTCMS提示信息";
     diag.CancelEvent = function () {
         diag.close();
         if (funcCal) {
@@ -573,7 +553,7 @@ Dialog.confirm = function (msg, funcOK, funcCal, w, h) {
         }
     };
     diag.InnerHtml = '<table height="100%" border="0" align="left" cellpadding="10" cellspacing="10">\
-		<tr><td align="center" width="70px"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'icon_query.gif" style="padding-left:20px;width:34px;height:34px;"></td>\
+		<tr><td align="center" width="70px"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'ico_confirm.gif" style="padding-left:20px;width:34px;height:34px;"></td>\
 			<td align="left" id="Message_' + this.ID + '" style="font-size:9pt">' + msg + '</td></tr>\
 	</table>';
     diag.show();

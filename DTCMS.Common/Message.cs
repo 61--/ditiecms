@@ -77,14 +77,14 @@ namespace DTCMS.Common
             sb.Append("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n");
             if (time > 0)
                 sb.Append("<meta http-equiv='refresh' content='" + time + "; url=" + (url == "-1" ? "javascript:history.go(-1)" : url) + "' />\r\n");
-            sb.Append("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/message.css\" />\r\n");
+            sb.Append("<link rel=\"stylesheet\" type=\"text/css\" href=\"/Inc/Dialog/dialog.css\" />\r\n");
             sb.Append("</head>\r\n");
             sb.Append("<body>\r\n");
-            sb.Append("<div class=\"dialog_blue\">\r\n");
-            sb.Append("<a href=\"javascript:window.close()\" class=\"close\"></a>\r\n");
-            sb.Append("<div class=\"dialog_header\"><h1>" + title + "</h1>\r\n");
-            sb.Append("<div class=\"h_r\"></div>\r\n</div>\r\n");
-            sb.Append("<table class=\"dialog_content\"><tr>\r\n");
+            sb.Append("<table id=\"dialog\" class=\"dialog_blue\">\r\n");
+            sb.Append("<tr class=\"dialog_header\" align=\"right\"><td class=\"h_l\"></td><td class=\"h_c\"><h2>" + title + "</h2>\r\n");
+            sb.Append("<a href=\"javascript:window.close()\" class=\"close\"></a></td>\r\n");
+            sb.Append("<td class=\"h_r\"></td></tr>\r\n");
+            sb.Append("<tr class=\"dialog_content\">\r\n");
             sb.Append("<td class=\"c_l\"></td>\r\n");
             sb.Append("<td class=\"c_c\">\r\n");
             sb.Append("<div class=\"icon " + icon.ToString() + "\"></div>\r\n");
@@ -98,9 +98,9 @@ namespace DTCMS.Common
                 sb.Append("<div class=\"buttonRow\"><a href=\"" + url + "\">请点击这里进行下一步操作...</a></div>\r\n");
             sb.Append("</td>\r\n");
             sb.Append("<td class=\"c_r\"></td>\r\n");
-            sb.Append("</tr></table>\r\n");
-            sb.Append("<div class=\"dialog_bottom\"><div class=\"b_r\"></div></div>\r\n");
-            sb.Append("</div>\r\n</body>\r\n</html>\r\n");
+            sb.Append("</tr>\r\n");
+            sb.Append("<tr class=\"dialog_bottom\"><td class=\"b_l\"></td><td class=\"b_c\"></td><td class=\"b_r\"></td></tr>\r\n");
+            sb.Append("</table>\r\n</body>\r\n</html>\r\n");
 
             HttpContext.Current.Response.Write(sb.ToString());
             HttpContext.Current.Response.End();
