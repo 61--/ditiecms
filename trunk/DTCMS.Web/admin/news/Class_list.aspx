@@ -28,12 +28,12 @@
         
         var gridTree;
         function showGridTree(json) {
-            gridTree = new TableTree4J("gridTree", "../Inc/treetable/");
+            gridTree = new TableTree4J("gridTree", "../Inc/treetable/",false,true);
             gridTree.config.useLine = false;
             gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
             
             var headerDataList = new Array("栏目名称", "所属类型", "创建时间", "排序","操作");
-            var widthList = new Array("4%","36%", "20%", "20%", "10%","10%");
+            var widthList = new Array("4%","32%", "20%", "20%", "10%","10%");
 
             gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "展开/折叠", "header status text", "", "");
             //设置列样式
