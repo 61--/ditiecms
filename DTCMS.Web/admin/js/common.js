@@ -59,3 +59,7 @@ function getElementCoords(px, py) {
         y: event.clientY - event.offsetY + py
     }
 }
+/*** 查看系统帮助 ***/
+function showHelp(ID) {
+    Dialog.helpTip("帮助主题" + ID);
+}
