@@ -33,12 +33,13 @@
             gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
             
             var headerDataList = new Array("栏目名称", "所属类型", "创建时间", "排序","操作");
-            var widthList = new Array("36%", "20%", "20%", "10%","10%");
+            var widthList = new Array("4%","36%", "20%", "20%", "10%","10%");
 
             gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "展开/折叠", "header status text", "", "");
             //设置列样式
             gridTree.gridHeaderColStyleArray = new Array("", "", "","","bleft");
-            gridTree.gridDataCloStyleArray = new Array("", "", "","","");
+            gridTree.gridDataCloStyleArray = new Array("", "", "", "", "");
+            
             if(json!=""){
             var data = eval("data=" + json);
             $.each(data, function(i, n) {

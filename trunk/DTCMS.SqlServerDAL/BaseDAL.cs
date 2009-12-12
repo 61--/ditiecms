@@ -24,7 +24,7 @@ namespace DTCMS.SqlServerDAL
         /// <param name="orderby">排序,0-顺序,1-倒序</param>
         /// <param name="pagesum">总页数</param>
         /// <returns>数据表</returns>
-        public DataTable GetData(string tb, string collist, int top, int pagesize, int page
+        public DataTable GetDataTable(string tb, string collist, int top, int pagesize, int page
             ,string condition,string sql_key,string col,int orderby,out int pagesum)
         {
             SqlParameter[] parameters = {

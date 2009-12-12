@@ -96,10 +96,27 @@ namespace DTCMS.BLL
         /// <param name="orderby">排序,0-顺序,1-倒序</param>
         /// <param name="pages">总页数</param>
         /// <returns>数据表</returns>
-        public DataTable GetData(string collist, int top, int pagesize, int page
+        public DataTable GetDataTable(string collist, int top, int pagesize, int page
             , string condition, string sql_key, string col, int orderby, out int pagesum)
         {
-            return dalArticle.GetData("DT_Arc_Article", collist, top, pagesize, page, condition, sql_key, col, orderby, out pagesum);
+            return dalArticle.GetDataTable("V_DT_Arc_Article", collist, top, pagesize, page, condition, sql_key, col, orderby, out pagesum);
+        }
+
+        /// <summary>
+        /// 获取DataTable，并转换成Joson数据
+        /// </summary>
+        public string CreateArticleTableJoan()
+        {
+            int pagesum;
+            DataTable dt = GetDataTable("ID,Title,ClassName,AddDate,IsChecked", 20, 20, 1, null, "ID", "id desc", 1, out pagesum);
+            if (dt != null)
+            {
+                return Utils.DataTableToJson(dt).ToString();
+            }
+            else
+            {
+                return "";
+            }
         }
 
     }

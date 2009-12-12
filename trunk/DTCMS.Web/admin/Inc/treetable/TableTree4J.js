@@ -555,7 +555,6 @@ function TableTree4J(objectName, tableTree4JDir) {
                     }
                     str = str + "<td " + clostyleMark + " width=\"" + this.headerWidthList[x] + "\">" + node.dataList[i] + "</td>"
                     clostyleMark = "";
-                    alert(this.headerWidthList[x]);
                     x++;
                 }
             } else {
