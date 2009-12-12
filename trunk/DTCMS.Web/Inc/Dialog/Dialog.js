@@ -1,21 +1,21 @@
 ﻿/**
- * zDialog 2.0
- * 王朝辉
- * QQ：4845587 E-mail:wzh@wangzhaohui.com
- * 最后修正：2009-12-4
- **/
+* zDialog 2.0
+* 王朝辉
+* QQ：4845587 E-mail:wzh@wangzhaohui.com
+* 最后修正：2009-12-4
+**/
 var IMAGESPATH = '/Inc/Dialog/images/'; //图片路径配置
 /*************************公用方法和属性****************************/
 var isIE = navigator.userAgent.indexOf('MSIE') != -1;
 var isIE6 = navigator.userAgent.indexOf('MSIE 6.0') != -1;
 var isIE8 = !!window.XDomainRequest && !!document.documentMode;
 
-var $id = function (id) {
+var $id = function(id) {
     return typeof id == "string" ? document.getElementById(id) : id;
 };
 //if (!$) var $ = $id;
 
-Array.prototype.remove = function (s, dust) { //如果dust为ture，则返回被删除的元素
+Array.prototype.remove = function(s, dust) { //如果dust为ture，则返回被删除的元素
     if (dust) {
         var dustArr = [];
         for (var i = 0; i < this.length; i++) {
@@ -33,7 +33,7 @@ Array.prototype.remove = function (s, dust) { //如果dust为ture，则返回被
     return this;
 }
 
-var $topWindow = function () {
+var $topWindow = function() {
     var parentWin = window;
     while (parentWin != parentWin.parent) {
         if (parentWin.parent.document.getElementsByTagName("FRAMESET").length > 0) break;
@@ -41,7 +41,7 @@ var $topWindow = function () {
     }
     return parentWin;
 };
-var $bodyDimensions = function (win) {
+var $bodyDimensions = function(win) {
     win = win || window;
     var doc = win.document;
     var cw = doc.compatMode == "BackCompat" ? doc.body.clientWidth : doc.documentElement.clientWidth;
@@ -64,21 +64,21 @@ var $bodyDimensions = function (win) {
     }
 };
 
-var fadeEffect = function(element, start, end, speed, callback){//透明度渐变：start:开始透明度 0-100；end:结束透明度 0-100；speed:速度1-100
-	if(!element.effect)
-		element.effect = {fade:0, move:0, size:0};
-	clearInterval(element.effect.fade);
-	var speed=speed||20;
-	element.effect.fade = setInterval(function(){
-		start = start < end ? Math.min(start + speed, end) : Math.max(start - speed, end);
-		element.style.opacity =  start / 100;
-		element.style.filter = "alpha(opacity=" + start + ")";
-		if(start == end){
-			clearInterval(element.effect.fade);
-			if(callback)
-				callback.call(element);
-		}
-	}, 20);
+var fadeEffect = function(element, start, end, speed, callback) {//透明度渐变：start:开始透明度 0-100；end:结束透明度 0-100；speed:速度1-100
+    if (!element.effect)
+        element.effect = { fade: 0, move: 0, size: 0 };
+    clearInterval(element.effect.fade);
+    var speed = speed || 20;
+    element.effect.fade = setInterval(function() {
+        start = start < end ? Math.min(start + speed, end) : Math.max(start - speed, end);
+        element.style.opacity = start / 100;
+        element.style.filter = "alpha(opacity=" + start + ")";
+        if (start == end) {
+            clearInterval(element.effect.fade);
+            if (callback)
+                callback.call(element);
+        }
+    }, 20);
 }
 
 /*************************弹出框类实现****************************/
@@ -130,13 +130,13 @@ var Dialog = function() {
 };
 Dialog._Array = [];
 Dialog.bgDiv = null;
-Dialog.setOptions = function (obj, optionsObj) {
+Dialog.setOptions = function(obj, optionsObj) {
     if (!optionsObj) return;
     for (var optionName in optionsObj) {
         obj[optionName] = optionsObj[optionName];
     }
 };
-Dialog.attachBehaviors = function () {
+Dialog.attachBehaviors = function() {
     if (isIE) {
         document.attachEvent("onkeydown", Dialog.onKeyDown);
         window.attachEvent('onresize', Dialog.resetPosition);
@@ -145,19 +145,19 @@ Dialog.attachBehaviors = function () {
         window.addEventListener('resize', Dialog.resetPosition, false);
     }
 };
-Dialog.prototype.attachBehaviors = function () {
+Dialog.prototype.attachBehaviors = function() {
     if (this.Drag && topWin.Drag) topWin.Drag.init(topWin.$id("_Draghandle_" + this.ID), topWin.$id("_DialogDiv_" + this.ID)); //注册拖拽方法
     if (!isIE && this.URL) { //非ie浏览器下在拖拽时用一个层遮住iframe，以免光标移入iframe失去拖拽响应
         var self = this;
-        topWin.$id("_DialogDiv_" + this.ID).onDragStart = function () {
+        topWin.$id("_DialogDiv_" + this.ID).onDragStart = function() {
             topWin.$id("_Covering_" + self.ID).style.display = ""
         }
-        topWin.$id("_DialogDiv_" + this.ID).onDragEnd = function () {
+        topWin.$id("_DialogDiv_" + this.ID).onDragEnd = function() {
             topWin.$id("_Covering_" + self.ID).style.display = "none"
         }
     }
 };
-Dialog.prototype.displacePath = function () {
+Dialog.prototype.displacePath = function() {
     if (this.URL.substr(0, 7) == "http://" || this.URL.substr(0, 1) == "/" || this.URL.substr(0, 11) == "javascript:") {
         return this.URL;
     } else {
@@ -171,11 +171,11 @@ Dialog.prototype.displacePath = function () {
         return locationPath + '/' + thisPath;
     }
 };
-Dialog.prototype.setPosition = function () {
+Dialog.prototype.setPosition = function() {
     var bd = $bodyDimensions(topWin);
     var thisTop = this.Top,
         thisLeft = this.Left,
-		thisdialogDiv=this.getDialogDiv();
+		thisdialogDiv = this.getDialogDiv();
     if (typeof this.Top == "string" && this.Top.substring(this.Top.length - 1, this.Top.length) == "%") {
         var percentT = this.Top.substring(0, this.Top.length - 1) * 0.01;
         thisTop = bd.clientHeight * percentT - thisdialogDiv.scrollHeight * percentT + bd.scrollTop;
@@ -187,20 +187,20 @@ Dialog.prototype.setPosition = function () {
     thisdialogDiv.style.top = Math.round(thisTop) + "px";
     thisdialogDiv.style.left = Math.round(thisLeft) + "px";
 };
-Dialog.setBgDivSize = function () {
+Dialog.setBgDivSize = function() {
     var bd = $bodyDimensions(topWin);
-	if(Dialog.bgDiv){
-			if(isIE6){
-				Dialog.bgDiv.style.height = bd.clientHeight + "px";
-				Dialog.bgDiv.style.top=bd.scrollTop + "px";
-				Dialog.bgDiv.childNodes[0].style.display = "none";//让div重渲染,修正IE6下尺寸bug
-				Dialog.bgDiv.childNodes[0].style.display = "";
-			}else{
-				Dialog.bgDiv.style.height = bd.scrollHeight + "px";
-			}
-		}
+    if (Dialog.bgDiv) {
+        if (isIE6) {
+            Dialog.bgDiv.style.height = bd.clientHeight + "px";
+            Dialog.bgDiv.style.top = bd.scrollTop + "px";
+            Dialog.bgDiv.childNodes[0].style.display = "none"; //让div重渲染,修正IE6下尺寸bug
+            Dialog.bgDiv.childNodes[0].style.display = "";
+        } else {
+            Dialog.bgDiv.style.height = bd.scrollHeight + "px";
+        }
+    }
 };
-Dialog.resetPosition = function () {
+Dialog.resetPosition = function() {
     Dialog.setBgDivSize();
     for (var i = 0, len = topWin.Dialog._Array.length; i < len; i++) {
         topWin.Dialog._Array[i].setPosition();
@@ -300,7 +300,7 @@ Dialog.prototype.create = function() {
     this.cancelButton = topWin.$id("_ButtonCancel_" + this.ID);
     div = null;
 };
-Dialog.prototype.setSize = function (w, h) {
+Dialog.prototype.setSize = function(w, h) {
     if (w && +w > 20) {
         this.Width = +w;
         topWin.$id("_DialogTable_" + this.ID).width = this.Width + 26;
@@ -312,10 +312,10 @@ Dialog.prototype.setSize = function (w, h) {
     }
     this.setPosition();
 };
-Dialog.prototype.show = function () {
+Dialog.prototype.show = function() {
     this.create();
     var bgdiv = Dialog.getBgdiv(),
-		thisdialogDiv=this.getDialogDiv();
+		thisdialogDiv = this.getDialogDiv();
     this.zindex = thisdialogDiv.style.zIndex = Dialog.bgDiv.style.zIndex + 1;
     if (topWin.Dialog._Array.length > 0) {
         this.zindex = thisdialogDiv.style.zIndex = topWin.Dialog._Array[topWin.Dialog._Array.length - 1].zindex + 2;
@@ -326,37 +326,37 @@ Dialog.prototype.show = function () {
         bgdiv.style.display = "none";
     }
     topWin.Dialog._Array.push(this);
-    if (this.Modal>=0) {
+    if (this.Modal >= 0) {
         bgdiv.style.zIndex = topWin.Dialog._Array[topWin.Dialog._Array.length - 1].zindex - 1;
         Dialog.setBgDivSize();
-		if(bgdiv.style.display == "none"){
-			if(this.Animator){
-				var bgMask=topWin.$id("_DialogBGMask");
-				bgMask.style.opacity = 0;
-				bgMask.style.filter = "alpha(opacity=0)";
-        		bgdiv.style.display = "";
-				fadeEffect(bgMask,0,this.Modal,isIE6?20:10);
-				bgMask=null;
-			}else{
-        		bgdiv.style.display = "";
-			}
-		}
+        if (bgdiv.style.display == "none") {
+            if (this.Animator) {
+                var bgMask = topWin.$id("_DialogBGMask");
+                bgMask.style.opacity = 0;
+                bgMask.style.filter = "alpha(opacity=0)";
+                bgdiv.style.display = "";
+                fadeEffect(bgMask, 0, this.Modal, isIE6 ? 20 : 10);
+                bgMask = null;
+            } else {
+                bgdiv.style.display = "";
+            }
+        }
     }
     this.setPosition();
     if (this.CancelEvent) {
         this.cancelButton.onclick = this.CancelEvent;
-        if(this.ShowButtonRow)this.cancelButton.focus();
+        if (this.ShowButtonRow) this.cancelButton.focus();
     }
     if (this.OKEvent) {
         this.okButton.onclick = this.OKEvent;
-        if(this.ShowButtonRow)this.okButton.focus();
+        if (this.ShowButtonRow) this.okButton.focus();
     }
     if (this.AutoClose && this.AutoClose > 0) this.autoClose();
     this.opened = true;
-	bgdiv=null;
+    bgdiv = null;
 };
-Dialog.prototype.close = function () {
-	var thisdialogDiv=this.getDialogDiv();
+Dialog.prototype.close = function() {
+    var thisdialogDiv = this.getDialogDiv();
     if (this == topWin.Dialog._Array[topWin.Dialog._Array.length - 1]) {
         var isTopDialog = topWin.Dialog._Array.pop();
     } else {
@@ -377,7 +377,7 @@ Dialog.prototype.close = function () {
 
     }
     if (topWin.Dialog._Array.length > 0) {
-        if (this.Modal>=0 && isTopDialog) Dialog.bgDiv.style.zIndex = topWin.Dialog._Array[topWin.Dialog._Array.length - 1].zindex - 1;
+        if (this.Modal >= 0 && isTopDialog) Dialog.bgDiv.style.zIndex = topWin.Dialog._Array[topWin.Dialog._Array.length - 1].zindex - 1;
     } else {
         Dialog.bgDiv.style.zIndex = "900";
         Dialog.bgDiv.style.display = "none";
@@ -385,21 +385,21 @@ Dialog.prototype.close = function () {
         if (topWinBody.styleOverflow != undefined) topWinBody.style.overflow = topWinBody.styleOverflow;
     }
     if (isIE) {
-		/*****释放引用，以便浏览器回收内存**/
-		thisdialogDiv.dialogInstance=null;
-		if(this.innerFrame)this.innerFrame.detachEvent("onload", innerFrameOnload);
-		this.innerFrame=null;
-		this.parentWindow=null;
-		this.bgDiv=null;
-		if (this.CancelEvent){this.cancelButton.onclick = null;this.CancelEvent=null};
-		if (this.OKEvent){this.okButton.onclick = null;this.OKEvent=null};
-		topWin.$id("_DialogDiv_" + this.ID).onDragStart=null;
-		topWin.$id("_DialogDiv_" + this.ID).onDragEnd=null;
-		topWin.$id("_Draghandle_" + this.ID).onmousedown=null;
-		topWin.$id("_Draghandle_" + this.ID).root=null;
-		/**end释放引用**/
+        /*****释放引用，以便浏览器回收内存**/
+        thisdialogDiv.dialogInstance = null;
+        if (this.innerFrame) this.innerFrame.detachEvent("onload", innerFrameOnload);
+        this.innerFrame = null;
+        this.parentWindow = null;
+        this.bgDiv = null;
+        if (this.CancelEvent) { this.cancelButton.onclick = null; this.CancelEvent = null };
+        if (this.OKEvent) { this.okButton.onclick = null; this.OKEvent = null };
+        topWin.$id("_DialogDiv_" + this.ID).onDragStart = null;
+        topWin.$id("_DialogDiv_" + this.ID).onDragEnd = null;
+        topWin.$id("_Draghandle_" + this.ID).onmousedown = null;
+        topWin.$id("_Draghandle_" + this.ID).root = null;
+        /**end释放引用**/
         thisdialogDiv.outerHTML = "";
-		CollectGarbage();
+        CollectGarbage();
     } else {
         var RycDiv = topWin.$id("_RycDiv");
         if (!RycDiv) {
@@ -408,12 +408,12 @@ Dialog.prototype.close = function () {
         }
         RycDiv.appendChild(thisdialogDiv);
         RycDiv.innerHTML = "";
-		RycDiv=null;
+        RycDiv = null;
     }
-	thisdialogDiv=null;
+    thisdialogDiv = null;
     this.closed = true;
 };
-Dialog.prototype.autoClose = function () {
+Dialog.prototype.autoClose = function() {
     if (this.closed) {
         clearTimeout(this._closeTimeoutId);
         return;
@@ -424,22 +424,22 @@ Dialog.prototype.autoClose = function () {
         this.close();
     } else {
         var self = this;
-        this._closeTimeoutId = setTimeout(function () {
+        this._closeTimeoutId = setTimeout(function() {
             self.autoClose();
         },
         1000);
     }
 };
-Dialog.getInstance = function (id) {
+Dialog.getInstance = function(id) {
     var dialogDiv = topWin.$id("_DialogDiv_" + id);
     if (!dialogDiv) alert("没有取到对应ID的弹出框页面对象");
-	try{
-    	return dialogDiv.dialogInstance;
-	}finally{
-		dialogDiv = null;
-	}
+    try {
+        return dialogDiv.dialogInstance;
+    } finally {
+        dialogDiv = null;
+    }
 };
-Dialog.prototype.addButton = function (id, txt, func) {
+Dialog.prototype.addButton = function(id, txt, func) {
     topWin.$id("_ButtonRow_" + this.ID).style.display = "";
     this.ShowButtonRow = true;
     var button = topDoc.createElement("input");
@@ -452,11 +452,11 @@ Dialog.prototype.addButton = function (id, txt, func) {
     input0.parentNode.insertBefore(button, input0);
     return button;
 };
-Dialog.prototype.removeButton = function (btn) {
+Dialog.prototype.removeButton = function(btn) {
     var input0 = topWin.$id("_DialogButtons_" + this.ID).getElementsByTagName("INPUT")[0];
     input0.parentNode.removeChild(btn);
 };
-Dialog.getBgdiv = function () {
+Dialog.getBgdiv = function() {
     if (Dialog.bgDiv) return Dialog.bgDiv;
     var bgdiv = topWin.$id("_DialogBGDiv");
     if (!bgdiv) {
@@ -464,32 +464,32 @@ Dialog.getBgdiv = function () {
         bgdiv.id = "_DialogBGDiv";
         bgdiv.style.cssText = "position:absolute;left:0px;top:0px;width:100%;height:100%;z-index:900";
         var bgIframeBox = '<div style="position:relative;width:100%;height:100%;">';
-		var bgIframeMask = '<div id="_DialogBGMask" style="position:absolute;background-color:#333;opacity:0.4;filter:alpha(opacity=40);width:100%;height:100%;"></div>';
-		var bgIframe = isIE6?'<iframe src="about:blank" style="filter:alpha(opacity=0);" width="100%" height="100%"></iframe>':'';
-		bgdiv.innerHTML=bgIframeBox+bgIframeMask+bgIframe+'</div>';
+        var bgIframeMask = '<div id="_DialogBGMask" style="position:absolute;background-color:#333;opacity:0.4;filter:alpha(opacity=40);width:100%;height:100%;"></div>';
+        var bgIframe = isIE6 ? '<iframe src="about:blank" style="filter:alpha(opacity=0);" width="100%" height="100%"></iframe>' : '';
+        bgdiv.innerHTML = bgIframeBox + bgIframeMask + bgIframe + '</div>';
         topDoc.getElementsByTagName("BODY")[0].appendChild(bgdiv);
         if (isIE6) {
             var bgIframeDoc = bgdiv.getElementsByTagName("IFRAME")[0].contentWindow.document;
             bgIframeDoc.open();
             bgIframeDoc.write("<body style='background-color:#333' oncontextmenu='return false;'></body>");
             bgIframeDoc.close();
-			bgIframeDoc=null;
+            bgIframeDoc = null;
         }
     }
     Dialog.bgDiv = bgdiv;
-	bgdiv=null;
+    bgdiv = null;
     return Dialog.bgDiv;
 };
-Dialog.prototype.getDialogDiv = function () {
-	var dialogDiv=topWin.$id("_DialogDiv_" + this.ID)
-	if(!dialogDiv)alert("获取弹出层页面对象出错！");
-	try{
-		return dialogDiv;
-	}finally{
-		dialogDiv = null;
-	}
+Dialog.prototype.getDialogDiv = function() {
+    var dialogDiv = topWin.$id("_DialogDiv_" + this.ID)
+    if (!dialogDiv) alert("获取弹出层页面对象出错！");
+    try {
+        return dialogDiv;
+    } finally {
+        dialogDiv = null;
+    }
 };
-Dialog.onKeyDown = function (event) {
+Dialog.onKeyDown = function(event) {
     if (event.shiftKey && event.keyCode == 9) { //shift键
         if (topWin.Dialog._Array.length > 0) {
             stopEvent(event);
@@ -500,13 +500,13 @@ Dialog.onKeyDown = function (event) {
         Dialog.close();
     }
 };
-Dialog.close = function (id) {
+Dialog.close = function(id) {
     if (topWin.Dialog._Array.length > 0) {
         var diag = topWin.Dialog._Array[topWin.Dialog._Array.length - 1];
         diag.cancelButton.onclick.apply(diag.cancelButton, []);
     }
 };
-Dialog.alert = function (msg, func, w, h) {
+Dialog.alert = function(msg, func, w, h) {
     var w = w || 320,
         h = h || 110;
     var diag = new Dialog({
@@ -516,7 +516,7 @@ Dialog.alert = function (msg, func, w, h) {
     });
     diag.ShowButtonRow = true;
     diag.Title = "DTCMS提示信息";
-    diag.CancelEvent = function () {
+    diag.CancelEvent = function() {
         diag.close();
         if (func) func();
     };
@@ -530,7 +530,7 @@ Dialog.alert = function (msg, func, w, h) {
     diag.cancelButton.value = "确 定";
     diag.cancelButton.focus();
 };
-Dialog.confirm = function (msg, funcOK, funcCal, w, h) {
+Dialog.confirm = function(msg, funcOK, funcCal, w, h) {
     var w = w || 320,
         h = h || 110;
     var diag = new Dialog({
@@ -540,13 +540,13 @@ Dialog.confirm = function (msg, funcOK, funcCal, w, h) {
     });
     diag.ShowButtonRow = true;
     diag.Title = "DTCMS提示信息";
-    diag.CancelEvent = function () {
+    diag.CancelEvent = function() {
         diag.close();
         if (funcCal) {
             funcCal();
         }
     };
-    diag.OKEvent = function () {
+    diag.OKEvent = function() {
         diag.close();
         if (funcOK) {
             funcOK();
@@ -560,7 +560,7 @@ Dialog.confirm = function (msg, funcOK, funcCal, w, h) {
     diag.okButton.parentNode.style.textAlign = "center";
     diag.okButton.focus();
 };
-Dialog.open = function (arg) {
+Dialog.open = function(arg) {
     var diag = new Dialog(arg);
     diag.show();
     return diag;
@@ -570,80 +570,106 @@ if (isIE) {
 } else {
     window.addEventListener("load", Dialog.attachBehaviors, false);
 }
-var Drag={
-    "obj":null,
-	"init":function(handle, dragBody, e){
-		if (e == null) {
-			handle.onmousedown=Drag.start;
-		}
-		handle.root = dragBody;
+Dialog.helpTip = function(msg, func, w, h) {
+    var w = w || 320,
+        h = h || 110;
+    var diag = new Dialog({
+        Width: w,
+        Height: h,
+        Modal: -10
+    });
+    diag.ID = "H0201001";
+    diag.Top = "100%";
+    diag.Left = "100%";
+    diag.ShowButtonRow = true;
+    diag.Title = "帮助主题";
+    diag.CancelEvent = function() {
+        diag.close();
+        if (func) func();
+    };
+    diag.InnerHtml = '<table height="100%" border="0" align="left" cellpadding="10" cellspacing="10">\
+		<tr><td align="center" width="70px"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'ico_alert.gif" style="padding-left:20px;width:34px;height:34px;"></td>\
+			<td align="left" id="Message_' + this.ID + '" style="font-size:9pt">' + msg + '</td></tr>\
+	</table>';
+    diag.show();
+    diag.okButton.style.display = "none";
+    diag.cancelButton.value = "确 定";
+    diag.cancelButton.focus();
+};
+var Drag = {
+    "obj": null,
+    "init": function(handle, dragBody, e) {
+        if (e == null) {
+            handle.onmousedown = Drag.start;
+        }
+        handle.root = dragBody;
 
-		if(isNaN(parseInt(handle.root.style.left)))handle.root.style.left="0px";
-		if(isNaN(parseInt(handle.root.style.top)))handle.root.style.top="0px";
-		handle.root.onDragStart=new Function();
-		handle.root.onDragEnd=new Function();
-		handle.root.onDrag=new Function();
-		if (e !=null) {
-			var handle=Drag.obj=handle;
-			e=Drag.fixe(e);
-			var top=parseInt(handle.root.style.top);
-			var left=parseInt(handle.root.style.left);
-			handle.root.onDragStart(left,top,e.pageX,e.pageY);
-			handle.lastMouseX=e.pageX;
-			handle.lastMouseY=e.pageY;
-			document.onmousemove=Drag.drag;
-			document.onmouseup=Drag.end;
-		}
-	},
-	"start":function(e){
-		var handle=Drag.obj=this;
-		e=Drag.fixEvent(e);
-		var top=parseInt(handle.root.style.top);
-		var left=parseInt(handle.root.style.left);
-		//alert(left)
-		handle.root.onDragStart(left,top,e.pageX,e.pageY);
-		handle.lastMouseX=e.pageX;
-		handle.lastMouseY=e.pageY;
-		document.onmousemove=Drag.drag;
-		document.onmouseup=Drag.end;
-		return false;
-	},
-	"drag":function(e){
-		e=Drag.fixEvent(e);
-							
-		var handle=Drag.obj;
-		var mouseY=e.pageY;
-		var mouseX=e.pageX;
-		var top=parseInt(handle.root.style.top);
-		var left=parseInt(handle.root.style.left);
-		
-		if(document.all){Drag.obj.setCapture();}else{e.preventDefault();};//作用是将所有鼠标事件捕获到handle对象，对于firefox，以用preventDefault来取消事件的默认动作：
+        if (isNaN(parseInt(handle.root.style.left))) handle.root.style.left = "0px";
+        if (isNaN(parseInt(handle.root.style.top))) handle.root.style.top = "0px";
+        handle.root.onDragStart = new Function();
+        handle.root.onDragEnd = new Function();
+        handle.root.onDrag = new Function();
+        if (e != null) {
+            var handle = Drag.obj = handle;
+            e = Drag.fixe(e);
+            var top = parseInt(handle.root.style.top);
+            var left = parseInt(handle.root.style.left);
+            handle.root.onDragStart(left, top, e.pageX, e.pageY);
+            handle.lastMouseX = e.pageX;
+            handle.lastMouseY = e.pageY;
+            document.onmousemove = Drag.drag;
+            document.onmouseup = Drag.end;
+        }
+    },
+    "start": function(e) {
+        var handle = Drag.obj = this;
+        e = Drag.fixEvent(e);
+        var top = parseInt(handle.root.style.top);
+        var left = parseInt(handle.root.style.left);
+        //alert(left)
+        handle.root.onDragStart(left, top, e.pageX, e.pageY);
+        handle.lastMouseX = e.pageX;
+        handle.lastMouseY = e.pageY;
+        document.onmousemove = Drag.drag;
+        document.onmouseup = Drag.end;
+        return false;
+    },
+    "drag": function(e) {
+        e = Drag.fixEvent(e);
 
-		var currentLeft,currentTop;
-		currentLeft=left+mouseX-handle.lastMouseX;
-		currentTop=top+(mouseY-handle.lastMouseY);
-		handle.root.style.left=currentLeft +"px";
-		handle.root.style.top=currentTop+"px";
-		handle.lastMouseX=mouseX;
-		handle.lastMouseY=mouseY;
-		handle.root.onDrag(currentLeft,currentTop,e.pageX,e.pageY);
-		return false;
-	},
-	"end":function(){
-		if(document.all){Drag.obj.releaseCapture();};//取消所有鼠标事件捕获到handle对象
-		document.onmousemove=null;
-		document.onmouseup=null;
-		Drag.obj.root.onDragEnd(parseInt(Drag.obj.root.style.left),parseInt(Drag.obj.root.style.top));
-		Drag.obj=null;
-	},
-	"fixEvent":function(e){//格式化事件参数对象
-		var sl = Math.max(document.documentElement.scrollLeft, document.body.scrollLeft);
-		var st = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
-		if(typeof e=="undefined")e=window.event;
-		if(typeof e.layerX=="undefined")e.layerX=e.offsetX;
-		if(typeof e.layerY=="undefined")e.layerY=e.offsetY;
-		if(typeof e.pageX == "undefined")e.pageX = e.clientX + sl - document.body.clientLeft;
-		if(typeof e.pageY == "undefined")e.pageY = e.clientY + st - document.body.clientTop;
-		return e;
-	}
+        var handle = Drag.obj;
+        var mouseY = e.pageY;
+        var mouseX = e.pageX;
+        var top = parseInt(handle.root.style.top);
+        var left = parseInt(handle.root.style.left);
+
+        if (document.all) { Drag.obj.setCapture(); } else { e.preventDefault(); }; //作用是将所有鼠标事件捕获到handle对象，对于firefox，以用preventDefault来取消事件的默认动作：
+
+        var currentLeft, currentTop;
+        currentLeft = left + mouseX - handle.lastMouseX;
+        currentTop = top + (mouseY - handle.lastMouseY);
+        handle.root.style.left = currentLeft + "px";
+        handle.root.style.top = currentTop + "px";
+        handle.lastMouseX = mouseX;
+        handle.lastMouseY = mouseY;
+        handle.root.onDrag(currentLeft, currentTop, e.pageX, e.pageY);
+        return false;
+    },
+    "end": function() {
+        if (document.all) { Drag.obj.releaseCapture(); }; //取消所有鼠标事件捕获到handle对象
+        document.onmousemove = null;
+        document.onmouseup = null;
+        Drag.obj.root.onDragEnd(parseInt(Drag.obj.root.style.left), parseInt(Drag.obj.root.style.top));
+        Drag.obj = null;
+    },
+    "fixEvent": function(e) {//格式化事件参数对象
+        var sl = Math.max(document.documentElement.scrollLeft, document.body.scrollLeft);
+        var st = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
+        if (typeof e == "undefined") e = window.event;
+        if (typeof e.layerX == "undefined") e.layerX = e.offsetX;
+        if (typeof e.layerY == "undefined") e.layerY = e.offsetY;
+        if (typeof e.pageX == "undefined") e.pageX = e.clientX + sl - document.body.clientLeft;
+        if (typeof e.pageY == "undefined") e.pageY = e.clientY + st - document.body.clientTop;
+        return e;
+    }
 };

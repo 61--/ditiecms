@@ -61,7 +61,7 @@
                     </tr>
                     <tr>
                         <td class="main_bleft split">
-                            TAG标签<sup><a href="javascript:;" onclick="javascript:Dialog.alert('多个TAG用半角逗号隔开')">[?]</a></sup>:
+                            TAG标签<sup><a href="javascript:showHelp('H0201001')" title="查看帮助">[?]</a></sup>:
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_Tags" class="textbox" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" />
