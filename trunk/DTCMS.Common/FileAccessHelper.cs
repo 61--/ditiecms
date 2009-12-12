@@ -11,6 +11,26 @@ namespace DTCMS.Common
     {
         private static Encoding defaultEncoding = Encoding.UTF8;
 
+        /// <summary>
+        /// 返回文件是否存在
+        /// </summary>
+        /// <param name="filename">文件路径</param>
+        /// <returns>是否存在</returns>
+        public static bool FileExists(string filepath)
+        {
+            return System.IO.File.Exists(filepath);
+        }
+
+        /// <summary>
+        /// 返回目录是否存在
+        /// </summary>
+        /// <param name="directoryname">目录路径</param>
+        /// <returns>是否存在</returns>
+        public static bool DirectoryExists(string directorypath)
+        {
+            return System.IO.Directory.Exists(directorypath);
+        }
+
         #region ReadTextFile
         /// <summary>
         /// ReadTextFile
@@ -30,14 +50,12 @@ namespace DTCMS.Common
         /// <returns>文本内容</returns>
         public static string ReadTextFile(string fileName, Encoding encoding)
         {
-            string text;
+            if (FileExists(fileName)) throw new ArgumentNullException("指定文件不存在");
 
             using (StreamReader sr = new StreamReader(fileName, encoding))
             {
-                text = sr.ReadToEnd();
+               return sr.ReadToEnd();
             }
-
-            return text;
         }
         #endregion
 
@@ -110,7 +128,7 @@ namespace DTCMS.Common
             {
                 string dirName = Path.GetDirectoryName(fileName);
 
-                if (!Directory.Exists(dirName))
+                if (!DirectoryExists(dirName))
                 {
                     Directory.CreateDirectory(dirName);
                 }
@@ -121,6 +139,7 @@ namespace DTCMS.Common
             }
         }
         #endregion
+
         #region 文件上传
         /// <summary>
         /// 
@@ -142,6 +161,7 @@ namespace DTCMS.Common
 
         }
         #endregion
+
         #region 文件删除
         public static bool FileDelete(string filePath)
         {
