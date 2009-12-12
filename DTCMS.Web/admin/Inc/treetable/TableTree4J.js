@@ -12,7 +12,7 @@
 |--------------------------------------------------*/
 
 //TableTree4J Object
-function TableTree4J(objectName, tableTree4JDir) {
+function TableTree4J(objectName, tableTree4JDir,sequence,checked) {
     //vars-------------------------------------------------------------------
     var sequencenum = 0;    //序列
     var widthList = 0;  //列百分比
@@ -28,8 +28,8 @@ function TableTree4J(objectName, tableTree4JDir) {
     this.tableDesc;
     this.selectMenuNodeHrefId;
     this.map = new HashMap();
-    this.sequence = false;    //序列
-    this.checked = true;    //checkbox框
+    this.sequence = sequence;    //序列
+    this.checked = checked;    //checkbox框
 
     this.icon = {
         root: this.tableTree4JDir + 'img/base.gif',

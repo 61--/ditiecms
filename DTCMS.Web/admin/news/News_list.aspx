@@ -26,12 +26,12 @@
         }
         var gridTree;
         function showGridTree(json) {
-            gridTree = new TableTree4J("gridTree", "../Inc/treetable/");
+            gridTree = new TableTree4J("gridTree", "../Inc/treetable/",true,true);
             gridTree.config.useLine = false;
             gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
 
             var headerDataList = new Array("文章标题", "所属栏目", "创建时间", "是否审核", "操作");
-            var widthList = new Array("4%", "36%", "20%", "20%", "10%", "10%");
+            var widthList = new Array("4%", "4%", "32%", "20%", "20%", "10%", "10%");
 
             gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "展开/折叠", "header status text", "", "");
             //设置列样式
