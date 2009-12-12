@@ -67,7 +67,7 @@
 }
 .dialog_blue .dialog_content .c_l{
 	width:13px;
-	background:url(/Inc/Dialog/images/dialog_ml.png) repeat-y !important;
+	background:url(/Inc/Dialog/images/dialog_ml.png) no-repeat !important;
 	_background:url(/Inc/Dialog/images/dialog_ml.gif) repeat-y;
 }
 .dialog_blue .dialog_content
@@ -76,7 +76,7 @@
 }
 .dialog_blue .dialog_content .c_r{
 	width:13px;
-	background:url(/Inc/Dialog/images/dialog_mr.png) repeat-y !important;
+	background:url(/Inc/Dialog/images/dialog_mr.png) no-repeat !important;
 	_background:url(/Inc/Dialog/images/dialog_mr.gif) repeat-y;
 }
 .dialog_blue .icon{
