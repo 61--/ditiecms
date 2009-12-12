@@ -70,8 +70,7 @@
 	background:url(/Inc/Dialog/images/dialog_ml.png) no-repeat !important;
 	_background:url(/Inc/Dialog/images/dialog_ml.gif) repeat-y;
 }
-.dialog_blue .dialog_content
-{
+.dialog_blue .dialog_content .c_c{
 	background:#FFF;
 }
 .dialog_blue .dialog_content .c_r{
