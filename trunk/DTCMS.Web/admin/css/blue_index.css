@@ -21,16 +21,6 @@ a:hover{
 img{
   border:0;
 }
-.button {
-	border: 0px;
-	height: 20px;
-	letter-spacing: 2px;
-	color: #0099DD;
-	overflow:hidden;
-	width:63px;	
-	cursor:pointer;
-	background: url(../Inc/Dialog/images/Button.gif) no-repeat;
-}
 /*---- Position --------------*/
 .top { position:absolute; left:0px; top:0px; right:0px; height:76px;background:url(../images/blue/top_bg_hr.jpg) left top repeat-x;}
 .side { position:absolute; left:0px; top:76px; bottom:25px; width:176px;border-right:1px #4294D0 solid;background:#F8FBFE;overflow:auto;}

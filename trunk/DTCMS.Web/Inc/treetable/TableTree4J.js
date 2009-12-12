@@ -12,11 +12,8 @@
 |--------------------------------------------------*/
 
 //TableTree4J Object
-function TableTree4J(objectName, tableTree4JDir,sequence,checked) {
-    //vars-------------------------------------------------------------------
-    var sequencenum = 0;    //序列
-    var widthList = 0;  //列百分比
-
+function TableTree4J(objectName, tableTree4JDir) {
+    //vars-------------------------------------------------------------------	
     this.tableTree4JDir = tableTree4JDir;
     this.obj = objectName;
     this.treeNodes = [];
@@ -28,8 +25,6 @@ function TableTree4J(objectName, tableTree4JDir,sequence,checked) {
     this.tableDesc;
     this.selectMenuNodeHrefId;
     this.map = new HashMap();
-    this.sequence = sequence;    //序列
-    this.checked = checked;    //checkbox框
 
     this.icon = {
         root: this.tableTree4JDir + 'img/base.gif',
@@ -66,16 +61,6 @@ function TableTree4J(objectName, tableTree4JDir,sequence,checked) {
         booleanInitOpenAll: false,
         booleanHighLightRow: true,
         highLightRowClassName: "GridHighLightRow"
-    }
-
-    //设置排序
-    TableTree4J.prototype.setSequence = function(sequence) {
-        this.sequence = sequence;
-    }
-
-    //设置checkbox
-    TableTree4J.prototype.setChecked = function(checked) {
-        this.checked = checked;
     }
 
     //set img root path
@@ -380,7 +365,7 @@ function TableTree4J(objectName, tableTree4JDir,sequence,checked) {
         }
         return imgstr;
     }
-
+    
     //init node TR
     TableTree4J.prototype.codeNodeTR = function(node) {//changeClassName
         var str = "";
@@ -389,7 +374,7 @@ function TableTree4J(objectName, tableTree4JDir,sequence,checked) {
             if (node.classStyle != null && node.classStyle != "") {
                 changeClassMark = " onclick=\"select(this)\" onmouseover=\"changeClassName(this,'" + this.config.highLightRowClassName + "')\" onmouseout=\"changeClassName(this,'" + node.classStyle + "')\"";
             } else {
-                changeClassMark = " onclick=\"select(this)\" onmouseover=\"changeClassName(this,'" + this.config.highLightRowClassName + "')\" onmouseout=\"changeClassName(this,'')\"";
+            changeClassMark = " onclick=\"select(this)\"  onmouseover=\"changeClassName(this,'" + this.config.highLightRowClassName + "')\" onmouseout=\"changeClassName(this,'')\"";
             }
         }
 
@@ -454,7 +439,6 @@ function TableTree4J(objectName, tableTree4JDir,sequence,checked) {
     TableTree4J.prototype.flowInitChildNodes = function(pnode) {
         //this.map.put("treNod"+pnode.id,pnode);
         var nods = pnode.childNodes;
-        var nodsfirst = "";
         if (nods.length > 0) {
             for (var i = 0; i < nods.length; i++) {
                 var childNodes = this.findChildsToPnode(nods[i]);
@@ -478,19 +462,11 @@ function TableTree4J(objectName, tableTree4JDir,sequence,checked) {
                 }
 
                 nods[i].htmlcode = nodeimgs + nods[i].htmlcode;
-
-                if (this.sequence) {
-                    nodsfirst += "<td>" + sequencenum++ + "</td>";
-                }
-                if (this.checked) {
-                    nodsfirst += "<td ><input type=\"checkbox\" name=\"items\" value=\"" + nods[i].id + "\"  /></td>";
-                }
-                nods[i].htmlcode = this.codeNodeTR(nods[i]) + nodsfirst + "<td class=\"" + this.config.treeStyle + "\">" + nods[i].htmlcode;
+                nods[i].htmlcode = this.codeNodeTR(nods[i]) + "<td ><input type=\"checkbox\" name=\"items\" value=\"" + nods[i].id + "\"  /></td><td class=\"" + this.config.treeStyle + "\">" + nods[i].htmlcode;   //checkbox
                 this.htmlCode = this.htmlCode + nods[i].htmlcode;
                 if (childNodes.length > 0) {
                     this.flowInitChildNodes(nods[i]);
                 }
-                nodsfirst = "";
             }
         }
 
@@ -548,14 +524,12 @@ function TableTree4J(objectName, tableTree4JDir,sequence,checked) {
             //col style	
             var clostyleMark = "";
             if (node.booleanRoot == true && this.headerWidthList != null) {
-                var x = widthList;
                 for (var i = 1; i < node.dataList.length; i++) {
                     if (this.gridHeaderColStyleArray[i] != null && this.gridHeaderColStyleArray[i] != "") {
                         clostyleMark = "class=\"" + this.gridHeaderColStyleArray[i] + "\"";
                     }
-                    str = str + "<td " + clostyleMark + " width=\"" + this.headerWidthList[x] + "\">" + node.dataList[i] + "</td>"
+                    str = str + "<td " + clostyleMark + " width=\"" + this.headerWidthList[i] + "\">" + node.dataList[i] + "</td>"
                     clostyleMark = "";
-                    x++;
                 }
             } else {
                 for (var i = 1; i < node.dataList.length; i++) {
@@ -660,20 +634,14 @@ function TableTree4J(objectName, tableTree4JDir,sequence,checked) {
         var allNodes = this.treeNodes;
         var rootNod = this.rootNode;
         var codes = this.codeNodeTR(rootNod);
-        var nodestitle = "";
-        if (this.sequence) {
-            nodestitle = nodestitle + "<td width=\"" + this.headerWidthList[widthList++] + "\">ID</td>";
-        }
-        if (this.checked) {
-            nodestitle = nodestitle + "<td width=\"" + this.headerWidthList[widthList++] + "\"><input type=\"checkbox\" onclick=\"CheckSelAll(this)\" name=\"title\" /></td>";   //checkbox
-        }
-        codes = codes + nodestitle;
+        codes = codes + "<td width=\"4%\"><input type=\"checkbox\" onclick=\"CheckSelAll(this)\" name=\"title\" /></td>";   //checkbox
+
         if (this.headerWidthList != null && this.headerWidthList != "") {
-            codes = codes + "<td width=\"" + this.headerWidthList[widthList++] + "\">"
+            codes = codes + "<td width=\"" + this.headerWidthList[0] + "\">"
         } else {
             codes = codes + "<td>";
         }
-
+        
         if (allNodes.length > 0) {
             var dImgcode = "";
             this.findChildsToPnode(rootNod);
@@ -842,29 +810,12 @@ function flowChildNodesByClickPnode(node, treeObjName) {
     }
 }
 
-function changeClassName(objectChange, classN) {
+function changeClassName(objectChange, classN) {       
     objectChange.className = classN;
 }
 
 function select(object) {   //单击选择当前行
-    var input = object.getElementsByTagName("input");
-    if (input && input[0]) {
-        input[0].checked = !input[0].checked;
-    }
-}
-
-/*** 全选反选*name=items ***/
-function CheckSelAll(elem) {
-    var input = document.getElementsByName("items");
-    var len = input.length;
-    for (var i = 0; i < len; i++) {
-        if (elem.checked) {
-            input[i].checked = true;
-        }
-        else {
-            input[i].checked = false;
-        }
-    }
+    object.getElementsByTagName("input")[0].checked = !object.getElementsByTagName("input")[0].checked;
 }
 
 function clearNoUseCookieMark(tree) {
@@ -1002,4 +953,6 @@ function removeAllCookie() {
             document.cookie = cookiesArray[i] + ";expires=" + exp.toGMTString();
         }
     }
+
+
 }

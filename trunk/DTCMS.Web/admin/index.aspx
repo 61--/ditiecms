@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>DTCMS内容管理系统</title>
     <link href="css/blue_index.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="Inc/Dialog/Dialog.js"></script>
+    <link href="/Inc/Dialog/dialog.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/Inc/Dialog/Dialog.js"></script>
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript">
         $(function() {
