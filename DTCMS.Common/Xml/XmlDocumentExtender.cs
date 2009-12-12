@@ -36,7 +36,7 @@ namespace DTCMS.Common.Xml
         /// <param name="filename"></param>
         public override void Load(string filename)
         {
-            if (FileAccessHelper.FileExists(filename))
+            if (System.IO.File.Exists(filename))
                 base.Load(filename);
             else
                 throw new Exception("文件: " + filename + " 不存在!");
