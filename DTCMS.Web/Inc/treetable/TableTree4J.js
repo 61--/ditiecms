@@ -483,7 +483,7 @@ function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
                     nodsfirst += "<td>" + sequencenum++ + "</td>";
                 }
                 if (this.checked) {
-                    nodsfirst += "<td ><input type=\"checkbox\" name=\"items\" value=\"" + nods[i].id + "\"  /></td>";
+                    nodsfirst += "<td ><input type=\"checkbox\" name=\"items\" value=\"" + nods[i].id + "\" onclick=\"javascript:this.checked=!this.checked;\"  /></td>";
                 }
                 nods[i].htmlcode = this.codeNodeTR(nods[i]) + nodsfirst + "<td class=\"" + this.config.treeStyle + "\">" + nods[i].htmlcode;
                 this.htmlCode = this.htmlCode + nods[i].htmlcode;

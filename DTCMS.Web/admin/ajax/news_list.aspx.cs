@@ -21,6 +21,9 @@ namespace DTCMS.Web.admin.ajax
                 case "load":
                     Response.Write(CreateArticleTableJoan());
                     break;
+                case "delete":
+                    Response.Write(Delete());
+                    break;
                 default:
                     break;
 
@@ -33,6 +36,35 @@ namespace DTCMS.Web.admin.ajax
         public string CreateArticleTableJoan()
         {
             return bllArticle.CreateArticleTableJoan();
+        }
+
+        /// <summary>
+        /// 删除文章
+        /// </summary>
+        /// <returns></returns>
+        public string Delete()
+        {
+            try
+            {
+                string id = Common.Utils.GetQueryString("Id");
+                if (id == "")
+                {
+                    return "请选择你要删除的文章！";
+                }
+                
+                if (bllArticle.Delete(id) > 0)
+                {
+                    return "True";
+                }
+                else
+                {
+                    return "文章删除失败！";
+                }
+            }
+            catch
+            {
+                return "删除文章出现未知错误！";
+            }
         }
     }
 }

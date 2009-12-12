@@ -127,8 +127,9 @@
                         if (responseText.toString().toUpperCase() == "TRUE") {
                             LoadData();
                             Dialog.alert("文章删除成功!");
-                        } else {
-                            Dialog.alert("文章删除失败!");
+                        }
+                        else {
+                            Dialog.alert(responseText);
                         }
                     },
                     error: function() {
