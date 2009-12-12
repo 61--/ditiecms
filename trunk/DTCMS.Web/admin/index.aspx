@@ -11,17 +11,21 @@
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript">
         $(function() {
-            OpenMenu(0, '');
+            openMenu(0, '');
         });
-        function ChangeMenu(n) {
+        function changeMenu(n) {
             if (n == 0) {
-                $("#left_menu").toggle();
+                if ($("#side").width() == 0) {
+                    $("#side").width(176);
+                } else {
+                    $("#side").width(0);
+                }
             } else {
-                $("#left_menu").width($("#left_menu").width() + n);
+                $("#side").width($("#side").width() + n);
             }
         }
         var preID = 0;
-        function OpenMenu(cid, url) {
+        function openMenu(cid, url) {
             $("#d" + cid).attr("class","thisclass");
             if (preID > 0 && preID != cid)
                 $("#d" + preID).attr("class","");
@@ -45,6 +49,10 @@
         function showHide(item) {
             $("#" + item).slideToggle(200);
         }
+        function frameRedirect(url) {
+            $("#ajaxloading").show();
+            document.getElementById("main_body").src = url;
+        }
     </script>
 
 </head>
@@ -58,37 +66,37 @@
                     你好<span class="username"></span>
                 </div>
                 <div class="welcome">
-                    <a href="javascript:ChangeMenu(-10)">
-                        <img src="images/blue/frame-l.gif" alt="减小左框架" /></a> <a href="javascript:ChangeMenu(0)">
-                            <img src="images/blue/frame_on.gif" alt="隐藏/显示左框架" /></a> <a href="javascript:ChangeMenu(10)"
+                    <a href="javascript:changeMenu(-10)">
+                        <img src="images/blue/frame-l.gif" alt="减小左框架" /></a> <a href="javascript:changeMenu(0)">
+                            <img src="images/blue/frame_on.gif" alt="隐藏/显示左框架" /></a> <a href="javascript:changeMenu(10)"
                                 title="增大左框架">
                                 <img src="images/blue/frame-r.gif" alt="增大左框架" /></a>
                 </div>
                 <div class="sitelink">
-                    <a href="javascript:OpenMenu(0,'','main_index.aspx',0)">管理主页</a> | <a href="#">注销登陆</a>
+                    <a href="javascript:openMenu(0,'','main_index.aspx',0)">管理主页</a> | <a href="#">注销登陆</a>
                 </div>
             </div>
             <div class="leftnav">
                 <ul>
                     <li class="navleft"></li>
-                    <li id="d1"><a href="javascript:OpenMenu(1,'news/Class_list.aspx')">频道管理</a></li>
-                    <li id="d2"><a href="javascript:OpenMenu(2,'news/News_list.aspx')">内容管理</a></li>
-                    <li id="d3"><a href="javascript:OpenMenu(3,'news/news_list.html')">生成管理</a></li>
-                    <li id="d4"><a href="javascript:OpenMenu(4,'main_index.aspx')">采集管理</a></li>
-                    <li id="d5"><a href="javascript:OpenMenu(5,'main_index.aspx')">用户管理</a></li>
-                    <li id="d6"><a href="javascript:OpenMenu(6,'main_index.aspx')">插件管理</a></li>
-                    <li id="d7"><a href="javascript:OpenMenu(7,'main_index.aspx')">系统管理</a></li>
+                    <li id="d1"><a href="javascript:openMenu(1,'news/Class_list.aspx')">频道管理</a></li>
+                    <li id="d2"><a href="javascript:openMenu(2,'news/News_list.aspx')">内容管理</a></li>
+                    <li id="d3"><a href="javascript:openMenu(3,'news/news_list.html')">生成管理</a></li>
+                    <li id="d4"><a href="javascript:openMenu(4,'main_index.aspx')">采集管理</a></li>
+                    <li id="d5"><a href="javascript:openMenu(5,'main_index.aspx')">用户管理</a></li>
+                    <li id="d6"><a href="javascript:openMenu(6,'main_index.aspx')">插件管理</a></li>
+                    <li id="d7"><a href="javascript:openMenu(7,'main_index.aspx')">系统管理</a></li>
                     <li class="navright"></li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="side">
+    <div id="side" class="side">
         <div id="left_menu" style="padding-top: 6px;">
         </div>
     </div>
     <div id="main" class="main">
-        <iframe id="main_body" name="main_body" style="width:100%;height:100%" frameborder="0" src="news/class_list.aspx">
+        <iframe id="main_body" name="main_body" width="100%" height="100%" onload="$('#ajaxloading').fadeOut(500);" frameborder="0" src="news/class_list.aspx">
         </iframe>
     </div>
     <div class="bottom">
