@@ -103,6 +103,40 @@
 		</div>
 	</div>
     </form>
-    
+    <script type="text/javascript">
+        //aid:文章编号
+        //flag:是否批量删除，true批量删除，false单个删除
+        function DeleteData(aid, flag) {
+            if (flag) {
+                var id = GetCheckId();
+                if (id == "") {
+                    Dialog.alert("请选择你要删除的数据!");
+                    return;
+                }
+                else {
+                    aid = id;
+                }
+            }
+
+            Dialog.confirm("确定要删除文章吗？", function() {
+                $.ajax({
+                    url: "/admin/ajax/news_list.aspx",
+                    type: "GET",
+                    data: "action=delete&Id=" + aid + "&ran=" + Math.random(),
+                    success: function(responseText) {//提示
+                        if (responseText.toString().toUpperCase() == "TRUE") {
+                            LoadData();
+                            Dialog.alert("文章删除成功!");
+                        } else {
+                            Dialog.alert("文章删除失败!");
+                        }
+                    },
+                    error: function() {
+                        Dialog.alert("Ajax请求失败！");
+                    }
+                });
+            });
+        }
+    </script>
 </body>
 </html>

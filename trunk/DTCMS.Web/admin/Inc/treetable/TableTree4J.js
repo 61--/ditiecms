@@ -12,7 +12,7 @@
 |--------------------------------------------------*/
 
 //TableTree4J Object
-function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
+function TableTree4J(objectName, tableTree4JDir,sequence,checked) {
     //vars-------------------------------------------------------------------
     var sequencenum = 0;    //序列
     var widthList = 0;  //列百分比
@@ -846,11 +846,12 @@ function changeClassName(objectChange, classN) {
     objectChange.className = classN;
 }
 
-function select(object) {   //单击选择当前行
-    var input = object.getElementsByTagName("input");
-    if (input && input[0]) {
-        input[0].checked = !input[0].checked;
-    }
+/***单击选择当前行***/
+function select(object) {   
+var input = object.getElementsByTagName("input");
+if (input && input[0]) {
+input[0].checked = !input[0].checked;
+}
 }
 
 /*** 全选反选*name=items ***/
