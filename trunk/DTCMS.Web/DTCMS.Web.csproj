@@ -181,6 +181,7 @@
     <Content Include="admin\ajax\class_list.aspx" />
     <Content Include="admin\ajax\news_list.aspx" />
     <Content Include="admin\images\blue\button.jpg" />
+    <Content Include="admin\news\Class_list.html" />
     <Content Include="Inc\Dialog\dialog.html" />
     <Content Include="Inc\Dialog\images\Button.gif" />
     <Content Include="Inc\Dialog\images\dialog_bg.jpg" />
@@ -203,6 +204,8 @@
     <Content Include="Inc\Dialog\images\dialog_br.gif" />
     <Content Include="Inc\Dialog\images\dialog_hr.gif" />
     <Content Include="Inc\Dialog\images\icon_dialog.gif" />
+    <Content Include="Inc\Dialog\images\ico_alert.gif" />
+    <Content Include="Inc\Dialog\images\ico_confirm.gif" />
     <Content Include="Inc\Dialog\images\ico_Error.gif" />
     <Content Include="Inc\Dialog\images\ico_Error.png" />
     <Content Include="Inc\Dialog\images\ico_Information.gif" />
