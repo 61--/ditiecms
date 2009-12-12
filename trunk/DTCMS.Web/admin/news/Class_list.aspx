@@ -143,7 +143,7 @@
                             LoadData();
                             Dialog.alert("栏目删除成功!");
                         } else {
-                            Dialog.alert("栏目删除成失败!");
+                            Dialog.alert(responseText);
                         }
                     },
                     error: function() {
