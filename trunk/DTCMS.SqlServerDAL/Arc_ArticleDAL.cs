@@ -6,6 +6,7 @@ using DTCMS.DBUtility;
 using DTCMS.Entity;
 using System.Data.SqlClient;
 using System.Data;
+using DTCMS.Common;
 namespace DTCMS.SqlServerDAL
 {
 
@@ -27,12 +28,12 @@ namespace DTCMS.SqlServerDAL
             {
                 strSql += "select count(CID) from DT_Arc_Class where CID<>{0} ";
                 strSql += " and {1}='{2}'";
-                return Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text,string.Format(strSql, CID, filedName, filedValue))) > 0;
+                return TypeConvert.ObjectToInt(SqlHelper.ExecuteScalar(CommandType.Text,string.Format(strSql, CID, filedName, filedValue))) > 0;
             }
             else
             {
                 strSql += "select count(CID) from DT_Arc_Class where CID={0} ";
-                return Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text,string.Format(strSql, CID))) > 0;
+                return TypeConvert.ObjectToInt(SqlHelper.ExecuteScalar(CommandType.Text, string.Format(strSql, CID))) > 0;
             }
         }
 
@@ -361,7 +362,7 @@ namespace DTCMS.SqlServerDAL
                                           new SqlParameter("@ClassID",SqlDbType.Int,4)
                                      };
             parameter[0].Value = CID;
-            return Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text, strSql, parameter))>0;
+            return TypeConvert.ObjectToInt(SqlHelper.ExecuteScalar(CommandType.Text, strSql, parameter))>0;
         }
 
         /// <summary>
@@ -378,7 +379,7 @@ namespace DTCMS.SqlServerDAL
                                      };
             parameter[0].Value = Title;
             parameter[1].Value = ArticleID;
-            return Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text, strSql, parameter))>0;
+            return TypeConvert.ObjectToInt(SqlHelper.ExecuteScalar(CommandType.Text, strSql, parameter))>0;
         }
         #endregion
     }
