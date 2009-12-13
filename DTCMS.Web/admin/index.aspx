@@ -8,7 +8,7 @@
     <link href="css/blue_index.css" rel="stylesheet" type="text/css" />
     <link href="/Inc/Dialog/dialog.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/Inc/Dialog/Dialog.js"></script>
-    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {

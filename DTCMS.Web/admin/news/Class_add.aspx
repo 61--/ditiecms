@@ -8,7 +8,7 @@
     <title>栏目添加</title>
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
     <link href="/Inc/Dialog/dialog.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="/Inc/Dialog/Dialog.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
 </head>
