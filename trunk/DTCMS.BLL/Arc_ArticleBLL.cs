@@ -11,7 +11,6 @@ namespace DTCMS.BLL
     public class Arc_ArticleBLL
     {
         IDAL_Arc_Article dalArticle = DataAccess.CreateFactoryDAL<IDAL_Arc_Article>("Arc_ArticleDAL");
-        IDAL_Arc_Class dalClass = DataAccess.CreateFactoryDAL<IDAL_Arc_Class>("Arc_ClassDAL");
 
         /// <summary>
         /// 判断某个字段值是否存在

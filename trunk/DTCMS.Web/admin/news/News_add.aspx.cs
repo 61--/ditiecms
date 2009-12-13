@@ -56,7 +56,14 @@ namespace DTCMS.Web.admin.news
 
             if (NewID > 0)
             {
-                updateStart = bllArticle.Update(modelArticle);
+                try
+                {
+                    updateStart = bllArticle.Update(modelArticle);
+                }
+                catch
+                {
+                    Message.Dialog("更新文章失败！更新文章出现未知错误。", "-1", MessageIcon.Success, 0);
+                }
 
                 if (updateStart > 0)
                 {
@@ -80,8 +87,15 @@ namespace DTCMS.Web.admin.news
                     modelArticle.FilePath = txt_Redirect.Value.Trim();
                     modelArticle.Content = "";
                 }
-                
-                updateStart = bllArticle.Add(modelArticle);
+
+                try
+                {
+                    updateStart = bllArticle.Add(modelArticle);
+                }
+                catch
+                {
+                    Message.Dialog("添加文章失败！添加文章出现未知错误。", "-1", MessageIcon.Success, 0);
+                }
 
                 if (updateStart > 0)
                 {

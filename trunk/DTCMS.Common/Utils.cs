@@ -81,6 +81,7 @@ namespace DTCMS.Common
         #endregion 获取URL传真
 
         #region 字符串操作
+
         /// <summary>
         /// 从字符串的指定位置截取指定长度的子字符串
         /// </summary>
