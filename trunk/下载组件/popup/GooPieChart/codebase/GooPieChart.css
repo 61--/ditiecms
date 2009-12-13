@@ -1,0 +1,29 @@
+html,body{font-size:12px; color:#666666;background-color:#DFE8F6;height:100%;
+padding:0px;}
+
+.pie_bg{background-color: #C2D6F0;border:#8EA6C5 1px solid;overflow:hidden;padding:10px;color:#15428B;font: 12px Arial, Helvetica, sans-serif;}
+.pie_content{
+	margin:0px auto;background-color:#EBEAE6; border:#ffffff 1px solid; position:relative;
+	border-bottom:#898A91 1px solid;border-right:#898A91 1px solid;overflow:hidden;
+}
+.pie_content canvas{position:absolute;}
+.pie_content span{position:absolute;display:block;float:inhert;height:12px;color:#333333;}
+.pie_content li{font-weight:bold;display:block;position:absolute;right:16px;bottom:16px;font-size:12px}
+.pie_bg .pie_title{height:16px;line-height:16px;padding:0px 0px 10px 0px;text-align:center;}
+.pie_bg .pie_title .title{font-weight: bold;font-size:14px;}
+
+.pie_bg .pie_note{
+	position:absolute;padding:2px;overflow:hidden;background-color:#ffffff; display:inline;
+	border:#898A91 1px solid;border-bottom:#F3F2F0 1px solid;border-right:#F3F2F0 1px solid;
+}
+.pie_bg .pie_note div{clear:both;height:20px;}
+.pie_bg .pie_note b{
+	color:#666666; font-weight:normal; margin:2px;height:16px;line-height:16px;@line-height:17px; float:left;
+}
+.pie_bg .pie_note .icon{
+	height:12px;width:12px;border:#999999 1px solid;margin-left:10px;overflow:hidden;
+}
+.pie_bg .tip{
+	border:#8EAACE 1px solid; background-color:#E9F2FF;-moz-border-radius:3px;-webkit-border-radius:3px;overflow:hidden;
+	padding:2px 3px 2px 3px;color:#333333;display:none;float:inherit;position:absolute;filter:alpha(opacity=70);opacity: 0.7;
+}

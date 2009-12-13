@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>自创右键菜单</title>
+    <link rel="stylesheet" type="text/css" href="codebase/rightMenu.css"/>
+    <script type="text/javascript" src="codebase/jquery-1.3.2.min.js"> </script>
+    <script type="text/javascript" src="codebase/rightMenu.js"> </script>
+    
+<script type="text/javascript">
+var $menuContent=[
+	{id:'r1',cls:'play',text:'播放录音'},
+	{id:'r2',text:'暂停播放'},
+	{id:'r3',cls:'stop',text:'停止播放'},
+	{hr:''},
+	{id:'r4',cls:'print',text:'打印文件'},
+	{id:'r6',cls:'website',text:'互联网搜索',disable:true},
+	{id:'r7',cls:'tool',text:'选项配置'}
+];
+var $bindFuns={
+	$bindings:{
+		'r1':function(t){
+			play(t);
+		},
+		'r2':function(t){
+			pause(t);
+		},
+		'r3':function(t){
+			stops(t);
+		},
+		'r4':function(t){
+			prints(t);
+		},
+		'r6':function(t){
+			website(t);
+		}
+	}
+}
+var exam;
+$(document).ready(function(){
+	exam=$.createContextMenu($("#rightMenu"),138,$menuContent,$bindFuns);
+	exam.bindParent($("#big"),"c","1");
+	exam.appendItem({id:'r5',cls:'bug',text:'查找BUG'},4,"after",bug);
+	exam.removeItem(3);
+	exam.unbind($("#big"));
+	exam.bindParent($("#big"),"c","1");
+	exam.ableItem(2,false);
+});
+function play(t){document.getElementById("big").innerHTML="asdfasf"+t.attr("id");}
+function pause(t){alert('暂停播放'+t.attr("id"));}
+function stops(t){alert('停止播放'+t.attr("id"));}
+function prints(t){alert('打印文件'+t.attr("id"));}
+function bug(t){alert('查找BUG'+t.attr("id"));}
+function website(t){alert('互联网搜索'+t.attr("id"));}
+</script>
+</head>
+
+<body>
+  <div id="big" style="width:400px;height:200px;border:#000000 1px solid;margin:10px;">
+  <div id='i1' c="1" style="width:60px;height:60px; background-color:#000000"></div>
+  <div id='i2' c="1" style="width:60px;height:60px; background-color:#ff0000"></div>
+  <div id="i3" style="width:60px;height:60px; background-color:yellow"></div>
+  <div id="rightMenu" style="border:1px"></div>  <!--作为右键菜单的载体-->
+  </div>
+</body>
+</html>

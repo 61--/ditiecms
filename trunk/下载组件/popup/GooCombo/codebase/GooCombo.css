@@ -1,0 +1,32 @@
+@charset "utf-8";
+html,body{font-size:12px;color:#333333;height:100%;}
+
+.Combo{font: 12px Arial, Helvetica, sans-serif;overflow:visible;display:block;height:22px;float:left; position:relative; background-color:#ffffff;}
+
+.Combo select{display:none}
+.Combo .text{overflow:hidden;height:20px;border:#7EADD9 1px solid; float:left;}
+.Combo .text .top_border{width:100%;height:1px;overflow:hidden; background-color:#E6E6E6}
+.Combo .text input{
+	border:0px; background-color:#ffffff;width:100%;display:block;
+	font: 12px Arial, Helvetica, sans-serif;height:20px;
+}
+.Combo .btn_up{float:right;overflow:hidden;width:17px;height:22px;cursor:pointer; background:url(img/combo_btn.gif) no-repeat 0px 0px}
+.Combo .btn_down{float:right;overflow:hidden;width:17px;height:22px;cursor:pointer; background:url(img/combo_btn.gif) no-repeat -17px 0px}
+
+.Combo ul{
+	display:none;margin:0px;padding:0px;clear:both; border:#7EADD9 1px solid;background-color:#F7F9F9;
+	overflow:scroll; overflow-x:hidden; position:absolute;top:22px;left:0px;clear:both;
+}
+.Combo_septum{position:absolute; width:100%; height:100%;left:0px; top:0px; display:none;}
+.Combo ul a{
+	display:block; list-style:none; list-style-position:outside; padding-left:2px; width:177px; height:22px;
+	cursor:default; text-decoration:none; color:#333333;outline: none;
+}
+.Combo ul a p{ display:block;height:20px; line-height:20px; float:left; margin:0px;padding:0px;margin:1px 0px;}
+/*.Combo ul a b{ margin-right:4px; width:20px;height:20px; float:left; display:block;}*/
+/*.Combo ul a:hover{ height:20px;padding-left:1px; border:#A3BAE9 1px; background-color:#DFE8F6; border-style:dotted}
+.Combo ul a:hover p{margin:0px;}*/
+.Combo ul .focus{ height:20px;padding-left:1px; border:#A3BAE9 1px; background-color:#DFE8F6; border-style:dotted}
+.Combo ul .focus p{margin:0px;}
+.Combo ul .active{ height:20px;padding-left:1px; border:#A3BAE9 1px; background-color:#C1D5F0; border-style:dotted}
+.Combo ul .active p{margin:0px;}

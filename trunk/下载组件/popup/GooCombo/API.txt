@@ -1,0 +1,105 @@
+花生米AJAX-UI系列之:基于JQUERY的Combo下拉框控件0.1版
+特点：
+	构造初始化时，可传入一个SELECT对象控件，也可以传入DIV容器，程序会自动区分并渲染
+	如果初始化时，传入的是SELECT控件，则控件中的内容和使用模式将被缓存到GooCombo对象中
+	有三种模式可定义:basic基本,multiple可多选,filter过滤显示
+	当Input内容框为可写状态时，可以通过输入TEXT来直接获取要选择的值；
+	可定义是否为动态自动载入（即INPUT内容框被选定后再进行数据载入）；
+	可以用上/下方向键和回车键来选择内容框中的值；
+	可以用AJAX方法，动态从远程服务器上获取下拉内容;
+	控件中含有隐藏的SELECT表单控件，ID及NAME都可自定义，这样可使COMBO控件放在一个普通的表单内，用户用一般的提交方式， 也可把选中的值准确地传到后台
+	经测试，兼容IE6--IE8，Firefox,chrome浏览器，在非IE浏览器下更加美观:)。
+
+-------------------------------------------------------
+/*下拉框定义--GooCombo类*/
+//dom :要被绑定的DOM对象，必须要有其ID或者NAME，且未被JQUERY对象化
+//property  :JSON变量，SLIDER的详细参数设置
+//目前，构造函数可接受用普通DOM容器或者直接传送SELECT控件来进行渲染
+function GooCombo(dom,property){
+
+类内成员变量：
+	this.$div 	//渲染完毕后最父框架的DIV
+	this.$id 	//this.$div中SELECT控件的ID
+	this.$name 	//this.$div中SELECT控件的NAME
+	this.$width 	//下拉框控件的宽度，必填项
+	this.$haveIcon 	//渲染中是否要导入图标
+	this.$input 	//下拉框控件中始终显示的文本框INPUT
+	this.$btn 	//下拉框右部的按钮
+	this.$data 	//下拉框控件的所有显示文字和值,二维数组
+	this.$type 	//下拉框控件的运行模式，有basic基本,multiple可多选,filter过滤显示 三种,默认为basic
+	this.$selectHeight 	//下拉内容框的高度
+	this.$list 	//下拉框的列表JQUERY对象
+	this.$lastSelect 	//当前最近一次被选中的单元,在this.$type="multiple"时，它将不发挥其记录作用
+	this.$select 	//保存所选值的单元一般为select控件
+	this.$autoLoad 	//是否动设置为动态载入数据，既下拉动作触发时再载入数据，默认为FALSE()
+	this.$alreadyLoad 	//是否已经载入完了数据,默认为false
+	this.$ajaxType  	//为一个远程链接参数的JSON数组，格式例如：{url:"website/pp.php",type:"POST",dataType:"json",para:(与JQUERY中的AJAX方法中传参DATA一样)}默认为空
+-----------------------------------------------------------------------------------
+	
+方法:
+//设置为动态自动获取数据(渲染后Combo中的input框被选中后载入数据)
+this.setAutoLoad(bool)
+
+//设置用AJAX方式从远程载入数据的参数
+//json的结构:
+//json.url   URL地址
+//json.type  "POST"方式或者"GET"方式
+//json.para  远程传参
+//json.dataType  获取数据的类型
+this.setAjaxType(json)
+
+//载入一组数据的方法，参数DATA将在后面介绍
+this.loadListData(data)
+
+//动态远程载入数据，AJAX请求的参数将读取this.$ajaxType中的设置，所以在使用该方法之前必须先确保setAjaxType已经被使用过
+this.loadListDataAjax()
+
+//选中下拉框中一个指定索引的值（如果是multiple模式，且这个值原来已经被选定，则运行此函数后将会取消该选定）
+this.selectValue(index)
+
+//返回下拉框的被选值//如果是多选，则会返回一串值构成的字符串，以逗号隔开
+//此下拉框也可放在一般的FORM之中，并像普通的SELECT下拉菜单控件一样操作，当FORM提交时，后台可request获取一个被选取值的数组
+this.getValue()
+
+//绑定当控件中隐藏的SELECT的值变化以后,触发的方法,通过对其设置，可达到drop-on-drop的多个下拉框相互联动功能
+//参数Fn为要触发执行的函数
+this.bindValueChange(Fn)
+
+//删除一个选择项,index为定位参数，从0开始（即第一行的选择项）
+this.delItem(index)
+
+//增加一个选择项，项,index为定位参数，从0开始（即第一行的选择项）
+//参数ITEM将在后面介绍
+this.addItem(index,Item)
+
+//清除所有选项
+this.clearItems()
+
+-------------------------------------------------------------------
+
+最重要的传参：property，构造函数中要用到的：
+var property={
+	id:"demo",//this.$div中SELECT控件的ID 
+	name:"demo",//this.$div中SELECT控件的Name 
+	type:"basic",//下拉框控件的运行模式，有basic基本,multiple可多选,filter过滤显示 三种,默认为basic
+	readOnly:false,//COMBO中的INPUT文本框是否要只读
+	width:160,//渲染后COMBO的宽度
+	selectHeight:140,//渲染后COMBO的下拉内容框显示的高度
+	ajaxType:{url:"url",type:"GET",para:{},dataType:"script"/"json"},     //为一个远程链接参数的JSON数组，格式例如：
+																		  //{url:"website/pp.php",type:"POST",dataType:"json",para:(与JQUERY中的AJAX方法中传参DATA一样)}默认为空
+	autoLoad:false,//是否自动载入数据，既下拉动作触发时再载入数据，默认为FALSE()
+	haveIcon:true,  //渲染中是否要导入图标
+	data:[],        //下拉框控件的所有显示文字和值,二维数组，初始化时可以不填，可以等过后再用this.loadListData载入
+};
+
+//载入数据方法中的传参data:
+data=[
+	[1, "Mozilla Firefox" , "url(codebase/img/combo_icon.gif) no-repeat 1px -15px"],
+	[2, "Internet Explorer" , "url(codebase/img/combo_icon.gif) no-repeat 1px 2px"],
+	[3, "Opera" , "url(codebase/img/combo_icon.gif) no-repeat 1px -68px"]
+];
+data为一二维数组，每一个一维单元中，第一个子单无是value，第二个子单元是text，第三个子单元是当渲染时若需要有图标装饰，则相关图标的CSS样式，可不填
+
+//addItem方法中的传参Item:
+Item=[4, "Google Chrome" , "url(codebase/img/combo_icon.gif) no-repeat 1px -85px"];
+Item为一个一维数据，正好是data中的一个单元
