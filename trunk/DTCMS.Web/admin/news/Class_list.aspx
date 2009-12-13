@@ -100,6 +100,7 @@
                 <a href="Class_Add.aspx" class="button b4"><img src="../images/ico/i_add.gif" alt="" />新建栏目</a>
                 <a href="javascript:UpdateData();" class="button b4"><img src="../images/ico/i_edit.gif" alt="" />修改栏目</a>
                 <a href="javascript:DeleteData(-1,true);" class="button b4"><img src="../images/ico/i_allDelete.gif" alt="" />批量删除</a>
+                <a href="javascript:test()">Test</a>
             </div>
             <div id="gridTreeDiv">
             </div>
@@ -107,6 +108,9 @@
         </div>
     </form>
     <script type="text/javascript">
+        function test() {
+            Dialog.alert(Dialog.alert(Dialog.alert("yeah，周末到了，正是好时候")));
+        }
         //*cid:  栏目编号
         function UpdateData() {
             var input = document.getElementsByName("items");

@@ -61,5 +61,5 @@ function getElementCoords(px, py) {
 }
 /*** 查看系统帮助 ***/
 function showHelp(ID) {
-    Dialog.helpTip("帮助主题" + ID);
+    Dialog.alert("帮助主题" + ID);
 }

@@ -73,7 +73,7 @@
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_ClassID" class="textbox short" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" />
-                            <span class="main_bleft">文章来源: </span><input type="text" id="txt_Source" class="textbox" style="width:120px;" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" />
+                            <span class="main_bleft">文章来源: </span><input type="text" id="txt_Source" class="textbox" style="width:120px;" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" onclick="Dialog.alert('选择来源！')" />
                         </td>
                     </tr>
                     <tr>
