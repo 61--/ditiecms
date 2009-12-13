@@ -10,7 +10,7 @@
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="/Inc/Dialog/Dialog.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
-    <script type="text/javascript" src="../js/color.js"></script>
+    <script type="text/javascript" src="../js/popup.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -36,7 +36,7 @@
                                 <option>转载</option>
                             </select>
                             <input type="text" id="txt_Title" class="textbox long" maxlength="100" runat="server" />
-                            <input type="hidden" id="hide_TitleStyle" runat="server" />     <%--标题样式--%>
+                            <input type="hidden" id="hide_TitleStyle" runat="server" /><!--标题样式-->
                         </td>
                     </tr>
                     <tr>
