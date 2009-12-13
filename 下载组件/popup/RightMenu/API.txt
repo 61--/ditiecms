@@ -1,0 +1,97 @@
+花生米AJAX-UI系列之:基于JQUERY的右键菜单0.1版
+可以对表格，列表，或者单个DOM容器进行右键绑定
+菜单项的文字、图标样式，调用方法均可自定义
+菜单中分隔符的多少和位置也可自定义
+提供了菜单项中那一项被作废（即点击了也不能调用其方法的状态），哪一项被重新启用的方法
+
+
+-------------------------------------------------------
+/*右键菜单定义--RightMenu类*/
+//contextDiv:JQUERY对象，要渲染的DOM
+//menuWidth 数字，菜单的宽度;
+//menuContent,JSON数据，格式在DEMO页面中
+//bindingFun要绑定的函数方法组合,JSON数据
+//行高一律定为22PX+2px的边框
+//构造完后，还需要行另外的初始化才能用
+构造函数 RightMenu(contextDiv,menuWidth,menuContent,bindingFun):
+
+类内成员变量：
+	this.$contextDiv：用来作整个右键菜单容器的DIV
+	this.$menuDiv：   用来保存所有菜单项的DIV
+	this.$menuWidth： 菜单项的宽度
+	this.$numList=0： 菜单项的数量
+	this.$numHr=0：   分隔符的数量
+	this.$target：    右击时被右击的对象，作为JQUERY对象，被临时缓存在这里
+	this.$funBind：   每个菜单项被点击时触发的方式集，
+	this.$listHeight：所有菜单项和分隔符加起来后的总高度
+	
+show(e):	显示右菜单在右击事件e发生的位置上
+
+hide():			隐藏右键菜单
+
+appendItem(newItem,seq,order,fun):		加入一个菜单项()方法可选
+//newItem:一个新的菜单项组合JSON记录
+//seq:要插入到的位置
+//order:插到前边还是后边
+//fun:点击时调用到的方法function
+
+removeItem(seq): 	删除一个菜单项(参数seq为操作对象为右键菜单从上至下中第几个，从第一个开始)
+	
+removeHr(seq):	   删除一上分隔符(参数seq为操作对象为右键菜单从上至下中第几个，从第一个开始)
+
+ableItem(seq,able)：	使一个菜单项能使用/作废不能使用但仍显示,方法不删除
+
+unbind=function(jq):	在目标的JQUERY对象上取消绑定右键
+
+bindParent(jq,attrName,attrValue):	绑定一个父框架在多项子元素，只绑定一次 （用户可重写此方法）
+//(参数jq为一个JQUERY对象)
+//attrName,attrValue : 是用来作判断右键菜单是否弹出的条件，条件来自于绑定对象的属性中.
+
+bindClick():	绑定右键菜单栏中,当一个项目被点击时触发的事件（用户可重写此方法）
+
+bingObject(jq): 单单只绑定一个DOM元素(参数jq为一个JQUERY对象)（用户可重写此方法）
+
+-------------------------------------------------------------------
+
+
+构造方法中，一些参数的格式规范
+
+menuContent:菜单项的一些基本信息
+id为唯一序列号，cls为期间项左边图标的CSS，text为文字
+var $menuContent=[
+	{id:'r1',cls:'play',text:'播放录音'},
+	{id:'r2',cls:'pause',text:'暂停播放'},
+	{id:'r3',cls:'stop',text:'停止播放'},
+	{hr:''},
+	{id:'r4',cls:'print',text:'打印文件'},
+	{id:'r6',cls:'website',text:'互联网搜索',disable:true},
+	{id:'r7',cls:'tool',text:'选项配置'}
+];
+
+newItem:单单只增加一个菜单项时，菜单项的数据格式：
+{id:'r4',cls:'print',text:'打印文件'}
+其实与menuContent数组中的单元格式一模一样！
+
+bindingFun:要绑定的函数方法组合,JSON数据
+其中，每一个元素名称代表了菜单项的ID，根据ID来确定执行的方法
+t:代表被右击的那个JQUERY对象
+var $bindFuns={
+	$bindings:{
+		'r1':function(t){
+			play(t);
+		},
+		'r2':function(t){
+			pause(t);
+		},
+		'r3':function(t){
+			stops(t);
+		},
+		'r4':function(t){
+			prints(t);
+		},
+		'r6':function(t){
+			website(t);
+		}
+	}
+}
+ 

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>饼状图Chart</title>
+<link rel="stylesheet" type="text/css" href="codebase/GooPieChart.css"/>
+<script  type="text/javascript" src="codebase/jquery-1.3.2.min.js"></script>
+<!--[if IE]><script  type="text/javascript" src="codebase/excanvas.compiled.js"></script><![endif]-->
+<script  type="text/javascript" src="codebase/GooFunc.js"></script>
+<script  type="text/javascript" src="codebase/GooPieChart.js"></script>
+<script>
+var canvas;
+var property={
+	con_width:600,
+	con_height:400,
+	canvas_width:320,
+	canvas_height:320,
+	canvas_top:40,
+	canvas_left:80,
+	core_x:160,
+	core_y:160,
+	radius:150
+}
+var dataKind={
+	note_width:100,
+	note_height:180,
+	note_top:30,
+	note_left:460,
+	sort_type:"v",//排列方式，v为垂直，h为水平
+	text_color:"#ffffff",//饼内的文字的颜色,可不填，默认为纯黑
+	items:[
+		{id:"c1",color:"#0054A6",label:"PC电源"},
+		{id:"c2",color:"#0072BC",label:"游戏笔记本"},
+		{id:"c3",color:"#00A99D",label:"PC机箱"},
+		{id:"c4",color:"#00A651",label:"玩家主板"},
+		{id:"c5",color:"#8DC63F",label:"IGAME显卡"},
+		{id:"c6",color:"#F8F200",label:"键盘鼠标"},
+		{id:"c7",color:"#F7941D",label:"游戏手柄"},
+		{id:"c8",color:"#F26522",label:"超频内存"},
+		{id:"c9",color:"#ED1C24",label:"PC散热器"}
+	]
+};
+  var data=[
+	{id:"c1",num:100},
+	{id:"c2",num:150},
+	{id:"c3",num:100},
+	{id:"c4",num:150},
+	{id:"c5",num:100},
+	{id:"c6",num:100},
+	{id:"c7",num:50},
+	{id:"c8",num:100},
+	{id:"c9",num:200}
+  ];
+$(document).ready(function(){
+	canvas=$.createGooPieChart($("#mycanvas"),property);
+	canvas.setTitle("AlienWare10月销量","份");
+	canvas.setDataKind(dataKind);
+	canvas.loadPieData(data,"num","总销量: &d 份");
+});
+</script>
+</head>
+<body>
+<div style="margin-left:20px;margin-top:20px;width:1000px;height:600px"><div id="mycanvas"></div></div>
+</body>
+</html>
