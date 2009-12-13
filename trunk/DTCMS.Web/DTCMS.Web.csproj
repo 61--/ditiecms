@@ -552,7 +552,7 @@
     <Content Include="Editor\fckpackager.xml" />
     <Content Include="Editor\fckstyles.xml" />
     <Content Include="Editor\fcktemplates.xml" />
-    <Content Include="js\jquery.js" />
+    <Content Include="admin\js\jquery.js" />
     <Content Include="ValidateCode.ashx" />
     <None Include="admin\images\blue\admin_tlogo.psd" />
     <None Include="Editor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
@@ -598,6 +598,7 @@
     <Folder Include="css\" />
     <Folder Include="FileUpload\" />
     <Folder Include="images\" />
+    <Folder Include="js\" />
     <Folder Include="uploads\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
