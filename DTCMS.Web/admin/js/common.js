@@ -42,22 +42,30 @@ function CheckSelAll(elem) {
 }
 
 /*** 获取鼠标坐标 ***/
-function mouseCoords(ev) {
-    ev = ev || window.event;
+function mousePosition(ev) {
+    if (!ev) ev = window.event;
     if (ev.pageX || ev.pageY) {
         return { x: ev.pageX, y: ev.pageY };
     }
     return {
-        x: ev.clientX + document.body.scrollLeft - document.body.clientLeft,
-        y: ev.clientY + document.body.scrollTop - document.body.clientTop
-    }
+        x: ev.clientX + document.documentElement.scrollLeft - document.body.clientLeft,
+        y: ev.clientY + document.documentElement.scrollTop - document.body.clientTop
+    };
 }
 /*** 获取标签坐标 ***/
-function getElementCoords(px, py) {
-    return {
-        x: event.clientX - event.offsetX + px,
-        y: event.clientY - event.offsetY + py
-    }
+function getElemCoords(elem) {
+    var dom = document.getElementById(elem);
+    var t = dom.offsetTop;
+    var l = dom.offsetLeft;
+    dom = dom.offsetParent;
+    while (dom) {
+        t += dom.offsetTop;
+        l += dom.offsetLeft;
+        dom = dom.offsetParent;
+    }; return {
+        top: t,
+        left: l
+    };
 }
 /*** 查看系统帮助 ***/
 function showHelp(ID) {

@@ -1,25 +1,21 @@
 ﻿//颜色代码选择器
 var ocolorPopup = window.createPopup();
-var ecolorPopup=null;
+var ecolorPopup = null;
 
 function colordialogmouseout(obj){
     obj.style.borderColor="";
     obj.bgColor="";
 }
-
 function colordialogmouseover(obj){
     obj.style.borderColor="#0A66EE";
     obj.bgColor="#EEEEEE";
 }
-
 function colordialogmousedown(color){
     ecolorPopup.value=color;
-    //document.body.bgColor=color;
-    ocolorPopup.document.body.blur();
+    //ocolorPopup.document.body.blur();
     ocolorPopup.hide();
 }
-
-function colordialog(){
+function colordialog(elem){
     var e=event.srcElement;
     e.onkeyup=colordialog;
     ecolorPopup=e;
@@ -52,7 +48,7 @@ function colordialog(){
     }
     ocbody += "</table>";
 
-    oPopBody.innerHTML=ocbody;
-    var coords = getElementCoords(0,18);
-    ocolorPopup.show(coords.x, coords.y, 158, 128, document.body);
+    oPopBody.innerHTML = ocbody;
+    var coords = $(elem).offset();
+    ocolorPopup.show(coords.left, coords.top + 20, 158, 128, document.body);
 }
