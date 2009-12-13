@@ -98,7 +98,7 @@
                 </ul>
             </div>
             <div class="toolbar">
-                <a href="Class_Add.aspx" class="button b4"><img src="../images/ico/i_add.gif" alt="" />新建栏目</a>
+                <a href="javascript:addData()" class="button b4"><img src="../images/ico/i_add.gif" alt="" />新建栏目</a>
                 <a href="javascript:UpdateData();" class="button b4"><img src="../images/ico/i_edit.gif" alt="" />修改栏目</a>
                 <a href="javascript:DeleteData(-1,true);" class="button b4"><img src="../images/ico/i_allDelete.gif" alt="" />批量删除</a>
                 <a href="javascript:;" onclick="colordialog(this)" id="color">标题样式</a>
@@ -109,6 +109,15 @@
         </div>
     </form>
     <script type="text/javascript">
+        function addData() {
+            var diag = new Dialog();
+            diag.Width = 760;
+            diag.Height = 560;
+            diag.Title = "栏目添加";
+            diag.URL = "Class_Add.aspx";
+            diag.show();
+            //this.LoadData();
+        }
         //*cid:  栏目编号
         function UpdateData() {
             var input = document.getElementsByName("items");
