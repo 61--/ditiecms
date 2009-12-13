@@ -48,7 +48,6 @@
     <Compile Include="Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Regular.cs" />
-    <Compile Include="ServerInfo.cs" />
     <Compile Include="TypeConvert.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="WaterImage.cs" />
