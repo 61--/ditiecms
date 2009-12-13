@@ -53,7 +53,14 @@ namespace DTCMS.Web.admin.news
             if (CID > 0)
             {//修改栏目
 
-                updateStatus = bllClass.Update(modelClass);
+                try
+                {
+                    updateStatus = bllClass.Update(modelClass);
+                }
+                catch
+                {
+                    Message.Dialog("更新栏目失败！更新栏目出现未知错误。", "-1", MessageIcon.Error, 0);
+                }
 
                 if (updateStatus > 0)
                 {
@@ -66,7 +73,14 @@ namespace DTCMS.Web.admin.news
             }
             else
             {//添加栏目
-                updateStatus = bllClass.Add(modelClass);
+                try
+                {
+                    updateStatus = bllClass.Add(modelClass);
+                }
+                catch
+                {
+                    Message.Dialog("添加栏目失败！添加栏目出现未知次错误。", "-1", MessageIcon.Error, 0);
+                }
 
                 if (updateStatus > 0)
                 {
