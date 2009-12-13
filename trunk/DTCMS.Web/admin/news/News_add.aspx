@@ -11,6 +11,12 @@
     <script type="text/javascript" src="/Inc/Dialog/Dialog.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
     <script type="text/javascript" src="../js/popup.js"></script>
+    <script type="text/javascript">
+        function Insert()
+        {
+            FCKeditorAPI.GetInstance("txt_Content").EditorDocument.body.innerHTML="ss";
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -100,6 +106,7 @@
                             文章分页:
                         </td>
                         <td class="main_bright split">
+                            <input type="button" onclick="Insert()" value="insert" />
                             <input type="radio" id="rdo_Autopage" runat="server" value="自动分页" /><label for="rdo_Autopage">自动分页，每页字数:</label><input type="text" id="txt_AutopageNum" value="5000" class="textbox" style="width:60px;" runat="server" />
                             <input type="radio" id="rdo_Manualpage" runat="server" value="手动分页" /><label for="rdo_Manualpage">手动分页</label>
                         </td>
