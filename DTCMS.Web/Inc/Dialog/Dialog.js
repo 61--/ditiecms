@@ -202,7 +202,7 @@ Dialog.setBgDivSize = function() {
 };
 Dialog.resetPosition = function() {
     Dialog.setBgDivSize();
-    for (var i = 0, len = topWin.Dialog._Array.length; i < len; i++) {
+    for (var i = 0; i < topWin.Dialog._Array.length; i++) {
         topWin.Dialog._Array[i].setPosition();
     }
 };
@@ -377,8 +377,16 @@ Dialog.prototype.close = function() {
 
     }
     if (topWin.Dialog._Array.length > 0) {
-        if (this.Modal >= 0 && isTopDialog) Dialog.bgDiv.style.zIndex = topWin.Dialog._Array[topWin.Dialog._Array.length - 1].zindex - 1;
-    } else {
+        if (this.Modal >= 0 && isTopDialog) {
+            Dialog.bgDiv.style.zIndex = topWin.Dialog._Array[topWin.Dialog._Array.length - 1].zindex - 1;
+        }
+        if (topWin.Dialog._Array[topWin.Dialog._Array.length - 1].Modal < 0) {
+            Dialog.bgDiv.style.zIndex = "900";
+            Dialog.bgDiv.style.display = "none";
+            var topWinBody = topDoc.getElementsByTagName(topDoc.compatMode == "BackCompat" ? "BODY" : "HTML")[0];
+            if (topWinBody.styleOverflow != undefined) topWinBody.style.overflow = topWinBody.styleOverflow;
+        }
+    }else {
         Dialog.bgDiv.style.zIndex = "900";
         Dialog.bgDiv.style.display = "none";
         var topWinBody = topDoc.getElementsByTagName(topDoc.compatMode == "BackCompat" ? "BODY" : "HTML")[0];
@@ -419,7 +427,7 @@ Dialog.prototype.autoClose = function() {
         return;
     }
     this.AutoClose -= 1;
-    topWin.$id("_Title_" + this.ID).innerHTML = this.AutoClose + " 秒后自动关闭";
+    topWin.$id("_Title_" + this.ID).innerHTML = this.Title + "(" + this.AutoClose + " 秒后自动关闭)";
     if (this.AutoClose <= 0) {
         this.close();
     } else {
@@ -570,32 +578,6 @@ if (isIE) {
 } else {
     window.addEventListener("load", Dialog.attachBehaviors, false);
 }
-Dialog.helpTip = function(msg, func, w, h) {
-    var w = w || 320,
-        h = h || 110;
-    var diag = new Dialog({
-        Width: w,
-        Height: h,
-        Modal: -10
-    });
-    diag.ID = "H0201001";
-    diag.Top = "100%";
-    diag.Left = "100%";
-    diag.ShowButtonRow = true;
-    diag.Title = "帮助主题";
-    diag.CancelEvent = function() {
-        diag.close();
-        if (func) func();
-    };
-    diag.InnerHtml = '<table height="100%" border="0" align="left" cellpadding="10" cellspacing="10">\
-		<tr><td align="center" width="70px"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'ico_alert.gif" style="padding-left:20px;width:34px;height:34px;"></td>\
-			<td align="left" id="Message_' + this.ID + '" style="font-size:9pt">' + msg + '</td></tr>\
-	</table>';
-    diag.show();
-    diag.okButton.style.display = "none";
-    diag.cancelButton.value = "确 定";
-    diag.cancelButton.focus();
-};
 var Drag = {
     "obj": null,
     "init": function(handle, dragBody, e) {

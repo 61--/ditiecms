@@ -9,10 +9,38 @@
     <link href="/Inc/Dialog/dialog.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/Inc/Dialog/Dialog.js"></script>
     <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(document).ready(function() {
             openMenu(0, '');
+            popTip('H0201002');
         });
+        function popTip(msg, func, w, h) {
+            var w = w || 260,
+            h = h || 110;
+            var diag = new Dialog({
+                Width: w,
+                Height: h,
+                Modal: -10
+            });
+            diag.ID = "popTip";
+            diag.AutoClose = 30
+            diag.Drag = false;
+            diag.Top = "100%";
+            diag.Left = "100%";
+            diag.ShowButtonRow = true;
+            diag.Title = "系统消息";
+            diag.CancelEvent = function() {
+                diag.close();
+                if (func) func();
+            };
+            diag.InnerHtml = '<div style="padding:10px;">' + msg + '</div>';
+            diag.show();
+            diag.okButton.parentNode.style.textAlign = "right";
+            diag.okButton.value = "查 看";
+            diag.cancelButton.value = "关 闭";
+            diag.cancelButton.focus();
+        }
         function changeMenu(n) {
             if (n == 0) {
                 if ($("#side").width() == 0) {
