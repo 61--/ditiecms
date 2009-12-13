@@ -23,11 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.Controls", "DTCMS.Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.Pages", "DTCMS.Pages\DTCMS.Pages.csproj", "{619F3C0B-AD24-4F16-83D9-DDFB120425DE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dll", "Dll", "{9CFC4679-617D-4777-B9B8-D415F1C8D06F}"
-	ProjectSection(SolutionItems) = preProject
-		D:\Downloads\LogDemo\WebSite\Bin\log4net.dll = D:\Downloads\LogDemo\WebSite\Bin\log4net.dll
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
