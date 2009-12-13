@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Class_list.aspx.cs" Inherits="DTCMS.Web.admin.news.Class_list" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -16,7 +15,6 @@
         $(function() {
             LoadData();
         });
-        
         function LoadData() { 
             $.ajax({
                 url: "/admin/ajax/class_list.aspx",
@@ -27,7 +25,6 @@
                 }               
             });
         }
-        
         var gridTree;
         function showGridTree(json) {
             gridTree = new TableTree4J("gridTree", "/Inc/treetable/",false,true);
@@ -45,7 +42,7 @@
             if (json != "") {
             var data = eval("data=" + json);
             $.each(data, function(i, n) {
-            var dataList = new Array("<a href='Class_add.aspx?Id=" + n.cid + "'>" + n.classname + "</a>", n.classtype, n.adddate, "<input type=\"text\" onfocus=\"GetCurValue(this)\" onblur=\"UpdateSort(" + n.cid + ")\" id=\"order_" + n.cid + "\" class=\"class_order\" value=\"" + n.orderid + "\">", "<a href=\"Class_add.aspx?Id=" + n.cid + "\">修改</a>&nbsp;&nbsp;<a href=\"javascript:DeleteData(" + n.cid + ",false)\">删除</a>");
+            var dataList = new Array("<a href='Class_add.aspx?Id=" + n.cid + "'>" + n.classname + "</a>", n.classtype, n.adddate, "<input type=\"text\" onfocus=\"getCurValue(this)\" onblur=\"updateSort(" + n.cid + ")\" id=\"order_" + n.cid + "\" class=\"class_order\" value=\"" + n.orderid + "\">", "<a href=\"Class_add.aspx?Id=" + n.cid + "\">修改</a>&nbsp;&nbsp;<a href=\"javascript:DeleteData(" + n.cid + ",false)\">删除</a>");
                 gridTree.addGirdNode(dataList, n.cid, n.parentid == 0 ? -1 : n.parentid, null, n.orderid, "");
                });
             }
@@ -94,13 +91,12 @@
             <div id="tab_menu" class="tabs">
                 <ul>
                     <li class="tab_on"><a href="javascript:;">栏目管理</a></li>
-                    
                 </ul>
             </div>
             <div class="toolbar">
-                <a href="javascript:addData()" class="button b4"><img src="../images/ico/i_add.gif" alt="" />新建栏目</a>
-                <a href="javascript:UpdateData();" class="button b4"><img src="../images/ico/i_edit.gif" alt="" />修改栏目</a>
-                <a href="javascript:DeleteData(-1,true);" class="button b4"><img src="../images/ico/i_allDelete.gif" alt="" />批量删除</a>
+                <a href="Class_Add.aspx" class="button b4"><img src="../images/ico/i_add.gif" alt="" />新建栏目</a>
+                <a href="javascript:updateData();" class="button b4"><img src="../images/ico/i_edit.gif" alt="" />修改栏目</a>
+                <a href="javascript:deleteData(-1,true);" class="button b4"><img src="../images/ico/i_allDelete.gif" alt="" />批量删除</a>
                 <a href="javascript:;" onclick="colordialog(this)" id="color">标题样式</a>
             </div>
             <div id="gridTreeDiv">
@@ -109,17 +105,8 @@
         </div>
     </form>
     <script type="text/javascript">
-        function addData() {
-            var diag = new Dialog();
-            diag.Width = 760;
-            diag.Height = 560;
-            diag.Title = "栏目添加";
-            diag.URL = "Class_Add.aspx";
-            diag.show();
-            //this.LoadData();
-        }
         //*cid:  栏目编号
-        function UpdateData() {
+        function updateData() {
             var input = document.getElementsByName("items");
             var len = input.length;
             for (var i = 0; i < len; i++) {
@@ -132,7 +119,7 @@
         }
         //cid:  栏目编号
         //flag:  是否批量删除，表示true:批量删除，false:单个删除
-        function DeleteData(cid, flag) {//删除栏目
+        function deleteData(cid, flag) {//删除栏目
             if (flag) {
                 var id = GetCheckId();
                 if (id == "") {
@@ -143,7 +130,6 @@
                     cid = id;
                 }
             }
-
             Dialog.confirm("确定要删除栏目吗？", function() {
                 $.ajax({
                     url: "/admin/ajax/class_list.aspx",
@@ -158,19 +144,17 @@
                         }
                     },
                     error: function() {
-                        Dialog.alert("Ajax请求失败！");
+                        Dialog.alert("栏目删除失败！");
                     }
                 });
             });
         }
-
         //获取当前排序号
-        function GetCurValue(obj) {
+        function getCurValue(obj) {
             $("#curOrder").val(obj.value);
         }
-
         //更新排序
-        function UpdateSort(cid) {
+        function updateSort(cid) {
             var curVal = $("#order_" + cid).val();
             if (curVal != $("#curOrder").val()) {
                 $.ajax({
@@ -191,7 +175,6 @@
                 });
             }
         }
-        
 </script>
 </body>
 </html>
