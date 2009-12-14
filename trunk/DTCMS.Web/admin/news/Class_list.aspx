@@ -123,7 +123,7 @@
             if (flag) {
                 var id = GetCheckId();
                 if (id == "") {
-                    Dialog.alert("请选择你要删除的数据!");
+                    Dialog.alert("请选择要删除的数据!");
                     return;
                 }
                 else {
@@ -137,8 +137,8 @@
                     data: "action=delete&Id=" + cid + "&ran=" + Math.random(),
                     success: function(responseText) {//提示
                         if (responseText.toString().toUpperCase() == "TRUE") {
-                            LoadData();
                             Dialog.alert("栏目删除成功!");
+                            LoadData();
                         } else {
                             Dialog.alert(responseText);
                         }
