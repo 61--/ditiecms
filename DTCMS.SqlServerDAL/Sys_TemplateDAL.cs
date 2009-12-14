@@ -13,6 +13,11 @@ namespace DTCMS.SqlServerDAL
 
         #region IDAL_Sys_Template 成员
 
+        /// <summary>
+        /// 添加模板风格数据
+        /// </summary>
+        /// <param name="model">模板风格实体</param>
+        /// <returns></returns>
         public int Add(Sys_Template model)
         {
             StringBuilder strSql = new StringBuilder();
@@ -36,7 +41,11 @@ namespace DTCMS.SqlServerDAL
 
             return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters);
         }
-
+        /// <summary>
+        /// 更新模板风格
+        /// </summary>
+        /// <param name="model">模板实体</param>
+        /// <returns></returns>
         public int Update(Sys_Template model)
         {
             StringBuilder strSql = new StringBuilder();
@@ -63,12 +72,21 @@ namespace DTCMS.SqlServerDAL
 
             return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters);
         }
-
-        public int Delete(string ID)
+        /// <summary>
+        /// 删除模板风格数据
+        /// </summary>
+        /// <param name="TemplateID">主键</param>
+        /// <returns></returns>
+        public int Delete(string TemplateID)
         {
-            throw new NotImplementedException();
+            string strSql = string.Format("delete DT_SYS_Template  where CID in ({0})", TemplateID);
+            return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql);	
         }
-
+        /// <summary>
+        /// 获取模板风格实体
+        /// </summary>
+        /// <param name="ID">模板风格主键</param>
+        /// <returns>模板风格实体</returns>
         public Sys_Template GetModel(int ID)
         {
             StringBuilder strSql = new StringBuilder();
