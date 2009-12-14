@@ -8,14 +8,15 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
-
+using DTCMS.Entity;
+using DTCMS.BLL;
 namespace DTCMS.Web.admin.Template
 {
     public partial class Template_add : System.Web.UI.Page
     {
+        Sys_TemplateBLL bllTemplate = new Sys_TemplateBLL();
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
     }
 }
