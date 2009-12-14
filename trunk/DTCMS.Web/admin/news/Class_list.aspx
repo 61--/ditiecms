@@ -6,8 +6,10 @@
     <title>栏目列表</title>
     <link href="../css/blue_body.css" type="text/css" rel="StyleSheet" />
     <link href="/Inc/Dialog/dialog.css" rel="stylesheet" type="text/css" />
+    <link href="/Inc/Popup/popup.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="/Inc/Dialog/Dialog.js"></script>
+    <script type="text/javascript" src="/Inc/Popup/popup.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
     <script type="text/javascript" src="../js/color.js"></script>
     <script type="text/javascript" src="/Inc/treetable/TableTree4J.js"></script>
@@ -97,7 +99,7 @@
                 <a href="Class_Add.aspx" class="button b4"><img src="../images/ico/i_add.gif" alt="" />新建栏目</a>
                 <a href="javascript:updateData();" class="button b4"><img src="../images/ico/i_edit.gif" alt="" />修改栏目</a>
                 <a href="javascript:deleteData(-1,true);" class="button b4"><img src="../images/ico/i_allDelete.gif" alt="" />批量删除</a>
-                <a href="javascript:;" onclick="colordialog(this)" id="color">标题样式</a>
+                <a href="javascript:;" onclick="jPrompt('document.getElementById(tab_menu).length')" id="color">标题样式</a>
             </div>
             <div id="gridTreeDiv">
             </div>
