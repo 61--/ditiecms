@@ -237,6 +237,12 @@
     <Content Include="Inc\Dialog\images\window.gif" />
     <Content Include="Inc\Dialog\Dialog.js" />
     <Content Include="Inc\Dialog\Demo.html" />
+    <Content Include="Inc\Popup\images\help.gif" />
+    <Content Include="Inc\Popup\images\important.gif" />
+    <Content Include="Inc\Popup\images\info.gif" />
+    <Content Include="Inc\Popup\images\title.gif" />
+    <Content Include="Inc\Popup\Popup.css" />
+    <Content Include="Inc\Popup\Popup.js" />
     <Content Include="Inc\treetable\img\base.gif" />
     <Content Include="Inc\treetable\img\cd.gif" />
     <Content Include="Inc\treetable\img\empty.gif" />
