@@ -16,10 +16,10 @@ namespace DTCMS.IDAL
         /// <summary>
         /// 删除一条数据
         /// </summary>
-        int Delete(string ID);
+        int Delete(string TemplateID);
         /// <summary>
         /// 得到一个对象实体
         /// </summary>
-        Sys_Template GetModel(int ID);
+        Sys_Template GetModel(int TemplateID);
     }
 }
