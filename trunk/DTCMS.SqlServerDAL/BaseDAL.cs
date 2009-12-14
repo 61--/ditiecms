@@ -65,10 +65,10 @@ namespace DTCMS.SqlServerDAL
         }
 
         /// <summary>
-        /// 绑定实体对象到实体
+        /// 绑定DataReader到实体对象 通用方法
         /// </summary>
         /// <typeparam name="T">实体对象</typeparam>
-        /// <param name="reader"></param>
+        /// <param name="reader">DataReader数据集</param>
         /// <returns></returns>       
         public T DataReaderBind<T>(SqlDataReader reader) where T:new()
         {
@@ -77,12 +77,11 @@ namespace DTCMS.SqlServerDAL
             T entity = new T();
             for (int i = 0; i < reader.FieldCount; i++)
             {
-                if (reader[i] != null && (!System.DBNull.Value.Equals(reader[i])))
+                if (reader[i] != null && reader[i]!=DBNull.Value)
                 {
                     info = type.GetProperty(reader.GetName(i));
                     if (info == null) return default(T);
-                    if(reader[i]!=DBNull.Value)
-                        info.SetValue(entity,reader[i], null);
+                    info.SetValue(entity,reader[i], null);
                 }
             }
             return entity;

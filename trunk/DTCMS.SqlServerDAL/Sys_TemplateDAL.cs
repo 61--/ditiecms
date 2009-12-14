@@ -98,10 +98,31 @@ namespace DTCMS.SqlServerDAL
             using (SqlDataReader dataReader = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parameters))
             {
                 if (dataReader.Read())
-                {                
+                {
+                    //object ojb;
+                    //ojb = dataReader["TemplateID"];
+                    //if (ojb != null && ojb != DBNull.Value)
+                    //{
+                    //    model.TemplateID = (int)ojb;
+                    //}
+                    //model.TemplateName = dataReader["TemplateName"].ToString();
+                    //model.TemplateDirectory = dataReader["TemplateDirectory"].ToString();
+                    //ojb = dataReader["isEnable"];
+                    //if (ojb != null && ojb != DBNull.Value)
+                    //{
+                    //    model.isEnable = Convert.ToInt32(ojb);
+                    //}
+                    //ojb = dataReader["CreateDateTime"];
+                    //if (ojb != null && ojb != DBNull.Value)
+                    //{
+                    //    model.CreateDateTime = (DateTime)ojb;
+                    //}
+                    //model.TemplateImg = dataReader["TemplateImg"].ToString();
+                    //return model;
                      model = DataReaderBind<Sys_Template>(dataReader);
                 }
-            }           
+            }
+           
             return model;
         }
 
