@@ -515,7 +515,7 @@ Dialog.close = function(id) {
     }
 };
 Dialog.alert = function(msg, func, w, h) {
-    var w = w || 320,
+    var w = w || 300,
         h = h || 110;
     var diag = new Dialog({
         Width: w,
@@ -539,7 +539,7 @@ Dialog.alert = function(msg, func, w, h) {
     diag.cancelButton.focus();
 };
 Dialog.confirm = function(msg, funcOK, funcCal, w, h) {
-    var w = w || 320,
+    var w = w || 300,
         h = h || 110;
     var diag = new Dialog({
         Width: w,

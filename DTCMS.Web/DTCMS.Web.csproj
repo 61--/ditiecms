@@ -616,7 +616,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4996</DevelopmentServerPort>
+          <DevelopmentServerPort>1116</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/DTCMS_Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
