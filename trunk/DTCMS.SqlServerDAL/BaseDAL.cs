@@ -63,29 +63,28 @@ namespace DTCMS.SqlServerDAL
                 return null;
             }
         }
-        
-        ///// <summary>
-        ///// 绑定实体对象到实体
-        ///// </summary>
-        ///// <typeparam name="T">实体对象</typeparam>
-        ///// <param name="reader"></param>
-        ///// <returns></returns>       
-        //public T DataReaderBind<T>(SqlDataReader reader)
-        //{
-        //    PropertyInfo info = null;
-        //    Type type = typeof(T);
-        //    T entity = new T();
-        //    for (int i = 0; i < reader.FieldCount; i++)
-        //    {
-        //        if (reader[i] != null && (!System.DBNull.Value.Equals(reader[i])))
-        //        {
-        //            info = type.GetProperty(property);
-        //            if (info == null) return;
-        //            info.SetValue(entity, value, null);
-        //        }
-        //    }
-        //    return entity;
-            
-        //}
+
+        /// <summary>
+        /// 绑定实体对象到实体
+        /// </summary>
+        /// <typeparam name="T">实体对象</typeparam>
+        /// <param name="reader"></param>
+        /// <returns></returns>       
+        public T DataReaderBind<T>(SqlDataReader reader) where T:new()
+        {
+            PropertyInfo info = null;
+            Type type = typeof(T);
+            T entity = new T();
+            for (int i = 0; i < reader.FieldCount; i++)
+            {
+                if (reader[i] != null && (!System.DBNull.Value.Equals(reader[i])))
+                {
+                    info = type.GetProperty(reader.GetName(i));
+                    if (info == null) return default(T);
+                    info.SetValue(entity,reader[i], null);
+                }
+            }
+            return entity;
+        }
     }
 }
