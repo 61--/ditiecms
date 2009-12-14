@@ -38,7 +38,7 @@ namespace DTCMS.Pages
         /// <returns></returns>
         public static string GetAjaxPage(int curPage, int countPage, string callback, int extendPage)
         {
-            string pagetag = "page";
+            //string pagetag = "page";
             int startPage = 1;
             int endPage = 1;
 
