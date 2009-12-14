@@ -87,13 +87,13 @@ namespace DTCMS.SqlServerDAL
         /// </summary>
         /// <param name="ID">模板风格主键</param>
         /// <returns>模板风格实体</returns>
-        public Sys_Template GetModel(int ID)
+        public Sys_Template GetModel(int TemplateID)
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select TemplateID,TemplateName,TemplateDirectory,isEnable,CreateDateTime,TemplateImg from DT_SYS_Template ");
             strSql.Append(" where TemplateID=@TemplateID ");
             SqlParameter[] parameters = { new SqlParameter("@TemplateID", SqlDbType.Int, 4) };
-            parameters[0].Value = ID;
+            parameters[0].Value = TemplateID;
             Sys_Template model=new Sys_Template ();
             using (SqlDataReader dataReader = SqlHelper.ExecuteReader(CommandType.Text,strSql.ToString(),parameters))
             {
