@@ -81,7 +81,8 @@ namespace DTCMS.SqlServerDAL
                 {
                     info = type.GetProperty(reader.GetName(i));
                     if (info == null) return default(T);
-                    info.SetValue(entity,reader[i], null);
+                    if(reader[i]!=null&&reader[i]!=DBNull.Value)
+                        info.SetValue(entity,reader[i], null);
                 }
             }
             return entity;
