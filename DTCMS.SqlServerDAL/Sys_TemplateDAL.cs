@@ -95,13 +95,13 @@ namespace DTCMS.SqlServerDAL
             SqlParameter[] parameters = { new SqlParameter("@TemplateID", SqlDbType.Int, 4) };
             parameters[0].Value = TemplateID;
             Sys_Template model=new Sys_Template ();
-            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(CommandType.Text,strSql.ToString(),parameters))
+            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parameters))
             {
                 if (dataReader.Read())
-                {
-                    model = DataReaderBind<Sys_Template>(dataReader);
+                {                
+                     model = DataReaderBind<Sys_Template>(dataReader);
                 }
-            }
+            }           
             return model;
         }
 
