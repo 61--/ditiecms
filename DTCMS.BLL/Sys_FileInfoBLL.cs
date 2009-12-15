@@ -10,7 +10,12 @@ namespace DTCMS.BLL
 {
     public class Sys_FileInfoBLL
     {
-        public List<Sys_FileInfo> GetFileList(string filePath,bool isTemplate)
+        /// <summary>
+        /// 获取文件信息
+        /// </summary>
+        /// <param name="filePath">文件先对目录如 "/template/"</param>
+        /// <returns>文件信息集合</returns>
+        public List<Sys_FileInfo> GetFileList(string filePath)
         {
             string filePhysicalPath = Utils.GetPhysicalPath(filePath);
             if (Directory.Exists(filePhysicalPath))
@@ -52,6 +57,7 @@ namespace DTCMS.BLL
                 return null;
             }
         }
+
         /// <summary>
         /// 获取模板标题
         /// </summary>
