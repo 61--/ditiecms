@@ -344,7 +344,7 @@ namespace DTCMS.Web.admin.news {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit btn_Submit;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btn_Submit;
         
         /// <summary>
         /// btn_Cancel 控件。
@@ -353,6 +353,6 @@ namespace DTCMS.Web.admin.news {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton btn_Cancel;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btn_Cancel;
     }
 }
