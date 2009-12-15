@@ -12,7 +12,7 @@ namespace DTCMS.Entity
         
         private string _filename;
         private DateTime _updatetime;
-        private long? _filesize;
+        private string _filesize;
         private string _filetitle;
         private bool _isdirectory;
         private string _filepath;
@@ -35,7 +35,7 @@ namespace DTCMS.Entity
         /// <summary>
         /// 文件大小
         /// </summary>
-        public long? FileSize
+        public string FileSize
         {
             get { return _filesize; }
             set { _filesize = value; }
