@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.IO;
 namespace DTCMS.Entity
 {
     public class Sys_Template
@@ -63,6 +63,6 @@ namespace DTCMS.Entity
             get { return _templateimg; }
         }
         #endregion Model
-
+       
     }
 }
