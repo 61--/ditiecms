@@ -12,6 +12,7 @@ namespace DTCMS.Entity
         private string _templatename;
         private string _templatedirectory;
         private int _isenable;
+        private string _author;
         private DateTime? _createdatetime;
         private string _templateimg;
         /// <summary>
@@ -61,6 +62,15 @@ namespace DTCMS.Entity
         {
             set { _templateimg = value; }
             get { return _templateimg; }
+        }
+
+        /// <summary>
+        /// 作者
+        /// </summary>
+        public string Author
+        {
+            set { _author = value; }
+            get { return _author; }
         }
         #endregion Model
        
