@@ -43,6 +43,10 @@ textarea {
 	border-bottom: 1px solid #bdbcbd;
 	text-indent: 2px;
 }
+button
+{
+	margin-right:8px;
+}
 .button {
 	border: 0px;
 	height: 22px;

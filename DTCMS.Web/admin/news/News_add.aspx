@@ -10,7 +10,6 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="/Inc/Dialog/Dialog.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
-    <script type="text/javascript" src="../js/popup.js"></script>
     <script type="text/javascript">
         function Insert()
         {
@@ -209,8 +208,8 @@
             </div>
             <!--操作按钮-->
             <div style="margin:10px;text-align:center;">
-                <input id="btn_Submit" type="submit" value="保存" class="button b2" runat="server" onserverclick="Btn_Submit_Click" />
-                <input id="btn_Cancel" type="button" value="取消" class="button b1" runat="server" />
+                <button id="btn_Submit" type="submit" class="button b1" runat="server" onserverclick="Btn_Submit_Click">保存</button>
+                <button id="btn_Cancel" type="button" class="button b1" runat="server">取消</button>
             </div>
         </div>
     </div>
