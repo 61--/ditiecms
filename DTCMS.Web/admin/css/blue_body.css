@@ -47,7 +47,7 @@ button
 {
 	margin-right:8px;
 }
-.button {
+button,.button {
 	border: 0px;
 	height: 22px;
 	letter-spacing: 2px;
