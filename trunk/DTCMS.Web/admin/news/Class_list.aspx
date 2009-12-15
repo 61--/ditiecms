@@ -7,7 +7,7 @@
     <link href="../css/blue_body.css" type="text/css" rel="StyleSheet" />
     <link href="/Inc/Dialog/dialog.css" rel="stylesheet" type="text/css" />
     <link href="/Inc/Popup/popup.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="/Inc/Dialog/Dialog.js"></script>
     <script type="text/javascript" src="/Inc/Popup/popup.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
