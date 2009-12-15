@@ -44,6 +44,7 @@
     <Compile Include="Arc_Class.cs" />
     <Compile Include="Enum\EClassAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sys_FileInfo.cs" />
     <Compile Include="Sys_Template.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
