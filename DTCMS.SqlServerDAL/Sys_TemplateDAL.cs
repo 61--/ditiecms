@@ -22,23 +22,23 @@ namespace DTCMS.SqlServerDAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into DT_SYS_Template(");
-            strSql.Append("TemplateID,TemplateName,TemplateDirectory,isEnable,CreateDateTime,TemplateImg)");
+            strSql.Append("TemplateName,TemplateDirectory,isEnable,CreateDateTime,TemplateImg,Author)");
             strSql.Append(" values (");
-            strSql.Append("@TemplateID,@TemplateName,@TemplateDirectory,@isEnable,@CreateDateTime,@TemplateImg)");
+            strSql.Append("@TemplateName,@TemplateDirectory,@isEnable,@CreateDateTime,@TemplateImg,@Author)");
             SqlParameter[] parameters = {
-					new SqlParameter("@TemplateID", SqlDbType.Int,4),
 					new SqlParameter("@TemplateName", SqlDbType.NVarChar,50),
 					new SqlParameter("@TemplateDirectory", SqlDbType.NVarChar,200),
 					new SqlParameter("@isEnable", SqlDbType.TinyInt,1),
 					new SqlParameter("@CreateDateTime", SqlDbType.DateTime),
-					new SqlParameter("@TemplateImg", SqlDbType.NVarChar,200)};
-            parameters[0].Value = model.TemplateID;
-            parameters[1].Value = model.TemplateName;
-            parameters[2].Value = model.TemplateDirectory;
-            parameters[3].Value = model.isEnable;
-            parameters[4].Value = model.CreateDateTime;
-            parameters[5].Value = model.TemplateImg;
-
+					new SqlParameter("@TemplateImg", SqlDbType.NVarChar,200),
+                    new SqlParameter("@Author",SqlDbType.NVarChar,50)};
+           
+            parameters[0].Value = model.TemplateName;
+            parameters[1].Value = model.TemplateDirectory;
+            parameters[2].Value = model.isEnable;
+            parameters[3].Value = model.CreateDateTime;
+            parameters[4].Value = model.TemplateImg;
+            parameters[5].Value = model.Author;
             return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters);
         }
         /// <summary>
@@ -54,7 +54,8 @@ namespace DTCMS.SqlServerDAL
             strSql.Append("TemplateDirectory=@TemplateDirectory,");
             strSql.Append("isEnable=@isEnable,");
             strSql.Append("CreateDateTime=@CreateDateTime,");
-            strSql.Append("TemplateImg=@TemplateImg");
+            strSql.Append("TemplateImg=@TemplateImg,");
+            strSql.Append("Author=@Author");
             strSql.Append(" where TemplateID=@TemplateID ");
             SqlParameter[] parameters = {
 					new SqlParameter("@TemplateID", SqlDbType.Int,4),
@@ -62,14 +63,15 @@ namespace DTCMS.SqlServerDAL
 					new SqlParameter("@TemplateDirectory", SqlDbType.NVarChar,200),
 					new SqlParameter("@isEnable", SqlDbType.TinyInt,1),
 					new SqlParameter("@CreateDateTime", SqlDbType.DateTime),
-					new SqlParameter("@TemplateImg", SqlDbType.NVarChar,200)};
+					new SqlParameter("@TemplateImg", SqlDbType.NVarChar,200),
+                    new SqlParameter("@Author",SqlDbType.NVarChar,50)};
             parameters[0].Value = model.TemplateID;
             parameters[1].Value = model.TemplateName;
             parameters[2].Value = model.TemplateDirectory;
             parameters[3].Value = model.isEnable;
             parameters[4].Value = model.CreateDateTime;
             parameters[5].Value = model.TemplateImg;
-
+            parameters[6].Value = model.Author;
             return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters);
         }
         /// <summary>
@@ -90,7 +92,7 @@ namespace DTCMS.SqlServerDAL
         public Sys_Template GetModel(int TemplateID)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select TemplateID,TemplateName,TemplateDirectory,isEnable,CreateDateTime,TemplateImg from DT_SYS_Template ");
+            strSql.Append("select TemplateID,TemplateName,TemplateDirectory,isEnable,CreateDateTime,TemplateImg,Author from DT_SYS_Template ");
             strSql.Append(" where TemplateID=@TemplateID ");
             SqlParameter[] parameters = { new SqlParameter("@TemplateID", SqlDbType.Int, 4) };
             parameters[0].Value = TemplateID;
