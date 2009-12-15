@@ -40,7 +40,15 @@ namespace DTCMS.Common
         {
             return HttpContext.Current.Server.MapPath("~/");
         }
-
+        /// <summary>
+        /// 获取网站文件或目录的物理路径
+        /// </summary>
+        /// <param name="filePath">文件/目录路径</param>
+        /// <returns></returns>
+        public static string GetPhysicalPath(string filePath)
+        {
+            return HttpContext.Current.Server.MapPath(string.Format("~{0}",filePath));
+        }
         #endregion
 
         #region 获取URL传值
