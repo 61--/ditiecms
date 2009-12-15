@@ -4,27 +4,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-<title>DTCMS内容管理系统后台登陆</title>
-<link rel="stylesheet" type="text/css" href="css/login.css" />
-<script type="text/javascript">
-function $(elem){
-    return document.getElementById(elem);
-}
-//function CheckLogin(){
-//    if($("username").value==""){
-//        alert('用户名不能为空！');
-//        return false;
-//    }
-//    if($("password").value==""){
-//        alert('用户密码不能为空！');
-//        return false;
-//    }
-//    if($("checkcode").value==""){
-//        alert('验证码不能为空！');
-//        return false;
-//    } 
-//}
-</script>
+    <title>DTCMS内容管理系统后台登陆</title>
+    <link rel="stylesheet" type="text/css" href="css/login.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    function $(elem){
+        return document.getElementById(elem);
+    }
+    //function CheckLogin(){
+    //    if($("username").value==""){
+    //        alert('用户名不能为空！');
+    //        return false;
+    //    }
+    //    if($("password").value==""){
+    //        alert('用户密码不能为空！');
+    //        return false;
+    //    }
+    //    if($("checkcode").value==""){
+    //        alert('验证码不能为空！');
+    //        return false;
+    //    } 
+    //}
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
