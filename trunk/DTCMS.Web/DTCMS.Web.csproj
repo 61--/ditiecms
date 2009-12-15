@@ -125,6 +125,13 @@
     <Compile Include="admin\Media\PhotoManagement.aspx.designer.cs">
       <DependentUpon>PhotoManagement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\Media\Photo_add.aspx.cs">
+      <DependentUpon>Photo_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Media\Photo_add.aspx.designer.cs">
+      <DependentUpon>Photo_add.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\news\Class_list.aspx.cs">
       <DependentUpon>Class_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -202,17 +209,17 @@
     <Content Include="admin\ajax\class_list.aspx" />
     <Content Include="admin\ajax\news_list.aspx" />
     <Content Include="admin\images\blue\button.jpg" />
-<<<<<<< .mine
     <Content Include="admin\images\blue\ico_title.gif" />
-=======
     <Content Include="admin\images\ico\i_p_copy.gif" />
     <Content Include="admin\images\ico\i_p_delete.gif" />
     <Content Include="admin\images\ico\i_p_edit.gif" />
     <Content Include="admin\images\ico\i_p_insert.gif" />
     <Content Include="admin\images\ico\i_p_shift.gif" />
     <Content Include="admin\images\ico\i_p_type.gif" />
+    <Content Include="admin\images\ico\i_small_delete.gif" />
+    <Content Include="admin\images\ico\i_small_edit.gif" />
     <Content Include="admin\Media\PhotoManagement.aspx" />
->>>>>>> .r491
+    <Content Include="admin\Media\Photo_add.aspx" />
     <Content Include="admin\news\Class_list.html" />
     <Content Include="admin\Template\Template_add.aspx" />
     <Content Include="admin\Template\Template_list.aspx" />
