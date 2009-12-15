@@ -118,6 +118,13 @@
     <Compile Include="admin\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\Media\PhotoManagement.aspx.cs">
+      <DependentUpon>PhotoManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Media\PhotoManagement.aspx.designer.cs">
+      <DependentUpon>PhotoManagement.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\news\Class_list.aspx.cs">
       <DependentUpon>Class_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -201,6 +208,7 @@
     <Content Include="admin\images\ico\i_p_insert.gif" />
     <Content Include="admin\images\ico\i_p_shift.gif" />
     <Content Include="admin\images\ico\i_p_type.gif" />
+    <Content Include="admin\Media\PhotoManagement.aspx" />
     <Content Include="admin\news\Class_list.html" />
     <Content Include="admin\Template\Template_add.aspx" />
     <Content Include="admin\Template\Template_list.aspx" />
@@ -643,7 +651,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4531</DevelopmentServerPort>
+          <DevelopmentServerPort>2741</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/DTCMS_Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
