@@ -99,7 +99,7 @@
                 <a href="Class_Add.aspx" class="button b4"><img src="../images/ico/i_add.gif" alt="" />新建栏目</a>
                 <a href="javascript:updateData();" class="button b4"><img src="../images/ico/i_edit.gif" alt="" />修改栏目</a>
                 <a href="javascript:deleteData(-1,true);" class="button b4"><img src="../images/ico/i_allDelete.gif" alt="" />批量删除</a>
-                <a href="javascript:;" onclick="jPrompt('document.getElementById(tab_menu).length')" id="color">标题样式</a>
+                <a href="javascript:;" onclick="event.cancelBubble = dPrompt('color','标题','内容')" id="color">标题样式</a>
             </div>
             <div id="gridTreeDiv">
             </div>
