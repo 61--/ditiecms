@@ -195,6 +195,12 @@
     <Content Include="admin\ajax\class_list.aspx" />
     <Content Include="admin\ajax\news_list.aspx" />
     <Content Include="admin\images\blue\button.jpg" />
+    <Content Include="admin\images\ico\i_p_copy.gif" />
+    <Content Include="admin\images\ico\i_p_delete.gif" />
+    <Content Include="admin\images\ico\i_p_edit.gif" />
+    <Content Include="admin\images\ico\i_p_insert.gif" />
+    <Content Include="admin\images\ico\i_p_shift.gif" />
+    <Content Include="admin\images\ico\i_p_type.gif" />
     <Content Include="admin\news\Class_list.html" />
     <Content Include="admin\Template\Template_add.aspx" />
     <Content Include="admin\Template\Template_list.aspx" />
