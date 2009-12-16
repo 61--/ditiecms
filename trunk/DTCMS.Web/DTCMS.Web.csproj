@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7DBA0670-7419-4E7A-BCB7-92A8C7151733}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -275,166 +275,6 @@
     <Content Include="ckfinder\core\connector\aspx\lang\zh-cn.xml" />
     <Content Include="ckfinder\core\connector\aspx\lang\zh-tw.xml" />
     <Content Include="ckfinder\core\css\ckfinder.css" />
-    <Content Include="ckfinder\core\help\en\files\001.html" />
-    <Content Include="ckfinder\core\help\en\files\002.html" />
-    <Content Include="ckfinder\core\help\en\files\003.html" />
-    <Content Include="ckfinder\core\help\en\files\004.html" />
-    <Content Include="ckfinder\core\help\en\files\005.html" />
-    <Content Include="ckfinder\core\help\en\files\006.html" />
-    <Content Include="ckfinder\core\help\en\files\007.html" />
-    <Content Include="ckfinder\core\help\en\files\008.html" />
-    <Content Include="ckfinder\core\help\en\files\009.html" />
-    <Content Include="ckfinder\core\help\en\files\010.html" />
-    <Content Include="ckfinder\core\help\en\files\011.html" />
-    <Content Include="ckfinder\core\help\en\files\012.html" />
-    <Content Include="ckfinder\core\help\en\files\013.html" />
-    <Content Include="ckfinder\core\help\en\files\header.html" />
-    <Content Include="ckfinder\core\help\en\files\images\001.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\002.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\003.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\004.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\005.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\006.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\007.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\008.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\009.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\010.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\011.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\012.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\013.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\014.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\015.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\016.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\017.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\018.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\019.gif" />
-    <Content Include="ckfinder\core\help\en\files\images\020.gif" />
-    <Content Include="ckfinder\core\help\en\files\license.html" />
-    <Content Include="ckfinder\core\help\en\files\other\help.css" />
-    <Content Include="ckfinder\core\help\en\files\other\help.js" />
-    <Content Include="ckfinder\core\help\en\files\suggestions.html" />
-    <Content Include="ckfinder\core\help\en\files\toc.html" />
-    <Content Include="ckfinder\core\help\en\index.html" />
-    <Content Include="ckfinder\core\help\es-mx\files\001.html" />
-    <Content Include="ckfinder\core\help\es-mx\files\002.html" />
-    <Content Include="ckfinder\core\help\es-mx\files\003.html" />
-    <Content Include="ckfinder\core\help\es-mx\files\004.html" />
-    <Content Include="ckfinder\core\help\es-mx\files\005.html" />
-    <Content Include="ckfinder\core\help\es-mx\files\006.html" />
-    <Content Include="ckfinder\core\help\es-mx\files\007.html" />
-    <Content Include="ckfinder\core\help\es-mx\files\008.html" />
-    <Content Include="ckfinder\core\help\es-mx\files\009.html" />
-    <Content Include="ckfinder\core\help\es-mx\files\010.html" />
-    <Content Include="ckfinder\core\help\es-mx\files\011.html" />
-    <Content Include="ckfinder\core\help\es-mx\files\012.html" />
-    <Content Include="ckfinder\core\help\es-mx\files\013.html" />
-    <Content Include="ckfinder\core\help\es-mx\files\header.html" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\001.png" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\002.gif" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\003.gif" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\004.png" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\005.png" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\006.png" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\007.png" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\008.png" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\009.png" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\010.gif" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\011.png" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\012.png" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\013.png" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\014.gif" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\015.gif" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\016.gif" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\017.gif" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\018.png" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\019.png" />
-    <Content Include="ckfinder\core\help\es-mx\files\images\020.png" />
-    <Content Include="ckfinder\core\help\es-mx\files\license.html" />
-    <Content Include="ckfinder\core\help\es-mx\files\other\help.css" />
-    <Content Include="ckfinder\core\help\es-mx\files\other\help.js" />
-    <Content Include="ckfinder\core\help\es-mx\files\suggestions.html" />
-    <Content Include="ckfinder\core\help\es-mx\files\toc.html" />
-    <Content Include="ckfinder\core\help\es-mx\index.html" />
-    <Content Include="ckfinder\core\help\es\files\001.html" />
-    <Content Include="ckfinder\core\help\es\files\002.html" />
-    <Content Include="ckfinder\core\help\es\files\003.html" />
-    <Content Include="ckfinder\core\help\es\files\004.html" />
-    <Content Include="ckfinder\core\help\es\files\005.html" />
-    <Content Include="ckfinder\core\help\es\files\006.html" />
-    <Content Include="ckfinder\core\help\es\files\007.html" />
-    <Content Include="ckfinder\core\help\es\files\008.html" />
-    <Content Include="ckfinder\core\help\es\files\009.html" />
-    <Content Include="ckfinder\core\help\es\files\010.html" />
-    <Content Include="ckfinder\core\help\es\files\011.html" />
-    <Content Include="ckfinder\core\help\es\files\012.html" />
-    <Content Include="ckfinder\core\help\es\files\013.html" />
-    <Content Include="ckfinder\core\help\es\files\header.html" />
-    <Content Include="ckfinder\core\help\es\files\images\001.png" />
-    <Content Include="ckfinder\core\help\es\files\images\002.gif" />
-    <Content Include="ckfinder\core\help\es\files\images\003.gif" />
-    <Content Include="ckfinder\core\help\es\files\images\004.png" />
-    <Content Include="ckfinder\core\help\es\files\images\005.png" />
-    <Content Include="ckfinder\core\help\es\files\images\006.png" />
-    <Content Include="ckfinder\core\help\es\files\images\007.png" />
-    <Content Include="ckfinder\core\help\es\files\images\008.png" />
-    <Content Include="ckfinder\core\help\es\files\images\009.png" />
-    <Content Include="ckfinder\core\help\es\files\images\010.gif" />
-    <Content Include="ckfinder\core\help\es\files\images\011.png" />
-    <Content Include="ckfinder\core\help\es\files\images\012.png" />
-    <Content Include="ckfinder\core\help\es\files\images\013.png" />
-    <Content Include="ckfinder\core\help\es\files\images\014.gif" />
-    <Content Include="ckfinder\core\help\es\files\images\015.gif" />
-    <Content Include="ckfinder\core\help\es\files\images\016.gif" />
-    <Content Include="ckfinder\core\help\es\files\images\017.gif" />
-    <Content Include="ckfinder\core\help\es\files\images\018.png" />
-    <Content Include="ckfinder\core\help\es\files\images\019.png" />
-    <Content Include="ckfinder\core\help\es\files\images\020.png" />
-    <Content Include="ckfinder\core\help\es\files\license.html" />
-    <Content Include="ckfinder\core\help\es\files\other\help.css" />
-    <Content Include="ckfinder\core\help\es\files\other\help.js" />
-    <Content Include="ckfinder\core\help\es\files\suggestions.html" />
-    <Content Include="ckfinder\core\help\es\files\toc.html" />
-    <Content Include="ckfinder\core\help\es\index.html" />
-    <Content Include="ckfinder\core\help\pl\files\001.html" />
-    <Content Include="ckfinder\core\help\pl\files\002.html" />
-    <Content Include="ckfinder\core\help\pl\files\003.html" />
-    <Content Include="ckfinder\core\help\pl\files\004.html" />
-    <Content Include="ckfinder\core\help\pl\files\005.html" />
-    <Content Include="ckfinder\core\help\pl\files\006.html" />
-    <Content Include="ckfinder\core\help\pl\files\007.html" />
-    <Content Include="ckfinder\core\help\pl\files\008.html" />
-    <Content Include="ckfinder\core\help\pl\files\009.html" />
-    <Content Include="ckfinder\core\help\pl\files\010.html" />
-    <Content Include="ckfinder\core\help\pl\files\011.html" />
-    <Content Include="ckfinder\core\help\pl\files\012.html" />
-    <Content Include="ckfinder\core\help\pl\files\013.html" />
-    <Content Include="ckfinder\core\help\pl\files\header.html" />
-    <Content Include="ckfinder\core\help\pl\files\images\001.jpg" />
-    <Content Include="ckfinder\core\help\pl\files\images\002.gif" />
-    <Content Include="ckfinder\core\help\pl\files\images\003.gif" />
-    <Content Include="ckfinder\core\help\pl\files\images\004.png" />
-    <Content Include="ckfinder\core\help\pl\files\images\005.png" />
-    <Content Include="ckfinder\core\help\pl\files\images\006.png" />
-    <Content Include="ckfinder\core\help\pl\files\images\007.jpg" />
-    <Content Include="ckfinder\core\help\pl\files\images\008.png" />
-    <Content Include="ckfinder\core\help\pl\files\images\009.png" />
-    <Content Include="ckfinder\core\help\pl\files\images\010.png" />
-    <Content Include="ckfinder\core\help\pl\files\images\011.png" />
-    <Content Include="ckfinder\core\help\pl\files\images\012.png" />
-    <Content Include="ckfinder\core\help\pl\files\images\013.png" />
-    <Content Include="ckfinder\core\help\pl\files\images\014.gif" />
-    <Content Include="ckfinder\core\help\pl\files\images\015.gif" />
-    <Content Include="ckfinder\core\help\pl\files\images\016.gif" />
-    <Content Include="ckfinder\core\help\pl\files\images\017.gif" />
-    <Content Include="ckfinder\core\help\pl\files\images\018.gif" />
-    <Content Include="ckfinder\core\help\pl\files\images\019.png" />
-    <Content Include="ckfinder\core\help\pl\files\images\020.png" />
-    <Content Include="ckfinder\core\help\pl\files\license.html" />
-    <Content Include="ckfinder\core\help\pl\files\other\help.css" />
-    <Content Include="ckfinder\core\help\pl\files\other\help.js" />
-    <Content Include="ckfinder\core\help\pl\files\suggestions.html" />
-    <Content Include="ckfinder\core\help\pl\files\toc.html" />
-    <Content Include="ckfinder\core\help\pl\index.html" />
     <Content Include="ckfinder\core\images\ckffolder.gif" />
     <Content Include="ckfinder\core\images\ckffolderopened.gif" />
     <Content Include="ckfinder\core\images\ckfminus.gif" />
@@ -992,6 +832,9 @@
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/DTCMS_Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
