@@ -5,7 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>图片上传</title>    
-    </style>
 </head>
 <body>
     <form id="form1" runat="server">
