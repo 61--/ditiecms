@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7DBA0670-7419-4E7A-BCB7-92A8C7151733}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -386,6 +386,38 @@
     <Content Include="ckfinder\core\skins\silver\images\toolbar.separator.gif" />
     <Content Include="ckfinder\core\skins\silver\images\toolbar.start.gif" />
     <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="Inc\codepress\codepress.css" />
+    <Content Include="Inc\codepress\codepress.js" />
+    <Content Include="Inc\codepress\languages\asp.css" />
+    <Content Include="Inc\codepress\languages\asp.js" />
+    <Content Include="Inc\codepress\languages\autoit.css" />
+    <Content Include="Inc\codepress\languages\autoit.js" />
+    <Content Include="Inc\codepress\languages\csharp.css" />
+    <Content Include="Inc\codepress\languages\csharp.js" />
+    <Content Include="Inc\codepress\languages\css.css" />
+    <Content Include="Inc\codepress\languages\css.js" />
+    <Content Include="Inc\codepress\languages\generic.css" />
+    <Content Include="Inc\codepress\languages\generic.js" />
+    <Content Include="Inc\codepress\languages\html.css" />
+    <Content Include="Inc\codepress\languages\html.js" />
+    <Content Include="Inc\codepress\languages\java.css" />
+    <Content Include="Inc\codepress\languages\java.js" />
+    <Content Include="Inc\codepress\languages\javascript.css" />
+    <Content Include="Inc\codepress\languages\javascript.js" />
+    <Content Include="Inc\codepress\languages\perl.css" />
+    <Content Include="Inc\codepress\languages\perl.js" />
+    <Content Include="Inc\codepress\languages\php.css" />
+    <Content Include="Inc\codepress\languages\php.js" />
+    <Content Include="Inc\codepress\languages\ruby.css" />
+    <Content Include="Inc\codepress\languages\ruby.js" />
+    <Content Include="Inc\codepress\languages\sql.css" />
+    <Content Include="Inc\codepress\languages\sql.js" />
+    <Content Include="Inc\codepress\languages\text.css" />
+    <Content Include="Inc\codepress\languages\text.js" />
+    <Content Include="Inc\codepress\languages\vbscript.css" />
+    <Content Include="Inc\codepress\languages\vbscript.js" />
+    <Content Include="Inc\codepress\languages\xsl.css" />
+    <Content Include="Inc\codepress\languages\xsl.js" />
     <Content Include="Inc\Dialog\dialog.html" />
     <Content Include="Inc\Dialog\images\Button.gif" />
     <Content Include="Inc\Dialog\images\dialog_bg.jpg" />
@@ -834,9 +866,6 @@
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/DTCMS_Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
