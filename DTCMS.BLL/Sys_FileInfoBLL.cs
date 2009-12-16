@@ -21,12 +21,13 @@ namespace DTCMS.BLL
             if (Directory.Exists(filePhysicalPath))
             {
                 List<Sys_FileInfo> list = new List<Sys_FileInfo>();
-                Sys_FileInfo model = new Sys_FileInfo();
+               
                 DirectoryInfo directory = new DirectoryInfo(filePhysicalPath);
                 //获取目录
                 DirectoryInfo[] directoryInfo = directory.GetDirectories();
                 foreach (DirectoryInfo childDirecory in directoryInfo)
                 {
+                    Sys_FileInfo model = new Sys_FileInfo();
                     model.FileName = childDirecory.Name;
                     model.FilePath = filePath + childDirecory.Name;
                     model.UpdateTime = childDirecory.LastWriteTime.ToString();
@@ -38,6 +39,7 @@ namespace DTCMS.BLL
                 string extension = string.Empty;
                 foreach (FileInfo childFile in fileInfo)
                 {
+                    Sys_FileInfo model = new Sys_FileInfo();
                     model.FileName = childFile.Name;
                     model.FilePath = filePath + childFile.Name;
                     model.UpdateTime = childFile.LastWriteTime.ToString();
