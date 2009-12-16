@@ -108,6 +108,13 @@
     <Compile Include="admin\ajax\news_list.aspx.designer.cs">
       <DependentUpon>news_list.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\ajax\Template_list.aspx.cs">
+      <DependentUpon>Template_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ajax\Template_list.aspx.designer.cs">
+      <DependentUpon>Template_list.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\App_Code\AdminPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -208,6 +215,7 @@
   <ItemGroup>
     <Content Include="admin\ajax\class_list.aspx" />
     <Content Include="admin\ajax\news_list.aspx" />
+    <Content Include="admin\ajax\Template_list.aspx" />
     <Content Include="admin\images\blue\button.jpg" />
     <Content Include="admin\images\blue\ico_title.gif" />
     <Content Include="admin\images\ico\i_p_copy.gif" />
