@@ -29,6 +29,7 @@ namespace DTCMS.BLL
                 {
                     model.FileName = childDirecory.Name;
                     model.FilePath = filePath + childDirecory.Name;
+                    model.UpdateTime = childDirecory.LastWriteTime.ToString();
                     model.isDirectory = true;
                     list.Add(model);
                 }
@@ -39,9 +40,10 @@ namespace DTCMS.BLL
                 {
                     model.FileName = childFile.Name;
                     model.FilePath = filePath + childFile.Name;
+                    model.UpdateTime = childFile.LastWriteTime.ToString();
                     model.isDirectory = false;
                     extension = childFile.Extension;
-                    if (extension == "html" || extension == "shtml" || extension == "htm")
+                    if (extension == ".html" || extension == ".shtml" || extension == ".htm")
                         model.FileTitle = GetHtmlTitle(filePhysicalPath + childFile.Name);
                     if (childFile.Length > 1024)
                         model.FileSize = Convert.ToString(Math.Round(Convert.ToDecimal(childFile.Length) / 1024, 2)) + " K";
@@ -69,7 +71,7 @@ namespace DTCMS.BLL
             using (StreamReader reader = new StreamReader(filePath, Encoding.UTF8))
             {
                 string content= reader.ReadToEnd();
-                Regex reg = new Regex("<title>([/s/S]*)</title>");
+                Regex reg = new Regex(@"<title>([\s\S]*?)</title>",RegexOptions.IgnoreCase);
                 Match match=reg.Match(content);
                 if (match.Success)
                     return match.Groups[1].Value;
