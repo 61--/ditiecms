@@ -189,6 +189,13 @@
     <Compile Include="admin\news\News_add.aspx.designer.cs">
       <DependentUpon>News_add.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\Template\TemplateFile_list.aspx.cs">
+      <DependentUpon>TemplateFile_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Template\TemplateFile_list.aspx.designer.cs">
+      <DependentUpon>TemplateFile_list.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\Template\Template_add.aspx.cs">
       <DependentUpon>Template_add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -238,6 +245,7 @@
     <Content Include="admin\Media\PhotoManagement.aspx" />
     <Content Include="admin\Media\Photo_add.aspx" />
     <Content Include="admin\news\Class_list.html" />
+    <Content Include="admin\Template\TemplateFile_list.aspx" />
     <Content Include="admin\Template\Template_add.aspx" />
     <Content Include="admin\Template\Template_list.aspx" />
     <Content Include="bin\Newtonsoft.Json.dll" />
