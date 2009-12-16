@@ -11,7 +11,7 @@ namespace DTCMS.Entity
     {
         
         private string _filename;
-        private DateTime _updatetime;
+        private string _updatetime;
         private string _filesize;
         private string _filetitle;
         private bool _isdirectory;
@@ -27,7 +27,7 @@ namespace DTCMS.Entity
         /// <summary>
         /// 更新时间
         /// </summary>
-        public DateTime UpdateTime
+        public string UpdateTime
         {
             get { return _updatetime; }
             set { _updatetime = value; }
