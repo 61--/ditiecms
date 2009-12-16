@@ -225,6 +225,13 @@
       <DependentUpon>top_index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="admin\Template\TemplateFile_Edit.aspx.cs">
+      <DependentUpon>TemplateFile_Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Template\TemplateFile_Edit.aspx.designer.cs">
+      <DependentUpon>TemplateFile_Edit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Utils\WebTools.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -626,6 +633,7 @@
     <Content Include="Editor\fckpackager.xml" />
     <Content Include="Editor\fckstyles.xml" />
     <Content Include="Editor\fcktemplates.xml" />
+    <Content Include="admin\Template\TemplateFile_Edit.aspx" />
     <Content Include="ValidateCode.ashx" />
     <None Include="admin\images\blue\admin_tlogo.psd" />
     <None Include="Editor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
