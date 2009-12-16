@@ -8,14 +8,16 @@
 	background:#F5FAFC; 
 }
 .popup_prompt .popup_header{
+
+}
+.popup_prompt h1
+{
 	height:25px;
 	margin:1px;
-}
-.popup_prompt h1{
 	font-size:13px;
 	color:#F4793A;
 	font-weight:bold;
-	text-indent:25px;
+	text-indent:10px;
 	padding-top:7px;
 }
 .popup_prompt .popup_content

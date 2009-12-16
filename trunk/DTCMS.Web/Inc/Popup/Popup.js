@@ -51,9 +51,9 @@
 			    '<div class="popup_' + type + '" id="_Popup_' + this.ID + '" style="width:' + this.width + 'px">\
                   <div class="popup_header" id="_Title_"><h1>' + this.title + '</h1><div class="h_r"></div></div>\
                   <div class="popup_content">\
-                    <div id="_Container_' + this.ID + '" style="height:' + this.height + 'px">' + msg + '</div></div>\
-                  <div class="buttonRow" id="_ButtonRow_' + this.ID + '"></div>\
-                  <div class="popup_bottom"><div class="b_r"></div>\
+                    <div id="_Container_' + this.ID + '" style="height:' + this.height + 'px">' + msg + '</div></div>' +
+                    (this.isButtonRow ? '<div class="buttonRow" id="_ButtonRow_' + this.ID + '"></div>' : '') +
+                  '<div class="popup_bottom"><div class="b_r"></div>\
                 </div>';
 
                 $("BODY").append(html);
@@ -92,12 +92,12 @@
                 }
             }
             else {
-                $.popup._bindType(type);
+                $.popup._bindType(type, callback);
                 $("#_Popup_" + this.ID).show();
             }
         },
 
-        _bindType: function(type) {
+        _bindType: function(type, callback) {
             switch (type) {
                 case 'help':
                     if (this.isButtonRow) {
