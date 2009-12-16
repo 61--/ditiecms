@@ -26,10 +26,7 @@ namespace DTCMS.Web.admin.ajax
         }
         protected string GetTemplateJson(string filePath)
         {
-            string s = "[{'FileName':'index.html','UpdateTime':'new Date(-59011459200000)','FileSize':'250 B','isDirectory':'false','FileTitle':'null','FilePath':'/template/default/index.html'}]";
-            s = "[ {'id':2,'title':'1','classname':'','adddate':'2009-3-18 0:00:00','ischecked':'1'} ];";
-            return s;
-             //return JavaScriptConvert.SerializeObject( bllFile.GetFileList(filePath));
+             return JavaScriptConvert.SerializeObject( bllFile.GetFileList(filePath));
         }
     }
 }
