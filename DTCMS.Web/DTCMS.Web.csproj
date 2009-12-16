@@ -764,6 +764,8 @@
     <Content Include="Editor\fckstyles.xml" />
     <Content Include="Editor\fcktemplates.xml" />
     <Content Include="admin\Template\TemplateFile_Edit.aspx" />
+    <Content Include="Template\Default\index.html" />
+    <Content Include="Template\Default\news.htm" />
     <Content Include="ValidateCode.ashx" />
     <None Include="admin\images\blue\admin_tlogo.psd" />
     <None Include="ckfinder\userfiles\.htaccess" />
