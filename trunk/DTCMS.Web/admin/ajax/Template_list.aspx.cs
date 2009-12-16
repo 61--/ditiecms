@@ -11,20 +11,6 @@ namespace DTCMS.Web.admin.ajax
 {
     public partial class Template_list : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            string action = Common.Utils.GetQueryString("action");
-            switch (action)
-            { 
-                case "load":
-                    Response.Write(GetTemplateJson());
-                    break;
-
-            }
-        }
-        protected void GetTemplateJson()
-        { 
-            
-        }
+        
     }
 }

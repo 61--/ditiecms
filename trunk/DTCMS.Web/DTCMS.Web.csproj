@@ -38,6 +38,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\FredCK.FCKeditorV2.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -100,6 +101,13 @@
     </Compile>
     <Compile Include="admin\ajax\class_list.aspx.designer.cs">
       <DependentUpon>class_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\ajax\File_list.aspx.cs">
+      <DependentUpon>File_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ajax\File_list.aspx.designer.cs">
+      <DependentUpon>File_list.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\ajax\news_list.aspx.cs">
       <DependentUpon>news_list.aspx</DependentUpon>
@@ -214,6 +222,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\ajax\class_list.aspx" />
+    <Content Include="admin\ajax\File_list.aspx" />
     <Content Include="admin\ajax\news_list.aspx" />
     <Content Include="admin\ajax\Template_list.aspx" />
     <Content Include="admin\images\blue\button.jpg" />
