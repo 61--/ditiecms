@@ -5,15 +5,15 @@
 }
 .popup_prompt{
 	border:1px solid #909090; 
-	background:#FFE; 
+	background:#F5FAFC; 
 }
 .popup_prompt .popup_header{
-	background:#C0C0C0 url(/admin/images/blue/ico_title.gif) 5px 1px no-repeat;
 	height:25px;
 	margin:1px;
 }
 .popup_prompt h1{
 	font-size:13px;
+	color:#F4793A;
 	font-weight:bold;
 	text-indent:25px;
 	padding-top:7px;
@@ -28,7 +28,6 @@
 {
 	height:30px;
 	line-height:30px;
-	background:#E0E0E0;
 	text-align:right;
 	margin:1px;
 }
