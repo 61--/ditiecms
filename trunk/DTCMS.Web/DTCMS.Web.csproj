@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7DBA0670-7419-4E7A-BCB7-92A8C7151733}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -148,6 +148,13 @@
     <Compile Include="admin\Media\Photo_add.aspx.designer.cs">
       <DependentUpon>Photo_add.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\Media\Photo_List.aspx.cs">
+      <DependentUpon>Photo_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Media\Photo_List.aspx.designer.cs">
+      <DependentUpon>Photo_List.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\news\Class_list.aspx.cs">
       <DependentUpon>Class_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -252,6 +259,7 @@
     <Content Include="admin\images\ico\i_small_edit.gif" />
     <Content Include="admin\Media\PhotoManagement.aspx" />
     <Content Include="admin\Media\Photo_add.aspx" />
+    <Content Include="admin\Media\Photo_List.aspx" />
     <Content Include="admin\news\Class_list.html" />
     <Content Include="admin\Template\TemplateFile_list.aspx" />
     <Content Include="admin\Template\Template_add.aspx" />
@@ -873,6 +881,9 @@
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/DTCMS_Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
