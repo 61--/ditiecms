@@ -20,8 +20,13 @@
         autoClose: 0,                       // 窗口自动关闭 (大于0时窗口自动关闭)
 
         // 公共方法
-        tip: function(msg, autoClose) {
+        tip: function(msg, top, left, autoClose) {
+            this.isPopup = false;
             this.autoClose = autoClose || this.autoClose;
+            this.width = 250;
+            this.height = 50;
+            this.top = top || ($(document).height() - this.height) / 2;
+            this.left = left || ($(document).width() - this.width) / 2;
             $.popup._show(null, 'tip', msg, null);
         },
 
@@ -178,14 +183,29 @@
     }
 
     // Shortuct functions
-    dTip = function(msg, autoClose) {
-        $.popup.tip(msg, autoClose);
+    dTip = function(msg, top, left, autoClose) {
+        $.popup.tip(msg, top, left, autoClose);
     }
 
-    dLoading = function() {
-        $.popup.tip('正在加载数据，请稍候...', 0);
+    // 显示Loading信息
+    showLoading = function(elem) {
+        if (elem == null) {
+            $.popup.tip('正在加载数据，请稍候...', null, null, 0);
+        } else {
+            var middle = ($(elem).height() - 50) / 2;
+            var top = $(elem).offset().top + (middle > 0 ? middle : 0);
+            $.popup.tip('正在加载数据，请稍候...', top, null, 0);
+        }
     }
-
+    showTip = function(msg, elem, autoClose) {
+        if (elem == null) {
+            $.popup.tip(msg, null, null, autoClose);
+        } else {
+            var middle = ($("#" + elem).height() - 50) / 2;
+            var top = $("#" + elem).offset().top + (middle > 0 ? middle : 0);
+            $.popup.tip(msg, top, null, autoClose);
+        }
+    }
     dHelp = function(elem, title, msg) {
         $.popup.help(elem, title, msg);
     };
