@@ -387,7 +387,14 @@
     <Content Include="ckfinder\core\skins\silver\images\toolbar.start.gif" />
     <Content Include="bin\Newtonsoft.Json.dll" />
     <Content Include="Inc\codepress\codepress.css" />
+    <Content Include="Inc\codepress\codepress.html" />
     <Content Include="Inc\codepress\codepress.js" />
+    <Content Include="Inc\codepress\engines\gecko.js" />
+    <Content Include="Inc\codepress\engines\khtml.js" />
+    <Content Include="Inc\codepress\engines\msie.js" />
+    <Content Include="Inc\codepress\engines\older.js" />
+    <Content Include="Inc\codepress\engines\opera.js" />
+    <Content Include="Inc\codepress\images\line-numbers.png" />
     <Content Include="Inc\codepress\languages\asp.css" />
     <Content Include="Inc\codepress\languages\asp.js" />
     <Content Include="Inc\codepress\languages\autoit.css" />

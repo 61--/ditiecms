@@ -12,7 +12,6 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="/Inc/Dialog/Dialog.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
-    <script type="text/javascript" src="../../Inc/codepress/codepress.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -28,16 +27,15 @@
             <div id="tab1" class="tab_show">
                 <table cellpadding="10" cellspacing="0" class="table_form">
                     <tr>
-                        <td class="main_bleft split">
-                            模板文件名:
-                        </td>
+                        <td class="main_bleft split">模板文件名:</td>                    
                         <td class="main_bright split">
                             <input type="text" id="txt_ParentClassName" class="textbox" runat="server" />
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="main_bright split">
-                            <textarea id="templatecode" rows="40" cols="50" class="codepress html linenumbers-on"></textarea>
+                        <td colspan="2" class="main_bright split">                     
+                            <script type="text/javascript" src="../../Inc/codepress/codepress.js"></script>
+                            <textarea id="templatecode" runat="server" rows="40" cols="150" class="codepress html linenumbers-on"></textarea>
                         </td>
                     </tr>
                   
@@ -49,9 +47,11 @@
                 <button id="btn_Cancel" type="button" class="b1" onclick="history.back(-1);"> 取消</button>
                 <input id="hidden_ClassId" type="hidden" value="0" runat="server" />
             </div>
+             
         </div>
     </div>
     </form>
+     
 </body>
 </html>
 
