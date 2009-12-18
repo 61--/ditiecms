@@ -41,7 +41,8 @@
             gridTree.gridHeaderColStyleArray = new Array("", "", "", "", "bleft");
             gridTree.gridDataCloStyleArray = new Array("", "", "", "", "");
             if (json != "") {
-                var data = eval("data=" + json);       
+                var data = eval("data=" + json); 
+                    
                 $.each(data, function(i, n) {
                 
                     var title="<a href=\"Template_Edit.aspx?file="+n.FilePath+"\">"+n.FileName+"</a>";
@@ -51,7 +52,7 @@
                         option="<a href=\"Template_Edit.aspx?file="+n.FilePath+"\">编辑</a>";
                     }
                     var dataList = new Array(title, n.FileTitle, n.FileSize, n.UpdateTime.toString(),option);
-                    gridTree.addGirdNode(dataList, i,-1,null,i, "");
+                    gridTree.addGirdNode(dataList, i+1,-1,null,i+1, "");
                 });
                 
             }
