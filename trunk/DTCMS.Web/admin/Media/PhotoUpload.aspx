@@ -1,17 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Photo_add.aspx.cs" Inherits="DTCMS.Web.admin.Media.Photo_add" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PhotoUpload.aspx.cs" Inherits="DTCMS.Web.admin.Media.PhotoUpload" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title>图片上传</title>  
-<style type="text/css">
-    body{
-	    border:0;
-	    padding:0;
-	    margin:0;
-	    font-size:12px;
-    }
+<head id="Head1" runat="server">
+<title>图片上传</title>  
+<link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
+<link href="/Inc/Dialog/dialog.css" rel="stylesheet" type="text/css" />        
+<script type="text/javascript" src="/Inc/Dialog/Dialog.js"></script>
+<style type="text/css">   
     .text{
 	    width:119px;
     }
@@ -26,7 +23,8 @@
   
 </head>
 <body>
-    <form id="form1" runat="server">
+    <div style="display:none;"><iframe name="formTarget" src="javascript:void(0)" height="0"></iframe></div>	
+    <form enctype="multipart/form-data" id="form1" name="Form1" target="formTarget" method="post" action="SimpleUploader.aspx?type=image">
     <div id="content">
         <div id="upload" style="width:760px;">
 	        <div id="left" style="width:75%;float:left;">
@@ -107,7 +105,7 @@
 						                <td align="right"><label>原图水印:</label></td>
 						                <td><input type="hidden" id="HasWaterMark"
 							                name="HasWaterMark" value="0" /> <input
-							                type="checkbox" id="chHasWaterMark" name="chHasWaterMark"  class="txt_bg />
+							                type="checkbox" id="chHasWaterMark" name="chHasWaterMark"  class="txt_bg" />
 						                <input type="hidden" id="Count" name="Count" value="1" /></td>
 					                </tr>	
 					                <tr id="AbbrImagesTable">
@@ -115,7 +113,7 @@
 						                <td>
 							                <input type="hidden" id="HasAbbrImage1"
 							                name="HasAbbrImage1" value="1" /> <input
-							                type="checkbox" id="boxHasAbbrImage1" class="txt_bg
+							                type="checkbox" id="boxHasAbbrImage1" class="txt_bg"
 							                name="boxHasAbbrImage1" />
             							
 						                </td>
@@ -125,7 +123,7 @@
 						                <td>
 						                 <label> <input type="hidden" id="HasWaterMark1"
 							                name="HasWaterMark1" value="0" /> <input
-							                type="checkbox" id="chHasWaterMark1" class="txt_bg
+							                type="checkbox" id="chHasWaterMark1" class="txt_bg"
 							                name="chHasWaterMark1" /></label>
             							
 						                </td>
@@ -133,7 +131,7 @@
 					                <tr>
 						                <td align="right" valign="top">缩略图宽:</td>
 						                <td>
-						                 <label> <input name="Width1" id="Width1" class="txt_bg
+						                 <label> <input name="Width1" id="Width1" class="txt_bg"
 							                type="text" value="500" style="width:36px"
 							                maxlength="4" /> </label> 
 						                </td>
@@ -141,7 +139,7 @@
 					                <tr>
 						                <td align="right" valign="top">缩略图高:</td>
 						                <td>
-						                 <label> <input name="Height1" id="Height1" class="txt_bg
+						                 <label> <input name="Height1" id="Height1" class="txt_bg"
 							                type="text" value="500" style="width:36px"
 							                maxlength="4" /> </label> 
 						                </td>
@@ -156,7 +154,7 @@
 
                 </div>
             </div>
-            <div id="right" style="width:25%;float:left;">
+            <div id="right" style="width:24%;float:right;">
                 <fieldset>
 	                <legend>预览</legend>
 	                <div style="overflow: auto;height:320px;*height:333px;">
@@ -165,11 +163,75 @@
                 </fieldset>
             </div>
         </div>
-        
+        <div style="clear:both;" id="msg"></div>
         <div id="browse">
         
         </div>
     </div>
     </form>
+    <script type="text/javascript">
+        /**
+        *上传完成
+        */
+        function onUploadCompleted(returnVal, errorMsg) {
+            switch (returnVal) {
+                case "1": // 上传成功
+                    try {
+                        window.parent.parent.Dialog.close();
+                    } catch (ex) { }
+                    break;
+                case "202":
+                    Dialog.alert('无效的文件类型！以下文件上传失败:' + errorMessage);
+                    return;
+                case "203":
+                    Dialog.alert("您没有权限上传此文件，请检查服务器设置");
+                    return;
+                default:
+                    Dialog.alert('上传失败，错误代码: ' + returnVal);
+                    return;
+            }
+        }
+        /**
+        *开始上传
+        */
+        function upload() {
+            var aid = document.getElementById("attachmentTypeID");   
+            var flag = false;
+            var count = 5;
+
+            for (var i = 1; i <= count; i++) {
+                var imgName = document.getElementById("File" + i).value;
+                if (imgName == "") {
+                    continue;
+                }
+                var ext = imgName.substring(imgName.lastIndexOf(".") + 1).toLowerCase();
+                if (ext == "jpg" || ext == "jpeg" || ext == "bmp" || ext == "gif" || ext == "png") {
+                    flag = true;
+                } else {
+                    Dialog.alert("图片上传不支持" + ext + "文件！请重新选择。");
+                    return;
+                }
+            }
+            if (flag) {
+                if (aid == null) {
+                    Dialog.alert("您没有选择 图片 分类！请选择。");
+                    return;
+                }
+                msg();
+                document.getElementById("form1").submit();
+            } else {
+                Dialog.alert("请先浏览选择文件！");
+                return;
+            }
+        } 
+    	/**
+    	*上传进度条
+    	*/   	    	
+    	function msg() {
+    	    var txt = "正在上传处理中，请稍候...耗时";
+    	    var counter = 1;
+    	    setInterval(function() { document.getElementById("msg").innerHTML = "<font color=red>" + txt + counter + "秒</font>"; counter++ }, 1000);
+    	}
+    </script>
 </body>
 </html>

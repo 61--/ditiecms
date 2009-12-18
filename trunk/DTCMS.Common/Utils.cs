@@ -75,8 +75,8 @@ namespace DTCMS.Common
         {
             if (HttpContext.Current.Request.QueryString[queryName] != null)
             {
-                if (Regular.ValidateNum(HttpContext.Current.Request.QueryString[queryName]))
-                    return int.Parse(HttpContext.Current.Request.QueryString[queryName].ToString());
+                if (Regular.ValidateNum(HttpContext.Current.Request.QueryString[queryName].Trim()))
+                    return int.Parse(HttpContext.Current.Request.QueryString[queryName].ToString().Trim());
                 else
                     return -1;
             }

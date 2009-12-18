@@ -6,7 +6,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
+<<<<<<< .mine
+          <StartPageUrl>admin/Media/Default.aspx</StartPageUrl>
+=======
           <StartPageUrl>admin/Template/TemplateFile_list.aspx</StartPageUrl>
+>>>>>>> .r529
           <StartAction>SpecificPage</StartAction>
           <AspNetDebugging>True</AspNetDebugging>
           <NativeDebugging>False</NativeDebugging>

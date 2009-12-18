@@ -46,7 +46,7 @@
             if (json != "") {
             var data = eval("data=" + json);
             $.each(data, function(i, n) {
-            var dataList = new Array("<a href='Class_add.aspx?Id=" + n.cid + "'>" + n.classname + "</a>", n.classtype, n.adddate, "<input type=\"text\" onfocus=\"getCurValue(this)\" onblur=\"updateSort(" + n.cid + ")\" id=\"order_" + n.cid + "\" class=\"class_order\" value=\"" + n.orderid + "\">", "<a href=\"Class_add.aspx?Id=" + n.cid + "\">修改</a>&nbsp;&nbsp;<a href=\"javascript:DeleteData(" + n.cid + ",false)\">删除</a>");
+            var dataList = new Array("<a href='Class_add.aspx?Id=" + n.cid + "'>" + n.classname + "</a>", n.classtype, n.adddate, "<input type=\"text\" onchange=\"updateSort(" + n.cid + ")\" id=\"order_" + n.cid + "\" class=\"class_order\" value=\"" + n.orderid + "\">", "<a href=\"Class_add.aspx?Id=" + n.cid + "\">修改</a>&nbsp;&nbsp;<a href=\"javascript:DeleteData(" + n.cid + ",false)\">删除</a>");
                 gridTree.addGirdNode(dataList, n.cid, n.parentid == 0 ? -1 : n.parentid, null, n.orderid, "");
                });
             }
@@ -105,7 +105,6 @@
             </div>
             <div id="gridTreeDiv">
             </div>
-            <input type="hidden" id="curOrder" value="" />
         </div>
     </form>
     <script type="text/javascript">
@@ -153,32 +152,26 @@
                 });
             });
         }
-        //获取当前排序号
-        function getCurValue(obj) {
-            $("#curOrder").val(obj.value);
-        }
         //更新排序
         function updateSort(cid) {
             var curVal = $("#order_" + cid).val();
-            if (curVal != $("#curOrder").val()) {
-                $.ajax({
-                    url: "/admin/ajax/class_list.aspx",
-                    type: "GET",
-                    data: "action=order&Id=" + cid + "&orderId=" + curVal + "&ran=" + Math.random(),
-                    success: function(responseText) {
-                        if (responseText > 0) {
-                            LoadData();
-                        } else if (responseText == -1) {
-                            Dialog.alert("栏目排序更新出错！");
-                            $("#order_" + cid).val($("#curOrder").val());
-                        } else {
-                            Dialog.alert("栏目排序更新失败！");
-                            $("#order_" + cid).val($("#curOrder").val());
-                        }
+            $.ajax({
+                url: "/admin/ajax/class_list.aspx",
+                type: "GET",
+                data: "action=order&Id=" + cid + "&orderId=" + curVal + "&ran=" + Math.random(),
+                success: function(responseText) {
+                    if (responseText > 0) {
+                        LoadData();
+                    } else if (responseText == -1) {
+                        Dialog.alert("栏目排序更新出错！");
+                        $("#order_" + cid).val($("#curOrder").val());
+                    } else {
+                        Dialog.alert("栏目排序更新失败！");
+                        $("#order_" + cid).val($("#curOrder").val());
                     }
-                });
-            }
-        }
+                }
+            });
+        }        
 </script>
 </body>
 </html>
