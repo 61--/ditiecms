@@ -13,7 +13,6 @@ Language.syntax = [
 	{ input : /=(".*?")/g, output : '=<s>$1</s>' }, // atributes double quote
 	{ input : /=('.*?')/g, output : '=<s>$1</s>' }, // atributes single quote
 	{ input : /(&lt;!--.*?--&gt.)/g, output : '<ins>$1</ins>' }, // comments 
-	{ input :/(\{.*?\})/g, output:'<q>$1</q>' },
 	{ input : /\b(alert|window|document|break|continue|do|for|new|this|void|case|default|else|function|return|typeof|while|if|label|switch|var|with|catch|boolean|int|try|false|throws|null|true|goto)\b/g, output : '<i>$1</i>' } // script reserved words 
 ]
 
@@ -53,8 +52,8 @@ Language.complete = [
 	{ input : '\'',output : '\'$0\'' },
 	{ input : '"', output : '"$0"' },
 	{ input : '(', output : '\($0\)' },
-	{ input : '[', output : '\[$0\]' }
-	/*{ input : '{', output : '{\n\t$0\n}' }*/		
+	{ input : '[', output : '\[$0\]' },
+	{ input : '{', output : '{\n\t$0\n}' }		
 ]
 
 Language.shortcuts = []
