@@ -134,6 +134,13 @@
     <Compile Include="admin\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\Media\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Media\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\Media\PhotoManagement.aspx.cs">
       <DependentUpon>PhotoManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -141,19 +148,26 @@
     <Compile Include="admin\Media\PhotoManagement.aspx.designer.cs">
       <DependentUpon>PhotoManagement.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\Media\Photo_add.aspx.cs">
-      <DependentUpon>Photo_add.aspx</DependentUpon>
+    <Compile Include="admin\Media\PhotoSearch.aspx.cs">
+      <DependentUpon>PhotoSearch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\Media\Photo_add.aspx.designer.cs">
-      <DependentUpon>Photo_add.aspx</DependentUpon>
+    <Compile Include="admin\Media\PhotoSearch.aspx.designer.cs">
+      <DependentUpon>PhotoSearch.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\Media\Photo_List.aspx.cs">
-      <DependentUpon>Photo_List.aspx</DependentUpon>
+    <Compile Include="admin\Media\PhotoUpload.aspx.cs">
+      <DependentUpon>PhotoUpload.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\Media\Photo_List.aspx.designer.cs">
-      <DependentUpon>Photo_List.aspx</DependentUpon>
+    <Compile Include="admin\Media\PhotoUpload.aspx.designer.cs">
+      <DependentUpon>PhotoUpload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Media\SimpleUploader.aspx.cs">
+      <DependentUpon>SimpleUploader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Media\SimpleUploader.aspx.designer.cs">
+      <DependentUpon>SimpleUploader.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\news\Class_list.aspx.cs">
       <DependentUpon>Class_list.aspx</DependentUpon>
@@ -257,9 +271,12 @@
     <Content Include="admin\images\ico\i_p_type.gif" />
     <Content Include="admin\images\ico\i_small_delete.gif" />
     <Content Include="admin\images\ico\i_small_edit.gif" />
+    <Content Include="admin\Media\Default.aspx" />
+    <Content Include="admin\Media\EmptyPage.html" />
     <Content Include="admin\Media\PhotoManagement.aspx" />
-    <Content Include="admin\Media\Photo_add.aspx" />
-    <Content Include="admin\Media\Photo_List.aspx" />
+    <Content Include="admin\Media\PhotoSearch.aspx" />
+    <Content Include="admin\Media\PhotoUpload.aspx" />
+    <Content Include="admin\Media\SimpleUploader.aspx" />
     <Content Include="admin\news\Class_list.html" />
     <Content Include="admin\Template\TemplateFile_list.aspx" />
     <Content Include="admin\Template\Template_add.aspx" />
@@ -856,6 +873,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="admin\files\photo\" />
     <Folder Include="admin\Log\" />
     <Folder Include="css\" />
     <Folder Include="FileUpload\" />
