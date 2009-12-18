@@ -476,6 +476,7 @@
     <Content Include="Inc\Popup\images\help.gif" />
     <Content Include="Inc\Popup\images\important.gif" />
     <Content Include="Inc\Popup\images\info.gif" />
+    <Content Include="Inc\Popup\images\loading.gif" />
     <Content Include="Inc\Popup\images\title.gif" />
     <Content Include="Inc\Popup\Popup.css" />
     <Content Include="Inc\Popup\Popup.js" />

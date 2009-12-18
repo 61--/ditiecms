@@ -50,11 +50,14 @@
 	filter:Alpha(Opacity=90);
 	-moz-opacity:0.9;
 }
-.popup_content
+.popup_tip .popup_content
 {
 	margin:5px;
 	border:1px #9FB7E7 solid;
 	background:#FFF;
 	text-align:center;
-	text-indent:20px;
+}
+.popup_tip img
+{
+	vertical-align:middle;
 }

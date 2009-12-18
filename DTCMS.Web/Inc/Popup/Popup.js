@@ -21,9 +21,10 @@
 
         // 公共方法
         tip: function(msg, top, left, autoClose) {
+            this.ID = 'tip';
             this.isPopup = false;
             this.autoClose = autoClose || this.autoClose;
-            this.width = 250;
+            this.width = 220;
             this.height = 50;
             this.top = top || ($(document).height() - this.height) / 2;
             this.left = left || ($(document).width() - this.width) / 2;
@@ -182,20 +183,21 @@
 
     }
 
-    // Shortuct functions
-    dTip = function(msg, top, left, autoClose) {
-        $.popup.tip(msg, top, left, autoClose);
-    }
-
     // 显示Loading信息
-    showLoading = function(elem) {
+    showLoading = function(msg, elem) {
+        var loadingMsg = msg || '正在加载数据，请稍候...';
         if (elem == null) {
-            $.popup.tip('正在加载数据，请稍候...', null, null, 0);
+            $.popup.tip('<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0"><tr>' +
+                '<td align="center"><img src="/Inc/Popup/images/loading.gif" /> ' + loadingMsg + '</td></tr></table>', null, null, 0);
         } else {
             var middle = ($(elem).height() - 50) / 2;
             var top = $(elem).offset().top + (middle > 0 ? middle : 0);
-            $.popup.tip('正在加载数据，请稍候...', top, null, 0);
+            $.popup.tip('<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0"><tr>' +
+                 '<td align="center"><img src="/Inc/Popup/images/loading.gif" /> ' + loadingMsg + '</td></tr></table>', top, null, 0);
         }
+    }
+    hideLoading = function() {
+        $("#_Popup_tip").fadeOut(500);
     }
     showTip = function(msg, elem, autoClose) {
         if (elem == null) {
