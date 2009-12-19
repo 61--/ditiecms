@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Web;
+using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DTCMS.Common;
@@ -28,10 +29,10 @@ namespace DTCMS.Web.admin
         /// 图片上传
         /// </summary>
         private void PhotoUpload()
-        {
+        {               
             //图片配置列表
-            Hashtable htPhoto = AttachmentConfig.GetPhotoList();
-            string filepath = DTCMS.Common.Utils.GetRootPath() + htPhoto["path"].ToString()+"//"; //文件存放路径
+            Hashtable htPhoto = AttachmentConfig.GetPhotoList();           
+            string filepath = DTCMS.Common.Utils.GetRootPath() + htPhoto["path"].ToString()+"\\"; //文件存放路径
             string errorMsg = string.Empty; //错误信息
             int returnVal = 1;    //返回值。1：成功，202：无效上传文件，203：你没有权限，204：未知错误
             string returnImgPath = string.Empty;    //返回图片路径

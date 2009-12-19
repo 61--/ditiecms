@@ -880,15 +880,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="admin\files\photo\abbrPhoto1\" />
-    <Folder Include="admin\files\photo\abbrPhoto2\" />
-    <Folder Include="admin\files\photo\photo\" />
     <Folder Include="admin\log\" />
     <Folder Include="css\" />
     <Folder Include="FileUpload\" />
     <Folder Include="images\" />
     <Folder Include="js\" />
-    <Folder Include="uploads\" />
+    <Folder Include="uploads\users\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
