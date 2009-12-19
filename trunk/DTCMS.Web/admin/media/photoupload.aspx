@@ -120,19 +120,19 @@
                                     <td style="width:18%;text-align:right;"><label>原图水印:</label></td>
                                     <td style="width:82%;"><input type="hidden" id="HasWaterMark"
                                         name="HasWaterMark" value="0" /> <input
-                                        type="checkbox" id="chHasWaterMark" name="chHasWaterMark"  class="txt_bg" />
+                                        type="checkbox" id="chHasWaterMark" name="chHasWaterMark"  class="txt_bg" value="true" />
                                     <input type="hidden" id="Count" name="Count" value="1" /></td>
                                 </tr>	
                                 <tr id="AbbrImagesTable">
                                     <td align="right"><label>缩略图:</label></td>
                                     <td>
-                                        <input type="checkbox" id="chHasAbbrImage1" class="txt_bg" name="chHasAbbrImage1" checked="checked" />
+                                        <input type="checkbox" id="chHasAbbrImage1" class="txt_bg" name="chHasAbbrImage1" checked="checked" value="true"/>
                                     </td>
                                 </tr>								
                                 <tr>
                                     <td style="vertical-align:top;text-align:right;">缩略图水印:</td>
                                     <td>
-                                        <input type="checkbox" id="chHasWaterMark1" class="txt_bg" name="chHasWaterMark1" />
+                                        <input type="checkbox" id="chHasWaterMark1" class="txt_bg" name="chHasWaterMark1" value="true" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -147,7 +147,7 @@
                                     <td align="right" valign="top">缩略图高:</td>
                                     <td>
                                         <input name="abbrImageHeight1" id="abbrImageHeight1" class="txt_bg"
-                                        type="text" value="500" style="width:36px"
+                                        type="text" value="0" style="width:36px"
                                         maxlength="4" />
                                     </td>
                                 </tr>

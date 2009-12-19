@@ -837,6 +837,7 @@
     <None Include="admin\images\blue\admin_tlogo.psd" />
     <None Include="ckfinder\userfiles\.htaccess" />
     <Content Include="config\sys\AttachmentConfig.config" />
+    <Content Include="config\sys\gobal.config" />
     <None Include="editor\fckeditor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
     <None Include="editor\fckeditor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
     <None Include="editor\fckeditor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />

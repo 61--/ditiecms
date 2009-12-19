@@ -29,8 +29,8 @@ namespace DTCMS.Web.admin
             int abbrImageWidth1 = DTCMS.Common.Utils.GetFormInt("abbrImageWidth1"); //缩略图宽
             int abbrImageHeight1 = DTCMS.Common.Utils.GetFormInt("abbrImageHeight1");   //缩略图高
 
-            Hashtable htPhoto = AttachmentConfig.GetPhotoList();    //附件配置列表
-            string filepath = DTCMS.Common.Utils.GetRootPath() + htPhoto["path"].ToString()+"\\"; //附件存放路径
+            Hashtable htPhoto = AttachmentConfig.GetAttachmentList();    //附件配置列表
+            string filepath = DTCMS.Common.Utils.GetRootPath() + htPhoto["Path"].ToString()+"\\"; //附件存放路径
 
             string errorMsg = string.Empty; //错误信息
             int returnVal = 1;    //返回值。1：成功，202：无效上传文件，203：你没有权限，204：未知错误
@@ -41,8 +41,7 @@ namespace DTCMS.Web.admin
             {
                 string fileDisplayName = "File"+i.ToString()+"Name";    //附件名称
                 string fileInfo = "File" + i.ToString() + "Info";  //附件描述
-
-                #region 附件上传
+                
                 HttpPostedFile userPostedFile = uploadedFiles[i];
                 string fileName = System.IO.Path.GetFileName(userPostedFile.FileName);
                 if (fileName != "")
@@ -61,11 +60,20 @@ namespace DTCMS.Web.admin
 
                     try
                     {
+                        #region 附件上传
                         int fileContentLen = userPostedFile.ContentLength;
                         if (fileContentLen > 0)
                         {
                             returnImgPath = DateTime.Now.ToString("yyyyMMddHHmmss") + DateTime.Now.Millisecond.ToString() + fileName.Substring(fileName.LastIndexOf('.')).ToLower();
                             userPostedFile.SaveAs(filepath + returnImgPath);  //附件上传
+
+                            if (attachmentAttribute == (int)EAttachmentAttribute.Photo)
+                            {
+                                if (hasWaterMark == "true")
+                                {
+                                    WaterImage(filepath + returnImgPath, filepath +returnImgPath);
+                                }
+                            }
                         }
                         else
                         {
@@ -75,6 +83,47 @@ namespace DTCMS.Web.admin
                             }
                             errorMsg += fileName;
                         }
+                        #endregion 附件上传
+
+                        if (attachmentAttribute == (int)EAttachmentAttribute.Photo)
+                        {
+
+                            if (hasAbbrImage1 == "true")
+                            {
+
+                                #region 生成缩略图
+                                string mode = "W";
+                                if (abbrImageHeight1 == -1 || abbrImageHeight1 == 0)
+                                {
+                                    mode = "W";
+                                }
+                                else if (abbrImageWidth1 == 0 || abbrImageWidth1 == -1)
+                                {
+                                    mode = "H";
+                                }
+                                else if ((abbrImageHeight1 != -1 && abbrImageHeight1 != 0) || (abbrImageWidth1 != 0 || abbrImageWidth1 != -1))
+                                {
+                                    mode = "HW";
+                                }
+                                else
+                                {
+                                    mode = "HW";
+                                }
+                                string abbPath = filepath + DateTime.Now.ToString("yyyyMMddHHmmss") + DateTime.Now.Millisecond.ToString() + "_abbr" + fileName.Substring(fileName.LastIndexOf('.')).ToLower();
+                                Common.WaterImage.MakeThumbnail(filepath+ returnImgPath,abbPath
+                                , abbrImageWidth1, abbrImageHeight1, mode);
+
+                                #endregion 生成缩略图
+
+                                #region 缩略图水印
+                                if (hasWaterMark1 == "true")
+                                {
+                                    WaterImage(abbPath,abbPath);
+                                }
+                                #endregion 缩略图水印   
+                            }                            
+                        }
+
                     }
                     catch
                     {                        
@@ -86,11 +135,10 @@ namespace DTCMS.Web.admin
                 if (errorMsg != "")
                 {
                     returnVal = 202;    //无效上传文件
-                }
-                #endregion 附件上传
+                }                
             }            
 
-            Response.Redirect("~/admin/Media/EmptyPage.html?returnVal=" + returnVal + "&errorMsg=" + errorMsg+"&returnImgPath="+"/"+htPhoto["path"].ToString().Replace("\\","/")+"/"+returnImgPath);
+            Response.Redirect("~/admin/Media/EmptyPage.html?returnVal=" + returnVal + "&errorMsg=" + errorMsg+"&returnImgPath="+"/"+htPhoto["Path"].ToString().Replace("\\","/")+"/"+returnImgPath);
         }
 
         /// <summary>
@@ -104,15 +152,15 @@ namespace DTCMS.Web.admin
             switch (attachmentAtr)
             {
                 case (int)EAttachmentAttribute.Photo:
-                    return AttachmentFormat(fileName, "imageFormat");
+                    return AttachmentFormat(fileName, "ImageFormat");
                 case (int)EAttachmentAttribute.Video:
-                    return AttachmentFormat(fileName, "videoFormat");
+                    return AttachmentFormat(fileName, "VideoFormat");
                 case (int)EAttachmentAttribute.Audio:
-                    return AttachmentFormat(fileName, "audioFormat");
+                    return AttachmentFormat(fileName, "AudioFormat");
                 case (int)EAttachmentAttribute.Flash:
-                    return AttachmentFormat(fileName, "flashFormat");
+                    return AttachmentFormat(fileName, "FlashFormat");
                 case (int)EAttachmentAttribute.Attachment:
-                    return AttachmentFormat(fileName, "attachmentFormat");
+                    return AttachmentFormat(fileName, "AttachmentFormat");
                 default:
                     return false;
             }
@@ -126,7 +174,7 @@ namespace DTCMS.Web.admin
         /// <returns></returns>
         private bool AttachmentFormat(string fileName,string configParamName)
         {
-            string[] extNameList = AttachmentConfig.GetPhotoStr(configParamName).Split('|');
+            string[] extNameList = AttachmentConfig.GetAttachmentStr(configParamName).Split('|');
             string extName = fileName.Substring(fileName.LastIndexOf(".") + 1).ToLower();
             if (extNameList != null && extNameList.Length > 0)
             {
@@ -139,6 +187,30 @@ namespace DTCMS.Web.admin
                 }
             }
             return false;
+        }
+
+        /// <summary>
+        /// 水印
+        /// </summary>
+        /// <param name="path">原图地址</param>
+        /// <param name="path_syp">水印地址</param>
+        private void WaterImage(string path, string path_syp)
+        {
+            Hashtable htWarterImage = GobalConfig.GetWaterImageList();
+            if (Convert.ToInt32(htWarterImage["WaterPic"]) == 1)
+            {//图片水印
+                Common.WaterImage.AddWaterPic(path, path_syp, htWarterImage["WaterPicPath"].ToString()
+                     , Convert.ToDouble(htWarterImage["XPercent"])
+                    , Convert.ToDouble(htWarterImage["YPercent"])
+                    , float.Parse(htWarterImage["Transparence"].ToString()));
+            }
+            else
+            {//文字水印
+                Common.WaterImage.AddWater(path,path_syp, htWarterImage["WaterCharater"].ToString()
+                    , Convert.ToDouble(htWarterImage["XPercent"])
+                    , Convert.ToDouble(htWarterImage["YPercent"])
+                    , System.Drawing.ColorTranslator.FromHtml(htWarterImage["CharColor"].ToString()));
+            }
         }
 
     }

@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AttachmentConfig.cs" />
     <Compile Include="ConfigPath.cs" />
+    <Compile Include="GobalConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
