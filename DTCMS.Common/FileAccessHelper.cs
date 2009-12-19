@@ -28,7 +28,8 @@ namespace DTCMS.Common
         /// <returns>是否存在</returns>
         public static bool DirectoryExists(string directorypath)
         {
-            return System.IO.Directory.Exists(directorypath);
+            string path = Utils.GetRootPath() + directorypath;
+            return System.IO.Directory.Exists(path);
         }
 
         #region ReadTextFile

@@ -6,6 +6,7 @@ using System.Data;
 using DTCMS.Common;
 using DTCMS.Common.Xml;
 using System.Xml;
+using System.IO;
 
 namespace DTCMS.Config
 {
@@ -38,7 +39,12 @@ namespace DTCMS.Config
             xmlDoc.Load(path);
             XmlNode xmlnode = xmlDoc.DocumentElement.SelectSingleNode("/attachment/photo");
             Hashtable ht = new Hashtable();
-            ht.Add("path", xmlDoc.GetSingleNodeValue(xmlnode,"path"));
+            string fileName = xmlDoc.GetSingleNodeValue(xmlnode, "path")+"\\"+DateTime.Now.ToString("yyyyMM");
+            if (!FileAccessHelper.DirectoryExists(fileName))
+            {
+                Directory.CreateDirectory(fileName);
+            }
+            ht.Add("path", fileName);
             ht.Add("contentLength", xmlDoc.GetSingleNodeValue(xmlnode, "contentLength"));
             ht.Add("format", xmlDoc.GetSingleNodeValue(xmlnode, "format"));
             ht.Add("hasAbbrImage", xmlDoc.GetSingleNodeValue(xmlnode, "hasAbbrImage"));
