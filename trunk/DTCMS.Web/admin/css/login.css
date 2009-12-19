@@ -1,0 +1,156 @@
+﻿/*登陆界面*/
+*{
+	padding:0px;
+	margin:0px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+body {
+	margin: 0px;
+	font-size:12px;
+	color: #555;
+	position:relative;
+}
+input{
+	vertical-align:middle;
+}
+img{
+	border:none;
+	vertical-align:middle;
+}
+a{
+	color:#666666;
+	text-decoration: none;
+}
+a:hover{
+	color:#2366A8;
+	text-decoration:none;
+}
+.main{
+	width:640px;
+	padding-bottom:10px;
+	margin-top: 150px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	background-image: url(../images/login_toptitle.gif);
+	background-repeat: no-repeat;
+	height: 380px;
+}
+.main .title{
+	height:28px;
+	line-height:20px;
+	font-size:12px;
+	color:#555555;
+	padding-top: 18px;
+	padding-right: 35px;
+}
+.main .title em {
+	font-style: normal;
+	float: right;
+	width: 60px;
+	line-height: 20px;
+	padding-right:20px;
+	padding-top: 1px;
+	height: 20px;
+}
+.main .title em a{
+    cursor:help;
+}
+.main .login{
+	overflow:hidden;
+	padding-top: 30px;
+}
+.main .login .inputbox{
+	width:255px;
+	float:right;
+	background-image: url(../images/login_input_hr.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 180px;
+	padding-top: 45px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.main .login .inputbox dl{
+	height:35px;
+	clear:both;
+	vertical-align:middle;
+}
+.main .login .inputbox dl dt{
+	float:left;
+	width:50px;
+	height:35px;
+	line-height:35px;
+	text-align:right;
+	padding-right: 5px;
+}
+.main .login .inputbox dl dd{
+	width:160px;
+	float:left;
+	padding-top:5px;
+}
+.main .login .inputbox dl dd input{
+	font-size:12px;
+	border:1px solid #dcdcdc;
+	background:url(../images/login_input_bg.gif) left top no-repeat;
+	height: 20px;
+	line-height: 18px;
+	padding-right: 2px;
+	padding-left: 2px;
+}
+.main .login .inputbox dl .input {
+	width:62px;
+	height:25px;
+	background:url(../images/login_submit.gif) no-repeat;
+	border:none;
+	cursor:pointer;
+}
+.main .login .butbox{
+	float:left;
+	width:280px;
+	padding-top: 10px;
+	padding-left: 25px;
+}
+.main .login .butbox dl dt{
+	height:100px;
+	padding-top:5px;
+	background-image: url(../images/logo_01.gif);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+.main .login .butbox dl dd{
+	line-height:21px;
+	padding-top: 50px;
+	color: #555;
+	text-align: center;
+}
+.main .msg{
+	clear:both;
+	line-height:20px;
+	border:1px solid #DCDCDC;
+	color:#888;
+	margin-left: 55px;
+	background-color: #FFFFFF;
+	padding-right: 2px;
+	padding-left: 2px;
+	width: 150px;
+	margin-bottom: 10px;
+	margin-top: 5px;
+}
+
+.copyright{
+	text-align:center;
+	font-size:11px;
+	color:#666;
+	font-family: Arial;
+	padding-top: 5px;
+}
+.copyright a:hover{
+	text-decoration: underline;
+}
+.clear {
+	font-size: 0px;
+	line-height: 0px;
+	clear: both;
+	height: 0px;
+}
