@@ -10,9 +10,10 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using DTCMS.Entity;
 using DTCMS.BLL;
-namespace DTCMS.Web.admin.Template
+
+namespace DTCMS.Web.admin
 {
-    public partial class Template_add : System.Web.UI.Page
+    public partial class Template_add : AdminPage
     {
         Sys_TemplateBLL bllTemplate = new Sys_TemplateBLL();
         protected void Page_Load(object sender, EventArgs e)

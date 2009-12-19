@@ -7,9 +7,10 @@ using System.Web.Security;
 using System.Web.UI;
 using DTCMS.BLL;
 using DTCMS.Common;
-namespace DTCMS.Web.admin.ajax
+
+namespace DTCMS.Web.admin
 {
-    public partial class Template_list : System.Web.UI.Page
+    public partial class Template_list : AdminPage
     {
         
     }

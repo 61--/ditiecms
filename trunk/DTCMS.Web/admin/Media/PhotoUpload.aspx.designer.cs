@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DTCMS.Web.admin.Media {
+namespace DTCMS.Web.admin {
     
     
     public partial class PhotoUpload {

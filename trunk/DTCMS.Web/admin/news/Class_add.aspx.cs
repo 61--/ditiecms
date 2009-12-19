@@ -13,9 +13,9 @@ using DTCMS.Entity.Enum;
 using DTCMS.BLL;
 using DTCMS.Common;
 
-namespace DTCMS.Web.admin.news
+namespace DTCMS.Web.admin
 {
-    public partial class Class_add : System.Web.UI.Page
+    public partial class Class_add : AdminPage
     {
         private Arc_ClassBLL bllClass = new Arc_ClassBLL();
         private int CID=-1;  //栏目ID

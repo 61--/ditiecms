@@ -4,13 +4,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace DTCMS.Web.admin.news
+namespace DTCMS.Web.admin
 {
-    public partial class Class_list : System.Web.UI.Page
+    public partial class Class_list : AdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

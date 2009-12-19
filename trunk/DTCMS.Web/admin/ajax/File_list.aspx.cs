@@ -7,9 +7,10 @@ using System.Web.Security;
 using DTCMS.BLL;
 using DTCMS.Common;
 using Newtonsoft.Json;
-namespace DTCMS.Web.admin.ajax
+
+namespace DTCMS.Web.admin
 {
-    public partial class File_list : System.Web.UI.Page
+    public partial class File_list : AdminPage
     {
         Sys_FileInfoBLL bllFile = new Sys_FileInfoBLL();
         protected void Page_Load(object sender, EventArgs e)

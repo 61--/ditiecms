@@ -16,12 +16,12 @@
             popTip('H0201002');
         });
         function popTip(msg, func, w, h) {
-            var w = w || 260,
-            h = h || 110;
+            var width = w || 260,
+            height = h || 110;
             var diag = new Dialog({
-                Width: w,
-                Height: h,
-                Modal: -10
+                Width: width,
+                Height: height,
+                Modal: -1
             });
             diag.ID = "popTip";
             diag.AutoClose = 30
@@ -130,7 +130,6 @@
     <div class="bottom">
         CopyRight &copy; 2009 <a href="http://www.91aspx.com" target="_blank">www.91aspx.com</a>
         All rights reserved. Powered by <a href="http://www.91aspx.com" target="_blank">DTCMS V1.0</a>
-        <div style="display:none;"><script type="text/javascript" src="http://js.users.51.la/3439117.js"></script></div>
     </div>
 </body>
 </html>

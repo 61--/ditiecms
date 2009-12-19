@@ -4,7 +4,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace DTCMS.Web.Admin
+namespace DTCMS.Web.admin
 {
     public partial class top_index : AdminPage
     {

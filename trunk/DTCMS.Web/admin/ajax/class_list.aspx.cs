@@ -11,9 +11,10 @@ using System.Web.UI.WebControls.WebParts;
 using System.Text;
 using DTCMS.Common;
 using DTCMS.BLL;
-namespace DTCMS.Web.admin.ajax
+
+namespace DTCMS.Web.admin
 {
-    public partial class class_list : System.Web.UI.Page
+    public partial class class_list : AdminPage
     {
         private Arc_ClassBLL bllClass = new Arc_ClassBLL();     //栏目
         private Arc_ArticleBLL bllArticle = new Arc_ArticleBLL();   //文章
