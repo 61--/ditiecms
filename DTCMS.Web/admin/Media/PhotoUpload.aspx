@@ -8,7 +8,18 @@
 <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
 <link href="/Inc/Dialog/dialog.css" rel="stylesheet" type="text/css" />        
 <script type="text/javascript" src="/Inc/Dialog/Dialog.js"></script>
-<style type="text/css">   
+<style type="text/css">
+    *{
+	    padding:0px;
+	    margin:0px;
+	    font-family:Verdana, Arial, Helvetica, sans-serif;
+	    font-size:12px;
+    }      
+    tr
+    {
+        height:26px;
+        line-height:26px;
+    }
     .text{
 	    width:119px;
     }
@@ -25,13 +36,13 @@
 <body>
     <div style="display:none;"><iframe name="formTarget" src="javascript:void(0)" height="0"></iframe></div>	
     <form enctype="multipart/form-data" id="form1" name="Form1" target="formTarget" method="post" action="SimpleUploader.aspx?type=image">
-    <div id="content">
+    <div id="content" style="margin-top:20px;">
         <div id="upload" style="width:760px;">
 	        <div id="left" style="width:75%;float:left;">
-                <div id="top">
+               <div id="top">
 	                <fieldset>
 		                <legend>图片上传</legend>
-		                <table id="imagetable0" style="width:100%;" cellpadding="2" cellspacing="0">
+		                <table id="imagetable0" style="width:100%;empty-cells:show ;" cellpadding="0" cellspacing="0" >
 			                <tr>
 				                <td style="width:6%;" align="right"></td>
 				                <td style="width:34%;">图片浏览</td>
@@ -87,10 +98,10 @@
 		                </table>
 	                </fieldset>
                 </div>
-                <div id="bottom">
+                <div id="bottom" style="margin-top:10px;">
 	                 <fieldset><legend>
 	                 <label>参数设置</label></legend>
-		                <table width="100%" cellpadding="2" cellspacing="0">
+		                <table width="100%" cellpadding="0" cellspacing="0">
 			                <tr>
 				                <td style="width:53%;text-align:left; vertical-align:top;">
 				                <table width="100%" cellpadding="2" cellspacing="0">
@@ -151,15 +162,15 @@
 
 		                </table>		
 	                </fieldset>
-
                 </div>
             </div>
+          
             <div id="right" style="width:24%;float:right;">
                 <fieldset>
 	                <legend>预览</legend>
-	                <div style="overflow: auto;height:320px;*height:333px;">
-		                <div id="Preview" style="overflow: visible;"></div>
-	                </div>
+	                    <div style="width:100%;overflow: auto;height:340px">
+                            <div id="preview" style="overflow: visible;"></div>
+                        </div>
                 </fieldset>
             </div>
         </div>
