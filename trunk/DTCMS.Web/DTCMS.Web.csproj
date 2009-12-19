@@ -281,6 +281,8 @@
     <Content Include="admin\Template\TemplateFile_list.aspx" />
     <Content Include="admin\Template\Template_add.aspx" />
     <Content Include="admin\Template\Template_list.aspx" />
+    <Content Include="bin\DTCMS.Config.dll" />
+    <Content Include="bin\DTCMS.Config.pdb" />
     <Content Include="ckfinder\bin\CKFinder.dll" />
     <Content Include="ckfinder\ckfinder.html" />
     <Content Include="ckfinder\ckfinder.js" />
@@ -834,7 +836,7 @@
     <Content Include="ValidateCode.ashx" />
     <None Include="admin\images\blue\admin_tlogo.psd" />
     <None Include="ckfinder\userfiles\.htaccess" />
-    <Content Include="Config\Sys\Media\AttachmentConfig.config" />
+    <Content Include="Config\Sys\AttachmentConfig.config" />
     <None Include="Editor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
     <None Include="Editor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
     <None Include="Editor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />
@@ -847,6 +849,10 @@
     <ProjectReference Include="..\DTCMS.Common\DTCMS.Common.csproj">
       <Project>{086A7F54-1A11-42E1-BE0D-33863EAEF4A3}</Project>
       <Name>DTCMS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTCMS.Config\DTCMS.Config.csproj">
+      <Project>{A4CC57ED-9E99-4FF5-95E9-A7BBB3C3FB43}</Project>
+      <Name>DTCMS.Config</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTCMS.Controls\DTCMS.Controls.csproj">
       <Project>{B9352D26-CB19-4327-97CD-7FE93BD1CC4B}</Project>

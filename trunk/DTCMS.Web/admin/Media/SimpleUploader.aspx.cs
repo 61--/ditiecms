@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DTCMS.Common;
+using DTCMS.Config;
 
 namespace DTCMS.Web.admin.Media
 {
@@ -27,9 +29,12 @@ namespace DTCMS.Web.admin.Media
         /// </summary>
         private void PhotoUpload()
         {
-            string filepath = DTCMS.Common.Utils.GetRootPath() + "admin\\files\\photo"+"\\";  //文件存放路径
+            //图片配置列表
+            Hashtable htPhoto = AttachmentConfig.GetPhotoList();
+            string filepath = DTCMS.Common.Utils.GetRootPath() + htPhoto["path"].ToString()+"//"; //文件存放路径
             string errorMsg = string.Empty; //错误信息
             int returnVal = 1;    //返回值。1：成功，202：无效上传文件，203：你没有权限，204：未知错误
+            string returnImgPath = string.Empty;    //返回图片路径
 
             HttpFileCollection uploadedFiles = Request.Files;
             for (int i = 0; i < uploadedFiles.Count; i++)
@@ -42,7 +47,6 @@ namespace DTCMS.Web.admin.Media
                     #region 验证图片格式是否正确
                     if (!PhotoFormat(fileName))
                     {
-
                         if (errorMsg != string.Empty)
                         {
                             errorMsg += ",";
@@ -57,7 +61,8 @@ namespace DTCMS.Web.admin.Media
                         int fileContentLen = userPostedFile.ContentLength;
                         if (fileContentLen > 0)
                         {
-                            userPostedFile.SaveAs(filepath + fileName);  //图片上传
+                            returnImgPath = DateTime.Now.ToString("yyyyMMddHHmmss") + fileName.Substring(fileName.LastIndexOf('.')).ToLower();
+                            userPostedFile.SaveAs(filepath + returnImgPath);  //图片上传
                         }
                         else
                         {
@@ -69,8 +74,9 @@ namespace DTCMS.Web.admin.Media
                         }
                     }
                     catch
-                    {
+                    {                        
                         returnVal = 204;    //未知错误
+                        errorMsg = "";
                     }
                 }
                 if (errorMsg != "")
@@ -84,7 +90,7 @@ namespace DTCMS.Web.admin.Media
                 #endregion 存储数据
             }            
 
-            Response.Redirect("~/admin/Media/EmptyPage.html?returnVal=" + returnVal + "&errorMsg=" + errorMsg);
+            Response.Redirect("~/admin/Media/EmptyPage.html?returnVal=" + returnVal + "&errorMsg=" + errorMsg+"&returnImgPath="+"/"+htPhoto["path"].ToString().Replace("\\","/")+"/"+returnImgPath);
         }
 
         /// <summary>
@@ -92,15 +98,16 @@ namespace DTCMS.Web.admin.Media
         /// </summary>
         private bool PhotoFormat(string fileName)
         {
+            string[] extNameList = AttachmentConfig.GetPhotoStr("format").Split('|');
             string extName = fileName.Substring(fileName.LastIndexOf(".") + 1).ToLower();
-            if (extName == "jpg" || extName == "jpeg" || extName == "bmp" || extName == "gif" || extName == "png")
+            for (int i = 0; i < extNameList.Length; i++)
             {
-                return true;
+                if (extName == extNameList[i].ToLower())
+                {
+                    return true;
+                }
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
     }
 }

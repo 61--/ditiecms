@@ -28,6 +28,7 @@
 <body>
     <form id="form1" runat="server">
     <div >
+        <img id="imgDisplay" src="" alt="" />
         <input type="text" id="imgPath" />
         <button id="btnUpload" onclick="upload();">浏览</button>
     </div>
