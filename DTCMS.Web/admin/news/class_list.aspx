@@ -14,7 +14,7 @@
     <script type="text/javascript" src="../js/color.js"></script>
     <script type="text/javascript" src="/Inc/treetable/TableTree4J.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(document).ready(function() {
             LoadData();
         });
         function LoadData() {
