@@ -85,7 +85,7 @@ namespace DTCMS.Common
 
             //设置 原图片 对象的 EncoderParameters 对象
             System.Drawing.Imaging.EncoderParameters parms = new System.Drawing.Imaging.EncoderParameters(1);
-            parms.Param[0] = new System.Drawing.Imaging.EncoderParameter(System.Drawing.Imaging.Encoder.Quality, ((long)10000));
+            parms.Param[0] = new System.Drawing.Imaging.EncoderParameter(System.Drawing.Imaging.Encoder.Quality, ((long)100));
             string extension = Path.GetExtension(originalImagePath).ToLower();
             System.Drawing.Imaging.ImageCodecInfo imgCodeInfo = GetImageCodeInfo(dicImg[extension].ToString());
 
