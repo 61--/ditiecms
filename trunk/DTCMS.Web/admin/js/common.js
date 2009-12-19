@@ -14,13 +14,13 @@ function selectTab(showContent, selfObj) {
     selfObj.blur();
 }
 /*** 全选反选 ***/
-function selectAll(elem,cid) {
+function selectAll(elem, cid) {
     var input = document.getElementById(cid).getElementsByTagName('input');
     var len = input.length;
     for (var i = 0; i < len; i++) {
         if ((input[i].type == "checkbox") && elem.checked) {
             input[i].checked = true;
-        } 
+        }
         else {
             input[i].checked = false;
         }

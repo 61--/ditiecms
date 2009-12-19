@@ -8,7 +8,6 @@ namespace DTCMS.Web.admin
     {
         protected override void OnInit(EventArgs e)
         {
-            this.ClientScript.RegisterStartupScript(this.GetType(), "CountID", "<div style=\"display:none;\"><script type=\"text/javascript\" src=\"http://js.users.51.la/3439117.js\"></script></div>");
             base.OnInit(e);
         }
     }
