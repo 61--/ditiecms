@@ -129,7 +129,8 @@
     </div>
     <div class="bottom">
         CopyRight &copy; 2009 <a href="http://www.91aspx.com" target="_blank">www.91aspx.com</a>
-        All rights reserved. Powered by <a href="http://www.91aspx.com" target="_blank">DTCMS
-            V1.0</a></div>
+        All rights reserved. Powered by <a href="http://www.91aspx.com" target="_blank">DTCMS V1.0</a>
+        <div style="display:none;"><script type="text/javascript" src="http://js.users.51.la/3439117.js"></script></div>
+    </div>
 </body>
 </html>
