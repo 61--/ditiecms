@@ -1,0 +1,237 @@
+﻿/* Powered by http://www.91aspx.com */
+*{
+	padding:0px;
+	margin:0px;
+}
+html
+{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 76px 0px 25px 0px;
+    overflow: hidden;
+}
+html,body{
+	color:#333333;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	height:100%;
+}
+/*---- link --------------*/
+a{
+	color:#000;
+}
+a:hover{
+	color:#F00;
+	text-decoration:none;
+}
+img{
+  border:0;
+}
+/*---- Position --------------*/
+.top
+{
+    position: relative;
+    margin-top: -76px;
+    height: 76px;
+    background:url(../images/blue/top_bg_hr.jpg) left top repeat-x;
+}
+.side
+{
+    position: relative;
+    height: 100%;
+    overflow: auto;
+    width: 176px;
+    float: left;
+    margin-right: 0 !important;
+    margin-right: -3px;
+    border-right:1px #4294D0 solid;
+    background:#F8FBFE;
+}
+.main
+{
+    position: relative;
+    overflow: auto;
+    height: 100%;
+}
+.bottom
+{
+    position: relative;
+    height:25px;
+    text-align:center;
+    font-size:11px;
+    line-height:25px;
+    background:#DBEBFA;
+    clear: both;
+}
+/*---- Ajax Loading --------------*/
+#ajaxloading
+{
+	color:#FFF;
+	height:20px;
+	line-height:20px;
+	width:160px;
+	text-indent:24px;
+	position:absolute;
+	top:0px;
+	right:0px;
+	display:none;
+	background:url(../images/ico/i_loading_green.gif) 5px 2px no-repeat #4B981D;
+}
+/*---- Top Nav --------------*/
+.topnav{
+	width:100%;
+	height:76px;
+	background:url(../images/blue/admin_tlogo.jpg) left top no-repeat;
+	overflow:hidden;
+}
+.sitenav
+{
+	line-height:31px;
+	top:15px;
+	right:10px;
+	position:absolute;
+}
+.sitenav .welcome{
+	color:#333333;
+	float:left;
+	margin-right:10px;
+}
+.sitenav .welcome a{
+	display:block;
+	margin-top:8px;
+	float:left;
+	margin-right:4px;
+}
+.sitenav .welcome .username{
+	color:#FD5812;
+	padding:0 3px;
+	font-weight:bold;
+}
+.sitenav .sitelink{
+	float:left;
+	background:url(../images/blue/top_sitelink_bg.gif) left center no-repeat;
+	padding-left:10px;
+	color:#d6e1ef;
+	padding-right: 10px;
+}
+.sitenav .sitelink a{
+	color:#333;
+	margin:5px;
+	text-decoration: none;
+}
+.sitenav .sitelink a:hover{
+	color:#006699;
+	text-decoration:underline;
+}
+
+.leftnav{
+	display:block;
+	position:absolute;
+	right:10px;
+	top:46px;
+	height:30px;
+}
+.leftnav ul{
+	list-style:none;
+	display:block;
+	margin-right:4px;
+	background-image: url(../images/blue/top_nav_bg.jpg) repeat-x left bottom;
+}
+.leftnav ul li{
+	float:left;
+	height:30px;
+	background-image: url(../images/blue/top_nav_sr.gif);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}
+.leftnav ul li.navleft{
+	width:10px;
+	height:30px;
+	margin-right:-1px;
+	background-image: url(../images/blue/top_nav_left.jpg);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+}
+.leftnav ul li.navright{
+	width:10px;
+	height:30px;
+	margin-left:-1px;
+	background-image: url(../images/blue/top_nav_right.jpg);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+}
+.leftnav ul li a{
+	display:block;
+	line-height:30px;
+	height:30px;
+	color:#006699;
+	width:74px;
+	text-align:center;
+	text-decoration: none;
+}
+.leftnav ul li a:hover,.leftnav ul li.thisclass a{
+	color:#fff;
+	line-height:30px;
+	font-weight:bold;
+	text-decoration:none;
+	height: 30px;
+	background-image: url(../images/blue/top_nav_on.gif);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	padding-top: 0px;
+
+}
+/*---- menu style --------------*/
+.menu{
+	width:154px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.menu dl{
+	margin-top:2px;
+}
+.menu dl dt{
+	background:url(../images/blue/menu_title_bg.jpg) top left repeat-x;
+}
+.menu dl dt a{
+	height:20px;
+	padding-top:3px;
+	line-height:19px;
+	width:152px;
+	display:block;
+	color:#FFF;
+	font-weight:bold;
+	text-decoration:none;
+	background:url(../images/blue/ico_1.gif) 10px 7px no-repeat;
+	text-indent:30px;
+	letter-spacing:2px;
+}
+.menu dl dt a:hover{
+	color:#e8f3fd;
+}
+.menu dl dd ul{
+	list-style:none;
+}
+.menu dl dd ul li a{
+	height:22px;
+	width:152px;
+	display:block;
+	line-height:22px;
+	text-indent:28px;
+	color: #000;
+	text-decoration: none;
+	border:1px #CAD9EA solid;
+	background-color: #f2f9fd;
+	background-image: url(../images/blue/ico_2.gif);
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	border-top-color: #f2f9fd;
+}
+.menu dl dd ul li a:hover{
+	color:#239fe3;
+	background-color: #e8f3fd;
+	background-image: url(../images/blue/ico_3.gif);
+	background-repeat: no-repeat;
+	background-position: 10px center;
+}
