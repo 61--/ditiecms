@@ -71,3 +71,5 @@ function getElemCoords(elem) {
 function showHelp(ID) {
     Dialog.alert("帮助主题" + ID);
 }
+/*** IP Count ***/
+
