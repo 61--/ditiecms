@@ -880,7 +880,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="admin\files\photo\" />
+    <Folder Include="admin\files\photo\abbrPhoto1\" />
+    <Folder Include="admin\files\photo\abbrPhoto2\" />
+    <Folder Include="admin\files\photo\photo\" />
     <Folder Include="admin\Log\" />
     <Folder Include="css\" />
     <Folder Include="FileUpload\" />
