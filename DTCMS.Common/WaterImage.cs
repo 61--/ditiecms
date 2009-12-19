@@ -129,7 +129,6 @@ namespace DTCMS.Common
             float y = (float)Convert.ToDecimal(image.Width * yPercent);
             g.DrawString(waterCharater, f, b, x, y);
             g.Dispose();
-
             image.Save(Path_sy);
             image.Dispose();
         }

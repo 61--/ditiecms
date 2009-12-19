@@ -6,6 +6,8 @@ namespace DTCMS.Config
 {
     public class ConfigPath
     {
-        public const string ATTACHMENT = "Config\\Sys\\AttachmentConfig.config";
+        public const string ATTACHMENT = "config\\Sys\\AttachmentConfig.config";
+
+        public const string GOBAL = "config\\Sys\\gobal.config";
     }
 }
