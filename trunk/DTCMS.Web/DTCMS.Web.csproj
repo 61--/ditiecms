@@ -211,26 +211,26 @@
     <Compile Include="admin\news\News_add.aspx.designer.cs">
       <DependentUpon>News_add.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\Template\TemplateFile_list.aspx.cs">
-      <DependentUpon>TemplateFile_list.aspx</DependentUpon>
+    <Compile Include="admin\Template\templatefile_list.aspx.cs">
+      <DependentUpon>templatefile_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\Template\TemplateFile_list.aspx.designer.cs">
-      <DependentUpon>TemplateFile_list.aspx</DependentUpon>
+    <Compile Include="admin\Template\templatefile_list.aspx.designer.cs">
+      <DependentUpon>templatefile_list.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\Template\Template_add.aspx.cs">
-      <DependentUpon>Template_add.aspx</DependentUpon>
+    <Compile Include="admin\Template\template_add.aspx.cs">
+      <DependentUpon>template_add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\Template\Template_add.aspx.designer.cs">
-      <DependentUpon>Template_add.aspx</DependentUpon>
+    <Compile Include="admin\Template\template_add.aspx.designer.cs">
+      <DependentUpon>template_add.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\Template\Template_list.aspx.cs">
-      <DependentUpon>Template_list.aspx</DependentUpon>
+    <Compile Include="admin\Template\template_list.aspx.cs">
+      <DependentUpon>template_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\Template\Template_list.aspx.designer.cs">
-      <DependentUpon>Template_list.aspx</DependentUpon>
+    <Compile Include="admin\Template\template_list.aspx.designer.cs">
+      <DependentUpon>template_list.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
@@ -247,12 +247,12 @@
       <DependentUpon>top_index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="admin\Template\TemplateFile_Edit.aspx.cs">
-      <DependentUpon>TemplateFile_Edit.aspx</DependentUpon>
+    <Compile Include="admin\Template\templateFile_edit.aspx.cs">
+      <DependentUpon>templateFile_edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\Template\TemplateFile_Edit.aspx.designer.cs">
-      <DependentUpon>TemplateFile_Edit.aspx</DependentUpon>
+    <Compile Include="admin\Template\templateFile_edit.aspx.designer.cs">
+      <DependentUpon>templateFile_edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Utils\WebTools.cs" />
   </ItemGroup>
@@ -278,9 +278,9 @@
     <Content Include="admin\Media\PhotoUpload.aspx" />
     <Content Include="admin\Media\SimpleUploader.aspx" />
     <Content Include="admin\news\Class_list.html" />
-    <Content Include="admin\Template\TemplateFile_list.aspx" />
-    <Content Include="admin\Template\Template_add.aspx" />
-    <Content Include="admin\Template\Template_list.aspx" />
+    <Content Include="admin\Template\templatefile_list.aspx" />
+    <Content Include="admin\Template\template_add.aspx" />
+    <Content Include="admin\Template\template_list.aspx" />
     <Content Include="bin\DTCMS.Config.dll" />
     <Content Include="bin\DTCMS.Config.pdb" />
     <Content Include="ckfinder\bin\CKFinder.dll" />
@@ -830,7 +830,7 @@
     <Content Include="Editor\fckpackager.xml" />
     <Content Include="Editor\fckstyles.xml" />
     <Content Include="Editor\fcktemplates.xml" />
-    <Content Include="admin\Template\TemplateFile_Edit.aspx" />
+    <Content Include="admin\Template\templateFile_edit.aspx" />
     <Content Include="Template\Default\index.html" />
     <Content Include="Template\Default\news.htm" />
     <Content Include="ValidateCode.ashx" />
