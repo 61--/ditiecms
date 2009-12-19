@@ -885,7 +885,7 @@
     <Folder Include="FileUpload\" />
     <Folder Include="images\" />
     <Folder Include="js\" />
-    <Folder Include="uploads\users\" />
+    <Folder Include="uploads\users\200912\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
