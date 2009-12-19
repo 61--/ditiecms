@@ -4,9 +4,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace DTCMS.Web.admin.Media
+namespace DTCMS.Web.admin
 {
-    public partial class PhotoUpload : System.Web.UI.Page
+    public partial class PhotoUpload : AdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

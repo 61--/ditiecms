@@ -9,9 +9,9 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 
-namespace DTCMS.Web.admin.Template
+namespace DTCMS.Web.admin
 {
-    public partial class TemplateFile_list : System.Web.UI.Page
+    public partial class TemplateFile_list : AdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

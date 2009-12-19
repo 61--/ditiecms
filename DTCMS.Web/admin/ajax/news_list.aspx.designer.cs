@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DTCMS.Web.admin.ajax {
+namespace DTCMS.Web.admin {
     
     
     public partial class news_list {

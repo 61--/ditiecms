@@ -11,9 +11,9 @@ using DTCMS.BLL;
 using DTCMS.Entity;
 using DTCMS.Common;
 
-namespace DTCMS.Web.admin.news
+namespace DTCMS.Web.admin
 {
-    public partial class News_add : System.Web.UI.Page
+    public partial class News_add : AdminPage
     {
         private Arc_ArticleBLL bllArticle = new Arc_ArticleBLL();
         private Arc_ClassBLL bllClass = new Arc_ClassBLL();

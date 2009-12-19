@@ -7,9 +7,9 @@ using System.Text;
 using DTCMS.BLL;
 using System.Data;
 
-namespace DTCMS.Web.admin.ajax
+namespace DTCMS.Web.admin
 {
-    public partial class news_list : System.Web.UI.Page
+    public partial class news_list : AdminPage
     {
         private Arc_ArticleBLL bllArticle = new Arc_ArticleBLL();   //文章
 

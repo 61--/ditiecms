@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DTCMS.Web.Admin {
+namespace DTCMS.Web.admin {
     
     
     public partial class main_index {

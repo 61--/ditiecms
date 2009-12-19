@@ -7,9 +7,9 @@ using System.Web.UI.WebControls;
 using DTCMS.Common;
 using DTCMS.Config;
 
-namespace DTCMS.Web.admin.Media
+namespace DTCMS.Web.admin
 {
-    public partial class SimpleUploader : System.Web.UI.Page
+    public partial class SimpleUploader : AdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
