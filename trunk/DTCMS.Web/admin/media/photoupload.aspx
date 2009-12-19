@@ -43,14 +43,22 @@
     <div id="content" style="text-align:center; width:100%;">
         <div id="upload" style="width:570px;">
             <div id="top" style="float:left; text-align:left;">
+                <div id="div_attachmentAttribute" style="margin-bottom:4px;">
+                    <input type="radio" id="rdo_photo" name="rdo" checked="checked" value="1" onclick="setAttachmentAttribute(this)" /><label for="rdo_photo">图片</label>
+                    <input type="radio" id="rdo_video" name="rdo" value="2" onclick="setAttachmentAttribute(this)" /><label for="rdo_video">视频</label>
+                    <input type="radio" id="rdo_audio" name="rdo" value="3" onclick="setAttachmentAttribute(this)" /><label for="rdo_audio">音频</label>
+                    <input type="radio" id="rdo_flash" name="rdo" value="4" onclick="setAttachmentAttribute(this)" /><label for="rdo_flash">Flash</label>
+                    <input type="radio" id="rdo_attachment" name="rdo"  value="5" onclick="setAttachmentAttribute(this)" /><label for="rdo_attachment">附件</label>
+                    <input type="hidden" id="hid_attachmentAttribute" name="hid_attachmentAttribute" value="1" />
+                </div>
                 <fieldset>
-                    <legend>图片上传</legend>
+                    <legend>附件上传</legend>
                     <table id="imagetable0" style="width:100%;empty-cells:show ;" cellpadding="0" cellspacing="0" >
                         <tr>
                             <td style="width:6%;" align="right"></td>
-                            <td style="width:34%;">图片浏览</td>
-                            <td style="width:30%;">图片名称</td>
-                            <td style="width:30%;">图片描述</td>
+                            <td style="width:34%;">附件浏览</td>
+                            <td style="width:30%;">附件名称</td>
+                            <td style="width:30%;">附件描述</td>
                         </tr>
                         <tr>
                             <td align="right"><label>1:</label></td>
@@ -103,21 +111,14 @@
             </div>
             <div id="bottom" style="float:left; margin-top:6px; ">
                  <fieldset><legend>
-                 <label>参数设置</label></legend>
+                 <label>图片参数设置</label></legend>
                     <table width="100%" cellpadding="2" cellspacing="0">
                         <tr>
                             <td style="width:53%;text-align:left; vertical-align:top;">
-                            <table width="100%" cellpadding="2" cellspacing="0">
+                            <table width="100%" cellpadding="2" cellspacing="0">                                  						
                                 <tr>
-                                    <td style="width:18%;text-align:right;">所属主分类:</td>
-                                    <td style="width:82%;">
-                                    <input type="text" id="attachmentTypeName" class="txt_bg" />
-                                    <input type="hidden" id="attachmentTypeID" value="" />
-                                    </td>
-                                </tr>    						
-                                <tr>
-                                    <td align="right"><label>原图水印:</label></td>
-                                    <td><input type="hidden" id="HasWaterMark"
+                                    <td style="width:18%;text-align:right;"><label>原图水印:</label></td>
+                                    <td style="width:82%;"><input type="hidden" id="HasWaterMark"
                                         name="HasWaterMark" value="0" /> <input
                                         type="checkbox" id="chHasWaterMark" name="chHasWaterMark"  class="txt_bg" />
                                     <input type="hidden" id="Count" name="Count" value="1" /></td>
@@ -125,37 +126,29 @@
                                 <tr id="AbbrImagesTable">
                                     <td align="right"><label>缩略图:</label></td>
                                     <td>
-                                        <input type="hidden" id="HasAbbrImage1"
-                                        name="HasAbbrImage1" value="1" /> <input
-                                        type="checkbox" id="boxHasAbbrImage1" class="txt_bg"
-                                        name="boxHasAbbrImage1" />
-            						
+                                        <input type="checkbox" id="chHasAbbrImage1" class="txt_bg" name="chHasAbbrImage1" checked="checked" />
                                     </td>
                                 </tr>								
                                 <tr>
                                     <td style="vertical-align:top;text-align:right;">缩略图水印:</td>
                                     <td>
-                                     <label> <input type="hidden" id="HasWaterMark1"
-                                        name="HasWaterMark1" value="0" /> <input
-                                        type="checkbox" id="chHasWaterMark1" class="txt_bg"
-                                        name="chHasWaterMark1" /></label>
-            						
+                                        <input type="checkbox" id="chHasWaterMark1" class="txt_bg" name="chHasWaterMark1" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="right" valign="top">缩略图宽:</td>
                                     <td>
-                                     <label> <input name="Width1" id="Width1" class="txt_bg"
+                                        <input name="abbrImageWidth1" id="abbrImageWidth1" class="txt_bg"
                                         type="text" value="500" style="width:36px"
-                                        maxlength="4" /> </label> 
+                                        maxlength="4" /> 
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="right" valign="top">缩略图高:</td>
                                     <td>
-                                     <label> <input name="Height1" id="Height1" class="txt_bg"
+                                        <input name="abbrImageHeight1" id="abbrImageHeight1" class="txt_bg"
                                         type="text" value="500" style="width:36px"
-                                        maxlength="4" /> </label> 
+                                        maxlength="4" />
                                     </td>
                                 </tr>
                              </table>
@@ -178,8 +171,10 @@
             switch (returnVal) {
                 case "1": // 上传成功
                     try {
-                        window.parent.parent.document.getElementById("imgDisplay").src = returnImgPath;
-                        window.parent.parent.document.getElementById("imgPath").value = returnImgPath;
+                        if (window.parent.parent.document.getElementById("imgDisplay"))
+                            window.parent.parent.document.getElementById("imgDisplay").src = returnImgPath;
+                        if (window.parent.parent.document.getElementById("imgPath"))
+                            window.parent.parent.document.getElementById("imgPath").value = returnImgPath;
                         window.parent.parent.Dialog.close();
                     } catch (ex) { }
                     break;
@@ -198,7 +193,6 @@
         *开始上传
         */
         function upload() {
-            var aid = document.getElementById("attachmentTypeID");   
             var flag = false;
             var count = 5;
 
@@ -208,32 +202,66 @@
                     continue;
                 }
                 var ext = imgName.substring(imgName.lastIndexOf(".") + 1).toLowerCase();
-                if (ext == "jpg" || ext == "jpeg" || ext == "bmp" || ext == "gif" || ext == "png") {
+                if (hasAttachmentFormat(ext)) {
                     flag = true;
                 } else {
-                    Dialog.alert("图片上传不支持" + ext + "文件！请重新选择。");
+                    Dialog.alert("附件上传不支持" + ext + "文件！请重新选择。");
                     return;
                 }
             }
             if (flag) {
-                if (aid == null) {
-                    Dialog.alert("请选择图片分类！");
-                    return;
-                }
                 msg();
                 document.getElementById("form1").submit();
             } else {
                 Dialog.alert("请先浏览选择文件！");
                 return;
             }
-        } 
-    	/**
-    	*上传进度条
-    	*/   	    	
+        }
+        /**
+        *附件格式判断
+        */
+        function hasAttachmentFormat(ext) {
+        switch (getAttachmentAttribute()) {
+        case "1":
+        return hasImage(ext);
+        case "5":
+        return hasAttachment(ext);
+        return 
+        default:
+        return false;
+        }
+        }
+        /**
+        *判断图片是否正确
+        */
+        function hasImage(ext) {
+            return (ext == "jpg" || ext == "jpeg" || ext == "bmp" || ext == "gif" || ext == "png");
+        }
+        /**
+        *附件上传是否正确
+        */
+        function hasAttachment(ext) {
+             return (ext == "doc" || ext == "txt");
+        }
+        /**
+        *上传进度条
+        */   	    	
     	function msg() {
     	    var txt = "正在上传处理中，请稍候...耗时";
     	    var counter = 1;
     	    setInterval(function() { document.getElementById("msg").innerHTML = "<font color=red>" + txt + counter + "秒</font>"; counter++ }, 1000);
+    	}
+    	/**
+    	*设置附件属性
+    	*/
+    	function setAttachmentAttribute(obj) {
+    	    document.getElementById("hid_attachmentAttribute").value = (obj.value || 1);
+    	}
+    	/**
+    	*获取附件属性
+    	*/
+    	function getAttachmentAttribute() {
+    	    return (document.getElementById("hid_attachmentAttribute").value||1);
     	}
     </script>
 </body>

@@ -27,7 +27,7 @@ namespace DTCMS.Config
         {
             string path = Utils.GetRootPath() + ConfigPath.ATTACHMENT;
             xmlDoc.Load(path);
-            XmlNode xmlnode = xmlDoc.DocumentElement.SelectSingleNode("/attachment/photo");
+            XmlNode xmlnode = xmlDoc.DocumentElement.SelectSingleNode("/attachment");
             return xmlDoc.GetSingleNodeValue(xmlnode, nodeName);
         }
         /// <summary>
@@ -37,7 +37,7 @@ namespace DTCMS.Config
         {
             string path = Utils.GetRootPath() + ConfigPath.ATTACHMENT;
             xmlDoc.Load(path);
-            XmlNode xmlnode = xmlDoc.DocumentElement.SelectSingleNode("/attachment/photo");
+            XmlNode xmlnode = xmlDoc.DocumentElement.SelectSingleNode("/attachment");
             Hashtable ht = new Hashtable();
             string fileName = xmlDoc.GetSingleNodeValue(xmlnode, "path")+"\\"+DateTime.Now.ToString("yyyyMM");
             if (!FileAccessHelper.DirectoryExists(fileName))
@@ -46,11 +46,11 @@ namespace DTCMS.Config
             }
             ht.Add("path", fileName);
             ht.Add("contentLength", xmlDoc.GetSingleNodeValue(xmlnode, "contentLength"));
-            ht.Add("format", xmlDoc.GetSingleNodeValue(xmlnode, "format"));
-            ht.Add("hasAbbrImage", xmlDoc.GetSingleNodeValue(xmlnode, "hasAbbrImage"));
-            ht.Add("hasWaterMark", xmlDoc.GetSingleNodeValue(xmlnode, "hasWaterMark"));
-            ht.Add("hasAbbrWaterMark", xmlDoc.GetSingleNodeValue(xmlnode, "hasAbbrWaterMark"));
-            ht.Add("waterMarkPosition", xmlDoc.GetSingleNodeValue(xmlnode, "waterMarkPosition"));
+            ht.Add("imageFormat", xmlDoc.GetSingleNodeValue(xmlnode, "imageFormat"));
+            ht.Add("videoFormat", xmlDoc.GetSingleNodeValue(xmlnode, "videoFormat"));
+            ht.Add("audioFormat", xmlDoc.GetSingleNodeValue(xmlnode, "audioFormat"));
+            ht.Add("flashFormat", xmlDoc.GetSingleNodeValue(xmlnode, "flashFormat"));
+            ht.Add("attachmentFormat", xmlDoc.GetSingleNodeValue(xmlnode, "attachmentFormat"));
             return ht;
         }
         #endregion 图片操作

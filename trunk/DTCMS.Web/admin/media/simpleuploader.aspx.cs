@@ -14,25 +14,24 @@ namespace DTCMS.Web.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string attachmentType = Common.Utils.GetQueryString("type");
-            switch (attachmentType.Trim().ToLower())
-            {
-                case "image":
-                    PhotoUpload();
-                    break;
-                default:
-                    break;
-
-            }
+            Upload();
         }
+
         /// <summary>
-        /// 图片上传
+        /// 附件上传
         /// </summary>
-        private void PhotoUpload()
-        {               
-            //图片配置列表
-            Hashtable htPhoto = AttachmentConfig.GetPhotoList();           
-            string filepath = DTCMS.Common.Utils.GetRootPath() + htPhoto["path"].ToString()+"\\"; //文件存放路径
+        private void Upload()
+        {
+            int attachmentAttribute = DTCMS.Common.Utils.GetFormInt("hid_attachmentAttribute"); //附件属性
+            string hasWaterMark = DTCMS.Common.Utils.GetFormString("chHasWaterMark");   //原图是否水印
+            string hasAbbrImage1 = DTCMS.Common.Utils.GetFormString("chHasAbbrImage1"); //是否生成缩略图
+            string hasWaterMark1 = DTCMS.Common.Utils.GetFormString("chHasWaterMark1");   //缩略图是否水印
+            int abbrImageWidth1 = DTCMS.Common.Utils.GetFormInt("abbrImageWidth1"); //缩略图宽
+            int abbrImageHeight1 = DTCMS.Common.Utils.GetFormInt("abbrImageHeight1");   //缩略图高
+
+            Hashtable htPhoto = AttachmentConfig.GetPhotoList();    //附件配置列表
+            string filepath = DTCMS.Common.Utils.GetRootPath() + htPhoto["path"].ToString()+"\\"; //附件存放路径
+
             string errorMsg = string.Empty; //错误信息
             int returnVal = 1;    //返回值。1：成功，202：无效上传文件，203：你没有权限，204：未知错误
             string returnImgPath = string.Empty;    //返回图片路径
@@ -40,13 +39,16 @@ namespace DTCMS.Web.admin
             HttpFileCollection uploadedFiles = Request.Files;
             for (int i = 0; i < uploadedFiles.Count; i++)
             {
-                #region 图片上传
+                string fileDisplayName = "File"+i.ToString()+"Name";    //附件名称
+                string fileInfo = "File" + i.ToString() + "Info";  //附件描述
+
+                #region 附件上传
                 HttpPostedFile userPostedFile = uploadedFiles[i];
                 string fileName = System.IO.Path.GetFileName(userPostedFile.FileName);
                 if (fileName != "")
                 {
-                    #region 验证图片格式是否正确
-                    if (!PhotoFormat(fileName))
+                    #region 验证附件格式是否正确
+                    if (!AttachmentFormat(fileName,attachmentAttribute))
                     {
                         if (errorMsg != string.Empty)
                         {
@@ -55,15 +57,15 @@ namespace DTCMS.Web.admin
                         errorMsg += fileName;
                         continue;
                     }
-                    #endregion 验证图片格式是否正确
+                    #endregion 验证附件格式是否正确
 
                     try
                     {
                         int fileContentLen = userPostedFile.ContentLength;
                         if (fileContentLen > 0)
                         {
-                            returnImgPath = DateTime.Now.ToString("yyyyMMddHHmmss") + fileName.Substring(fileName.LastIndexOf('.')).ToLower();
-                            userPostedFile.SaveAs(filepath + returnImgPath);  //图片上传
+                            returnImgPath = DateTime.Now.ToString("yyyyMMddHHmmss") + DateTime.Now.Millisecond.ToString() + fileName.Substring(fileName.LastIndexOf('.')).ToLower();
+                            userPostedFile.SaveAs(filepath + returnImgPath);  //附件上传
                         }
                         else
                         {
@@ -80,35 +82,94 @@ namespace DTCMS.Web.admin
                         errorMsg = "";
                     }
                 }
+
                 if (errorMsg != "")
                 {
                     returnVal = 202;    //无效上传文件
                 }
-                #endregion 图片上传
-
-                #region 存储数据
-
-                #endregion 存储数据
+                #endregion 附件上传
             }            
 
             Response.Redirect("~/admin/Media/EmptyPage.html?returnVal=" + returnVal + "&errorMsg=" + errorMsg+"&returnImgPath="+"/"+htPhoto["path"].ToString().Replace("\\","/")+"/"+returnImgPath);
         }
 
         /// <summary>
-        /// 判断图片格式是否正确
+        /// 附件格式是否正确
         /// </summary>
-        private bool PhotoFormat(string fileName)
+        /// <param name="fileName">附件后缀名</param>
+        /// <param name="attachmentAtr">附件属性</param>
+        /// <returns></returns>
+        private bool AttachmentFormat(string fileName,int attachmentAtr)
         {
-            string[] extNameList = AttachmentConfig.GetPhotoStr("format").Split('|');
-            string extName = fileName.Substring(fileName.LastIndexOf(".") + 1).ToLower();
-            for (int i = 0; i < extNameList.Length; i++)
+            switch (attachmentAtr)
             {
-                if (extName == extNameList[i].ToLower())
+                case (int)EAttachmentAttribute.Photo:
+                    return AttachmentFormat(fileName, "imageFormat");
+                case (int)EAttachmentAttribute.Video:
+                    return AttachmentFormat(fileName, "videoFormat");
+                case (int)EAttachmentAttribute.Audio:
+                    return AttachmentFormat(fileName, "audioFormat");
+                case (int)EAttachmentAttribute.Flash:
+                    return AttachmentFormat(fileName, "flashFormat");
+                case (int)EAttachmentAttribute.Attachment:
+                    return AttachmentFormat(fileName, "attachmentFormat");
+                default:
+                    return false;
+            }
+        }
+
+        /// <summary>
+        /// 判断附件格式是否正确
+        /// </summary>
+        /// <param name="fileName">附件后缀名</param>
+        /// <param name="configAttachmentFormatName">配置参数</param>
+        /// <returns></returns>
+        private bool AttachmentFormat(string fileName,string configParamName)
+        {
+            string[] extNameList = AttachmentConfig.GetPhotoStr(configParamName).Split('|');
+            string extName = fileName.Substring(fileName.LastIndexOf(".") + 1).ToLower();
+            if (extNameList != null && extNameList.Length > 0)
+            {
+                for (int i = 0; i < extNameList.Length; i++)
                 {
-                    return true;
+                    if (extName == extNameList[i].ToLower())
+                    {
+                        return true;
+                    }
                 }
             }
             return false;
         }
+
+    }
+    /// <summary>
+    /// 附件属性
+    /// </summary>
+    public enum EAttachmentAttribute
+    {
+        /// <summary>
+        /// 图片
+        /// </summary>
+        Photo=1,
+
+        /// <summary>
+        /// 视频
+        /// </summary>
+        Video=2,
+
+        /// <summary>
+        /// 音频
+        /// </summary>
+        Audio=3,
+
+        /// <summary>
+        /// Flash
+        /// </summary>
+        Flash=4,
+
+        /// <summary>
+        /// 附件
+        /// </summary>
+        Attachment=5
     }
 }

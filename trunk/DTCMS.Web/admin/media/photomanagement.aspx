@@ -41,8 +41,8 @@
         <div id="container">
 	        <div id="menu">
 		        <ul>
-			        <li><a href="javascript:void(0)">图片上传</a></li>
-			        <li><a href="javascript:void(0)">图片浏览</a></li>
+			        <li><a href="javascript:void(0)">附件上传</a></li>
+			        <li><a href="javascript:void(0)">附件浏览</a></li>
 		        </ul>
 	        </div>
 	        <div id="main">
