@@ -19,7 +19,7 @@
     }
 
 	    #container{	
-	    width:760px;
+	    width:570px;
     }
 	    #menu{
 	    width:100%;
@@ -46,7 +46,7 @@
 		        </ul>
 	        </div>
 	        <div id="main">
-		        <iframe src="PhotoUpload.aspx" width="100%" height="366" id="FrmImgUpload" name="FrmImgUpload" frameborder="0" scrolling="no"></iframe>        
+		        <iframe src="PhotoUpload.aspx" width="100%" height="340px" id="FrmImgUpload" name="FrmImgUpload" frameborder="0" scrolling="no"></iframe>        
 	        </div>
         </div>
 	</form>

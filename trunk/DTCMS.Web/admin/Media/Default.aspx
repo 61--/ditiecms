@@ -12,9 +12,9 @@
     <script type="text/javascript">
         function upload() {
             var diag = new Dialog();
-            diag.Title = "上传";
-            diag.Width = 778;
-            diag.Height = 420;
+            diag.Title = "图片管理";
+            diag.Width = 600;
+            diag.Height = 380;
             diag.URL = "PhotoManagement.aspx";
             diag.OKEvent = function() {
                 var win = diag.innerFrame.contentWindow;
@@ -27,7 +27,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div style="height:500px; width:100%;">
+    <div >
         <input type="text" id="imgPath" />
         <button id="btnUpload" onclick="upload();">浏览</button>
     </div>

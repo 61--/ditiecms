@@ -17,8 +17,12 @@
     }      
     tr
     {
-        height:26px;
-        line-height:26px;
+        height:24px;
+        line-height:24px;        
+    }
+    td
+    {
+        padding-left:6px;         
     }
     .text{
 	    width:119px;
@@ -36,147 +40,133 @@
 <body>
     <div style="display:none;"><iframe name="formTarget" src="javascript:void(0)" height="0"></iframe></div>	
     <form enctype="multipart/form-data" id="form1" name="Form1" target="formTarget" method="post" action="SimpleUploader.aspx?type=image">
-    <div id="content" style="margin-top:20px;">
-        <div id="upload" style="width:760px;">
-	        <div id="left" style="width:75%;float:left;">
-               <div id="top">
-	                <fieldset>
-		                <legend>图片上传</legend>
-		                <table id="imagetable0" style="width:100%;empty-cells:show ;" cellpadding="0" cellspacing="0" >
-			                <tr>
-				                <td style="width:6%;" align="right"></td>
-				                <td style="width:34%;">图片浏览</td>
-				                <td style="width:30%;">图片名称</td>
-				                <td style="width:30%;">图片描述</td>
-			                </tr>
-			                <tr>
-				                <td align="right"><label>1:</label></td>
-				                <td><input name='File1' id='File1' class="file txt_bg" type='file' value=''
-					                size="26" /></td>
-				                <td><input name="File1Name" id="File1Name" class="text txt_bg" type="text"
-					                value="" /></td>
-				                <td><input name="File1Info" id="File1Info" class="text txt_bg" type="text"
-					                value="" /></td>
-			                </tr>	
-			                <tr>
-				                <td align="right"><label>2:</label></td>
-				                <td><input name='File2' id='File2' class="file txt_bg" type='file' value=''
-					                size='26' /></td>
-				                <td><input name="File2Name" id="File2Name"  class="text txt_bg" type="text"
-					                value="" /></td>
-				                <td><input name="File2Info" id="File2Info" class="text txt_bg" type="text"
-					                value="" /></td>
-			                </tr>
-			                <tr>
-				                <td align="right"><label>3:</label></td>
-				                <td><input name='File3' id='File3' class="file txt_bg" type='file' value=''
-					                size='26' /></td>
-				                <td><input name="File3Name" id="File3Name" class="text txt_bg" type="text"
-					                value=""/></td>
-				                <td><input name="File3Info" id="File3Info" class="text txt_bg" type="text"
-					                value="" /></td>
-			                </tr>
-			                <tr>
-				                <td align="right"><label>4:</label></td>
-				                <td><input name='File4' id='File4' class="file txt_bg" type='file' value=''
-					                size='26' /></td>
-				                <td><input name="File4Name" id="File4Name" class="text txt_bg" type="text"
-					                value="" /></td>
-				                <td><input name="File4Info" id="File4Info" class="text txt_bg" type="text"
-					                value="" /></td>
-			                </tr>
-			                <tr>
-				                <td align="right"><label>5:</label></td>
-				                <td><input name='File5' id='File5' class="file txt_bg " type='file' value=''
-					                size='26' /></td>
-				                <td><input name="File5Name" id="File5Name" class="text txt_bg" type="text"
-					                value="" /></td>
-				                <td><input name="File5Info" id="File5Info" class="text txt_bg" type="text"
-					                value="" /></td>
-			                </tr>
-            			
-		                </table>
-	                </fieldset>
-                </div>
-                <div id="bottom" style="margin-top:10px;">
-	                 <fieldset><legend>
-	                 <label>参数设置</label></legend>
-		                <table width="100%" cellpadding="0" cellspacing="0">
-			                <tr>
-				                <td style="width:53%;text-align:left; vertical-align:top;">
-				                <table width="100%" cellpadding="2" cellspacing="0">
-					                <tr>
-						                <td style="width:18%;text-align:right;">所属主分类:</td>
-						                <td style="width:82%;">
-						                <input type="text"  class="txt_bg" />
-						                </td>
-					                </tr>
-            						
-					                <tr>
-						                <td align="right"><label>原图水印:</label></td>
-						                <td><input type="hidden" id="HasWaterMark"
-							                name="HasWaterMark" value="0" /> <input
-							                type="checkbox" id="chHasWaterMark" name="chHasWaterMark"  class="txt_bg" />
-						                <input type="hidden" id="Count" name="Count" value="1" /></td>
-					                </tr>	
-					                <tr id="AbbrImagesTable">
-						                <td align="right"><label>缩略图:</label></td>
-						                <td>
-							                <input type="hidden" id="HasAbbrImage1"
-							                name="HasAbbrImage1" value="1" /> <input
-							                type="checkbox" id="boxHasAbbrImage1" class="txt_bg"
-							                name="boxHasAbbrImage1" />
-            							
-						                </td>
-					                </tr>								
-					                <tr>
-						                <td style="vertical-align:top;text-align:right;">缩略图水印:</td>
-						                <td>
-						                 <label> <input type="hidden" id="HasWaterMark1"
-							                name="HasWaterMark1" value="0" /> <input
-							                type="checkbox" id="chHasWaterMark1" class="txt_bg"
-							                name="chHasWaterMark1" /></label>
-            							
-						                </td>
-					                </tr>
-					                <tr>
-						                <td align="right" valign="top">缩略图宽:</td>
-						                <td>
-						                 <label> <input name="Width1" id="Width1" class="txt_bg"
-							                type="text" value="500" style="width:36px"
-							                maxlength="4" /> </label> 
-						                </td>
-					                </tr>
-					                <tr>
-						                <td align="right" valign="top">缩略图高:</td>
-						                <td>
-						                 <label> <input name="Height1" id="Height1" class="txt_bg"
-							                type="text" value="500" style="width:36px"
-							                maxlength="4" /> </label> 
-						                </td>
-					                </tr>
-
-				                </table>
-				                </td>						
-			                </tr>
-
-		                </table>		
-	                </fieldset>
-                </div>
-            </div>
-          
-            <div id="right" style="width:24%;float:right;">
+    <div id="content" style="text-align:center; width:100%;">
+        <div id="upload" style="width:570px;">
+            <div id="top" style="float:left; text-align:left;">
                 <fieldset>
-	                <legend>预览</legend>
-	                    <div style="width:100%;overflow: auto;height:340px">
-                            <div id="preview" style="overflow: visible;"></div>
-                        </div>
+                    <legend>图片上传</legend>
+                    <table id="imagetable0" style="width:100%;empty-cells:show ;" cellpadding="0" cellspacing="0" >
+                        <tr>
+                            <td style="width:6%;" align="right"></td>
+                            <td style="width:34%;">图片浏览</td>
+                            <td style="width:30%;">图片名称</td>
+                            <td style="width:30%;">图片描述</td>
+                        </tr>
+                        <tr>
+                            <td align="right"><label>1:</label></td>
+                            <td><input name='File1' id='File1' class="file txt_bg" type='file' value=''
+                                size="26" /></td>
+                            <td><input name="File1Name" id="File1Name" class="text txt_bg" type="text"
+                                value="" /></td>
+                            <td><input name="File1Info" id="File1Info" class="text txt_bg" type="text"
+                                value="" /></td>
+                        </tr>	
+                        <tr>
+                            <td align="right"><label>2:</label></td>
+                            <td><input name='File2' id='File2' class="file txt_bg" type='file' value=''
+                                size='26' /></td>
+                            <td><input name="File2Name" id="File2Name"  class="text txt_bg" type="text"
+                                value="" /></td>
+                            <td><input name="File2Info" id="File2Info" class="text txt_bg" type="text"
+                                value="" /></td>
+                        </tr>
+                        <tr>
+                            <td align="right"><label>3:</label></td>
+                            <td><input name='File3' id='File3' class="file txt_bg" type='file' value=''
+                                size='26' /></td>
+                            <td><input name="File3Name" id="File3Name" class="text txt_bg" type="text"
+                                value=""/></td>
+                            <td><input name="File3Info" id="File3Info" class="text txt_bg" type="text"
+                                value="" /></td>
+                        </tr>
+                        <tr>
+                            <td align="right"><label>4:</label></td>
+                            <td><input name='File4' id='File4' class="file txt_bg" type='file' value=''
+                                size='26' /></td>
+                            <td><input name="File4Name" id="File4Name" class="text txt_bg" type="text"
+                                value="" /></td>
+                            <td><input name="File4Info" id="File4Info" class="text txt_bg" type="text"
+                                value="" /></td>
+                        </tr>
+                        <tr>
+                            <td align="right"><label>5:</label></td>
+                            <td><input name='File5' id='File5' class="file txt_bg " type='file' value=''
+                                size='26' /></td>
+                            <td><input name="File5Name" id="File5Name" class="text txt_bg" type="text"
+                                value="" /></td>
+                            <td><input name="File5Info" id="File5Info" class="text txt_bg" type="text"
+                                value="" /></td>
+                        </tr>
+            		
+                    </table>
                 </fieldset>
             </div>
+            <div id="bottom" style="float:left; margin-top:6px; ">
+                 <fieldset><legend>
+                 <label>参数设置</label></legend>
+                    <table width="100%" cellpadding="2" cellspacing="0">
+                        <tr>
+                            <td style="width:53%;text-align:left; vertical-align:top;">
+                            <table width="100%" cellpadding="2" cellspacing="0">
+                                <tr>
+                                    <td style="width:18%;text-align:right;">所属主分类:</td>
+                                    <td style="width:82%;">
+                                    <input type="text" id="attachmentTypeName" class="txt_bg" />
+                                    <input type="hidden" id="attachmentTypeID" value="" />
+                                    </td>
+                                </tr>    						
+                                <tr>
+                                    <td align="right"><label>原图水印:</label></td>
+                                    <td><input type="hidden" id="HasWaterMark"
+                                        name="HasWaterMark" value="0" /> <input
+                                        type="checkbox" id="chHasWaterMark" name="chHasWaterMark"  class="txt_bg" />
+                                    <input type="hidden" id="Count" name="Count" value="1" /></td>
+                                </tr>	
+                                <tr id="AbbrImagesTable">
+                                    <td align="right"><label>缩略图:</label></td>
+                                    <td>
+                                        <input type="hidden" id="HasAbbrImage1"
+                                        name="HasAbbrImage1" value="1" /> <input
+                                        type="checkbox" id="boxHasAbbrImage1" class="txt_bg"
+                                        name="boxHasAbbrImage1" />
+            						
+                                    </td>
+                                </tr>								
+                                <tr>
+                                    <td style="vertical-align:top;text-align:right;">缩略图水印:</td>
+                                    <td>
+                                     <label> <input type="hidden" id="HasWaterMark1"
+                                        name="HasWaterMark1" value="0" /> <input
+                                        type="checkbox" id="chHasWaterMark1" class="txt_bg"
+                                        name="chHasWaterMark1" /></label>
+            						
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right" valign="top">缩略图宽:</td>
+                                    <td>
+                                     <label> <input name="Width1" id="Width1" class="txt_bg"
+                                        type="text" value="500" style="width:36px"
+                                        maxlength="4" /> </label> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right" valign="top">缩略图高:</td>
+                                    <td>
+                                     <label> <input name="Height1" id="Height1" class="txt_bg"
+                                        type="text" value="500" style="width:36px"
+                                        maxlength="4" /> </label> 
+                                    </td>
+                                </tr>
+                             </table>
+                            </td>						
+                        </tr>
+                     </table>		
+                    </fieldset>
+                </div>
         </div>
         <div style="clear:both;" id="msg"></div>
-        <div id="browse">
-        
+        <div id="browse">        
         </div>
     </div>
     </form>
@@ -225,7 +215,7 @@
             }
             if (flag) {
                 if (aid == null) {
-                    Dialog.alert("您没有选择 图片 分类！请选择。");
+                    Dialog.alert("请选择图片分类！");
                     return;
                 }
                 msg();
