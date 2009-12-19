@@ -27,8 +27,7 @@ namespace DTCMS.Web.admin.Media
         /// </summary>
         private void PhotoUpload()
         {
-
-            string filepath = DTCMS.Common.Utils.GetRootPath() + "admin\\files\\photo\\";  //文件存放路径，最好可以配置
+            string filepath = DTCMS.Common.Utils.GetRootPath() + "admin\\files\\photo"+"\\";  //文件存放路径
             string errorMsg = string.Empty; //错误信息
             int returnVal = 1;    //返回值。1：成功，202：无效上传文件，203：你没有权限，204：未知错误
 
@@ -40,7 +39,6 @@ namespace DTCMS.Web.admin.Media
                 string fileName = System.IO.Path.GetFileName(userPostedFile.FileName);
                 if (fileName != "")
                 {
-
                     #region 验证图片格式是否正确
                     if (!PhotoFormat(fileName))
                     {
@@ -79,8 +77,12 @@ namespace DTCMS.Web.admin.Media
                 {
                     returnVal = 202;    //无效上传文件
                 }
-            }
-            #endregion 图片上传
+                #endregion 图片上传
+
+                #region 存储数据
+
+                #endregion 存储数据
+            }            
 
             Response.Redirect("~/admin/Media/EmptyPage.html?returnVal=" + returnVal + "&errorMsg=" + errorMsg);
         }
