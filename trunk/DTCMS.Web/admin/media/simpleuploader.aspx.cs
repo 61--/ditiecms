@@ -71,7 +71,7 @@ namespace DTCMS.Web.admin
                             {
                                 if (hasWaterMark == "true")
                                 {
-                                    WaterImage(filepath + returnImgPath, filepath +returnImgPath);
+                                    WaterImage(filepath + returnImgPath, filepath + returnImgPath);
                                 }
                             }
                         }
@@ -206,11 +206,12 @@ namespace DTCMS.Web.admin
             }
             else
             {//文字水印
-                Common.WaterImage.AddWater(path,path_syp, htWarterImage["WaterCharater"].ToString()
+                Common.WaterImage.AddWater(path, path_syp, htWarterImage["WaterCharater"].ToString()
                     , Convert.ToDouble(htWarterImage["XPercent"])
                     , Convert.ToDouble(htWarterImage["YPercent"])
                     , System.Drawing.ColorTranslator.FromHtml(htWarterImage["CharColor"].ToString()));
             }
+
         }
 
     }
