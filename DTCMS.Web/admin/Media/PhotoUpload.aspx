@@ -174,10 +174,12 @@
         /**
         *上传完成
         */
-        function onUploadCompleted(returnVal, errorMsg) {
+        function onUploadCompleted(returnVal, errorMsg, returnImgPath) {
             switch (returnVal) {
                 case "1": // 上传成功
                     try {
+                        window.parent.parent.document.getElementById("imgDisplay").src = returnImgPath;
+                        window.parent.parent.document.getElementById("imgPath").value = returnImgPath;
                         window.parent.parent.Dialog.close();
                     } catch (ex) { }
                     break;

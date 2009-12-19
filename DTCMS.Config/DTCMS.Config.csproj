@@ -41,7 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttachmentConfig.cs" />
+    <Compile Include="ConfigPath.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DTCMS.Common\DTCMS.Common.csproj">
+      <Project>{086A7F54-1A11-42E1-BE0D-33863EAEF4A3}</Project>
+      <Name>DTCMS.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
