@@ -19,7 +19,7 @@ namespace DTCMS.Common
     /// </summary>
     public class WaterImage
     {
-        public static string randName = DateTime.Now.ToString("yyyyMMddHHmmss")+ DateTime.Now.Millisecond.ToString() +"DTShp_";
+        
 
         #region 生成缩略图
         /// <summary>
