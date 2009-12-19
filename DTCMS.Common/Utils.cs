@@ -86,6 +86,38 @@ namespace DTCMS.Common
             }
         }
 
+        /// <summary>
+        /// 获取Form传值
+        /// </summary>
+        /// <param name="queryName">参数名</param>
+        /// <returns>失败返回空</returns>
+        public static string GetFormString(string formName)
+        {
+            if (HttpContext.Current.Request.Form[formName] != null)
+                return HttpContext.Current.Request.Form[formName].ToString();
+            else
+                return "";
+        }
+        /// <summary>
+        /// 获取Form传值
+        /// </summary>
+        /// <param name="queryName">参数名</param>
+        /// <returns>失败返回-1</returns>
+        public static int GetFormInt(string formName)
+        {
+            if (HttpContext.Current.Request.Form[formName] != null)
+            {
+                if (Regular.ValidateNum(HttpContext.Current.Request.Form[formName].Trim()))
+                    return int.Parse(HttpContext.Current.Request.Form[formName].ToString().Trim());
+                else
+                    return -1;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
         #endregion 获取URL传真
 
         #region 字符串操作
