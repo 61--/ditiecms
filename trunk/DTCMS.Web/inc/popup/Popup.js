@@ -192,7 +192,6 @@
         } else {
             var middle = ($(elem).height() - 30) / 2;
             var top = $(elem).offset().top + (middle > 0 ? middle : 0);
-            alert($(elem).height())
             $.popup.tip('<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0"><tr>' +
                  '<td align="center"><img src="/Inc/Popup/images/loading.gif" /> ' + loadingMsg + '</td></tr></table>', top, null, 0);
         }
