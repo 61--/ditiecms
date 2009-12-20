@@ -11,49 +11,44 @@ namespace DTCMS.SqlServerDAL
     public class BaseDAL
     {
         /// <summary>
-        /// 获取数据
+        /// -- 字符串缓存实现的通用分页存储过程(转自邹建)  
         /// </summary>
-        /// <param name="tb">表名</param>
-        /// <param name="colist">-要查询出的字段列表,*表示全部字段</param>
-        /// <param name="top">最多读取记录数 </param>
-        /// <param name="pagesize">每页记录数</param>
-        /// <param name="page">指定页</param>
-        /// <param name="condition">查询条件</param>
-        /// <param name="sql_key">用于排序的主键</param>
-        /// <param name="col">-用于排序，如：id desc (多个id desc,dt asc)</param>
-        /// <param name="orderby">排序,0-顺序,1-倒序</param>
-        /// <param name="pagesum">总页数</param>
-        /// <returns>数据表</returns>
-        public DataTable GetDataTable(string tb, string collist, int top, int pagesize, int page
-            ,string condition,string sql_key,string col,int orderby,out int pagesum)
+        /// <param name="tbname">要分页显示的表名，可以使用表联合  </param>
+        /// <param name="FieldKey">用于定位记录的主键(惟一键)字段,只能是单个字段  </param>
+        /// <param name="PageCurrent">要显示的页码  </param>
+        /// <param name="PageSize">每页的大小(记录数)  </param>
+        /// <param name="FieldShow">以逗号分隔的要显示的字段列表,如果不指定,则显示所有字段  </param>
+        /// <param name="FieldOrder">用于指定排序顺序  </param>
+        /// <param name="Where">查询条件  </param>
+        /// <param name="PageCount">总页数  </param>
+        /// <returns></returns>
+        public DataTable GetDataTable(string tbname, string FieldKey, int PageCurrent, int PageSize
+            , string FieldShow, string FieldOrder, string Where,out int PageCount)
         {
             SqlParameter[] parameters = {
-                new SqlParameter("@tb",SqlDbType.VarChar,512),
-                new SqlParameter("@collist",SqlDbType.VarChar,2048),
-                new SqlParameter("@top",SqlDbType.Int),
-                new SqlParameter("@pagesize",SqlDbType.Int),
-                new SqlParameter("@page",SqlDbType.Int),
-                new SqlParameter("@condition",SqlDbType.VarChar,2048),
-                new SqlParameter("@sql_key",SqlDbType.VarChar,20),
-                new SqlParameter("@col",SqlDbType.VarChar,50),
-                new SqlParameter("@orderby",SqlDbType.Bit),
-                new SqlParameter("@pages",SqlDbType.Int)
+                new SqlParameter("@tbname",SqlDbType.NVarChar,1000),
+                new SqlParameter("@FieldKey",SqlDbType.NVarChar,1000),
+                new SqlParameter("@PageCurrent",SqlDbType.Int),
+                new SqlParameter("@PageSize",SqlDbType.Int),
+                new SqlParameter("@FieldShow",SqlDbType.NVarChar,1000),
+                new SqlParameter("@FieldOrder",SqlDbType.NVarChar,1000),
+                new SqlParameter("@Where",SqlDbType.NVarChar,1000),
+                new SqlParameter("@PageCount",SqlDbType.NVarChar,1000),
 
             };
             int n=0;
-            parameters[n++].Value= tb;
-            parameters[n++].Value = collist;
-            parameters[n++].Value = top;
-            parameters[n++].Value = pagesize;
-            parameters[n++].Value = page;
-            parameters[n++].Value = condition;
-            parameters[n++].Value = sql_key;
-            parameters[n++].Value = col;
-            parameters[n++].Value = orderby;
+            parameters[n++].Value = tbname;
+            parameters[n++].Value = FieldKey;
+            parameters[n++].Value = PageCurrent;
+            parameters[n++].Value = PageSize;
+            parameters[n++].Value = FieldShow;
+            parameters[n++].Value = FieldOrder;
+            parameters[n++].Value = Where;
 
             parameters[n].Direction = ParameterDirection.Output;
+
             DataSet ds = SqlHelper.FillDataset(CommandType.StoredProcedure,"pagehelper", parameters);
-            pagesum = int.Parse(parameters[n].Value.ToString());
+            PageCount = int.Parse(parameters[n].Value.ToString());
             if (ds != null && ds.Tables.Count > 0)
             {
                 return ds.Tables[0];
