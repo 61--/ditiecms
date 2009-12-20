@@ -121,8 +121,12 @@ namespace DTCMS.Web.admin
                                     WaterImage(abbPath,abbPath);
                                 }
                                 #endregion 缩略图水印   
-                            }                            
+                            }
                         }
+
+                        #region 保存数据
+
+                        #endregion 保存数据
 
                     }
                     catch
