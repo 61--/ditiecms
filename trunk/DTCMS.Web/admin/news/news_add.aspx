@@ -6,9 +6,9 @@
     <title>添加新闻</title>
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
-    <link href="/Inc/Dialog/dialog.css" rel="stylesheet" type="text/css" />
+    <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/Inc/Dialog/Dialog.js"></script>
+    <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
     <script type="text/javascript">
         function Insert()

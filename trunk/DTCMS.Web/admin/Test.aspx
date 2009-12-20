@@ -7,8 +7,8 @@
     <title>Test</title>
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="text/javascript" src="/Inc/Dialog/Dialog.js"></script>
-    <link href="/Inc/Dialog/dialog.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
+    <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
