@@ -77,7 +77,7 @@ namespace DTCMS.Common
             sb.Append("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n");
             if (time > 0)
                 sb.Append("<meta http-equiv='refresh' content='" + time + "; url=" + (url == "-1" ? "javascript:history.go(-1)" : url) + "' />\r\n");
-            sb.Append("<link rel=\"stylesheet\" type=\"text/css\" href=\"/Inc/Dialog/dialog.css\" />\r\n");
+            sb.Append("<link rel=\"stylesheet\" type=\"text/css\" href=\"/inc/dialog/dialog.css\" />\r\n");
             sb.Append("</head>\r\n");
             sb.Append("<body>\r\n");
             sb.Append("<table id=\"dialog\" class=\"dialog_blue\">\r\n");
