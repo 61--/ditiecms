@@ -50,9 +50,9 @@
 		list-style:none;
 		width:190px;
 	}	
-	#content	
+	#data	
 	{
-	    float:left;	
+	    float:left;
 		margin-top:8px;
 	}
 	#content ul li{
@@ -100,11 +100,6 @@
 		clear:both;
 		margin:0 4px 4px;	
 	}
-	#ajaxpage
-	{
-	    float:right;
-	    padding-top:8px;
-	    padding-bottom:3px;
 </style>
     <script type="text/javascript">
         $(document).ready(function() {
