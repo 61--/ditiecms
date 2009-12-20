@@ -101,7 +101,7 @@ namespace DTCMS.SqlServerDAL
             {
                 if (dataReader.Read())
                 {
-                     model = DataReaderBind<Sys_Template>(dataReader);
+                    model = DataReaderToModel<Sys_Template>(dataReader);
                 }
             }
            
