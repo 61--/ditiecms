@@ -20,7 +20,13 @@
                 var win = diag.innerFrame.contentWindow;
                 win.frames["FrmImgUpload"].upload();
             };
-            diag.CancelEvent = function() { diag.close(); };
+            diag.CancelEvent = function() {
+                var win = diag.innerFrame.contentWindow;
+                var returnPath = win.frames["FrmImgUpload"].returnPath();
+                document.getElementById("imgDisplay").src = returnPath;
+                document.getElementById("imgPath").value = returnPath;
+                diag.close();
+            };
             diag.show();
         }
     </script>
