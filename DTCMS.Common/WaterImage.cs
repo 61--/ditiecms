@@ -29,8 +29,10 @@ namespace DTCMS.Common
         {
             System.Drawing.Image originalImage = System.Drawing.Image.FromFile(originalImagePath);
 
-            int imgWidth = width;
-            int imgHeight = height;
+            int imgWidth = width<=0?originalImage.Width:width;
+            imgWidth = width > originalImage.Width ? originalImage.Width : width;
+            int imgHeight = height<0?originalImage.Height:height;
+            imgHeight = height > originalImage.Height ? originalImage.Height : height;
             int x = 0;
             int y = 0;
             int ow = originalImage.Width;
@@ -67,7 +69,7 @@ namespace DTCMS.Common
 
            
             Dictionary<string, string> dicImg = SetImgType();//缩略图图片格式
-            System.Drawing.Bitmap bitMap = new System.Drawing.Bitmap(imgWidth, imgHeight, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            System.Drawing.Bitmap bitMap = new System.Drawing.Bitmap(imgWidth, imgHeight, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
             System.Drawing.Graphics graphics = System.Drawing.Graphics.FromImage(bitMap);//新建一个画板
             graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;//设置高质量查值法
@@ -115,22 +117,45 @@ namespace DTCMS.Common
         /// <param name="Path">原服务器图片路径</param>
         /// <param name="Path_sy">生成的带文字水印的图片路径</param>
         /// <param name="waterCharater">水印文字</param>
-        /// <param name="xPercent">水印文字与图片左上角X轴的百分比（用小数表示）</param>
-        /// <param name="yPercent">水印文字与图片左上角Y轴的百分比（用小数表示）</param>
+        /// <param name="xPercent">水印文字与图片左上角X轴的百分比（用小数表示）0~1</param>
+        /// <param name="yPercent">水印文字与图片左上角Y轴的百分比（用小数表示）0~1</param>
         /// <param name="charColor">文字颜色System.Color</param>
-        public static void AddWater(string Path, string Path_sy, string waterCharater, double xPercent, double yPercent,System.Drawing.Color charColor)
+        public static void AddWater(string Path, string Path_sy, string waterCharater, double xPercent, double yPercent,System.Drawing.Color charColor,string fontFamilyName,int fontSize)
         {
-            System.Drawing.Image image = System.Drawing.Image.FromFile(Path);
-            System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(image);
-            g.DrawImage(image, 0, 0, image.Width, image.Height);
-            System.Drawing.Font f = new System.Drawing.Font("Verdana", 23);
-            System.Drawing.Brush b = new System.Drawing.SolidBrush(charColor);
-            float x = (float)Convert.ToDecimal(image.Height * xPercent);
-            float y = (float)Convert.ToDecimal(image.Width * yPercent);
-            g.DrawString(waterCharater, f, b, x, y);
-            g.Dispose();
-            image.Save(Path_sy);
-            image.Dispose();
+            if (!File.Exists(Path))
+            {
+                throw new FileNotFoundException("指定路径的文件不存在");
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(fontFamilyName))
+                    fontFamilyName = "仿宋";
+                System.Drawing.Image image = System.Drawing.Image.FromFile(Path);
+                System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(image.Width, image.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+                System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bitmap);
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;// HighQuality;
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                g.Clear(System.Drawing.Color.Transparent);
+
+                System.Drawing.Imaging.EncoderParameters parms = new System.Drawing.Imaging.EncoderParameters(1);
+                parms.Param[0] = new System.Drawing.Imaging.EncoderParameter(System.Drawing.Imaging.Encoder.Quality, ((long)80));
+                string extension = System.IO.Path.GetExtension(Path).ToLower();
+                System.Drawing.Imaging.ImageCodecInfo imgCodeInfo = GetImageCodeInfo(SetImgType()[extension].ToString());
+
+                g.DrawImage(image, 0, 0, image.Width, image.Height);
+                System.Drawing.Font f = new System.Drawing.Font(fontFamilyName, fontSize);
+                System.Drawing.Brush b = new System.Drawing.SolidBrush(charColor);
+                float x = (float)Convert.ToDecimal(image.Height * xPercent);
+                float y = (float)Convert.ToDecimal(image.Width * yPercent);
+                g.DrawString(waterCharater, f, b, x, y);
+                g.Dispose();
+                //image.Save(Path_sy);
+                image.Dispose();
+                bitmap.Save(Path_sy, imgCodeInfo, parms);
+                bitmap.Dispose();
+            }
+            
         }
         #endregion
 
@@ -141,33 +166,56 @@ namespace DTCMS.Common
         /// <param name="Path">原服务器图片路径</param>
         /// <param name="Path_syp">生成的带图片水印的图片路径</param>
         /// <param name="Path_sypf">水印图片路径</param>
-        /// <param name="xPer"></param>
-        /// <param name="yPer"></param>
-        /// <param name="transparence"></param>
+        /// <param name="xPer">x轴位置百分比 （用小数表示）0~1</param>
+        /// <param name="yPer">y轴位置百分比 （用小数表示）0~1</param>
+        /// <param name="transparence">透明度（用小数表示）0~1</param>
         public static void AddWaterPic(string Path, string Path_syp, string Path_sypf, double xPer, double yPer, float transparence)
         {
-            System.Drawing.Image image = System.Drawing.Image.FromFile(Path);
-            System.Drawing.Image copyImage = System.Drawing.Image.FromFile(Path_sypf);
-            System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(image);
-            float[][] ptsArray ={ 
+            if (!File.Exists(Path))
+            {
+                throw new FileNotFoundException("指定原图片路径的文件不存在");
+            }
+            else
+            {
+                System.Drawing.Image image = System.Drawing.Image.FromFile(Path);
+                System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(image.Width, image.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+                if(!File.Exists(Path_sypf))
+                    throw new FileNotFoundException("指定水印图片路径的文件不存在");
+
+                System.Drawing.Image copyImage = System.Drawing.Image.FromFile(Path_sypf);
+                System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bitmap);
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                g.Clear(System.Drawing.Color.Transparent);
+
+                System.Drawing.Imaging.EncoderParameters parms = new System.Drawing.Imaging.EncoderParameters(1);
+                parms.Param[0] = new System.Drawing.Imaging.EncoderParameter(System.Drawing.Imaging.Encoder.Quality, ((long)80));
+                string extension = System.IO.Path.GetExtension(Path).ToLower();
+                System.Drawing.Imaging.ImageCodecInfo imgCodeInfo = GetImageCodeInfo(SetImgType()[extension].ToString());
+
+                g.DrawImage(image, 0, 0, image.Width, image.Height);
+                float[][] ptsArray ={ 
                                             new float[] {1, 0, 0, 0, 0},
                                             new float[] {0, 1, 0, 0, 0},
                                             new float[] {0, 0, 1, 0, 0},
                                             new float[] {0, 0, 0, transparence, 0},
                                             new float[] {0, 0, 0, 0, 1}
                                   };
-            System.Drawing.Imaging.ColorMatrix colorMatrix=new System.Drawing.Imaging.ColorMatrix (ptsArray);
-            System.Drawing.Imaging.ImageAttributes imageAttribute=new System.Drawing.Imaging.ImageAttributes ();
-            imageAttribute.SetColorMatrix(colorMatrix);
-             
-            int x = (int)Convert.ToInt32(image.Width * xPer);
-            int y = (int)Convert.ToInt32(image.Height * yPer);
-            g.DrawImage(copyImage, new System.Drawing.Rectangle(x, y, copyImage.Width, copyImage.Height), 0, 0, copyImage.Width, copyImage.Height, System.Drawing.GraphicsUnit.Pixel,imageAttribute);
-            g.Dispose();
+                System.Drawing.Imaging.ColorMatrix colorMatrix = new System.Drawing.Imaging.ColorMatrix(ptsArray);
+                System.Drawing.Imaging.ImageAttributes imageAttribute = new System.Drawing.Imaging.ImageAttributes();
+                imageAttribute.SetColorMatrix(colorMatrix);
 
-            image.Save(Path_syp);
-            image.Dispose();
-            copyImage.Dispose();
+                int x = (int)Convert.ToInt32(image.Width * xPer);
+                int y = (int)Convert.ToInt32(image.Height * yPer);
+                g.DrawImage(copyImage, new System.Drawing.Rectangle(x, y, copyImage.Width, copyImage.Height), 0, 0, copyImage.Width, copyImage.Height, System.Drawing.GraphicsUnit.Pixel, imageAttribute);
+                g.Dispose();
+
+                image.Dispose();
+                bitmap.Save(Path_syp,imgCodeInfo,parms);
+                copyImage.Dispose();
+                bitmap.Dispose();
+            }
         }
         #endregion
 
