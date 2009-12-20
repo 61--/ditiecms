@@ -72,18 +72,7 @@ namespace DTCMS.Web.admin
                             returnImgName = DateTime.Now.ToString("yyyyMMddHHmmss") + DateTime.Now.Millisecond.ToString() + fileName.Substring(fileName.LastIndexOf('.')).ToLower();
                             abbName = DateTime.Now.ToString("yyyyMMddHHmmss") + DateTime.Now.Millisecond.ToString() + "_abbr" + fileName.Substring(fileName.LastIndexOf('.')).ToLower();
                             userPostedFile.SaveAs(filepath + returnImgName);  //附件上传
-                            #endregion 附件上传
-
-                            #region 原图水印
-
-                            if (attachmentAttribute == (int)EAttachmentAttribute.Photo)
-                            {
-                                if (hasWaterMark.Trim().ToLower() == "true")
-                                {
-                                    WaterImage(filepath + returnImgName, filepath + returnImgName);
-                                }
-                            }
-                            #endregion 原图水印
+                            #endregion 附件上传                            
 
                             #region 是否图片
                             if (attachmentAttribute == (int)EAttachmentAttribute.Photo)
@@ -128,6 +117,17 @@ namespace DTCMS.Web.admin
                                 }
                             }
                             #endregion 是否图片
+
+                            #region 原图水印
+
+                            if (attachmentAttribute == (int)EAttachmentAttribute.Photo)
+                            {
+                                if (hasWaterMark.Trim().ToLower() == "true")
+                                {
+                                    WaterImage(filepath + returnImgName, filepath + returnImgName);
+                                }
+                            }
+                            #endregion 原图水印
 
                             #region 保存数据
                             Atr_AttachMent modAttachMent = new Atr_AttachMent();
@@ -248,7 +248,8 @@ namespace DTCMS.Web.admin
                 Common.WaterImage.AddWater(path, path_syp, htWarterImage["WaterCharater"].ToString()
                     , Convert.ToDouble(htWarterImage["XPercent"])
                     , Convert.ToDouble(htWarterImage["YPercent"])
-                    , System.Drawing.ColorTranslator.FromHtml(htWarterImage["CharColor"].ToString()));
+                    , System.Drawing.ColorTranslator.FromHtml(htWarterImage["CharColor"].ToString())
+                    , htWarterImage["FontFamilyName"].ToString(), Convert.ToInt32(htWarterImage["FontSize"]));
             }
 
         }

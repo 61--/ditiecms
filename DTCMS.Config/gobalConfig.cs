@@ -43,6 +43,8 @@ namespace DTCMS.Config
             ht.Add("YPercent", xmlDoc.GetSingleNodeValue(xmlnode, "YPercent"));
             ht.Add("CharColor", xmlDoc.GetSingleNodeValue(xmlnode, "CharColor"));
             ht.Add("Transparence", xmlDoc.GetSingleNodeValue(xmlnode, "Transparence"));
+            ht.Add("FontFamilyName", xmlDoc.GetSingleNodeValue(xmlnode, "FontFamilyName"));
+            ht.Add("FontSize", xmlDoc.GetSingleNodeValue(xmlnode, "FontSize"));
             return ht;
         }
     }
