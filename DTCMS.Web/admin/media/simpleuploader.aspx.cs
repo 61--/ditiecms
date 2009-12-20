@@ -63,7 +63,7 @@ namespace DTCMS.Web.admin
 
                     try
                     {
-                        
+
                         int fileContentLen = userPostedFile.ContentLength;
                         if (fileContentLen > 0)
                         {
@@ -72,7 +72,7 @@ namespace DTCMS.Web.admin
                             returnImgName = DateTime.Now.ToString("yyyyMMddHHmmss") + DateTime.Now.Millisecond.ToString() + fileName.Substring(fileName.LastIndexOf('.')).ToLower();
                             abbName = DateTime.Now.ToString("yyyyMMddHHmmss") + DateTime.Now.Millisecond.ToString() + "_abbr" + fileName.Substring(fileName.LastIndexOf('.')).ToLower();
                             userPostedFile.SaveAs(filepath + returnImgName);  //附件上传
-                            #endregion 附件上传                            
+                            #endregion 附件上传
 
                             #region 是否图片
                             if (attachmentAttribute == (int)EAttachmentAttribute.Photo)
@@ -81,11 +81,11 @@ namespace DTCMS.Web.admin
                                 {
                                     #region 生成缩略图
                                     EWaterImageType mode = EWaterImageType.W;
-                                    if (abbrImageHeight1 > 0 && abbrImageWidth1<=0)
+                                    if (abbrImageHeight1 > 0 && abbrImageWidth1 <= 0)
                                     {
                                         mode = EWaterImageType.H;
                                     }
-                                    else if (abbrImageWidth1 > 0 && abbrImageHeight1<=0)
+                                    else if (abbrImageWidth1 > 0 && abbrImageHeight1 <= 0)
                                     {
                                         mode = EWaterImageType.W;
                                     }
@@ -96,8 +96,8 @@ namespace DTCMS.Web.admin
                                     else
                                     {
                                         mode = EWaterImageType.NO;
-                                    }                                    
-                                    if (mode ==EWaterImageType.NO)
+                                    }
+                                    if (mode == EWaterImageType.NO)
                                     {
                                         abbrImageWidth1 = 500;
                                         abbrImageHeight1 = 0;
@@ -115,19 +115,19 @@ namespace DTCMS.Web.admin
                                     }
                                     #endregion 缩略图水印
                                 }
+
+                                #region 原图水印
+
+                                if (attachmentAttribute == (int)EAttachmentAttribute.Photo)
+                                {
+                                    if (hasWaterMark.Trim().ToLower() == "true")
+                                    {
+                                        WaterImage(filepath + returnImgName, filepath + returnImgName);
+                                    }
+                                }
+                                #endregion 原图水印
                             }
                             #endregion 是否图片
-
-                            #region 原图水印
-
-                            if (attachmentAttribute == (int)EAttachmentAttribute.Photo)
-                            {
-                                if (hasWaterMark.Trim().ToLower() == "true")
-                                {
-                                    WaterImage(filepath + returnImgName, filepath + returnImgName);
-                                }
-                            }
-                            #endregion 原图水印
 
                             #region 保存数据
                             Atr_AttachMent modAttachMent = new Atr_AttachMent();
@@ -152,7 +152,7 @@ namespace DTCMS.Web.admin
                                 errorMsg += ",";
                             }
                             errorMsg += fileName;
-                        }                        
+                        }
 
                     }
                     catch
@@ -176,7 +176,7 @@ namespace DTCMS.Web.admin
             {
                 returnImgPath = "/" + htPhoto["Path"].ToString().Replace("\\", "/") + "/" + returnImgName;
             }
-            
+
             Response.Redirect("~/admin/Media/EmptyPage.html?returnVal=" + returnVal + "&errorMsg=" + errorMsg + "&returnImgPath=" + returnImgPath);
         }
 

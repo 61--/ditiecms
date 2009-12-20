@@ -159,11 +159,10 @@
                 </div>
         </div>
         <div style="clear:both;" id="msg"></div>
-        <div id="browse">        
-        </div>
+        <input type="hidden" id="returnImgPath" value="" />
     </div>
     </form>
-    <script type="text/javascript">
+    <script type="text/javascript">        
         /**
         *上传完成
         */
@@ -171,10 +170,7 @@
             switch (returnVal) {
                 case "1": // 上传成功
                     try {
-                        if (window.parent.parent.document.getElementById("imgDisplay"))
-                            window.parent.parent.document.getElementById("imgDisplay").src = returnImgPath;
-                        if (window.parent.parent.document.getElementById("imgPath"))
-                            window.parent.parent.document.getElementById("imgPath").value = returnImgPath;
+                        setReturnPath(returnImgPath);
                         window.parent.parent.Dialog.close();
                     } catch (ex) { }
                     break;
@@ -271,6 +267,18 @@
     	    var fileName = val.substring(val.lastIndexOf('\\') + 1);
     	    document.getElementById(obj.id + "Name").value = fileName;
     	    document.getElementById(obj.id + "Info").value = fileName;
+    	}
+    	/**
+    	*获取返回值
+    	*/
+    	function returnPath() {
+    	    return document.getElementById("returnImgPath").value;
+    	}
+    	/**
+    	*设置返回值
+    	*/
+    	function setReturnPath(val) {
+    	    document.getElementById("returnImgPath").value = val;
     	}
     </script>
 </body>
