@@ -88,32 +88,35 @@ namespace DTCMS.Web.admin
                             #region 是否图片
                             if (attachmentAttribute == (int)EAttachmentAttribute.Photo)
                             {
-
                                 if (hasAbbrImage1.Trim().ToLower() == "true")
                                 {
-
                                     #region 生成缩略图
-                                    string mode = "W";
-                                    if (abbrImageHeight1 == -1 || abbrImageHeight1 == 0)
+                                    EWaterImageType mode = EWaterImageType.W;
+                                    if (abbrImageHeight1 > 0 && abbrImageWidth1<=0)
                                     {
-                                        mode = "W";
+                                        mode = EWaterImageType.H;
                                     }
-                                    else if (abbrImageWidth1 == 0 || abbrImageWidth1 == -1)
+                                    else if (abbrImageWidth1 > 0 && abbrImageHeight1<=0)
                                     {
-                                        mode = "H";
+                                        mode = EWaterImageType.W;
                                     }
-                                    else if ((abbrImageHeight1 != -1 && abbrImageHeight1 != 0) || (abbrImageWidth1 != 0 || abbrImageWidth1 != -1))
+                                    else if ((abbrImageHeight1 > 0) && (abbrImageWidth1 > 0))
                                     {
-                                        mode = "HW";
+                                        mode = EWaterImageType.CUT;
                                     }
                                     else
                                     {
-                                        mode = "HW";
+                                        mode = EWaterImageType.NO;
+                                    }                                    
+                                    if (mode ==EWaterImageType.NO)
+                                    {
+                                        abbrImageWidth1 = 500;
+                                        abbrImageHeight1 = 0;
+                                        mode = EWaterImageType.W;
                                     }
                                     string abbPath = filepath + abbName;
                                     Common.WaterImage.MakeThumbnail(filepath + returnImgName, abbPath
-                                    , abbrImageWidth1, abbrImageHeight1, mode);
-
+                                       , abbrImageWidth1, abbrImageHeight1, mode);
                                     #endregion 生成缩略图
 
                                     #region 缩略图水印
