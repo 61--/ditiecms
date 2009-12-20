@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{DDDF40F6-5CBE-4CD3-9890-4648C8CEBB04}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Arc_ArticleBLL.cs" />
     <Compile Include="Arc_ClassBLL.cs" />
+    <Compile Include="Atr_AttachMentBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sys_FileInfoBLL.cs" />
     <Compile Include="Sys_TemplateBLL.cs" />
