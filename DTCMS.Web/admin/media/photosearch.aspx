@@ -100,6 +100,11 @@
 		clear:both;
 		margin:0 4px 4px;	
 	}
+	#ajaxpage
+	{
+	    float:right;
+	    padding-top:8px;
+	    padding-bottom:3px;
 </style>
     <script type="text/javascript">
         $(document).ready(function() {

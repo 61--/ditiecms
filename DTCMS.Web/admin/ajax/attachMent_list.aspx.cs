@@ -86,7 +86,7 @@ namespace DTCMS.Web.admin
                 sb.Append("</ul>");
                 sb.Append("</div>");
                 int pagecount = DTCMS.Pages.PageSeting.GetPageCount(totalcount, 8);
-                sb.Append("<div class=\"grayr\" style=\" clear:both:\">");
+                sb.Append("<div class=\"grayr\" id=\"ajaxpage\"");
                 sb.Append(DTCMS.Pages.PageSeting.GetAjaxPage(pageCurrent, pagecount, "LoadData", 8));
                 sb.Append("</div>");
             }
