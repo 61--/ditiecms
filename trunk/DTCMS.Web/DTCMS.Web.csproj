@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7DBA0670-7419-4E7A-BCB7-92A8C7151733}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -833,6 +833,11 @@
     <Content Include="admin\template\templateFile_edit.aspx" />
     <Content Include="template\default\index.html" />
     <Content Include="template\default\news.htm" />
+    <Content Include="uploads\users\200912\0234.gif" />
+    <Content Include="uploads\users\200912\1.jpg" />
+    <Content Include="uploads\users\200912\2.jpg" />
+    <Content Include="uploads\users\200912\logo.jpg" />
+    <Content Include="uploads\users\200912\网站现象.jpg" />
     <Content Include="ValidateCode.ashx" />
     <None Include="admin\images\blue\admin_tlogo.psd" />
     <None Include="ckfinder\userfiles\.htaccess" />
@@ -886,7 +891,6 @@
     <Folder Include="FileUpload\" />
     <Folder Include="images\" />
     <Folder Include="js\" />
-    <Folder Include="uploads\users\200912\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -907,9 +911,6 @@
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/DTCMS_Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
