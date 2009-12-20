@@ -13,6 +13,22 @@ namespace DTCMS.IDAL
         /// </summary>
         int Add(Atr_AttachMent model);
 
+         /// <summary>
+        /// 更新附件数据
+        /// </summary>
+        int Update(Atr_AttachMent model);
+
+        /// <summary>
+        /// 删除附件数据
+        /// </summary>
+        int Delete(string AttachMentID);
+
+         /// <summary>
+        /// 获取一个附件
+        /// </summary>
+        /// <param name="AttachMentID">附件ID</param>
+        Atr_AttachMent GetModel(int AttachMentID);
+
         #region 基方法
         /// <summary>
         /// 获取数据

@@ -63,7 +63,7 @@
                         <tr>
                             <td align="right"><label>1:</label></td>
                             <td><input name='File1' id='File1' class="file txt_bg" type='file' value=''
-                                size="26" /></td>
+                                size="26" onchange="fileOnChange(this);" /></td>
                             <td><input name="File1Name" id="File1Name" class="text txt_bg" type="text"
                                 value="" /></td>
                             <td><input name="File1Info" id="File1Info" class="text txt_bg" type="text"
@@ -72,7 +72,7 @@
                         <tr>
                             <td align="right"><label>2:</label></td>
                             <td><input name='File2' id='File2' class="file txt_bg" type='file' value=''
-                                size='26' /></td>
+                                size='26'onchange="fileOnChange(this);" /></td>
                             <td><input name="File2Name" id="File2Name"  class="text txt_bg" type="text"
                                 value="" /></td>
                             <td><input name="File2Info" id="File2Info" class="text txt_bg" type="text"
@@ -81,7 +81,7 @@
                         <tr>
                             <td align="right"><label>3:</label></td>
                             <td><input name='File3' id='File3' class="file txt_bg" type='file' value=''
-                                size='26' /></td>
+                                size='26' onchange="fileOnChange(this);" /></td>
                             <td><input name="File3Name" id="File3Name" class="text txt_bg" type="text"
                                 value=""/></td>
                             <td><input name="File3Info" id="File3Info" class="text txt_bg" type="text"
@@ -89,7 +89,7 @@
                         </tr>
                         <tr>
                             <td align="right"><label>4:</label></td>
-                            <td><input name='File4' id='File4' class="file txt_bg" type='file' value=''
+                            <td><input name='File4' onchange="fileOnChange(this);" id='File4' class="file txt_bg" type='file' value=''
                                 size='26' /></td>
                             <td><input name="File4Name" id="File4Name" class="text txt_bg" type="text"
                                 value="" /></td>
@@ -98,7 +98,7 @@
                         </tr>
                         <tr>
                             <td align="right"><label>5:</label></td>
-                            <td><input name='File5' id='File5' class="file txt_bg " type='file' value=''
+                            <td><input name='File5' onchange="fileOnChange(this);" id='File5' class="file txt_bg " type='file' value=''
                                 size='26' /></td>
                             <td><input name="File5Name" id="File5Name" class="text txt_bg" type="text"
                                 value="" /></td>
@@ -262,6 +262,15 @@
     	*/
     	function getAttachmentAttribute() {
     	    return (document.getElementById("hid_attachmentAttribute").value||1);
+    	}
+    	/**
+    	*选择附件
+    	*/
+    	function fileOnChange(obj) {
+    	    var val = obj.value;
+    	    var fileName = val.substring(val.lastIndexOf('\\') + 1);
+    	    document.getElementById(obj.id + "Name").value = fileName;
+    	    document.getElementById(obj.id + "Info").value = fileName;
     	}
     </script>
 </body>

@@ -7,11 +7,15 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DTCMS.Common;
 using DTCMS.Config;
+using DTCMS.Entity;
+using DTCMS.BLL;
 
 namespace DTCMS.Web.admin
 {
     public partial class SimpleUploader : AdminPage
     {
+        Atr_AttachMentBLL bllAttachment = new Atr_AttachMentBLL();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Upload();
@@ -28,26 +32,25 @@ namespace DTCMS.Web.admin
             string hasWaterMark1 = DTCMS.Common.Utils.GetFormString("chHasWaterMark1");   //缩略图是否水印
             int abbrImageWidth1 = DTCMS.Common.Utils.GetFormInt("abbrImageWidth1"); //缩略图宽
             int abbrImageHeight1 = DTCMS.Common.Utils.GetFormInt("abbrImageHeight1");   //缩略图高
-
             Hashtable htPhoto = AttachmentConfig.GetAttachmentList();    //附件配置列表
-            string filepath = DTCMS.Common.Utils.GetRootPath() + htPhoto["Path"].ToString()+"\\"; //附件存放路径
-
+            string filepath = DTCMS.Common.Utils.GetRootPath() + htPhoto["Path"].ToString() + "\\"; //附件存放路径
             string errorMsg = string.Empty; //错误信息
             int returnVal = 1;    //返回值。1：成功，202：无效上传文件，203：你没有权限，204：未知错误
-            string returnImgPath = string.Empty;    //返回图片路径
+            string returnImgName = string.Empty;    //返回图片名称
+            string abbName = string.Empty;  //缩略图名称
 
             HttpFileCollection uploadedFiles = Request.Files;
             for (int i = 0; i < uploadedFiles.Count; i++)
             {
-                string fileDisplayName = "File"+i.ToString()+"Name";    //附件名称
-                string fileInfo = "File" + i.ToString() + "Info";  //附件描述
-                
+                string fileDisplayName = DTCMS.Common.Utils.GetFormString("File" + (i + 1) + "Name");    //附件名称
+                string fileInfo = DTCMS.Common.Utils.GetFormString("File" + (i + 1) + "Info");  //附件描述
+
                 HttpPostedFile userPostedFile = uploadedFiles[i];
                 string fileName = System.IO.Path.GetFileName(userPostedFile.FileName);
                 if (fileName != "")
                 {
                     #region 验证附件格式是否正确
-                    if (!AttachmentFormat(fileName,attachmentAttribute))
+                    if (!AttachmentFormat(fileName, attachmentAttribute))
                     {
                         if (errorMsg != string.Empty)
                         {
@@ -60,20 +63,84 @@ namespace DTCMS.Web.admin
 
                     try
                     {
-                        #region 附件上传
+                        
                         int fileContentLen = userPostedFile.ContentLength;
                         if (fileContentLen > 0)
                         {
-                            returnImgPath = DateTime.Now.ToString("yyyyMMddHHmmss") + DateTime.Now.Millisecond.ToString() + fileName.Substring(fileName.LastIndexOf('.')).ToLower();
-                            userPostedFile.SaveAs(filepath + returnImgPath);  //附件上传
+                            #region 附件上传
+
+                            returnImgName = DateTime.Now.ToString("yyyyMMddHHmmss") + DateTime.Now.Millisecond.ToString() + fileName.Substring(fileName.LastIndexOf('.')).ToLower();
+                            abbName = DateTime.Now.ToString("yyyyMMddHHmmss") + DateTime.Now.Millisecond.ToString() + "_abbr" + fileName.Substring(fileName.LastIndexOf('.')).ToLower();
+                            userPostedFile.SaveAs(filepath + returnImgName);  //附件上传
+                            #endregion 附件上传
+
+                            #region 原图水印
 
                             if (attachmentAttribute == (int)EAttachmentAttribute.Photo)
                             {
-                                if (hasWaterMark == "true")
+                                if (hasWaterMark.Trim().ToLower() == "true")
                                 {
-                                    WaterImage(filepath + returnImgPath, filepath + returnImgPath);
+                                    WaterImage(filepath + returnImgName, filepath + returnImgName);
                                 }
                             }
+                            #endregion 原图水印
+
+                            #region 是否图片
+                            if (attachmentAttribute == (int)EAttachmentAttribute.Photo)
+                            {
+
+                                if (hasAbbrImage1.Trim().ToLower() == "true")
+                                {
+
+                                    #region 生成缩略图
+                                    string mode = "W";
+                                    if (abbrImageHeight1 == -1 || abbrImageHeight1 == 0)
+                                    {
+                                        mode = "W";
+                                    }
+                                    else if (abbrImageWidth1 == 0 || abbrImageWidth1 == -1)
+                                    {
+                                        mode = "H";
+                                    }
+                                    else if ((abbrImageHeight1 != -1 && abbrImageHeight1 != 0) || (abbrImageWidth1 != 0 || abbrImageWidth1 != -1))
+                                    {
+                                        mode = "HW";
+                                    }
+                                    else
+                                    {
+                                        mode = "HW";
+                                    }
+                                    string abbPath = filepath + abbName;
+                                    Common.WaterImage.MakeThumbnail(filepath + returnImgName, abbPath
+                                    , abbrImageWidth1, abbrImageHeight1, mode);
+
+                                    #endregion 生成缩略图
+
+                                    #region 缩略图水印
+                                    if (hasWaterMark1.Trim().ToLower() == "true")
+                                    {
+                                        WaterImage(abbPath, abbPath);
+                                    }
+                                    #endregion 缩略图水印
+                                }
+                            }
+                            #endregion 是否图片
+
+                            #region 保存数据
+                            Atr_AttachMent modAttachMent = new Atr_AttachMent();
+                            modAttachMent.AttachMentAttribute = attachmentAttribute;
+                            modAttachMent.AttachMentDisplayName = fileDisplayName;
+                            modAttachMent.AttachMentPath = "/" + htPhoto["Path"].ToString().Replace("\\", "/") + "/" + returnImgName;
+                            modAttachMent.AttachMentSize = (fileContentLen / 1024).ToString() + "K";
+                            if (hasAbbrImage1.Trim().ToLower() == "true")
+                            {
+                                modAttachMent.AbbrPhotoPath = "/" + htPhoto["Path"].ToString().Replace("\\", "/") + "/" + abbName;
+                            }
+                            modAttachMent.PubLisher = "";
+                            modAttachMent.AddDate = DateTime.Now;
+                            modAttachMent.PhotoDescription = fileInfo;
+                            bllAttachment.Add(modAttachMent);
+                            #endregion 保存数据
                         }
                         else
                         {
@@ -82,55 +149,11 @@ namespace DTCMS.Web.admin
                                 errorMsg += ",";
                             }
                             errorMsg += fileName;
-                        }
-                        #endregion 附件上传
-
-                        if (attachmentAttribute == (int)EAttachmentAttribute.Photo)
-                        {
-
-                            if (hasAbbrImage1 == "true")
-                            {
-
-                                #region 生成缩略图
-                                string mode = "W";
-                                if (abbrImageHeight1 == -1 || abbrImageHeight1 == 0)
-                                {
-                                    mode = "W";
-                                }
-                                else if (abbrImageWidth1 == 0 || abbrImageWidth1 == -1)
-                                {
-                                    mode = "H";
-                                }
-                                else if ((abbrImageHeight1 != -1 && abbrImageHeight1 != 0) || (abbrImageWidth1 != 0 || abbrImageWidth1 != -1))
-                                {
-                                    mode = "HW";
-                                }
-                                else
-                                {
-                                    mode = "HW";
-                                }
-                                string abbPath = filepath + DateTime.Now.ToString("yyyyMMddHHmmss") + DateTime.Now.Millisecond.ToString() + "_abbr" + fileName.Substring(fileName.LastIndexOf('.')).ToLower();
-                                Common.WaterImage.MakeThumbnail(filepath+ returnImgPath,abbPath
-                                , abbrImageWidth1, abbrImageHeight1, mode);
-
-                                #endregion 生成缩略图
-
-                                #region 缩略图水印
-                                if (hasWaterMark1 == "true")
-                                {
-                                    WaterImage(abbPath,abbPath);
-                                }
-                                #endregion 缩略图水印   
-                            }
-                        }
-
-                        #region 保存数据
-
-                        #endregion 保存数据
+                        }                        
 
                     }
                     catch
-                    {                        
+                    {
                         returnVal = 204;    //未知错误
                         errorMsg = "";
                     }
@@ -139,10 +162,19 @@ namespace DTCMS.Web.admin
                 if (errorMsg != "")
                 {
                     returnVal = 202;    //无效上传文件
-                }                
-            }            
-
-            Response.Redirect("~/admin/Media/EmptyPage.html?returnVal=" + returnVal + "&errorMsg=" + errorMsg+"&returnImgPath="+"/"+htPhoto["Path"].ToString().Replace("\\","/")+"/"+returnImgPath);
+                }
+            }
+            string returnImgPath = "";
+            if (hasAbbrImage1.Trim().ToLower() == "true")
+            {
+                returnImgPath = "/" + htPhoto["Path"].ToString().Replace("\\", "/") + "/" + abbName;
+            }
+            else
+            {
+                returnImgPath = "/" + htPhoto["Path"].ToString().Replace("\\", "/") + "/" + returnImgName;
+            }
+            
+            Response.Redirect("~/admin/Media/EmptyPage.html?returnVal=" + returnVal + "&errorMsg=" + errorMsg + "&returnImgPath=" + returnImgPath);
         }
 
         /// <summary>
@@ -151,7 +183,7 @@ namespace DTCMS.Web.admin
         /// <param name="fileName">附件后缀名</param>
         /// <param name="attachmentAtr">附件属性</param>
         /// <returns></returns>
-        private bool AttachmentFormat(string fileName,int attachmentAtr)
+        private bool AttachmentFormat(string fileName, int attachmentAtr)
         {
             switch (attachmentAtr)
             {
@@ -176,7 +208,7 @@ namespace DTCMS.Web.admin
         /// <param name="fileName">附件后缀名</param>
         /// <param name="configAttachmentFormatName">配置参数</param>
         /// <returns></returns>
-        private bool AttachmentFormat(string fileName,string configParamName)
+        private bool AttachmentFormat(string fileName, string configParamName)
         {
             string[] extNameList = AttachmentConfig.GetAttachmentStr(configParamName).Split('|');
             string extName = fileName.Substring(fileName.LastIndexOf(".") + 1).ToLower();
@@ -227,26 +259,26 @@ namespace DTCMS.Web.admin
         /// <summary>
         /// 图片
         /// </summary>
-        Photo=1,
+        Photo = 1,
 
         /// <summary>
         /// 视频
         /// </summary>
-        Video=2,
+        Video = 2,
 
         /// <summary>
         /// 音频
         /// </summary>
-        Audio=3,
+        Audio = 3,
 
         /// <summary>
         /// Flash
         /// </summary>
-        Flash=4,
+        Flash = 4,
 
         /// <summary>
         /// 附件
         /// </summary>
-        Attachment=5
+        Attachment = 5
     }
 }

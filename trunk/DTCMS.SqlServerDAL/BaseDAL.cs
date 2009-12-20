@@ -70,7 +70,7 @@ namespace DTCMS.SqlServerDAL
         /// <typeparam name="T">实体对象</typeparam>
         /// <param name="reader">DataReader数据集</param>
         /// <returns></returns>       
-        public T DataReaderToModel<T>(SqlDataReader reader) where T : new()
+        protected T DataReaderToModel<T>(SqlDataReader reader) where T : new()
         {
             PropertyInfo info = null;
             Type type = typeof(T);
