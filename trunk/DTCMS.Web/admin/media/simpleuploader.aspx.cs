@@ -70,7 +70,7 @@ namespace DTCMS.Web.admin
                             #region 附件上传
 
                             returnImgName = DateTime.Now.ToString("yyyyMMddHHmmss") + DateTime.Now.Millisecond.ToString() + fileName.Substring(fileName.LastIndexOf('.')).ToLower();
-                            abbName = DateTime.Now.ToString("yyyyMMddHHmmss") + DateTime.Now.Millisecond.ToString() + "_abbr" + fileName.Substring(fileName.LastIndexOf('.')).ToLower();
+                            abbName = returnImgName.Substring(0, returnImgName.LastIndexOf('.')) + "_abbr" + fileName.Substring(fileName.LastIndexOf('.')).ToLower();
                             userPostedFile.SaveAs(filepath + returnImgName);  //附件上传
                             #endregion 附件上传
 
@@ -138,6 +138,10 @@ namespace DTCMS.Web.admin
                             if (hasAbbrImage1.Trim().ToLower() == "true")
                             {
                                 modAttachMent.AbbrPhotoPath = "/" + htPhoto["Path"].ToString().Replace("\\", "/") + "/" + abbName;
+                            }
+                            else
+                            {
+                                modAttachMent.AbbrPhotoPath = "";
                             }
                             modAttachMent.PubLisher = "";
                             modAttachMent.AddDate = DateTime.Now;
