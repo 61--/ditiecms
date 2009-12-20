@@ -120,6 +120,7 @@ namespace DTCMS.Pages
             }
             if ((countPage-curPage) >(extendPage/2))
             {
+                s.Append("...");
                 s.Append("<a href=\"###\" onclick=\"");
                 s.Append(string.Format("{0}({1})", callback, countPage-1));
                 s.Append("\">");
