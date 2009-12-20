@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>测试</title>
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
-    <link href="/Inc/Dialog/dialog.css" rel="stylesheet" type="text/css" />        
-    <script type="text/javascript" src="/Inc/Dialog/Dialog.js"></script>
+    <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />        
+    <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
     <script type="text/javascript">
         function upload() {
             var diag = new Dialog();

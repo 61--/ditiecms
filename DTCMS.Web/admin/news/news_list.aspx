@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>文章列表</title>
     <link href="../css/blue_body.css" type="text/css" rel="StyleSheet" />
-    <link href="/Inc/Dialog/dialog.css" rel="stylesheet" type="text/css" />
+    <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/Inc/Dialog/Dialog.js"></script>
+    <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
-    <script type="text/javascript" src="/Inc/treetable/TableTree4J.js"></script>
+    <script type="text/javascript" src="/inc/treetable/TableTree4J.js"></script>
     <script type="text/javascript">
         $(function() {
             LoadData();
@@ -94,7 +94,7 @@
 		</div>
 		<div id="content">
 		    <div class="toolbar">
-                <a href="News_Add.aspx" class="button b4"><img src="../images/ico/i_add.gif" alt="" />添加文章</a>
+                <a href="news_add.aspx" class="button b4"><img src="../images/ico/i_add.gif" alt="" />添加文章</a>
                 <a href="javascript:Dialog.alert('您没有权限编辑文章！');" class="button b4"><img src="../images/ico/i_edit.gif" alt="" />编辑文章</a>
                 <a href="javascript:DeleteData(-1,true);" class="button b4"><img src="../images/ico/i_allDelete.gif" alt="" />批量删除</a>
             </div>

@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>栏目列表</title>
     <link href="../css/blue_body.css" type="text/css" rel="StyleSheet" />
-    <link href="/Inc/Dialog/dialog.css" rel="stylesheet" type="text/css" />
+    <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
     <link href="/Inc/Popup/popup.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/Inc/Dialog/Dialog.js"></script>
+    <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
     <script type="text/javascript" src="/Inc/Popup/popup.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
     <script type="text/javascript" src="../js/color.js"></script>
@@ -98,7 +98,7 @@
                 </ul>
             </div>
             <div class="toolbar">
-                <a href="Class_Add.aspx" class="button b4"><img src="../images/ico/i_add.gif" alt="" />新建栏目</a>
+                <a href="class_add.aspx" class="button b4"><img src="../images/ico/i_add.gif" alt="" />新建栏目</a>
                 <a href="javascript:updateData();" class="button b4"><img src="../images/ico/i_edit.gif" alt="" />修改栏目</a>
                 <a href="javascript:deleteData(-1,true);" class="button b4"><img src="../images/ico/i_allDelete.gif" alt="" />批量删除</a>
                 <a href="javascript:;" onclick="showLoading('#gridTreeDiv')" id="color">标题样式</a>
