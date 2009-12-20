@@ -489,7 +489,7 @@
     <Content Include="inc\dialog\images\ico_Warning.gif" />
     <Content Include="inc\dialog\images\ico_Warning.png" />
     <Content Include="inc\dialog\images\window.gif" />
-    <Content Include="inc\dialog\Dialog.js" />
+    <Content Include="inc\dialog\dialog.js" />
     <Content Include="inc\dialog\Demo.html" />
     <Content Include="inc\popup\default.htm" />
     <Content Include="inc\popup\images\help.gif" />
@@ -570,7 +570,7 @@
     <Content Include="bin\DTCMS.SqlServerDAL.dll" />
     <Content Include="bin\DTCMS.SqlServerDAL.pdb" />
     <Content Include="bin\FredCK.FCKeditorV2.dll" />
-    <Content Include="inc\dialog\Dialog.css" />
+    <Content Include="inc\dialog\dialog.css" />
     <Content Include="editor\fckeditor\css\behaviors\disablehandles.htc" />
     <Content Include="editor\fckeditor\css\behaviors\showtableborders.htc" />
     <Content Include="editor\fckeditor\css\fck_editorarea.css" />
