@@ -25,7 +25,7 @@ namespace DTCMS.Common
         /// <param name="width">缩略图宽度</param>
         /// <param name="height">缩略图高度</param>
         /// <param name="mode">生成缩略图的方式</param>    
-        public static void MakeThumbnail(string originalImagePath, string thumbnailPath, int width, int height, string mode)
+        public static void MakeThumbnail(string originalImagePath, string thumbnailPath, int width, int height, EWaterImageType mode)
         {
             System.Drawing.Image originalImage = System.Drawing.Image.FromFile(originalImagePath);
 
@@ -37,15 +37,15 @@ namespace DTCMS.Common
             int oh = originalImage.Height;
             switch (mode)
             {
-                case "HW"://指定高宽缩放（可能变形）                
+                case EWaterImageType.HW://指定高宽缩放（可能变形）                
                     break;
-                case "W"://指定宽，高按比例                    
+                case EWaterImageType.W://指定宽，高按比例                    
                     imgHeight = originalImage.Height * width / originalImage.Width;
                     break;
-                case "H"://指定高，宽按比例
+                case EWaterImageType.H://指定高，宽按比例
                     imgWidth = originalImage.Width * height / originalImage.Height;
                     break;
-                case "Cut"://指定高宽裁减（不变形）                
+                case EWaterImageType.CUT://指定高宽裁减（不变形）                
                     if ((double)originalImage.Width / (double)originalImage.Height > (double)imgWidth / (double)imgHeight)
                     {
                         oh = originalImage.Height;
@@ -209,5 +209,35 @@ namespace DTCMS.Common
             return dicImg;
         }
         #endregion
+    }
+    /// <summary>
+    /// 缩略方式
+    /// </summary>
+    public enum EWaterImageType
+    {
+        /// <summary>
+        /// 指定高宽缩放（可能变形）                
+        /// </summary>
+        HW,
+
+        /// <summary>
+        /// 指定宽，高按比例
+        /// </summary>
+        W,
+
+        /// <summary>
+        /// 指定高，宽按比例
+        /// </summary>
+        H,
+
+        /// <summary>
+        /// 指定高宽裁减（不变形）
+        /// </summary>
+        CUT,
+
+        /// <summary>
+        /// 宽高为0
+        /// </summary>
+        NO
     }
 }
