@@ -4,7 +4,7 @@
 * QQ：4845587 E-mail:wzh@wangzhaohui.com
 * 最后修正：2009-12-4
 **/
-var IMAGESPATH = '/Inc/Dialog/images/'; //图片路径配置
+var IMAGESPATH = '/inc/dialog/images/'; //图片路径配置
 /*************************公用方法和属性****************************/
 var isIE = navigator.userAgent.indexOf('MSIE') != -1;
 var isIE6 = navigator.userAgent.indexOf('MSIE 6.0') != -1;

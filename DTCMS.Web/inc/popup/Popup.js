@@ -11,50 +11,53 @@
         left: 0,
         width: 300,
         height: 120,
+        popType: "",
         repositionOnResize: false,          // 窗口调整大小后是否重新定位
-        //draggable: false,                 // 允许拖拽 (需要UI Draggables插件)
         okButton: '确 定',                  // 确定按钮
         cancelButton: '取 消',              // 取消按钮
-        isButtonRow: true,                 // 是否显示按钮
+        isButtonRow: true,                  // 是否显示按钮
         isPopup: true,                      // 是否为popup窗口
         autoClose: 0,                       // 窗口自动关闭 (大于0时窗口自动关闭)
 
         // 公共方法
         tip: function(msg, top, left, autoClose) {
             this.ID = 'tip';
+            this.popType = 'tip';
             this.isPopup = false;
             this.autoClose = autoClose || this.autoClose;
             this.width = 240;
             this.height = 30;
             this.top = top || ($(document).height() - this.height) / 2;
             this.left = left || ($(document).width() - this.width) / 2;
-            $.popup._show(null, 'tip', msg, null);
+            $.popup._show(null, msg, null);
         },
 
         help: function(elem, title, msg) {
             this.title = title || this.title;
-            $.popup._show(elem, 'help', msg);
+            this.popType = 'help';
+            $.popup._show(elem, msg);
         },
 
         prompt: function(elem, title, msg, isButtonRow, isPopup, callback, top, left, width, height) {
             this.title = title || this.title;
+            this.popType = 'prompt';
             this.isButtonRow = isButtonRow || this.isButtonRow;
             this.isPopup = isPopup || this.isPopup;
             this.top = top || $("#" + elem).offset().top + 18;
             this.left = left || $("#" + elem).offset().left;
             this.width = width || this.width;
             this.height = height || this.height;
-            $.popup._show(elem, 'prompt', msg, function(result) {
+            $.popup._show(elem, msg, function(result) {
                 if (callback) callback(result);
             });
         },
 
         // 私有方法
-        _show: function(elem, type, msg, callback) {
+        _show: function(elem, msg, callback) {
             if ($("#_Popup_" + this.ID).length < 1) {
                 //$.popup._hide();
                 var html =
-			    '<div class="popup_' + type + '" id="_Popup_' + this.ID + '" style="width:' + this.width + 'px">\
+			    '<div class="popup_' + this.popType + '" id="_Popup_' + this.ID + '" style="width:' + this.width + 'px">\
                   <div class="popup_header" id="_Title_"><h1>' + this.title + '</h1><div class="h_r"></div></div>\
                   <div class="popup_content">\
                     <div id="_Container_' + this.ID + '" style="height:' + this.height + 'px">' + msg + '</div></div>' +
@@ -82,7 +85,7 @@
                 $.popup._reposition();
                 $.popup._maintainPosition(true);
 
-                $.popup._bindType(type);
+                $.popup._bindType();
 
                 // Popup 窗口方法待测试
                 if (this.isPopup) {
@@ -93,18 +96,26 @@
                         e ? e.stopPropagation() : event.cancelBubble = true;
                     });
                     $(document).click(function() {
-                        $.popup._hide(type);
+                        $.popup._hide();
                     });
+                }
+
+                if (this.autoClose > 0) {
+                    $.popup._autoClose();
                 }
             }
             else {
-                $.popup._bindType(type, callback);
+                $("#_Container_" + this.ID).html(msg);
+                $.popup._bindType(callback);
                 $("#_Popup_" + this.ID).show();
+                if (this.autoClose > 0) {
+                    $.popup._autoClose();
+                }
             }
         },
 
-        _bindType: function(type, callback) {
-            switch (type) {
+        _bindType: function(callback) {
+            switch (this.popType) {
                 case 'help':
                     if (this.isButtonRow) {
                         $("#_ButtonRow_" + this.ID).after('<input type="button" value="' + $.popup.okButton + '" id="_ButtonOK_' + this.ID + '" />');
@@ -145,14 +156,18 @@
 
         },
 
-        _hide: function(type) {
-            if (type == "tip") {
+        _hide: function() {
+            if (this.popType == "tip") {
                 $("#_Popup_" + this.ID).fadeOut(500);
             }
             else {
                 $("#_Popup_" + this.ID).remove();
             }
             $.popup._maintainPosition(false);
+        },
+
+        _autoClose: function() {
+            setTimeout("$.popup._hide()", this.autoClose * 1000);
         },
 
         _reposition: function() {
