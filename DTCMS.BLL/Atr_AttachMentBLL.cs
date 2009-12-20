@@ -42,5 +42,7 @@ namespace DTCMS.BLL
         {
             return dalAttachMent.GetModel(AttachMentID);
         }
+
+        
     }
 }

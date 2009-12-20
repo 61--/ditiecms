@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
-<title>图片上传</title>  
+<title>附件上传</title>  
 <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
 <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />        
 <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
