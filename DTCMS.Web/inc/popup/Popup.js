@@ -24,8 +24,8 @@
             this.ID = 'tip';
             this.isPopup = false;
             this.autoClose = autoClose || this.autoClose;
-            this.width = 220;
-            this.height = 50;
+            this.width = 240;
+            this.height = 30;
             this.top = top || ($(document).height() - this.height) / 2;
             this.left = left || ($(document).width() - this.width) / 2;
             $.popup._show(null, 'tip', msg, null);
@@ -190,22 +190,25 @@
             $.popup.tip('<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0"><tr>' +
                 '<td align="center"><img src="/Inc/Popup/images/loading.gif" /> ' + loadingMsg + '</td></tr></table>', null, null, 0);
         } else {
-            var middle = ($(elem).height() - 50) / 2;
+            var middle = ($(elem).height() - 30) / 2;
             var top = $(elem).offset().top + (middle > 0 ? middle : 0);
+            alert($(elem).height())
             $.popup.tip('<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0"><tr>' +
                  '<td align="center"><img src="/Inc/Popup/images/loading.gif" /> ' + loadingMsg + '</td></tr></table>', top, null, 0);
         }
     }
-    hideLoading = function() {
+    hideTip = function() {
         $("#_Popup_tip").fadeOut(500);
     }
     showTip = function(msg, elem, autoClose) {
         if (elem == null) {
-            $.popup.tip(msg, null, null, autoClose);
+            $.popup.tip('<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0"><tr>' +
+                '<td align="center">' + msg + '</td></tr></table>', null, null, autoClose);
         } else {
             var middle = ($("#" + elem).height() - 50) / 2;
             var top = $("#" + elem).offset().top + (middle > 0 ? middle : 0);
-            $.popup.tip(msg, top, null, autoClose);
+            $.popup.tip('<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0"><tr>' +
+                '<td align="center">' + msg + '</td></tr></table>', top, null, autoClose);
         }
     }
     dHelp = function(elem, title, msg) {

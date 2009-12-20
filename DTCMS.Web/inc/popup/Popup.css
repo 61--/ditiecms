@@ -45,16 +45,15 @@
 /*------- Tip Style -------*/
 .popup_tip
 {
-	background:#A8BDE7;
+	border:1px #684E02 solid;
 	vertical-align:middle;
-	filter:Alpha(Opacity=90);
-	-moz-opacity:0.9;
+	filter:Alpha(Opacity=80);
+	-moz-opacity:0.8;
 }
 .popup_tip .popup_content
 {
-	margin:5px;
-	border:1px #9FB7E7 solid;
-	background:#FFF;
+	color:#000;
+	background:#FFC;
 	text-align:center;
 }
 .popup_tip img
