@@ -33,18 +33,22 @@
         },
 
         help: function(elem, title, msg) {
+            this.ID = 'help';
             this.title = title || this.title;
             this.popType = 'help';
+            this.top = $(elem).offset().top;
+            this.left = $(elem).offset().left;
             $.popup._show(elem, msg);
         },
 
         prompt: function(elem, title, msg, isButtonRow, isPopup, callback, top, left, width, height) {
+            this.ID = 'prompt';
             this.title = title || this.title;
             this.popType = 'prompt';
             this.isButtonRow = isButtonRow || this.isButtonRow;
             this.isPopup = isPopup || this.isPopup;
-            this.top = top || $("#" + elem).offset().top + 18;
-            this.left = left || $("#" + elem).offset().left;
+            this.top = top || $(elem).offset().top + 18;
+            this.left = left || $(elem).offset().left;
             this.width = width || this.width;
             this.height = height || this.height;
             $.popup._show(elem, msg, function(result) {
@@ -89,7 +93,7 @@
 
                 // Popup 窗口方法待测试
                 if (this.isPopup) {
-                    $("#" + elem).click(function(e) {
+                    $(elem).click(function(e) {
                         e ? e.stopPropagation() : event.cancelBubble = true;
                     });
                     $("#_Popup_" + this.ID).click(function(e) {
@@ -157,13 +161,15 @@
         },
 
         _hide: function() {
-            if (this.popType == "tip") {
-                $("#_Popup_" + this.ID).fadeOut(500);
+            if ($("#_Popup_" + this.ID).length > 0) {
+                if (this.popType == "tip") {
+                    $("#_Popup_" + this.ID).fadeOut(500);
+                }
+                else {
+                    $("#_Popup_" + this.ID).remove();
+                }
+                $.popup._maintainPosition(false);
             }
-            else {
-                $("#_Popup_" + this.ID).remove();
-            }
-            $.popup._maintainPosition(false);
         },
 
         _autoClose: function() {
@@ -171,8 +177,8 @@
         },
 
         _reposition: function() {
-            var top = $.popup.top || (($(document).height() / 2) - ($("#popup_container").outerHeight() / 2));
-            var left = $.popup.left || (($(document).width() / 2) - ($("#popup_container").outerWidth() / 2));
+            var top = this.top || (($(document).height() / 2) - ($("#popup_container").outerHeight() / 2));
+            var left = this.left || (($(document).width() / 2) - ($("#popup_container").outerWidth() / 2));
             if (top < 0) top = 0;
             if (left < 0) left = 0;
             // IE6 fix
@@ -225,12 +231,12 @@
                 '<td align="center">' + msg + '</td></tr></table>', top, null, autoClose);
         }
     }
-    dHelp = function(elem, title, msg) {
+    showHelper = function(elem, title, msg) {
         $.popup.help(elem, title, msg);
-    };
+    }
 
-    dPrompt = function(elem, title, msg, isButtonRow, isPopup, callback, top, left, width, height) {
+    showPrompt = function(elem, title, msg, isButtonRow, isPopup, callback, top, left, width, height) {
         $.popup.prompt(elem, title, msg, isButtonRow, isPopup, callback, top, left, width, height);
-    };
+    }
 
 })(jQuery);

@@ -3,6 +3,7 @@
 	padding:0;
 	margin:0;
 }
+/*------- Prompt Style -------*/
 .popup_prompt{
 	border:1px solid #909090; 
 	background:#FFF; 
@@ -53,10 +54,20 @@
 .popup_tip .popup_content
 {
 	color:#000;
-	background:#FFC;
+	background:#FCFBE0;
 	text-align:center;
 }
 .popup_tip img
 {
 	vertical-align:middle;
+}
+/*------- Help Style -------*/
+.popup_help
+{
+	width:271px;
+	background:url(images/help_t1.gif) left top no-repeat;
+}
+.popup_help .popup_header
+{
+	
 }

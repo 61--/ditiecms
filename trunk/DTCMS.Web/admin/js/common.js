@@ -67,10 +67,6 @@ function getElemCoords(elem) {
         left: l
     };
 }
-/*** 查看系统帮助 ***/
-function showHelp(ID) {
-    Dialog.alert("帮助主题" + ID);
-}
 /*** IP Count ***/
 
 
