@@ -50,7 +50,7 @@ namespace DTCMS.Web.admin
             {
                 where = string.Format("AttachMentAttribute=1");
             }
-            DataTable dtImageList = bllAttachment.GetAttachmentList(pageCurrent, 8, where, out totalcount);
+            DataTable dtImageList = bllAttachment.GetAttachmentList(pageCurrent, 10, where, out totalcount);
             if (dtImageList != null && dtImageList.Rows.Count > 0)
             {
                 int checkID = 1;
@@ -66,7 +66,7 @@ namespace DTCMS.Web.admin
                     sb.Append("<a onclick=\"selectImage('" + chk_Id + "')\" href=\"javascript:void(0);\">");
                     if (dr["AbbrPhotoPath"].ToString() != string.Empty)
                     {
-                        sb.Append("<img src=\"" + dr["AttachMentPath"].ToString() + "\" alt=\"" + displayName + "\" />");
+                        sb.Append("<img src=\"" + dr["AbbrPhotoPath"].ToString() + "\" alt=\"" + displayName + "\" />");
                     }
                     else
                     {
@@ -75,7 +75,14 @@ namespace DTCMS.Web.admin
                     sb.Append("</a>");
                     sb.Append("</dt>");
                     sb.Append("<dd>");
-                    sb.Append("<input type=\"checkbox\" id=\"" + chk_Id + "\" />");
+                    if (dr["AbbrPhotoPath"].ToString() != string.Empty)
+                    {
+                        sb.Append("<input type=\"checkbox\" id=\"" + chk_Id + "\" name=\"items\" value=\"" + dr["AbbrPhotoPath"].ToString() + "\" />");
+                    }
+                    else
+                    {
+                        sb.Append("<input type=\"checkbox\" id=\"" + chk_Id + "\" name=\"items\" value=\"" + dr["AttachMentPath"].ToString() + "\" />");
+                    }
                     sb.Append("<label for=\"" + chk_Id + "\">" + displayName + "</label>");
                     sb.Append("</dd>");
                     sb.Append("</dl>");
@@ -85,9 +92,11 @@ namespace DTCMS.Web.admin
                 }
                 sb.Append("</ul>");
                 sb.Append("</div>");
-                int pagecount = DTCMS.Pages.PageSeting.GetPageCount(totalcount, 8);
-                sb.Append("<div class=\"grayr\" style=\"clear:left;\"");
-                sb.Append(DTCMS.Pages.PageSeting.GetAjaxPage(pageCurrent, pagecount, "LoadData", 8));
+                int pagecount = DTCMS.Pages.PageSeting.GetPageCount(totalcount, 10);
+                sb.Append("<div style=\"position:absolute;right:0;bottom:-7px;\">");
+                sb.Append("<div class=\"grayr\" style=\"height:30px;line-height:30px;\">");
+                sb.Append(DTCMS.Pages.PageSeting.GetAjaxPage(pageCurrent, pagecount, "LoadData", 10));
+                sb.Append("</div>");
                 sb.Append("</div>");
             }
             return sb.ToString();

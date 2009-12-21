@@ -18,13 +18,15 @@
             diag.URL = "PhotoManagement.aspx";
             diag.OKEvent = function() {
                 var win = diag.innerFrame.contentWindow;
-                win.frames["FrmImgUpload"].upload();
+                win.frames["FrmUpload"].upload();
             };
             diag.CancelEvent = function() {
                 var win = diag.innerFrame.contentWindow;
-                var returnPath = win.frames["FrmImgUpload"].returnPath();
-                document.getElementById("imgDisplay").src = returnPath;
-                document.getElementById("imgPath").value = returnPath;
+                var returnPath = win.frames["FrmUpload"].returnPath();
+                if (returnPath) {
+                    document.getElementById("imgDisplay").src = returnPath;
+                    document.getElementById("imgPath").value = returnPath;
+                }
                 diag.close();
             };
             diag.show();
