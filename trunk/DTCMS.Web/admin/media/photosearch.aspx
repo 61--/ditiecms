@@ -13,8 +13,7 @@
 	    margin:0 auto;
 	    font-family:Verdana, Arial, Helvetica, sans-serif;
 	    font-size:12px;
-    }
-    
+    }    
     .text{
 	    width:119px;
     }
@@ -43,7 +42,7 @@
 	}
 	#search{
 		float:left;
-		margin-top:3px;
+		padding-top:-3px;
 	}
 	#search ul li{
 		float:left;
@@ -55,6 +54,10 @@
 	    float:left;
 		margin-top:8px;
 	}
+	#content
+	{
+	    float:left;
+	}
 	#content ul li{
 		float:left;
 		color:#669900;
@@ -62,29 +65,30 @@
 		border-style:solid;
 		border-width:1px;
 		border-color:#EEEEEE #E3E3E3 #DDDDDD #E9E9E9;
-		margin:5px;
+		margin:3px;
 		overflow:hidden;
-		width:130px;
-		height:160px;
+		width:105px;
+		height:130px;
 	}
 	#content ul li dl{
 		clear:both;	
-		margin:3px;
+		margin:5px;
 	}
 	#content ul li dl dt a{
-		display: table-cell;   
+		display:table-cell;
 		text-align:center;
 		vertical-align:middle;
      	*display:block;
-		*font-size:105px;
+		*font-size:75px;
 		*font-family:Arial;
 		color:#F9F9F9;
 		border:0 none;
 		background-color:transparent;
 		text-decoration:none;
-		width:130px;
-		height:130px;
-		line-height:120px;	
+		width:105px;
+		height:100px;
+		line-height:90px;	
+		overflow:hidden;
 	}
 	#content dl dt a:hover{
 		background-color:#FFFABF;
@@ -109,7 +113,7 @@
             $.ajax({
                 url: "../ajax/attachment_list.aspx",
                 type: "GET",
-                data: "action=image&page="+page+"&ran=" + Math.random(),
+                data: "action=image&page=" + page + "&ran=" + Math.random(),
                 success: function(responseText) {
                     document.getElementById("data").innerHTML = responseText;
                 }
@@ -129,7 +133,7 @@
 		</div>
 		<div id="data"></div>
 	</div>
-
+	<input type="hidden" id="returnVal" value="" />
     </form>
     <script type="text/javascript">
     /**
@@ -139,7 +143,26 @@
         var chk = document.getElementById(chk_id);
         if (chk) {
             chk.checked = !chk.checked;
-        }           
+        }
+    }
+    function upload() {
+        var chks = document.getElementsByName("items");
+        var hid = document.getElementById("returnVal");
+        if (chks) {
+            for (i = 0; i < chks.length; i++) {
+                if (chks[i].checked) {
+                    hid.value = chks[i].value;
+                }
+            }
+        }
+        window.parent.parent.Dialog.close();        
+    }
+    /**
+    *返回图片地址
+    */
+    function returnPath() {
+        return document.getElementById("returnVal").value;
+        
     }
     </script>
 </body>

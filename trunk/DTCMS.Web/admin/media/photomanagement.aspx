@@ -16,6 +16,7 @@
     }
     ul{
 	    list-style:none;
+	    margin:0px;
     }
 
 	    #container{	
@@ -23,11 +24,11 @@
     }
 	    #menu{
 	    width:100%;
-	    margin-bottom:12px;
+	    margin:5px 0 6px 0;
     }
-	    #menu ul li{
+	    #menu ul li{	   
 	    float:left;
-	    width:86px;		
+	    width:80px;		
     }
 	    #menu ul li a{
 	    display:block;
@@ -41,14 +42,24 @@
         <div id="container">
 	        <div id="menu">
 		        <ul>
-			        <li><a href="javascript:void(0)">附件上传</a></li>
-			        <li><a href="javascript:void(0)">附件浏览</a></li>
+			        <li><a href="javascript:void(0)" onclick="attachmentUpload(this)">附件上传</a></li>
+			        <li><a href="javascript:void(0)" onclick="attachmentSearch(this)">附件浏览</a></li>
 		        </ul>
 	        </div>
 	        <div id="main">
-		        <iframe src="PhotoUpload.aspx" width="100%" height="340px" id="FrmImgUpload" name="FrmImgUpload" frameborder="0" scrolling="no"></iframe>        
+		        <iframe src="photoupload.aspx" width="100%" height="340px" id="FrmUpload" name="FrmUpload" frameborder="0" scrolling="no"></iframe>
 	        </div>
         </div>
 	</form>
+	<script type="text/javascript">
+	    function attachmentUpload(obj) {
+	        document.getElementById("FrmUpload").src = "photoupload.aspx";
+	        obj.blur();
+	    }
+	    function attachmentSearch(obj) {
+	        document.getElementById("FrmUpload").src = "photosearch.aspx";
+	        obj.blur();
+	    }
+	</script>
 </body>
 </html>
