@@ -114,8 +114,8 @@
                  <label>图片参数设置</label></legend>
                     <table width="100%" cellpadding="2" cellspacing="0">
                         <tr>
-                            <td style="width:53%;text-align:left; vertical-align:top;">
-                            <table width="100%" cellpadding="2" cellspacing="0">                                  						
+                            <td style="width:100%;text-align:left; vertical-align:top;">
+                            <table width="100%;" cellpadding="2" cellspacing="0">                                  						
                                 <tr>
                                     <td style="width:18%;text-align:right;"><label>原图水印:</label></td>
                                     <td style="width:82%;"><input type="hidden" id="HasWaterMark"
