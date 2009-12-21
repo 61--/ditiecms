@@ -9,14 +9,14 @@
         title: "",
         top: 0,
         left: 0,
-        width: 300,
-        height: 120,
+        width: 0,
+        height: 0,
         popType: "",
         repositionOnResize: false,          // 窗口调整大小后是否重新定位
         okButton: '确 定',                  // 确定按钮
         cancelButton: '取 消',              // 取消按钮
-        isButtonRow: true,                  // 是否显示按钮
-        isPopup: true,                      // 是否为popup窗口
+        isButtonRow: false,                  // 是否显示按钮
+        isPopup: false,                      // 是否为popup窗口
         autoClose: 0,                       // 窗口自动关闭 (大于0时窗口自动关闭)
 
         // 公共方法
@@ -32,12 +32,21 @@
             $.popup._show(null, msg, null);
         },
 
-        help: function(elem, title, msg) {
+        help: function(elem, title, msg, height) {
             this.ID = 'help';
             this.title = title || this.title;
-            this.popType = 'help';
-            this.top = $(elem).offset().top;
-            this.left = $(elem).offset().left;
+            this.width = 271;
+            this.height = height || 40;
+            var top = $(elem).offset().top;
+            if (top - 60 - this.height > 0) {
+                this.top = $(elem).offset().top - 60 - this.height;
+                this.popType = 'help_up';
+            }
+            else {
+                this.top = top + 16;
+                this.popType = 'help_down';
+            }
+            this.left = $(elem).offset().left - 60;
             $.popup._show(elem, msg);
         },
 
@@ -47,7 +56,7 @@
             this.popType = 'prompt';
             this.isButtonRow = isButtonRow || this.isButtonRow;
             this.isPopup = isPopup || this.isPopup;
-            this.top = top || $(elem).offset().top + 18;
+            this.top = top || $(elem).offset().top + 16;
             this.left = left || $(elem).offset().left;
             this.width = width || this.width;
             this.height = height || this.height;
@@ -64,7 +73,7 @@
 			    '<div class="popup_' + this.popType + '" id="_Popup_' + this.ID + '" style="width:' + this.width + 'px">\
                   <div class="popup_header" id="_Title_"><h1>' + this.title + '</h1><div class="h_r"></div></div>\
                   <div class="popup_content">\
-                    <div id="_Container_' + this.ID + '" style="height:' + this.height + 'px">' + msg + '</div></div>' +
+                    <div id="_Container_' + this.ID + (this.height == 0 ? '">' : '" style="height:' + this.height + 'px">') + msg + '</div></div>' +
                     (this.isButtonRow ? '<div class="buttonRow" id="_ButtonRow_' + this.ID + '"></div>' : '') +
                   '<div class="popup_bottom"><div class="b_r"></div>\
                 </div>';
@@ -231,8 +240,8 @@
                 '<td align="center">' + msg + '</td></tr></table>', top, null, autoClose);
         }
     }
-    showHelper = function(elem, title, msg) {
-        $.popup.help(elem, title, msg);
+    showHelper = function(elem, title, msg, height) {
+        $.popup.help(elem, title, msg, height);
     }
 
     showPrompt = function(elem, title, msg, isButtonRow, isPopup, callback, top, left, width, height) {

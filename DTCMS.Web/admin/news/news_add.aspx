@@ -7,8 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
     <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
+    <link href="/Inc/Popup/popup.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
+    <script type="text/javascript" src="/Inc/Popup/popup.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
     <script type="text/javascript">
         function Insert()
@@ -67,7 +69,7 @@
                     </tr>
                     <tr>
                         <td class="main_bleft split">
-                            TAG标签<sup><a href="javascript:showHelp('H0201001')" title="查看帮助">[?]</a></sup>:
+                            TAG标签<sup><a id="H0201001" href="javascript:showHelper('#H0201001', '帮助主题', '多个TAG标签用半角逗号隔开',30)" title="查看帮助">[?]</a></sup>:
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_Tags" class="textbox" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" />
