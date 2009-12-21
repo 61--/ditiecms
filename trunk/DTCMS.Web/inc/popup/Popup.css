@@ -62,12 +62,59 @@
 	vertical-align:middle;
 }
 /*------- Help Style -------*/
-.popup_help
+.popup_help_up,.popup_help_down
 {
 	width:271px;
+	filter:Alpha(Opacity=85);
+}
+.popup_help_up
+{
 	background:url(images/help_t1.gif) left top no-repeat;
 }
-.popup_help .popup_header
+.popup_help_down
 {
-	
+	background:url(images/help_t2.gif) left top no-repeat;
+}
+.popup_help_up a:link,.popup_help_down a:link
+{
+	text-decoration:underline;
+}
+.popup_help_up .popup_header
+{
+	margin-top:9px;
+}
+.popup_help_down .popup_header
+{
+	margin-top:22px;
+}
+.popup_help_up .popup_header,.popup_help_down .popup_header
+{
+	height:18px;
+	border-left:1px #000 solid;
+	border-right:1px #000 solid;
+	background:#FFFFE1;
+}
+.popup_help_up .popup_header h1,.popup_help_down .popup_header h1
+{
+	font-size:13px;
+	text-indent:28px;
+	background:url(images/action.gif) 10px 0px no-repeat;
+}
+.popup_help_up .popup_content,.popup_help_down .popup_content
+{
+	line-height:16px;
+	padding:5px 10px;
+	border-left:1px #000 solid;
+	border-right:1px #000 solid;
+	background:#FFFFE1;
+}
+.popup_help_up .popup_bottom
+{
+	height:22px;
+	background:url(images/help_b1.gif) left top no-repeat;
+}
+.popup_help_down .popup_bottom
+{
+	height:9px;
+	background:url(images/help_b2.gif) left top no-repeat;
 }
