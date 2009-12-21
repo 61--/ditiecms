@@ -141,13 +141,6 @@
     <Compile Include="admin\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\media\default.aspx.cs">
-      <DependentUpon>default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\media\default.aspx.designer.cs">
-      <DependentUpon>default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="admin\media\photomanagement.aspx.cs">
       <DependentUpon>photomanagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -279,12 +272,12 @@
     <Content Include="admin\images\ico\i_p_type.gif" />
     <Content Include="admin\images\ico\i_small_delete.gif" />
     <Content Include="admin\images\ico\i_small_edit.gif" />
-    <Content Include="admin\media\default.aspx" />
     <Content Include="admin\media\emptyPage.html" />
     <Content Include="admin\media\photomanagement.aspx" />
     <Content Include="admin\media\photosearch.aspx" />
     <Content Include="admin\media\photoupload.aspx" />
     <Content Include="admin\media\simpleuploader.aspx" />
+    <Content Include="admin\media\test.html" />
     <Content Include="admin\news\class_list.html" />
     <Content Include="admin\template\templatefile_list.aspx" />
     <Content Include="admin\template\template_add.aspx" />
