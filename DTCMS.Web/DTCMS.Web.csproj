@@ -414,6 +414,7 @@
     <Content Include="ckfinder\core\skins\silver\images\toolbar.separator.gif" />
     <Content Include="ckfinder\core\skins\silver\images\toolbar.start.gif" />
     <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="editor\fckeditor.js" />
     <Content Include="inc\codepress\codepress.css" />
     <Content Include="inc\codepress\codepress.html" />
     <Content Include="inc\codepress\codepress.js" />
@@ -832,7 +833,6 @@
     <Content Include="editor\fckeditor\wsc\tmpFrameset.html" />
     <Content Include="editor\fckeditor\wsc\w.html" />
     <Content Include="editor\fckconfig.js" />
-    <Content Include="editor\fckeditor.js" />
     <Content Include="editor\fckpackager.xml" />
     <Content Include="editor\fckstyles.xml" />
     <Content Include="editor\fcktemplates.xml" />
