@@ -36,6 +36,25 @@
             };
             diag.show();
         }
+        var diag = new Dialog();
+        diag.Title = "图片管理";
+        diag.Width = 600;
+        diag.Height = 380;
+        diag.URL = "PhotoManagement.aspx";
+        diag.OKEvent = function() {
+            var win = diag.innerFrame.contentWindow;
+            win.frames["FrmUpload"].upload();
+        };
+        diag.CancelEvent = function() {
+            var win = diag.innerFrame.contentWindow;
+            var returnPath = win.frames["FrmUpload"].returnPath();
+            if (returnPath) {
+                document.getElementById("imgDisplay").src = returnPath;
+                document.getElementById("imgPath").value = returnPath;
+            }
+            diag.close();
+        };
+        diag.show();
     </script>
 </body>
 </html>
