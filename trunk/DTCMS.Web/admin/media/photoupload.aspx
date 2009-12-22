@@ -9,12 +9,13 @@
 <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />        
 <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
 <style type="text/css">
-    *{
-	    padding:0px;
-	    margin:0;
+    *
+    {
+        padding:0;
+        margin:0 auto;
 	    font-family:Verdana, Arial, Helvetica, sans-serif;
 	    font-size:12px;
-    }     
+    }       
     tr
     {
         height:24px;
@@ -37,12 +38,10 @@
 </style>
   
 </head>
-<body>
-    <div style="display:none;"><iframe name="formTarget" src="javascript:void(0)" height="0"></iframe></div>	
+<body>    	
     <form enctype="multipart/form-data" id="form1" name="Form1" target="formTarget" method="post" action="SimpleUploader.aspx?type=image">
-    <div id="content" style="width:100%; text-align:center;">
         <div id="upload" style="width:570px;">
-            <div id="top" style="float:left; text-align:left; width:100%;">
+            <div id="top" style="text-align:left;width:100%;">
                 <div id="div_attachmentAttribute" style="margin-bottom:4px;">
                     <input type="radio" id="rdo_photo" name="rdo" checked="checked" value="1" onclick="setAttachmentAttribute(this)" /><label for="rdo_photo">图片</label>
                     <input type="radio" id="rdo_video" name="rdo" value="2" onclick="setAttachmentAttribute(this)" /><label for="rdo_video">视频</label>
@@ -109,7 +108,7 @@
                     </table>
                 </fieldset>
             </div>
-            <div id="bottom" style="float:left; margin-top:6px; width:100%; text-align:left; ">
+            <div id="bottom" style="margin-top:6px;width:100%;text-align:left; ">
                  <fieldset><legend>
                  <label>图片参数设置</label></legend>
                     <table width="100%;" cellpadding="2" cellspacing="0">                                  						
@@ -154,8 +153,8 @@
         </div>
         <div style="clear:both;" id="msg"></div>
         <input type="hidden" id="returnImgPath" value="" />
-    </div>
     </form>
+    <div style="display:none;"><iframe name="formTarget" src="javascript:void(0)" height="0"></iframe></div>
     <script type="text/javascript">        
         /**
         *上传完成
