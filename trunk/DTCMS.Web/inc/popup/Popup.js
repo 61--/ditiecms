@@ -81,10 +81,10 @@
                 $("BODY").append(html);
 
                 // IE6 Fix
-                var pos = ($.browser.msie && parseInt($.browser.version) <= 6) ? 'absolute' : 'fixed';
+                //var pos = ($.browser.msie && parseInt($.browser.version) <= 6) ? 'absolute' : 'fixed';
 
                 $("#_Popup_" + this.ID).css({
-                    position: pos,
+                    position: 'absolute',
                     zIndex: 100,
                     padding: 0,
                     margin: 0
@@ -191,7 +191,7 @@
             if (top < 0) top = 0;
             if (left < 0) left = 0;
             // IE6 fix
-            if ($.browser.msie && parseInt($.browser.version) <= 6) top = top + $(window).scrollTop();
+            //if ($.browser.msie && parseInt($.browser.version) <= 6) top = top + $(window).scrollTop();
             $("#_Popup_" + this.ID).css({
                 top: top + 'px',
                 left: left + 'px'
