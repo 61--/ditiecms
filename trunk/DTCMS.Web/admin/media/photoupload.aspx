@@ -11,10 +11,10 @@
 <style type="text/css">
     *{
 	    padding:0px;
-	    margin:0px;
+	    margin:0;
 	    font-family:Verdana, Arial, Helvetica, sans-serif;
 	    font-size:12px;
-    }      
+    }     
     tr
     {
         height:24px;
@@ -40,9 +40,9 @@
 <body>
     <div style="display:none;"><iframe name="formTarget" src="javascript:void(0)" height="0"></iframe></div>	
     <form enctype="multipart/form-data" id="form1" name="Form1" target="formTarget" method="post" action="SimpleUploader.aspx?type=image">
-    <div id="content" style="text-align:center; width:100%;">
+    <div id="content" style="width:100%; text-align:center;">
         <div id="upload" style="width:570px;">
-            <div id="top" style="float:left; text-align:left;">
+            <div id="top" style="float:left; text-align:left; width:100%;">
                 <div id="div_attachmentAttribute" style="margin-bottom:4px;">
                     <input type="radio" id="rdo_photo" name="rdo" checked="checked" value="1" onclick="setAttachmentAttribute(this)" /><label for="rdo_photo">图片</label>
                     <input type="radio" id="rdo_video" name="rdo" value="2" onclick="setAttachmentAttribute(this)" /><label for="rdo_video">视频</label>
@@ -109,50 +109,44 @@
                     </table>
                 </fieldset>
             </div>
-            <div id="bottom" style="float:left; margin-top:6px; ">
+            <div id="bottom" style="float:left; margin-top:6px; width:100%; text-align:left; ">
                  <fieldset><legend>
                  <label>图片参数设置</label></legend>
-                    <table width="100%" cellpadding="2" cellspacing="0">
+                    <table width="100%;" cellpadding="2" cellspacing="0">                                  						
                         <tr>
-                            <td style="width:100%;text-align:left; vertical-align:top;">
-                            <table width="100%;" cellpadding="2" cellspacing="0">                                  						
-                                <tr>
-                                    <td style="width:18%;text-align:right;"><label>原图水印:</label></td>
-                                    <td style="width:82%;"><input type="hidden" id="HasWaterMark"
-                                        name="HasWaterMark" value="0" /> <input
-                                        type="checkbox" id="chHasWaterMark" name="chHasWaterMark"  class="txt_bg" value="true" />
-                                    <input type="hidden" id="Count" name="Count" value="1" /></td>
-                                </tr>	
-                                <tr id="AbbrImagesTable">
-                                    <td align="right"><label>缩略图:</label></td>
-                                    <td>
-                                        <input type="checkbox" id="chHasAbbrImage1" class="txt_bg" name="chHasAbbrImage1" checked="checked" value="true"/>
-                                    </td>
-                                </tr>								
-                                <tr>
-                                    <td style="vertical-align:top;text-align:right;">缩略图水印:</td>
-                                    <td>
-                                        <input type="checkbox" id="chHasWaterMark1" class="txt_bg" name="chHasWaterMark1" value="true" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="right" valign="top">缩略图宽:</td>
-                                    <td>
-                                        <input name="abbrImageWidth1" id="abbrImageWidth1" class="txt_bg"
-                                        type="text" value="500" style="width:36px"
-                                        maxlength="4" /> 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="right" valign="top">缩略图高:</td>
-                                    <td>
-                                        <input name="abbrImageHeight1" id="abbrImageHeight1" class="txt_bg"
-                                        type="text" value="0" style="width:36px"
-                                        maxlength="4" />
-                                    </td>
-                                </tr>
-                             </table>
-                            </td>						
+                            <td style="width:18%;text-align:right;"><label>原图水印:</label></td>
+                            <td style="width:82%;"><input type="hidden" id="HasWaterMark"
+                                name="HasWaterMark" value="0" /> <input
+                                type="checkbox" id="chHasWaterMark" name="chHasWaterMark"  class="txt_bg" value="true" />
+                            <input type="hidden" id="Count" name="Count" value="1" /></td>
+                        </tr>	
+                        <tr id="AbbrImagesTable">
+                            <td align="right"><label>缩略图:</label></td>
+                            <td>
+                                <input type="checkbox" id="chHasAbbrImage1" class="txt_bg" name="chHasAbbrImage1" checked="checked" value="true"/>
+                            </td>
+                        </tr>								
+                        <tr>
+                            <td style="vertical-align:top;text-align:right;">缩略图水印:</td>
+                            <td>
+                                <input type="checkbox" id="chHasWaterMark1" class="txt_bg" name="chHasWaterMark1" value="true" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="top">缩略图宽:</td>
+                            <td>
+                                <input name="abbrImageWidth1" id="abbrImageWidth1" class="txt_bg"
+                                type="text" value="500" style="width:36px"
+                                maxlength="4" /> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" valign="top">缩略图高:</td>
+                            <td>
+                                <input name="abbrImageHeight1" id="abbrImageHeight1" class="txt_bg"
+                                type="text" value="0" style="width:36px"
+                                maxlength="4" />
+                            </td>
                         </tr>
                      </table>		
                     </fieldset>
