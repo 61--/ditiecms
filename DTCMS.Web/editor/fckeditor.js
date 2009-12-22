@@ -173,7 +173,7 @@ FCKeditor.prototype._GetIFrameHtml = function()
 	}
 	catch (e) { /* Ignore it. Much probably we are inside a FRAME where the "top" is in another domain (security error). */ }
 
-	var sLink = this.BasePath + 'editor/' + sFile + '?InstanceName=' + encodeURIComponent( this.InstanceName ) ;
+	var sLink = this.BasePath + 'fckeditor/' + sFile + '?InstanceName=' + encodeURIComponent( this.InstanceName ) ;
 	if (this.ToolbarSet)
 		sLink += '&amp;Toolbar=' + this.ToolbarSet ;
 
