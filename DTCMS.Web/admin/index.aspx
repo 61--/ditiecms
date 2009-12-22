@@ -111,7 +111,7 @@
                     <li id="d2"><a href="javascript:openMenu(2,'news/News_list.aspx')">内容管理</a></li>
                     <li id="d3"><a href="javascript:openMenu(3,'news/news_list.html')">生成管理</a></li>
                     <li id="d4"><a href="javascript:openMenu(4,'main_index.aspx')">采集管理</a></li>
-                    <li id="d5"><a href="javascript:openMenu(5,'main_index.aspx')">多媒体</a></li>
+                    <li id="d5"><a href="javascript:openMenu(5,'media/test.html')">多媒体</a></li>
                     <li id="d6"><a href="javascript:openMenu(6,'main_index.aspx')">插件管理</a></li>
                     <li id="d7"><a href="javascript:openMenu(7,'main_index.aspx')">系统管理</a></li>
                     <li class="navright"></li>
