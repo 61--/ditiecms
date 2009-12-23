@@ -15,18 +15,20 @@ namespace DTCMS.Web.admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string action = Common.Utils.GetQueryString("action");
+            int type = Common.Utils.GetQueryInt("type");
+            string name = Common.Utils.GetQueryString("name");
             int page = Common.Utils.GetQueryInt("page");
             if (page == 0)
             {
                 page = 1;
             }
-            switch (action)
+            switch (type)
             {
-                case "image":
-                    Response.Write(HtmlImageList(page,""));
+                case 1:
+                    Response.Write(HtmlImageList(page, name));
                     break;
                 default:
+                    Response.Write(HtmlAttachmentList(page, name));
                     break;
             }
         }
@@ -100,6 +102,11 @@ namespace DTCMS.Web.admin
                 sb.Append("</div>");
             }
             return sb.ToString();
+        }
+
+        private string HtmlAttachmentList(int pageCurrent, string attachMentDisplayName)
+        {
+            return "";
         }
     }
 }
