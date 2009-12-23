@@ -36,7 +36,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleLable.cs" />
+    <Compile Include="Lable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PublishTool.cs" />
+    <Compile Include="ReplayCommon.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DTCMS.BLL\DTCMS.BLL.csproj">
+      <Project>{DDDF40F6-5CBE-4CD3-9890-4648C8CEBB04}</Project>
+      <Name>DTCMS.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTCMS.Common\DTCMS.Common.csproj">
+      <Project>{086A7F54-1A11-42E1-BE0D-33863EAEF4A3}</Project>
+      <Name>DTCMS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTCMS.Pages\DTCMS.Pages.csproj">
+      <Project>{619F3C0B-AD24-4F16-83D9-DDFB120425DE}</Project>
+      <Name>DTCMS.Pages</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
