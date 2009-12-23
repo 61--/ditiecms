@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("DTCMS.Publish")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("锋")]
-[assembly: AssemblyProduct("DTCMS.Publish")]
-[assembly: AssemblyCopyright("Copyright © 锋 2008")]
+[assembly: AssemblyCompany("WWW.91ASPX.COM")]
+[assembly: AssemblyProduct("DTCMS.DBUtility")]
+[assembly: AssemblyCopyright("Copyright © WWW.91ASPX.COM 2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
