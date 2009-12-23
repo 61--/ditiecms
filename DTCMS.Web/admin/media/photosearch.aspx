@@ -20,7 +20,7 @@
      .txt_bg{
         background: url(../images/blue/login_input_bg.gif) no-repeat left top #F7FAFC;
     }   
-    button
+    .button
     {
         margin-left:20px;
 	    border: 0px;
@@ -31,78 +31,77 @@
 	    overflow:hidden;
 	    background: url(../images/blue/button.jpg) no-repeat left top transparent;
     }
-    button:hover
+    .button:hover
     {
         cursor:pointer;
         background-position:-99px -88px;
     } 
+    
     #container{
 		width:570px;
 		text-align:left;
 	}
-	#search{
-		float:left;
+	/*搜索*/
+	#search
+	{
+	    float:left;
 		padding-top:-3px;
+	}
+	#search ul
+	{
+	    list-style:none outside none;
 	}
 	#search ul li{
 		float:left;
-		list-style:none;
+		display:inline;
 		width:190px;
+		height:22px;
+		line-height:22px;		
 	}	
+	/*图片浏览*/
 	#data	
 	{
 	    float:left;
 		margin-top:8px;
 	}
-	#content
+	#content ul
 	{
-	    float:left;
+	    list-style:none outside none;
 	}
 	#content ul li{
 		float:left;
 		color:#669900;
-		list-style:none outside none;
-		border-style:solid;
-		border-width:1px;
-		border-color:#EEEEEE #E3E3E3 #DDDDDD #E9E9E9;
+		border:solid 1px #E3E3E3;	
 		margin:3px;
 		overflow:hidden;
-		width:105px;
+		width:100px;
 		height:130px;
+	}	
+	#content li:hover{
+		background-color:#FFFABF;
 	}
-	#content ul li dl{
-		clear:both;	
-		margin:5px;
-	}
-	#content ul li dl dt a{
+	#content ul li dl dt a
+	{
 		display:table-cell;
-		text-align:center;
 		vertical-align:middle;
-     	*display:block;
-		*font-size:75px;
-		*font-family:Arial;
+		text-align:center;
+        width:100px;
+		height:108px;
+		line-height:90px;	
+     	*display: block;
+        *font-size:75px;
 		color:#F9F9F9;
 		border:0 none;
 		background-color:transparent;
-		text-decoration:none;
-		width:105px;
-		height:100px;
-		line-height:90px;	
+		text-decoration:none;	
 		overflow:hidden;
-	}
-	#content dl dt a:hover{
-		background-color:#FFFABF;
 	}
 	#content dl dt a img{
 		border:1px solid #FFFFFF;
-		display:inline;
 		margin:3px;
+		width:91px;
+		height:100px;
 		vertical-align:middle;
-		overflow:hidden
-	}
-	#content dl dd{
-		clear:both;
-		margin:0 4px 4px;	
 	}
 </style>
     <script type="text/javascript">
@@ -123,12 +122,12 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div id="container" style="width:570px;">
+    <div id="container">
 		<div id="search">
 			<ul>
 				<li>附件类型：<input type="text" id="txt_attachmentType" class="text txt_bg" /></li>
 				<li>附件名称：<input type="text" id="txt_attachmentName"  class="text txt_bg" /></li>
-				<li><button id="btn_search">搜索</button></li>			
+				<li><button id="btn_search" class="button">搜索</button></li>			
 			</ul>
 		</div>
 		<div id="data"></div>
@@ -136,6 +135,7 @@
 	<input type="hidden" id="returnVal" value="" />
     </form>
     <script type="text/javascript">
+    
     /**
     *选择图片
     */
@@ -161,8 +161,7 @@
     *返回图片地址
     */
     function returnPath() {
-        return document.getElementById("returnVal").value;
-        
+        return document.getElementById("returnVal").value;        
     }
     </script>
 </body>

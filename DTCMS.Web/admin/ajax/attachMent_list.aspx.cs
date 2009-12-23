@@ -83,7 +83,7 @@ namespace DTCMS.Web.admin
                     {
                         sb.Append("<input type=\"checkbox\" id=\"" + chk_Id + "\" name=\"items\" value=\"" + dr["AttachMentPath"].ToString() + "\" />");
                     }
-                    sb.Append("<label for=\"" + chk_Id + "\">" + displayName + "</label>");
+                    sb.Append("<label title=\"" + displayName + "\" for=\"" + chk_Id + "\">" + (displayName.Length > 10 ? displayName.Substring(0, 10) : displayName) + "</label>");
                     sb.Append("</dd>");
                     sb.Append("</dl>");
                     sb.Append("</li>");
@@ -93,7 +93,7 @@ namespace DTCMS.Web.admin
                 sb.Append("</ul>");
                 sb.Append("</div>");
                 int pagecount = DTCMS.Pages.PageSeting.GetPageCount(totalcount, 10);
-                sb.Append("<div style=\"position:absolute;right:0;bottom:-7px;\">");
+                sb.Append("<div style=\"position:absolute;right:0;bottom:-6px;z-index:-1 \">");
                 sb.Append("<div class=\"grayr\" style=\"height:30px;line-height:30px;\">");
                 sb.Append(DTCMS.Pages.PageSeting.GetAjaxPage(pageCurrent, pagecount, "LoadData", 10));
                 sb.Append("</div>");
