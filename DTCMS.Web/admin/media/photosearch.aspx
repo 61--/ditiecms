@@ -15,7 +15,7 @@
 	    font-size:12px;
     }    
     .text{
-	    width:119px;
+	    width:109px;
     }
      .txt_bg{
         background: url(../images/blue/login_input_bg.gif) no-repeat left top #F7FAFC;
@@ -109,10 +109,12 @@
             LoadData(1);
         });
         function LoadData(page) {
+            var attachmentTypeVal = document.getElementById("slt_attachmentType").value;
+            var attachmentNameVal = document.getElementById("txt_attachmentName").value;
             $.ajax({
                 url: "../ajax/attachment_list.aspx",
                 type: "GET",
-                data: "action=image&page=" + page + "&ran=" + Math.random(),
+                data: "page=" + page + "&type="+attachmentTypeVal+"&name="+attachmentNameVal+"&ran=" + Math.random(),
                 success: function(responseText) {
                     document.getElementById("data").innerHTML = responseText;
                 }
@@ -125,9 +127,16 @@
     <div id="container">
 		<div id="search">
 			<ul>
-				<li>附件类型：<input type="text" id="txt_attachmentType" class="text txt_bg" /></li>
+				<li>附件类型：<select id="slt_attachmentType" class="text txt_bg">
+				        <option value="1">----图 片----</option>
+				        <option value="2">----视 频----</option>
+				        <option value="3">----音 频----</option>
+				        <option value="4">----Flash----</option>
+				        <option value="5">----附 件----</option>
+				    </select>
+				</li>
 				<li>附件名称：<input type="text" id="txt_attachmentName"  class="text txt_bg" /></li>
-				<li><button id="btn_search" class="button">搜索</button></li>			
+				<li><button id="btn_search" class="button" onclick="LoadData(1);">搜索</button></li>			
 			</ul>
 		</div>
 		<div id="data"></div>
