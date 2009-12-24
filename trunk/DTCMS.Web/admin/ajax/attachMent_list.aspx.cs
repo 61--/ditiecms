@@ -79,13 +79,13 @@ namespace DTCMS.Web.admin
                     sb.Append("<dd>");
                     if (dr["AbbrPhotoPath"].ToString() != string.Empty)
                     {
-                        sb.Append("<input type=\"checkbox\" id=\"" + chk_Id + "\" name=\"items\" value=\"" + dr["AbbrPhotoPath"].ToString() + "\" />");
+                        sb.Append("&nbsp;<input type=\"checkbox\" id=\"" + chk_Id + "\" name=\"items\" value=\"" + dr["AbbrPhotoPath"].ToString() + "\" />");
                     }
                     else
                     {
-                        sb.Append("<input type=\"checkbox\" id=\"" + chk_Id + "\" name=\"items\" value=\"" + dr["AttachMentPath"].ToString() + "\" />");
+                        sb.Append("&nbsp;<input type=\"checkbox\" id=\"" + chk_Id + "\" name=\"items\" value=\"" + dr["AttachMentPath"].ToString() + "\" />");
                     }
-                    sb.Append("<label title=\"" + displayName + "\" for=\"" + chk_Id + "\">" + (displayName.Length > 10 ? displayName.Substring(0, 10) : displayName) + "</label>");
+                    sb.Append("<label title=\"" + displayName + "\" for=\"" + chk_Id + "\">" + (displayName.Length > 9 ? displayName.Substring(0, 9) : displayName) + "</label>");
                     sb.Append("</dd>");
                     sb.Append("</dl>");
                     sb.Append("</li>");
