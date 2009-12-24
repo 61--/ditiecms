@@ -23,8 +23,8 @@
             this.autoClose = autoClose || 0;
             this.width = 240;
             this.height = 30;
-            this.top = top || ($(document).height() - this.height) / 2;
-            this.left = left || ($(document).width() - this.width) / 2;
+            this.top = top || (document.documentElement.clientHeight / 2 + document.documentElement.scrollTop - this.height / 2);
+            this.left = left || (document.documentElement.clientWidth / 2 + document.documentElement.scrollLeft - this.width / 2);
             $.popup._show(msg, null);
         },
 
