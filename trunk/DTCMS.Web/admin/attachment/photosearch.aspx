@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>附件浏览</title>
+    <title>图片浏览</title>
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
     <style type="text/css">
