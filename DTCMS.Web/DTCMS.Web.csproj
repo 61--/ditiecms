@@ -284,6 +284,7 @@
     <Content Include="admin\attachment\attachmentload.aspx" />
     <Content Include="admin\attachment\simpleuploader.aspx" />
     <Content Include="admin\attachment\test.html" />
+    <Content Include="admin\images\loading_scoll.gif" />
     <Content Include="admin\js\Public.js" />
     <Content Include="admin\news\class_list.html" />
     <Content Include="admin\template\templatefile_list.aspx" />
