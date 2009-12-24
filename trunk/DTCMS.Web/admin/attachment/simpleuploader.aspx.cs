@@ -181,7 +181,7 @@ namespace DTCMS.Web.admin
                 returnImgPath = "/" + htPhoto["Path"].ToString().Replace("\\", "/") + "/" + returnImgName;
             }
 
-            Response.Redirect("~/admin/Media/EmptyPage.html?returnVal=" + returnVal + "&errorMsg=" + errorMsg + "&returnImgPath=" + returnImgPath);
+            Response.Redirect("~/admin/attachment/emptyPage.html?returnVal=" + returnVal + "&errorMsg=" + errorMsg + "&returnImgPath=" + returnImgPath);
         }
 
         /// <summary>
