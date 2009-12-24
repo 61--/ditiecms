@@ -9,55 +9,62 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
     <style type="text/css">
     *{
-	    padding:0px;
-	    margin:0 auto;
+	    padding:0;
+	    margin:0;
 	    font-family:Verdana, Arial, Helvetica, sans-serif;
 	    font-size:12px;
-    }    
+    }   
+     .txt_bg{
+        background: url(../images/blue/login_input_bg.gif) no-repeat left top #F7FAFC;
+    }  
     .text{
 	    width:109px;
     }
-     .txt_bg{
-        background: url(../images/blue/login_input_bg.gif) no-repeat left top #F7FAFC;
-    }   
-    .button
+    .s_text
     {
-        margin-left:20px;
+        width:86px;
+    }          
+        
+    #container{
+		width:570px;
+		margin:0 auto;
+		text-align:left;
+	}
+	
+	/*搜索*/
+	.search
+	{
+	    float:left;
+		padding-top:-3px;
+	}
+	.search ul
+	{
+	    list-style:none outside none;
+	}
+	.search ul li{
+		float:left;
+		display:inline;
+		width:175px;
+		height:22px;
+		line-height:22px;		
+	}		
+	.s_btn
+    {
+        background: url(../images/blue/button.jpg) no-repeat left top transparent;        
 	    border: 0px;
 	    height: 22px;
 	    width:51px;
+	    margin-left:20px;
 	    letter-spacing: 2px;
 	    color: #555;
-	    overflow:hidden;
-	    background: url(../images/blue/button.jpg) no-repeat left top transparent;
+	    overflow:hidden;	    
     }
-    .button:hover
+    .s_btn:hover
     {
         cursor:pointer;
         background-position:-99px -88px;
     } 
     
-    #container{
-		width:570px;
-		text-align:left;
-	}
-	/*搜索*/
-	#search
-	{
-	    float:left;
-		padding-top:-3px;
-	}
-	#search ul
-	{
-	    list-style:none outside none;
-	}
-	#search ul li{
-		float:left;
-		display:inline;
-		width:190px;
-		height:22px;
-		line-height:22px;		
-	}	
 	/*图片浏览*/
 	#data	
 	{
@@ -76,7 +83,7 @@
 		overflow:hidden;
 		width:100px;
 		height:130px;
-	}	
+	}		
 	#content li:hover{
 		background-color:#FFFABF;
 	}
@@ -109,12 +116,12 @@
             LoadData(1);
         });
         function LoadData(page) {
-            var attachmentTypeVal = document.getElementById("slt_attachmentType").value;
-            var attachmentNameVal = document.getElementById("txt_attachmentName").value;
+            var type = document.getElementById("slt_attachmentType").value;
+            var name = document.getElementById("txt_attachmentName").value;
             $.ajax({
                 url: "../ajax/attachment_list.aspx",
                 type: "GET",
-                data: "page=" + page + "&type="+attachmentTypeVal+"&name="+attachmentNameVal+"&ran=" + Math.random(),
+                data: "page=" + page + "&type=" + type + "&name=" + name + "&ran=" + Math.random(),
                 success: function(responseText) {
                     document.getElementById("data").innerHTML = responseText;
                 }
@@ -125,35 +132,31 @@
 <body>
     <form id="form1" runat="server">
     <div id="container">
-		<div id="search">
+		<div class="search">
 			<ul>
-				<li>附件类型：<select id="slt_attachmentType" class="text txt_bg">
-				        <option value="1">----图 片----</option>
-				        <option value="2">----视 频----</option>
-				        <option value="3">----音 频----</option>
-				        <option value="4">----Flash----</option>
-				        <option value="5">----附 件----</option>
+				<li>附件类型：<select id="slt_attachmentType" class="s_text txt_bg">
+				        <option value="1">图 片</option>
+				        <option value="2">视 频</option>
+				        <option value="3">音 频</option>
+				        <option value="4">Flash</option>
+				        <option value="5">附 件</option>
 				    </select>
 				</li>
 				<li>附件名称：<input type="text" id="txt_attachmentName"  class="text txt_bg" /></li>
-				<li><button id="btn_search" class="button" onclick="LoadData(1);">搜索</button></li>			
+				<li><button id="btn_search" class="s_btn" onclick="LoadData(1);">搜索</button></li>			
 			</ul>
 		</div>
 		<div id="data"></div>
 	</div>
 	<input type="hidden" id="returnVal" value="" />
     </form>
-    <script type="text/javascript">
-    
-    /**
-    *选择图片
-    */
+    <script type="text/javascript">    
     function selectImage(chk_id) {
         var chk = document.getElementById(chk_id);
         if (chk) {
             chk.checked = !chk.checked;
         }
-    }
+    }   
     function upload() {
         var chks = document.getElementsByName("items");
         var hid = document.getElementById("returnVal");
@@ -166,9 +169,6 @@
         }
         window.parent.parent.Dialog.close();        
     }
-    /**
-    *返回图片地址
-    */
     function returnPath() {
         return document.getElementById("returnVal").value;        
     }

@@ -15,17 +15,14 @@
         }        
         #container
         {
-            width: 100%;
+            width:570px;
+            margin:0 auto;
             text-align: center;
-        }
-        #content
-        {
-            width: 570px;
         }
         #menu
         {
-            height:30px;
-            line-height:28px;
+            float:left;
+            margin:2px 0 6px 0;
         }
         #menu ul
         {            
@@ -39,8 +36,14 @@
         #menu ul li a
         {
             display: block;
+            color:#006699;
+            font-size:16px;
             text-decoration: none;
             cursor: pointer;
+        }
+        #main
+        {
+            clear:both;
         }
     </style>
 </head>
