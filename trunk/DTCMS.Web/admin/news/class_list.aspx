@@ -18,7 +18,7 @@
             LoadData();
         });
         function LoadData() {
-            //showLoading();
+            showLoading();
             $.ajax({
                 url: "/admin/ajax/class_list.aspx",
                 type: "GET",
@@ -27,7 +27,7 @@
                     showGridTree(json);
                 }
             });
-            //hideTip();
+            hideTip();
         }
         var gridTree;
         function showGridTree(json) {
