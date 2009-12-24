@@ -135,12 +135,12 @@
         var loadingMsg = msg || '正在加载数据，请稍候...';
         if (elem == null) {
             $.popup.tip('<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0"><tr>' +
-                '<td align="center"><img src="/Inc/Popup/images/loading.gif" /> ' + loadingMsg + '</td></tr></table>', null, null, 0);
+                '<td align="center"><img src="../images/blue/loading.gif" /> ' + loadingMsg + '</td></tr></table>', null, null, 0);
         } else {
             var middle = ($(elem).height() - 30) / 2;
             var top = $(elem).offset().top + (middle > 0 ? middle : 0);
             $.popup.tip('<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0"><tr>' +
-                 '<td align="center"><img src="/Inc/Popup/images/loading.gif" /> ' + loadingMsg + '</td></tr></table>', top, null, 0);
+                 '<td align="center"><img src="../images/blue/loading.gif" /> ' + loadingMsg + '</td></tr></table>', top, null, 0);
         }
     }
     hideTip = function() {

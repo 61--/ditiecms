@@ -6,12 +6,10 @@
     <title>栏目列表</title>
     <link href="../css/blue_body.css" type="text/css" rel="StyleSheet" />
     <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
-    <link href="/Inc/Popup/popup.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
-    <script type="text/javascript" src="/Inc/Popup/popup.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
-    <script type="text/javascript" src="../js/color.js"></script>
     <script type="text/javascript" src="/Inc/treetable/TableTree4J.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
