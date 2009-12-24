@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>附件查询</title>
+    <title>图片查询</title>
 </head>
 <body>
     <form id="form1" runat="server">
