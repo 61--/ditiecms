@@ -322,7 +322,7 @@ Dialog.prototype.show = function() {
     } else {
         var topWinBody = topDoc.getElementsByTagName(topDoc.compatMode == "BackCompat" ? "BODY" : "HTML")[0];
         topWinBody.styleOverflow = topWinBody.style.overflow;
-        topWinBody.style.overflow = "hidden";
+        //topWinBody.style.overflow = "hidden";
         bgdiv.style.display = "none";
     }
     topWin.Dialog._Array.push(this);
