@@ -28,7 +28,7 @@ namespace DTCMS.Web.admin
                     Response.Write(HtmlImageList(page, name));
                     break;
                 default:
-                    Response.Write(HtmlAttachmentList(page, name));
+                    Response.Write(HtmlAttachmentList(page,type, name));
                     break;
             }
         }
@@ -42,6 +42,7 @@ namespace DTCMS.Web.admin
         private string HtmlImageList(int pageCurrent, string attachMentDisplayName)
         {
             int totalcount=0;    //总页数
+            int page = 10;
             string where = string.Empty;    //查询条件
             StringBuilder sb = new StringBuilder();
             if (attachMentDisplayName != string.Empty)
@@ -50,9 +51,9 @@ namespace DTCMS.Web.admin
             }
             else
             {
-                where = string.Format("AttachMentAttribute=1");
+                where = "AttachMentAttribute=1";
             }
-            DataTable dtImageList = bllAttachment.GetAttachmentList(pageCurrent, 10, where, out totalcount);
+            DataTable dtImageList = bllAttachment.GetAttachmentList(pageCurrent, page, where, out totalcount);
             if (dtImageList != null && dtImageList.Rows.Count > 0)
             {
                 int checkID = 1;
@@ -94,19 +95,71 @@ namespace DTCMS.Web.admin
                 }
                 sb.Append("</ul>");
                 sb.Append("</div>");
-                int pagecount = DTCMS.Pages.PageSeting.GetPageCount(totalcount, 10);
+                int pagecount = DTCMS.Pages.PageSeting.GetPageCount(totalcount, page);
                 sb.Append("<div style=\"position:absolute;right:0;bottom:-6px;z-index:-1 \">");
                 sb.Append("<div class=\"grayr\" style=\"height:30px;line-height:30px;\">");
-                sb.Append(DTCMS.Pages.PageSeting.GetAjaxPage(pageCurrent, pagecount, "LoadData", 10));
+                sb.Append(DTCMS.Pages.PageSeting.GetAjaxPage(pageCurrent, pagecount, "LoadData", page));
                 sb.Append("</div>");
                 sb.Append("</div>");
             }
             return sb.ToString();
         }
 
-        private string HtmlAttachmentList(int pageCurrent, string attachMentDisplayName)
+        private string HtmlAttachmentList(int pageCurrent,int attachMentType,string attachMentDisplayName)
         {
-            return "";
+            int idnum = 1;  //id编号
+            int totalcount = 0;    //总页数
+            int page = 9;
+            string where = string.Empty;    //查询条件
+            StringBuilder sb = new StringBuilder();
+            if (attachMentDisplayName != string.Empty)
+            {
+                where = string.Format("AttachMentAttribute={0} and AttachMentDisplayName like '%{1}%'",attachMentType,attachMentDisplayName);
+            }
+            else
+            {
+                where = string.Format("AttachMentAttribute={0}",attachMentType);
+            }
+            DataTable dtAttachMentList = bllAttachment.GetAttachmentList(pageCurrent, page, where, out totalcount);
+            if (dtAttachMentList != null && dtAttachMentList.Rows.Count > 0)
+            {
+                sb.Append("<div id=\"content\">");
+                sb.Append("<table class=\"table_data\">");
+                sb.Append("<thead>");
+                sb.Append("<tr>");
+                sb.Append("<th>ID</th>");
+                sb.Append("<th>选择</th>");
+                sb.Append("<th>标题</th>");
+                sb.Append("<th>大小</th>");
+                sb.Append("<th>发布者</th>");
+                sb.Append("<th>发布时间</th>");
+                sb.Append("</tr>");
+                sb.Append("</thead>");
+                sb.Append("<tbody id=\"tab\">");
+                foreach (DataRow dr in dtAttachMentList.Rows)
+                {
+                    string chk_id = "chk_" + idnum.ToString();
+                    sb.Append("<tr onclick='selectImage(\"" + chk_id + "\")'>");
+                    sb.Append("<td>" + idnum + "</td>");
+                    sb.Append("<td><input type=\"checkbox\" id=\"" + chk_id + "\" value=\"" + dr["AttachMentPath"] + "\" name=\"items\" onclick='selectImage(\"" + chk_id + "\")' /> </td>");
+                    sb.Append("<td>" + dr["AttachMentDisplayName"].ToString() + "</td>");
+                    sb.Append("<td>" + dr["AttachMentSize"].ToString() + "</td>");
+                    sb.Append("<td>" + dr["PubLisher"] + "</td>");
+                    sb.Append("<td>" + dr["AddDate"].ToString() + "</td>");
+                    sb.Append("</tr>");
+                    idnum++;
+                }
+                sb.Append("</tbody>");
+                sb.Append("</table>");
+                sb.Append("</div>");
+            }
+            int pagecount = DTCMS.Pages.PageSeting.GetPageCount(totalcount, page);
+            sb.Append("<div style=\"position:absolute;right:0;bottom:-6px;z-index:-1 \">");
+            sb.Append("<div class=\"grayr\" style=\"height:30px;line-height:30px;\">");
+            sb.Append(DTCMS.Pages.PageSeting.GetAjaxPage(pageCurrent, pagecount, "LoadData", page));
+            sb.Append("</div>");
+            sb.Append("</div>");
+            return sb.ToString();
         }
     }
 }
