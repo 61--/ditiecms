@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 
 namespace DTCMS.Web.admin
 {
-    public partial class PhotoSearch : AdminPage
+    public partial class attachmentsearch : AdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

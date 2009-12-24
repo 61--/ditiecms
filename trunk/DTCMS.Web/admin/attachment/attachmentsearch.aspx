@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="photosearch.aspx.cs" Inherits="DTCMS.Web.admin.PhotoSearch" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="attachmentsearch.aspx.cs" Inherits="DTCMS.Web.admin.attachmentsearch" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>附件浏览</title>
+    <title>图片浏览</title>
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
     <style type="text/css">
@@ -22,7 +22,7 @@
     }
     .s_text
     {
-        width:86px;
+        width:80px;
     }          
         
     #container{
@@ -36,18 +36,7 @@
 	{
 	    float:left;
 		padding-top:-3px;
-	}
-	.search ul
-	{
-	    list-style:none outside none;
-	}
-	.search ul li{
-		float:left;
-		display:inline;
-		width:175px;
-		height:22px;
-		line-height:22px;		
-	}		
+	}			
 	.s_btn
     {
         background: url(../images/blue/button.jpg) no-repeat left top transparent;        
@@ -133,18 +122,25 @@
     <form id="form1" runat="server">
     <div id="container">
 		<div class="search">
-			<ul>
-				<li>附件类型：<select id="slt_attachmentType" class="s_text txt_bg">
-				        <option value="1">图 片</option>
-				        <option value="2">视 频</option>
-				        <option value="3">音 频</option>
-				        <option value="4">Flash</option>
-				        <option value="5">附 件</option>
-				    </select>
-				</li>
-				<li>附件名称：<input type="text" id="txt_attachmentName"  class="text txt_bg" /></li>
-				<li><button id="btn_search" class="s_btn" onclick="LoadData(1);">搜索</button></li>			
-			</ul>
+		    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="text-align:left;">
+		        <tbody>
+		            <tr>
+		                <td style="width:155px;">附件类型：
+		                    <select id="slt_attachmentType" class="s_text txt_bg">
+				            <option value="1">图 片</option>
+				            <option value="2">视 频</option>
+				            <option value="3">音 频</option>
+				            <option value="4">Flash</option>
+				            <option value="5">附 件</option>
+				            </select>
+		                </td>
+		                <td style="width:185px;">附件名称：
+		                    <input type="text" id="txt_attachmentName"  class="text txt_bg" />
+		                </td>
+		                <td><button id="btn_search" class="s_btn" onclick="LoadData(1);">搜索</button></td>
+		            </tr>
+		        </tbody>
+		    </table>			
 		</div>
 		<div id="data"></div>
 	</div>
