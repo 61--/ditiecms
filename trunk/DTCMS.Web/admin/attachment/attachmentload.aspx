@@ -158,15 +158,18 @@
     <script type="text/javascript">        
         function onUploadCompleted(returnVal, errorMsg, returnImgPath) {
             switch (returnVal) {
+                case 1:
                 case "1": // 上传成功
                     try {
                         setReturnPath(returnImgPath);
                         window.parent.parent.Dialog.close();
                     } catch (ex) { }
                     break;
+                case 202:
                 case "202":
-                    Dialog.alert('无效的文件类型！以下文件上传失败:' + errorMessage);
+                    Dialog.alert('无效的文件类型！以下文件上传失败:' + errorMsg);
                     return;
+                case 203:
                 case "203":
                     Dialog.alert("您没有权限上传此文件，请检查服务器设置");
                     return;
@@ -192,7 +195,7 @@
                     return;
                 }
             }
-            if (flag) {
+            if(flag) {
                 msg();
                 document.getElementById("form1").submit();
             } else {
