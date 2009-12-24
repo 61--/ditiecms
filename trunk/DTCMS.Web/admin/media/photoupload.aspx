@@ -12,7 +12,7 @@
     *
     {
         padding:0;
-        margin:0 auto;
+        margin:0;
 	    font-family:Verdana, Arial, Helvetica, sans-serif;
 	    font-size:12px;
     }       
@@ -27,13 +27,13 @@
     }
     .text{
 	    width:119px;
+    }    
+     .txt_bg{
+        background: url(../images/blue/login_input_bg.gif) no-repeat left top #F7FAFC;
     }
     .file{
 	    cursor:pointer;
 	    width:258px;
-    }
-     .txt_bg{
-        background: url(../images/blue/login_input_bg.gif) no-repeat left top #F7FAFC;
     }
 </style>
   
@@ -156,9 +156,6 @@
     </form>
     <div style="display:none;"><iframe name="formTarget" src="javascript:void(0)" height="0"></iframe></div>
     <script type="text/javascript">        
-        /**
-        *上传完成
-        */
         function onUploadCompleted(returnVal, errorMsg, returnImgPath) {
             switch (returnVal) {
                 case "1": // 上传成功
@@ -178,9 +175,6 @@
                     return;
             }
         }
-        /**
-        *开始上传
-        */
         function upload() {
             var flag = false;
             var count = 5;
@@ -206,72 +200,45 @@
                 return;
             }
         }
-        /**
-        *附件格式判断
-        */
         function hasAttachmentFormat(ext) {
-        switch (getAttachmentAttribute()) {
-        case "1":
-        return hasImage(ext);
-        case "5":
-        return hasAttachment(ext);
-        return 
-        default:
-        return false;
+            switch (getAttachmentAttribute()) {
+                case "1":
+                    return hasImage(ext);
+                case "5":
+                    return hasAttachment(ext);
+                    return
+                default:
+                    return false;
+            }
         }
-        }
-        /**
-        *判断图片是否正确
-        */
         function hasImage(ext) {
             return (ext == "jpg" || ext == "jpeg" || ext == "bmp" || ext == "gif" || ext == "png");
         }
-        /**
-        *附件上传是否正确
-        */
         function hasAttachment(ext) {
              return (ext == "doc" || ext == "txt");
-        }
-        /**
-        *上传进度条
-        */   	    	
+        }    	
     	function msg() {
     	    var txt = "正在上传处理中，请稍候...耗时";
     	    var counter = 1;
     	    setInterval(function() { document.getElementById("msg").innerHTML = "<font color=red>" + txt + counter + "秒</font>"; counter++ }, 1000);
     	}
-    	/**
-    	*设置附件属性
-    	*/
     	function setAttachmentAttribute(obj) {
     	    document.getElementById("hid_attachmentAttribute").value = (obj.value || 1);
     	}
-    	/**
-    	*获取附件属性
-    	*/
     	function getAttachmentAttribute() {
-    	    return (document.getElementById("hid_attachmentAttribute").value||1);
+    	    return (document.getElementById("hid_attachmentAttribute").value || 1);
     	}
-    	/**
-    	*选择附件
-    	*/
     	function fileOnChange(obj) {
     	    var val = obj.value;
     	    var fileName = val.substring(val.lastIndexOf('\\') + 1);
     	    document.getElementById(obj.id + "Name").value = fileName;
     	    document.getElementById(obj.id + "Info").value = fileName;
     	}
-    	/**
-    	*获取返回值
-    	*/
-    	function returnPath() {
-    	    return document.getElementById("returnImgPath").value;
-    	}
-    	/**
-    	*设置返回值
-    	*/
     	function setReturnPath(val) {
     	    document.getElementById("returnImgPath").value = val;
+    	}
+    	function returnPath() {
+    	    return document.getElementById("returnImgPath").value;
     	}
     </script>
 </body>
