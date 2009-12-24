@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="photoupload.aspx.cs" Inherits="DTCMS.Web.admin.PhotoUpload" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="attachmentload.aspx.cs" Inherits="DTCMS.Web.admin.attachmentload" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -116,13 +116,13 @@
                             <td style="width:18%;text-align:right;"><label>原图水印:</label></td>
                             <td style="width:82%;"><input type="hidden" id="HasWaterMark"
                                 name="HasWaterMark" value="0" /> <input
-                                type="checkbox" id="chHasWaterMark" name="chHasWaterMark"  class="txt_bg" value="true" />
+                                type="checkbox" id="chHasWaterMark" name="chHasWaterMark"  class="txt_bg" checked="checked" value="true" />
                             <input type="hidden" id="Count" name="Count" value="1" /></td>
                         </tr>	
                         <tr id="AbbrImagesTable">
                             <td align="right"><label>缩略图:</label></td>
                             <td>
-                                <input type="checkbox" id="chHasAbbrImage1" class="txt_bg" name="chHasAbbrImage1" checked="checked" value="true"/>
+                                <input type="checkbox" id="chHasAbbrImage1" class="txt_bg" name="chHasAbbrImage1" value="true"/>
                             </td>
                         </tr>								
                         <tr>

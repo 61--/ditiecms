@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="photomanagement.aspx.cs"
-    Inherits="DTCMS.Web.admin.PhotoManagement" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="attachmentmanage.aspx.cs" Inherits="DTCMS.Web.admin.attachmentmanage" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,9 +8,7 @@
         *
         {
             margin: 0 auto;
-            padding: 0;
-            font-family: "Arial Unicode MS";
-            font-size: 16px;
+            padding: 0;            
         }        
         #container
         {
@@ -38,6 +35,7 @@
             display: block;
             color:#006699;
             font-size:16px;
+            font-family: "Arial Unicode MS";
             text-decoration: none;
             cursor: pointer;
         }
@@ -58,7 +56,7 @@
                 </ul>
             </div>
             <div id="main">
-                <iframe src="photoupload.aspx" width="100%" height="340px" id="FrmUpload" name="FrmUpload"
+                <iframe src="attachmentload.aspx" width="100%" height="340px" id="FrmUpload" name="FrmUpload"
                     frameborder="0" scrolling="no"></iframe>
             </div>
         </div>
@@ -67,11 +65,11 @@
 
     <script type="text/javascript">
         function attachmentUpload(obj) {
-            document.getElementById("FrmUpload").src = "photoupload.aspx";
+            document.getElementById("FrmUpload").src = "attachmentload.aspx";
             obj.blur();
         }
         function attachmentSearch(obj) {
-            document.getElementById("FrmUpload").src = "photosearch.aspx";
+            document.getElementById("FrmUpload").src = "attachmentsearch.aspx";
             obj.blur();
         }
     </script>

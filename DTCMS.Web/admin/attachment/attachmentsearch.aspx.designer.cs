@@ -11,7 +11,7 @@
 namespace DTCMS.Web.admin {
     
     
-    public partial class PhotoSearch {
+    public partial class attachmentsearch {
         
         /// <summary>
         /// form1 控件。

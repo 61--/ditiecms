@@ -11,7 +11,7 @@
 namespace DTCMS.Web.admin {
     
     
-    public partial class PhotoManagement {
+    public partial class attachmentmanage {
         
         /// <summary>
         /// form1 控件。

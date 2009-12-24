@@ -141,33 +141,26 @@
     <Compile Include="admin\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\attachment\attachementsearch.aspx.cs">
-      <DependentUpon>attachementsearch.aspx</DependentUpon>
+    <Compile Include="admin\attachment\attachmentmanage.aspx.cs">
+      <DependentUpon>attachmentmanage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\attachment\attachementsearch.aspx.designer.cs">
-      <DependentUpon>attachementsearch.aspx</DependentUpon>
+    <Compile Include="admin\attachment\attachmentmanage.aspx.designer.cs">
+      <DependentUpon>attachmentmanage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\attachment\photomanagement.aspx.cs">
-      <DependentUpon>photomanagement.aspx</DependentUpon>
+    <Compile Include="admin\attachment\attachmentsearch.aspx.cs">
+      <DependentUpon>attachmentsearch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\attachment\photomanagement.aspx.designer.cs">
-      <DependentUpon>photomanagement.aspx</DependentUpon>
+    <Compile Include="admin\attachment\attachmentsearch.aspx.designer.cs">
+      <DependentUpon>attachmentsearch.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\attachment\photosearch.aspx.cs">
-      <DependentUpon>photosearch.aspx</DependentUpon>
+    <Compile Include="admin\attachment\attachmentload.aspx.cs">
+      <DependentUpon>attachmentload.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\attachment\photosearch.aspx.designer.cs">
-      <DependentUpon>photosearch.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\attachment\photoupload.aspx.cs">
-      <DependentUpon>photoupload.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\attachment\photoupload.aspx.designer.cs">
-      <DependentUpon>photoupload.aspx</DependentUpon>
+    <Compile Include="admin\attachment\attachmentload.aspx.designer.cs">
+      <DependentUpon>attachmentload.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\attachment\simpleuploader.aspx.cs">
       <DependentUpon>simpleuploader.aspx</DependentUpon>
@@ -279,11 +272,10 @@
     <Content Include="admin\images\ico\i_p_type.gif" />
     <Content Include="admin\images\ico\i_small_delete.gif" />
     <Content Include="admin\images\ico\i_small_edit.gif" />
-    <Content Include="admin\attachment\attachementsearch.aspx" />
     <Content Include="admin\attachment\emptyPage.html" />
-    <Content Include="admin\attachment\photomanagement.aspx" />
-    <Content Include="admin\attachment\photosearch.aspx" />
-    <Content Include="admin\attachment\photoupload.aspx" />
+    <Content Include="admin\attachment\attachmentmanage.aspx" />
+    <Content Include="admin\attachment\attachmentsearch.aspx" />
+    <Content Include="admin\attachment\attachmentload.aspx" />
     <Content Include="admin\attachment\simpleuploader.aspx" />
     <Content Include="admin\attachment\test.html" />
     <Content Include="admin\news\class_list.html" />
