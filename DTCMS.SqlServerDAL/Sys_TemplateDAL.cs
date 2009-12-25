@@ -41,6 +41,7 @@ namespace DTCMS.SqlServerDAL
             parameters[5].Value = model.Author;
             return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters);
         }
+
         /// <summary>
         /// 更新模板风格
         /// </summary>
@@ -74,6 +75,7 @@ namespace DTCMS.SqlServerDAL
             parameters[6].Value = model.Author;
             return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters);
         }
+
         /// <summary>
         /// 删除模板风格数据
         /// </summary>
@@ -84,6 +86,7 @@ namespace DTCMS.SqlServerDAL
             string strSql = string.Format("delete DT_SYS_Template  where TemplateID in ({0})", TemplateID);
             return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql);	
         }
+
         /// <summary>
         /// 获取模板风格实体
         /// </summary>
@@ -108,6 +111,28 @@ namespace DTCMS.SqlServerDAL
             return model;
         }
 
+        /// <summary>
+        /// 设置风格为启动状态
+        /// </summary>
+        /// <param name="tempID">风格编号</param>
+        /// <param name="isEnable"> 1启动 </param>
+        /// <returns></returns>
+        public bool UpdateEnable(int TemplateID,int isEnable)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" UPDATE Sys_Template SET isEnable=0 WHERE isEnable=1 ");
+            strSql.Append(" UPDATE Sys_Template SET isEnable=1 WHERE TemplateID=@TemplateID ");
+
+            SqlParameter[] parameters = { new SqlParameter("@TemplateID",SqlDbType.Int,4) };
+            parameters[0].Value = TemplateID;
+
+            int n = 0;
+            n=SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters);
+            if (n > 0) 
+                return true;
+            else 
+                return false;
+        }
         #endregion
     }
 }
