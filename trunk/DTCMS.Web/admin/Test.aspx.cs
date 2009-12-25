@@ -11,7 +11,7 @@ namespace DTCMS.Web.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Message.Dialog("提示信息", "-1", MessageIcon.Success);
+            //Message.Dialog("提示信息", "-1", MessageIcon.Success);
         }
     }
 }

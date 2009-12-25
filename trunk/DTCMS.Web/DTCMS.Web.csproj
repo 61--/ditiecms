@@ -285,6 +285,7 @@
     <Content Include="admin\attachment\simpleuploader.aspx" />
     <Content Include="admin\attachment\test.html" />
     <Content Include="admin\images\loading_scoll.gif" />
+    <Content Include="admin\js\jquery-1.3.2-vsdoc2.js" />
     <Content Include="admin\js\Public.js" />
     <Content Include="admin\news\class_list.html" />
     <Content Include="admin\template\templatefile_list.aspx" />
@@ -891,7 +892,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2021</DevelopmentServerPort>
+          <DevelopmentServerPort>7136</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/DTCMS_Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
