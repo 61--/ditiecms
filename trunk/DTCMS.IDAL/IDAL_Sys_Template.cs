@@ -39,5 +39,12 @@ namespace DTCMS.IDAL
         /// <param name="isEnable"> 1启动 </param>
         /// <returns></returns>
         bool UpdateEnable(int TemplateID, int isEnable);
+
+        /// <summary>
+        /// 获取风格数据
+        /// </summary>
+        /// <param name="Fileds">要查询的字段</param>
+        /// <returns></returns>
+        DataTable GetDataTable(string Fileds);
     }
 }
