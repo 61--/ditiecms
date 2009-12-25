@@ -6,7 +6,7 @@
 <head runat="server">
     <title>图片浏览</title>
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />   
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
     <style type="text/css">
         *{
 	        padding:0;

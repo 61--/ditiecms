@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
     <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
     <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
     <script type="text/javascript" src="../js/public.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
