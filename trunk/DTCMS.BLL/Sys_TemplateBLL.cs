@@ -51,5 +51,29 @@ namespace DTCMS.BLL
         {
             return dalTemplate.UpdateEnable(TemplateID, isEnable);
         }
+
+        /// <summary>
+        /// 判断此风格名称是否存在
+        /// </summary>
+        /// <param name="TemplateID">风格编号</param>
+        /// <param name="templateName">名称</param>
+        /// <returns></returns>
+        public bool ExistTemplateName(int TemplateID,string templateName)
+        {
+            return dalTemplate.Exists(TemplateID, "TemplateName", templateName);
+        }
+
+        /// <summary>
+        /// 获取附件-图片
+        /// </summary>
+        /// <param name="pageCurrent">当前页</param>
+        /// <param name="pageSize">页大小</param>
+        /// <param name="where">查询条件</param>
+        /// <param name="pagecount">总页数</param>
+        /// <returns></returns>
+        public DataTable GetTemplateList()
+        {
+            return dalTemplate.GetDataTable("TemplateID,TemplateName,Author,TemplateDirectory,isEnable,TemplateImg");
+        }
     }
 }
