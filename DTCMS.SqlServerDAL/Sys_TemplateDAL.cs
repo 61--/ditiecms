@@ -121,8 +121,8 @@ namespace DTCMS.SqlServerDAL
         public bool UpdateEnable(int TemplateID,int isEnable)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append(" UPDATE Sys_Template SET isEnable=0 WHERE isEnable=1 ");
-            strSql.Append(" UPDATE Sys_Template SET isEnable=1 WHERE TemplateID=@TemplateID ");
+            strSql.Append(" UPDATE DT_Sys_Template SET isEnable=0 WHERE isEnable=1 ");
+            strSql.Append(" UPDATE DT_Sys_Template SET isEnable=1 WHERE TemplateID=@TemplateID ");
 
             SqlParameter[] parameters = { new SqlParameter("@TemplateID",SqlDbType.Int,4) };
             parameters[0].Value = TemplateID;
@@ -140,7 +140,7 @@ namespace DTCMS.SqlServerDAL
         public bool Exists(int TemplateID, string filedName, string filedValue) 
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append(" SELECT Count(TemplateID) FROM Sys_Template WHERE ");
+            strSql.Append(" SELECT Count(TemplateID) FROM DT_Sys_Template WHERE ");
             strSql.Append(string.Format(" {0}=@{0} ",filedName));
             strSql.Append(" AND TemplateID=@TemplateID ");
 
