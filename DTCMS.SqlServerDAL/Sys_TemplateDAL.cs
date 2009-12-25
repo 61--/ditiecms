@@ -153,6 +153,25 @@ namespace DTCMS.SqlServerDAL
             return TypeConvert.ObjectToInt(SqlHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), parameters)) > 0;
         }
 
+
+        /// <summary>
+        /// 获取风格数据
+        /// </summary>
+        /// <param name="Fileds">要查询的字段</param>
+        /// <returns></returns>
+        public DataTable GetDataTable(string Fileds)
+        {
+            string strSql = string.Format(" SELECT {0} FROM DT_Sys_Template ", Fileds);
+            DataSet ds = SqlHelper.FillDataset(CommandType.Text, strSql);
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                return ds.Tables[0];
+            }
+            else
+            {
+                return null;
+            }
+        }
         #endregion
     }
 }
