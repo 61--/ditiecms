@@ -318,20 +318,25 @@ a.b5:hover
 /*------- Tip Style -------*/
 .popup_tip
 {
+	color:#000;
+	background:#FCFBE0;
 	border:1px #684E02 solid;
 	vertical-align:middle;
 	filter:Alpha(Opacity=80);
 	-moz-opacity:0.8;
+	height:30px;
+}
+.popup_tip .popup_header{
+	display:none;
 }
 .popup_tip .popup_content
 {
-	color:#000;
-	background:#FCFBE0;
 	text-align:center;
+	line-height:30px;
 }
-.popup_tip img
+.popup_tip .popup_bottom
 {
-	vertical-align:middle;
+	display:none;
 }
 /*------- Help Style -------*/
 .popup_help_up,.popup_help_down
@@ -341,11 +346,11 @@ a.b5:hover
 }
 .popup_help_up
 {
-	background:url(../images/blue//help_t1.gif) left top no-repeat;
+	background:url(../images/blue/help_t1.gif) left top no-repeat;
 }
 .popup_help_down
 {
-	background:url(../images/blue//help_t2.gif) left top no-repeat;
+	background:url(../images/blue/help_t2.gif) left top no-repeat;
 }
 .popup_help_up a:link,.popup_help_down a:link
 {
@@ -370,7 +375,7 @@ a.b5:hover
 {
 	font-size:13px;
 	text-indent:28px;
-	background:url(../images/blue//action.gif) 10px 0px no-repeat;
+	background:url(../images/blue/action.gif) 10px 0px no-repeat;
 }
 .popup_help_up .popup_content,.popup_help_down .popup_content
 {
@@ -383,10 +388,10 @@ a.b5:hover
 .popup_help_up .popup_bottom
 {
 	height:22px;
-	background:url(../images/blue//help_b1.gif) left top no-repeat;
+	background:url(../images/blue/help_b1.gif) left top no-repeat;
 }
 .popup_help_down .popup_bottom
 {
 	height:9px;
-	background:url(../images/blue//help_b2.gif) left top no-repeat;
+	background:url(../images/blue/help_b2.gif) left top no-repeat;
 }
