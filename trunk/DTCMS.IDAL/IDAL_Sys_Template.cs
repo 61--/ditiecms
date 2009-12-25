@@ -6,6 +6,14 @@ namespace DTCMS.IDAL
     public interface IDAL_Sys_Template
     {
         /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        /// <param name="CID">类别主键</param>
+        /// <param name="FiledName">字段名称</param>
+        /// <param name="FiledValue">字段值</param>
+        bool Exists(int CID, string filedName, string filedValue);
+
+        /// <summary>
         /// 增加一条数据
         /// </summary>
         int Add(Sys_Template model);
