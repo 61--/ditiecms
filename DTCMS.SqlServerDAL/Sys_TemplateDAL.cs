@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
+using System.Data.SqlClient;
 using DTCMS.Entity;
 using DTCMS.IDAL;
-using System.Data.SqlClient;
 using DTCMS.DBUtility;
-using System.Data;
+using DTCMS.Common;
 namespace DTCMS.SqlServerDAL
 {
     public class Sys_TemplateDAL:BaseDAL,IDAL_Sys_Template
@@ -125,14 +126,33 @@ namespace DTCMS.SqlServerDAL
 
             SqlParameter[] parameters = { new SqlParameter("@TemplateID",SqlDbType.Int,4) };
             parameters[0].Value = TemplateID;
-
-            int n = 0;
-            n=SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters);
-            if (n > 0) 
-                return true;
-            else 
-                return false;
+       
+            return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters)>0;
+           
         }
+
+        /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        /// <param name="CID">类别主键</param>
+        /// <param name="FiledName">字段名称</param>
+        /// <param name="FiledValue">字段值</param>
+        public bool Exists(int TemplateID, string filedName, string filedValue) 
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append(" SELECT Count(TemplateID) FROM Sys_Template WHERE ");
+            strSql.Append(string.Format(" {0}=@{0} ",filedName));
+            strSql.Append(" AND TemplateID=@TemplateID ");
+
+            SqlParameter[] parameters = { new SqlParameter("@TemplateID", SqlDbType.Int, 4),
+                                          new SqlParameter(string.Format("@{0}",filedName), SqlDbType.NVarChar,100) 
+                                        };
+            parameters[0].Value = TemplateID;
+            parameters[1].Value = filedValue;
+
+            return TypeConvert.ObjectToInt(SqlHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), parameters)) > 0;
+        }
+
         #endregion
     }
 }
