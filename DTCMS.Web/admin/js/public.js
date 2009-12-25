@@ -51,10 +51,10 @@
             if ($("#_Popup_" + this.ID).length < 1) {
                 //$.popup._hide();
                 var html =
-			    '<div class="popup_' + this.popType + '" id="_Popup_' + this.ID + (this.width == 0 ? '">' : '" style="width:' + this.width + 'px">') +
+                '<div class="popup_' + this.popType + '" id="_Popup_' + this.ID + (this.width == 0 ? '">' : '" style="width:' + this.width + 'px">') +
                   '<div class="popup_header" id="_Title_"><h1>' + this.title + '</h1><div class="h_r"></div></div>\
-                  <div class="popup_content">\
-                    <div id="_Container_' + this.ID + (this.height == 0 ? '">' : '" style="height:' + this.height + 'px">') + msg + '</div></div>' +
+                  <div class="popup_content"' + (this.height == 0 ? '>' : ' style="height:' + this.height + 'px">') +
+                    '<div id="_Container_' + this.ID + '">' + msg + '</div></div>' +
                   '<div class="popup_bottom"><div class="b_r"></div>\
                 </div>';
 
@@ -148,8 +148,7 @@
     }
     showTip = function(msg, elem, autoClose) {
         if (elem == null) {
-            $.popup.tip('<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0"><tr>' +
-                '<td align="center">' + msg + '</td></tr></table>', null, null, autoClose);
+            $.popup.tip('<img src="/admin/images/blue/ico_popup.gif" />' + msg, null, null, autoClose);
         } else {
             var middle = ($("#" + elem).height() - 50) / 2;
             var top = $("#" + elem).offset().top + (middle > 0 ? middle : 0);
