@@ -40,5 +40,16 @@ namespace DTCMS.BLL
         {
            return  dalTemplate.GetModel(TemplateID);
         }
+
+        /// <summary>
+        /// 设置风格为启动状态
+        /// </summary>
+        /// <param name="tempID">风格编号</param>
+        /// <param name="isEnable"> 1启动 </param>
+        /// <returns></returns>
+        public bool UpdateEnable(int TemplateID, int isEnable)
+        {
+            return dalTemplate.UpdateEnable(TemplateID, isEnable);
+        }
     }
 }
