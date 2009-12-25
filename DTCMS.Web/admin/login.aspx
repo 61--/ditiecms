@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>DTCMS内容管理系统后台登陆</title>
     <link rel="stylesheet" type="text/css" href="css/login.css" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.3.2-vsdoc2.js"></script>
     <script type="text/javascript">
     function $(elem){
         return document.getElementById(elem);

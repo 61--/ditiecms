@@ -6,7 +6,7 @@
     <title>文章列表</title>
     <link href="../css/blue_body.css" type="text/css" rel="StyleSheet" />
     <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
     <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
     <script type="text/javascript" src="/inc/treetable/TableTree4J.js"></script>
