@@ -15,9 +15,9 @@
         autoClose: 0,                       // 窗口自动关闭 (大于0时窗口自动关闭)
 
         // 公共方法
-        tip: function(msg, top, left, autoClose) {
-            this.ID = 'tip';
-            this.popType = 'tip';
+        message: function(msg, top, left, autoClose) {
+            this.ID = 'msg';
+            this.popType = 'msg';
             this.title = '';
             this.isPopup = false;
             this.autoClose = autoClose || 0;
@@ -88,12 +88,7 @@
 
         _hide: function() {
             if ($("#_Popup_" + this.ID).length > 0) {
-                if (this.popType == "tip") {
-                    $("#_Popup_" + this.ID).fadeOut(500);
-                }
-                else {
-                    $("#_Popup_" + this.ID).remove();
-                }
+                $("#_Popup_" + this.ID).fadeOut(500);
                 $.popup._maintainPosition(false);
             }
         },
@@ -127,35 +122,37 @@
                 }
             }
         }
-
     }
 
-    // 显示Loading信息
-    showLoading = function(msg, elem) {
-        var loadingMsg = msg || '正在加载数据，请稍候...';
+    // 公共调用方法
+    _showMessage = function(msg, elem, autoClose) {
+        var top;
         if (elem == null) {
-            $.popup.tip('<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0"><tr>' +
-                '<td align="center"><img src="../images/blue/loading.gif" /> ' + loadingMsg + '</td></tr></table>', null, null, 0);
+            top = null;
         } else {
             var middle = ($(elem).height() - 30) / 2;
-            var top = $(elem).offset().top + (middle > 0 ? middle : 0);
-            $.popup.tip('<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0"><tr>' +
-                 '<td align="center"><img src="../images/blue/loading.gif" /> ' + loadingMsg + '</td></tr></table>', top, null, 0);
+            top = $(elem).offset().top + (middle > 0 ? middle : 0);
         }
+        $.popup.message(msg, top, null, autoClose);
     }
-    hideTip = function() {
-        $("#_Popup_tip").fadeOut(500);
+
+    showSuccess = function(msg, elem, autoClose) {
+        _showMessage('<img src="/admin/images/blue/success.gif" /> ' + msg, elem, autoClose);
     }
-    showTip = function(msg, elem, autoClose) {
-        if (elem == null) {
-            $.popup.tip('<img src="/admin/images/blue/ico_popup.gif" />' + msg, null, null, autoClose);
-        } else {
-            var middle = ($("#" + elem).height() - 50) / 2;
-            var top = $("#" + elem).offset().top + (middle > 0 ? middle : 0);
-            $.popup.tip('<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0"><tr>' +
-                '<td align="center">' + msg + '</td></tr></table>', top, null, autoClose);
-        }
+
+    showError = function(msg, elem, autoClose) {
+        _showMessage('<img src="/admin/images/blue/error.gif" /> ' + msg, elem, autoClose);
     }
+
+    showLoading = function(msg, elem) {
+        var loadingMsg = msg || '正在加载数据，请稍候...';
+        _showMessage('<img src="/admin/images/blue/loading.gif" /> ' + loadingMsg, elem, 0);
+    }
+
+    hideMessage = function() {
+        $("#_Popup_msg").fadeOut(500);
+    }
+
     showHelper = function(elem, title, msg, height) {
         $.popup.help(elem, title, msg, height);
     }
