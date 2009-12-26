@@ -211,6 +211,13 @@
     <Compile Include="admin\news\news_add.aspx.designer.cs">
       <DependentUpon>news_add.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\sys\BaseSetting.aspx.cs">
+      <DependentUpon>BaseSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\sys\BaseSetting.aspx.designer.cs">
+      <DependentUpon>BaseSetting.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\template\templatefile_list.aspx.cs">
       <DependentUpon>templatefile_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -290,6 +297,7 @@
     <Content Include="admin\js\jquery-1.3.2-vsdoc2.js" />
     <Content Include="admin\js\public.js" />
     <Content Include="admin\news\class_list.html" />
+    <Content Include="admin\sys\BaseSetting.aspx" />
     <Content Include="admin\template\templatefile_list.aspx" />
     <Content Include="admin\template\template_add.aspx" />
     <Content Include="admin\template\template_list.aspx" />
@@ -829,6 +837,7 @@
     <None Include="ckfinder\userfiles\.htaccess" />
     <Content Include="config\sys\AttachmentConfig.config" />
     <Content Include="config\sys\gobal.config" />
+    <Content Include="config\sys\BaseSetting.config" />
     <None Include="editor\fckeditor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
     <None Include="editor\fckeditor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
     <None Include="editor\fckeditor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />

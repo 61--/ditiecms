@@ -11,50 +11,13 @@
     <div >
         <img id="imgDisplay" src="" alt="" />
         <input type="text" id="imgPath" />
-        <button id="btnUpload" onclick="upload();">浏览</button>
+        <input id="btnUpload" onclick="dialogAttachmentUpload('attachmentmanage.aspx', onCancel); " type="button" value="浏览" />
     </div>
     </form>
     <script type="text/javascript">
-        function upload() {
-            var diag = new Dialog();
-            diag.Title = "图片管理";
-            diag.Width = 600;
-            diag.Height = 380;
-            diag.URL = "attachmentmanage.aspx";
-            diag.OKEvent = function() {
-                var win = diag.innerFrame.contentWindow;
-                win.frames["FrmUpload"].upload();
-            };
-            diag.CancelEvent = function() {
-                var win = diag.innerFrame.contentWindow;
-                var returnPath = win.frames["FrmUpload"].returnPath();
-                if (returnPath) {
-                    document.getElementById("imgDisplay").src = returnPath;
-                    document.getElementById("imgPath").value = returnPath;
-                }
-                diag.close();
-            };
-            diag.show();
-        }
-        var diag = new Dialog();
-        diag.Title = "图片管理";
-        diag.Width = 600;
-        diag.Height = 380;
-        diag.URL = "attachmentmanage.aspx";
-        diag.OKEvent = function() {
-            var win = diag.innerFrame.contentWindow;
-            win.frames["FrmUpload"].upload();
-        };
-        diag.CancelEvent = function() {
-            var win = diag.innerFrame.contentWindow;
-            var returnPath = win.frames["FrmUpload"].returnPath();
-            if (returnPath) {
-                document.getElementById("imgDisplay").src = returnPath;
-                document.getElementById("imgPath").value = returnPath;
-            }
-            diag.close();
-        };
-        diag.show();
+        function onCancel(returnPath) {
+            document.getElementById("imgDisplay").src = returnPath;
+        }             
     </script>
 </body>
 </html>
