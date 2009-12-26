@@ -655,3 +655,28 @@ var Drag = {
         return e;
     }
 };
+
+
+/**
+*附件上传
+*url，附件管理attachmentmanage.aspx
+*cancelevent，处理事件，带一个返回路劲参数
+*/
+function dialogAttachmentUpload(url, cancelevent, width, height) {
+    var diag = new Dialog();
+    diag.Title = "附件管理";
+    diag.Width = width || 600;
+    diag.Height = height || 380;
+    diag.URL = url || "attachmentmanage.aspx";
+    diag.OKEvent = function() {
+        var win = diag.innerFrame.contentWindow;
+        win.frames["FrmUpload"].upload();
+    };
+    diag.CancelEvent = function() {
+        var win = diag.innerFrame.contentWindow;
+        var returnPath = win.frames["FrmUpload"].returnPath();
+        cancelevent(returnPath);
+        diag.close();
+    };
+    diag.show();
+}
