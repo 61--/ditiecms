@@ -16,10 +16,9 @@
 <body>
     <form id="form1" runat="server">
      <div id="container">
-        <%--<div style="line-height:28px;">当前位置：栏目添加</div>--%>
         <div id="tab_menu" class="tabs">
             <ul>
-                <li class="tab_on">基本信息</li>
+                <li class="tab_on"><a>基本信息</a></li>
             </ul>
         </div>
         <div id="content">
