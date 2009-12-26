@@ -7,8 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="css/blue_body.css" rel="stylesheet" type="text/css" />
-    <script src="../js/jquery-1.3.2-vsdoc2.js" type="text/javascript"></script>
+    <script src="js/jquery-1.3.2-vsdoc2.js" type="text/javascript"></script>
     <script src="/admin/js/Public.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $('#test');
+    </script>
 </head>
 <body>
     <div style="width: 800px; margin: 50px auto;">
@@ -22,14 +25,15 @@
         </ul>
         <ul>
             <li><a id="H11" href="javascript:showLoading()" title="查看帮助">显示Loading信息（默认）</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
-                href="javascript:hideTip()">隐藏Loading信息</a></li>
+                href="javascript:hideMessage()">隐藏Loading信息</a></li>
             <li><a id="H12" href="javascript:showLoading('正在提交数据...')">显示自定义Loading信息（默认）</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
-                href="javascript:hideTip()">隐藏Loading信息</a></li>
+                href="javascript:hideMessage()">隐藏Loading信息</a></li>
             <li><a id="H13" href="javascript:showLoading('正在加载列表数据...','#H13')">在指定容器内显示Loading信息（默认）</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
-                href="javascript:hideTip()">隐藏Loading信息</a></li>
-            <li><a id="H14" href="javascript:showTip('发表成功，经验 + 5')">显示提示信息</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
-                href="javascript:hideTip()">隐藏Tip信息</a></li>
-            <li><a id="H15" href="javascript:showTip('回复成功，经验 + 1',null,1)">显示提示信息（自动隐藏）</a></li>
+                href="javascript:hideMessage()">隐藏Loading信息</a></li>
+            <li><a id="H14" href="javascript:showSuccess('发表成功，经验 + 5')">显示提示信息</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
+                href="javascript:hideMessage()">隐藏Tip信息</a></li>
+            <li><a id="H15" href="javascript:showSuccess('回复成功，经验 + 1',null,2)">显示提示信息（自动隐藏）</a></li>
+            <li><a id="A1" href="javascript:showError('删除失败，经验 - 1',null,2)">显示提示信息（自动隐藏）</a></li>
         </ul>
     </div>
 </body>

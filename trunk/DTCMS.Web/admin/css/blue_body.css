@@ -316,27 +316,46 @@ a.b5:hover
 	margin: 0 -5px 0 0;
 }
 /*------- Tip Style -------*/
-.popup_tip
+.popup_msg
 {
-	color:#000;
-	background:#FCFBE0;
-	border:1px #684E02 solid;
 	vertical-align:middle;
 	filter:Alpha(Opacity=80);
 	-moz-opacity:0.8;
 	height:30px;
 }
-.popup_tip .popup_header{
+.loading
+{
+	color:#000;
+	background:#FCFBE0;
+	border:1px #684E02 solid;
+}
+.success
+{
+	color:#000;
+	background:#FCFFF0;
+	border:1px #98D87D solid;
+}
+.error
+{
+	color:#C00;
+	background:#FFEBE8;
+	border:1px #E89494 solid;
+}
+.popup_msg .popup_header{
 	display:none;
 }
-.popup_tip .popup_content
+.popup_msg .popup_content
 {
 	text-align:center;
 	line-height:30px;
 }
-.popup_tip .popup_bottom
+.popup_msg .popup_bottom
 {
 	display:none;
+}
+.popup_msg img
+{	
+	vertical-align:middle;
 }
 /*------- Help Style -------*/
 .popup_help_up,.popup_help_down
