@@ -28,6 +28,9 @@ namespace DTCMS.Web.admin.ajax
                 case "author":
                     Response.Write(AuthorManage(method, name, email));
                     break;
+                case "authorpage":
+                    Response.Write(GetAuthorListPage());
+                    break;
                 default:
                     break;
             }
@@ -140,7 +143,7 @@ namespace DTCMS.Web.admin.ajax
                 string chk_id = "chk_" + count.ToString();
                 sb.Append("<li>");
                 sb.Append("<input type=\"checkbox\" name=\"item\" id=\"" + chk_id + "\" value=\"" + tag + "\" />");
-                sb.Append("<label for=\"" + chk_id + "\">" + tag + "#</label>");
+                sb.Append("<label for=\"" + chk_id + "\">" + tag + "</label>");
                 sb.Append("</li>");
                 count++;
             }
@@ -265,6 +268,29 @@ namespace DTCMS.Web.admin.ajax
             return sb.ToString();
         }
 
+        /// <summary>
+        /// 获取作者列表，前台显示
+        /// </summary>
+        /// <returns></returns>
+        private string GetAuthorListPage()
+        {
+            Dictionary<string, string> authorList = Config.BaseSettingConfig.GetAuthorList();
+            StringBuilder sb = new StringBuilder();
+            int count = 1;
+            sb.Append("<ul>");
+            foreach (KeyValuePair<string,string> author in authorList)
+            {
+                string chk_id = "chk_" + count.ToString();
+                sb.Append("<li>");
+                sb.Append("<input type=\"checkbox\" name=\"item\" id=\"" + chk_id + "\" value=\"" + author.Key.ToString() + "\" />");
+                sb.Append("<label for=\"" + chk_id + "\">" + author.Key.ToString() + "</label>");
+                sb.Append("</li>");
+                count++;
+            }
+            sb.Append("</ul>");
+
+            return sb.ToString();
+        }
 
         #endregion 作者
     }

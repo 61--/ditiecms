@@ -88,7 +88,7 @@
                             文章作者:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_Author" class="textbox" style="width:120px;" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" />
+                            <input type="text" id="txt_Author" class="textbox" style="width:120px;" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" onclick="add_author();" />
                             <span class="main_bleft">责任编辑: </span><input type="text" id="txt_Editor" class="textbox" style="width:120px;" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" />
                         </td>
                     </tr>
@@ -239,6 +239,13 @@
         }
         function tag_onOk(tags) {
             $("#txt_Tags").val(tags);
+        }
+
+        function add_author() {   //作者
+            dialogAuthorPage(author_onOk, "/admin/news/authorlist.aspx");
+        }
+        function author_onOk(author) {
+            $("#txt_Author").val(author);
         }
     </script>
 </body>

@@ -704,3 +704,24 @@ function dialogTagPage(okevent, url, width, height) {
     };    
     dialog.show();
 }
+
+/**
+*获取作者
+*确定触发事件
+*/
+function dialogAuthorPage(okevent, url, width, height) {
+    var dialog = new Dialog();
+    dialog.Title = "作者 列表";
+    dialog.Width = (width || 400) >= 400 ? (width || 400) : 400;
+    dialog.Height = (height || 300) >= 300 ? (height || 300) : 300;
+    dialog.URL = url || "/admin/news/authorlist.aspx";
+    dialog.OKEvent = function() {
+        var win = dialog.innerFrame.contentWindow;
+        var authors = win.getAuthors();
+        if (authors != "") {
+            okevent(authors);
+            Dialog.close();
+        }
+    };
+    dialog.show();
+}
