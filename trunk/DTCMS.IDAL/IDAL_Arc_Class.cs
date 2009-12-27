@@ -74,6 +74,8 @@ namespace DTCMS.IDAL
         /// <param name="ClassName"></param>
         /// <returns></returns>
         bool ExistsClassName(int CID, string ClassName);
+
+
 		#endregion  成员方法
 	}
 }
