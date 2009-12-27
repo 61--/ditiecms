@@ -46,7 +46,9 @@ namespace DTCMS.Publish
                 int pageSize=10;
                 int totalRecord = dt.Rows.Count;
                 string path=string.Empty;
-                ConvertPagingList(path, template, match.Groups[2].Value, match.Groups[0].Value, pageSize, dt);       
+                ConvertPagingList(path, template, match.Groups[2].Value, match.Groups[0].Value, pageSize, dt);
+                
+                dt.Dispose();
             }
         }
 
@@ -113,7 +115,7 @@ namespace DTCMS.Publish
             strReplace = strReplace.Replace("[#article.goodper]", "");
             strReplace = strReplace.Replace("[#article.badper]", "");
             strHtml.Append(strReplace + "\r\n");
-            
+       
             return strHtml.ToString();
         }
         /// <summary>
