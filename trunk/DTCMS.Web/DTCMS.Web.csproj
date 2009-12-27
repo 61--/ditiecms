@@ -176,18 +176,18 @@
     <Compile Include="admin\attachment\simpleuploader.aspx.designer.cs">
       <DependentUpon>simpleuploader.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\news\authorlist.aspx.cs">
+    <Compile Include="admin\dialog\authorlist.aspx.cs">
       <DependentUpon>authorlist.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\news\authorlist.aspx.designer.cs">
+    <Compile Include="admin\dialog\authorlist.aspx.designer.cs">
       <DependentUpon>authorlist.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\news\classpagelist.aspx.cs">
+    <Compile Include="admin\dialog\classpagelist.aspx.cs">
       <DependentUpon>classpagelist.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\news\classpagelist.aspx.designer.cs">
+    <Compile Include="admin\dialog\classpagelist.aspx.designer.cs">
       <DependentUpon>classpagelist.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\news\class_list.aspx.cs">
@@ -232,11 +232,11 @@
     <Compile Include="admin\news\news_add.aspx.designer.cs">
       <DependentUpon>news_add.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\news\taglist.aspx.cs">
+    <Compile Include="admin\dialog\taglist.aspx.cs">
       <DependentUpon>taglist.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\news\taglist.aspx.designer.cs">
+    <Compile Include="admin\dialog\taglist.aspx.designer.cs">
       <DependentUpon>taglist.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\sys\BaseSetting.aspx.cs">
@@ -325,10 +325,10 @@
     <Content Include="admin\images\loading_scoll.gif" />
     <Content Include="admin\js\jquery-1.3.2-vsdoc2.js" />
     <Content Include="admin\js\public.js" />
-    <Content Include="admin\news\authorlist.aspx" />
-    <Content Include="admin\news\classpagelist.aspx" />
+    <Content Include="admin\dialog\authorlist.aspx" />
+    <Content Include="admin\dialog\classpagelist.aspx" />
     <Content Include="admin\news\class_list.html" />
-    <Content Include="admin\news\taglist.aspx" />
+    <Content Include="admin\dialog\taglist.aspx" />
     <Content Include="admin\sys\BaseSetting.aspx" />
     <Content Include="admin\template\templatefile_list.aspx" />
     <Content Include="admin\template\template_add.aspx" />

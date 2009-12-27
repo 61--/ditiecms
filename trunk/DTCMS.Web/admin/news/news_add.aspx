@@ -229,14 +229,14 @@
         }
 
         function add_tags() {   //Tag关键字
-            dialogTagPage(tag_onOk, "/admin/news/taglist.aspx");
+            dialogTagPage(tag_onOk, "/admin/dialog/taglist.aspx");
         }
         function tag_onOk(tags) {
             $("#txt_Tags").val(tags);
         }
 
         function add_author() {   //作者
-            dialogAuthorPage(author_onOk, "/admin/news/authorlist.aspx");
+            dialogAuthorPage(author_onOk, "/admin/dialog/authorlist.aspx");
         }
         function author_onOk(author) {
             $("#txt_Author").val(author);
