@@ -97,7 +97,7 @@
                             文章缩略图:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ImageUrl" class="textbox" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" />
+                            <input type="text" id="txt_ImageUrl" class="textbox" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" onclick="abb_Image();" />
                             <input type="checkbox" name="chk_IsRemoteUrl" id="chk_IsRemoteUrl" runat="server" /><label for="chk_IsRemoteUrl">远程图片</label>
                         </td>
                     </tr>
@@ -218,13 +218,23 @@
     
     <script type="text/javascript">
         function IsRedirect(obj) {  //是否跳转地址
-            var redirect = document.getElementById("IsRedirect");
+            var redirect = $("#IsRedirect");
             if (obj.checked) {
-                redirect.style.display = "block";
+                redirect.css("display", "block");
             } else {
-                redirect.style.display = "none";
+                redirect.css("display", "none");
             }
         }
+
+        function abb_Image() {  //缩略图
+            dialogAttachmentUpload('/admin/attachment/attachmentmanage.aspx', onCancel);
+        }
+        function onCancel(returnPath) {
+            if (returnPath) {
+                $("#txt_ImageUrl").val(returnPath);
+            }
+        } 
+        
     </script>
 </body>
 </html>
