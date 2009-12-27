@@ -15,15 +15,20 @@ namespace DTCMS.Web.admin.ajax
             string action = Common.Utils.GetQueryString("action").Trim().ToLower();
             string method = Common.Utils.GetQueryString("method").Trim().ToLower();
             string name = Common.Utils.GetQueryString("name").Trim().ToLower();
+            string email = Common.Utils.GetQueryString("email").Trim().ToLower();
             switch (action)
             {
                 case "tag":
                     Response.Write(TagManage(method,name));
                     break;
+                case "author":
+                    Response.Write(AuthorManage(method, name, email));
+                    break;
                 default:
                     break;
             }
         }
+
         #region 关键字TAG
         private string TagManage(string method,string tagName)
         {            
@@ -53,11 +58,11 @@ namespace DTCMS.Web.admin.ajax
             try
             {
                 Config.BaseSettingConfig.AddTag(tagName);
-                return "添加成功!";
+                return "添加【" + tagName + "】成功!";
             }
             catch
             {
-                return "添加失败!";
+                return "添加【" + tagName + "】失败!";
             }
         }
 
@@ -75,11 +80,11 @@ namespace DTCMS.Web.admin.ajax
             try
             {
                 Config.BaseSettingConfig.DeleteTag(tagName);
-                return "删除成功!";
+                return "删除【" + tagName + "】成功!";
             }
             catch
             {
-                return "删除失败!";
+                return "删除【" + tagName + "】失败!";
             }
         }
 
@@ -116,5 +121,124 @@ namespace DTCMS.Web.admin.ajax
             return sb.ToString();
         }
         #endregion
+
+        #region  作者
+        private string AuthorManage(string method, string authorName,string email)
+        {
+            switch (method)
+            {
+                case "add":
+                    return AddAuthor(authorName, email);
+                case "edit":
+                    return UpdateAuthor(authorName, email);
+                case "delete":
+                    return DeleteAuthor(authorName);
+                case "list":
+                    return GetAutorList();
+                default:
+                    return "";
+            }
+        }
+
+        /// <summary>
+        /// 添加作者
+        /// </summary>
+        private string AddAuthor(string authorName,string email)
+        {
+            if (authorName == string.Empty)
+            {
+                return "作者名称 不能为空!";
+            }
+            try
+            {
+                Config.BaseSettingConfig.AddAuthor(authorName,email);
+                return "添加【" + authorName + "】成功!";
+            }
+            catch
+            {
+                return "添加【" + authorName + "】失败!";
+            }
+        }
+
+        /// <summary>
+        /// 修改作者
+        /// </summary>
+        /// <param name="tagName"></param>
+        private string UpdateAuthor(string authorName, string email)
+        {
+            if (authorName == string.Empty)
+            {
+                return "请选择要修改数据!";
+            }
+            try
+            {
+                Config.BaseSettingConfig.UpdateAuthor(authorName,email);
+                return "修改【" + authorName + "】成功!";
+            }
+            catch
+            {
+                return "修改【" + authorName + "】失败!";
+            }
+        }
+
+        /// <summary>
+        /// 删除作者
+        /// </summary>
+        /// <param name="tagName"></param>
+        /// <returns></returns>
+        private string DeleteAuthor(string authorName)
+        {
+            if (authorName == string.Empty)
+            {
+                return "请选择要删除数据!";
+            }
+            try
+            {
+                Config.BaseSettingConfig.DeleteAuthor(authorName);
+                return "删除【" + authorName + "】成功!";
+            }
+            catch
+            {
+                return "删除【" + authorName + "】失败!";
+            }
+        }
+
+        /// <summary>
+        /// 获取作者列表
+        /// </summary>
+        /// <returns></returns>
+        private string GetAutorList()
+        {
+            Dictionary<string,string> authorList = Config.BaseSettingConfig.GetAuthorList();
+            StringBuilder sb = new StringBuilder();
+            int idnum = 1;
+            sb.Append("<table class=\"table_data\">");
+            sb.Append("<thead>");
+            sb.Append("<tr>");
+            sb.Append("<th>ID</th>");
+            sb.Append("<th>作者</th>");
+            sb.Append("<th>Email</th>");
+            sb.Append("<th>操作</th>");
+            sb.Append("</tr>");
+            sb.Append("</thead>");
+            sb.Append("<tbody id=\"tab\">");
+            foreach (KeyValuePair<string, string> author in authorList)
+            {
+                sb.Append("<tr>");
+                sb.Append("<td>" + idnum + "</td>");
+                sb.Append("<td>" + author.Key.ToString().Trim() + "</td>");
+                sb.Append("<td>" + author.Value.ToString().Trim() + "</td>");
+                sb.Append("<td><a href=\"javascript:void(0);\" onclick=\"del_author('" + author.Key.ToString().Trim() + "')\">删除</a><td>");
+                sb.Append("</tr>");
+                idnum++;
+            }
+            sb.Append("</tbody>");
+            sb.Append("</table>");
+
+            return sb.ToString();
+        }
+
+
+        #endregion 作者
     }
 }

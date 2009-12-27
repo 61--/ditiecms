@@ -667,15 +667,18 @@ function dialogAttachmentUpload(url, cancelevent, width, height) {
     diag.Title = "附件管理";
     diag.Width = width || 600;
     diag.Height = height || 380;
-    diag.URL = url || "attachmentmanage.aspx";
+    diag.URL = url || "/admin/attachment/attachmentmanage.aspx";
     diag.OKEvent = function() {
         var win = diag.innerFrame.contentWindow;
         win.frames["FrmUpload"].upload();
     };
     diag.CancelEvent = function() {
-        var win = diag.innerFrame.contentWindow;
-        var returnPath = win.frames["FrmUpload"].returnPath();
-        cancelevent(returnPath);
+        try {
+            var win = diag.innerFrame.contentWindow;
+            var returnPath = win.frames["FrmUpload"].returnPath();
+            cancelevent(returnPath);
+        } catch (err) {
+        }
         diag.close();
     };
     diag.show();
