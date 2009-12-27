@@ -323,24 +323,6 @@ a.b5:hover
 	-moz-opacity:0.8;
 	height:30px;
 }
-.loading
-{
-	color:#000;
-	background:#FCFBE0;
-	border:1px #684E02 solid;
-}
-.success
-{
-	color:#000;
-	background:#FCFFF0;
-	border:1px #98D87D solid;
-}
-.error
-{
-	color:#C00;
-	background:#FFEBE8;
-	border:1px #E89494 solid;
-}
 .popup_msg .popup_header{
 	display:none;
 }

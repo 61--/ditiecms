@@ -32,8 +32,8 @@
                 href="javascript:hideMessage()">隐藏Loading信息</a></li>
             <li><a id="H14" href="javascript:showSuccess('发表成功，经验 + 5')">显示提示信息</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
                 href="javascript:hideMessage()">隐藏Tip信息</a></li>
-            <li><a id="H15" href="javascript:showSuccess('回复成功，经验 + 1',null,2)">显示提示信息（自动隐藏）</a></li>
-            <li><a id="A1" href="javascript:showError('删除失败，经验 - 1',null,2)">显示提示信息（自动隐藏）</a></li>
+            <li><a id="H15" href="javascript:showSuccess('回复成功，经验 + 1')">显示提示信息（自动隐藏）</a></li>
+            <li><a id="A1" href="javascript:showError('删除失败，经验 - 1')">显示提示信息（自动隐藏）</a></li>
         </ul>
     </div>
 </body>
