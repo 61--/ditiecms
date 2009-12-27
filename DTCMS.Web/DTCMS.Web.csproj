@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7DBA0670-7419-4E7A-BCB7-92A8C7151733}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -102,6 +102,13 @@
     </Compile>
     <Compile Include="admin\ajax\attachment_list.aspx.designer.cs">
       <DependentUpon>attachment_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\ajax\basesetting_list.aspx.cs">
+      <DependentUpon>basesetting_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ajax\basesetting_list.aspx.designer.cs">
+      <DependentUpon>basesetting_list.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\ajax\class_list.aspx.cs">
       <DependentUpon>class_list.aspx</DependentUpon>
@@ -265,6 +272,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\ajax\attachment_list.aspx" />
+    <Content Include="admin\ajax\basesetting_list.aspx" />
     <Content Include="admin\ajax\class_list.aspx" />
     <Content Include="admin\ajax\file_list.aspx" />
     <Content Include="admin\ajax\news_list.aspx" />
@@ -907,6 +915,9 @@
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/DTCMS_Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
