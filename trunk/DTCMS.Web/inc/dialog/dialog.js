@@ -693,13 +693,13 @@ function dialogTagPage(okevent, url, width, height) {
     dialog.Title = "关键字 列表";
     dialog.Width = (width||400) >= 400 ? (width||400) : 400;
     dialog.Height = (height||300) >= 300 ? (height||300) : 300;
-    dialog.URL = url || "/admin/news/taglist.aspx";
+    dialog.URL = url || "/admin/dialog/taglist.aspx";
     dialog.OKEvent = function() {
         var win = dialog.innerFrame.contentWindow;
         var tags = win.getTags();
         if (tags != "") {
             okevent(tags);
-            Dialog.close();
+            dialog.close();
         }        
     };    
     dialog.show();
@@ -714,13 +714,34 @@ function dialogAuthorPage(okevent, url, width, height) {
     dialog.Title = "作者 列表";
     dialog.Width = (width || 400) >= 400 ? (width || 400) : 400;
     dialog.Height = (height || 300) >= 300 ? (height || 300) : 300;
-    dialog.URL = url || "/admin/news/authorlist.aspx";
+    dialog.URL = url || "/admin/dialog/authorlist.aspx";
     dialog.OKEvent = function() {
         var win = dialog.innerFrame.contentWindow;
         var authors = win.getAuthors();
         if (authors != "") {
             okevent(authors);
-            Dialog.close();
+            dialog.close();
+        }
+    };
+    dialog.show();
+}
+
+/**
+*获取栏目
+*确定触发事件
+*/
+function dialogclassPage(okevent, url, width, height) {
+    var dialog = new Dialog();
+    dialog.Title = "栏目 列表";
+    dialog.Width = (width || 400) >= 400 ? (width || 400) : 400;
+    dialog.Height = (height || 300) >= 300 ? (height || 300) : 300;
+    dialog.URL = url || "/admin/dialog/classpagelist.aspx";
+    dialog.OKEvent = function() {
+        var win = dialog.innerFrame.contentWindow;
+        var classobj = win.getClasses();
+        if (classobj != null) {
+            okevent(classobj);
+            dialog.close();
         }
     };
     dialog.show();

@@ -128,7 +128,16 @@ namespace DTCMS.Web.admin {
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_ClassID;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden txt_ClassID;
+        
+        /// <summary>
+        /// txt_ClassName 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_ClassName;
         
         /// <summary>
         /// txt_Source 控件。
