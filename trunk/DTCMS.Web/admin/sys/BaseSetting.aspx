@@ -38,7 +38,7 @@
                     <table cellpadding="0" cellspacing="0" width="100%" border="0" class="table_form">
                         <tbody>
                             <tr>
-                                <td class="main_bleft split">TAG名称</td>
+                                <td class="main_bleft split">TAG名称:</td>
                                 <td class="main_bright split">
                                     <input type="text" id="txt_tagname" name="tagname" class="textbox short" />
                                     <span style="color:#FA001A;text-align:center;">*</span>                                
@@ -64,14 +64,14 @@
                     <table cellpadding="0" cellspacing="0" width="100%" border="0" class="table_form">
                         <tbody>
                             <tr>
-                                <td class="main_bleft split">作者名称</td>
+                                <td class="main_bleft split">作者名称:</td>
                                 <td class="main_bright split">
                                     <input type="text" id="txt_authorname" name="authorname" class="textbox short" />
                                     <span style="color:#FA001A;text-align:center;">*</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="main_bleft split">电子邮件</td>
+                                <td class="main_bleft split">电子邮件:</td>
                                 <td class="main_bright split">
                                     <input type="text" id="txt_authoremail" name="authoremail" class="textbox short" />
                                 </td>

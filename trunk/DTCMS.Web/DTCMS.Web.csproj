@@ -183,6 +183,13 @@
     <Compile Include="admin\news\authorlist.aspx.designer.cs">
       <DependentUpon>authorlist.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\news\classpagelist.aspx.cs">
+      <DependentUpon>classpagelist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\news\classpagelist.aspx.designer.cs">
+      <DependentUpon>classpagelist.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\news\class_list.aspx.cs">
       <DependentUpon>class_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -319,6 +326,7 @@
     <Content Include="admin\js\jquery-1.3.2-vsdoc2.js" />
     <Content Include="admin\js\public.js" />
     <Content Include="admin\news\authorlist.aspx" />
+    <Content Include="admin\news\classpagelist.aspx" />
     <Content Include="admin\news\class_list.html" />
     <Content Include="admin\news\taglist.aspx" />
     <Content Include="admin\sys\BaseSetting.aspx" />

@@ -125,6 +125,20 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
+        /// 获取DataTable，并转换成Joson数据，前台调用
+        /// </summary>
+        /// <returns>Joson数据</returns>
+        public string GetDataTableJsonPage()
+        {
+            DataTable dt = dalArcClass.GetDataTable("CID,ClassName,ParentID");
+            if (dt != null)
+            {
+                return Utils.DataTableToJson(dt).ToString();
+            }
+            return "";
+        }
+
+        /// <summary>
         /// 判断当前节点是否存在子节点
         /// </summary>
         /// <param name="ParentID"></param>
