@@ -11,12 +11,6 @@
     <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
     <script type="text/javascript" src="../js/public.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
-    <script type="text/javascript">
-        function Insert()
-        {
-            FCKeditorAPI.GetInstance("txt_Content").EditorDocument.body.innerHTML="ss";
-        }
-    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -37,7 +31,7 @@
                         </td>
                         <td class="main_bright split">
                             <select id="slt_TitleFlag" runat="server">
-                                <option></option>
+                                <option></option>                                
                                 <option>原创</option>
                                 <option>转载</option>
                             </select>
@@ -207,9 +201,9 @@
                 </table>
             </div>
             <!--操作按钮-->
-            <div style="margin:10px;text-align:center;">
-                <button id="btn_Submit" type="submit" class="b1" runat="server" onserverclick="Btn_Submit_Click">保存</button>
-                <button id="btn_Cancel" type="button" class="b1" runat="server">取消</button>
+            <div style="margin:10px;text-align:center;">                
+                <button id="btn_Submit" type="button" class="b1" runat="server" onserverclick="Btn_Submit_Click">保存</button>
+                <button id="btn_Cancel" type="button" class="b1" runat="server" onclick="history.back(-1);">取消</button>
             </div>
         </div>
     </div>

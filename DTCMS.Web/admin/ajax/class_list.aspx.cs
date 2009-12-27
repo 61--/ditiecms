@@ -27,6 +27,9 @@ namespace DTCMS.Web.admin
                 case "load":
                     Response.Write(GetClassListJson());
                     break;
+                case "listpage":
+                    Response.Write(GetDataTableJsonPage());
+                    break;
                 case "delete":
                     Response.Write(Delete());
                     break;
@@ -35,18 +38,24 @@ namespace DTCMS.Web.admin
                     break;
                 default:
                     break;
-
-            }
-            
-
+            }            
         }
         /// <summary>
-        /// 获取栏目累表
+        /// 获取栏目列表
         /// </summary>
         /// <returns>json对象</returns>
         public string GetClassListJson()
         {
             return bllClass.GetDataTableJoson();
+        }
+
+        /// <summary>
+        /// 获取栏目列表
+        /// </summary>
+        /// <returns>json对象</returns>
+        public string GetDataTableJsonPage()
+        {
+            return bllClass.GetDataTableJsonPage();
         }
 
         /// <summary>
