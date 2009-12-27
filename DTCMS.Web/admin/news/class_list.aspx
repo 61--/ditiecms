@@ -16,7 +16,6 @@
             LoadData();
         });
         function LoadData() {
-            showLoading();
             $.ajax({
                 url: "/admin/ajax/class_list.aspx",
                 type: "GET",
@@ -25,7 +24,6 @@
                     showGridTree(json);
                 }
             });
-            hideMessage();
         }
         var gridTree;
         function showGridTree(json) {
@@ -44,7 +42,7 @@
             if (json != "") {
             var data = eval("data=" + json);
             $.each(data, function(i, n) {
-            var dataList = new Array("<a href='Class_add.aspx?Id=" + n.cid + "'>" + n.classname + "</a>", n.classtype, n.adddate, "<input type=\"text\" onchange=\"updateSort(" + n.cid + ")\" id=\"order_" + n.cid + "\" class=\"class_order\" value=\"" + n.orderid + "\">", "<a href=\"Class_add.aspx?Id=" + n.cid + "\">修改</a>&nbsp;&nbsp;<a href=\"javascript:DeleteData(" + n.cid + ",false)\">删除</a>");
+            var dataList = new Array("<a href='class_add.aspx?Id=" + n.cid + "'>" + n.classname + "</a>", n.classtype, n.adddate, "<input type=\"text\" onchange=\"updateSort(" + n.cid + ")\" id=\"order_" + n.cid + "\" class=\"class_order\" value=\"" + n.orderid + "\">", "<a href=\"class_add.aspx?Id=" + n.cid + "\">修改</a>&nbsp;&nbsp;<a href=\"javascript:deleteData(" + n.cid + ",false)\">删除</a>");
                 gridTree.addGirdNode(dataList, n.cid, n.parentid == 0 ? -1 : n.parentid, null, n.orderid, "");
                });
             }
@@ -101,7 +99,7 @@
                 <a href="javascript:deleteData(-1,true);" class="button b4"><img src="../images/ico/i_allDelete.gif" alt="" />批量删除</a>
                 <a href="javascript:;" onclick="showHelper('#color', '帮助主题', '请选择要删除的<a href=>数据</a>请选择要删除的数据请选择要删除的数据',30)" id="color">标题样式</a>
             </div>
-            <div id="gridTreeDiv" style="height:1000px">
+            <div id="gridTreeDiv">
             </div>
         </div>
     </form>
@@ -138,14 +136,14 @@
                     data: "action=delete&Id=" + cid + "&ran=" + Math.random(),
                     success: function(responseText) {//提示
                         if (responseText.toString().toUpperCase() == "TRUE") {
-                            Dialog.alert("栏目删除成功!");
+                            showSuccess('栏目删除成功！')
                             LoadData();
                         } else {
                             Dialog.alert(responseText);
                         }
                     },
                     error: function() {
-                        Dialog.alert("栏目删除失败！");
+                        showError('栏目删除失败！')
                     }
                 });
             });
@@ -160,11 +158,12 @@
                 success: function(responseText) {
                     if (responseText > 0) {
                         LoadData();
+                        showSuccess('栏目排序更新成功！')
                     } else if (responseText == -1) {
-                        Dialog.alert("栏目排序更新出错！");
+                        showError('栏目排序更新出错！')
                         $("#order_" + cid).val($("#curOrder").val());
                     } else {
-                        Dialog.alert("栏目排序更新失败！");
+                        showError('栏目排序更新失败！')
                         $("#order_" + cid).val($("#curOrder").val());
                     }
                 }
