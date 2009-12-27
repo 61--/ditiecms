@@ -9,7 +9,7 @@ using DTCMS.BLL;
 
 namespace DTCMS.Web.admin
 {
-    public partial class attachment_list : System.Web.UI.Page
+    public partial class attachment_list : AdminPage
     {
         Atr_AttachMentBLL bllAttachment = new Atr_AttachMentBLL();
 

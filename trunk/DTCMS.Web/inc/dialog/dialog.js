@@ -660,7 +660,7 @@ var Drag = {
 /**
 *附件上传
 *url，附件管理attachmentmanage.aspx
-*cancelevent，处理事件，带一个返回路劲参数
+*取消触发事件，带一个返回路劲参数
 */
 function dialogAttachmentUpload(url, cancelevent, width, height) {
     var diag = new Dialog();
@@ -682,4 +682,25 @@ function dialogAttachmentUpload(url, cancelevent, width, height) {
         diag.close();
     };
     diag.show();
+}
+
+/**
+*获取Tag关键字
+*确定触发事件
+*/
+function dialogTagPage(okevent, url, width, height) {
+    var dialog = new Dialog();
+    dialog.Title = "关键字 列表";
+    dialog.Width = (width||400) >= 400 ? (width||400) : 400;
+    dialog.Height = (height||300) >= 300 ? (height||300) : 300;
+    dialog.URL = url || "/admin/news/taglist.aspx";
+    dialog.OKEvent = function() {
+        var win = dialog.innerFrame.contentWindow;
+        var tags = win.getTags();
+        if (tags != "") {
+            okevent(tags);
+            Dialog.close();
+        }        
+    };    
+    dialog.show();
 }

@@ -71,7 +71,7 @@
                             TAG标签<sup><a id="H0201001" href="javascript:showHelper('#H0201001', '帮助主题', '多个TAG标签用半角逗号隔开',30)" title="查看帮助">[?]</a></sup>:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_Tags" class="textbox" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" />
+                            <input type="text" id="txt_Tags" class="textbox" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" onclick="add_tags();" />
                         </td>
                     </tr>
                     <tr>
@@ -97,7 +97,7 @@
                             文章缩略图:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ImageUrl" class="textbox" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" onclick="abb_Image();" />
+                            <input type="text" id="txt_ImageUrl" class="textbox" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" onclick="add_Image();" />
                             <input type="checkbox" name="chk_IsRemoteUrl" id="chk_IsRemoteUrl" runat="server" /><label for="chk_IsRemoteUrl">远程图片</label>
                         </td>
                     </tr>
@@ -226,15 +226,21 @@
             }
         }
 
-        function abb_Image() {  //缩略图
-            dialogAttachmentUpload('/admin/attachment/attachmentmanage.aspx', onCancel);
+        function add_Image() {  //缩略图
+            dialogAttachmentUpload('/admin/attachment/attachmentmanage.aspx', attachment_onCancel);
         }
-        function onCancel(returnPath) {
+        function attachment_onCancel(returnPath) {
             if (returnPath) {
                 $("#txt_ImageUrl").val(returnPath);
             }
-        } 
-        
+        }
+
+        function add_tags() {   //Tag关键字
+            dialogTagPage(tag_onOk, "/admin/news/taglist.aspx");
+        }
+        function tag_onOk(tags) {
+            $("#txt_Tags").val(tags);
+        }
     </script>
 </body>
 </html>
