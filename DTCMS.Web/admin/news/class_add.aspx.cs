@@ -174,11 +174,11 @@ namespace DTCMS.Web.admin
 
             if (model.ParentID == 0)
             {
-                model.Relation = model.ParentID.ToString();
+                model.Relation = "."+model.ParentID.ToString()+".";
             }
             else
             {
-                model.Relation = bllClass.GetRelation(model.ParentID) + "." + model.ParentID;
+                model.Relation = bllClass.GetRelation(model.ParentID) + model.ParentID + ".";
             }
 
             model.OrderID = Convert.ToInt32(txt_OrderID.Value.Trim());

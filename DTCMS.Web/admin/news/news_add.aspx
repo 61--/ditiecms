@@ -73,7 +73,8 @@
                             所属栏目:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ClassID" class="textbox short" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" />
+                            <input type="hidden" id="txt_ClassID" class="textbox short" runat="server" />
+                            <input type="text" id="txt_ClassName" class="textbox short" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" onclick="add_class();" />
                             <span class="main_bleft">文章来源: </span><input type="text" id="txt_Source" class="textbox" style="width:120px;" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" onclick="Dialog.alert('选择来源！')" />
                         </td>
                     </tr>
@@ -240,6 +241,14 @@
         }
         function author_onOk(author) {
             $("#txt_Author").val(author);
+        }
+
+        function add_class() {   //栏目            
+            dialogclassPage(class_onOk, "/admin/dialog/classpagelist.aspx");
+        }
+        function class_onOk(classobj) {
+            $("#txt_ClassID").val(classobj.classid);
+            $("#txt_ClassName").val(classobj.classname);            
         }
     </script>
 </body>
