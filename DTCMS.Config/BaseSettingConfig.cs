@@ -29,7 +29,7 @@ namespace DTCMS.Config
             XmlNodeList xmlnodeList = xmlDoc.DocumentElement.SelectNodes("/BaseSeting/Tag/Tr");
             foreach (XmlNode tag in xmlnodeList)
             {
-                if (tag.SelectSingleNode("Name").LastChild.Value == tagName)
+                if (tag.SelectSingleNode("Name").LastChild.Value.ToLower() == tagName.ToLower())
                 {
                     return true;
                 }
@@ -97,7 +97,7 @@ namespace DTCMS.Config
             XmlNodeList xmlnodeList = xmlDoc.DocumentElement.SelectNodes("/BaseSeting/Author/Tr");
             foreach (XmlNode author in xmlnodeList)
             {
-                if (author.SelectSingleNode("Name").LastChild.Value == authorName)
+                if (author.SelectSingleNode("Name").LastChild.Value.ToLower() == authorName.ToLower())
                 {
                     return true;
                 }

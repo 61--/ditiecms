@@ -8,18 +8,22 @@ using DTCMS.Config;
 
 namespace DTCMS.Web.admin.ajax
 {
-    public partial class basesetting_list : System.Web.UI.Page
+    public partial class basesetting_list : AdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string action = Common.Utils.GetQueryString("action").Trim().ToLower();
-            string method = Common.Utils.GetQueryString("method").Trim().ToLower();
-            string name = Common.Utils.GetQueryString("name").Trim().ToLower();
-            string email = Common.Utils.GetQueryString("email").Trim().ToLower();
+            string action = Common.Utils.GetQueryString("action").Trim();
+            string method = Common.Utils.GetQueryString("method").Trim();
+            string name = Common.Utils.GetQueryString("name").Trim();
+            string email = Common.Utils.GetQueryString("email").Trim();
+
             switch (action)
             {
                 case "tag":
                     Response.Write(TagManage(method,name));
+                    break;
+                case "tagpage":
+                    Response.Write(GetTagListPage());
                     break;
                 case "author":
                     Response.Write(AuthorManage(method, name, email));
@@ -118,6 +122,29 @@ namespace DTCMS.Web.admin.ajax
             sb.Append("</tbody>");
             sb.Append("</table>");
 
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// 获取Tag列表页，前台显示
+        /// </summary>
+        /// <returns></returns>
+        private string GetTagListPage()
+        {
+            List<string> tagList = Config.BaseSettingConfig.GetTagList();
+            StringBuilder sb = new StringBuilder();
+            int count = 1;
+            sb.Append("<ul>");
+            foreach (string tag in tagList)
+            {
+                string chk_id = "chk_" + count.ToString();
+                sb.Append("<li>");
+                sb.Append("<input type=\"checkbox\" name=\"item\" id=\"" + chk_id + "\" value=\"" + tag + "\" />");
+                sb.Append("<label for=\"" + chk_id + "\">" + tag + "#</label>");
+                sb.Append("</li>");
+                count++;
+            }
+            sb.Append("</ul>");
             return sb.ToString();
         }
         #endregion
