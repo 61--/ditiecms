@@ -26,7 +26,7 @@
                     showGridTree(json);
                 }
             });
-            hideTip();
+            hideMessage();
         }
         var gridTree;
         function showGridTree(json) {
