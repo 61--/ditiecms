@@ -888,6 +888,7 @@
     <Content Include="config\sys\AttachmentConfig.config" />
     <Content Include="config\sys\gobal.config" />
     <Content Include="config\sys\BaseSetting.config" />
+    <Content Include="config\sys\SectionConfig.config" />
     <None Include="editor\fckeditor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
     <None Include="editor\fckeditor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
     <None Include="editor\fckeditor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />

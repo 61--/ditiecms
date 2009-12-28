@@ -25,11 +25,22 @@ namespace DTCMS.Web.admin
 
             if (!IsPostBack)
             {
+                InitPage();
+
                 if (NewID > 0)
                 {
                     SetPageData();  //更新数据赋值
                 }
             }
+        }
+
+        /// <summary>
+        /// 初始化页面
+        /// </summary>
+        private void InitPage()
+        {
+            InitReadaccess();
+            InitTitleFlag();
         }
 
         protected void Btn_Submit_Click(object sender, EventArgs e)
@@ -218,6 +229,39 @@ namespace DTCMS.Web.admin
             model.OrderID = int.Parse(txt_OrderID.Value.Trim() == "" ? "0" : txt_OrderID.Value.Trim());
 
             return model;
-        }  
+        }
+
+         #region 初始化页面数据
+        /// <summary>
+        /// 初始化阅读权限
+        /// </summary>
+        private void InitReadaccess()
+        {
+            DataTable dtReadaccess = SectionConfigBLL.GetSectionListReadaccess();
+            if (dtReadaccess != null && dtReadaccess.Rows.Count > 0)
+            {
+                slt_Readaccess.DataSource = dtReadaccess;
+                slt_Readaccess.DataTextField = "value";
+                slt_Readaccess.DataValueField = "key";
+                slt_Readaccess.DataBind();
+            }
+        }
+        /// <summary>
+        /// 文章类型
+        /// </summary>
+        private void InitTitleFlag()
+        {
+            DataTable dtTitleFlag = SectionConfigBLL.GetSectionListTitleFlag();
+            if (dtTitleFlag != null && dtTitleFlag.Rows.Count > 0)
+            {
+                slt_TitleFlag.DataSource = dtTitleFlag;
+                slt_TitleFlag.DataTextField = "value";
+                slt_TitleFlag.DataValueField = "key";
+                slt_TitleFlag.DataBind();
+            }
+            
+        }
+
+         #endregion 初始化页面数据
     }
 }

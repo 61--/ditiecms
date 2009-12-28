@@ -30,11 +30,7 @@
                         <td class="main_bleft split">文章标题:
                         </td>
                         <td class="main_bright split">
-                            <select id="slt_TitleFlag" runat="server">
-                                <option></option>                                
-                                <option>原创</option>
-                                <option>转载</option>
-                            </select>
+                            <select id="slt_TitleFlag" runat="server"></select>
                             <input type="text" id="txt_Title" class="textbox long" maxlength="100" runat="server" />
                             <input type="hidden" id="hide_TitleStyle" runat="server" /><!--标题样式-->
                         </td>
