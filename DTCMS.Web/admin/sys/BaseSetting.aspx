@@ -13,8 +13,9 @@
     <style type="text/css">
         #tab_menu a{ font-size:13px;}
         .hr{ height:16px; line-height:16px; overflow:hidden;}
-    #tagmanage table,#tagmanage tr,#tagmanage td,#authormanage table,#authormanage tr,#authormanage td,#newssourcemanage table,#newssourcemanage tr,#newssourcemanage td{border:0px;}
-    fieldset{border:#4B6888 1px solid;}
+        #tagmanage table,#tagmanage tr,#tagmanage td,#authormanage table,#authormanage tr,#authormanage td,#newssourcemanage table,#newssourcemanage tr,#newssourcemanage td{border:0px;}
+         fieldset{border:#CCCCCC 1px solid; }
+         legend{ font-weight:bold; line-height:45px; padding-left:45px;-moz-background-clip:border;-moz-background-origin:padding;-moz-background-size:auto auto; background:transparent url(../images/ico/ico_Success_Small.gif) no-repeat scroll 6px 5px;}
     </style>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -36,7 +37,7 @@
             <div id="taglist"></div>
             <div class="hr"></div>
             <div id="tagmanage">
-                <fieldset><legend>添加 Tag</legend>
+                <fieldset><legend>TAG</legend>
                     <table cellpadding="0" cellspacing="0" width="100%" border="0" class="table_form">
                         <tbody>
                             <tr>
@@ -62,7 +63,7 @@
             <div id="authorlist"></div>
             <div class="hr"></div>
             <div id="authormanage">
-                <fieldset><legend>添加 作者</legend>
+                <fieldset><legend>作者</legend>
                     <table cellpadding="0" cellspacing="0" width="100%" border="0" class="table_form">
                         <tbody>
                             <tr>
@@ -94,7 +95,7 @@
             <div id="newssourcelist"></div>
             <div class="hr"></div>
             <div id="newssourcemanage">
-                <fieldset><legend>添加 文章来源</legend>
+                <fieldset><legend>文章来源</legend>
                     <table cellpadding="0" cellspacing="0" width="100%" border="0" class="table_form">
                         <tbody>
                             <tr>
