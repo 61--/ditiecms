@@ -25,12 +25,23 @@ namespace DTCMS.Web.admin
             CID = Common.Utils.GetQueryInt("Id");
 
             if (!IsPostBack)
-            {                
+            {
+                InitPage();
                 if (CID > 0)
                 {
                     SetPageData();  //更新数据赋值
                 }
-            }
+            } 
+        }
+
+        /// <summary>
+        /// 页面初始化
+        /// </summary>
+        private void InitPage()
+        {
+            InitClassType();
+            InitReadaccess();
+            InitCheckLevel();
         }
 
         protected void Btn_Submit_Click(object sender, EventArgs e)
@@ -246,6 +257,14 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void InitClassType()
         {
+            DataTable dtTypeList = SectionConfigBLL.GetSectionListClassType();
+            if (dtTypeList != null && dtTypeList.Rows.Count > 0)
+            {
+                slt_ClassType.DataSource = dtTypeList;
+                slt_ClassType.DataTextField = "value";
+                slt_ClassType.DataValueField = "key";
+                slt_ClassType.DataBind();
+            }
         }
 
         /// <summary>
@@ -253,6 +272,14 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void InitReadaccess()
         {
+            DataTable dtReadaccess = SectionConfigBLL.GetSectionListReadaccess();
+            if (dtReadaccess != null && dtReadaccess.Rows.Count > 0)
+            {
+                slt_Readaccess.DataSource = dtReadaccess;
+                slt_Readaccess.DataTextField = "value";
+                slt_Readaccess.DataValueField = "key";
+                slt_Readaccess.DataBind();
+            }            
         }
 
         /// <summary>
@@ -260,6 +287,15 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void InitCheckLevel()
         {
+            DataTable dtCheckLevel = SectionConfigBLL.GetSectionListCheckLevel();
+            if (dtCheckLevel != null && dtCheckLevel.Rows.Count > 0)
+            {
+                slt_CheckLevel.DataSource = dtCheckLevel;
+                slt_CheckLevel.DataTextField = "value";
+                slt_CheckLevel.DataValueField = "key";
+                slt_CheckLevel.DataBind();
+            }
+
         }
 
         #endregion 初始化页面数据

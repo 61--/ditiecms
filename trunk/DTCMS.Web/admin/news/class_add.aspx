@@ -69,9 +69,7 @@
                             栏目类型:
                         </td>
                         <td class="main_bright split">
-                            <select id="slt_ClassType" runat="server" style="width: 185px; background: #F7FAFC;">
-                                <option value="0">普通文章（Article）</option>
-                            </select>
+                            <select id="slt_ClassType" runat="server" style="width: 185px; background: #F7FAFC;"></select>
                             <span id="msg_ClassType"></span>
                         </td>
                     </tr>

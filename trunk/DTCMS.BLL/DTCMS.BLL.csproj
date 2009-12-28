@@ -45,6 +45,7 @@
     <Compile Include="Arc_ClassBLL.cs" />
     <Compile Include="Atr_AttachMentBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SectionConfigBLL.cs" />
     <Compile Include="Sys_FileInfoBLL.cs" />
     <Compile Include="Sys_PublishBLL.cs" />
     <Compile Include="Sys_TemplateBLL.cs" />
@@ -53,6 +54,10 @@
     <ProjectReference Include="..\DTCMS.Common\DTCMS.Common.csproj">
       <Project>{086A7F54-1A11-42E1-BE0D-33863EAEF4A3}</Project>
       <Name>DTCMS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTCMS.Config\DTCMS.Config.csproj">
+      <Project>{A4CC57ED-9E99-4FF5-95E9-A7BBB3C3FB43}</Project>
+      <Name>DTCMS.Config</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTCMS.DALFactory\DTCMS.DALFactory.csproj">
       <Project>{6681CBE6-A3EE-4607-A1B3-3A19947226A7}</Project>
