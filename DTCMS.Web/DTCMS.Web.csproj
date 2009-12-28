@@ -141,6 +141,13 @@
     <Compile Include="admin\app_code\AdminPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="admin\dialog\newssourcelist.aspx.cs">
+      <DependentUpon>newssourcelist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\dialog\newssourcelist.aspx.designer.cs">
+      <DependentUpon>newssourcelist.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -298,6 +305,7 @@
     <Content Include="admin\ajax\file_list.aspx" />
     <Content Include="admin\ajax\news_list.aspx" />
     <Content Include="admin\ajax\template_list.aspx" />
+    <Content Include="admin\dialog\newssourcelist.aspx" />
     <Content Include="admin\images\blue\action.gif" />
     <Content Include="admin\images\blue\button.jpg" />
     <Content Include="admin\images\blue\error.gif" />
