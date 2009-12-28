@@ -18,9 +18,9 @@ namespace DTCMS.BLL
         /// </summary>
         /// <param name="totalCount">共多少条数据</param>
         /// <returns></returns>
-        public DataTable GetClassAll(out int totalCount)
+        public DataTable GetClassByClassID(int CID,out int totalCount)
         {
-            return dalPublish.GetClassAll(out totalCount);
+            return dalPublish.GetClassByClassID(CID,out totalCount);
         }
 
         /// <summary>
