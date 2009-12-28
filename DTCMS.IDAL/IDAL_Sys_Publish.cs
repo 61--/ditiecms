@@ -21,7 +21,7 @@ namespace DTCMS.IDAL
         /// </summary>
         /// <param name="CID">栏目编号</param>
         /// <returns></returns>
-        Arc_Class GetClassByID(int CID);
+        Arc_Class GetClassByID(int CID,out int totalCount);
 
            /// <summary>
         /// 按照类别编号发布文章
