@@ -11,6 +11,9 @@ namespace DTCMS.Publish
     {
         protected Arc_ArticleBLL arcBll = new Arc_ArticleBLL();
 
+        public ArticleLable()
+        { }
+
         /// <summary>
         /// 生成内容页
         /// </summary>
@@ -20,7 +23,6 @@ namespace DTCMS.Publish
             DataTable dt = new DataTable();
             string template = string.Empty;
             //替换其它
-
              ReplayPageLable(template,dt.Rows[0]);
         }
         /// <summary>

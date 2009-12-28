@@ -5,9 +5,10 @@ using System.Data;
 using System.Data.SqlClient;
 using DTCMS.Entity;
 using DTCMS.DBUtility;
+using DTCMS.IDAL;
 namespace DTCMS.SqlServerDAL
 {
-    public class Sys_PublishDAL
+    public class Sys_PublishDAL:IDAL_Sys_Publish
     {
         /// <summary>
         /// 根据栏目编号获取栏目信息

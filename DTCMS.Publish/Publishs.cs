@@ -1,17 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
 using DTCMS.BLL;
 namespace DTCMS.Publish
 {
     public class Publishs
     {
-        Arc_ClassBLL bllClass = new Arc_ClassBLL();
+        Sys_PublishBLL bllPublish = new Sys_PublishBLL();
+        SimpleFactory sf = new SimpleFactory();
+        Lable lable;
+        public void PublishClass(int CID)
+        {
+            int totalCount = 0;
+            DataTable dt = bllPublish.GetClassByClassID(CID,out totalCount);
+            if(dt!=null)
+            {
+                foreach(DataRow row in dt.Rows)
+                {
+                    if(Convert.ToInt32(row["ClassType"])==0)
+                    {
+                         lable =sf.InstallLable(Convert.ToInt32(row["ClassType"]));
+                         switch(Convert.ToInt32(row["Attribute"]))
+                         {
+                             case 1:
+                                lable.CreateCoverHtml(Convert.ToInt32(row["CID"]));
+                             break;
+                             case 2:
+                                lable.CreateListHtml(Convert.ToInt32(row["CID"]));
+                             break;
+                         }
+                    }
+                }
+            }
+        }
 
-        public void PublishAllClass(int CID)
-        { 
-            
+        public void PublishAriticleByClassID(int CID)
+        {
+            int totalCount = 0;
+            DataTable dt = bllPublish.GetArticleByClassID(CID,"","",out totalCount);
+
+            lable = sf.InstallLable(0);
+            //lable.CreatePageHtml();
+
         }
        
+    }
+    public class SimpleFactory
+    {
+        public Lable InstallLable(int classType)
+        {
+            switch (classType)
+            { 
+                case 0 :
+                    return new ArticleLable();
+                default:
+                    return null;
+
+            }
+        }
     }
 }

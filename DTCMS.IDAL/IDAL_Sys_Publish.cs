@@ -9,19 +9,19 @@ namespace DTCMS.IDAL
     public interface IDAL_Sys_Publish
     {
         
-        /// <summary>
+         /// <summary>
         /// 得到所有的栏目信息
         /// </summary>
         /// <param name="totalCount">共多少条数据</param>
         /// <returns></returns>
-        DataTable GetClassAll(out int totalCount);
+        DataTable GetClassByClassID(int CID, out int totalCount);
 
          /// <summary>
         /// 根据栏目编号获取栏目信息
         /// </summary>
         /// <param name="CID">栏目编号</param>
         /// <returns></returns>
-        Arc_Class GetClassByID(int CID,out int totalCount);
+        Arc_Class GetClassByID(int CID);
 
            /// <summary>
         /// 按照类别编号发布文章
