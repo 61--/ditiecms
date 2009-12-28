@@ -16,6 +16,7 @@ namespace DTCMS.Web.admin.ajax
             string method = Common.Utils.GetQueryString("method").Trim();
             string name = Common.Utils.GetQueryString("name").Trim();
             string email = Common.Utils.GetQueryString("email").Trim();
+            string url = Common.Utils.GetQueryString("url").Trim();
 
             switch (action)
             {
@@ -30,6 +31,9 @@ namespace DTCMS.Web.admin.ajax
                     break;
                 case "authorpage":
                     Response.Write(GetAuthorListPage());
+                    break;
+                case "newssource":
+                    Response.Write(NewsSourceManage(method,name,url));
                     break;
                 default:
                     break;
@@ -293,5 +297,146 @@ namespace DTCMS.Web.admin.ajax
         }
 
         #endregion 作者
+
+        #region 文章来源
+        private string NewsSourceManage(string method, string newssourceName, string url)
+        {
+            switch (method)
+            {
+                case "add":
+                    return AddNewsSource(newssourceName, url);
+                case "edit":
+                    return UpdateNewsSource(newssourceName, url);
+                case "delete":
+                    return DeleteNewsSource(newssourceName);
+                case "list":
+                    return GetNewsSourceList();
+                default:
+                    return "";
+            }
+        }
+
+        /// <summary>
+        /// 添加
+        /// </summary>
+        private string AddNewsSource(string newssourceName, string url)
+        {
+            if (newssourceName == string.Empty)
+            {
+                return "文章来源标题 不能为空!";
+            }
+            try
+            {
+                Config.BaseSettingConfig.AddNewsSource(newssourceName,url);
+                return "添加【" + newssourceName + "】成功!";
+            }
+            catch
+            {
+                return "添加【" + newssourceName + "】失败!";
+            }
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="tagName"></param>
+        private string UpdateNewsSource(string newssourceName, string url)
+        {
+            if (newssourceName == string.Empty)
+            {
+                return "请选择要修改数据!";
+            }
+            try
+            {
+                Config.BaseSettingConfig.UpdateNewsSource(newssourceName, url);
+                return "修改【" + newssourceName + "】成功!";
+            }
+            catch
+            {
+                return "修改【" + newssourceName + "】失败!";
+            }
+        }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="tagName"></param>
+        /// <returns></returns>
+        private string DeleteNewsSource(string newssourceName)
+        {
+            if (newssourceName == string.Empty)
+            {
+                return "请选择要删除数据!";
+            }
+            try
+            {
+                Config.BaseSettingConfig.DeleteNewsSource(newssourceName);
+                return "删除【" + newssourceName + "】成功!";
+            }
+            catch
+            {
+                return "删除【" + newssourceName + "】失败!";
+            }
+        }
+
+        /// <summary>
+        /// 获取列表
+        /// </summary>
+        /// <returns></returns>
+        private string GetNewsSourceList()
+        {
+            Dictionary<string, string> newssourceList = Config.BaseSettingConfig.GetNewsSourceList();
+            StringBuilder sb = new StringBuilder();
+            int idnum = 1;
+            sb.Append("<table class=\"table_data\">");
+            sb.Append("<thead>");
+            sb.Append("<tr>");
+            sb.Append("<th>ID</th>");
+            sb.Append("<th>标题</th>");
+            sb.Append("<th>Url</th>");
+            sb.Append("<th>操作</th>");
+            sb.Append("</tr>");
+            sb.Append("</thead>");
+            sb.Append("<tbody id=\"tab\">");
+            foreach (KeyValuePair<string, string> newssource in newssourceList)
+            {
+                sb.Append("<tr>");
+                sb.Append("<td>" + idnum + "</td>");
+                sb.Append("<td>" + newssource.Key.ToString().Trim() + "</td>");
+                sb.Append("<td>" + newssource.Value.ToString().Trim() + "</td>");
+                sb.Append("<td><a href=\"javascript:void(0);\" onclick=\"del_newssource('" + newssource.Key.ToString().Trim() + "')\">删除</a><td>");
+                sb.Append("</tr>");
+                idnum++;
+            }
+            sb.Append("</tbody>");
+            sb.Append("</table>");
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// 获取列表，前台显示
+        /// </summary>
+        /// <returns></returns>
+        private string GetNewsSourceListPage()
+        {
+            Dictionary<string, string> newssourceList = Config.BaseSettingConfig.GetNewsSourceList();
+            StringBuilder sb = new StringBuilder();
+            int count = 1;
+            sb.Append("<ul>");
+            foreach (KeyValuePair<string, string> newssource in newssourceList)
+            {
+                string chk_id = "chk_" + count.ToString();
+                sb.Append("<li>");
+                sb.Append("<input type=\"checkbox\" name=\"item\" id=\"" + chk_id + "\" value=\"" + newssource.Key.ToString() + "\" />");
+                sb.Append("<label for=\"" + chk_id + "\">" + newssource.Key.ToString() + "</label>");
+                sb.Append("</li>");
+                count++;
+            }
+            sb.Append("</ul>");
+
+            return sb.ToString();
+        }
+        #endregion 文章来源
     }
 }

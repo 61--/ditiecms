@@ -141,7 +141,7 @@ namespace DTCMS.Config
                 XmlNodeList xmlnodeList = xmlDoc.DocumentElement.SelectNodes("/BaseSeting/Author/Tr");
                 foreach (XmlNode author in xmlnodeList)
                 {
-                    if (author.SelectSingleNode("Name").LastChild.Value == authorName)
+                    if (author.SelectSingleNode("Name").LastChild.Value.ToLower() == authorName.ToLower())
                     {
                         XmlElement Tr = xmlDoc.CreateElement("Tr");
 
@@ -171,7 +171,7 @@ namespace DTCMS.Config
             XmlNodeList xmlnodeList = xmlDoc.DocumentElement.SelectNodes("/BaseSeting/Author/Tr");
             foreach (XmlNode author in xmlnodeList)
             {
-                if (author.SelectSingleNode("Name").LastChild.Value == authorName)
+                if (author.SelectSingleNode("Name").LastChild.Value.ToLower() == authorName.ToLower())
                 {
                     xmlnode.RemoveChild(author);
                 }
@@ -195,5 +195,113 @@ namespace DTCMS.Config
         }
 
         #endregion 作者
+
+        #region 文章来源
+        /// <summary>
+        /// 判断文章来源是否存在
+        /// </summary>
+        private static bool ExistsNewsSource(string newssourceName)
+        {
+            InitXmlDoc();
+            XmlNodeList xmlnodeList = xmlDoc.DocumentElement.SelectNodes("/BaseSeting/NewsSource/Tr");
+            foreach (XmlNode newssource in xmlnodeList)
+            {
+                if (newssource.SelectSingleNode("Name").LastChild.Value.ToLower() == newssourceName.ToLower())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 添加文章来源
+        /// </summary>
+        /// <param name="tagName">作者名称</param>       
+        public static void AddNewsSource(string newssourceName, string url)
+        {
+            if (!ExistsNewsSource(newssourceName))
+            {
+                XmlNode xmlnode = xmlDoc.DocumentElement.SelectSingleNode("/BaseSeting/NewsSource");
+                XmlElement tr = xmlDoc.CreateElement("Tr");
+
+                XmlElement tdname = xmlDoc.CreateElement("Name");
+                tdname.InnerText = newssourceName;
+                tr.AppendChild(tdname);
+
+                XmlElement tdurl = xmlDoc.CreateElement("Url");
+                tdurl.InnerText = url;
+                tr.AppendChild(tdurl);
+
+                xmlnode.AppendChild(tr);
+                xmlDoc.Save(path);
+            }
+        }
+
+        /// <summary>
+        /// 修改文章来源
+        /// </summary>
+        /// <param name="tagName"></param>
+        public static void UpdateNewsSource(string newssourceName, string url)
+        {
+            if (ExistsNewsSource(newssourceName))
+            {
+                XmlNode xmlnode = xmlDoc.DocumentElement.SelectSingleNode("/BaseSeting/NewsSource");
+                XmlNodeList xmlnodeList = xmlDoc.DocumentElement.SelectNodes("/BaseSeting/NewsSource/Tr");
+                foreach (XmlNode newssource in xmlnodeList)
+                {
+                    if (newssource.SelectSingleNode("Name").LastChild.Value.ToLower() == newssourceName.ToLower())
+                    {
+                        XmlElement Tr = xmlDoc.CreateElement("Tr");
+
+                        XmlElement tdname = xmlDoc.CreateElement("Name");
+                        tdname.InnerText = newssourceName;
+                        Tr.AppendChild(tdname);
+
+                        XmlElement tdurl = xmlDoc.CreateElement("Url");
+                        tdurl.InnerText = url;
+                        Tr.AppendChild(tdurl);
+
+                        xmlnode.ReplaceChild(Tr,newssource);
+                    }
+                }
+                xmlDoc.Save(path);
+            }
+        }
+
+        /// <summary>
+        /// 删除文章来源
+        /// </summary>
+        /// <param name="tagName"></param>
+        public static void DeleteNewsSource(string newssourceName)
+        {
+            InitXmlDoc();
+            XmlNode xmlnode = xmlDoc.DocumentElement.SelectSingleNode("/BaseSeting/NewsSource");
+            XmlNodeList xmlnodeList = xmlDoc.DocumentElement.SelectNodes("/BaseSeting/NewsSource/Tr");
+            foreach (XmlNode newssource in xmlnodeList)
+            {
+                if (newssource.SelectSingleNode("Name").LastChild.Value.ToLower() == newssourceName.ToLower())
+                {
+                    xmlnode.RemoveChild(newssource);
+                }
+            }
+            xmlDoc.Save(path);
+        }
+
+        /// <summary>
+        /// 获取文章来源列表
+        /// </summary>
+        public static Dictionary<string, string> GetNewsSourceList()
+        {
+            InitXmlDoc();
+            Dictionary<string, string> newssourcelist = new Dictionary<string, string>();
+            XmlNodeList xmlnodeList = xmlDoc.DocumentElement.SelectNodes("/BaseSeting/NewsSource/Tr");
+            foreach (XmlNode newssource in xmlnodeList)
+            {
+                newssourcelist.Add(xmlDoc.GetSingleNodeValue(newssource, "Name"), xmlDoc.GetSingleNodeValue(newssource, "Url"));
+            }
+            return newssourcelist;
+        }
+        #endregion 文章来源
     }
 }
