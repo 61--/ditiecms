@@ -123,15 +123,17 @@ namespace DTCMS.SqlServerDAL
         /// </summary>
         /// <param name="totalCount">共多少条数据</param>
         /// <returns></returns>
-        public DataTable GetClassAll(out int totalCount)
+        public DataTable GetClassByClassID(int CID,out int totalCount)
         {
+            StringBuilder strSearch = new StringBuilder();
+            strSearch.AppendFormat(" isHidden=0  AND(  relation like'%.{0}.%' OR CID={0} ) ", CID);
             StringBuilder strSql = new StringBuilder();
             strSql.Append("SELECT ");
             strSql.Append("CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,Content");
             strSql.Append("FROM DT_Arc_Class ");
-            strSql.Append("WHERE isHidden=0 ");
-
-            string sqlCount = "SELECT COUNT(CID) FROM DT_Arc_Class WHERE isHidden=0";
+            strSql.Append("WHERE ");
+            strSql.Append(strSearch.ToString());
+            string sqlCount =string.Format( " SELECT COUNT(CID) FROM DT_Arc_Class WHERE {0} ",strSearch.ToString());
             totalCount =Convert.ToInt32( SqlHelper.ExecuteScalar(CommandType.Text, sqlCount, null));
             return SqlHelper.FillDataset(CommandType.Text, strSql.ToString(), null).Tables[0];
 
