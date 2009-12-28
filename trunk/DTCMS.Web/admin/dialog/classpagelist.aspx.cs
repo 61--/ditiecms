@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 
 namespace DTCMS.Web.admin.news
 {
-    public partial class classpagelist : System.Web.UI.Page
+    public partial class classpagelist : AdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

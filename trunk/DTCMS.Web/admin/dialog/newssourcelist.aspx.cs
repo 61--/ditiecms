@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 
 namespace DTCMS.Web.admin.dialog
 {
-    public partial class newssourcelist : System.Web.UI.Page
+    public partial class newssourcelist : AdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
