@@ -66,7 +66,7 @@
                     <table cellpadding="0" cellspacing="0" width="100%" border="0" class="table_form">
                         <tbody>
                             <tr>
-                                <td class="main_bleft split">名称:</td>
+                                <td class="main_bleft split">名 称:</td>
                                 <td class="main_bright split">
                                     <input type="text" id="txt_authorname" name="authorname" class="textbox short" />
                                     <span style="color:#FA001A;text-align:center;">*</span>
@@ -98,7 +98,7 @@
                     <table cellpadding="0" cellspacing="0" width="100%" border="0" class="table_form">
                         <tbody>
                             <tr>
-                                <td class="main_bleft split">标题:</td>
+                                <td class="main_bleft split">标 题:</td>
                                 <td class="main_bright split">
                                     <input type="text" id="txt_newssourcename" name="newssourcename" class="textbox short" />
                                     <span style="color:#FA001A;text-align:center;">*</span>
