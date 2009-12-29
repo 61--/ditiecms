@@ -16,14 +16,15 @@
 	    /*搜索*/
 	    .search{float:left;padding-top:-3px;}			
 	    .s_btn{background: url(../images/blue/button.jpg) no-repeat left top transparent;border: 0px;height: 22px;line-height:18px;width:51px;margin-left:10px;letter-spacing: 2px;color: #555;overflow:hidden;}
-        .s_btn:hover{cursor:pointer;background-position:-99px -88px;}         
+        .s_btn:hover{cursor:pointer;background-position:-99px -88px;}   
+              
 	    /*图片浏览*/
 	    #data{float:left;margin-top:8px;}
 	    #content ul{list-style:none outside none;}
-	    #content ul li{float:left;color:#669900;border:solid 1px #E3E3E3;	margin:3px;overflow:hidden;width:100px;height:130px;}
+	    #content ul li{float:left;color:#669900;border:solid 1px #E3E3E3;	margin:3px;overflow:hidden;width:105px;height:136px;}
 	    #content li:hover{background-color:#FFFABF;}
-	    #content ul li dl dt a{display:table-cell;vertical-align:middle;text-align:center;width:100px;height:108px;line-height:90px;*display: block;*font-size:75px;color:#F9F9F9;border:0 none;background-color:transparent;text-decoration:none;	overflow:hidden;}
-	    #content dl dt a img{border:1px solid #FFFFFF;margin:3px;width:91px;height:100px;vertical-align:middle;}
+	    #content ul li dl dt a{display:table-cell;vertical-align:middle;text-align:center;width:105px;height:116px;line-height:98px;*display: block;*font-size:75px;color:#F9F9F9;border:0 none;background-color:transparent;text-decoration:none;	overflow:hidden;}
+	    #content dl dt a img{border:1px solid #FFFFFF;margin:3px;width:96px;height:108px;vertical-align:middle;}
     </style>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -34,8 +35,8 @@
             var name = document.getElementById("txt_attachmentName").value;
             $.ajax({
                  url: "/admin/ajax/attachment_list.aspx",
-                type: "GET",
-                data: "action=search&page=" + page + "&type=" + type + "&name=" + name + "&ran=" + Math.random(),
+                 type: "GET",
+                data: "action=search&page=" + page + "&type=" + type + "&name=" + escape(name) + "&ran=" + Math.random(),
                 success: function(responseText) {
                     document.getElementById("data").innerHTML = responseText;
                 }
