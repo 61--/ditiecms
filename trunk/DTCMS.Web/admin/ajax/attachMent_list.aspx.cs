@@ -106,7 +106,7 @@ namespace DTCMS.Web.admin
                 sb.Append("</ul>");
                 sb.Append("</div>");
                 int pagecount = DTCMS.Pages.PageSeting.GetPageCount(totalcount, page);
-                sb.Append("<div style=\"position:absolute;right:0;bottom:-6px;z-index:-1 \">");
+                sb.Append("<div style=\"position:absolute;right:0;bottom:-3px;z-index:-1 \">");
                 sb.Append("<div class=\"grayr\" style=\"height:30px;line-height:30px;\">");
                 sb.Append(DTCMS.Pages.PageSeting.GetAjaxPage(pageCurrent, pagecount, "LoadData", page));
                 sb.Append("</div>");
@@ -119,7 +119,7 @@ namespace DTCMS.Web.admin
         {
             int idnum = 1;  //id编号
             int totalcount = 0;    //总页数
-            int page = 9;
+            int page = 10;
             string where = string.Empty;    //查询条件
             StringBuilder sb = new StringBuilder();
             if (attachMentDisplayName != string.Empty)
@@ -164,7 +164,7 @@ namespace DTCMS.Web.admin
                 sb.Append("</div>");
             }
             int pagecount = DTCMS.Pages.PageSeting.GetPageCount(totalcount, page);
-            sb.Append("<div style=\"position:absolute;right:0;bottom:-6px;z-index:-1 \">");
+            sb.Append("<div style=\"position:absolute;right:0px;bottom:-3px;z-index:-1; \">");
             sb.Append("<div class=\"grayr\" style=\"height:30px;line-height:30px;\">");
             sb.Append(DTCMS.Pages.PageSeting.GetAjaxPage(pageCurrent, pagecount, "LoadData", page));
             sb.Append("</div>");

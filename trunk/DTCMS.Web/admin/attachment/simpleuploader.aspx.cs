@@ -33,7 +33,7 @@ namespace DTCMS.Web.admin
             int abbrImageWidth1 = DTCMS.Common.Utils.GetFormInt("abbrImageWidth1"); //缩略图宽
             int abbrImageHeight1 = DTCMS.Common.Utils.GetFormInt("abbrImageHeight1");   //缩略图高
             Hashtable htPhoto = GobalConfig.GetAttachmentList();    //附件配置列表 
-            string filepath = DTCMS.Common.Utils.GetRootPath() + htPhoto["Path"].ToString() + "\\"; //附件存放路径
+            string filepath = DTCMS.Common.Utils.GetRootPath() + htPhoto["Path"].ToString().Replace("\\\\","\\") + "\\"; //附件存放路径
             string errorMsg = string.Empty; //错误信息
             int returnVal = 1;    //返回值。1：成功，202：无效上传文件，203：你没有权限，204：未知错误
             string returnImgName = string.Empty;    //返回图片名称
@@ -174,11 +174,11 @@ namespace DTCMS.Web.admin
             string returnImgPath = "";
             if (hasAbbrImage1.Trim().ToLower() == "true")
             {
-                returnImgPath = "/" + htPhoto["Path"].ToString().Replace("\\", "/") + "/" + abbName;
+                returnImgPath = "/" + htPhoto["Path"].ToString().Replace("\\\\", "\\").Replace("\\", "/") + "/" + abbName;
             }
             else
             {
-                returnImgPath = "/" + htPhoto["Path"].ToString().Replace("\\", "/") + "/" + returnImgName;
+                returnImgPath = "/" + htPhoto["Path"].ToString().Replace("\\\\", "\\").Replace("\\", "/") + "/" + returnImgName;
             }
 
             Response.Redirect("~/admin/attachment/emptyPage.html?returnVal=" + returnVal + "&errorMsg=" + errorMsg + "&returnImgPath=" + returnImgPath);
