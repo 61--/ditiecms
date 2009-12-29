@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttachmentConfig.cs" />
     <Compile Include="BaseSettingConfig.cs" />
     <Compile Include="ConfigPath.cs" />
     <Compile Include="GobalConfig.cs" />

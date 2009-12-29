@@ -5,44 +5,13 @@
 <head runat="server">
     <title>图片管理</title>
     <style type="text/css">
-        *
-        {
-            margin: 0 auto;
-            padding: 0;            
-        }        
-        #container
-        {
-            width:570px;
-            margin:0 auto;
-            text-align: center;
-        }
-        #menu
-        {
-            float:left;
-            margin:2px 0 6px 0;
-        }
-        #menu ul
-        {            
-            list-style:none outside none;
-        }
-        #menu ul li
-        {
-            float: left;
-            padding-right:10px;            
-        }
-        #menu ul li a
-        {
-            display: block;
-            color:#006699;
-            font-size:16px;
-            font-family: "Arial Unicode MS";
-            text-decoration: none;
-            cursor: pointer;
-        }
-        #main
-        {
-            clear:both;
-        }
+        *{margin: 0;padding: 0;}        
+        #container{width:570px;margin:0 auto;}
+        #menu{float:left; margin-top:5px;}
+        #menu ul{list-style:none outside none;}
+        #menu ul li{float: left;padding-right:10px;}
+        #menu ul li a{display: block;color:#006699;font-size:16px;font-family: "Arial Unicode MS";text-decoration: none;cursor: pointer;}
+        .hr{ height:8px; line-height:8px; overflow:hidden; clear:both;}
     </style>
 </head>
 <body>
@@ -55,14 +24,13 @@
                     <li><a href="javascript:void(0)" onclick="attachmentSearch(this)">附件浏览</a></li>
                 </ul>
             </div>
+            <div class="hr"></div>
             <div id="main">
-                <iframe src="attachmentload.aspx" width="100%" height="340px" id="FrmUpload" name="FrmUpload"
-                    frameborder="0" scrolling="no"></iframe>
+                <iframe src="attachmentload.aspx" width="100%" height="360px" id="FrmUpload" name="FrmUpload" frameborder="0" scrolling="no"></iframe>
             </div>
         </div>
     </div>
     </form>
-
     <script type="text/javascript">
         function attachmentUpload(obj) {
             document.getElementById("FrmUpload").src = "attachmentload.aspx";
@@ -73,6 +41,5 @@
             obj.blur();
         }
     </script>
-
 </body>
 </html>

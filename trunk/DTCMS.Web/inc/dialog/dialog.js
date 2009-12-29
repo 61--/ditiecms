@@ -666,7 +666,7 @@ function dialogAttachmentUpload(url, cancelevent, width, height) {
     var diag = new Dialog();
     diag.Title = "附件管理";
     diag.Width = width || 600;
-    diag.Height = height || 380;
+    diag.Height = height || 400;
     diag.URL = url || "/admin/attachment/attachmentmanage.aspx";
     diag.OKEvent = function() {
         var win = diag.innerFrame.contentWindow;
