@@ -32,7 +32,7 @@ namespace DTCMS.Publish
         /// <summary>
         /// 得到模板
         /// </summary>
-        /// <param name="filePath"></param>
+        /// <param name="filePath">模板先对路径</param>
         /// <returns></returns>
         public  string GetTemplate(string filePath)
         {
@@ -45,7 +45,7 @@ namespace DTCMS.Publish
             {
                 try
                 {
-                    string template = FileAccessHelper.ReadTextFile(Utils.GetPhysicalPath(string.Format("/{0}", filePath)));
+                    string template = FileAccessHelper.ReadTextFile(Utils.GetPhysicalPath(string.Format("~/{0}", filePath)));
                     CacheAccess.SaveToCache(filePath, template);
                     return template;
                 }
@@ -56,6 +56,15 @@ namespace DTCMS.Publish
             }
         }
 
+        /// <summary>
+        /// 获取栏目保存路径
+        /// </summary>
+        /// <param name="savePath">保存路径规则</param>
+        /// <returns>栏目保存路径</returns>
+        public string GetClassUrl(string savePath)
+        {
+            return savePath = savePath.Replace("{#sitepath}","");
+        }
         /// <summary>
         /// 生成html文件
         /// </summary>
