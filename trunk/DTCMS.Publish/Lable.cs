@@ -52,7 +52,7 @@ namespace DTCMS.Publish
         /// <summary>
         /// 生成内容页
         /// </summary>
-        public abstract void CreatePageHtml(int ID);
+        public abstract void CreatePageHtml(DataRow row);
 
         /// <summary>
         /// 生成列表页

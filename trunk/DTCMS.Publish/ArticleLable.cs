@@ -10,20 +10,22 @@ namespace DTCMS.Publish
     public class ArticleLable:Lable
     {
         protected Arc_ArticleBLL arcBll = new Arc_ArticleBLL();
-
+        PublishTool tool = new PublishTool();
+        ReplayCommon common = new ReplayCommon();
         public ArticleLable()
         { }
 
         /// <summary>
         /// 生成内容页
         /// </summary>
-        /// <param name="articleID">文章编号</param>
-        public override void CreatePageHtml(int articleID)
+        /// <param name="row">文章数据</param>
+        public override void CreatePageHtml(DataRow row)
         {
-            DataTable dt = new DataTable();
-            string template = string.Empty;
-            //替换其它
-             ReplayPageLable(template,dt.Rows[0]);
+            int CID=Convert.ToInt32(row["CID"]);
+            string template = tool.GetTemplate(row["template"].ToString());
+            template = common.ConvertCommonLable(template);
+            template = common.ConvertNavigLable(template, CID);
+            ReplayPageLable(template, row);
         }
         /// <summary>
         /// 
