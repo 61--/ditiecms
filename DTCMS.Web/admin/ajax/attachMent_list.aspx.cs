@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Text;
 using DTCMS.BLL;
+using System.Collections;
 
 namespace DTCMS.Web.admin
 {
@@ -15,21 +16,30 @@ namespace DTCMS.Web.admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            string action=Common.Utils.GetQueryString("action");
             int type = Common.Utils.GetQueryInt("type");
             string name = Common.Utils.GetQueryString("name");
             int page = Common.Utils.GetQueryInt("page");
+
             if (page == 0)
             {
                 page = 1;
             }
-            switch (type)
+            switch (action)
             {
-                case 1:
-                    Response.Write(HtmlImageList(page, name));
+                case "upload":
+                    Response.Write(JsonAttachmentList());
                     break;
-                default:
-                    Response.Write(HtmlAttachmentList(page,type, name));
-                    break;
+                case "search":
+                    if (type == 1)
+                    {
+                        Response.Write(HtmlImageList(page, name));
+                    }
+                    else
+                    {
+                        Response.Write(HtmlAttachmentList(page, type, name));
+                    }
+                break;
             }
         }
 
@@ -160,6 +170,24 @@ namespace DTCMS.Web.admin
             sb.Append("</div>");
             sb.Append("</div>");
             return sb.ToString();
+        }
+
+        private string JsonAttachmentList()
+        {
+            Hashtable htAttachment = Config.GobalConfig.GetAttachmentList();
+            StringBuilder sbJson = new StringBuilder();
+            if (htAttachment != null && htAttachment.Count > 0)
+            {
+                sbJson.Append("{");
+                foreach (DictionaryEntry json in htAttachment)
+                {
+                    sbJson.Append("'"+json.Key.ToString()+"':'"+json.Value.ToString()+"'");
+                    sbJson.Append(",");
+                }
+                sbJson.Remove(sbJson.Length - 1, 1);
+                sbJson.Append("}");
+            }
+            return sbJson.ToString();
         }
     }
 }

@@ -17,24 +17,32 @@ namespace DTCMS.Config
         private static XmlDocumentExtender xmlDoc = new XmlDocumentExtender();
 
         /// <summary>
+        /// 初始化xml
+        /// </summary>
+        private static void InitXmlDoc()
+        {
+            string path = Utils.GetRootPath() + ConfigPath.GOBAL;
+            xmlDoc.Load(path);
+        }
+
+        /// <summary>
         /// 从相应的节点下检索轮显数据
         /// </summary>
         /// <param name="nodename">节点名称</param>
         public static string GetWaterImageStr(string nodeName)
         {
-            string path = Utils.GetRootPath() + ConfigPath.GOBAL;
-            xmlDoc.Load(path);
-            XmlNode xmlnode = xmlDoc.DocumentElement.SelectSingleNode("/SystemConfig/WaterImage");
+            InitXmlDoc();
+            XmlNode xmlnode = xmlDoc.DocumentElement.SelectSingleNode("/SystemConfig/Attachment/WaterImage");
             return xmlDoc.GetSingleNodeValue(xmlnode, nodeName);
         }
+
         /// <summary>
         /// 获取水印图片配置列表
         /// </summary>
         public static Hashtable GetWaterImageList()
         {
-            string path = Utils.GetRootPath() + ConfigPath.GOBAL;
-            xmlDoc.Load(path);
-            XmlNode xmlnode = xmlDoc.DocumentElement.SelectSingleNode("/SystemConfig/WaterImage");
+            InitXmlDoc();
+            XmlNode xmlnode = xmlDoc.DocumentElement.SelectSingleNode("/SystemConfig/Attachment/WaterImage");
             Hashtable ht = new Hashtable();            
             ht.Add("WaterPic", xmlDoc.GetSingleNodeValue(xmlnode,"WaterPic"));
             ht.Add("WaterCharater", xmlDoc.GetSingleNodeValue(xmlnode, "WaterCharater"));
@@ -47,5 +55,46 @@ namespace DTCMS.Config
             ht.Add("FontSize", xmlDoc.GetSingleNodeValue(xmlnode, "FontSize"));
             return ht;
         }
+
+        /// <summary>
+        /// 从相应的节点下检索轮显数据
+        /// </summary>
+        /// <param name="nodename">节点名称</param>
+        public static string GetAttachmentStr(string nodeName)
+        {
+            InitXmlDoc();
+            XmlNode xmlnode = xmlDoc.DocumentElement.SelectSingleNode("/SystemConfig/Attachment");
+            return xmlDoc.GetSingleNodeValue(xmlnode, nodeName);
+        }
+
+        /// <summary>
+        /// 获取附件配置列表
+        /// </summary>
+        public static Hashtable GetAttachmentList()
+        {
+            InitXmlDoc();
+            XmlNode xmlnode = xmlDoc.DocumentElement.SelectSingleNode("/SystemConfig/Attachment");
+            
+            Hashtable ht = new Hashtable();
+            string fileName = xmlDoc.GetSingleNodeValue(xmlnode, "Path") + "\\" + DateTime.Now.ToString(xmlDoc.GetSingleNodeValue(xmlnode, "Directory"));
+            if (!FileAccessHelper.DirectoryExists(fileName))
+            {
+                Directory.CreateDirectory(fileName);
+            }
+
+            ht.Add("Path", fileName);
+            ht.Add("ImageFormat", xmlDoc.GetSingleNodeValue(xmlnode, "ImageFormat"));
+            ht.Add("VideoFormat", xmlDoc.GetSingleNodeValue(xmlnode, "VideoFormat"));
+            ht.Add("AudioFormat", xmlDoc.GetSingleNodeValue(xmlnode, "AudioFormat"));
+            ht.Add("FlashFormat", xmlDoc.GetSingleNodeValue(xmlnode, "FlashFormat"));
+            ht.Add("AttachmentFormat", xmlDoc.GetSingleNodeValue(xmlnode, "AttachmentFormat"));
+            ht.Add("HasWaterMark", xmlDoc.GetSingleNodeValue(xmlnode, "HasWaterMark"));
+            ht.Add("HasAbbrImage", xmlDoc.GetSingleNodeValue(xmlnode, "HasAbbrImage"));
+            ht.Add("HasAbbrImageWaterMark", xmlDoc.GetSingleNodeValue(xmlnode, "HasAbbrImageWaterMark"));
+            ht.Add("AbbrImageWidth", xmlDoc.GetSingleNodeValue(xmlnode, "AbbrImageWidth"));
+            ht.Add("AbbrImageHeight", xmlDoc.GetSingleNodeValue(xmlnode, "AbbrImageHeight"));
+            return ht;
+        }
+
     }
 }

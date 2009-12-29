@@ -6,53 +6,60 @@
 <head id="Head1" runat="server">
 <title>附件上传</title>  
 <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
 <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />        
 <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
 <style type="text/css">
-    *
-    {
-        padding:0;
-        margin:0;
-	    font-family:Verdana, Arial, Helvetica, sans-serif;
-	    font-size:12px;
-    }       
-    tr
-    {
-        height:24px;
-        line-height:24px;        
-    }
-    td
-    {
-        padding-left:6px;         
-    }
-    .text{
-	    width:119px;
-    }    
-     .txt_bg{
-        background: url(../images/blue/login_input_bg.gif) no-repeat left top #F7FAFC;
-    }
-    .file{
-	    cursor:pointer;
-	    width:258px;
-    }
+    *{padding:0;margin:0;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:12px;}       
+    tr{height:24px;line-height:24px;}
+    td{padding-left:6px;}
+    .text{width:120px; margin-left:6px;}
+    .bg{background: url(../images/blue/login_input_bg.gif) no-repeat left top #F7FAFC;}
+    .file{cursor:pointer;}
+    fieldset{ padding:3px 0 6px 0;}
+    legend{ margin-left:8px;}
+    #div_attachmentAttribute span{ padding-right:3px;}
 </style>
-  
+  <script type="text/javascript">
+      $(document).ready(function() {
+          LoadData();
+      });
+      function LoadData() {
+          $.ajax({
+              url: "/admin/ajax/attachment_list.aspx",
+              type: "GET",
+              data: "action=upload&ran=" + Math.random(),
+              success: function(json) {
+                  InitPage(json);
+              }
+          });
+      }
+      function InitPage(json) {
+          if (json != "") {
+              var data = eval("data=" + json);
+              $("#chHasWaterMark").attr("checked", data.HasWaterMark == 1 ? true : false);
+              $("#chHasAbbrImage1").attr("checked", data.HasAbbrImage == 1 ? true : false);
+              $("#chHasWaterMark1").attr("checked", data.HasAbbrImageWaterMark == 1 ? true : false);
+              $("#abbrImageWidth1").val(data.AbbrImageWidth);
+              $("#abbrImageHeight1").val(data.AbbrImageHeight);
+          }
+      }
+  </script>
 </head>
 <body>    	
     <form enctype="multipart/form-data" id="form1" name="Form1" target="formTarget" method="post" action="SimpleUploader.aspx?type=image">
-        <div id="upload" style="width:570px;">
+        <div id="upload" style="width:570px; margin:0 auto;">
             <div id="top" style="text-align:left;width:100%;">
                 <div id="div_attachmentAttribute" style="margin-bottom:4px;">
-                    <input type="radio" id="rdo_photo" name="rdo" checked="checked" value="1" onclick="setAttachmentAttribute(this)" /><label for="rdo_photo">图片</label>
-                    <input type="radio" id="rdo_video" name="rdo" value="2" onclick="setAttachmentAttribute(this)" /><label for="rdo_video">视频</label>
-                    <input type="radio" id="rdo_audio" name="rdo" value="3" onclick="setAttachmentAttribute(this)" /><label for="rdo_audio">音频</label>
-                    <input type="radio" id="rdo_flash" name="rdo" value="4" onclick="setAttachmentAttribute(this)" /><label for="rdo_flash">Flash</label>
-                    <input type="radio" id="rdo_attachment" name="rdo"  value="5" onclick="setAttachmentAttribute(this)" /><label for="rdo_attachment">附件</label>
-                    <input type="hidden" id="hid_attachmentAttribute" name="hid_attachmentAttribute" value="1" />
+                    <span><input type="radio" id="rdo_photo" name="rdo" checked="checked" value="1" onclick="setAttachmentAttribute(this)" /><label for="rdo_photo">图片</label></span>
+                    <span><input type="radio" id="rdo_video" name="rdo" value="2" onclick="setAttachmentAttribute(this)" /><label for="rdo_video">视频</label></span>
+                    <span><input type="radio" id="rdo_audio" name="rdo" value="3" onclick="setAttachmentAttribute(this)" /><label for="rdo_audio">音频</label></span>
+                    <span><input type="radio" id="rdo_flash" name="rdo" value="4" onclick="setAttachmentAttribute(this)" /><label for="rdo_flash">Flash</label></span>
+                    <span><input type="radio" id="rdo_attachment" name="rdo"  value="5" onclick="setAttachmentAttribute(this)" /><label for="rdo_attachment">附件</label></span>
+                    <span><input type="hidden" id="hid_attachmentAttribute" name="hid_attachmentAttribute" value="1" /></span>
                 </div>
-                <fieldset>
-                    <legend>附件上传</legend>
-                    <table id="imagetable0" style="width:100%;empty-cells:show ;" cellpadding="0" cellspacing="0" >
+                <fieldset><legend>附件上传</legend>
+                    <table id="imagetable0" style="width:100%;" cellpadding="0" cellspacing="0" >
                         <tr>
                             <td style="width:6%;" align="right"></td>
                             <td style="width:34%;">附件浏览</td>
@@ -61,95 +68,93 @@
                         </tr>
                         <tr>
                             <td align="right"><label>1:</label></td>
-                            <td><input name='File1' id='File1' class="file txt_bg" type='file' value=''
+                            <td><input name='File1' id='File1' class="file bg" type='file' value=''
                                 size="26" onchange="fileOnChange(this);" /></td>
-                            <td><input name="File1Name" id="File1Name" class="text txt_bg" type="text"
+                            <td><input name="File1Name" id="File1Name" class="text bg" type="text"
                                 value="" /></td>
-                            <td><input name="File1Info" id="File1Info" class="text txt_bg" type="text"
+                            <td><input name="File1Info" id="File1Info" class="text bg" type="text"
                                 value="" /></td>
                         </tr>	
                         <tr>
                             <td align="right"><label>2:</label></td>
-                            <td><input name='File2' id='File2' class="file txt_bg" type='file' value=''
+                            <td><input name='File2' id='File2' class="file bg" type='file' value=''
                                 size='26'onchange="fileOnChange(this);" /></td>
-                            <td><input name="File2Name" id="File2Name"  class="text txt_bg" type="text"
+                            <td><input name="File2Name" id="File2Name"  class="text bg" type="text"
                                 value="" /></td>
-                            <td><input name="File2Info" id="File2Info" class="text txt_bg" type="text"
+                            <td><input name="File2Info" id="File2Info" class="text bg" type="text"
                                 value="" /></td>
                         </tr>
                         <tr>
                             <td align="right"><label>3:</label></td>
-                            <td><input name='File3' id='File3' class="file txt_bg" type='file' value=''
+                            <td><input name='File3' id='File3' class="file bg" type='file' value=''
                                 size='26' onchange="fileOnChange(this);" /></td>
-                            <td><input name="File3Name" id="File3Name" class="text txt_bg" type="text"
+                            <td><input name="File3Name" id="File3Name" class="text bg" type="text"
                                 value=""/></td>
-                            <td><input name="File3Info" id="File3Info" class="text txt_bg" type="text"
+                            <td><input name="File3Info" id="File3Info" class="text bg" type="text"
                                 value="" /></td>
                         </tr>
                         <tr>
                             <td align="right"><label>4:</label></td>
-                            <td><input name='File4' onchange="fileOnChange(this);" id='File4' class="file txt_bg" type='file' value=''
+                            <td><input name='File4' onchange="fileOnChange(this);" id='File4' class="file bg" type='file' value=''
                                 size='26' /></td>
-                            <td><input name="File4Name" id="File4Name" class="text txt_bg" type="text"
+                            <td><input name="File4Name" id="File4Name" class="text bg" type="text"
                                 value="" /></td>
-                            <td><input name="File4Info" id="File4Info" class="text txt_bg" type="text"
+                            <td><input name="File4Info" id="File4Info" class="text bg" type="text"
                                 value="" /></td>
                         </tr>
                         <tr>
                             <td align="right"><label>5:</label></td>
-                            <td><input name='File5' onchange="fileOnChange(this);" id='File5' class="file txt_bg " type='file' value=''
+                            <td><input name='File5' onchange="fileOnChange(this);" id='File5' class="file bg " type='file' value=''
                                 size='26' /></td>
-                            <td><input name="File5Name" id="File5Name" class="text txt_bg" type="text"
+                            <td><input name="File5Name" id="File5Name" class="text bg" type="text"
                                 value="" /></td>
-                            <td><input name="File5Info" id="File5Info" class="text txt_bg" type="text"
+                            <td><input name="File5Info" id="File5Info" class="text bg" type="text"
                                 value="" /></td>
-                        </tr>
-            		
+                        </tr>            		
                     </table>
                 </fieldset>
             </div>
             <div id="bottom" style="margin-top:6px;width:100%;text-align:left; ">
-                 <fieldset><legend>
-                 <label>图片参数设置</label></legend>
+                <fieldset><legend><label>图片参数设置</label></legend>
                     <table width="100%;" cellpadding="2" cellspacing="0">                                  						
                         <tr>
                             <td style="width:18%;text-align:right;"><label>原图水印:</label></td>
                             <td style="width:82%;"><input type="hidden" id="HasWaterMark"
                                 name="HasWaterMark" value="0" /> <input
-                                type="checkbox" id="chHasWaterMark" name="chHasWaterMark"  class="txt_bg" checked="checked" value="true" />
+                                type="checkbox" id="chHasWaterMark" name="chHasWaterMark"  class="bg" value="true" />
                             <input type="hidden" id="Count" name="Count" value="1" /></td>
                         </tr>	
                         <tr id="AbbrImagesTable">
                             <td align="right"><label>缩略图:</label></td>
                             <td>
-                                <input type="checkbox" id="chHasAbbrImage1" class="txt_bg" name="chHasAbbrImage1" value="true"/>
+                                <input type="checkbox" id="chHasAbbrImage1" class="bg" name="chHasAbbrImage1" value="true"/>
                             </td>
                         </tr>								
                         <tr>
                             <td style="vertical-align:top;text-align:right;">缩略图水印:</td>
                             <td>
-                                <input type="checkbox" id="chHasWaterMark1" class="txt_bg" name="chHasWaterMark1" value="true" />
+                                <input type="checkbox" id="chHasWaterMark1" class="bg" name="chHasWaterMark1" value="true" />
                             </td>
                         </tr>
                         <tr>
                             <td align="right" valign="top">缩略图宽:</td>
                             <td>
-                                <input name="abbrImageWidth1" id="abbrImageWidth1" class="txt_bg"
-                                type="text" value="500" style="width:36px"
+                                <input name="abbrImageWidth1" id="abbrImageWidth1" class="bg"
+                                type="text" style="width:36px"
                                 maxlength="4" /> 
                             </td>
                         </tr>
                         <tr>
                             <td align="right" valign="top">缩略图高:</td>
                             <td>
-                                <input name="abbrImageHeight1" id="abbrImageHeight1" class="txt_bg"
-                                type="text" value="0" style="width:36px"
+                                <input name="abbrImageHeight1" id="abbrImageHeight1" class="bg"
+                                type="text" style="width:36px"
                                 maxlength="4" />
                             </td>
                         </tr>
                      </table>		
-                    </fieldset>
-                </div>
+                </fieldset>
+            </div>
         </div>
         <div style="clear:both;" id="msg"></div>
         <input type="hidden" id="returnImgPath" value="" />
@@ -203,6 +208,7 @@
                 return;
             }
         }
+        
         function hasAttachmentFormat(ext) {
             switch (getAttachmentAttribute()) {
                 case "1":
@@ -219,24 +225,28 @@
         }
         function hasAttachment(ext) {
              return (ext == "doc" || ext == "txt");
-        }    	
+         }  
+          	
     	function msg() {
     	    var txt = "正在上传处理中，请稍候...耗时";
     	    var counter = 1;
     	    setInterval(function() { document.getElementById("msg").innerHTML = "<font color=red>" + txt + counter + "秒</font>"; counter++ }, 1000);
     	}
-    	function setAttachmentAttribute(obj) {
-    	    document.getElementById("hid_attachmentAttribute").value = (obj.value || 1);
-    	}
-    	function getAttachmentAttribute() {
-    	    return (document.getElementById("hid_attachmentAttribute").value || 1);
-    	}
+    	    	    	
     	function fileOnChange(obj) {
     	    var val = obj.value;
     	    var fileName = val.substring(val.lastIndexOf('\\') + 1);
     	    document.getElementById(obj.id + "Name").value = fileName;
     	    document.getElementById(obj.id + "Info").value = fileName;
     	}
+    	
+    	function setAttachmentAttribute(obj) {
+    	    document.getElementById("hid_attachmentAttribute").value = (obj.value || 1);
+    	}
+    	function getAttachmentAttribute() {
+    	    return (document.getElementById("hid_attachmentAttribute").value || 1);
+    	}
+    	
     	function setReturnPath(val) {
     	    document.getElementById("returnImgPath").value = val;
     	}

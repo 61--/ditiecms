@@ -8,98 +8,22 @@
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />   
     <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
     <style type="text/css">
-        *{
-	        padding:0;
-	        margin:0;
-	        font-family:Verdana, Arial, Helvetica, sans-serif;
-	        font-size:12px;
-        }   
-         .txt_bg{
-            background: url(../images/blue/login_input_bg.gif) no-repeat left top #F7FAFC;
-        }  
-        .text{
-	        width:109px;
-        }
-        .s_text
-        {
-            width:80px;
-        }          
-            
-        #container{
-		    width:570px;
-		    margin:0 auto;
-		    text-align:center;
-	    }
-    	
+        *{padding:0;margin:0;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:12px;}   
+         .txt_bg{background: url(../images/blue/login_input_bg.gif) no-repeat left top #F7FAFC;}  
+        .text{width:109px;}
+        .s_text{width:80px;}                 
+        #container{width:570px;margin:0 auto;text-align:center;}    	
 	    /*搜索*/
-	    .search
-	    {
-	        float:left;
-		    padding-top:-3px;
-	    }			
-	    .s_btn
-        {
-            background: url(../images/blue/button.jpg) no-repeat left top transparent;        
-	        border: 0px;
-	        height: 22px;
-	        line-height:18px;
-	        width:51px;
-	        margin-left:10px;
-	        letter-spacing: 2px;
-	        color: #555;
-	        overflow:hidden;	 
-        }
-        .s_btn:hover
-        {
-            cursor:pointer;
-            background-position:-99px -88px;
-        } 
-        
+	    .search{float:left;padding-top:-3px;}			
+	    .s_btn{background: url(../images/blue/button.jpg) no-repeat left top transparent;border: 0px;height: 22px;line-height:18px;width:51px;margin-left:10px;letter-spacing: 2px;color: #555;overflow:hidden;}
+        .s_btn:hover{cursor:pointer;background-position:-99px -88px;}         
 	    /*图片浏览*/
-	    #data	
-	    {
-	        float:left;
-		    margin-top:8px;
-	    }
-	    #content ul
-	    {
-	        list-style:none outside none;
-	    }
-	    #content ul li{
-		    float:left;
-		    color:#669900;
-		    border:solid 1px #E3E3E3;	
-		    margin:3px;
-		    overflow:hidden;
-		    width:100px;
-		    height:130px;
-	    }		
-	    #content li:hover{
-		    background-color:#FFFABF;
-	    }
-	    #content ul li dl dt a
-	    {
-		    display:table-cell;
-		    vertical-align:middle;
-		    text-align:center;
-            width:100px;
-		    height:108px;
-		    line-height:90px;	
-     	    *display: block;
-            *font-size:75px;
-		    color:#F9F9F9;
-		    border:0 none;
-		    background-color:transparent;
-		    text-decoration:none;	
-		    overflow:hidden;
-	    }
-	    #content dl dt a img{
-		    border:1px solid #FFFFFF;
-		    margin:3px;
-		    width:91px;
-		    height:100px;
-		    vertical-align:middle;
-	    }
+	    #data{float:left;margin-top:8px;}
+	    #content ul{list-style:none outside none;}
+	    #content ul li{float:left;color:#669900;border:solid 1px #E3E3E3;	margin:3px;overflow:hidden;width:100px;height:130px;}
+	    #content li:hover{background-color:#FFFABF;}
+	    #content ul li dl dt a{display:table-cell;vertical-align:middle;text-align:center;width:100px;height:108px;line-height:90px;*display: block;*font-size:75px;color:#F9F9F9;border:0 none;background-color:transparent;text-decoration:none;	overflow:hidden;}
+	    #content dl dt a img{border:1px solid #FFFFFF;margin:3px;width:91px;height:100px;vertical-align:middle;}
     </style>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -109,9 +33,9 @@
             var type = document.getElementById("slt_attachmentType").value;
             var name = document.getElementById("txt_attachmentName").value;
             $.ajax({
-                url: "../ajax/attachment_list.aspx",
+                 url: "/admin/ajax/attachment_list.aspx",
                 type: "GET",
-                data: "page=" + page + "&type=" + type + "&name=" + name + "&ran=" + Math.random(),
+                data: "action=search&page=" + page + "&type=" + type + "&name=" + name + "&ran=" + Math.random(),
                 success: function(responseText) {
                     document.getElementById("data").innerHTML = responseText;
                 }

@@ -32,7 +32,7 @@ namespace DTCMS.Web.admin
             string hasWaterMark1 = DTCMS.Common.Utils.GetFormString("chHasWaterMark1");   //缩略图是否水印
             int abbrImageWidth1 = DTCMS.Common.Utils.GetFormInt("abbrImageWidth1"); //缩略图宽
             int abbrImageHeight1 = DTCMS.Common.Utils.GetFormInt("abbrImageHeight1");   //缩略图高
-            Hashtable htPhoto = AttachmentConfig.GetAttachmentList();    //附件配置列表
+            Hashtable htPhoto = GobalConfig.GetAttachmentList();    //附件配置列表 
             string filepath = DTCMS.Common.Utils.GetRootPath() + htPhoto["Path"].ToString() + "\\"; //附件存放路径
             string errorMsg = string.Empty; //错误信息
             int returnVal = 1;    //返回值。1：成功，202：无效上传文件，203：你没有权限，204：未知错误
@@ -165,7 +165,7 @@ namespace DTCMS.Web.admin
                         errorMsg = "";
                     }
                 }
-
+                
                 if (errorMsg != "")
                 {
                     returnVal = 202;    //无效上传文件
@@ -217,7 +217,7 @@ namespace DTCMS.Web.admin
         /// <returns></returns>
         private bool AttachmentFormat(string fileName, string configParamName)
         {
-            string[] extNameList = AttachmentConfig.GetAttachmentStr(configParamName).Split('|');
+            string[] extNameList = GobalConfig.GetAttachmentStr(configParamName).Split('|');
             string extName = fileName.Substring(fileName.LastIndexOf(".") + 1).ToLower();
             if (extNameList != null && extNameList.Length > 0)
             {
