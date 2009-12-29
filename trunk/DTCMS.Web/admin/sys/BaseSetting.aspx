@@ -11,117 +11,43 @@
     <script type="text/javascript" src="../../inc/dialog/dialog.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
     <style type="text/css">
+        #container{ width:980px;margin: 0 auto; text-align:center;}
+        em{ border:0; font-size:12px;}
         #tab_menu a{ font-size:13px;}
-        .hr{ height:16px; line-height:16px; overflow:hidden;}
+        .hr{ height:10px; line-height:10px; overflow:hidden; border:0; clear:both;}
         #tagmanage table,#tagmanage tr,#tagmanage td,#authormanage table,#authormanage tr,#authormanage td,#newssourcemanage table,#newssourcemanage tr,#newssourcemanage td{border:0px;}
-         fieldset{border:#CCCCCC 1px solid; }
+         fieldset{border:#CCCCCC 1px solid; padding-bottom:20px;}
          legend{ font-weight:bold; line-height:45px; padding-left:45px;-moz-background-clip:border;-moz-background-origin:padding;-moz-background-size:auto auto; background:transparent url(../images/ico/ico_Success_Small.gif) no-repeat scroll 6px 5px;}
+         .multiLine{ height:120px; width:90%; vertical-align:top;}
     </style>
     <script type="text/javascript">
         $(document).ready(function() {
             ajax_bs_tag("list");
+            ajax_bs_author("list");
+            ajax_bs_newssource("list");
         });
     </script>    
 </head>
 <body>
     <div id="container">
-        <div id="tab_menu" class="tabs">
-            <ul>
-                <li class="tab_on"><a onclick="show_tag(this);" href="javascript:void(0)">关键字</a></li>
-                <li><a onclick="show_author(this);" href="javascript:void(0)">作 者</a></li>
-                <li><a onclick="show_newssource(this);" href="javascript:void(0)">文章来源</a></li>
-            </ul>
+        <fieldset><legend>数据字典</legend>
+        <div id="tag">
+            <div style="text-align:left;  padding-left:5%;"><em>关键字(TAG):</em></div>
+            <input type="text" id="txt_tagname" name="tagname" class="textbox multiLine" />                           
         </div>
-       <%-- 关键字TAG--%>
-        <div id="tab1" class="tab_show"> 
-            <div id="taglist"></div>
-            <div class="hr"></div>
-            <div id="tagmanage">
-                <fieldset><legend>TAG</legend>
-                    <table cellpadding="0" cellspacing="0" width="100%" border="0" class="table_form">
-                        <tbody>
-                            <tr>
-                                <td class="main_bleft split">TAG名称:</td>
-                                <td class="main_bright split">
-                                    <input type="text" id="txt_tagname" name="tagname" class="textbox short" />
-                                    <span style="color:#FA001A;text-align:center;">*</span>                                
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="main_bleft split"></td>
-                                <td class="main_bright split">
-                                    <input type="button" id="btn_add" class="button b1" value="保存" onclick="add_tag();" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </fieldset>
-            </div>
+        <div class="hr"></div>
+        <div id="author">
+            <div style="text-align:left; padding-left:5%;"><em>作 者:</em></div>
+            <input type="text" id="txt_authorname" name="authorname" class="textbox multiLine" />
         </div>
-        <%-- 作者--%>
-        <div id="tab2" class="tab_hiden">
-            <div id="authorlist"></div>
-            <div class="hr"></div>
-            <div id="authormanage">
-                <fieldset><legend>作者</legend>
-                    <table cellpadding="0" cellspacing="0" width="100%" border="0" class="table_form">
-                        <tbody>
-                            <tr>
-                                <td class="main_bleft split">名 称:</td>
-                                <td class="main_bright split">
-                                    <input type="text" id="txt_authorname" name="authorname" class="textbox short" />
-                                    <span style="color:#FA001A;text-align:center;">*</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="main_bleft split">电子邮件:</td>
-                                <td class="main_bright split">
-                                    <input type="text" id="txt_authoremail" name="authoremail" class="textbox short" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="main_bleft split"></td>
-                                <td class="main_bright split">
-                                    <input type="button" id="add_author" class="button b1" value="保存" onclick="add_author();" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </fieldset>
-            </div>
-        </div>    
-        <%--文章来源--%>
-        <div id="tab3" class="tab_hiden">
-            <div id="newssourcelist"></div>
-            <div class="hr"></div>
-            <div id="newssourcemanage">
-                <fieldset><legend>文章来源</legend>
-                    <table cellpadding="0" cellspacing="0" width="100%" border="0" class="table_form">
-                        <tbody>
-                            <tr>
-                                <td class="main_bleft split">标 题:</td>
-                                <td class="main_bright split">
-                                    <input type="text" id="txt_newssourcename" name="newssourcename" class="textbox short" />
-                                    <span style="color:#FA001A;text-align:center;">*</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="main_bleft split">链接地址:</td>
-                                <td class="main_bright split">
-                                    <input type="text" id="txt_mewssourceurl" name="mewssourceurl" class="textbox short" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="main_bleft split"></td>
-                                <td class="main_bright split">
-                                    <input type="button" id="btn_add_newssource" class="button b1" value="保存" onclick="add_newssource();" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </fieldset>
-            </div>
+        <div class="hr"></div>
+        <div id="newssource">
+            <div style="text-align:left;  padding-left:5%;"><em>文章来源:</em></div>
+            <input type="text" id="txt_newssourcename" name="newssourcename" class="textbox multiLine" />
         </div>
+     </fieldset>
+     <div class="hr"></div>
+     <div style="text-align:center"><input type="button" id="btn_add_newssource" class="button b1" value="保存" onclick="save_newssource();" /></div>
     </div>
     <script type="text/javascript">
 
@@ -130,39 +56,23 @@
             selectTab('tab1', obj);
             ajax_bs_tag("list");
         }
-        function clear_tag() {
-            $("#txt_tagname").val("");
+        function save_tag() {
+            var title = $("#txt_tagname").val();
+            ajax_bs_tag("save", title);
         }
-        function add_tag() {
-            var name = $("#txt_tagname");
-            var val = name.val();
-            if (val == "" || val == null) {
-                Dialog.alert("TAG名称 不能为空!");
-                name.focus();
-                return;
-            }
-            ajax_bs_tag("add", val);
-        }
-        function del_tag(tagname) {
-            if (tagname == "" || tagname == null) {
-                Dialog.alert("请选择要删除数据!");
-                return;
-            }
-            ajax_bs_tag("delete", tagname);
-        }
+
         function list_tag(responseText) {
-            $("#taglist").html(responseText);
+            $("#txt_tagname").val(responseText);
         }
-        function ajax_bs_tag(method, name) {
+        
+        function ajax_bs_tag(method, title) {
             $.ajax({
                 url: "/admin/ajax/basesetting_list.aspx",
                 type: "GET",
-                data: "action=tag&method=" + method + "&name=" + escape(name) + "&ran=" + Math.random(),
+                data: "action=tag&method=" + method + "&title=" + escape(title) + "&ran=" + Math.random(),
                 success: function(responseText) {
                     switch (method) {
-                        case "add":
-                            clear_tag();
-                        case "delete":
+                        case "save":
                             Dialog.alert(responseText);
                             ajax_bs_tag("list");
                             break;
@@ -180,43 +90,22 @@
         function show_author(obj) {
             selectTab('tab2', obj);
             ajax_bs_author("list");
-        }
-        function clear_author() {
-            $("#txt_authorname").val("");
-            $("#txt_authoremail").val("");
-        }
-        function add_author() {
-            var name = $("#txt_authorname");
-            var email = $("#txt_authoremail");
-            var nameval = name.val();
-            var emailval = email.val();
-            if (nameval == "" || nameval == null) {
-                Dialog.alert("作者名称 不能为空!");
-                name.focus();
-                return;
-            }
-            ajax_bs_author("add", nameval, emailval);
-        }
-        function del_author(authorname) {
-            if (authorname == "" || authorname == null) {
-                Dialog.alert("请选择要删除数据!");
-                return;
-            }
-            ajax_bs_author("delete",authorname);
+        }        
+        function save_author() {
+            var title = $("#txt_authorname").val();
+            ajax_bs_author("save", title);
         }
         function list_author(responseText) {
-            $("#authorlist").html(responseText);
+            $("#txt_authorname").val(responseText);
         }
-        function ajax_bs_author(method, name,email) {
+        function ajax_bs_author(method,title) {
             $.ajax({
                 url: "/admin/ajax/basesetting_list.aspx",
                 type: "GET",
-                data: "action=author&method=" + method + "&name=" + escape(name) + "&email=" + escape(email) + "&ran=" + Math.random(),
+                data: "action=author&method=" + method + "&title=" + escape(title) + "&ran=" + Math.random(),
                 success: function(responseText) {
                     switch (method) {
-                        case "add":
-                            clear_author();
-                        case "delete":
+                        case "save":
                             Dialog.alert(responseText);
                             ajax_bs_author("list");
                             break;
@@ -235,42 +124,21 @@
             selectTab('tab3', obj);
             ajax_bs_newssource("list");
         }
-        function clear_newssource() {
-            $("#txt_newssourcename").val("");
-            $("#txt_mewssourceurl").val("");
-        }
-        function add_newssource() {
-            var name = $("#txt_newssourcename");
-            var url = $("#txt_mewssourceurl");
-            var nameval = name.val();
-            var urllval = url.val();
-            if (nameval == "" || nameval == null) {
-                Dialog.alert("文章来源标题 不能为空!");
-                name.focus();
-                return;
-            }
-            ajax_bs_newssource("add", nameval, urllval);
-        }
-        function del_newssource(newssourcename) {
-            if (newssourcename == "" || newssourcename == null) {
-                Dialog.alert("请选择要删除数据!");
-                return;
-            }
-            ajax_bs_newssource("delete", newssourcename);
+        function save_newssource() {
+            var title = $("#txt_newssourcename").val();
+            ajax_bs_newssource("save", title);
         }
         function list_newssource(responseText) {
-            $("#newssourcelist").html(responseText);
+            $("#txt_newssourcename").val(responseText);
         }
-        function ajax_bs_newssource(method, name, url) {
+        function ajax_bs_newssource(method, title) {
             $.ajax({
                 url: "/admin/ajax/basesetting_list.aspx",
                 type: "GET",
-                data: "action=newssource&method=" + method + "&name=" + escape(name) + "&url=" + escape(url) + "&ran=" + Math.random(),
-                success: function(responseText) {
+                data: "action=newssource&method=" + method + "&save=" + escape(title) + "&ran=" + Math.random(),
+                success: function(responseText) {                
                     switch (method) {
-                        case "add":
-                            clear_newssource();
-                        case "delete":
+                        case "save":
                             Dialog.alert(responseText);
                             ajax_bs_newssource("list");
                             break;

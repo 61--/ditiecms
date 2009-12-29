@@ -12,6 +12,8 @@
     <script type="text/javascript" src="../js/common.js"></script>    
     <style type="text/css">
         #continer{ margin:0 auto; width:760px;}
+        .hr{ height:12px; line-height:12px; overflow:hidden; clear:both;}
+        .caption{ margin:0 0 0 3px; height:28px; line-height:28px;}
     </style>
 </head>
 <body>
@@ -43,7 +45,7 @@
                         水印文字颜色:
                     </td>
                     <td class="main_bright split">
-                        <input type="text" id="txt_WaterFontColor" class="textbox short" runat="server" />
+                        <input type="text" id="txt_WaterFontColor" class="textbox short" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" />
                     </td>
                 </tr>
                 <tr>
@@ -51,7 +53,7 @@
                         水印文字类型:
                     </td>
                     <td class="main_bright split">
-                        <input type="text" id="txt_WaterFontType" class="textbox short" runat="server" />
+                        <select id="slt_WaterFontType" runat="server" style="width: 185px; background: #F7FAFC;"></select>
                     </td>
                 </tr>
                 <tr>
@@ -59,7 +61,7 @@
                         水印文字大小:
                     </td>
                     <td class="main_bright split">
-                        <input type="text" id="txt_WaterFontSize" class="textbox short" runat="server" />
+                        <input type="text" id="txt_WaterFontSize" class="textbox short" runat="server" /><span class="caption">(单位:像素)</span>
                     </td>
                 </tr>
                 <tr>
@@ -75,7 +77,7 @@
                         水印图片透明度:
                     </td>
                     <td class="main_bright split">
-                        <input type="text" id="txt_WaterImageUrlTran" class="textbox short" runat="server" />
+                        <input type="text" id="txt_WaterImageUrlTran" class="textbox short" runat="server" /><span class="caption">(1到100)</span>
                     </td>
                 </tr>
                 <tr>
@@ -83,11 +85,35 @@
                         水印位置:
                     </td>
                     <td class="main_bright split">
-                        
+                        <table id="tb_percent" cellpadding="0" cellspacing="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td><input type="radio" id="rdo_top_left" name="percent"/><label for="rdo_top_left">左上</label></td>
+                                    <td><input type="radio" id="rdo_top_center" name="percent" /><label for="rdo_top_center">中上</label></td>
+                                    <td><input type="radio" id="rdo_top_right" name="percent" /><label for="rdo_top_right">右上</label></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="radio" id="rdo_center_left" name="percent"/><label for="rdo_center_left">左中</label></td>
+                                    <td><input type="radio" id="rdo_center_center" name="percent" /><label for="rdo_center_center">局中</label></td>
+                                    <td><input type="radio" id="rdo_center_right" name="percent" /><label for="rdo_center_right">右中</label></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="radio" id="rdo_bottom_left" name="percent"/><label for="rdo_bottom_left">左下</label></td>
+                                    <td><input type="radio" id="rdo_bottom_center" name="percent" /><label for="rdo_bottom_center">中下</label></td>
+                                    <td><input type="radio" id="rdo_bottom_right" name="percent" /><label for="rdo_bottom_right">右下</label></td>
+                                </tr>
+                            </tbody>
+                        </table>  
+                        <input type="hidden" id="hidden_XPercent" value="0" runat="server" />  
+                        <input type="hidden" id="hidden_YPercent" value="0" runat="server" />  
                     </td>
                 </tr>
             </tbody>
         </table>
+        <div class="hr"></div>
+        <div style="text-align:center;">
+        <button type="button" id="btn_Save" class="b1" runat="server">保存</button>
+        <button id="btn_Cancel" type="button" class="b1" onclick="history.back(-1);"> 取消</button></div>
     </div>
     </form>
     <script type="text/javascript">

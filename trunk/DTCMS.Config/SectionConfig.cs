@@ -32,6 +32,7 @@ namespace DTCMS.Config
             DataTable dtSectionList = new DataTable();
             dtSectionList.Columns.Add("key");
             dtSectionList.Columns.Add("value");
+            dtSectionList.AcceptChanges();
 
             XmlNodeList sectionNodeList = xmlDoc.DocumentElement.SelectNodes("/configuration/section[@key='" + sectionkey + "']/item");
             if (sectionNodeList != null && sectionNodeList.Count > 0)
