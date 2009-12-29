@@ -40,5 +40,14 @@ namespace DTCMS.BLL
         {
             return SectionConfig.GetSectionList("news_titleflag");
         }
+
+        /// <summary>
+        /// 文字类型
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable GetSectionListTitleFontType()
+        {
+            return SectionConfig.GetSectionList("font_type");
+        }
     }
 }

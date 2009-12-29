@@ -9,7 +9,7 @@
     <style type="text/css">
         *{ margin:0; padding:0; font-family:Arial; font-size:12px;}
         ul{ list-style:none outside none; float:left;}
-        li{ height:22px; line-height:22px; cursor:pointer;}
+        li{ height:22px; line-height:22px; cursor:pointer;float:left; padding-left:8px;}
         #continer{ width:380px; margin:0 auto; padding:10px 0 0 8px; text-align:left;}
     </style>
     <script type="text/javascript">

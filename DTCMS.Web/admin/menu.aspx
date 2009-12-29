@@ -126,8 +126,8 @@ protected void Page_Load(object sender, EventArgs e)
                 sb.Append("        <dt><a href=\"javascript:;\" onclick=\"showHide('items1');\" target=\"_self\">系统管理</a></dt>\r\n");
                 sb.Append("        <dd id=\"items1\" style=\"display:block;\">\r\n");
                 sb.Append("	        <ul>\r\n");
-                sb.Append("                <li><a href=\"javascript:frameRedirect('sys/BaseSetting.aspx')\">基本设置</a></li>\r\n");
-                sb.Append("                <li><a href=\"javascript:frameRedirect('news/class_list.aspx')\">栏目管理</a></li>\r\n");
+                sb.Append("                <li><a href=\"javascript:frameRedirect('sys/BaseSetting.aspx')\">数据字典</a></li>\r\n");
+                sb.Append("                <li><a href=\"javascript:frameRedirect('news/class_list.aspx')\">附件设置</a></li>\r\n");
                 sb.Append("                <li><a href=\"javascript:frameRedirect('news/class_list.aspx')\">栏目管理</a></li>\r\n");
                 sb.Append("                <li><a href=\"javascript:frameRedirect('news/class_list.aspx')\">栏目管理</a></li>\r\n");
                 sb.Append("  	        </ul>\r\n");

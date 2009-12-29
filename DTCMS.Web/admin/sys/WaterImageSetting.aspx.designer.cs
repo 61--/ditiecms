@@ -59,13 +59,13 @@ namespace DTCMS.Web.admin.sys {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_WaterFontColor;
         
         /// <summary>
-        /// txt_WaterFontType 控件。
+        /// slt_WaterFontType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txt_WaterFontType;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect slt_WaterFontType;
         
         /// <summary>
         /// txt_WaterFontSize 控件。
@@ -93,5 +93,32 @@ namespace DTCMS.Web.admin.sys {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_WaterImageUrlTran;
+        
+        /// <summary>
+        /// hidden_XPercent 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidden_XPercent;
+        
+        /// <summary>
+        /// hidden_YPercent 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidden_YPercent;
+        
+        /// <summary>
+        /// btn_Save 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btn_Save;
     }
 }
