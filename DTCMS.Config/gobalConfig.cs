@@ -76,7 +76,8 @@ namespace DTCMS.Config
             XmlNode xmlnode = xmlDoc.DocumentElement.SelectSingleNode("/SystemConfig/Attachment");
             
             Hashtable ht = new Hashtable();
-            string fileName = xmlDoc.GetSingleNodeValue(xmlnode, "Path") + "\\" + DateTime.Now.ToString(xmlDoc.GetSingleNodeValue(xmlnode, "Directory"));
+            string fileName = xmlDoc.GetSingleNodeValue(xmlnode, "Path") + "\\"
+                + DateTime.Now.ToString(xmlDoc.GetSingleNodeValue(xmlnode, "Directory") == "" ? "yyyyMM" : xmlDoc.GetSingleNodeValue(xmlnode, "Directory"));
             if (!FileAccessHelper.DirectoryExists(fileName))
             {
                 Directory.CreateDirectory(fileName);
