@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
+using System.Web.Caching;
 using DTCMS.IDAL;
 using DTCMS.Entity;
 using DTCMS.DBUtility;
@@ -51,7 +52,10 @@ namespace DTCMS.SqlServerDAL
             strSql.Append(" values (");
             strSql.Append("@ParentID,@Attribute,@ClassName,@ClassEName,@ClassType,@ClassDomain,@ClassPath,@IndexTemplet,@ListTemplet,@ArchiveTemplet,@IndexRule,@ListRule,@ArchiveRule,@ClassPage,@Description,@IsHidden,@IsHtml,@CheckLevel,@IsContribute,@IsComment,@Readaccess,@SiteID,@AddDate,@Relation,@OrderID,@ImgUrl,@Keywords,@CrossID,@Content)");
             strSql.Append(";select @@IDENTITY");
-            SqlParameter[] parameters = {
+            SqlParameter[] parameters = CacheAccess.GetFromCache("ClassAddSqlParameter") as SqlParameter[];
+            if (parameters == null)
+            {
+                parameters = new SqlParameter[]{
 					new SqlParameter("@ParentID", SqlDbType.Int,4),
 					new SqlParameter("@Attribute", SqlDbType.TinyInt,1),
 					new SqlParameter("@ClassName", SqlDbType.NVarChar,100),
@@ -81,6 +85,9 @@ namespace DTCMS.SqlServerDAL
 					new SqlParameter("@Keywords", SqlDbType.NVarChar,200),
 					new SqlParameter("@CrossID", SqlDbType.NVarChar,200),
 					new SqlParameter("@Content", SqlDbType.NText)};
+
+                CacheAccess.SaveToCache("ClassAddSqlParameter", parameters, Cache.NoAbsoluteExpiration, TimeSpan.FromMinutes(30));
+            }
             parameters[0].Value = model.ParentID;
             parameters[1].Value = model.Attribute;
             parameters[2].Value = model.ClassName;
@@ -153,7 +160,10 @@ namespace DTCMS.SqlServerDAL
             strSql.Append("CrossID=@CrossID,");
             strSql.Append("Content=@Content");
             strSql.Append(" where CID=@CID ");
-            SqlParameter[] parameters = {
+            SqlParameter[] parameters = CacheAccess.GetFromCache("ClassUpdateSqlParameter") as SqlParameter[];
+            if (parameters == null)
+            {
+                parameters = new SqlParameter[]{
 					new SqlParameter("@CID", SqlDbType.Int,4),
 					new SqlParameter("@ParentID", SqlDbType.Int,4),
 					new SqlParameter("@Attribute", SqlDbType.TinyInt,1),
@@ -184,6 +194,9 @@ namespace DTCMS.SqlServerDAL
 					new SqlParameter("@Keywords", SqlDbType.NVarChar,200),
 					new SqlParameter("@CrossID", SqlDbType.NVarChar,200),
 					new SqlParameter("@Content", SqlDbType.NText)};
+
+                CacheAccess.SaveToCache("ClassUpdateSqlParameter", parameters, Cache.NoAbsoluteExpiration, TimeSpan.FromMinutes(30));
+            }
             parameters[0].Value = model.CID;
             parameters[1].Value = model.ParentID;
             parameters[2].Value = model.Attribute;

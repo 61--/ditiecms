@@ -33,6 +33,12 @@ namespace DTCMS.Common
             cache.Insert(cacheKey, cacheObject, cacheDependency);
         }
 
+        public static void SaveToCache(string cacheKey, object cacheObject, DateTime absoluteExpiration, TimeSpan slidingExpiration)
+        {
+            Cache cache = HttpRuntime.Cache;
+            cache.Insert(cacheKey, cacheObject, null, absoluteExpiration, slidingExpiration);
+        }
+
         /// <summary>
         /// 从缓存中取出对象，如不存在返回NULL
         /// </summary>

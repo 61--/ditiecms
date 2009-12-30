@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Web.Caching;
+using System.Data.SqlClient;
+using System.Data;
 using DTCMS.IDAL;
 using DTCMS.DBUtility;
 using DTCMS.Entity;
-using System.Data.SqlClient;
-using System.Data;
 using DTCMS.Common;
 namespace DTCMS.SqlServerDAL
 {
@@ -50,7 +51,10 @@ namespace DTCMS.SqlServerDAL
             strSql.Append(" values (");
             strSql.Append("@ClassID,@ViceClassID,@Title,@ShortTitle,@TitleStyle,@TitleFlag,@Tags,@ImgUrl,@Author,@Editor,@PubLisher,@Source,@Templet,@Keywords,@Description,@Content,@Click,@Good,@Bad,@Readaccess,@Money,@Attribute,@IsComment,@IsChecked,@IsRedirect,@IsHtml,@IsPaging,@FilePath,@SimilarArticle,@AddDate,@PubDate,@OrderID)");
             strSql.Append(";select @@IDENTITY");
-            SqlParameter[] parameters = {
+            SqlParameter[] parameters = CacheAccess.GetFromCache("ArtivleAddSqlParameter") as SqlParameter[];
+            if (parameters == null)
+            {
+                parameters = new SqlParameter[] {
 					new SqlParameter("@ClassID", SqlDbType.Int,4),
 					new SqlParameter("@ViceClassID", SqlDbType.Int,4),
 					new SqlParameter("@Title", SqlDbType.NVarChar,100),
@@ -84,6 +88,9 @@ namespace DTCMS.SqlServerDAL
 					new SqlParameter("@AddDate", SqlDbType.DateTime),
 					new SqlParameter("@PubDate", SqlDbType.DateTime),
 					new SqlParameter("@OrderID", SqlDbType.TinyInt,1)};
+                CacheAccess.SaveToCache("ArtivleAddSqlParameter", parameters, Cache.NoAbsoluteExpiration, TimeSpan.FromMinutes(30));
+            }
+            
 
             int n = 0;
             parameters[n++].Value = model.ClassID;
@@ -161,7 +168,10 @@ namespace DTCMS.SqlServerDAL
             strSql.Append("PubDate=@PubDate,");
             strSql.Append("OrderID=@OrderID");
             strSql.Append(" where ID=@ID ");
-            SqlParameter[] parameters = {
+            SqlParameter[] parameters = CacheAccess.GetFromCache("ArtivleUpdateSqlParameter") as SqlParameter[];
+            if (parameters == null)
+            {
+                parameters = new SqlParameter[]{
 					new SqlParameter("@ID", SqlDbType.Int,4),
 					new SqlParameter("@ClassID", SqlDbType.Int,4),
 					new SqlParameter("@ViceClassID", SqlDbType.Int,4),
@@ -190,6 +200,9 @@ namespace DTCMS.SqlServerDAL
 					new SqlParameter("@SimilarArticle", SqlDbType.NChar,10),
 					new SqlParameter("@PubDate", SqlDbType.DateTime),
 					new SqlParameter("@OrderID", SqlDbType.TinyInt,1)};
+
+                CacheAccess.SaveToCache("ArtivleUpdateSqlParameter", parameters, Cache.NoAbsoluteExpiration, TimeSpan.FromMinutes(30));
+            }
 
             int n = 0;
             parameters[n++].Value = model.ID;
