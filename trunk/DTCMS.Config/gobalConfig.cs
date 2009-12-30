@@ -237,6 +237,14 @@ namespace DTCMS.Config
             GetXMLDocument().DocumentElement.SelectSingleNode("/SystemConfig/Attachment/WaterImage/" + nodeName).InnerText = nodeValue;
         }
 
+        public static string Get()
+        {
+            XmlDocumentExtender xmlDoc = new XmlDocumentExtender();            
+            xmlDoc.Load(path);
+            XmlNode xmlnode = xmlDoc.DocumentElement.SelectSingleNode("/SystemConfig/Attachment");
+            return GetXMLDocument().GetSingleNodeValue(xmlnode, "ImageFormat");
+        }
+
         #endregion 附件
     }
 }
