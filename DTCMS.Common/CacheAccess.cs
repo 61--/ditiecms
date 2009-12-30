@@ -33,6 +33,13 @@ namespace DTCMS.Common
             cache.Insert(cacheKey, cacheObject, cacheDependency);
         }
 
+        /// <summary>
+        /// 将对象加入到缓存中
+        /// </summary>
+        /// <param name="cacheKey">缓存键</param>
+        /// <param name="cacheObject">缓存对象</param>
+        /// <param name="absoluteExpiration">时间</param>
+        /// <param name="slidingExpiration">时间</param>
         public static void SaveToCache(string cacheKey, object cacheObject, DateTime absoluteExpiration, TimeSpan slidingExpiration)
         {
             Cache cache = HttpRuntime.Cache;
