@@ -32,8 +32,14 @@ namespace DTCMS.Web.admin
             string hasWaterMark1 = DTCMS.Common.Utils.GetFormString("chHasWaterMark1");   //缩略图是否水印
             int abbrImageWidth1 = DTCMS.Common.Utils.GetFormInt("abbrImageWidth1"); //缩略图宽
             int abbrImageHeight1 = DTCMS.Common.Utils.GetFormInt("abbrImageHeight1");   //缩略图高
-            string filepath = DTCMS.Common.Utils.GetRootPath() + GobalConfig.Path.Replace("\\\\", "\\")+"\\"
-                + DateTime.Now.ToString(GobalConfig.Directory == "" ? "yyyyMM" : GobalConfig.Directory) + "\\"; //附件存放路径
+            string filepathshort = GobalConfig.Path.Replace("\\\\", "\\")+"\\"
+                + DateTime.Now.ToString(GobalConfig.Directory == "" ? "yyyyMM" : GobalConfig.Directory) + "\\";
+            string filepath = DTCMS.Common.Utils.GetRootPath() + filepathshort; //附件存放路径
+
+            if (!Directory.Exists(filepath))
+            {
+                Directory.CreateDirectory(filepath);
+            }
 
             string errorMsg = string.Empty; //错误信息
             int returnVal = 1;    //返回值。1：成功，202：无效上传文件，203：你没有权限，204：未知错误
@@ -134,11 +140,11 @@ namespace DTCMS.Web.admin
                             Atr_AttachMent modAttachMent = new Atr_AttachMent();
                             modAttachMent.AttachMentAttribute = attachmentAttribute;
                             modAttachMent.AttachMentDisplayName = fileDisplayName;
-                            modAttachMent.AttachMentPath = "/" + GobalConfig.Path.Replace("\\", "/") + "/" + returnImgName;
+                            modAttachMent.AttachMentPath = "/" + filepathshort.Replace("\\", "/") + returnImgName;
                             modAttachMent.AttachMentSize = (fileContentLen / 1024).ToString() + "K";
                             if (hasAbbrImage1.Trim().ToLower() == "true")
                             {
-                                modAttachMent.AbbrPhotoPath = "/" + GobalConfig.Path.Replace("\\", "/") + "/" + abbName;
+                                modAttachMent.AbbrPhotoPath = "/" + filepathshort.Replace("\\", "/") + abbName;
                             }
                             else
                             {
@@ -175,11 +181,11 @@ namespace DTCMS.Web.admin
             string returnImgPath = "";
             if (hasAbbrImage1.Trim().ToLower() == "true")
             {
-                returnImgPath = "/" + GobalConfig.Path.Replace("\\\\", "\\").Replace("\\", "/") + "/" + abbName;
+                returnImgPath = "/" + filepathshort.Replace("\\", "/") + abbName;
             }
             else
             {
-                returnImgPath = "/" + GobalConfig.Path.Replace("\\\\", "\\").Replace("\\", "/") + "/" + returnImgName;
+                returnImgPath = "/" + filepathshort.Replace("\\", "/")+ returnImgName;
             }
 
             Response.Redirect("~/admin/attachment/emptyPage.html?returnVal=" + returnVal + "&errorMsg=" + errorMsg + "&returnImgPath=" + returnImgPath);

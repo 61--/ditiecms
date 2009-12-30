@@ -127,13 +127,16 @@
                         if (responseText.toString().toUpperCase() == "TRUE") {
                             LoadData();
                             Dialog.alert("文章删除成功!");
+                            return;
                         }
                         else {
                             Dialog.alert(responseText);
+                            return;
                         }
                     },
                     error: function() {
                         Dialog.alert("Ajax请求失败！");
+                        return;
                     }
                 });
             });

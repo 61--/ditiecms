@@ -9,8 +9,9 @@
 <title>附件上传</title>  
 <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
-<link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />        
-<script type="text/javascript" src="/inc/dialog/dialog.js"></script>
+<script type="text/javascript" src="../js/public.js"></script>
+<link href="../../inc/dialog/dialog.css" rel="stylesheet" type="text/css" />        
+<script type="text/javascript" src="../../inc/dialog/dialog.js"></script>
 <style type="text/css">
     *{padding:0;margin:0;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:12px;}       
     tr{height:24px;line-height:24px;}
@@ -50,7 +51,7 @@
   </script>
 </head>
 <body>    	
-    <form enctype="multipart/form-data" id="form1" name="Form1" target="formTarget" method="post" action="SimpleUploader.aspx?type=image" runat="server">
+    <form enctype="multipart/form-data" id="form1" name="Form1" target="formTarget" method="post" action="SimpleUploader.aspx?type=image">
         <div id="upload" style="width:570px; margin:0 auto;">
             <div id="top" style="text-align:left;width:100%;">
                 <div id="div_attachmentType" style="margin-bottom:4px;">                    
@@ -162,7 +163,7 @@
         function onUploadCompleted(returnVal, errorMsg, returnImgPath) {
             switch (returnVal) {
                 case 1:
-                case "1": // 上传成功
+                case "1":
                     try {
                         setReturnPath(returnImgPath);
                         window.parent.parent.Dialog.close();
@@ -185,7 +186,7 @@
             var flag = false;
             var count = 5;
             for (var i = 1; i <= count; i++) {
-                var imgName = $("#File" + i).val();
+                var imgName = $("#File" + i).val();                
                 if (imgName == "") {
                     continue;
                 }
@@ -199,7 +200,7 @@
             }
             if(flag) {
                 msg();
-                $("#form1").submit();
+                document.getElementById("form1").submit();
             } else {
                 Dialog.alert("请先浏览选择文件！");
             }
@@ -223,9 +224,7 @@
         }         
           	
     	function msg() {
-    	    var txt = "正在上传处理中，请稍候...耗时";
-    	    var counter = 1;
-    	    setInterval(function() { $("#msg").innerHTML = "<font color=red>" + txt + counter + "秒</font>"; counter++ }, 1000);
+    	    showLoading("正在上传数据，请稍候...", "#bottom");
     	}
     	    	    	
     	function fileOnChange(obj) {
@@ -239,7 +238,7 @@
     	    $("#hid_attachmentAttribute").val(obj.value || 1);
     	}
     	function getAttachmentAttribute() {
-    	    return ($("#hid_attachmentAttribute").val()|| 1);
+    	    return $("#hid_attachmentAttribute").val()|| 1;
     	}
 
     	function setReturnPath(val) {

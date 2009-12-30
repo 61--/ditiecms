@@ -106,15 +106,15 @@
     <script type="text/javascript">
         //*cid:  栏目编号
         function updateData() {
-            var input = document.getElementsByName("items");
-            var len = input.length;
-            for (var i = 0; i < len; i++) {
-                if ((input[i].type == "checkbox") && input[i].checked) {
-                    window.location.href = "Class_add.aspx?Id=" + input[i].value;
+            var input = $("input[name='items']");
+            $.each(input, function(i, n) {
+                if (n.checked) {
+                    window.location.href = "Class_add.aspx?Id=" + n.value;
                     return;
                 }
-            }
+            });
             Dialog.alert("请选择要修改的栏目!");
+            return;
         }
         //cid:  栏目编号
         //flag:  是否批量删除，表示true:批量删除，false:单个删除
@@ -140,6 +140,7 @@
                             LoadData();
                         } else {
                             Dialog.alert(responseText);
+                            return;
                         }
                     },
                     error: function() {
