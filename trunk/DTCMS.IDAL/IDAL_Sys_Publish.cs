@@ -62,5 +62,12 @@ namespace DTCMS.IDAL
         /// <param name="search">组合条件</param>
         /// <returns></returns>
         DataTable GetTopArticleBySearch(int topnum, string orderBy, string orderWay, string search);
+
+        /// <summary>
+        /// 获取当前类别的父类别集合
+        /// </summary>
+        /// <param name="CID">栏目编号</param>
+        /// <returns>栏目集合</returns>
+        List<Arc_Class> GetParentClassList(int CID);
     }
 }
