@@ -7,13 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="css/blue_body.css" rel="stylesheet" type="text/css" />
+
     <script src="js/jquery-1.3.2-vsdoc2.js" type="text/javascript"></script>
+
     <script src="/admin/js/Public.js" type="text/javascript"></script>
+
     <script type="text/javascript">
         $('#test');
     </script>
+
 </head>
 <body>
+<form id="form1" runat="server">
     <div style="width: 800px; margin: 50px auto;">
         <h3 style="height: 30px;">
             jQuery通用dialog/popup窗口插件</h3>
@@ -35,6 +40,13 @@
             <li><a id="H15" href="javascript:showSuccess('回复成功，经验 + 1')">显示提示信息（自动隐藏）</a></li>
             <li><a id="A1" href="javascript:showError('删除失败，经验 - 1')">显示提示信息（自动隐藏）</a></li>
         </ul>
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <asp:Button ID="Button1"  runat="server" Text="Button"  onclick="Button1_Click" />
+        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+        <asp:Button ID="Button2" runat="server" Text="Button" onclick="Button2_Click" />
+        <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+        <asp:Button ID="Button3" runat="server" Text="Button" onclick="Button3_Click" />
     </div>
+</form>
 </body>
 </html>
