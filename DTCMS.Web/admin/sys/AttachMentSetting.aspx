@@ -110,18 +110,18 @@
             <legend>水印</legend>
             <table cellpadding="10" cellspacing="0" class="a_table_form">
                 <tbody>
-                    <td class="main_bleft">
-                        水印类型:
-                    </td>
-                    <td class="main_bright">
-                        <input type="radio" id="rdo_FontWater" name="rdo_Water" runat="server" checked="true" />
-                        <label for="rdo_fontwater">
-                            文字水印</label>
-                        <input type="radio" id="rdo_ImageWater" name="rdo_Water" runat="server" />
-                        <label for="rdo_imagewater">
-                            图片水印</label>
-                    </td>
                     <tr>
+                        <td class="main_bleft">
+                            水印类型:
+                        </td>
+                        <td class="main_bright">
+                            <input type="radio" id="rdo_FontWater" name="rdo_Water" runat="server" checked="true" />
+                            <label for="rdo_fontwater">
+                                文字水印</label>
+                            <input type="radio" id="rdo_ImageWater" name="rdo_Water" runat="server" />
+                            <label for="rdo_imagewater">
+                                图片水印</label>
+                        </td>
                         <td class="main_bleft">
                             水印:
                         </td>
