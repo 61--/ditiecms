@@ -59,7 +59,7 @@
                 $("#d" + preID).attr("class","");
             preID = cid;
             if (url != "") {
-                document.getElementById("main_body").src = url;
+                $("#main_body").attr("src",url);
             }
             $.ajax({
                 url: "menu.aspx",
@@ -79,7 +79,7 @@
         }
         function frameRedirect(url) {
             $("#ajaxloading").show();
-            document.getElementById("main_body").src = url;
+            $("#main_body").attr("src",url);
         }
     </script>
 

@@ -105,6 +105,7 @@ namespace DTCMS.Web.admin
                 }
                 sb.Append("</ul>");
                 sb.Append("</div>");
+
                 int pagecount = DTCMS.Pages.PageSeting.GetPageCount(totalcount, page);
                 sb.Append("<div style=\"position:absolute;right:0;bottom:-3px;z-index:-1 \">");
                 sb.Append("<div class=\"grayr\" style=\"height:30px;line-height:30px;\">");
@@ -162,13 +163,14 @@ namespace DTCMS.Web.admin
                 sb.Append("</tbody>");
                 sb.Append("</table>");
                 sb.Append("</div>");
-            }
-            int pagecount = DTCMS.Pages.PageSeting.GetPageCount(totalcount, page);
-            sb.Append("<div style=\"position:absolute;right:0px;bottom:-3px;z-index:-1; \">");
-            sb.Append("<div class=\"grayr\" style=\"height:30px;line-height:30px;\">");
-            sb.Append(DTCMS.Pages.PageSeting.GetAjaxPage(pageCurrent, pagecount, "LoadData", page));
-            sb.Append("</div>");
-            sb.Append("</div>");
+
+                int pagecount = DTCMS.Pages.PageSeting.GetPageCount(totalcount, page);
+                sb.Append("<div style=\"position:absolute;right:0px;bottom:-3px;z-index:-1; \">");
+                sb.Append("<div class=\"grayr\" style=\"height:30px;line-height:30px;\">");
+                sb.Append(DTCMS.Pages.PageSeting.GetAjaxPage(pageCurrent, pagecount, "LoadData", page));
+                sb.Append("</div>");
+                sb.Append("</div>");
+            }            
             return sb.ToString();
         }
 
@@ -176,17 +178,31 @@ namespace DTCMS.Web.admin
         {
             Hashtable htAttachment = Config.GobalConfig.GetAttachmentList();
             StringBuilder sbJson = new StringBuilder();
+            sbJson.Append("{");
             if (htAttachment != null && htAttachment.Count > 0)
-            {
-                sbJson.Append("{");
+            {                
                 foreach (DictionaryEntry json in htAttachment)
                 {
                     sbJson.Append("'"+json.Key.ToString()+"':'"+json.Value.ToString()+"'");
                     sbJson.Append(",");
-                }
-                sbJson.Remove(sbJson.Length - 1, 1);
-                sbJson.Append("}");
+                }                
             }
+
+            DataTable dtAttachmentType = SectionConfigBLL.GetSectionListAttachmentType();
+            if (dtAttachmentType != null && dtAttachmentType.Rows.Count > 0)
+            {
+                sbJson.Append("attachmentType:'");
+                int rdo_count = 1;
+                foreach(DataRow dr in dtAttachmentType.Rows)
+                {
+                    sbJson.Append("<span>");
+                    sbJson.Append("<input type=\"radio\" id=\"rdo_" + rdo_count.ToString()+ "\" name=\"rdo\" checked=\"checked\" value=\"" + dr["key"].ToString() + "\" onclick=\"setAttachmentAttribute(this)\" />");
+                    sbJson.Append("<label for=\"rdo_" + rdo_count.ToString() + "\">" + dr["value"].ToString() + "</label>");
+                    sbJson.Append("</span>");
+                    rdo_count++;
+                }
+            }
+            sbJson.Append("'}");
             return sbJson.ToString();
         }
     }

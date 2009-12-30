@@ -8,7 +8,7 @@ using DTCMS.BLL;
 
 namespace DTCMS.Web.admin.sys
 {
-    public partial class WaterImageSetting : AdminPage
+    public partial class AttachMentSetting : AdminPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
