@@ -13,7 +13,8 @@ namespace DTCMS.Web.admin
         {
             if (!this.IsPostBack)
             {
-                Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), " ", "<script>" + ExistsFormat() + "</script>");
+                //Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), " ", "<script>" + ExistsFormat() + "</script>");
+                Response.Write("<script>" + ExistsFormat() + "</script>");
             }
         }
         private string ExistsFormat()
