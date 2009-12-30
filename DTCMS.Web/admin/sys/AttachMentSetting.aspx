@@ -50,7 +50,7 @@
         }
         .a_table_form
         {
-            border:0;
+            border: 0;
             empty-cells: show;
             line-height: 32px;
             margin-top: 5px;
@@ -110,6 +110,17 @@
             <legend>水印</legend>
             <table cellpadding="10" cellspacing="0" class="a_table_form">
                 <tbody>
+                    <td class="main_bleft">
+                        水印类型:
+                    </td>
+                    <td class="main_bright">
+                        <input type="radio" id="rdo_FontWater" name="rdo_Water" runat="server" checked="true" />
+                        <label for="rdo_fontwater">
+                            文字水印</label>
+                        <input type="radio" id="rdo_ImageWater" name="rdo_Water" runat="server" />
+                        <label for="rdo_imagewater">
+                            图片水印</label>
+                    </td>
                     <tr>
                         <td class="main_bleft">
                             水印:
@@ -117,17 +128,6 @@
                         <td class="main_bright">
                             <input type="checkbox" id="chk_HasWaterMark" runat="server" /><label for="chk_HasWaterMark">原图水印</label>
                             <input type="checkbox" id="chk_HasAbbrImageWaterMark" runat="server" /><label for="chk_HasAbbrImageWaterMark">缩略图水印</label>
-                        </td>
-                        <td class="main_bleft">
-                            水印类型:
-                        </td>
-                        <td class="main_bright">
-                            <input type="radio" id="rdo_FontWater" name="rdo_Water" runat="server" checked="true" />
-                            <label for="rdo_fontwater">
-                                文字水印</label>
-                            <input type="radio" id="rdo_ImageWater" name="rdo_Water" runat="server" />
-                            <label for="rdo_imagewater">
-                                图片水印</label>
                         </td>
                     </tr>
                     <tr>

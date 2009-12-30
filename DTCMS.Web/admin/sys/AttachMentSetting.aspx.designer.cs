@@ -86,24 +86,6 @@ namespace DTCMS.Web.admin.sys {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_AbbrImageHeight;
         
         /// <summary>
-        /// chk_HasWaterMark 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_HasWaterMark;
-        
-        /// <summary>
-        /// chk_HasAbbrImageWaterMark 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_HasAbbrImageWaterMark;
-        
-        /// <summary>
         /// rdo_FontWater 控件。
         /// </summary>
         /// <remarks>
@@ -120,6 +102,24 @@ namespace DTCMS.Web.admin.sys {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_ImageWater;
+        
+        /// <summary>
+        /// chk_HasWaterMark 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_HasWaterMark;
+        
+        /// <summary>
+        /// chk_HasAbbrImageWaterMark 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk_HasAbbrImageWaterMark;
         
         /// <summary>
         /// txt_WaterFont 控件。
