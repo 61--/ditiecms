@@ -23,6 +23,33 @@ namespace DTCMS.Web.admin.sys {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// rdo_y 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_y;
+        
+        /// <summary>
+        /// rdo_ym 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_ym;
+        
+        /// <summary>
+        /// rdo_ymd 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_ymd;
+        
+        /// <summary>
         /// hideen_dirctory 控件。
         /// </summary>
         /// <remarks>
@@ -149,6 +176,87 @@ namespace DTCMS.Web.admin.sys {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_WaterImageUrlTran;
         
         /// <summary>
+        /// rdo_top_left 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_top_left;
+        
+        /// <summary>
+        /// rdo_top_center 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_top_center;
+        
+        /// <summary>
+        /// rdo_top_right 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_top_right;
+        
+        /// <summary>
+        /// rdo_center_left 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_center_left;
+        
+        /// <summary>
+        /// rdo_center_center 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_center_center;
+        
+        /// <summary>
+        /// rdo_center_right 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_center_right;
+        
+        /// <summary>
+        /// rdo_bottom_left 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_bottom_left;
+        
+        /// <summary>
+        /// rdo_bottom_center 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_bottom_center;
+        
+        /// <summary>
+        /// rdo_bottom_right 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdo_bottom_right;
+        
+        /// <summary>
         /// hidden_XPercent 控件。
         /// </summary>
         /// <remarks>
@@ -212,12 +320,12 @@ namespace DTCMS.Web.admin.sys {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_AttachmentFormat;
         
         /// <summary>
-        /// btn_Save 控件。
+        /// btn_Save1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btn_Save;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btn_Save1;
     }
 }

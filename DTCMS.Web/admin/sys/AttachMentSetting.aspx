@@ -24,10 +24,10 @@
                 <tr>
                     <td class="main_bleft split">附件保存方式:</td>
                     <td class="main_bright split" colspan="3">
-                        <input type="radio" id="rdo_y" name="rdo_dirctory" /><label for="rdo_y">按年保存</label>
-                        <input type="radio" id="rdo_ym" name="rdo_dirctory" /><label for="rdo_ym">按年/月保存</label>
-                        <input type="radio" id="rdo_ymd" name="rdo_dirctory" /><label for="rdo_ymd">按年/月/日保存</label>
-                        <input type="hidden" id="hideen_dirctory" runat="server" value="yyyyMM" />
+                        <input type="radio" id="rdo_y" name="rdo_dirctory" value="yyyy" onclick="Dirctory(this)" runat="server" /><label for="rdo_y">按年保存</label>
+                        <input type="radio" id="rdo_ym" name="rdo_dirctory" value="yyyyMM" onclick="Dirctory(this)" runat="server" /><label for="rdo_ym">按年/月保存</label>
+                        <input type="radio" id="rdo_ymd" name="rdo_dirctory" value="yyyyMMdd" onclick="Dirctory(this)" runat="server" /><label for="rdo_ymd">按年/月/日保存</label>
+                        <input type="hidden" id="hideen_dirctory" runat="server" value="yyyyMM"/>
                     </td>
                 </tr>                                
                 <tr>
@@ -114,19 +114,19 @@
                         <table id="tb_percent" cellpadding="0" cellspacing="0" border="0">
                             <tbody>
                                 <tr>
-                                    <td><input type="radio" id="rdo_top_left" name="percent"/><label for="rdo_top_left">左上</label></td>
-                                    <td><input type="radio" id="rdo_top_center" name="percent" /><label for="rdo_top_center">中上</label></td>
-                                    <td><input type="radio" id="rdo_top_right" name="percent" /><label for="rdo_top_right">右上</label></td>
+                                    <td><input type="radio" id="rdo_top_left" name="percent" runat="server"/><label for="rdo_top_left">左上</label></td>
+                                    <td><input type="radio" id="rdo_top_center" name="percent" runat="server" /><label for="rdo_top_center">中上</label></td>
+                                    <td><input type="radio" id="rdo_top_right" name="percent" runat="server" /><label for="rdo_top_right">右上</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" id="rdo_center_left" name="percent"/><label for="rdo_center_left">左中</label></td>
-                                    <td><input type="radio" id="rdo_center_center" name="percent" /><label for="rdo_center_center">局中</label></td>
-                                    <td><input type="radio" id="rdo_center_right" name="percent" /><label for="rdo_center_right">右中</label></td>
+                                    <td><input type="radio" id="rdo_center_left" name="percent" runat="server"/><label for="rdo_center_left">左中</label></td>
+                                    <td><input type="radio" id="rdo_center_center" name="percent" runat="server" /><label for="rdo_center_center">局中</label></td>
+                                    <td><input type="radio" id="rdo_center_right" name="percent" runat="server" /><label for="rdo_center_right">右中</label></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="radio" id="rdo_bottom_left" name="percent"/><label for="rdo_bottom_left">左下</label></td>
-                                    <td><input type="radio" id="rdo_bottom_center" name="percent" /><label for="rdo_bottom_center">中下</label></td>
-                                    <td><input type="radio" id="rdo_bottom_right" name="percent" /><label for="rdo_bottom_right">右下</label></td>
+                                    <td><input type="radio" id="rdo_bottom_left" name="percent" runat="server"/><label for="rdo_bottom_left">左下</label></td>
+                                    <td><input type="radio" id="rdo_bottom_center" name="percent" runat="server" /><label for="rdo_bottom_center">中下</label></td>
+                                    <td><input type="radio" id="rdo_bottom_right" name="percent" runat="server" /><label for="rdo_bottom_right">右下</label></td>
                                 </tr>
                             </tbody>
                         </table>  
@@ -164,19 +164,22 @@
         </table>
         <div class="hr"></div>
         <div style="text-align:center;">
-            <button type="button" id="btn_Save" class="b1" runat="server">保存</button>
+            <button type="button" id="btn_Save1" class="b1" runat="server" onserverclick="btn_Save_Click">保存</button>
             <button id="btn_Cancel" type="button" class="b1" onclick="history.back(-1);"> 取消</button>
         </div>
     </div>
     </form>
     <script type="text/javascript">
-        function add_Image() {  //缩略图
+        function add_Image() {
             dialogAttachmentUpload('/admin/attachment/attachmentmanage.aspx', attachment_onCancel);
         }
         function attachment_onCancel(returnPath) {
             if (returnPath) {
                 $("#txt_ImageUrl").val(returnPath);
             }
+        }
+        function Dirctory(obj) {
+            $("#hideen_dirctory").val(obj.value);            
         }
     </script>
 </body>

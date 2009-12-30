@@ -30,7 +30,7 @@
               type: "GET",
               data: "action=upload&ran=" + Math.random(),
               success: function(json) {
-                  InitPage(json);
+                   InitPage(json);
               }
           });
       }

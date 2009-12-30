@@ -11,107 +11,230 @@ using System.Web.Caching;
 namespace DTCMS.Config
 {
     public class GobalConfig
-    {       
+    {
+        private static string path = Utils.GetRootPath() + ConfigPath.GOBAL;
         /// <summary>
         /// 获取缓存依赖
         /// </summary>
-        private static CacheDependency GetGobalConfigCacheDependency()
+        public static CacheDependency GetGobalConfigCacheDependency()
         {
-            return new CacheDependency(Utils.GetRootPath()+"config\\sys\\gobal.config");
+            return new CacheDependency(Utils.GetRootPath() + "config\\sys\\gobal.config");
         }
 
         /// <summary>
         /// 获取xmlDoc
         /// </summary>
-        private static XmlDocumentExtender GetXMLDocument()
-        {             
-           XmlDocumentExtender xmlDoc = CacheAccess.GetFromCache("XmlDocumentExtender") as XmlDocumentExtender;
+        public static XmlDocumentExtender GetXMLDocument()
+        {
+            XmlDocumentExtender xmlDoc = CacheAccess.GetFromCache("XmlDocumentExtender") as XmlDocumentExtender;
             if (xmlDoc == null)
             {
                 xmlDoc = new XmlDocumentExtender();
-                string path = Utils.GetRootPath() + ConfigPath.GOBAL;
                 xmlDoc.Load(path);
                 CacheAccess.SaveToCache("XmlDocumentExtender", xmlDoc, GetGobalConfigCacheDependency());
             }
             return xmlDoc;
         }
 
+        public static void SaveXMLDocument()
+        {
+            GetXMLDocument().Save(path);
+        }
+
         #region 附件
-        /// <summary>
-        /// 获取单个值
-        /// </summary>
-        /// <param name="nodename">节点名称</param>
-        public static string GetWaterImageStr(string nodeName)
-        {
-            XmlNode xmlnode = GetXMLDocument().DocumentElement.SelectSingleNode("/SystemConfig/Attachment/WaterImage");
-            return GetXMLDocument().GetSingleNodeValue(xmlnode, nodeName);
-        }
 
         /// <summary>
-        /// 获取水印图片配置列表
+        /// 附件路径
         /// </summary>
-        public static Hashtable GetWaterImageList()
+        public static string Path
         {
-            Hashtable htWaterImageList = CacheAccess.GetFromCache("htWaterImageList") as Hashtable;
-            if (htWaterImageList == null)
-            {
-                XmlNode xmlnode = GetXMLDocument().DocumentElement.SelectSingleNode("/SystemConfig/Attachment/WaterImage");
-                XmlNodeList xmlnodelist = xmlnode.ChildNodes;
-                htWaterImageList = new Hashtable();                
-                foreach (XmlNode node in xmlnodelist)
-                {
-                    htWaterImageList.Add(node.Name.ToString(), GetXMLDocument().GetSingleNodeValue(xmlnode, node.Name.ToString()));
-                }
-                CacheAccess.SaveToCache("htWaterImageList", htWaterImageList, GetGobalConfigCacheDependency());
-            }
-            return htWaterImageList;
+            get { return GetAttachmentStr("Path"); }
+            set { SetAttachmentStr("Path", value); }
+        }
+        /// <summary>
+        /// 附件保存方式
+        /// </summary>
+        public static string Directory
+        {
+            get { return GetAttachmentStr("Directory"); }
+            set { SetAttachmentStr("Directory", value); }
+        }
+        /// <summary>
+        /// 图片格式
+        /// </summary>
+        public static string ImageFormat
+        {
+            get { return GetAttachmentStr("ImageFormat"); }
+            set { SetAttachmentStr("ImageFormat", value); }
+        }
+        /// <summary>
+        /// 视频格式
+        /// </summary>
+        public static string VideoFormat
+        {
+            get { return GetAttachmentStr("VideoFormat"); }
+            set { SetAttachmentStr("VideoFormat", value); }
+        }
+        /// <summary>
+        /// 音频格式
+        /// </summary>
+        public static string AudioFormat
+        {
+            get { return GetAttachmentStr("AudioFormat"); }
+            set { SetAttachmentStr("AudioFormat", value); }
+        }
+        /// <summary>
+        /// Flash格式
+        /// </summary>
+        public static string FlashFormat
+        {
+            get { return GetAttachmentStr("FlashFormat"); }
+            set { SetAttachmentStr("FlashFormat", value); }
+        }
+        /// <summary>
+        /// 其它附件格式
+        /// </summary>
+        public static string AttachmentFormat
+        {
+            get { return GetAttachmentStr("AttachmentFormat"); }
+            set { SetAttachmentStr("AttachmentFormat", value); }
+        }
+       /// <summary>
+       /// 原图水印
+       /// </summary>
+        public static string HasWaterMark
+        {
+            get { return GetAttachmentStr("HasWaterMark"); }
+            set { SetAttachmentStr("HasWaterMark", value); }
+        }
+        /// <summary>
+        /// 缩略图
+        /// </summary>
+        public static string HasAbbrImage
+        {
+            get { return GetAttachmentStr("HasAbbrImage"); }
+            set { SetAttachmentStr("HasAbbrImage", value); }
+        }
+        /// <summary>
+        /// 缩略图水印
+        /// </summary>
+        public static string HasAbbrImageWaterMark
+        {
+            get { return GetAttachmentStr("HasAbbrImageWaterMark"); }
+            set { SetAttachmentStr("HasAbbrImageWaterMark", value); }
+        }
+        /// <summary>
+        /// 缩略图宽
+        /// </summary>
+        public static string AbbrImageWidth
+        {
+            get { return GetAttachmentStr("AbbrImageWidth"); }
+            set { SetAttachmentStr("AbbrImageWidth", value); }
+        }
+        /// <summary>
+        /// 缩略图高
+        /// </summary>
+        public static string AbbrImageHeight
+        {
+            get { return GetAttachmentStr("AbbrImageHeight"); }
+            set { SetAttachmentStr("AbbrImageHeight", value); }
         }
 
+        #region 水印
         /// <summary>
-        /// 获取单个值
+        /// 水印类型（1:t图片水印，0:文字水印）
         /// </summary>
-        /// <param name="nodename">节点名称</param>
+        public static string WaterPic
+        {
+            get { return GetWaterImageStr("WaterPic"); }
+            set { SetWaterImageStr("WaterPic", value); }
+        }
+        /// <summary>
+        /// 水印文字
+        /// </summary>
+        public static string WaterCharater
+        {
+            get { return GetWaterImageStr("WaterCharater"); }
+            set { SetWaterImageStr("WaterCharater", value); }
+        }
+        /// <summary>
+        /// 水印图片地址
+        /// </summary>
+        public static string WaterPicPath
+        {
+            get { return GetWaterImageStr("WaterPicPath"); }
+            set { SetWaterImageStr("WaterPicPath", value); }
+        }
+        /// <summary>
+        /// 水印X坐标
+        /// </summary>
+        public static string XPercent
+        {
+            get { return GetWaterImageStr("XPercent"); }
+            set { SetWaterImageStr("XPercent", value); }
+        }
+        /// <summary>
+        /// 水印Y坐标
+        /// </summary>
+        public static string YPercent
+        {
+            get { return GetWaterImageStr("YPercent"); }
+            set { SetWaterImageStr("YPercent", value); }
+        }
+        /// <summary>
+        /// 文字水印颜色
+        /// </summary>
+        public static string CharColor
+        {
+            get { return GetWaterImageStr("CharColor"); }
+            set { SetWaterImageStr("CharColor", value); }
+        }
+        /// <summary>
+        /// 水印透明度
+        /// </summary>
+        public static string Transparence
+        {
+            get { return GetWaterImageStr("Transparence"); }
+            set { SetWaterImageStr("Transparence", value); }
+        }
+        /// <summary>
+        /// 水印文字类型
+        /// </summary>
+        public static string FontFamilyName
+        {
+            get { return GetWaterImageStr("FontFamilyName"); }
+            set { SetWaterImageStr("FontFamilyName", value); }
+        }
+        /// <summary>
+        /// 水印文字大小
+        /// </summary>
+        public static string FontSize
+        {
+            get { return GetWaterImageStr("FontSize"); }
+            set { SetWaterImageStr("FontSize", value); }
+        }
+        #endregion 水印
+
         public static string GetAttachmentStr(string nodeName)
         {
-            XmlNode xmlnode = GetXMLDocument().DocumentElement.SelectSingleNode("/SystemConfig/Attachment");
+            XmlNode xmlnode=GetXMLDocument().DocumentElement.SelectSingleNode("/SystemConfig/Attachment");
             return GetXMLDocument().GetSingleNodeValue(xmlnode, nodeName);
         }
 
-        /// <summary>
-        /// 获取附件配置列表
-        /// </summary>
-        public static Hashtable GetAttachmentList()
-        {            
-            Hashtable htAttachmentList = CacheAccess.GetFromCache("htAttachmentList") as Hashtable;
-            if (htAttachmentList == null)
-            {
-                XmlNode xmlnode = GetXMLDocument().DocumentElement.SelectSingleNode("/SystemConfig/Attachment");
+        public static void SetAttachmentStr(string nodeName, string nodeValue)
+        {
+            GetXMLDocument().DocumentElement.SelectSingleNode("/SystemConfig/Attachment/" + nodeName).InnerText = nodeValue;
+        }
 
-                string fileName = GetXMLDocument().GetSingleNodeValue(xmlnode, "Path") + "\\"
-                + DateTime.Now.ToString(GetXMLDocument().GetSingleNodeValue(xmlnode, "Directory") == "" ? "yyyyMM" : GetXMLDocument().GetSingleNodeValue(xmlnode, "Directory"));
+        public static string GetWaterImageStr(string nodeName)
+        {
+            XmlNode xmlnode= GetXMLDocument().DocumentElement.SelectSingleNode("/SystemConfig/Attachment/WaterImage");
+            return GetXMLDocument().GetSingleNodeValue(xmlnode,nodeName);
+        }
 
-                if (!FileAccessHelper.DirectoryExists(fileName))
-                {
-                    Directory.CreateDirectory(fileName);
-                }
-
-                htAttachmentList = new Hashtable();
-                htAttachmentList.Add("Path", fileName);
-                htAttachmentList.Add("Directory", GetXMLDocument().GetSingleNodeValue(xmlnode, "Directory"));
-                htAttachmentList.Add("ImageFormat", GetXMLDocument().GetSingleNodeValue(xmlnode, "ImageFormat"));
-                htAttachmentList.Add("VideoFormat", GetXMLDocument().GetSingleNodeValue(xmlnode, "VideoFormat"));
-                htAttachmentList.Add("AudioFormat", GetXMLDocument().GetSingleNodeValue(xmlnode, "AudioFormat"));
-                htAttachmentList.Add("FlashFormat", GetXMLDocument().GetSingleNodeValue(xmlnode, "FlashFormat"));
-                htAttachmentList.Add("AttachmentFormat", GetXMLDocument().GetSingleNodeValue(xmlnode, "AttachmentFormat"));
-                htAttachmentList.Add("HasWaterMark", GetXMLDocument().GetSingleNodeValue(xmlnode, "HasWaterMark"));
-                htAttachmentList.Add("HasAbbrImage", GetXMLDocument().GetSingleNodeValue(xmlnode, "HasAbbrImage"));
-                htAttachmentList.Add("HasAbbrImageWaterMark", GetXMLDocument().GetSingleNodeValue(xmlnode, "HasAbbrImageWaterMark"));
-                htAttachmentList.Add("AbbrImageWidth", GetXMLDocument().GetSingleNodeValue(xmlnode, "AbbrImageWidth"));
-                htAttachmentList.Add("AbbrImageHeight", GetXMLDocument().GetSingleNodeValue(xmlnode, "AbbrImageHeight"));
-                
-                CacheAccess.SaveToCache("htAttachmentList", htAttachmentList, GetGobalConfigCacheDependency());
-            }           
-            return htAttachmentList;
+        public static void SetWaterImageStr(string nodeName, string nodeValue)
+        {
+            GetXMLDocument().DocumentElement.SelectSingleNode("/SystemConfig/Attachment/WaterImage/" + nodeName).InnerText = nodeValue;
         }
 
         #endregion 附件
