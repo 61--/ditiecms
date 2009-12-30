@@ -11,7 +11,10 @@ namespace DTCMS.Web.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), " ", "<script>" + ExistsFormat() + "</script>");
+            if (!this.IsPostBack)
+            {
+                Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), " ", "<script>" + ExistsFormat() + "</script>");
+            }
         }
         private string ExistsFormat()
         {
