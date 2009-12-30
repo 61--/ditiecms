@@ -8,7 +8,7 @@ using DTCMS.DBUtility;
 using DTCMS.IDAL;
 namespace DTCMS.SqlServerDAL
 {
-    public class Sys_PublishDAL:IDAL_Sys_Publish
+    public class Sys_PublishDAL:BaseDAL,IDAL_Sys_Publish
     {
         /// <summary>
         /// 根据栏目编号获取栏目信息
@@ -161,7 +161,7 @@ namespace DTCMS.SqlServerDAL
             
             StringBuilder strSql=new StringBuilder ();
             strSql.Append(" SELECT ");
-            strSql.Append(" a.[ID],a.Title,a.ShortTitle,a.TitleStyle,a.TitleFlag,a.Tags,a.ImgUrl,a.Author,a.Source,a.Templet,a.Keywords,a.Description,a.Content,a.Click,a.Good,a.Bad,a.Readaccess,a.Money,a.IsComment,a.IsRedirect,a.FilePath,a.SimilarArticle,a.PubDate,b.CID,b.ClassName,b.ClassType,");
+            strSql.Append(" a.[ID],a.Title,a.ShortTitle,a.TitleStyle,a.TitleFlag,a.Tags,a.ImgUrl,a.Author,a.Source,a.Templet,a.Keywords,a.Description,a.Content,a.Click,a.Good,a.Bad,a.Readaccess,a.Money,a.IsComment,a.IsRedirect,a.FilePath,a.SimilarArticle,a.PubDate,b.CID,b.ClassName,b.ClassType");
             strSql.Append(" FROM DT_Arc_Article as a,DT_Arc_Class as b  ");
             strSql.Append(" WHERE ");
             strSql.Append(strSearch.ToString());
@@ -266,6 +266,61 @@ namespace DTCMS.SqlServerDAL
                 strSql.AppendFormat("ORDER BY a.[{0}] {1} ", orderBy, orderWay);
 
             return SqlHelper.FillDataset(CommandType.Text, strSql.ToString(), null).Tables[0];
+        }
+
+        /// <summary>
+        /// 获取当前类别的父类别集合
+        /// </summary>
+        /// <param name="CID">栏目编号</param>
+        /// <returns>栏目集合</returns>
+        public List<Arc_Class> GetParentClassList(int CID)
+        {
+            string sql ="SELECT CID,ClassName,Relation,ParentID From DT_Arc_Class WHERE CID=@CID ";
+            SqlParameter[] param = new SqlParameter[]{
+                         new SqlParameter("@CID",SqlDbType.Int,4)
+            };
+            param[0].Value = CID;
+
+            Arc_Class model=new Arc_Class ();
+            using (SqlDataReader reader = SqlHelper.ExecuteReader(CommandType.Text, sql, param))
+            {
+                if (reader.HasRows)
+                {
+                    model = DataReaderToModel<Arc_Class>(reader);
+                }
+            }
+            if (!string.IsNullOrEmpty(model.Relation))
+            {
+                List<Arc_Class> list = new List<Arc_Class>();
+                if (model.ParentID > 0)
+                {
+                    model.Relation = model.Relation.Replace(".0.", "");
+                    model.Relation = model.Relation.Trim().Substring(0, model.Relation.Trim().Length - 1);
+                    StringBuilder strSql = new StringBuilder();
+                    strSql.Append(" SELECT CID,ClassName,ClassDomain,ClassPath From DT_Arc_Class ");
+                    strSql.Append(" WHERE ");
+                    strSql.AppendFormat(" CID IN ({0}) ", model.Relation);
+                    strSql.Append(" ORDER BY LEN(Relation) ASC ");
+
+                    using (SqlDataReader readerList = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+                    {
+                        while (readerList.Read())
+                        {
+                            list.Add(DataReaderToModel<Arc_Class>(readerList));
+                        }
+                    }
+
+                }
+                else
+                {
+                     list.Add(model);
+                }
+                return list;
+            }
+            return null;
+           
+            
+
         }
 
 
