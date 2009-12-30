@@ -7,6 +7,7 @@ using System.Data;
 using System.Text;
 using DTCMS.BLL;
 using System.Collections;
+using DTCMS.Config;
 
 namespace DTCMS.Web.admin
 {
@@ -183,23 +184,24 @@ namespace DTCMS.Web.admin
 
         private string JsonAttachmentList()
         {
-            Hashtable htAttachment = Config.GobalConfig.GetAttachmentList();
             StringBuilder sbJson = new StringBuilder();
 
             sbJson.Append("{");
-            if (htAttachment != null && htAttachment.Count > 0)
-            {                
-                foreach (DictionaryEntry json in htAttachment)
-                {
-                    sbJson.Append("'"+json.Key.ToString()+"':'"+json.Value.ToString()+"'");
-                    sbJson.Append(",");
-                }                
-            }
+            sbJson.Append("'HasWaterMark':'" + GobalConfig.HasWaterMark + "'");
+            sbJson.Append(",");
+            sbJson.Append("'HasAbbrImage':'" + GobalConfig.HasAbbrImage + "'");
+            sbJson.Append(",");
+            sbJson.Append("'HasHasAbbrImageWaterMarkWaterMark':'" + GobalConfig.HasAbbrImageWaterMark + "'");
+            sbJson.Append(",");
+            sbJson.Append("'AbbrImageWidth':'" + GobalConfig.AbbrImageWidth + "'");
+            sbJson.Append(",");
+            sbJson.Append("'AbbrImageHeight':'" + GobalConfig.AbbrImageHeight + "'");
+            sbJson.Append(",");
 
             DataTable dtAttachmentType = SectionConfigBLL.GetSectionListAttachmentType();
             if (dtAttachmentType != null && dtAttachmentType.Rows.Count > 0)
             {
-                sbJson.Append("attachmentType:'");
+                sbJson.Append("'attachmentType':'");
                 int rdo_count = 1;
                 foreach(DataRow dr in dtAttachmentType.Rows)
                 {

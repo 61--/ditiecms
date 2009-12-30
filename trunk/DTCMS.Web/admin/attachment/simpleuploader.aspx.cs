@@ -32,8 +32,9 @@ namespace DTCMS.Web.admin
             string hasWaterMark1 = DTCMS.Common.Utils.GetFormString("chHasWaterMark1");   //缩略图是否水印
             int abbrImageWidth1 = DTCMS.Common.Utils.GetFormInt("abbrImageWidth1"); //缩略图宽
             int abbrImageHeight1 = DTCMS.Common.Utils.GetFormInt("abbrImageHeight1");   //缩略图高
-            Hashtable htPhoto = GobalConfig.GetAttachmentList();    //附件配置列表 
-            string filepath = DTCMS.Common.Utils.GetRootPath() + htPhoto["Path"].ToString().Replace("\\\\","\\") + "\\"; //附件存放路径
+            string filepath = DTCMS.Common.Utils.GetRootPath() + GobalConfig.Path.Replace("\\\\", "\\")+"\\"
+                + DateTime.Now.ToString(GobalConfig.Directory == "" ? "yyyyMM" : GobalConfig.Directory) + "\\"; //附件存放路径
+
             string errorMsg = string.Empty; //错误信息
             int returnVal = 1;    //返回值。1：成功，202：无效上传文件，203：你没有权限，204：未知错误
             string returnImgName = string.Empty;    //返回图片名称
@@ -133,11 +134,11 @@ namespace DTCMS.Web.admin
                             Atr_AttachMent modAttachMent = new Atr_AttachMent();
                             modAttachMent.AttachMentAttribute = attachmentAttribute;
                             modAttachMent.AttachMentDisplayName = fileDisplayName;
-                            modAttachMent.AttachMentPath = "/" + htPhoto["Path"].ToString().Replace("\\", "/") + "/" + returnImgName;
+                            modAttachMent.AttachMentPath = "/" + GobalConfig.Path.Replace("\\", "/") + "/" + returnImgName;
                             modAttachMent.AttachMentSize = (fileContentLen / 1024).ToString() + "K";
                             if (hasAbbrImage1.Trim().ToLower() == "true")
                             {
-                                modAttachMent.AbbrPhotoPath = "/" + htPhoto["Path"].ToString().Replace("\\", "/") + "/" + abbName;
+                                modAttachMent.AbbrPhotoPath = "/" + GobalConfig.Path.Replace("\\", "/") + "/" + abbName;
                             }
                             else
                             {
@@ -174,11 +175,11 @@ namespace DTCMS.Web.admin
             string returnImgPath = "";
             if (hasAbbrImage1.Trim().ToLower() == "true")
             {
-                returnImgPath = "/" + htPhoto["Path"].ToString().Replace("\\\\", "\\").Replace("\\", "/") + "/" + abbName;
+                returnImgPath = "/" + GobalConfig.Path.Replace("\\\\", "\\").Replace("\\", "/") + "/" + abbName;
             }
             else
             {
-                returnImgPath = "/" + htPhoto["Path"].ToString().Replace("\\\\", "\\").Replace("\\", "/") + "/" + returnImgName;
+                returnImgPath = "/" + GobalConfig.Path.Replace("\\\\", "\\").Replace("\\", "/") + "/" + returnImgName;
             }
 
             Response.Redirect("~/admin/attachment/emptyPage.html?returnVal=" + returnVal + "&errorMsg=" + errorMsg + "&returnImgPath=" + returnImgPath);
@@ -239,21 +240,20 @@ namespace DTCMS.Web.admin
         /// <param name="path_syp">水印地址</param>
         private void WaterImage(string path, string path_syp)
         {
-            Hashtable htWarterImage = GobalConfig.GetWaterImageList();
-            if (Convert.ToInt32(htWarterImage["WaterPic"]) == 1)
+            if (Convert.ToInt32(GobalConfig.WaterPic) == 1)
             {//图片水印
-                Common.WaterImage.AddWaterPic(path, path_syp, htWarterImage["WaterPicPath"].ToString()
-                     , Convert.ToDouble(htWarterImage["XPercent"])
-                    , Convert.ToDouble(htWarterImage["YPercent"])
-                    , float.Parse(htWarterImage["Transparence"].ToString()));
+                Common.WaterImage.AddWaterPic(path, path_syp, GobalConfig.WaterPicPath
+                     , Convert.ToDouble(GobalConfig.XPercent)
+                    , Convert.ToDouble(GobalConfig.YPercent)
+                    , float.Parse(GobalConfig.Transparence));
             }
             else
             {//文字水印
-                Common.WaterImage.AddWater(path, path_syp, htWarterImage["WaterCharater"].ToString()
-                    , Convert.ToDouble(htWarterImage["XPercent"])
-                    , Convert.ToDouble(htWarterImage["YPercent"])
-                    , System.Drawing.ColorTranslator.FromHtml(htWarterImage["CharColor"].ToString())
-                    , htWarterImage["FontFamilyName"].ToString(), Convert.ToInt32(htWarterImage["FontSize"]));
+                Common.WaterImage.AddWater(path, path_syp, GobalConfig.WaterCharater
+                    , Convert.ToDouble(GobalConfig.XPercent)
+                    , Convert.ToDouble(GobalConfig.YPercent)
+                    , System.Drawing.ColorTranslator.FromHtml(GobalConfig.CharColor)
+                    , GobalConfig.FontFamilyName, Convert.ToInt32(GobalConfig.FontSize));
             }
 
         }
