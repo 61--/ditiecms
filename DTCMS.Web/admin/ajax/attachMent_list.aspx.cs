@@ -25,6 +25,7 @@ namespace DTCMS.Web.admin
             {
                 page = 1;
             }
+
             switch (action)
             {
                 case "upload":
@@ -40,6 +41,8 @@ namespace DTCMS.Web.admin
                         Response.Write(HtmlAttachmentList(page, type, name));
                     }
                 break;
+                default:
+                break;
             }
         }
 
@@ -51,10 +54,11 @@ namespace DTCMS.Web.admin
         /// <returns></returns>
         private string HtmlImageList(int pageCurrent, string attachMentDisplayName)
         {
-            int totalcount=0;    //总页数
+            int totalcount=0;
             int page = 10;
-            string where = string.Empty;    //查询条件
+            string where = string.Empty;
             StringBuilder sb = new StringBuilder();
+
             if (attachMentDisplayName != string.Empty)
             {
                 where = string.Format("AttachMentAttribute=1 and AttachMentDisplayName like '%{0}%'", attachMentDisplayName);
@@ -63,6 +67,7 @@ namespace DTCMS.Web.admin
             {
                 where = "AttachMentAttribute=1";
             }
+
             DataTable dtImageList = bllAttachment.GetAttachmentList(pageCurrent, page, where, out totalcount);
             if (dtImageList != null && dtImageList.Rows.Count > 0)
             {
@@ -118,11 +123,12 @@ namespace DTCMS.Web.admin
 
         private string HtmlAttachmentList(int pageCurrent,int attachMentType,string attachMentDisplayName)
         {
-            int idnum = 1;  //id编号
-            int totalcount = 0;    //总页数
+            int idnum = 1;
+            int totalcount = 0;
             int page = 10;
-            string where = string.Empty;    //查询条件
+            string where = string.Empty;
             StringBuilder sb = new StringBuilder();
+
             if (attachMentDisplayName != string.Empty)
             {
                 where = string.Format("AttachMentAttribute={0} and AttachMentDisplayName like '%{1}%'",attachMentType,attachMentDisplayName);
@@ -131,6 +137,7 @@ namespace DTCMS.Web.admin
             {
                 where = string.Format("AttachMentAttribute={0}",attachMentType);
             }
+
             DataTable dtAttachMentList = bllAttachment.GetAttachmentList(pageCurrent, page, where, out totalcount);
             if (dtAttachMentList != null && dtAttachMentList.Rows.Count > 0)
             {
@@ -178,6 +185,7 @@ namespace DTCMS.Web.admin
         {
             Hashtable htAttachment = Config.GobalConfig.GetAttachmentList();
             StringBuilder sbJson = new StringBuilder();
+
             sbJson.Append("{");
             if (htAttachment != null && htAttachment.Count > 0)
             {                

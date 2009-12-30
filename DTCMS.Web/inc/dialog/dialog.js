@@ -656,14 +656,9 @@ var Drag = {
     }
 };
 
-
-/**
-*附件上传
-*url，附件管理attachmentmanage.aspx
-*取消触发事件，带一个返回路劲参数
-*/
 function dialogAttachmentUpload(url, cancelevent, width, height) {
     var diag = new Dialog();
+    
     diag.Title = "附件管理";
     diag.Width = width || 600;
     diag.Height = height || 395;
@@ -681,15 +676,13 @@ function dialogAttachmentUpload(url, cancelevent, width, height) {
         }
         diag.close();
     };
+    
     diag.show();
 }
 
-/**
-*获取Tag关键字
-*确定触发事件
-*/
 function dialogTagPage(okevent, url, width, height) {
     var dialog = new Dialog();
+    
     dialog.Title = "关键字 列表";
     dialog.Width = (width||400) >= 400 ? (width||400) : 400;
     dialog.Height = (height||300) >= 300 ? (height||300) : 300;
@@ -700,17 +693,15 @@ function dialogTagPage(okevent, url, width, height) {
         if (tags != "") {
             okevent(tags);
             dialog.close();
-        }        
-    };    
+        }
+    };   
+     
     dialog.show();
 }
 
-/**
-*获取作者
-*确定触发事件
-*/
 function dialogAuthorPage(okevent, url, width, height) {
     var dialog = new Dialog();
+    
     dialog.Title = "作者 列表";
     dialog.Width = (width || 400) >= 400 ? (width || 400) : 400;
     dialog.Height = (height || 300) >= 300 ? (height || 300) : 300;
@@ -723,15 +714,13 @@ function dialogAuthorPage(okevent, url, width, height) {
             dialog.close();
         }
     };
+    
     dialog.show();
 }
 
-/**
-*获取栏目
-*确定触发事件
-*/
 function dialogclassPage(okevent, url, width, height) {
     var dialog = new Dialog();
+    
     dialog.Title = "栏目 列表";
     dialog.Width = (width || 400) >= 400 ? (width || 400) : 400;
     dialog.Height = (height || 300) >= 300 ? (height || 300) : 300;
@@ -744,5 +733,6 @@ function dialogclassPage(okevent, url, width, height) {
             dialog.close();
         }
     };
+    
     dialog.show();
 }
