@@ -18,11 +18,11 @@
     .file{cursor:pointer;}
     fieldset{ padding:3px 0 6px 0;}
     legend{ margin-left:8px;}
-    #div_attachmentAttribute span{ padding-right:3px;}
+    #div_attachmentType span{ padding-right:3px;}
 </style>
   <script type="text/javascript">
       $(document).ready(function() {
-          LoadData();
+      LoadData();
       });
       function LoadData() {
           $.ajax({
@@ -42,22 +42,18 @@
               $("#chHasWaterMark1").attr("checked", data.HasAbbrImageWaterMark == 1 ? true : false);
               $("#abbrImageWidth1").val(data.AbbrImageWidth);
               $("#abbrImageHeight1").val(data.AbbrImageHeight);
+              $("#div_attachmentType").html(data.attachmentType);
           }
       }
   </script>
 </head>
 <body>    	
-    <form enctype="multipart/form-data" id="form1" name="Form1" target="formTarget" method="post" action="SimpleUploader.aspx?type=image">
+    <form enctype="multipart/form-data" id="form1" name="Form1" target="formTarget" method="post" action="SimpleUploader.aspx?type=image" runat="server">
         <div id="upload" style="width:570px; margin:0 auto;">
             <div id="top" style="text-align:left;width:100%;">
-                <div id="div_attachmentAttribute" style="margin-bottom:4px;">
-                    <span><input type="radio" id="rdo_photo" name="rdo" checked="checked" value="1" onclick="setAttachmentAttribute(this)" /><label for="rdo_photo">图片</label></span>
-                    <span><input type="radio" id="rdo_video" name="rdo" value="2" onclick="setAttachmentAttribute(this)" /><label for="rdo_video">视频</label></span>
-                    <span><input type="radio" id="rdo_audio" name="rdo" value="3" onclick="setAttachmentAttribute(this)" /><label for="rdo_audio">音频</label></span>
-                    <span><input type="radio" id="rdo_flash" name="rdo" value="4" onclick="setAttachmentAttribute(this)" /><label for="rdo_flash">Flash</label></span>
-                    <span><input type="radio" id="rdo_attachment" name="rdo"  value="5" onclick="setAttachmentAttribute(this)" /><label for="rdo_attachment">附件</label></span>
-                    <span><input type="hidden" id="hid_attachmentAttribute" name="hid_attachmentAttribute" value="1" /></span>
+                <div id="div_attachmentType" style="margin-bottom:4px;">                    
                 </div>
+                <span><input type="hidden" id="hid_attachmentAttribute" name="hid_attachmentAttribute" value="1" /></span>
                 <fieldset><legend>附件上传</legend>
                     <table id="imagetable0" style="width:100%;" cellpadding="0" cellspacing="0" >
                         <tr>
@@ -173,39 +169,37 @@
                 case 202:
                 case "202":
                     Dialog.alert('无效的文件类型！以下文件上传失败:' + errorMsg);
-                    return;
+                    break;
                 case 203:
                 case "203":
                     Dialog.alert("您没有权限上传此文件，请检查服务器设置");
-                    return;
+                    break;
                 default:
                     Dialog.alert('上传失败，错误代码: ' + returnVal);
-                    return;
+                    break;
             }
         }
         function upload() {
             var flag = false;
             var count = 5;
-
             for (var i = 1; i <= count; i++) {
-                var imgName = document.getElementById("File" + i).value;
+                var imgName = $("#File" + i).val();
                 if (imgName == "") {
                     continue;
                 }
                 var ext = imgName.substring(imgName.lastIndexOf(".") + 1).toLowerCase();
                 if (hasAttachmentFormat(ext)) {
                     flag = true;
-                } else {
+                }else {
                     Dialog.alert("附件上传不支持" + ext + "文件！请重新选择。");
                     return;
                 }
             }
             if(flag) {
                 msg();
-                document.getElementById("form1").submit();
+                $("#form1").submit();
             } else {
                 Dialog.alert("请先浏览选择文件！");
-                return;
             }
         }
         
@@ -213,45 +207,44 @@
             switch (getAttachmentAttribute()) {
                 case "1":
                     return hasImage(ext);
+                case "2":
+                    return hasVideo(ext);
+                case "3":
+                    return hasAudio(ext);
+                case "4":
+                    return hasFlash(ext);
                 case "5":
                     return hasAttachment(ext);
-                    return
                 default:
                     return false;
             }
-        }
-        function hasImage(ext) {
-            return (ext == "jpg" || ext == "jpeg" || ext == "bmp" || ext == "gif" || ext == "png");
-        }
-        function hasAttachment(ext) {
-             return (ext == "doc" || ext == "txt");
-         }  
+        }         
           	
     	function msg() {
     	    var txt = "正在上传处理中，请稍候...耗时";
     	    var counter = 1;
-    	    setInterval(function() { document.getElementById("msg").innerHTML = "<font color=red>" + txt + counter + "秒</font>"; counter++ }, 1000);
+    	    setInterval(function() { $("#msg").innerHTML = "<font color=red>" + txt + counter + "秒</font>"; counter++ }, 1000);
     	}
     	    	    	
     	function fileOnChange(obj) {
     	    var val = obj.value;
     	    var fileName = val.substring(val.lastIndexOf('\\') + 1);
-    	    document.getElementById(obj.id + "Name").value = fileName;
-    	    document.getElementById(obj.id + "Info").value = fileName;
+    	    $("#" + obj.id + "Name").val(fileName);
+    	    $("#"+obj.id + "Info").val(fileName);
     	}
     	
     	function setAttachmentAttribute(obj) {
-    	    document.getElementById("hid_attachmentAttribute").value = (obj.value || 1);
+    	    $("#hid_attachmentAttribute").val(obj.value || 1);
     	}
     	function getAttachmentAttribute() {
-    	    return (document.getElementById("hid_attachmentAttribute").value || 1);
+    	    return ($("#hid_attachmentAttribute").val()|| 1);
     	}
-    	
+
     	function setReturnPath(val) {
-    	    document.getElementById("returnImgPath").value = val;
+    	    $("#returnImgPath").val(val);
     	}
     	function returnPath() {
-    	    return document.getElementById("returnImgPath").value;
+    	    return $("#returnImgPath").val();
     	}
     </script>
 </body>

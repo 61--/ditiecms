@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WaterImageSetting.aspx.cs" Inherits="DTCMS.Web.admin.sys.WaterImageSetting" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AttachMentSetting.aspx.cs" Inherits="DTCMS.Web.admin.sys.AttachMentSetting" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -11,7 +11,7 @@
     <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>    
     <style type="text/css">
-        #continer{ margin:0 auto; width:760px;}
+        #continer{ margin:0 auto; width:90%;}
         .hr{ height:12px; line-height:12px; overflow:hidden; clear:both;}
         .caption{ margin:0 0 0 3px; height:28px; line-height:28px;}
     </style>
@@ -22,6 +22,36 @@
         <table cellpadding="10" cellspacing="0" class="table_form">
              <tbody>
                 <tr>
+                    <td class="main_bleft split">附件保存方式:</td>
+                    <td class="main_bright split" colspan="3">
+                        <input type="radio" id="rdo_y" name="rdo_dirctory" /><label for="rdo_y">按年保存</label>
+                        <input type="radio" id="rdo_ym" name="rdo_dirctory" /><label for="rdo_ym">按年/月保存</label>
+                        <input type="radio" id="rdo_ymd" name="rdo_dirctory" /><label for="rdo_ymd">按年/月/日保存</label>
+                        <input type="hidden" id="hideen_dirctory" runat="server" value="yyyyMM" />
+                    </td>
+                </tr>                                
+                <tr>
+                    <td class="main_bleft">缩略图:</td>
+                    <td class="main_bright" colspan="3">
+                        <input type="checkbox" id="chk_HashAbbrImage" runat="server" /><label for="chk_HashAbbrImage">生成缩略图</label>                                                
+                    </td>
+                </tr>
+                <tr>
+                    <td class="main_bleft split">缩略图宽:</td>
+                    <td class="main_bright split">
+                        <input type="text" id="txt_AbbrImageWidth" runat="server" class="textbox short" style="width:80px;" /><span class="caption">(单位:像素)</span>
+                    </td>
+                    <td class="main_bleft split">缩略图高:</td>
+                    <td class="main_bright split">
+                        <input type="text" id="txt_AbbrImageHeight" runat="server" class="textbox short" style="width:80px;" /><span class="caption">(单位:像素)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="main_bleft split">水印:</td>
+                    <td class="main_bright split">
+                        <input type="checkbox" id="chk_HasWaterMark" runat="server" /><label for="chk_HasWaterMark">原图水印</label>                                                                   
+                        <input type="checkbox" id="chk_HasAbbrImageWaterMark" runat="server" /><label for="chk_HasAbbrImageWaterMark">缩略图水印</label>                        
+                    </td>
                     <td class="main_bleft split">
                         水印类型:
                     </td>
@@ -39,8 +69,6 @@
                     <td class="main_bright split">
                         <input type="text" id="txt_WaterFont" class="textbox short" runat="server" />
                     </td>
-                </tr>
-                <tr>
                     <td class="main_bleft split">
                         水印文字颜色:
                     </td>
@@ -55,8 +83,6 @@
                     <td class="main_bright split">
                         <select id="slt_WaterFontType" runat="server" style="width: 185px; background: #F7FAFC;"></select>
                     </td>
-                </tr>
-                <tr>
                     <td class="main_bleft split">
                         水印文字大小:
                     </td>
@@ -68,7 +94,7 @@
                     <td class="main_bleft split">
                         水印图片地址:
                     </td>
-                    <td class="main_bright split">
+                    <td class="main_bright split" colspan="3">
                         <input type="text" id="txt_WaterImageUrl" class="textbox" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" onclick="add_Image();" />
                     </td>
                 </tr>
@@ -76,7 +102,7 @@
                     <td class="main_bleft split">
                         水印图片透明度:
                     </td>
-                    <td class="main_bright split">
+                    <td class="main_bright split" colspan="3">
                         <input type="text" id="txt_WaterImageUrlTran" class="textbox short" runat="server" /><span class="caption">(1到100)</span>
                     </td>
                 </tr>
@@ -84,7 +110,7 @@
                      <td class="main_bleft split">
                         水印位置:
                     </td>
-                    <td class="main_bright split">
+                    <td class="main_bright split" colspan="3">
                         <table id="tb_percent" cellpadding="0" cellspacing="0" border="0">
                             <tbody>
                                 <tr>
@@ -108,12 +134,39 @@
                         <input type="hidden" id="hidden_YPercent" value="0" runat="server" />  
                     </td>
                 </tr>
+                <tr>
+                    <td class="main_bleft split">图片保存格式:</td>
+                    <td class="main_bright split">
+                        <input type="text" id="txt_ImageFormat" runat="server" class="textbox" />
+                    </td>
+                     <td class="main_bleft split">视频保存格式:</td>
+                    <td class="main_bright split">
+                        <input type="text" id="txt_VidoFormat" runat="server" class="textbox" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="main_bleft split">音频保存格式:</td>
+                    <td class="main_bright split">
+                        <input type="text" id="txt_AudioFormat" runat="server" class="textbox" />
+                    </td>
+                    <td class="main_bleft split">Flash保存格式:</td>
+                    <td class="main_bright split">
+                        <input type="text" id="txt_Flash" runat="server" class="textbox" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="main_bleft split">附件保存格式:</td>
+                    <td class="main_bright split" colspan="3">
+                        <input type="text" id="txt_AttachmentFormat" runat="server" class="textbox" />
+                    </td>
+                </tr>
             </tbody>
         </table>
         <div class="hr"></div>
         <div style="text-align:center;">
-        <button type="button" id="btn_Save" class="b1" runat="server">保存</button>
-        <button id="btn_Cancel" type="button" class="b1" onclick="history.back(-1);"> 取消</button></div>
+            <button type="button" id="btn_Save" class="b1" runat="server">保存</button>
+            <button id="btn_Cancel" type="button" class="b1" onclick="history.back(-1);"> 取消</button>
+        </div>
     </div>
     </form>
     <script type="text/javascript">
