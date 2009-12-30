@@ -107,14 +107,17 @@
         //*cid:  栏目编号
         function updateData() {
             var input = $("input[name='items']");
+            var val = "";
             $.each(input, function(i, n) {
                 if (n.checked) {
-                    window.location.href = "Class_add.aspx?Id=" + n.value;
-                    return;
+                    val = n.value;                    
                 }
             });
-            Dialog.alert("请选择要修改的栏目!");
-            return;
+            if (val != "") {
+                window.location.href = "Class_add.aspx?Id=" + val;
+            } else {
+                Dialog.alert("请选择要修改的栏目!");
+            }
         }
         //cid:  栏目编号
         //flag:  是否批量删除，表示true:批量删除，false:单个删除
