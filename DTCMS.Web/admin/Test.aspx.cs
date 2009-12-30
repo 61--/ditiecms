@@ -25,7 +25,7 @@ namespace DTCMS.Web.admin
 
             for (int i = 0; i < 100000; i++)
             {
-                string path = GobalConfig.Path.ToString();
+                string path = GobalConfig.GetAttachmentStr("Path");
             }
 
             sw.Stop();
