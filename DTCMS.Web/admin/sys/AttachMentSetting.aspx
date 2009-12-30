@@ -116,17 +116,17 @@
                         </td>
                         <td class="main_bright">
                             <input type="radio" id="rdo_FontWater" name="rdo_Water" runat="server" checked="true" />
-                            <label for="rdo_fontwater">
+                            <label for="rdo_FontWater" style=" margin-right:6px;">
                                 文字水印</label>
                             <input type="radio" id="rdo_ImageWater" name="rdo_Water" runat="server" />
-                            <label for="rdo_imagewater">
+                            <label for="rdo_ImageWater">
                                 图片水印</label>
                         </td>
                         <td class="main_bleft">
                             水印:
                         </td>
                         <td class="main_bright">
-                            <input type="checkbox" id="chk_HasWaterMark" runat="server" /><label for="chk_HasWaterMark">原图水印</label>
+                            <input type="checkbox" id="chk_HasWaterMark" runat="server" /><label for="chk_HasWaterMark" style=" margin-right:6px;">原图水印</label>
                             <input type="checkbox" id="chk_HasAbbrImageWaterMark" runat="server" /><label for="chk_HasAbbrImageWaterMark">缩略图水印</label>
                         </td>
                     </tr>
