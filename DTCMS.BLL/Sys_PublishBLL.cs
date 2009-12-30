@@ -84,5 +84,15 @@ namespace DTCMS.BLL
         {
             return dalPublish.GetTopArticleBySearch(topnum,orderBy,orderWay,search);
         }
+        /// <summary>
+        /// 获取导航集合 通过当前类别编号
+        /// </summary>
+        /// <param name="CID">编号</param>
+        /// <returns></returns>
+        public List<Arc_Class> GetNavig(int CID)
+        {          
+           return dalPublish.GetParentClassList(CID);
+            
+        }
     }
 }
