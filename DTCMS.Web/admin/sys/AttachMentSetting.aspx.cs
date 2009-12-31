@@ -7,11 +7,12 @@ using System.Data;
 using DTCMS.BLL;
 using DTCMS.Config;
 using DTCMS.Common;
+using DTCMS.Entity;
 
 namespace DTCMS.Web.admin.sys
 {
     public partial class AttachMentSetting : AdminPage
-    {
+    {        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -26,52 +27,56 @@ namespace DTCMS.Web.admin.sys
         private void InitPage()
         {
             InitFontType();
-            this.hideen_dirctory.Value = GobalConfig.Directory;
+            SystemConfig sysConfig = GobalConfig.LoadGoableConfig();
+
+            this.hideen_dirctory.Value = sysConfig.Attachments.Directory;
             InitDirctory(this.hideen_dirctory.Value.Trim());
-            this.chk_HashAbbrImage.Checked = (GobalConfig.HasAbbrImage.Trim() == "1");
-            this.txt_AbbrImageWidth.Value = GobalConfig.AbbrImageWidth;
-            this.txt_AbbrImageHeight.Value = GobalConfig.AbbrImageHeight;
-            this.chk_HasWaterMark.Checked = GobalConfig.HasWaterMark.Trim() == "1";
-            this.chk_HasAbbrImageWaterMark.Checked = GobalConfig.HasAbbrImageWaterMark == "1";
-            this.txt_WaterFont.Value = GobalConfig.WaterCharater;
-            this.txt_WaterFontColor.Value = GobalConfig.CharColor;
-            this.slt_WaterFontType.Value = GobalConfig.FontFamilyName;
-            this.txt_WaterFontSize.Value = GobalConfig.FontSize;
-            this.txt_WaterImageUrl.Value = GobalConfig.WaterPicPath;
-            this.txt_WaterImageUrlTran.Value = GobalConfig.Transparence;
-            this.hidden_XPercent.Value = GobalConfig.XPercent;
-            this.hidden_YPercent.Value = GobalConfig.YPercent;
-            this.txt_ImageFormat.Value = GobalConfig.ImageFormat;
-            this.txt_VidoFormat.Value = GobalConfig.VideoFormat;
-            this.txt_AudioFormat.Value = GobalConfig.AudioFormat;
-            this.txt_Flash.Value = GobalConfig.FlashFormat;
-            this.txt_AttachmentFormat.Value = GobalConfig.AttachmentFormat;
+            this.chk_HashAbbrImage.Checked = (sysConfig.Attachments.HasAbbrImage.Trim() == "1");
+            this.txt_AbbrImageWidth.Value = sysConfig.Attachments.AbbrImageWidth;
+            this.txt_AbbrImageHeight.Value = sysConfig.Attachments.AbbrImageHeight;
+            this.chk_HasWaterMark.Checked = sysConfig.Attachments.HasWaterMark.Trim() == "1";
+            this.chk_HasAbbrImageWaterMark.Checked = sysConfig.Attachments.HasAbbrImageWaterMark == "1";
+            this.txt_WaterFont.Value = sysConfig.Attachments.WaterImages.WaterCharater;
+            this.txt_WaterFontColor.Value = sysConfig.Attachments.WaterImages.CharColor;
+            this.slt_WaterFontType.Value = sysConfig.Attachments.WaterImages.FontFamilyName;
+            this.txt_WaterFontSize.Value = sysConfig.Attachments.WaterImages.FontSize;
+            this.txt_WaterImageUrl.Value = sysConfig.Attachments.WaterImages.WaterPicPath;
+            this.txt_WaterImageUrlTran.Value = sysConfig.Attachments.WaterImages.Transparence;
+            this.hidden_XPercent.Value = sysConfig.Attachments.WaterImages.XPercent;
+            this.hidden_YPercent.Value = sysConfig.Attachments.WaterImages.YPercent;
+            this.txt_ImageFormat.Value = sysConfig.Attachments.ImageFormat;
+            this.txt_VidoFormat.Value = sysConfig.Attachments.VideoFormat;
+            this.txt_AudioFormat.Value = sysConfig.Attachments.AudioFormat;
+            this.txt_Flash.Value = sysConfig.Attachments.FlashFormat;
+            this.txt_AttachmentFormat.Value = sysConfig.Attachments.AttachmentFormat;
         }
 
         private void SavePage()
         {
             try
             {
-                GobalConfig.Directory = this.hideen_dirctory.Value.Trim();
-                GobalConfig.HasAbbrImage = this.chk_HashAbbrImage.Checked ? "1" : "0";
-                GobalConfig.AbbrImageWidth = this.txt_AbbrImageWidth.Value.Trim();
-                GobalConfig.AbbrImageHeight = this.txt_AbbrImageHeight.Value.Trim();
-                GobalConfig.HasWaterMark = this.chk_HasWaterMark.Checked ? "1" : "0";
-                GobalConfig.HasAbbrImageWaterMark = this.chk_HasAbbrImageWaterMark.Checked ? "1" : "0";
-                GobalConfig.WaterCharater = this.txt_WaterFont.Value.Trim();
-                GobalConfig.CharColor = this.txt_WaterFontColor.Value.Trim();
-                GobalConfig.FontFamilyName = this.slt_WaterFontType.Value.Trim();
-                GobalConfig.FontSize = this.txt_WaterFontSize.Value.Trim();
-                GobalConfig.WaterPicPath = this.txt_WaterImageUrl.Value.Trim();
-                GobalConfig.Transparence = this.txt_WaterImageUrlTran.Value.Trim();
-                GobalConfig.XPercent = this.hidden_XPercent.Value.Trim();
-                GobalConfig.YPercent = this.hidden_YPercent.Value.Trim();
-                GobalConfig.ImageFormat = this.txt_ImageFormat.Value.Trim();
-                GobalConfig.VideoFormat = this.txt_VidoFormat.Value.Trim();
-                GobalConfig.AudioFormat = this.txt_AudioFormat.Value.Trim();
-                GobalConfig.FlashFormat = this.txt_Flash.Value.Trim();
-                GobalConfig.AttachmentFormat = this.txt_AttachmentFormat.Value.Trim();
-                GobalConfig.SaveXMLDocument();
+                SystemConfig sysConfig = GobalConfig.LoadGoableConfig();
+                sysConfig.Attachments.Directory = this.hideen_dirctory.Value.Trim();
+                sysConfig.Attachments.HasAbbrImage = this.chk_HashAbbrImage.Checked ? "1" : "0";
+                sysConfig.Attachments.AbbrImageWidth = this.txt_AbbrImageWidth.Value.Trim();
+                sysConfig.Attachments.AbbrImageHeight = this.txt_AbbrImageHeight.Value.Trim();
+                sysConfig.Attachments.HasWaterMark = this.chk_HasWaterMark.Checked ? "1" : "0";
+                sysConfig.Attachments.HasAbbrImageWaterMark = this.chk_HasAbbrImageWaterMark.Checked ? "1" : "0";
+                sysConfig.Attachments.WaterImages.WaterCharater = this.txt_WaterFont.Value.Trim();
+                sysConfig.Attachments.WaterImages.CharColor = this.txt_WaterFontColor.Value.Trim();
+                sysConfig.Attachments.WaterImages.FontFamilyName = this.slt_WaterFontType.Value.Trim();
+                sysConfig.Attachments.WaterImages.FontSize = this.txt_WaterFontSize.Value.Trim();
+                sysConfig.Attachments.WaterImages.WaterPicPath = this.txt_WaterImageUrl.Value.Trim();
+                sysConfig.Attachments.WaterImages.Transparence = this.txt_WaterImageUrlTran.Value.Trim();
+                sysConfig.Attachments.WaterImages.XPercent = this.hidden_XPercent.Value.Trim();
+                sysConfig.Attachments.WaterImages.YPercent = this.hidden_YPercent.Value.Trim();
+                sysConfig.Attachments.ImageFormat = this.txt_ImageFormat.Value.Trim();
+                sysConfig.Attachments.VideoFormat = this.txt_VidoFormat.Value.Trim();
+                sysConfig.Attachments.AudioFormat = this.txt_AudioFormat.Value.Trim();
+                sysConfig.Attachments.FlashFormat = this.txt_Flash.Value.Trim();
+                sysConfig.Attachments.AttachmentFormat = this.txt_AttachmentFormat.Value.Trim();
+
+                GobalConfig.SaveGobalConfig(sysConfig);
 
                 Message.Dialog("附件配置保存成功", "-1", MessageIcon.Success, 0);
             }

@@ -8,6 +8,7 @@ using System.Text;
 using DTCMS.BLL;
 using System.Collections;
 using DTCMS.Config;
+using DTCMS.Entity;
 
 namespace DTCMS.Web.admin
 {
@@ -185,17 +186,18 @@ namespace DTCMS.Web.admin
         private string JsonAttachmentList()
         {
             StringBuilder sbJson = new StringBuilder();
+            SystemConfig sysConfig = GobalConfig.LoadGoableConfig();
 
             sbJson.Append("{");
-            sbJson.Append("'HasWaterMark':'" + GobalConfig.HasWaterMark + "'");
+            sbJson.Append("'HasWaterMark':'" + sysConfig.Attachments.HasWaterMark + "'");
             sbJson.Append(",");
-            sbJson.Append("'HasAbbrImage':'" + GobalConfig.HasAbbrImage + "'");
+            sbJson.Append("'HasAbbrImage':'" + sysConfig.Attachments.HasAbbrImage + "'");
             sbJson.Append(",");
-            sbJson.Append("'HasHasAbbrImageWaterMarkWaterMark':'" + GobalConfig.HasAbbrImageWaterMark + "'");
+            sbJson.Append("'HasHasAbbrImageWaterMarkWaterMark':'" + sysConfig.Attachments.HasAbbrImageWaterMark + "'");
             sbJson.Append(",");
-            sbJson.Append("'AbbrImageWidth':'" + GobalConfig.AbbrImageWidth + "'");
+            sbJson.Append("'AbbrImageWidth':'" + sysConfig.Attachments.AbbrImageWidth + "'");
             sbJson.Append(",");
-            sbJson.Append("'AbbrImageHeight':'" + GobalConfig.AbbrImageHeight + "'");
+            sbJson.Append("'AbbrImageHeight':'" + sysConfig.Attachments.AbbrImageHeight + "'");
             sbJson.Append(",");
 
             DataTable dtAttachmentType = SectionConfigBLL.GetSectionListAttachmentType();
@@ -204,9 +206,16 @@ namespace DTCMS.Web.admin
                 sbJson.Append("'attachmentType':'");
                 int rdo_count = 1;
                 foreach(DataRow dr in dtAttachmentType.Rows)
-                {
+                {                    
                     sbJson.Append("<span>");
-                    sbJson.Append("<input type=\"radio\" id=\"rdo_" + rdo_count.ToString()+ "\" name=\"rdo\" checked=\"checked\" value=\"" + dr["key"].ToString() + "\" onclick=\"setAttachmentAttribute(this)\" />");
+                    if (rdo_count == 1)
+                    {
+                        sbJson.Append("<input type=\"radio\" id=\"rdo_" + rdo_count.ToString() + "\" name=\"rdo\" checked=\"checked\" value=\"" + dr["key"].ToString() + "\" onclick=\"setAttachmentAttribute(this)\" />");
+                    }
+                    else
+                    {
+                        sbJson.Append("<input type=\"radio\" id=\"rdo_" + rdo_count.ToString() + "\" name=\"rdo\" value=\"" + dr["key"].ToString() + "\" onclick=\"setAttachmentAttribute(this)\" />");
+                    }
                     sbJson.Append("<label for=\"rdo_" + rdo_count.ToString() + "\">" + dr["value"].ToString() + "</label>");
                     sbJson.Append("</span>");
                     rdo_count++;

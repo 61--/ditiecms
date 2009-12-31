@@ -19,6 +19,7 @@ namespace DTCMS.Config
         {
             xmlDoc.Load(path);
         }
+
         public static XmlNode GetBaseSetting(string basesettingkey)
         {
             InitXmlDoc();

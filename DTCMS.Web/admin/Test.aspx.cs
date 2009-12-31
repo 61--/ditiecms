@@ -18,20 +18,7 @@ namespace DTCMS.Web.admin
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            long execTime = 0;
 
-            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
-            sw.Start();
-
-            for (int i = 0; i < 100000; i++)
-            {
-                string path = GobalConfig.Path;
-            }
-
-            sw.Stop();
-            execTime = sw.ElapsedMilliseconds;
-
-            JScript.ShowMessage(this, string.Format("用时{0}毫秒", execTime.ToString()));
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -56,6 +43,10 @@ namespace DTCMS.Web.admin
 
         protected void Button3_Click(object sender, EventArgs e)
         {
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
             long execTime = 0;
 
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
@@ -63,7 +54,7 @@ namespace DTCMS.Web.admin
 
             for (int i = 0; i < 100000; i++)
             {
-                string path = GobalConfig.Get();
+                string path = GobalConfig.LoadGoableConfig().Attachments.Path;
             }
 
             sw.Stop();
