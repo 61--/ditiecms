@@ -62,12 +62,12 @@
     <form id="form1" runat="server">
     <div id="continer">
         <fieldset>
-            <legend>附件</legend>
+            <legend>基本配置</legend>
             <table cellpadding="10" cellspacing="0" class="a_table_form">
                 <tbody>
                     <tr>
                         <td class="main_bleft">
-                            附件保存方式:
+                            保存目录规则:
                         </td>
                         <td class="main_bright" colspan="3">
                             <input type="radio" id="rdo_y" name="rdo_dirctory" value="yyyy" onclick="Dirctory(this)"
@@ -107,7 +107,7 @@
             </table>
         </fieldset>
         <fieldset>
-            <legend>水印</legend>
+            <legend>水印设置</legend>
             <table cellpadding="10" cellspacing="0" class="a_table_form">
                 <tbody>
                     <tr>
@@ -233,7 +233,7 @@
             </table>
         </fieldset>
         <fieldset>
-            <legend>附件保存格式</legend>
+            <legend>附件上传格式</legend>
             <table cellpadding="10" cellspacing="0" class="a_table_form">
                 <tbody>
                     <tr>

@@ -15,6 +15,7 @@ namespace DTCMS.Web.admin
     public partial class SimpleUploader : AdminPage
     {
         Atr_AttachMentBLL bllAttachment = new Atr_AttachMentBLL();
+        SystemConfig sysConfig = GobalConfig.LoadGoableConfig();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,15 +26,15 @@ namespace DTCMS.Web.admin
         /// 附件上传
         /// </summary>
         private void Upload()
-        {
+        {            
             int attachmentAttribute = DTCMS.Common.Utils.GetFormInt("hid_attachmentAttribute"); //附件属性
             string hasWaterMark = DTCMS.Common.Utils.GetFormString("chHasWaterMark");   //原图是否水印
             string hasAbbrImage1 = DTCMS.Common.Utils.GetFormString("chHasAbbrImage1"); //是否生成缩略图
             string hasWaterMark1 = DTCMS.Common.Utils.GetFormString("chHasWaterMark1");   //缩略图是否水印
             int abbrImageWidth1 = DTCMS.Common.Utils.GetFormInt("abbrImageWidth1"); //缩略图宽
             int abbrImageHeight1 = DTCMS.Common.Utils.GetFormInt("abbrImageHeight1");   //缩略图高
-            string filepathshort = GobalConfig.Path.Replace("\\\\", "\\")+"\\"
-                + DateTime.Now.ToString(GobalConfig.Directory == "" ? "yyyyMM" : GobalConfig.Directory) + "\\";
+            string filepathshort = sysConfig.Attachments.Path.Replace("\\\\", "\\") + "\\"
+                + DateTime.Now.ToString(sysConfig.Attachments.Directory == "" ? "yyyyMM" : sysConfig.Attachments.Directory) + "\\";
             string filepath = DTCMS.Common.Utils.GetRootPath() + filepathshort; //附件存放路径
 
             if (!Directory.Exists(filepath))
@@ -202,15 +203,15 @@ namespace DTCMS.Web.admin
             switch (attachmentAtr)
             {
                 case (int)EAttachmentAttribute.Photo:
-                    return AttachmentFormat(fileName, "ImageFormat");
+                    return AttachmentFormat(fileName, sysConfig.Attachments.ImageFormat);
                 case (int)EAttachmentAttribute.Video:
-                    return AttachmentFormat(fileName, "VideoFormat");
+                    return AttachmentFormat(fileName, sysConfig.Attachments.VideoFormat);
                 case (int)EAttachmentAttribute.Audio:
-                    return AttachmentFormat(fileName, "AudioFormat");
+                    return AttachmentFormat(fileName, sysConfig.Attachments.AudioFormat);
                 case (int)EAttachmentAttribute.Flash:
-                    return AttachmentFormat(fileName, "FlashFormat");
+                    return AttachmentFormat(fileName, sysConfig.Attachments.FlashFormat);
                 case (int)EAttachmentAttribute.Attachment:
-                    return AttachmentFormat(fileName, "AttachmentFormat");
+                    return AttachmentFormat(fileName, sysConfig.Attachments.AttachmentFormat);
                 default:
                     return false;
             }
@@ -224,7 +225,7 @@ namespace DTCMS.Web.admin
         /// <returns></returns>
         private bool AttachmentFormat(string fileName, string configParamName)
         {
-            string[] extNameList = GobalConfig.GetAttachmentStr(configParamName).Split('|');
+            string[] extNameList = configParamName.Split('|');
             string extName = fileName.Substring(fileName.LastIndexOf(".") + 1).ToLower();
             if (extNameList != null && extNameList.Length > 0)
             {
@@ -246,20 +247,20 @@ namespace DTCMS.Web.admin
         /// <param name="path_syp">水印地址</param>
         private void WaterImage(string path, string path_syp)
         {
-            if (Convert.ToInt32(GobalConfig.WaterPic) == 1)
+            if (Convert.ToInt32(sysConfig.Attachments.WaterImages.WaterPic) == 1)
             {//图片水印
-                Common.WaterImage.AddWaterPic(path, path_syp, GobalConfig.WaterPicPath
-                     , Convert.ToDouble(GobalConfig.XPercent)
-                    , Convert.ToDouble(GobalConfig.YPercent)
-                    , float.Parse(GobalConfig.Transparence));
+                Common.WaterImage.AddWaterPic(path, path_syp, sysConfig.Attachments.WaterImages.WaterPicPath
+                     , Convert.ToDouble(sysConfig.Attachments.WaterImages.XPercent)
+                    , Convert.ToDouble(sysConfig.Attachments.WaterImages.YPercent)
+                    , float.Parse(sysConfig.Attachments.WaterImages.Transparence));
             }
             else
             {//文字水印
-                Common.WaterImage.AddWater(path, path_syp, GobalConfig.WaterCharater
-                    , Convert.ToDouble(GobalConfig.XPercent)
-                    , Convert.ToDouble(GobalConfig.YPercent)
-                    , System.Drawing.ColorTranslator.FromHtml(GobalConfig.CharColor)
-                    , GobalConfig.FontFamilyName, Convert.ToInt32(GobalConfig.FontSize));
+                Common.WaterImage.AddWater(path, path_syp, sysConfig.Attachments.WaterImages.WaterCharater
+                    , Convert.ToDouble(sysConfig.Attachments.WaterImages.XPercent)
+                    , Convert.ToDouble(sysConfig.Attachments.WaterImages.YPercent)
+                    , System.Drawing.ColorTranslator.FromHtml(sysConfig.Attachments.WaterImages.CharColor)
+                    , sysConfig.Attachments.WaterImages.FontFamilyName, Convert.ToInt32(sysConfig.Attachments.WaterImages.FontSize));
             }
 
         }

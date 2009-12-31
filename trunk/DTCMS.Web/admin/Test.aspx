@@ -38,7 +38,7 @@
             <li><a id="H14" href="javascript:showSuccess('发表成功，经验 + 5')">显示提示信息</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
                 href="javascript:hideMessage()">隐藏Tip信息</a></li>
             <li><a id="H15" href="javascript:showSuccess('回复成功，经验 + 1')">显示提示信息（自动隐藏）</a></li>
-            <li><a id="A1" href="javascript:showError('删除失败，经验 - 1')">显示提示信息（自动隐藏）</a></li>
+            <li><a id="A1" href="javascript:showError('删除失败，经验 - 1')">显示提示信息（自动隐藏）</a></显示提示信息（自动隐藏）</a></li>
         </ul>
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         <asp:Button ID="Button1"  runat="server" Text="Button"  onclick="Button1_Click" />
@@ -46,6 +46,7 @@
         <asp:Button ID="Button2" runat="server" Text="Button" onclick="Button2_Click" />
         <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
         <asp:Button ID="Button3" runat="server" Text="Button" onclick="Button3_Click" />
+        <asp:Button ID="Button4" runat="server" Text="Button" onclick="Button4_Click"/>
     </div>
 </form>
 </body>

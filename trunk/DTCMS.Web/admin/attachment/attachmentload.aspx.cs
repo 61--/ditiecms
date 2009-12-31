@@ -5,6 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
 using DTCMS.Config;
+using DTCMS.Entity;
 namespace DTCMS.Web.admin
 {
     public partial class attachmentload : AdminPage
@@ -19,9 +20,11 @@ namespace DTCMS.Web.admin
         }
         private string ExistsFormat()
         {
+            SystemConfig sysConfig = GobalConfig.LoadGoableConfig();
+
             StringBuilder sb = new StringBuilder();
             sb.Append("function hasImage(ext) { return (");
-            foreach (string img in GobalConfig.ImageFormat.Split('|'))
+            foreach (string img in sysConfig.Attachments.ImageFormat.Split('|'))
             {
                 sb.Append("ext == '" + img + "'");
                 sb.Append(" || ");
@@ -30,7 +33,7 @@ namespace DTCMS.Web.admin
             sb.Append("); }\r\n");
 
             sb.Append("function hasVideo(ext) { return(");
-            foreach (string video in GobalConfig.VideoFormat.Split('|'))
+            foreach (string video in sysConfig.Attachments.VideoFormat.Split('|'))
             {
                 sb.Append("ext == '" + video + "'");
                 sb.Append(" || ");
@@ -39,7 +42,7 @@ namespace DTCMS.Web.admin
             sb.Append("); }\r\n");
 
             sb.Append("function hasAudio(ext) { return(");
-            foreach (string audio in GobalConfig.AudioFormat.Split('|'))
+            foreach (string audio in sysConfig.Attachments.AudioFormat.Split('|'))
             {
                 sb.Append("ext == '" + audio + "'");
                 sb.Append(" || ");
@@ -48,7 +51,7 @@ namespace DTCMS.Web.admin
             sb.Append("); }\r\n");
 
             sb.Append("function hasFlash(ext) { return(");
-            foreach (string flash in GobalConfig.FlashFormat.Split('|'))
+            foreach (string flash in sysConfig.Attachments.FlashFormat.Split('|'))
             {
                 sb.Append("ext == '" + flash + "'");
                 sb.Append(" || ");
@@ -57,7 +60,7 @@ namespace DTCMS.Web.admin
             sb.Append("); }\r\n");
 
             sb.Append("function hasAttachment(ext) { return(");
-            foreach (string attachment in GobalConfig.AttachmentFormat.Split('|'))
+            foreach (string attachment in sysConfig.Attachments.AttachmentFormat.Split('|'))
             {
                 sb.Append("ext == '" + attachment + "'");
                 sb.Append(" || ");
