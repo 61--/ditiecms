@@ -420,16 +420,34 @@ namespace DTCMS.SqlServerDAL
         /// <returns>DataTable数据集合</returns>
         public DataTable GetDataTable(string Fileds)
         {
-           string strSql = string.Format("SELECT {0} FROM DT_ARC_CLASS ",Fileds);
-           DataSet ds = SqlHelper.FillDataset(CommandType.Text, strSql);
-           if (ds != null && ds.Tables.Count > 0)
-           {
-               return ds.Tables[0];
-           }
-           else
-           {
-               return null;
-           }
+            return GetDataTable(Fileds, null);
+
+        }
+        /// <summary>
+        /// 根据查询字段查询栏目数据
+        /// </summary>
+        /// <param name="Fileds">要查询的字段</param>
+        /// <returns>DataTable数据集合</returns>
+        public DataTable GetDataTable(string Fileds,string where)
+        {
+            string strSql = string.Empty;
+            if (where != string.Empty)
+            {
+                strSql = string.Format("select {0} from DT_ARC_CLASS where {1}", Fileds, where);
+            }
+            else
+            {
+                strSql = string.Format("SELECT {0} FROM DT_ARC_CLASS ", Fileds);
+            }
+            DataSet ds = SqlHelper.FillDataset(CommandType.Text, strSql);
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                return ds.Tables[0];
+            }
+            else
+            {
+                return null;
+            }
 
         }
 
