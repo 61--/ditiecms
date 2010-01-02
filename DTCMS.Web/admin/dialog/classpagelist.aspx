@@ -71,6 +71,7 @@
         function onClick_GetClass(classid, classname,a_id) {
             $("#hidden_classid").val(classid);
             $("#hidden_classname").val(classname);
+            
             var preclass = $("#hidden_perclassid").val();
             if (preclass != "") {
                 $("#" + preclass).parent().removeClass("treeCurBg");

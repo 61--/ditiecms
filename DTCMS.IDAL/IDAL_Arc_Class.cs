@@ -62,6 +62,13 @@ namespace DTCMS.IDAL
         DataTable  GetDataTable(string Fileds);
 
         /// <summary>
+        /// 根据查询字段查询栏目数据
+        /// </summary>
+        /// <param name="Fileds">要查询的字段</param>
+        /// <returns>DataTable数据集合</returns>
+        DataTable GetDataTable(string Fileds, string where);
+
+        /// <summary>
         /// 判断当前节点是否存在子节点
         /// </summary>
         /// <param name="ParentID"></param>
