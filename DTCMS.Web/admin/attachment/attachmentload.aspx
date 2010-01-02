@@ -52,7 +52,8 @@
 </head>
 <body>    	
     <form enctype="multipart/form-data" id="form1" name="Form1" target="formTarget" method="post" action="SimpleUploader.aspx?type=image">
-        <div id="upload" style="width:570px; margin:0 auto;">
+    <div id="container">
+        <div id="upload">
             <div id="top" style="text-align:left;width:100%;">
                 <div id="div_attachmentType" style="margin-bottom:4px;">                    
                 </div>
@@ -157,6 +158,7 @@
         </div>
         <div style="clear:both;" id="msg"></div>
         <input type="hidden" id="returnImgPath" value="" />
+    </div>
     </form>
     <div style="display:none;"><iframe name="formTarget" src="javascript:void(0)" height="0"></iframe></div>
     <script type="text/javascript">        
@@ -224,7 +226,7 @@
         }         
           	
     	function msg() {
-    	    showLoading("正在上传数据，请稍候...", "#bottom");
+    	    showLoading("正在上传数据，请稍候...", "#container");
     	}
     	    	    	
     	function fileOnChange(obj) {
