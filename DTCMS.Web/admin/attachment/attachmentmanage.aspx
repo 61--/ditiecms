@@ -54,8 +54,8 @@
         <div id="content">
             <div id="menu">
                 <ul>
-                    <li><a href="javascript:void(0)" onclick="attachmentUpload(this)">附件上传</a></li>
-                    <li><a href="javascript:void(0)" onclick="attachmentSearch(this)">附件浏览</a></li>
+                    <li><a href="javascript:void(0)" onclick="attachmentload(this)">附件上传</a></li>
+                    <li><a href="javascript:void(0)" onclick="attachmentsearch(this)">附件浏览</a></li>
                 </ul>
             </div>
             <div class="hr">
@@ -69,11 +69,11 @@
     </form>
 
     <script type="text/javascript">
-        function attachmentUpload(obj) {
+        function attachmentload(obj) {
             document.getElementById("FrmUpload").src = "attachmentload.aspx";
             obj.blur();
         }
-        function attachmentSearch(obj) {
+        function attachmentsearch(obj) {
             document.getElementById("FrmUpload").src = "attachmentsearch.aspx";
             obj.blur();
         }

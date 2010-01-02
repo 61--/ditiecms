@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="attachmentsearch.aspx.cs"
     Inherits="DTCMS.Web.admin.attachmentsearch" %>
 
-<%@ OutputCache Duration="600" VaryByParam="none" Location="Server" %>
+<%@ OutputCache Duration="600" VaryByParam="container" Location="Server" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -18,7 +18,7 @@
             font-family: Verdana, Arial, Helvetica, sans-serif;
             font-size: 12px;
         }
-        .txt_bg
+        .bg
         {
             background: url(../images/blue/login_input_bg.gif) no-repeat left top #F7FAFC;
         }
@@ -35,35 +35,6 @@
             width: 570px;
             margin: 0 auto;
             text-align: center;
-        }
-        /*搜索*/
-        .search
-        {
-            float: left;
-            padding-top: -3px;
-        }
-        .s_btn
-        {
-            background: url(../images/blue/button.jpg) no-repeat left top transparent;
-            border: 0px;
-            height: 22px;
-            line-height: 18px;
-            width: 51px;
-            margin-left: 10px;
-            letter-spacing: 2px;
-            color: #555;
-            overflow: hidden;
-        }
-        .s_btn:hover
-        {
-            cursor: pointer;
-            background-position: -99px -88px;
-        }
-        /*图片浏览*/
-        #data
-        {
-            float: left;
-            margin-top: 8px;
         }
         #content ul
         {
@@ -99,6 +70,37 @@
             height: 108px;
             vertical-align: middle;
         }
+        
+        /*搜索*/
+        .search
+        {
+            float: left;
+            padding-top: -3px;
+        }
+        .s_btn
+        {
+            background: url(../images/blue/button.jpg) no-repeat left top transparent;
+            border: 0px;
+            height: 22px;
+            line-height: 18px;
+            width: 51px;
+            margin-left: 10px;
+            letter-spacing: 2px;
+            color: #555;
+            overflow: hidden;
+        }
+        .s_btn:hover
+        {
+            cursor: pointer;
+            background-position: -99px -88px;
+        }
+        
+        /*图片浏览*/
+        #data
+        {
+            float: left;
+            margin-top: 8px;
+        }        
     </style>
 
     <script type="text/javascript">
@@ -106,14 +108,15 @@
             LoadData(1);
         });
         function LoadData(page) {
-            var type = document.getElementById("slt_attachmentType").value;
-            var name = document.getElementById("txt_attachmentName").value;
+            var type = $("#slt_attachmentType").val();
+            var name = $("#txt_attachmentName").val();
+            
             $.ajax({
-                 url: "/admin/ajax/attachment_list.aspx",
-                 type: "GET",
+                url: "/admin/ajax/attachment_list.aspx",
+                type: "GET",
                 data: "action=search&page=" + page + "&type=" + type + "&name=" + escape(name) + "&ran=" + Math.random(),
                 success: function(responseText) {
-                    document.getElementById("data").innerHTML = responseText;
+                    $("#data").html(responseText);
                 }
             });
         }
@@ -129,17 +132,12 @@
                     <tr>
                         <td style="width: 155px;">
                             附件类型：
-                            <select id="slt_attachmentType" class="s_text txt_bg">
-                                <option value="1">图 片</option>
-                                <option value="2">视 频</option>
-                                <option value="3">音 频</option>
-                                <option value="4">Flash</option>
-                                <option value="5">附 件</option>
+                            <select id="slt_attachmentType" class="s_text bg" runat="server">
                             </select>
                         </td>
                         <td style="width: 185px;">
                             附件名称：
-                            <input type="text" id="txt_attachmentName" class="text txt_bg" />
+                            <input type="text" id="txt_attachmentName" class="text bg" />
                         </td>
                         <td>
                             <input type="button" id="btn_search" class="s_btn" onclick="LoadData(1);" value="搜索" />
@@ -156,25 +154,21 @@
 
     <script type="text/javascript">
         function selectImage(chk_id) {
-            var chk = document.getElementById(chk_id);
+            var chk = $("#"+chk_id);
             if (chk) {
-                chk.checked = !chk.checked;
+                chk.attr("checked",!chk.attr("checked"));
             }
         }
-        function upload() {            
-            var chks = document.getElementsByName("items");
-            var hid = document.getElementById("returnVal");
-            if (chks) {
-                for (i = 0; i < chks.length; i++) {
-                    if (chks[i].checked) {
-                        hid.value = chks[i].value;
-                    }
-                }
-            }
+        function upload() {
+            var chks = $("input[name='items']");
+            var hid = $("#returnVal");
+            $.each(chks, function(i, n) {
+                hid.val(n.value);
+            });
             window.parent.parent.Dialog.close();        
         }
-        function returnPath() {
-            return document.getElementById("returnVal").value;
+        function resultPath() {
+            return $("returnVal").val();
         }        
     </script>
 
