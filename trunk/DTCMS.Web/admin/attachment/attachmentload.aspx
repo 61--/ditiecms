@@ -29,10 +29,14 @@
             width: 570px;
             margin: 0 auto;
         }
-        .text
+        .text1
         {
             width: 120px;
-            margin-left: 6px;
+            margin-left:16px;
+        }
+        .text2
+        {
+            width: 120px;
         }
         .bg
         {
@@ -47,20 +51,8 @@
             height: 24px;
             line-height: 24px;
         }
-        #upload td
-        {
-            padding-left: 6px;
-        }        
-        #upload fieldset
-        {
-            padding: 3px 0 6px 0;
-        }
-        #upload legend
-        {
-            margin-left: 8px;
-        }
-        #div_attachmentType span
-        {
+        
+        #div_attachmentType span{
             padding-right: 3px;
         }
     </style>
@@ -93,8 +85,8 @@
     </script>
 
 </head>
-<body>
-    <form enctype="multipart/form-data" id="form1" name="Form1" target="formTarget" method="post"
+<body>    
+    <form enctype="multipart/form-data" id="form1" name="form1" target="formTarget" method="post"
     action="SimpleUploader.aspx?type=image">
     <div id="container">
         <div id="upload">
@@ -102,22 +94,22 @@
                 <div id="div_attachmentType" style="margin-bottom: 4px;">
                 </div>
                 <span>
-                    <input type="hidden" id="hid_attachmentAttribute" name="hid_attachmentAttribute"
+                    <input type="hidden" id="hidden_attr" name="hidden_attr"
                         value="1" /></span>
-                <fieldset>
-                    <legend>附件上传</legend>
+                <fieldset style="padding: 3px 0 6px 0; border:1px solid #BDBCBD;">
+                    <legend style="margin-left: 8px;">附件上传</legend>
                     <table id="imagetable0" style="width: 100%;" cellpadding="0" cellspacing="0">
                         <tr>
                             <td style="width: 6%;" align="right">
                             </td>
                             <td style="width: 34%;">
-                                附件浏览
+                                <span>附件浏览</span>
                             </td>
                             <td style="width: 30%;">
-                                附件名称
+                                <span style="margin-left: 16px;">附件名称</span>
                             </td>
                             <td style="width: 30%;">
-                                附件描述
+                                <span>附件描述</span>
                             </td>
                         </tr>
                         <tr>
@@ -129,10 +121,10 @@
                                 <input name='File1' id='File1' class="file bg" type='file' value='' size="26" onchange="fileOnChange(this);" />
                             </td>
                             <td>
-                                <input name="File1Name" id="File1Name" class="text bg" type="text" value="" />
+                                <input name="File1Name" id="File1Name" class="text1 bg" type="text" value="" />
                             </td>
                             <td>
-                                <input name="File1Info" id="File1Info" class="text bg" type="text" value="" />
+                                <input name="File1Info" id="File1Info" class="text2 bg" type="text" value="" />
                             </td>
                         </tr>
                         <tr>
@@ -144,10 +136,10 @@
                                 <input name='File2' id='File2' class="file bg" type='file' value='' size='26' onchange="fileOnChange(this);" />
                             </td>
                             <td>
-                                <input name="File2Name" id="File2Name" class="text bg" type="text" value="" />
+                                <input name="File2Name" id="File2Name" class="text1 bg" type="text" value="" />
                             </td>
                             <td>
-                                <input name="File2Info" id="File2Info" class="text bg" type="text" value="" />
+                                <input name="File2Info" id="File2Info" class="text2 bg" type="text" value="" />
                             </td>
                         </tr>
                         <tr>
@@ -159,10 +151,10 @@
                                 <input name='File3' id='File3' class="file bg" type='file' value='' size='26' onchange="fileOnChange(this);" />
                             </td>
                             <td>
-                                <input name="File3Name" id="File3Name" class="text bg" type="text" value="" />
+                                <input name="File3Name" id="File3Name" class="text1 bg" type="text" value="" />
                             </td>
                             <td>
-                                <input name="File3Info" id="File3Info" class="text bg" type="text" value="" />
+                                <input name="File3Info" id="File3Info" class="text2 bg" type="text" value="" />
                             </td>
                         </tr>
                         <tr>
@@ -175,10 +167,10 @@
                                     value='' size='26' />
                             </td>
                             <td>
-                                <input name="File4Name" id="File4Name" class="text bg" type="text" value="" />
+                                <input name="File4Name" id="File4Name" class="text1 bg" type="text" value="" />
                             </td>
                             <td>
-                                <input name="File4Info" id="File4Info" class="text bg" type="text" value="" />
+                                <input name="File4Info" id="File4Info" class="text2 bg" type="text" value="" />
                             </td>
                         </tr>
                         <tr>
@@ -191,18 +183,18 @@
                                     value='' size='26' />
                             </td>
                             <td>
-                                <input name="File5Name" id="File5Name" class="text bg" type="text" value="" />
+                                <input name="File5Name" id="File5Name" class="text1 bg" type="text" value="" />
                             </td>
                             <td>
-                                <input name="File5Info" id="File5Info" class="text bg" type="text" value="" />
+                                <input name="File5Info" id="File5Info" class="text2 bg" type="text" value="" />
                             </td>
                         </tr>
                     </table>
                 </fieldset>
             </div>
             <div id="bottom" style="margin-top: 6px; width: 100%; text-align: left;">
-                <fieldset>
-                    <legend>
+                <fieldset style="padding: 3px 0 6px 0; border:1px solid #BDBCBD;">
+                    <legend style="margin-left: 8px;">
                         <label>
                             图片参数设置</label></legend>
                     <table width="100%;" cellpadding="2" cellspacing="0">
@@ -258,62 +250,61 @@
         </div>
         <div style="clear: both;" id="msg">
         </div>
-        <input type="hidden" id="returnImgPath" value="" />
+        <input type="hidden" id="result" value="" />
     </div>
-    </form>
     <div style="display: none;">
         <iframe name="formTarget" src="javascript:void(0)" height="0"></iframe>
     </div>
-
+    </form>    
     <script type="text/javascript">
-        function onUploadCompleted(returnVal, errorMsg, returnImgPath) {
-            switch (returnVal) {
-                case 1:
+        function fileOnChange(obj) {
+            var val = obj.value;
+            var fileName = val.substring(val.lastIndexOf('\\') + 1);
+            $("#" + obj.id + "Name").val(fileName);
+            $("#" + obj.id + "Info").val(fileName);
+        }        
+        
+        function upload() {
+            var files = $(":file");
+            var flag = true;
+            $.each(files, function(i, n) {
+                var ext = n.value.substring(n.value.lastIndexOf(".") + 1).toLowerCase();
+                if (ext != "" && !hasFormat(ext)) {
+                    Dialog.alert("附件上传不支持" + ext + "文件！请重新选择。");
+                    flag = false;
+                }
+            });
+            if (flag == false) return;
+
+            document.getElementById("form1").submit();
+        }
+
+
+        function onUploadCompleted(iResult, errorMsg, iResultPath) {
+            switch (iResult.toString()) {
                 case "1":
                     try {
-                        setReturnPath(returnImgPath);
+                        setResult(iResultPath);
                         window.parent.parent.Dialog.close();
                     } catch (ex) { }
                     break;
-                case 202:
+
                 case "202":
                     Dialog.alert('无效的文件类型！以下文件上传失败:' + errorMsg);
                     break;
-                case 203:
+
                 case "203":
                     Dialog.alert("您没有权限上传此文件，请检查服务器设置");
                     break;
+
                 default:
-                    Dialog.alert('上传失败，错误代码: ' + returnVal);
+                    Dialog.alert('上传失败，错误代码: ' + iResult);
                     break;
             }
         }
-        function upload() {
-            var flag = false;
-            var count = 5;
-            for (var i = 1; i <= count; i++) {
-                var imgName = $("#File" + i).val();
-                if (imgName == "") {
-                    continue;
-                }
-                var ext = imgName.substring(imgName.lastIndexOf(".") + 1).toLowerCase();
-                if (hasAttachmentFormat(ext)) {
-                    flag = true;
-                } else {
-                    Dialog.alert("附件上传不支持" + ext + "文件！请重新选择。");
-                    return;
-                }
-            }
-            if (flag) {
-                msg();
-                document.getElementById("form1").submit();
-            } else {
-                Dialog.alert("请先浏览选择文件！");
-            }
-        }
 
-        function hasAttachmentFormat(ext) {
-            switch (getAttachmentAttribute()) {
+        function hasFormat(ext) {
+            switch (getAttr()) {
                 case "1":
                     return hasImage(ext);
                 case "2":
@@ -331,27 +322,20 @@
 
         function msg() {
             //showLoading("正在上传数据，请稍候...", "#container");
+        }        
+
+        function setAttr(obj) {
+            $("#hidden_attr").val(obj.value || 1);
+        }
+        function getAttr() {
+            return $("#hidden_attr").val() || 1;
         }
 
-        function fileOnChange(obj) {
-            var val = obj.value;
-            var fileName = val.substring(val.lastIndexOf('\\') + 1);
-            $("#" + obj.id + "Name").val(fileName);
-            $("#" + obj.id + "Info").val(fileName);
+        function setResult(value) {
+            $("#result").val(value);
         }
-
-        function setAttachmentAttribute(obj) {
-            $("#hid_attachmentAttribute").val(obj.value || 1);
-        }
-        function getAttachmentAttribute() {
-            return $("#hid_attachmentAttribute").val() || 1;
-        }
-
-        function setReturnPath(val) {
-            $("#returnImgPath").val(val);
-        }
-        function returnPath() {
-            return $("#returnImgPath").val();
+        function resultPath() {
+            return $("#result").val();
         }
     </script>
 

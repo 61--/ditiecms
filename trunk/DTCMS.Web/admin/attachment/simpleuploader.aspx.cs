@@ -188,8 +188,7 @@ namespace DTCMS.Web.admin
             {
                 returnImgPath = "/" + filepathshort.Replace("\\", "/")+ returnImgName;
             }
-
-            Response.Redirect("~/admin/attachment/emptyPage.html?returnVal=" + returnVal + "&errorMsg=" + errorMsg + "&returnImgPath=" + returnImgPath);
+            Response.Redirect("~/admin/attachment/emptyPage.html?returnVal=" + returnVal + "&errorMsg=" + Server.UrlEncode(errorMsg) + "&returnImgPath=" + Server.UrlEncode(returnImgPath));
         }
 
         /// <summary>

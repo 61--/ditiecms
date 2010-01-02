@@ -664,20 +664,18 @@ function dialogAttachmentUpload(url, cancelevent, width, height) {
     diag.Height = height || 395;
     diag.URL = url || "/admin/attachment/attachmentmanage.aspx";
     diag.OKEvent = function() {
-        var win = diag.innerFrame.contentWindow;
-        win.frames["FrmUpload"].upload();
+        diag.innerFrame.contentWindow.frames["FrmUpload"].upload();
     };
     diag.CancelEvent = function() {
         try {
-            var win = diag.innerFrame.contentWindow;
-            var returnPath = win.frames["FrmUpload"].returnPath();
-            cancelevent(returnPath);
+            var iResult = diag.innerFrame.contentWindow.frames["FrmUpload"].resultPath();
+            cancelevent(iResult);
         } catch (err) {
         }
         diag.close();
     };
-    
-    diag.show();
+
+    diag.show();   
 }
 
 function dialogTagPage(okevent, url, width, height) {
