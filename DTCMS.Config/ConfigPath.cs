@@ -11,5 +11,7 @@ namespace DTCMS.Config
         public const string BASESETTING = "config\\sys\\BaseSetting.config";
 
         public const string SECTION = "config\\sys\\SectionConfig.config";  //下拉列表
+
+        public const string DIALOG = "config\\sys\\DialogConfig.config";
     }
 }

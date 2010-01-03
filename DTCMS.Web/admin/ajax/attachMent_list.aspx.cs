@@ -15,6 +15,7 @@ namespace DTCMS.Web.admin
     public partial class attachment_list : AdminPage
     {
         Atr_AttachMentBLL bllAttachment = new Atr_AttachMentBLL();
+        SectionConfigBLL bllSelectionConfig = new SectionConfigBLL();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -200,7 +201,7 @@ namespace DTCMS.Web.admin
             sbJson.Append("'AbbrImageHeight':'" + sysConfig.Attachments.AbbrImageHeight + "'");
             sbJson.Append(",");
 
-            DataTable dtAttachmentType = SectionConfigBLL.GetSectionListAttachmentType();
+            DataTable dtAttachmentType = bllSelectionConfig.GetSectionListAttachmentType();
             if (dtAttachmentType != null && dtAttachmentType.Rows.Count > 0)
             {
                 sbJson.Append("'attachmentType':'");

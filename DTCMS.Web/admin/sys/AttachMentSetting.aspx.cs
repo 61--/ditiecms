@@ -86,7 +86,8 @@ namespace DTCMS.Web.admin.sys
         #region 初始化页面数据
         private void InitFontType()
         {
-            DataTable dtFontType = SectionConfigBLL.GetSectionListTitleFontType();
+            SectionConfigBLL bllSelectionConfig = new SectionConfigBLL();
+            DataTable dtFontType = bllSelectionConfig.GetSectionListTitleFontType();
             if (dtFontType != null && dtFontType.Rows.Count > 0)
             {
                 slt_WaterFontType.DataSource = dtFontType;

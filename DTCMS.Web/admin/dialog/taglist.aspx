@@ -6,19 +6,14 @@
 <head runat="server">
     <title>TAG</title>
     <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
-    <style type="text/css">
-        *{ margin:0; padding:0; font-family:Arial; font-size:12px;}
-        ul{ list-style:none outside none; float:left;}
-        li{ height:22px; line-height:22px; cursor:pointer;float:left; padding-left:8px;}
-        #continer{ width:380px; margin:0 auto; padding:10px 0 0 8px; text-align:left;}
-    </style>
+    <link href="../css/dialog.css" type="text/css" rel="Stylesheet" />
     <script type="text/javascript">
         $(document).ready(function() {
             LoadData();
         });
         function LoadData() {
             $.ajax({
-                url: "/admin/ajax/basesetting_list.aspx",
+                url: "/admin/ajax/dialog_list.aspx",
                 type: "GET",
                 data: "action=tagpage&ran=" + Math.random(),
                 success: function(responseText) {
