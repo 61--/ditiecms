@@ -431,7 +431,7 @@ namespace DTCMS.SqlServerDAL
         public DataTable GetDataTable(string Fileds,string where)
         {
             string strSql = string.Empty;
-            if (where != string.Empty)
+            if (where!=null && where != "")
             {
                 strSql = string.Format("select {0} from DT_ARC_CLASS where {1}", Fileds, where);
             }
