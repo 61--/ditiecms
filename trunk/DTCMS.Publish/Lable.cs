@@ -46,25 +46,32 @@ namespace DTCMS.Publish
         /// <param name="template">列表模板</param>
         /// <param name="pageSize">每页显示条数</param>
         /// <param name="dt"></param>
-        protected abstract void ConvertPagingList(string path, string template, string loopitem, string loopitemrule, int pageSize, System.Data.DataTable dt);
+        protected virtual void ConvertPagingList(string path, string template, string loopitem, string loopitemrule, int pageSize, System.Data.DataTable dt) 
+        { }
         
 
         /// <summary>
         /// 生成内容页
         /// </summary>
-        public abstract void CreatePageHtml(DataRow row);
+        public virtual void CreatePageHtml(DataRow row) 
+        { 
+        }
 
         /// <summary>
         /// 生成列表页
         /// </summary>
         /// <param name="classID">类别编号</param>
-        public abstract void CreateListHtml(int classID);
+        public virtual void CreateListHtml(int classID)
+        { 
+        
+        }
 
         /// <summary>
         /// 生成封面页
         /// </summary>
         /// <param name="classID">类别编号</param>
-        public abstract void CreateCoverHtml(int classID);
+        public virtual void CreateCoverHtml(int classID)
+        { }
 
         /// <summary>
         /// 替换循环列表通用方法
@@ -75,7 +82,10 @@ namespace DTCMS.Publish
         /// <param name="loopitem">循环内容</param>
         /// <param name="dt">数据原</param>
         /// <returns>替换结束列表</returns>
-        public abstract string ReplayListLable(int tlen, int clen, bool isMark, string loopitem, DataRow row);
+        public virtual string ReplayListLable(int tlen, int clen, bool isMark, string loopitem, DataRow row) 
+        {
+            return "";
+        }
 
         /// <summary>
         /// 替换内容页通用方法
@@ -83,6 +93,7 @@ namespace DTCMS.Publish
         /// <param name="template">内容页模板</param>
         /// <param name="row">内容数据</param>
         /// <returns></returns>
-        public abstract void ReplayPageLable(string template,DataRow row);
+        public virtual void ReplayPageLable(string template, DataRow row)
+        { }
     }
 }

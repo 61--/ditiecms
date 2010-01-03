@@ -108,7 +108,7 @@ namespace DTCMS.Publish
             strReplace = loopitem.Replace("[#article.title]", row["title"].ToString());
             strReplace = strReplace.Replace("[#article.articleurl]", row["filepath"].ToString());
             strReplace = strReplace.Replace("[#article.content]", row["content"].ToString());
-            strReplace = strReplace.Replace("{#article.description}", row["description"].ToString());
+            strReplace = strReplace.Replace("[#article.description]", row["description"].ToString());
             strReplace = strReplace.Replace("[#article.classname]", row["classname"].ToString());
             strReplace = strReplace.Replace("[#article.imgurl]", row["imgurl"].ToString());
             strReplace = strReplace.Replace("[#article.author]", row["author"].ToString());
