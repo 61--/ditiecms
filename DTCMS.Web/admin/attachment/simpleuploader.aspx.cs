@@ -26,8 +26,8 @@ namespace DTCMS.Web.admin
         /// 附件上传
         /// </summary>
         private void Upload()
-        {            
-            int attachmentAttribute = DTCMS.Common.Utils.GetFormInt("hid_attachmentAttribute"); //附件属性
+        {
+            int attachmentAttribute = DTCMS.Common.Utils.GetFormInt("hidden_attr"); //附件属性
             string hasWaterMark = DTCMS.Common.Utils.GetFormString("chHasWaterMark");   //原图是否水印
             string hasAbbrImage1 = DTCMS.Common.Utils.GetFormString("chHasAbbrImage1"); //是否生成缩略图
             string hasWaterMark1 = DTCMS.Common.Utils.GetFormString("chHasWaterMark1");   //缩略图是否水印
@@ -188,6 +188,7 @@ namespace DTCMS.Web.admin
             {
                 returnImgPath = "/" + filepathshort.Replace("\\", "/")+ returnImgName;
             }
+
             Response.Redirect("~/admin/attachment/emptyPage.html?returnVal=" + returnVal + "&errorMsg=" + Server.UrlEncode(errorMsg) + "&returnImgPath=" + Server.UrlEncode(returnImgPath));
         }
 
