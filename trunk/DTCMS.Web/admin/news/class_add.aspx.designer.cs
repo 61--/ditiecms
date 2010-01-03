@@ -221,6 +221,15 @@ namespace DTCMS.Web.admin {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txt_CorssID;
         
         /// <summary>
+        /// hidden_CorssID 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidden_CorssID;
+        
+        /// <summary>
         /// txt_IndexTemplet 控件。
         /// </summary>
         /// <remarks>
