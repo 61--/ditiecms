@@ -62,12 +62,12 @@
     <form id="form1" runat="server">
     <div id="continer">
         <fieldset>
-            <legend>基本配置</legend>
+            <legend>基本设置</legend>
             <table cellpadding="10" cellspacing="0" class="a_table_form">
                 <tbody>
                     <tr>
                         <td class="main_bleft">
-                            保存目录规则:
+                            存储目录规则:
                         </td>
                         <td class="main_bright" colspan="3">
                             <input type="radio" id="rdo_y" name="rdo_dirctory" value="yyyy" onclick="Dirctory(this)"
@@ -167,7 +167,7 @@
                         </td>
                         <td class="main_bright" colspan="3">
                             <input type="text" id="txt_WaterImageUrl" class="textbox" runat="server" /><img src="../images/blue/s.gif"
-                                class="select" alt="选取" onclick="add_Image();" />
+                                class="select" alt="选取" onclick="dialogAttachmentUpload('/admin/attachment/attachmentmanage.aspx', onCancel);" />
                         </td>
                     </tr>
                     <tr>
@@ -233,7 +233,7 @@
             </table>
         </fieldset>
         <fieldset>
-            <legend>附件上传格式</legend>
+            <legend>上传格式设置</legend>
             <table cellpadding="10" cellspacing="0" class="a_table_form">
                 <tbody>
                     <tr>
@@ -287,17 +287,13 @@
     </form>
 
     <script type="text/javascript">
-        function add_Image() {
-            dialogAttachmentUpload('/admin/attachment/attachmentmanage.aspx', attachment_onCancel);
-        }
-        function attachment_onCancel(returnPath) {
-            if (returnPath) {
-                $("#txt_ImageUrl").val(returnPath);
-            }
-        }
         function Dirctory(obj) {
             $("#hideen_dirctory").val(obj.value);
         }
+
+        function onCancel(iResultPath) {
+            $("#txt_WaterImageUrl").val(iResultPath);
+        } 
     </script>
 
 </body>

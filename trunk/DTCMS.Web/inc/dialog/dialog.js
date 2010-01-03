@@ -675,45 +675,7 @@ function dialogAttachmentUpload(url, cancelevent, width, height) {
         diag.close();
     };
 
-    diag.show();   
-}
-
-function dialogTagPage(okevent, url, width, height) {
-    var dialog = new Dialog();
-    
-    dialog.Title = "关键字 列表";
-    dialog.Width = (width||400) >= 400 ? (width||400) : 400;
-    dialog.Height = (height||300) >= 300 ? (height||300) : 300;
-    dialog.URL = url || "/admin/dialog/taglist.aspx";
-    dialog.OKEvent = function() {
-        var win = dialog.innerFrame.contentWindow;
-        var tags = win.getTags();
-        if (tags != "") {
-            okevent(tags);
-            dialog.close();
-        }
-    };   
-     
-    dialog.show();
-}
-
-function dialogAuthorPage(okevent, url, width, height) {
-    var dialog = new Dialog();
-    
-    dialog.Title = "作者 列表";
-    dialog.Width = (width || 400) >= 400 ? (width || 400) : 400;
-    dialog.Height = (height || 300) >= 300 ? (height || 300) : 300;
-    dialog.URL = url || "/admin/dialog/authorlist.aspx";
-    dialog.OKEvent = function() {
-        var win = dialog.innerFrame.contentWindow;
-        var authors = win.getAuthors();
-        if (authors != "") {
-            okevent(authors);
-            dialog.close();
-        }
-    };
-    
-    dialog.show();
+    diag.show();
 }
 
 function dialogclassPage(okevent, url, width, height) {

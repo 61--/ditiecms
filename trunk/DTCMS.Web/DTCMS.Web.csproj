@@ -103,13 +103,6 @@
     <Compile Include="admin\ajax\attachment_list.aspx.designer.cs">
       <DependentUpon>attachment_list.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\ajax\basesetting_list.aspx.cs">
-      <DependentUpon>basesetting_list.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\ajax\basesetting_list.aspx.designer.cs">
-      <DependentUpon>basesetting_list.aspx</DependentUpon>
-    </Compile>
     <Compile Include="admin\ajax\class_list.aspx.cs">
       <DependentUpon>class_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -246,13 +239,6 @@
     <Compile Include="admin\dialog\taglist.aspx.designer.cs">
       <DependentUpon>taglist.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\sys\BaseSetting.aspx.cs">
-      <DependentUpon>BaseSetting.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\sys\BaseSetting.aspx.designer.cs">
-      <DependentUpon>BaseSetting.aspx</DependentUpon>
-    </Compile>
     <Compile Include="admin\sys\AttachMentSetting.aspx.cs">
       <DependentUpon>AttachMentSetting.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -314,7 +300,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\ajax\attachment_list.aspx" />
-    <Content Include="admin\ajax\basesetting_list.aspx" />
     <Content Include="admin\ajax\class_list.aspx" />
     <Content Include="admin\ajax\file_list.aspx" />
     <Content Include="admin\ajax\news_list.aspx" />
@@ -353,7 +338,6 @@
     <Content Include="admin\dialog\classpagelist.aspx" />
     <Content Include="admin\news\class_list.html" />
     <Content Include="admin\dialog\taglist.aspx" />
-    <Content Include="admin\sys\BaseSetting.aspx" />
     <Content Include="admin\sys\AttachMentSetting.aspx" />
     <Content Include="admin\template\templatefile_list.aspx" />
     <Content Include="admin\template\template_add.aspx" />
@@ -894,7 +878,6 @@
     <None Include="admin\images\blue\admin_tlogo.psd" />
     <None Include="ckfinder\userfiles\.htaccess" />
     <Content Include="config\sys\gobal.config" />
-    <Content Include="config\sys\BaseSetting.config" />
     <Content Include="config\sys\SectionConfig.config" />
     <None Include="editor\fckeditor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
     <None Include="editor\fckeditor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />

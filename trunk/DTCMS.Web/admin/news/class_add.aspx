@@ -154,7 +154,7 @@
                             交叉栏目:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_CorssID" class="textbox" runat="server" />
+                            <input type="text" id="txt_CorssID" class="textbox" runat="server" disabled="disabled" />
                             <input type="hidden" id="hidden_CorssID" runat="server" />
                             <img src="../images/blue/s.gif" class="select" alt="选择交叉栏目" title="选择交叉栏目" />
                             
@@ -221,7 +221,7 @@
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_ImgUrl" class="textbox" runat="server" />
-                            <img src="../images/blue/s.gif" class="select" alt="上传栏目图片" title="上传栏目图片" />
+                            <img src="../images/blue/s.gif" class="select" alt="上传栏目图片" title="上传栏目图片" onclick="dialogAttachmentUpload('/admin/attachment/attachmentmanage.aspx', onCancel);" />
                             
                         </td>
                     </tr>
@@ -266,7 +266,11 @@
         function parentClass_onOk(classobj) {
             $("#hidden_ParentClassID").val(classobj.classid);
             $("#txt_ParentClassName").val(classobj.classname);
-        }         
+        }
+
+        function onCancel(iResultPath) {
+            $("#txt_ImgUrl").val(iResultPath);
+        } 
     </script>
 </body>
 </html>

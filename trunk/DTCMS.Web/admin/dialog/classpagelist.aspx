@@ -46,7 +46,7 @@
         function showMenuTree(json) {
             classTree = new TableTree4J("classTree", "/inc/treetable/");
             classTree.toMenuMode();
-            classTree.setMenuRoot("栏目", -1, true, "MenuRoot");
+            classTree.setMenuRoot("<a id='root' style=\"cursor:pointer;\" onclick=\"onClick_GetClass('-1','root[顶级栏目]','root')\">栏目</a>", -1, true, "MenuRoot");
             var data = eval("data=" + json);
             //参数: menuName,id,pid,booleanOpen,order,url,target,hrefTip,hrefStatusText,classStyle,icon,iconOpen
             $.each(data, function(i, n) {
