@@ -17,7 +17,8 @@ namespace DTCMS.Web.admin
 
         private void InitAttachmentType()
         {
-            DataTable dtAttachmentType = SectionConfigBLL.GetSectionListAttachmentType();
+            SectionConfigBLL bllSelectionConfig = new SectionConfigBLL();
+            DataTable dtAttachmentType = bllSelectionConfig.GetSectionListAttachmentType();
             slt_attachmentType.DataSource = dtAttachmentType;
             slt_attachmentType.DataTextField = "value";
             slt_attachmentType.DataValueField = "key";

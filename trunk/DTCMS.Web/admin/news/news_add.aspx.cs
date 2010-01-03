@@ -17,6 +17,8 @@ namespace DTCMS.Web.admin
     {
         private Arc_ArticleBLL bllArticle = new Arc_ArticleBLL();
         private Arc_ClassBLL bllClass = new Arc_ClassBLL();
+        SectionConfigBLL bllSelectionConfig = new SectionConfigBLL();
+
         private int NewID = -1;  //文章ID
 
         protected void Page_Load(object sender, EventArgs e)
@@ -237,7 +239,7 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void InitReadaccess()
         {
-            DataTable dtReadaccess = SectionConfigBLL.GetSectionListReadaccess();
+            DataTable dtReadaccess = bllSelectionConfig.GetSectionListReadaccess();
             if (dtReadaccess != null && dtReadaccess.Rows.Count > 0)
             {
                 slt_Readaccess.DataSource = dtReadaccess;
@@ -251,7 +253,7 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void InitTitleFlag()
         {
-            DataTable dtTitleFlag = SectionConfigBLL.GetSectionListTitleFlag();
+            DataTable dtTitleFlag =bllSelectionConfig.GetSectionListTitleFlag();
             if (dtTitleFlag != null && dtTitleFlag.Rows.Count > 0)
             {
                 slt_TitleFlag.DataSource = dtTitleFlag;

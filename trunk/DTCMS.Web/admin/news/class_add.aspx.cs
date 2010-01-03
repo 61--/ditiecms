@@ -18,6 +18,8 @@ namespace DTCMS.Web.admin
     public partial class Class_add : AdminPage
     {
         private Arc_ClassBLL bllClass = new Arc_ClassBLL();
+        SectionConfigBLL bllSelectionConfig = new SectionConfigBLL();
+
         private int CID=-1;  //栏目ID
 
         protected void Page_Load(object sender, EventArgs e)
@@ -261,7 +263,7 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void InitClassType()
         {
-            DataTable dtTypeList = SectionConfigBLL.GetSectionListClassType();
+            DataTable dtTypeList =bllSelectionConfig.GetSectionListClassType();
             if (dtTypeList != null && dtTypeList.Rows.Count > 0)
             {
                 slt_ClassType.DataSource = dtTypeList;
@@ -276,7 +278,7 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void InitReadaccess()
         {
-            DataTable dtReadaccess = SectionConfigBLL.GetSectionListReadaccess();
+            DataTable dtReadaccess =bllSelectionConfig.GetSectionListReadaccess();
             if (dtReadaccess != null && dtReadaccess.Rows.Count > 0)
             {
                 slt_Readaccess.DataSource = dtReadaccess;
@@ -291,7 +293,7 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void InitCheckLevel()
         {
-            DataTable dtCheckLevel = SectionConfigBLL.GetSectionListCheckLevel();
+            DataTable dtCheckLevel =bllSelectionConfig.GetSectionListCheckLevel();
             if (dtCheckLevel != null && dtCheckLevel.Rows.Count > 0)
             {
                 slt_CheckLevel.DataSource = dtCheckLevel;
