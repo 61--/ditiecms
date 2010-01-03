@@ -210,11 +210,11 @@ namespace DTCMS.Web.admin
                     sbJson.Append("<span>");
                     if (rdo_count == 1)
                     {
-                        sbJson.Append("<input type=\"radio\" id=\"rdo_" + rdo_count.ToString() + "\" name=\"rdo\" checked=\"checked\" value=\"" + dr["key"].ToString() + "\" onclick=\"setAttachmentAttribute(this)\" />");
+                        sbJson.Append("<input type=\"radio\" id=\"rdo_" + rdo_count.ToString() + "\" name=\"rdo\" checked=\"checked\" value=\"" + dr["key"].ToString() + "\" onclick=\"setAttr(this)\" />");
                     }
                     else
                     {
-                        sbJson.Append("<input type=\"radio\" id=\"rdo_" + rdo_count.ToString() + "\" name=\"rdo\" value=\"" + dr["key"].ToString() + "\" onclick=\"setAttachmentAttribute(this)\" />");
+                        sbJson.Append("<input type=\"radio\" id=\"rdo_" + rdo_count.ToString() + "\" name=\"rdo\" value=\"" + dr["key"].ToString() + "\" onclick=\"setAttr(this)\" />");
                     }
                     sbJson.Append("<label for=\"rdo_" + rdo_count.ToString() + "\">" + dr["value"].ToString() + "</label>");
                     sbJson.Append("</span>");

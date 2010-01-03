@@ -280,7 +280,7 @@
         }
 
 
-        function onUploadCompleted(iResult, errorMsg, iResultPath) {
+        function onUploadCompleted(iResult, errorMsg, iResultPath) {            
             switch (iResult.toString()) {
                 case "1":
                     try {
