@@ -11,6 +11,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Text;
 using DTCMS.Common;
 using DTCMS.BLL;
+using DTCMS.Entity.Enum;
 
 namespace DTCMS.Web.admin
 {
@@ -55,7 +56,7 @@ namespace DTCMS.Web.admin
         /// <returns>json对象</returns>
         public string GetDataTableJsonPage()
         {
-            return bllClass.GetDataTableJsonPage();
+            return bllClass.GetDataTableJsonPage("Attribute=" + (int)EClassAttribute.List);
         }
 
         /// <summary>

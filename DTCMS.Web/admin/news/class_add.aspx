@@ -32,9 +32,9 @@
                             上级栏目:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ParentClassName" class="textbox" runat="server" />
+                            <input type="text" id="txt_ParentClassName" class="textbox" runat="server" disabled="disabled" />
                             <input id="hidden_ParentClassID" type="hidden" value="0" runat="server" />
-                            <img src="../images/blue/s.gif" class="select" alt="选择上级栏目" />
+                            <img src="../images/blue/s.gif" class="select" alt="选择上级栏目" onclick="add_parentClass();"  />
                         </td>
                     </tr>
                     <tr>
@@ -114,9 +114,9 @@
                             栏目属性:
                         </td>
                         <td class="main_bright split">
-                            <input type="radio" name="rdo_Attribute" id="rdo_Index" checked="true" runat="server" />
+                            <input type="radio" name="rdo_Attribute" id="rdo_Index" runat="server" />
                             <label for="rdo_Index">封面（栏目本身不允许发布文档）</label><br />
-                            <input type="radio" name="rdo_Attribute" id="rdo_List" runat="server" />
+                            <input type="radio" name="rdo_Attribute" id="rdo_List" checked="true" runat="server" />
                             <label for="rdo_List">列表（允许在本栏目发布文档，并生成文档列表）</label><br />
                             <input type="radio" name="rdo_Attribute" id="rdo_Singl" runat="server" />
                             <label for="rdo_Singl">单独页面（栏目本身不允许发布文档）</label><br />
@@ -155,6 +155,7 @@
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_CorssID" class="textbox" runat="server" />
+                            <input type="hidden" id="hidden_CorssID" runat="server" />
                             <img src="../images/blue/s.gif" class="select" alt="选择交叉栏目" title="选择交叉栏目" />
                             
                         </td>
@@ -257,5 +258,15 @@
         </div>
     </div>
     </form>
+    <script type="text/javascript">
+
+        function add_parentClass() {   //栏目            
+            dialogclassPage(parentClass_onOk, "/admin/dialog/classpagelist.aspx");
+        }
+        function parentClass_onOk(classobj) {
+            $("#hidden_ParentClassID").val(classobj.classid);
+            $("#txt_ParentClassName").val(classobj.classname);
+        }         
+    </script>
 </body>
 </html>

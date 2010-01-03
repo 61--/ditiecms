@@ -120,7 +120,6 @@ namespace DTCMS.Web.admin
             if (model != null)
             {
                 hidden_ParentClassID.Value = model.ParentID.ToString();
-                txt_ParentClassName.Value = model.ParentID.ToString();
                 txt_ParentClassName.Value = bllClass.GetClassName(model.ParentID);
                 SetClassAttribute(model.Attribute);
                 txt_ClassName.Value = model.ClassName;
