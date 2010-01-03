@@ -8,8 +8,8 @@ namespace DTCMS.Publish
     public class Publishs
     {
         Sys_PublishBLL bllPublish = new Sys_PublishBLL();
-        SimpleFactory sf = new SimpleFactory();
-        Lable lable;
+        //SimpleFactory sf = new SimpleFactory();
+        ArticleLable article = new ArticleLable();
         public void PublishClass(int CID)
         {
             int totalCount = 0;
@@ -20,14 +20,13 @@ namespace DTCMS.Publish
                 {
                     if(Convert.ToInt32(row["ClassType"])==0)
                     {
-                         lable =sf.InstallLable(Convert.ToInt32(row["ClassType"]));
                          switch(Convert.ToInt32(row["Attribute"]))
                          {
                              case 1:
-                                lable.CreateCoverHtml(Convert.ToInt32(row["CID"]));
+                                 article.CreateCoverHtml(Convert.ToInt32(row["CID"]));
                              break;
                              case 2:
-                                lable.CreateListHtml(Convert.ToInt32(row["CID"]));
+                                article.CreateListHtml(Convert.ToInt32(row["CID"]));
                              break;
                          }
                     }
@@ -39,25 +38,25 @@ namespace DTCMS.Publish
         {
             int totalCount = 0;
             DataTable dt = bllPublish.GetArticleByClassID(CID,"","",out totalCount);
-
-            lable = sf.InstallLable(0);
+            
+            //lable = sf.InstallLable(0);
             //lable.CreatePageHtml();
 
         }
        
     }
-    public class SimpleFactory
-    {
-        public Lable InstallLable(int classType)
-        {
-            switch (classType)
-            { 
-                case 0 :
-                    return new ArticleLable();
-                default:
-                    return null;
+    //public class SimpleFactory
+    //{
+    //    public Lable InstallLable(int classType)
+    //    {
+    //        switch (classType)
+    //        { 
+    //            case 0 :
+    //                return new ArticleLable();
+    //            default:
+    //                return null;
 
-            }
-        }
-    }
+    //        }
+    //    }
+    //}
 }
