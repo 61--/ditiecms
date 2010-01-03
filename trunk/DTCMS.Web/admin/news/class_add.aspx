@@ -260,14 +260,14 @@
     </form>
     <script type="text/javascript">
 
-        function add_parentClass() {   //栏目            
-            dialogclassPage(parentClass_onOk, "/admin/dialog/classpagelist.aspx");
+        function add_parentClass() {   //栏目
+            showDialog("栏目列表", class_onOk, "/admin/dialog/classpagelist.aspx");
         }
-        function parentClass_onOk(classobj) {
-            $("#hidden_ParentClassID").val(classobj.classid);
-            $("#txt_ParentClassName").val(classobj.classname);
+        function class_onOk(win) {
+            var classJson = win.getClasses();
+            $("#hidden_ParentClassID").val(classJson.classid);
+            $("#txt_ParentClassName").val(classJson.classname);            
         }
-
         function onCancel(iResultPath) {
             $("#txt_ImgUrl").val(iResultPath);
         } 

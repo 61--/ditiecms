@@ -70,8 +70,8 @@
                         </td>
                         <td class="main_bright split">
                             <input type="hidden" id="txt_ClassID" class="textbox short" runat="server" />
-                            <input type="text" id="txt_ClassName" class="textbox short" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" onclick="add_class();" />
-                            <span class="main_bleft">文章来源: </span><input type="text" id="txt_Source" class="textbox" style="width:120px;" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" onclick="Dialog.alert('选择来源！')" />
+                            <input type="text" id="txt_ClassName" class="textbox short" runat="server" disabled="disabled" /><img src="../images/blue/s.gif" class="select" alt="选择" onclick="add_Class();" />
+                            <span class="main_bleft">文章来源: </span><input type="text" id="txt_Source" class="textbox" style="width:120px;" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" onclick="add_source();" />
                         </td>
                     </tr>
                     <tr>
@@ -80,7 +80,7 @@
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_Author" class="textbox" style="width:120px;" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" onclick="add_author();" />
-                            <span class="main_bleft">责任编辑: </span><input type="text" id="txt_Editor" class="textbox" style="width:120px;" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" />
+                            <span class="main_bleft">责任编辑: </span><input type="text" id="txt_Editor" class="textbox" style="width:120px;" runat="server" />
                         </td>
                     </tr>
                     <tr>
@@ -215,7 +215,6 @@
                 redirect.css("display", "none");
             }
         }
-
         function add_Image() {  //缩略图
             dialogAttachmentUpload('/admin/attachment/attachmentmanage.aspx', attachment_onCancel);
         }
@@ -224,6 +223,38 @@
                 $("#txt_ImageUrl").val(returnPath);
             }
         }
+        function add_Class() {   //栏目
+            showDialog("栏目列表", class_onOk, "/admin/dialog/classpagelist.aspx");
+        }
+        function class_onOk(win) {
+            var classJson = win.getClasses();
+            $("#txt_ClassID").val(classJson.classid);
+            $("#txt_ClassName").val(classJson.classname);
+        }
+        
+        function add_tags() {
+            showDialog("关键字", tag_onOk, "/admin/dialog/taglist.aspx");    
+        }
+        function tag_onOk(win) {
+            var tagList = win.getTags();
+            $("#txt_Tags").val(tagList);
+        }
+
+        function add_source() {
+            showDialog("文章来源", soutce_onOk, "/admin/dialog/newssourcelist.aspx");
+        }
+        function soutce_onOk(win) {
+            var sourceList = win.getnews();
+            $("#txt_Source").val(sourceList);
+        }
+
+        function add_author() {
+            showDialog("作者", author_onOk, "/admin/dialog/authorlist.aspx");
+        }
+        function author_onOk(win) {
+            var authorList = win.getAuthors();
+            $("#txt_Author").val(authorList);
+        }       
     </script>
 </body>
 </html>

@@ -678,21 +678,17 @@ function dialogAttachmentUpload(url, cancelevent, width, height) {
     diag.show();
 }
 
-function dialogclassPage(okevent, url, width, height) {
+function showDialog(title, onOkEvent, url, width, height) {
     var dialog = new Dialog();
-    
-    dialog.Title = "栏目 列表";
+
+    dialog.Title = title;
     dialog.Width = (width || 400) >= 400 ? (width || 400) : 400;
     dialog.Height = (height || 300) >= 300 ? (height || 300) : 300;
-    dialog.URL = url || "/admin/dialog/classpagelist.aspx";
+    dialog.URL = url;
     dialog.OKEvent = function() {
         var win = dialog.innerFrame.contentWindow;
-        var classobj = win.getClasses();
-        if (classobj != null) {
-            okevent(classobj);
-            dialog.close();
-        }
+        onOkEvent(win);
+        dialog.close();
     };
-    
     dialog.show();
 }
