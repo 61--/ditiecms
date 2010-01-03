@@ -128,9 +128,9 @@ namespace DTCMS.BLL
         /// 获取DataTable，并转换成Joson数据，前台调用
         /// </summary>
         /// <returns>Joson数据</returns>
-        public string GetDataTableJsonPage()
+        public string GetDataTableJsonPage(string where)
         {
-            DataTable dt = dalArcClass.GetDataTable("CID,ClassName,ParentID");
+            DataTable dt = dalArcClass.GetDataTable("CID,ClassName,ParentID",where);
             if (dt != null)
             {
                 return Utils.DataTableToJson(dt).ToString();
