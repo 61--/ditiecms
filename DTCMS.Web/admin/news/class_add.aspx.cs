@@ -231,6 +231,11 @@ namespace DTCMS.Web.admin
         /// <param name="attribute"></param>
         private void SetClassAttribute(int attribute)
         {
+            rdo_List.Checked =false;
+            rdo_Singl.Checked = false;
+            rdo_Link.Checked = false;
+            rdo_Index.Checked = false;
+
             if (attribute == (int)EClassAttribute.List)
             {//列表
                 rdo_List.Checked = true;

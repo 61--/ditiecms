@@ -163,12 +163,15 @@
             var chks = $("input[name='items']");
             var hid = $("#returnVal");
             $.each(chks, function(i, n) {
-                hid.val(n.value);
+                if (n.checked) {
+                    hid.val(n.value);                    
+                }
             });
             window.parent.parent.Dialog.close();        
         }
         function resultPath() {
-            return $("returnVal").val();
+            var hid = $("#returnVal");
+            return hid.val();
         }        
     </script>
 

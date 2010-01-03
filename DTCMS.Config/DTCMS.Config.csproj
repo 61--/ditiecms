@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseSettingConfig.cs" />
     <Compile Include="ConfigPath.cs" />
     <Compile Include="GobalConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

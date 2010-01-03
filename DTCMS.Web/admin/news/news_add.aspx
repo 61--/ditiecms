@@ -224,28 +224,6 @@
                 $("#txt_ImageUrl").val(returnPath);
             }
         }
-
-        function add_tags() {   //Tag关键字
-            dialogTagPage(tag_onOk, "/admin/dialog/taglist.aspx");
-        }
-        function tag_onOk(tags) {
-            $("#txt_Tags").val(tags);
-        }
-
-        function add_author() {   //作者
-            dialogAuthorPage(author_onOk, "/admin/dialog/authorlist.aspx");
-        }
-        function author_onOk(author) {
-            $("#txt_Author").val(author);
-        }
-
-        function add_class() {   //栏目            
-            dialogclassPage(class_onOk, "/admin/dialog/classpagelist.aspx");
-        }
-        function class_onOk(classobj) {
-            $("#txt_ClassID").val(classobj.classid);
-            $("#txt_ClassName").val(classobj.classname);            
-        }
     </script>
 </body>
 </html>
