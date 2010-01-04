@@ -377,6 +377,43 @@ namespace DTCMS.Common
 
         #endregion
 
+        #region 过滤html标签
+        /// <summary>
+        /// 过滤html标签
+        /// </summary>
+        /// <param name="str">要过滤的字符串</param>
+        /// <returns>去除html标签后的字符串</returns>
+        public static string NoHTML(string str)   
+        {   
+               //删除脚本   
+               str   =   Regex.Replace(str,@"<script[^>]*?>.*?</script>","",RegexOptions.IgnoreCase);   
+               //删除HTML   
+               str   =   Regex.Replace(str,@"<(.[^>]*)>","",RegexOptions.IgnoreCase);   
+               str   =   Regex.Replace(str,@"([\r\n])[\s]+","",RegexOptions.IgnoreCase);   
+               str   =   Regex.Replace(str,@"-->","",RegexOptions.IgnoreCase);   
+               str   =   Regex.Replace(str,@"<!--.*","",RegexOptions.IgnoreCase);   
+                
+               str   =   Regex.Replace(str,@"&(quot|#34);","\"",RegexOptions.IgnoreCase);   
+               str   =   Regex.Replace(str,@"&(amp|#38);","&",RegexOptions.IgnoreCase);   
+               str   =   Regex.Replace(str,@"&(lt|#60);","<",RegexOptions.IgnoreCase);   
+               str   =   Regex.Replace(str,@"&(gt|#62);",">",RegexOptions.IgnoreCase);   
+               str   =   Regex.Replace(str,@"&(nbsp|#160);","   ",RegexOptions.IgnoreCase);   
+               str   =   Regex.Replace(str,@"&(iexcl|#161);","\xa1",RegexOptions.IgnoreCase);   
+               str   =   Regex.Replace(str,@"&(cent|#162);","\xa2",RegexOptions.IgnoreCase);   
+               str   =   Regex.Replace(str,@"&(pound|#163);","\xa3",RegexOptions.IgnoreCase);   
+               str   =   Regex.Replace(str,@"&(copy|#169);","\xa9",RegexOptions.IgnoreCase);   
+               str   =   Regex.Replace(str,   @"&#(\d+);","",RegexOptions.IgnoreCase);   
+                
+               str.Replace("<","");   
+               str.Replace(">","");   
+               str.Replace("\r\n","");   
+               str=str.Trim();   
+                
+               return   str;   
+        }
+
+        #endregion
+
         #region html url 编解码
         /// <summary>
         /// 返回 HTML 字符串的编码结果
