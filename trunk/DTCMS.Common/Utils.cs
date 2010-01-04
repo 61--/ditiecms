@@ -402,7 +402,7 @@ namespace DTCMS.Common
                str   =   Regex.Replace(str,@"&(cent|#162);","\xa2",RegexOptions.IgnoreCase);   
                str   =   Regex.Replace(str,@"&(pound|#163);","\xa3",RegexOptions.IgnoreCase);   
                str   =   Regex.Replace(str,@"&(copy|#169);","\xa9",RegexOptions.IgnoreCase);   
-               str   =   Regex.Replace(str,   @"&#(\d+);","",RegexOptions.IgnoreCase);   
+               str   =   Regex.Replace(str,@"&#(\d+);","",RegexOptions.IgnoreCase);   
                 
                str.Replace("<","");   
                str.Replace(">","");   
