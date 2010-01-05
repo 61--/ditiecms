@@ -6,15 +6,10 @@
 <head id="Head1" runat="server">
     <title>附件上传</title>
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
-
     <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
-
     <script type="text/javascript" src="../js/public.js"></script>
-
     <link href="../../inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
-
     <script type="text/javascript" src="../../inc/dialog/dialog.js"></script>
-
     <style type="text/css">
         *
         {
@@ -254,7 +249,7 @@
     <div style="display: none;">
         <iframe name="formTarget" src="javascript:void(0)" height="0"></iframe>
     </div>
-    </form>    
+    </form>       
     <script type="text/javascript">
         function fileOnChange(obj) {
             var val = obj.value;
@@ -277,7 +272,6 @@
 
             document.getElementById("form1").submit();
         }
-
 
         function onUploadCompleted(iResult, errorMsg, iResultPath) {            
             switch (iResult.toString()) {

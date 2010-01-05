@@ -15,7 +15,7 @@ namespace DTCMS.Web.admin
             if (!this.IsPostBack)
             {
                 //Page.ClientScript.RegisterStartupScript(Page.GetType(), " ", "<script>" + ExistsFormat() + "</script>");
-                Response.Write("<script>" + ExistsFormat() + "</script>");
+                Response.Write(ExistsFormat());
             }
         }
         private string ExistsFormat()
@@ -23,6 +23,7 @@ namespace DTCMS.Web.admin
             SystemConfig sysConfig = GobalConfig.GetCobalInstance().LoadGoableConfig();
 
             StringBuilder sb = new StringBuilder();
+            sb.Append("<script>\r\n");
             sb.Append("function hasImage(ext) { return (");
             foreach (string img in sysConfig.Attachments.ImageFormat.Split('|'))
             {
@@ -66,7 +67,8 @@ namespace DTCMS.Web.admin
                 sb.Append(" || ");
             }
             sb.Remove(sb.ToString().Length - 4, 4);
-            sb.Append("); }\r\n"); 
+            sb.Append("); }\r\n");
+            sb.Append("</script>");
             return sb.ToString();
         }
     }
