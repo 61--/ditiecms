@@ -615,5 +615,10 @@ namespace DTCMS.Common
         }
         #endregion
 
+        public static string Sequence(int min,int max)
+        {
+            Random random = new Random();
+            return random.Next(min, max).ToString();
+        }
     }
 }

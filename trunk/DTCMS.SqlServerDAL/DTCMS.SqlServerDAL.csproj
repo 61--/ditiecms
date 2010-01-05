@@ -48,7 +48,9 @@
     <Compile Include="Atr_AttachMentDAL.cs" />
     <Compile Include="BaseDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sys_NavigateDAL.cs" />
     <Compile Include="Sys_PublishDAL.cs" />
+    <Compile Include="Sys_QNavigateDAL.cs" />
     <Compile Include="Sys_TemplateDAL.cs" />
   </ItemGroup>
   <ItemGroup>
