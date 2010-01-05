@@ -58,7 +58,7 @@
                     </tr>
                     <tr>
                         <td class="main_bleft split">
-                            TAG标签<sup><a id="H0201001" href="javascript:showHelper('#H0201001', '帮助主题', '多个TAG标签用半角逗号隔开',30)" title="查看帮助">[?]</a></sup>:
+                            TAG标签<sup><a id="H0201001" href="javascript:;" onmouseover="javascript:showHelper('#H0201001', '帮助主题', '多个TAG标签用半角逗号隔开',30)" onmouseout="hideHelper()" title="查看帮助">[?]</a></sup>:
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_Tags" class="textbox" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" onclick="add_tags();" />
