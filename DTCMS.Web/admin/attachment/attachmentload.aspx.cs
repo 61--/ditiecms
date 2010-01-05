@@ -14,8 +14,7 @@ namespace DTCMS.Web.admin
         {
             if (!this.IsPostBack)
             {
-                //Page.ClientScript.RegisterStartupScript(Page.GetType(), " ", "<script>" + ExistsFormat() + "</script>");
-                Response.Write(ExistsFormat());
+                Page.ClientScript.RegisterStartupScript(Page.GetType(), " ", ExistsFormat());
             }
         }
         private string ExistsFormat()
