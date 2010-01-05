@@ -165,7 +165,7 @@
                             封面模版:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_IndexTemplet" class="textbox long" value="/{#Templet}/article/index.html" runat="server" />
+                            <input type="text" id="txt_IndexTemplet" class="textbox long" runat="server" />
                             <img src="../images/blue/s.gif" class="select" alt="选择封面模版" title="选择封面模版" />
                             
                         </td>
@@ -175,7 +175,7 @@
                             列表模版:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ListTemplet" class="textbox long" value="/{#Templet}/article/list.html" runat="server" />
+                            <input type="text" id="txt_ListTemplet" class="textbox long" runat="server" />
                             <img src="../images/blue/s.gif" class="select" alt="选择列表模版" title="选择列表模版" />
                             
                         </td>
@@ -185,7 +185,7 @@
                             文档模版:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ArchiveTemplet" class="textbox long" value="/{#Templet}/article/article.html" runat="server" />
+                            <input type="text" id="txt_ArchiveTemplet" class="textbox long" runat="server" />
                             <img src="../images/blue/s.gif" class="select" alt="选择文档模版" title="选择文档模版" />
                             
                         </td>
@@ -195,7 +195,7 @@
                             封面页规则:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_IndexRule" class="textbox long" value="{#ClassPath}/index.html" runat="server" />
+                            <input type="text" id="txt_IndexRule" class="textbox long" runat="server" />
                         </td>
                     </tr>
                     <tr>
@@ -203,7 +203,7 @@
                             列表页规则:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ListRule" class="textbox long" value="{#ClassPath}/list_{#page}.html" runat="server" />
+                            <input type="text" id="txt_ListRule" class="textbox long" runat="server" />
                         </td>
                     </tr>
                     <tr>
@@ -211,7 +211,7 @@
                             文档页规则:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ArchiveRule" class="textbox long" value="{#ClassPath}/{#DateTime Format=yyyyMM}/{#AID}.html" runat="server" />
+                            <input type="text" id="txt_ArchiveRule" class="textbox long" runat="server" />
                             
                         </td>
                     </tr>

@@ -53,7 +53,7 @@ namespace DTCMS.Web.admin.sys
             txt_RecordNo.Value = sysConfig.SysInfoParams.RecordNo.Trim();
             txt_AdminEmail.Value = sysConfig.SysInfoParams.AdminEmail.Trim();
             txt_DefaultTemplet.Value = sysConfig.SysInfoParams.DefaultTemplet.Trim();
-            slt_CheckLevel.Value = sysConfig.SysInfoParams.CheckLevel.Trim();
+            slt_CheckLevel.SelectedIndex = slt_CheckLevel.Items.IndexOf(slt_CheckLevel.Items.FindByValue(sysConfig.SysInfoParams.CheckLevel));
             hidden_LoginValidate.Value = sysConfig.SysInfoParams.LoginValidate.Trim();            
             if (hidden_LoginValidate.Value.ToString() == "1")
             {

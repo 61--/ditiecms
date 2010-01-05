@@ -12,6 +12,7 @@ using DTCMS.Entity;
 using DTCMS.Entity.Enum;
 using DTCMS.BLL;
 using DTCMS.Common;
+using DTCMS.Config;
 
 namespace DTCMS.Web.admin
 {
@@ -44,6 +45,7 @@ namespace DTCMS.Web.admin
             InitClassType();
             InitReadaccess();
             InitCheckLevel();
+            InitDefaultData();
         }
 
         protected void Btn_Submit_Click(object sender, EventArgs e)
@@ -302,6 +304,25 @@ namespace DTCMS.Web.admin
                 slt_CheckLevel.DataBind();
             }
 
+        }
+
+        /// <summary>
+        /// 默认设置
+        /// </summary>
+        private void InitDefaultData()
+        {
+            SystemConfig sysConfig = GobalConfig.LoadGoableConfig();
+
+            txt_ClassPath.Value = sysConfig.SysInfoParams.ClassPath.Trim();
+            slt_CheckLevel.SelectedIndex = slt_CheckLevel.Items.IndexOf(slt_CheckLevel.Items.FindByValue(sysConfig.SysInfoParams.CheckLevel));
+            txt_IndexTemplet.Value = sysConfig.SysInfoParams.IndexTemplet.Trim();
+            txt_ListTemplet.Value = sysConfig.SysInfoParams.ListTemplet.Trim();
+            txt_ArchiveTemplet.Value = sysConfig.SysInfoParams.ArchiveTemplet.Trim();
+            txt_IndexRule.Value = sysConfig.SysInfoParams.IndexRule.Trim();
+            txt_ListRule.Value = sysConfig.SysInfoParams.ListRule.Trim();
+            txt_ArchiveRule.Value = sysConfig.SysInfoParams.ArchiveRule.Trim();
+            txt_Keywords.Value = sysConfig.SysInfoParams.MetaKey.Trim();
+            txt_Description.Value = sysConfig.SysInfoParams.MetaDescription.Trim();
         }
 
         #endregion 初始化页面数据
