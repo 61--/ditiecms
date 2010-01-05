@@ -8,9 +8,13 @@
     <title>栏目添加</title>
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
     <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
+
     <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
+
     <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
+
     <script type="text/javascript" src="../js/common.js"></script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -34,7 +38,7 @@
                         <td class="main_bright split">
                             <input type="text" id="txt_ParentClassName" class="textbox" runat="server" disabled="disabled" />
                             <input id="hidden_ParentClassID" type="hidden" value="0" runat="server" />
-                            <img src="../images/blue/s.gif" class="select" alt="选择上级栏目" onclick="add_parentClass();"  />
+                            <img src="../images/blue/s.gif" class="select" alt="选择上级栏目" onclick="add_parentClass();" />
                         </td>
                     </tr>
                     <tr>
@@ -42,7 +46,8 @@
                             栏目名称:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ClassName" maxlength="50" class="textbox" runat="server" />
+                            <input type="text" id="txt_ClassName" maxlength="50" class="textbox" runat="server"
+                                onblur="get_ClassEName();" />
                             <span id="msg_ClassName"></span>
                         </td>
                     </tr>
@@ -60,8 +65,10 @@
                             栏目目录:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ClassPath" value="{#cmsPath}/archive/" class="textbox" runat="server" />
-                            <input type="checkbox" name="chk_IsClassEName" id="chk_IsClassEName" checked="checked" runat="server" /><label for="chk_IsClassEName">栏目英文名</label>
+                            <input type="text" id="txt_ClassPath" value="{#cmsPath}/archive/" class="textbox"
+                                runat="server" />
+                            <input type="checkbox" name="chk_IsClassEName" id="chk_IsClassEName" checked="checked"
+                                runat="server" /><label for="chk_IsClassEName">栏目英文名</label>
                         </td>
                     </tr>
                     <tr>
@@ -69,7 +76,8 @@
                             栏目类型:
                         </td>
                         <td class="main_bright split">
-                            <select id="slt_ClassType" runat="server" style="width: 185px; background: #F7FAFC;"></select>
+                            <select id="slt_ClassType" runat="server" style="width: 185px; background: #F7FAFC;">
+                            </select>
                             <span id="msg_ClassType"></span>
                         </td>
                     </tr>
@@ -115,13 +123,18 @@
                         </td>
                         <td class="main_bright split">
                             <input type="radio" name="rdo_Attribute" id="rdo_Index" runat="server" />
-                            <label for="rdo_Index">封面（栏目本身不允许发布文档）</label><br />
+                            <label for="rdo_Index">
+                                封面（栏目本身不允许发布文档）</label><br />
                             <input type="radio" name="rdo_Attribute" id="rdo_List" checked="true" runat="server" />
-                            <label for="rdo_List">列表（允许在本栏目发布文档，并生成文档列表）</label><br />
+                            <label for="rdo_List">
+                                列表（允许在本栏目发布文档，并生成文档列表）</label><br />
                             <input type="radio" name="rdo_Attribute" id="rdo_Singl" runat="server" />
-                            <label for="rdo_Singl">单独页面（栏目本身不允许发布文档）</label><br />
+                            <label for="rdo_Singl">
+                                单独页面（栏目本身不允许发布文档）</label><br />
                             <input type="radio" name="rdo_Attribute" id="rdo_Link" runat="server" />
-                            <label for="rdo_Link">链接地址</label><input type="text" id="txt_Link" class="textbox" style="display:none" runat="server" />
+                            <label for="rdo_Link">
+                                链接地址</label><input type="text" id="txt_Link" class="textbox" style="display: none"
+                                    runat="server" />
                         </td>
                     </tr>
                     <tr>
@@ -129,10 +142,14 @@
                             其他属性:
                         </td>
                         <td class="main_bright">
-                            <input type="checkbox" name="chk_ISContribute" id="chk_ISContribute" checked="true" runat="server" /><label for="chk_ISContribute">是否允许投稿</label>
-                            <input type="checkbox" name="chk_ISHtml" id="chk_ISHtml" checked="true" runat="server" /><label for="chk_ISHtml">是否生成静态页</label>
-                            <input type="checkbox" name="chk_ISComment" id="chk_ISComment" checked="true" runat="server" /><label for="chk_ISComment">是否允许评论</label>
-                            <input type="checkbox" name="chk_ISHiden" id="chk_ISHiden" runat="server" /><label for="chk_ISHiden">是否隐藏栏目</label>
+                            <input type="checkbox" name="chk_ISContribute" id="chk_ISContribute" checked="true"
+                                runat="server" /><label for="chk_ISContribute">是否允许投稿</label>
+                            <input type="checkbox" name="chk_ISHtml" id="chk_ISHtml" checked="true" runat="server" /><label
+                                for="chk_ISHtml">是否生成静态页</label>
+                            <input type="checkbox" name="chk_ISComment" id="chk_ISComment" checked="true" runat="server" /><label
+                                for="chk_ISComment">是否允许评论</label>
+                            <input type="checkbox" name="chk_ISHiden" id="chk_ISHiden" runat="server" /><label
+                                for="chk_ISHiden">是否隐藏栏目</label>
                         </td>
                     </tr>
                 </table>
@@ -146,7 +163,6 @@
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_ClassDomain" class="textbox" runat="server" />
-                            
                         </td>
                     </tr>
                     <tr>
@@ -157,7 +173,6 @@
                             <input type="text" id="txt_CorssID" class="textbox" runat="server" disabled="disabled" />
                             <input type="hidden" id="hidden_CorssID" runat="server" />
                             <img src="../images/blue/s.gif" class="select" alt="选择交叉栏目" title="选择交叉栏目" />
-                            
                         </td>
                     </tr>
                     <tr>
@@ -167,7 +182,6 @@
                         <td class="main_bright split">
                             <input type="text" id="txt_IndexTemplet" class="textbox long" runat="server" />
                             <img src="../images/blue/s.gif" class="select" alt="选择封面模版" title="选择封面模版" />
-                            
                         </td>
                     </tr>
                     <tr>
@@ -177,7 +191,6 @@
                         <td class="main_bright split">
                             <input type="text" id="txt_ListTemplet" class="textbox long" runat="server" />
                             <img src="../images/blue/s.gif" class="select" alt="选择列表模版" title="选择列表模版" />
-                            
                         </td>
                     </tr>
                     <tr>
@@ -187,7 +200,6 @@
                         <td class="main_bright split">
                             <input type="text" id="txt_ArchiveTemplet" class="textbox long" runat="server" />
                             <img src="../images/blue/s.gif" class="select" alt="选择文档模版" title="选择文档模版" />
-                            
                         </td>
                     </tr>
                     <tr>
@@ -212,7 +224,6 @@
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_ArchiveRule" class="textbox long" runat="server" />
-                            
                         </td>
                     </tr>
                     <tr>
@@ -222,7 +233,6 @@
                         <td class="main_bright split">
                             <input type="text" id="txt_ImgUrl" class="textbox" runat="server" />
                             <img src="../images/blue/s.gif" class="select" alt="上传栏目图片" title="上传栏目图片" onclick="dialogAttachmentUpload('/admin/attachment/attachmentmanage.aspx', onCancel);" />
-                            
                         </td>
                     </tr>
                     <tr>
@@ -231,7 +241,6 @@
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_Keywords" class="textbox long" runat="server" />
-                            
                         </td>
                     </tr>
                     <tr>
@@ -250,27 +259,46 @@
                 </FCKeditorV2:FCKeditor>
             </div>
             <!--操作按钮-->
-            <div style="margin:10px;text-align:center;">
-                <button id="btn_Submit" type="button" class="b1" runat="server" onserverclick="Btn_Submit_Click">保存</button>
-                <button id="btn_Cancel" type="button" class="b1" onclick="history.back(-1);"> 取消</button>
+            <div style="margin: 10px; text-align: center;">
+                <button id="btn_Submit" type="button" class="b1" runat="server" onserverclick="Btn_Submit_Click">
+                    保存</button>
+                <button id="btn_Cancel" type="button" class="b1" onclick="history.back(-1);">
+                    取消</button>
                 <input id="hidden_ClassId" type="hidden" value="0" runat="server" />
             </div>
         </div>
     </div>
     </form>
-    <script type="text/javascript">
 
+    <script type="text/javascript">
+        function get_ClassEName() {
+            var classname = $("#txt_ClassName");
+            var classename = $("#txt_ClassEName");
+
+            if (classname.val() != "" && classname.val() != null) {
+                $.ajax({
+                    url: "/admin/ajax/class_list.aspx",
+                    type: "GET",
+                    data: "action=ename&classname=" + escape(classname.val()) + "&ran=" + Math.random(),
+                    success: function(responseText) {
+                        classename.val(responseText);
+                        classename.focus();
+                    }
+                });
+            }
+        }
         function add_parentClass() {   //栏目
             showDialog("栏目列表", class_onOk, "/admin/dialog/classpagelist.aspx");
         }
         function class_onOk(win) {
             var classJson = win.getClasses();
             $("#hidden_ParentClassID").val(classJson.classid);
-            $("#txt_ParentClassName").val(classJson.classname);            
+            $("#txt_ParentClassName").val(classJson.classname);
         }
         function onCancel(iResultPath) {
             $("#txt_ImgUrl").val(iResultPath);
         } 
     </script>
+
 </body>
 </html>
