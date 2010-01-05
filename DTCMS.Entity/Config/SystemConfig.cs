@@ -8,7 +8,7 @@ namespace DTCMS.Entity
     public class SystemConfig
     {
         private Attachment _attachment;
-
+        private SysInfoParam _sysinfoparam;
         [XmlElement(ElementName = "Attachment")]
         public Attachment Attachments
         {
@@ -22,6 +22,20 @@ namespace DTCMS.Entity
             }
 
         }
+        [XmlElement(ElementName = "SysInfoParam")]
+        public SysInfoParam SysInfoParams
+        {
+            set
+            {
+                this._sysinfoparam = value;
+            }
+            get
+            {
+                return this._sysinfoparam;
+            }
+
+        }
 
     }
+
 }

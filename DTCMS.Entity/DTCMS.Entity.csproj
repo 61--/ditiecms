@@ -44,6 +44,7 @@
     <Compile Include="Arc_Class.cs" />
     <Compile Include="Atr_AttachMent.cs" />
     <Compile Include="Config\Attachment.cs" />
+    <Compile Include="Config\SysInfoParam.cs" />
     <Compile Include="Config\SystemConfig.cs" />
     <Compile Include="Config\WaterImage.cs" />
     <Compile Include="Enum\EClassAttribute.cs" />
