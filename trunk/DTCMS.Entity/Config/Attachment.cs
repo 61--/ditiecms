@@ -164,7 +164,6 @@ namespace DTCMS.Entity
             }
 
         }
-
         [XmlElement(ElementName = "WaterImage")]
         public WaterImage WaterImages
         {
@@ -180,4 +179,5 @@ namespace DTCMS.Entity
         }
 
     }
+
 }

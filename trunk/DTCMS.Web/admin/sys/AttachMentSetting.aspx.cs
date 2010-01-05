@@ -56,6 +56,7 @@ namespace DTCMS.Web.admin.sys
             try
             {
                 SystemConfig sysConfig = GobalConfig.LoadGoableConfig();
+
                 sysConfig.Attachments.Directory = this.hideen_dirctory.Value.Trim();
                 sysConfig.Attachments.HasAbbrImage = this.chk_HashAbbrImage.Checked ? "1" : "0";
                 sysConfig.Attachments.AbbrImageWidth = this.txt_AbbrImageWidth.Value.Trim();

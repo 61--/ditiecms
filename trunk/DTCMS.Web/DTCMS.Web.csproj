@@ -253,6 +253,13 @@
     <Compile Include="admin\sys\AttachMentSetting.aspx.designer.cs">
       <DependentUpon>AttachMentSetting.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\sys\SystemInfoParam.aspx.cs">
+      <DependentUpon>SystemInfoParam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\sys\SystemInfoParam.aspx.designer.cs">
+      <DependentUpon>SystemInfoParam.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\template\templatefile_list.aspx.cs">
       <DependentUpon>templatefile_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -348,6 +355,7 @@
     <Content Include="admin\news\class_list.html" />
     <Content Include="admin\dialog\taglist.aspx" />
     <Content Include="admin\sys\AttachMentSetting.aspx" />
+    <Content Include="admin\sys\SystemInfoParam.aspx" />
     <Content Include="admin\template\templatefile_list.aspx" />
     <Content Include="admin\template\template_add.aspx" />
     <Content Include="admin\template\template_list.aspx" />
