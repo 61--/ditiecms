@@ -47,7 +47,7 @@ namespace DTCMS.Common
         /// <returns></returns>
         public static string GetPhysicalPath(string filePath)
         {
-            return HttpContext.Current.Server.MapPath(string.Format("~{0}",filePath));
+            return HttpContext.Current.Server.MapPath(string.Format("~{0}", filePath));
         }
         #endregion
 
@@ -55,9 +55,9 @@ namespace DTCMS.Common
 
         /// <summary>
         /// 获取URL传值
-       /// </summary>
-       /// <param name="queryName">参数名</param>
-       /// <returns>失败返回空</returns>
+        /// </summary>
+        /// <param name="queryName">参数名</param>
+        /// <returns>失败返回空</returns>
         public static string GetQueryString(string queryName)
         {
             if (HttpContext.Current.Request.QueryString[queryName] != null)
@@ -351,7 +351,7 @@ namespace DTCMS.Common
         /// <param name="ReplaceString">要替换成的字符串</param>
         /// <param name="IsCaseInsensetive">是否区分大小写true 不区分</param>
         /// <returns>替换后的字符串</returns>
- 
+
         public static string ReplaceString(string SourceString, string SearchString, string ReplaceString, bool IsCaseInsensetive)
         {
             return Regex.Replace(SourceString, Regex.Escape(SearchString), ReplaceString, IsCaseInsensetive ? RegexOptions.IgnoreCase : RegexOptions.None);
@@ -383,33 +383,33 @@ namespace DTCMS.Common
         /// </summary>
         /// <param name="str">要过滤的字符串</param>
         /// <returns>去除html标签后的字符串</returns>
-        public static string NoHTML(string str)   
-        {   
-               //删除脚本   
-               str   =   Regex.Replace(str,@"<script[^>]*?>.*?</script>","",RegexOptions.IgnoreCase);   
-               //删除HTML   
-               str   =   Regex.Replace(str,@"<(.[^>]*)>","",RegexOptions.IgnoreCase);   
-               str   =   Regex.Replace(str,@"([\r\n])[\s]+","",RegexOptions.IgnoreCase);   
-               str   =   Regex.Replace(str,@"-->","",RegexOptions.IgnoreCase);   
-               str   =   Regex.Replace(str,@"<!--.*","",RegexOptions.IgnoreCase);   
-                
-               str   =   Regex.Replace(str,@"&(quot|#34);","\"",RegexOptions.IgnoreCase);   
-               str   =   Regex.Replace(str,@"&(amp|#38);","&",RegexOptions.IgnoreCase);   
-               str   =   Regex.Replace(str,@"&(lt|#60);","<",RegexOptions.IgnoreCase);   
-               str   =   Regex.Replace(str,@"&(gt|#62);",">",RegexOptions.IgnoreCase);   
-               str   =   Regex.Replace(str,@"&(nbsp|#160);","   ",RegexOptions.IgnoreCase);   
-               str   =   Regex.Replace(str,@"&(iexcl|#161);","\xa1",RegexOptions.IgnoreCase);   
-               str   =   Regex.Replace(str,@"&(cent|#162);","\xa2",RegexOptions.IgnoreCase);   
-               str   =   Regex.Replace(str,@"&(pound|#163);","\xa3",RegexOptions.IgnoreCase);   
-               str   =   Regex.Replace(str,@"&(copy|#169);","\xa9",RegexOptions.IgnoreCase);   
-               str   =   Regex.Replace(str,@"&#(\d+);","",RegexOptions.IgnoreCase);   
-                
-               str.Replace("<","");   
-               str.Replace(">","");   
-               str.Replace("\r\n","");   
-               str=str.Trim();   
-                
-               return   str;   
+        public static string NoHTML(string str)
+        {
+            //删除脚本   
+            str = Regex.Replace(str, @"<script[^>]*?>.*?</script>", "", RegexOptions.IgnoreCase);
+            //删除HTML   
+            str = Regex.Replace(str, @"<(.[^>]*)>", "", RegexOptions.IgnoreCase);
+            str = Regex.Replace(str, @"([\r\n])[\s]+", "", RegexOptions.IgnoreCase);
+            str = Regex.Replace(str, @"-->", "", RegexOptions.IgnoreCase);
+            str = Regex.Replace(str, @"<!--.*", "", RegexOptions.IgnoreCase);
+
+            str = Regex.Replace(str, @"&(quot|#34);", "\"", RegexOptions.IgnoreCase);
+            str = Regex.Replace(str, @"&(amp|#38);", "&", RegexOptions.IgnoreCase);
+            str = Regex.Replace(str, @"&(lt|#60);", "<", RegexOptions.IgnoreCase);
+            str = Regex.Replace(str, @"&(gt|#62);", ">", RegexOptions.IgnoreCase);
+            str = Regex.Replace(str, @"&(nbsp|#160);", "   ", RegexOptions.IgnoreCase);
+            str = Regex.Replace(str, @"&(iexcl|#161);", "\xa1", RegexOptions.IgnoreCase);
+            str = Regex.Replace(str, @"&(cent|#162);", "\xa2", RegexOptions.IgnoreCase);
+            str = Regex.Replace(str, @"&(pound|#163);", "\xa3", RegexOptions.IgnoreCase);
+            str = Regex.Replace(str, @"&(copy|#169);", "\xa9", RegexOptions.IgnoreCase);
+            str = Regex.Replace(str, @"&#(\d+);", "", RegexOptions.IgnoreCase);
+
+            str.Replace("<", "");
+            str.Replace(">", "");
+            str.Replace("\r\n", "");
+            str = str.Trim();
+
+            return str;
         }
 
         #endregion
@@ -422,7 +422,7 @@ namespace DTCMS.Common
         /// <returns>编码结果</returns>
         public static string HtmlEncode(string str)
         {
-          
+
             return HttpUtility.HtmlEncode(str);
         }
 
@@ -567,5 +567,53 @@ namespace DTCMS.Common
             return stringBuilder.Append("\r\n];");
         }
         #endregion
+
+        #region 获取汉字拼音的第一个字母
+        public static string GetChineseSpell(string strText)
+        {
+            int len = strText.Length;
+            string myStr = "";
+            for (int i = 0; i < len; i++)
+            {
+                myStr += getSpell(strText.Substring(i, 1));
+            }
+            return myStr;
+        }
+
+        public static string[] GetChineseSpell(string[] strText)
+        {
+            int len = strText.Length;
+            string[] myStr = null;
+            for (int i = 0; i < len; i++)
+            {
+                myStr[i] = getSpell(strText[i]);
+            }
+            return myStr;
+        }
+
+        public static string getSpell(string cnChar)
+        {
+            byte[] arrCN = Encoding.Default.GetBytes(cnChar);
+            if (arrCN.Length > 1)
+            {
+                int area = (short)arrCN[0];
+                int pos = (short)arrCN[1];
+                int code = (area << 8) + pos;
+                int[] areacode = { 45217, 45253, 45761, 46318, 46826, 47010, 47297, 47614, 48119, 48119, 49062, 49324, 49896, 50371, 50614, 50622, 50906, 51387, 51446, 52218, 52698, 52698, 52698, 52980, 53689, 54481 };
+                for (int i = 0; i < 26; i++)
+                {
+                    int max = 55290;
+                    if (i != 25) max = areacode[i + 1];
+                    if (areacode[i] <= code && code < max)
+                    {
+                        return Encoding.Default.GetString(new byte[] { (byte)(65 + i) });
+                    }
+                }
+                return "*";
+            }
+            else return cnChar;
+        }
+        #endregion
+
     }
 }

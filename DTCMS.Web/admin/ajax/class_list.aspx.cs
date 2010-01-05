@@ -23,6 +23,7 @@ namespace DTCMS.Web.admin
         protected void Page_Load(object sender, EventArgs e)
         {
             string action = Common.Utils.GetQueryString("action");
+            string classname=Common.Utils.GetQueryString("classname");
             switch (action)
             {
                 case "load":
@@ -36,6 +37,9 @@ namespace DTCMS.Web.admin
                     break;
                 case "order":
                     Response.Write(UpdateOrder().ToString());
+                    break;
+                case "ename":
+                    Response.Write(Common.Utils.GetChineseSpell(classname));
                     break;
                 default:
                     break;
