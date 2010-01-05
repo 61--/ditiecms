@@ -160,4 +160,8 @@
     showHelper = function(elem, title, msg, height) {
         $.popup.help(elem, title, msg, height);
     }
+
+    hideHelper = function() {
+        setTimeout("$('#_Popup_help').hide()", 1000);
+    }
 })(jQuery);
