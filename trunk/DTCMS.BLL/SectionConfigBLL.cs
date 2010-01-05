@@ -10,6 +10,7 @@ namespace DTCMS.BLL
 {
     public class SectionConfigBLL
     {
+        SectionConfig configSection = new SectionConfig();
         /// <summary>
         /// 获取缓存依赖
         /// </summary>
@@ -74,7 +75,7 @@ namespace DTCMS.BLL
             DataTable dtKey = CacheAccess.GetFromCache(key) as DataTable;
             if (dtKey == null)
             {
-                dtKey = SectionConfig.GetSectionList(key);
+                dtKey = configSection.GetSectionList(key);
                 CacheAccess.SaveToCache(key, dtKey, GetSectionConfigCacheDependency());
             }
             return dtKey;

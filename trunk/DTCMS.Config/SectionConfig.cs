@@ -8,33 +8,22 @@ using System.Data;
 
 namespace DTCMS.Config
 {
-    public class SectionConfig
+    public class SectionConfig:BaseConfig
     {
-        private static XmlDocumentExtender xmlDoc = new XmlDocumentExtender();
-        private static string path = Utils.GetRootPath() + ConfigPath.SECTION;
-
-        /// <summary>
-        /// 初始化XML文档
-        /// </summary>
-        private static void InitXmlDoc()
-        {
-            xmlDoc.Load(path);
-        }
-
+        private readonly string path = Utils.GetRootPath() + ConfigPath.SECTION;
         /// <summary>
         /// 获取下拉列表
         /// </summary>
         /// <param name="sectionkey"></param>
         /// <returns></returns>
-        public static DataTable GetSectionList(string sectionkey)
+        public DataTable GetSectionList(string sectionkey)
         {
-            InitXmlDoc();
             DataTable dtSectionList = new DataTable();
             dtSectionList.Columns.Add("key");
             dtSectionList.Columns.Add("value");
             dtSectionList.AcceptChanges();
 
-            XmlNodeList sectionNodeList = xmlDoc.DocumentElement.SelectNodes("/configuration/section[@key='" + sectionkey + "']/item");
+            XmlNodeList sectionNodeList = SelectNodes(path,"/configuration/section[@key='" + sectionkey + "']/item");
             if (sectionNodeList != null && sectionNodeList.Count > 0)
             {
                 foreach (XmlNode sectionNode in sectionNodeList)

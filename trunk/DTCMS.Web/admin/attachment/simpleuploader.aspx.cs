@@ -15,7 +15,7 @@ namespace DTCMS.Web.admin
     public partial class SimpleUploader : AdminPage
     {
         Atr_AttachMentBLL bllAttachment = new Atr_AttachMentBLL();
-        SystemConfig sysConfig = GobalConfig.LoadGoableConfig();
+        SystemConfig sysConfig = GobalConfig.GetCobalInstance().LoadGoableConfig();
 
         protected void Page_Load(object sender, EventArgs e)
         {

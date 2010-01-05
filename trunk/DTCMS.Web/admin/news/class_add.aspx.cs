@@ -311,7 +311,7 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void InitDefaultData()
         {
-            SystemConfig sysConfig = GobalConfig.LoadGoableConfig();
+            SystemConfig sysConfig = GobalConfig.GetCobalInstance().LoadGoableConfig();
 
             txt_ClassPath.Value = sysConfig.SysInfoParams.ClassPath.Trim();
             slt_CheckLevel.SelectedIndex = slt_CheckLevel.Items.IndexOf(slt_CheckLevel.Items.FindByValue(sysConfig.SysInfoParams.CheckLevel));

@@ -8,40 +8,28 @@ using System.Data;
 
 namespace DTCMS.Config
 {
-    public class DialogConfig
+    public class DialogConfig:BaseConfig
     {
-        private static XmlDocumentExtender xmlDoc = new XmlDocumentExtender();
-        private static string path = Utils.GetRootPath() + ConfigPath.DIALOG;
+        private readonly string path = Utils.GetRootPath() + ConfigPath.DIALOG;
 
-        /// <summary>
-        /// 初始化XML文档
-        /// </summary>
-        private static void InitXmlDoc()
+        public string GetDialogSingle(string dialogkey)
         {
-            xmlDoc.Load(path);
+            XmlNode dialogNode = SelectSingleNodes(path, ("/configuration/dialog[@key='" + dialogkey + "']"));
+
+            if (dialogNode != null)
+            {
+                return dialogNode.Attributes["value"].Value.Trim();
+            }
+            return "";
         }
 
-        public static string GetDialogSingle(string dialogkey)
+        public void SetDialogSingle(string dialogkey, string dialogvalue)
         {
-            InitXmlDoc();
-            XmlNodeList dialogNodeList = xmlDoc.DocumentElement.SelectNodes(("/configuration/dialog[@key='" + dialogkey + "']"));
-            if (dialogNodeList != null && dialogNodeList.Count > 0)
-            {
-                return dialogNodeList[0].Attributes["value"].Value.Trim();
-            }
-            else
-            {
-                return "";
-            }
-        }
+            XmlNode dialogNode = SelectSingleNodes(path,("/configuration/dialog[@key='" + dialogkey + "']"));
 
-        public static void SetDialogSingle(string dialogkey, string dialogvalue)
-        {
-            InitXmlDoc();
-            XmlNodeList dialogNodeList = xmlDoc.DocumentElement.SelectNodes(("/configuration/dialog[@key='" + dialogkey + "']"));
-            if (dialogNodeList != null && dialogNodeList.Count > 0)
+            if (dialogNode != null)
             {
-                dialogNodeList[0].Attributes["value"].Value = dialogvalue.Trim();
+                dialogNode.Attributes["value"].Value = dialogvalue.Trim();
             }
         }
 
