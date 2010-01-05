@@ -31,7 +31,7 @@ namespace DTCMS.Web.admin.sys
         private void InitPage()
         {
             InitCheckLevel();
-            SystemConfig sysConfig = GobalConfig.LoadGoableConfig();
+            SystemConfig sysConfig = GobalConfig.GetCobalInstance().LoadGoableConfig();
 
             txt_SiteName.Value = sysConfig.SysInfoParams.SiteName.Trim();
             txt_SiteDomain.Value = sysConfig.SysInfoParams.SiteDomain.Trim();
@@ -67,7 +67,7 @@ namespace DTCMS.Web.admin.sys
 
         private void SavePage()
         {
-            SystemConfig sysConfig = GobalConfig.LoadGoableConfig();
+            SystemConfig sysConfig = GobalConfig.GetCobalInstance().LoadGoableConfig();
 
             sysConfig.SysInfoParams.SiteName = txt_SiteName.Value.Trim();
             sysConfig.SysInfoParams.SiteDomain = txt_SiteDomain.Value.Trim();
@@ -92,7 +92,7 @@ namespace DTCMS.Web.admin.sys
             sysConfig.SysInfoParams.CheckLevel=slt_CheckLevel.Value.Trim();
             sysConfig.SysInfoParams.LoginValidate=hidden_LoginValidate.Value.Trim();
 
-            GobalConfig.SaveGobalConfig(sysConfig);
+            GobalConfig.GetCobalInstance().SaveGobalConfig(sysConfig);
             Message.Dialog("系统配置保存成功", "-1", MessageIcon.Success, 0);
         }
 

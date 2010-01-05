@@ -54,7 +54,7 @@ namespace DTCMS.Web.admin
 
             for (int i = 0; i < 100000; i++)
             {
-                string path = GobalConfig.LoadGoableConfig().Attachments.Path;
+                string path = GobalConfig.GetCobalInstance().LoadGoableConfig().Attachments.Path;
             }
 
             sw.Stop();

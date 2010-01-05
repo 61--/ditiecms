@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseConfig.cs" />
     <Compile Include="ConfigPath.cs" />
     <Compile Include="DialogConfig.cs" />
     <Compile Include="GobalConfig.cs" />

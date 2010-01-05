@@ -10,6 +10,7 @@ namespace DTCMS.BLL
 {
     public class DialogConfigBLL
     {
+        DialogConfig configDialog = new DialogConfig();
         /// <summary>
         /// 获取缓存依赖
         /// </summary>
@@ -71,7 +72,7 @@ namespace DTCMS.BLL
             string iKey = CacheAccess.GetFromCache(key) as string;
             if (iKey == "" || iKey == null)
             {
-                iKey = DialogConfig.GetDialogSingle(key);
+                iKey = configDialog.GetDialogSingle(key);
                 CacheAccess.SaveToCache(key, iKey, GetDialogConfigCacheDependency());          
             }
             return iKey;
@@ -79,7 +80,7 @@ namespace DTCMS.BLL
 
         private void Set(string key,string value)
         {
-            DialogConfig.SetDialogSingle(key,value);
+            configDialog.SetDialogSingle(key, value);
         }
 
         #endregion  私有方法

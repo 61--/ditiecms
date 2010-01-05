@@ -20,7 +20,7 @@ namespace DTCMS.Web.admin
         }
         private string ExistsFormat()
         {
-            SystemConfig sysConfig = GobalConfig.LoadGoableConfig();
+            SystemConfig sysConfig = GobalConfig.GetCobalInstance().LoadGoableConfig();
 
             StringBuilder sb = new StringBuilder();
             sb.Append("function hasImage(ext) { return (");
