@@ -345,6 +345,7 @@
     <Content Include="admin\images\blue\ico_title.gif" />
     <Content Include="admin\images\blue\loading.gif" />
     <Content Include="admin\images\blue\success.gif" />
+    <Content Include="admin\images\color.png" />
     <Content Include="admin\images\ico\ico_Success_Small.gif" />
     <Content Include="admin\images\ico\i_p_copy.gif" />
     <Content Include="admin\images\ico\i_p_delete.gif" />
@@ -362,6 +363,7 @@
     <Content Include="admin\attachment\test.html" />
     <Content Include="admin\images\treeItemBgCur.gif" />
     <Content Include="admin\images\loading_scoll.gif" />
+    <Content Include="admin\js\iColorPicker.js" />
     <Content Include="admin\js\jquery-1.3.2-vsdoc2.js" />
     <Content Include="admin\js\public.js" />
     <Content Include="admin\dialog\authorlist.aspx" />
