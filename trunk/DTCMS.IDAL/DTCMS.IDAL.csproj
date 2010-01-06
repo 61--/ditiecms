@@ -43,7 +43,7 @@
     <Compile Include="IDAL_Sys_Navigate.cs" />
     <Compile Include="IDAL_Arc_Article.cs" />
     <Compile Include="IDAL_Arc_Class.cs" />
-    <Compile Include="IDAL_Atr_AttachMent.cs" />
+    <Compile Include="IDAL_AttachMent.cs" />
     <Compile Include="IDAL_Sys_Publish.cs" />
     <Compile Include="IDAL_Sys_Template.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

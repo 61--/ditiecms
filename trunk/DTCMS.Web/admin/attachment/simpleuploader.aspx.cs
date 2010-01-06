@@ -14,7 +14,7 @@ namespace DTCMS.Web.admin
 {
     public partial class SimpleUploader : AdminPage
     {
-        Atr_AttachMentBLL bllAttachment = new Atr_AttachMentBLL();
+        AttachMentBLL bllAttachment = new AttachMentBLL();
         SystemConfig sysConfig = GobalConfig.GetCobalInstance().LoadGoableConfig();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -138,7 +138,7 @@ namespace DTCMS.Web.admin
                             #endregion 是否图片
 
                             #region 保存数据
-                            Atr_AttachMent modAttachMent = new Atr_AttachMent();
+                            AttachMent modAttachMent = new AttachMent();
                             modAttachMent.AttachMentAttribute = attachmentAttribute;
                             modAttachMent.AttachMentDisplayName = fileDisplayName;
                             modAttachMent.AttachMentPath = "/" + filepathshort.Replace("\\", "/") + returnImgName;
