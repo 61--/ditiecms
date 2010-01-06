@@ -153,6 +153,10 @@ namespace DTCMS.Web.admin
                 hide_TitleStyle.Value = model.TitleStyle;
                 txt_Tags.Value = model.Tags;
                 txt_ClassID.Value = model.ClassID.ToString();  //栏目ID
+                if (txt_ClassID.Value != "")
+                {
+                    txt_ClassName.Value = bllClass.GetClassName(TypeConvert.StrToInt(txt_ClassID.Value));
+                }
                 txt_Source.Value = model.Source;
                 txt_Author.Value = model.Author;
                 txt_Editor.Value = model.Editor;
