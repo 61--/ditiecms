@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDAL_Sys_Navigate.cs" />
     <Compile Include="IDAL_Arc_Article.cs" />
     <Compile Include="IDAL_Arc_Class.cs" />
     <Compile Include="IDAL_AttachMent.cs" />

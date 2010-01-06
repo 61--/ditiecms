@@ -260,20 +260,6 @@
     <Compile Include="admin\sys\SystemInfoParam.aspx.designer.cs">
       <DependentUpon>SystemInfoParam.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\sys\Sys_Nvaigate_Add.aspx.cs">
-      <DependentUpon>Sys_Nvaigate_Add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\sys\Sys_Nvaigate_Add.aspx.designer.cs">
-      <DependentUpon>Sys_Nvaigate_Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\sys\Sys_Nvaigate_List.aspx.cs">
-      <DependentUpon>Sys_Nvaigate_List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\sys\Sys_Nvaigate_List.aspx.designer.cs">
-      <DependentUpon>Sys_Nvaigate_List.aspx</DependentUpon>
-    </Compile>
     <Compile Include="admin\template\templatefile_list.aspx.cs">
       <DependentUpon>templatefile_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -372,8 +358,6 @@
     <Content Include="admin\dialog\taglist.aspx" />
     <Content Include="admin\sys\AttachMentSetting.aspx" />
     <Content Include="admin\sys\SystemInfoParam.aspx" />
-    <Content Include="admin\sys\Sys_Nvaigate_Add.aspx" />
-    <Content Include="admin\sys\Sys_Nvaigate_List.aspx" />
     <Content Include="admin\template\templatefile_list.aspx" />
     <Content Include="admin\template\template_add.aspx" />
     <Content Include="admin\template\template_list.aspx" />
