@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="Arc_Article.cs" />
     <Compile Include="Arc_Class.cs" />
-    <Compile Include="Atr_AttachMent.cs" />
+    <Compile Include="AttachMent.cs" />
     <Compile Include="Config\Attachment.cs" />
     <Compile Include="Config\SysInfoParam.cs" />
     <Compile Include="Config\SystemConfig.cs" />

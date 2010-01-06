@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Arc_ArticleDAL.cs" />
     <Compile Include="Arc_ClassDAL.cs" />
-    <Compile Include="Atr_AttachMentDAL.cs" />
+    <Compile Include="AttachMentDAL.cs" />
     <Compile Include="BaseDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sys_NavigateDAL.cs" />

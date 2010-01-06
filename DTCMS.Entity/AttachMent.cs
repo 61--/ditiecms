@@ -5,11 +5,11 @@ using System.Text;
 namespace DTCMS.Entity
 {    
    /// <summary>
-	/// 实体类DT_Atr_AttachMent 。(属性说明自动提取数据库字段的描述信息)
+	/// 实体类DT_AttachMent 。(属性说明自动提取数据库字段的描述信息)
 	/// </summary>
-	public class Atr_AttachMent
+	public class AttachMent
 	{
-        public Atr_AttachMent()
+        public AttachMent()
 		{ }
         #region Entity
         private int _attachmentid;

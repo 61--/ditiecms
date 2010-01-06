@@ -14,7 +14,7 @@ namespace DTCMS.Web.admin
 {
     public partial class attachment_list : AdminPage
     {
-        Atr_AttachMentBLL bllAttachment = new Atr_AttachMentBLL();
+        AttachMentBLL bllAttachment = new AttachMentBLL();
         SectionConfigBLL bllSelectionConfig = new SectionConfigBLL();
 
         protected void Page_Load(object sender, EventArgs e)
