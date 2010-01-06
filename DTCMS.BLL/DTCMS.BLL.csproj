@@ -48,7 +48,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SectionConfigBLL.cs" />
     <Compile Include="Sys_FileInfoBLL.cs" />
-    <Compile Include="Sys_NavigateBLL.cs" />
     <Compile Include="Sys_PublishBLL.cs" />
     <Compile Include="Sys_TemplateBLL.cs" />
   </ItemGroup>
