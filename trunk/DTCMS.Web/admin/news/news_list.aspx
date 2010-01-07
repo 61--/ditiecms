@@ -9,10 +9,13 @@
     <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
     <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
     <script type="text/javascript" src="/inc/treetable/TableTree4J.js"></script>
     <script type="text/javascript">
         $(function() {
+            showLoading();
             LoadData();
+            hideMessage();
         });
 
         function LoadData() {
