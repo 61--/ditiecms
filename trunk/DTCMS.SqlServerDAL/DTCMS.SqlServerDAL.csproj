@@ -45,11 +45,21 @@
   <ItemGroup>
     <Compile Include="Arc_ArticleDAL.cs" />
     <Compile Include="Arc_ClassDAL.cs" />
+    <Compile Include="Arc_SoftDAL.cs" />
     <Compile Include="AttachMentDAL.cs" />
     <Compile Include="BaseDAL.cs" />
+    <Compile Include="HelpDAL.cs" />
+    <Compile Include="ModuleControlDAL.cs" />
+    <Compile Include="ModulesDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RolesDAL.cs" />
+    <Compile Include="RolesInModulesDAL.cs" />
+    <Compile Include="SYS_DictDAL.cs" />
     <Compile Include="Sys_PublishDAL.cs" />
     <Compile Include="Sys_TemplateDAL.cs" />
+    <Compile Include="UserfieldsDAL.cs" />
+    <Compile Include="UsergroupDAL.cs" />
+    <Compile Include="UsersDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTCMS.Common\DTCMS.Common.csproj">

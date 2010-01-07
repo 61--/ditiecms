@@ -1,71 +1,57 @@
+ï»¿//------------------------------------------------------------------------------
+// åˆ›å»ºæ ‡è¯†: Copyright (C) 2010 91aspx.com ç‰ˆæƒæ‰€æœ‰
+// åˆ›å»ºæè¿°: DTCMS V1.0 åˆ›å»ºäº 2010-1-7 23:34:18
+// åŠŸèƒ½æè¿°: 
+// ä¿®æ”¹æ ‡è¯†: 
+// ä¿®æ”¹æè¿°: 
+//------------------------------------------------------------------------------
+
 using System;
 using System.Data;
+using System.Collections;
+using System.Collections.Generic;
 using DTCMS.Entity;
 
 namespace DTCMS.IDAL
 {
 	/// <summary>
-	/// ½Ó¿Ú²ãIDT_Arc_Article µÄÕªÒªËµÃ÷¡£
+	/// æ¥å£å±‚ IArc_Article
 	/// </summary>
 	public interface IDAL_Arc_Article
 	{
-		#region  ³ÉÔ±·½·¨
-	
-		 /// <summary>
-        /// ÅĞ¶ÏÄ³¸ö×Ö¶ÎÖµÊÇ·ñ´æÔÚ
-        /// </summary>
-        /// <param name="CID">À¸Ä¿±àºÅ</param>
-        /// <param name="filedName">×Ö¶ÎÃû³Æ</param>
-        /// <param name="filedValue">×Ö¶ÎÖµ</param>
-        /// <returns>³É¹¦·µ»Øtrue£¬Ê§°Ü·µ»Øfalse</returns>
-        bool Exists(int CID, string filedName, string filedValue);
-        
 		/// <summary>
-		/// Ôö¼ÓÒ»ÌõÊı¾İ
+		/// å¢åŠ ä¸€æ¡æ•°æ®
 		/// </summary>
 		int Add(Arc_Article model);
+
 		/// <summary>
-		/// ¸üĞÂÒ»ÌõÊı¾İ
+		/// æ›´æ–°ä¸€æ¡æ•°æ®
 		/// </summary>
-        int Update(Arc_Article model);
+		int Update(Arc_Article model);
+
 		/// <summary>
-		/// É¾³ıÒ»ÌõÊı¾İ
+		/// åˆ é™¤ä¸€æ¡æ•°æ®
 		/// </summary>
-		int Delete(string ID);
+		int Delete(int ID);
+
 		/// <summary>
-		/// µÃµ½Ò»¸ö¶ÔÏóÊµÌå
+		/// æ˜¯å¦å­˜åœ¨è¯¥è®°å½•
+		/// </summary>
+		bool Exists(int ID);
+
+		/// <summary>
+		/// å¾—åˆ°ä¸€ä¸ªå¯¹è±¡å®ä½“
 		/// </summary>
 		Arc_Article GetModel(int ID);
-        /// <summary>
-        /// ¸ù¾İÀ¸Ä¿id ÅĞ¶Ï´ËÀ¸Ä¿ÊÇ·ñ´æÔÚÎÄÕÂ
-        /// </summary>
-        /// <param name="CID">À¸Ä¿±àºÅ</param>
-        /// <returns>true´æÔÚ,false²»´æÔÚ</returns>
-        bool ExistAtricleToClass(int CID);
-        /// <summary>
-        /// ÅĞ¶ÏÎÄÕÂÊÇ·ñÒÑ¾­´æÔÚ
-        /// </summary>
-        /// <param name="ClassName"></param>
-        /// <returns></returns>
-        bool ExistsArticleName(int ArticleID, string Title);
-		#endregion  ³ÉÔ±·½·¨
 
-        #region »ù·½·¨
-        /// <summary>
-        /// -- ×Ö·û´®»º´æÊµÏÖµÄÍ¨ÓÃ·ÖÒ³´æ´¢¹ı³Ì(×ª×Ô×Ş½¨)  
-        /// </summary>
-        /// <param name="tbname">Òª·ÖÒ³ÏÔÊ¾µÄ±íÃû£¬¿ÉÒÔÊ¹ÓÃ±íÁªºÏ  </param>
-        /// <param name="FieldKey">ÓÃÓÚ¶¨Î»¼ÇÂ¼µÄÖ÷¼ü(Î©Ò»¼ü)×Ö¶Î,Ö»ÄÜÊÇµ¥¸ö×Ö¶Î  </param>
-        /// <param name="PageCurrent">ÒªÏÔÊ¾µÄÒ³Âë  </param>
-        /// <param name="PageSize">Ã¿Ò³µÄ´óĞ¡(¼ÇÂ¼Êı)  </param>
-        /// <param name="FieldShow">ÒÔ¶ººÅ·Ö¸ôµÄÒªÏÔÊ¾µÄ×Ö¶ÎÁĞ±í,Èç¹û²»Ö¸¶¨,ÔòÏÔÊ¾ËùÓĞ×Ö¶Î  </param>
-        /// <param name="FieldOrder">ÓÃÓÚÖ¸¶¨ÅÅĞòË³Ğò  </param>
-        /// <param name="Where">²éÑ¯Ìõ¼ş  </param>
-        /// <param name="PageCount">×ÜÒ³Êı  </param>
-        /// <returns></returns>
-        DataTable GetDataTable(string tbname, string FieldKey, int PageCurrent, int PageSize
-            , string FieldShow, string FieldOrder, string Where, out int PageCount);
-        #endregion
+		/// <summary>
+		/// è·å–æ³›å‹æ•°æ®åˆ—è¡¨
+		/// </summary>
+		List<Arc_Article> GetList(out long count);
 
-    }
+		/// <summary>
+		/// åˆ†é¡µè·å–æ³›å‹æ•°æ®åˆ—è¡¨
+		/// </summary>
+		List<Arc_Article> GetPageList(int pageSize, int pageIndex, out long count);
+	}
 }

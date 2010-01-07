@@ -1,286 +1,294 @@
+ï»¿//------------------------------------------------------------------------------
+// åˆ›å»ºæ ‡è¯†: Copyright (C) 2010 91aspx.com ç‰ˆæƒæ‰€æœ‰
+// åˆ›å»ºæè¿°: DTCMS V1.0 åˆ›å»ºäº 2010-1-7 23:34:18
+// åŠŸèƒ½æè¿°: 
+// ä¿®æ”¹æ ‡è¯†: 
+// ä¿®æ”¹æè¿°: 
+//------------------------------------------------------------------------------
+
 using System;
+
 namespace DTCMS.Entity
 {
 	/// <summary>
-	/// ÊµÌåÀàDT_Arc_Class ¡£(ÊôĞÔËµÃ÷×Ô¶¯ÌáÈ¡Êı¾İ¿â×Ö¶ÎµÄÃèÊöĞÅÏ¢)
+	/// å®ä½“ç±» Arc_Class
 	/// </summary>
 	public class Arc_Class
 	{
 		public Arc_Class()
 		{ }
-        #region Entity
-        private int _cid;
-        private int _parentid;
-        private int _attribute;
-        private string _classname;
-        private string _classename;
-        private int _classtype;
-        private string _classdomain;
-        private string _classpath;
-        private string _indextemplet;
-        private string _listtemplet;
-        private string _archivetemplet;
-        private string _indexrule;
-        private string _listrule;
-        private string _archiverule;
-        private int? _classpage;
-        private string _description;
-        private int _ishidden;
-        private int _ishtml;
-        private int _checklevel;
-        private int _iscontribute;
-        private int _iscomment;
-        private int? _readaccess;
-        private int? _siteid;
-        private DateTime _adddate;
-        private string _relation;
-        private int _orderid;
-        private string _imgurl;
-        private string _keywords;
-        private string _crossid;
-        private string _content;
-        /// <summary>
-        /// À¸Ä¿ID
-        /// </summary>
-        public int CID
-        {
-            set { _cid = value; }
-            get { return _cid; }
-        }
-        /// <summary>
-        /// À¸Ä¿¸¸ID£¬Ä¬ÈÏ0Îª¶¥¼¶À¸Ä¿
-        /// </summary>
-        public int ParentID
-        {
-            set { _parentid = value; }
-            get { return _parentid; }
-        }
-        /// <summary>
-        /// À¸Ä¿ÊôĞÔ£¬1·âÃæ£¬2ÁĞ±í£¬3Á´½ÓµØÖ·
-        /// </summary>
-        public int Attribute
-        {
-            set { _attribute = value; }
-            get { return _attribute; }
-        }
-        /// <summary>
-        /// À¸Ä¿Ãû³Æ
-        /// </summary>
-        public string ClassName
-        {
-            set { _classname = value; }
-            get { return _classname; }
-        }
-        /// <summary>
-        /// À¸Ä¿Ó¢ÎÄÃû³Æ
-        /// </summary>
-        public string ClassEName
-        {
-            set { _classename = value; }
-            get { return _classename; }
-        }
-        /// <summary>
-        /// À¸Ä¿ÀàĞÍ
-        /// </summary>
-        public int ClassType
-        {
-            set { _classtype = value; }
-            get { return _classtype; }
-        }
-        /// <summary>
-        /// À¸Ä¿¶ş¼¶ÓòÃû
-        /// </summary>
-        public string ClassDomain
-        {
-            set { _classdomain = value; }
-            get { return _classdomain; }
-        }
-        /// <summary>
-        /// À¸Ä¿Ä¿Â¼£¬{#CmsPath}/Archive/
-        /// </summary>
-        public string ClassPath
-        {
-            set { _classpath = value; }
-            get { return _classpath; }
-        }
-        /// <summary>
-        /// ·âÃæÄ£°æ
-        /// </summary>
-        public string IndexTemplet
-        {
-            set { _indextemplet = value; }
-            get { return _indextemplet; }
-        }
-        /// <summary>
-        /// ÁĞ±íÄ£°æ
-        /// </summary>
-        public string ListTemplet
-        {
-            set { _listtemplet = value; }
-            get { return _listtemplet; }
-        }
-        /// <summary>
-        /// ÎÄµµÄ£°æ
-        /// </summary>
-        public string ArchiveTemplet
-        {
-            set { _archivetemplet = value; }
-            get { return _archivetemplet; }
-        }
-        /// <summary>
-        /// ·âÃæÒ³¹æÔò
-        /// </summary>
-        public string IndexRule
-        {
-            set { _indexrule = value; }
-            get { return _indexrule; }
-        }
-        /// <summary>
-        /// ÁĞ±íÒ³¹æÔò£¬·ÃÎÊÂ·¾¶
-        /// </summary>
-        public string ListRule
-        {
-            set { _listrule = value; }
-            get { return _listrule; }
-        }
-        /// <summary>
-        /// ÎÄµµÒ³¹æÔò£¬·ÃÎÊÂ·¾¶
-        /// </summary>
-        public string ArchiveRule
-        {
-            set { _archiverule = value; }
-            get { return _archiverule; }
-        }
-        /// <summary>
-        /// À¸Ä¿·ÖÒ³´óĞ¡,ÁĞ±íÌõÊı
-        /// </summary>
-        public int? ClassPage
-        {
-            set { _classpage = value; }
-            get { return _classpage; }
-        }
-        /// <summary>
-        /// À¸Ä¿ÃèÊö
-        /// </summary>
-        public string Description
-        {
-            set { _description = value; }
-            get { return _description; }
-        }
-        /// <summary>
-        /// ÊÇ·ñÒş²Ø£¬1ÆôÓÃ£¬0Òş²Ø
-        /// </summary>
-        public int IsHidden
-        {
-            set { _ishidden = value; }
-            get { return _ishidden; }
-        }
-        /// <summary>
-        /// ÊÇ·ñÔÊĞíÉú³É¾²Ì¬Ò³£¬1Éú³É¾²Ì¬£¬0¶¯Ì¬·ÃÎÊ
-        /// </summary>
-        public int IsHtml
-        {
-            set { _ishtml = value; }
-            get { return _ishtml; }
-        }
-        /// <summary>
-        /// ÉóºË»úÖÆ
-        /// </summary>
-        public int CheckLevel
-        {
-            set { _checklevel = value; }
-            get { return _checklevel; }
-        }
-        /// <summary>
-        /// ÊÇ·ñÔÊĞíÍ¶¸å£¬1ÔÊĞí£¬0²»ÔÊĞí
-        /// </summary>
-        public int IsContribute
-        {
-            set { _iscontribute = value; }
-            get { return _iscontribute; }
-        }
-        /// <summary>
-        /// ±¾À¸Ä¿ÎÄÕÂÊÇ·ñÔÊĞíÆÀÂÛ£¬1ÔÊĞí£¬0²»ÔÊĞí
-        /// </summary>
-        public int IsComment
-        {
-            set { _iscomment = value; }
-            get { return _iscomment; }
-        }
-        /// <summary>
-        /// ÔÄ¶ÁÈ¨ÏŞ
-        /// </summary>
-        public int? Readaccess
-        {
-            set { _readaccess = value; }
-            get { return _readaccess; }
-        }
-        /// <summary>
-        /// Õ¾µãID
-        /// </summary>
-        public int? SiteID
-        {
-            set { _siteid = value; }
-            get { return _siteid; }
-        }
-        /// <summary>
-        /// Ìí¼ÓÊ±¼ä
-        /// </summary>
-        public DateTime AddDate
-        {
-            set { _adddate = value; }
-            get { return _adddate; }
-        }
-        /// <summary>
-        /// À¸Ä¿¹ØÏµ
-        /// </summary>
-        public string Relation
-        {
-            set { _relation = value; }
-            get { return _relation; }
-        }
-        /// <summary>
-        /// À¸Ä¿ÅÅĞò£¬ÉıĞòÅÅÁĞ
-        /// </summary>
-        public int OrderID
-        {
-            set { _orderid = value; }
-            get { return _orderid; }
-        }
-        /// <summary>
-        /// À¸Ä¿Í¼Æ¬µØÖ·
-        /// </summary>
-        public string ImgUrl
-        {
-            set { _imgurl = value; }
-            get { return _imgurl; }
-        }
-        /// <summary>
-        /// À¸Ä¿¹Ø¼ü×Ö
-        /// </summary>
-        public string Keywords
-        {
-            set { _keywords = value; }
-            get { return _keywords; }
-        }
-        /// <summary>
-        /// ½»²æÀ¸Ä¿£¬¶à¸öÀ¸Ä¿ÓÃ,ºÅ¸ô¿ª
-        /// </summary>
-        public string CrossID
-        {
-            set { _crossid = value; }
-            get { return _crossid; }
-        }
-        /// <summary>
-        /// À¸Ä¿ÄÚÈİ
-        /// </summary>
-        public string Content
-        {
-            set { _content = value; }
-            get { return _content; }
-        }
-        #endregion Entity
 
-    }
+		#region Model
+		private int _cID;
+		private int _parentID;
+		private byte _attribute;
+		private string _className;
+		private string _classEName;
+		private byte _classType;
+		private string _classDomain;
+		private string _classPath;
+		private string _indexTemplet;
+		private string _listTemplet;
+		private string _archiveTemplet;
+		private string _indexRule;
+		private string _listRule;
+		private string _archiveRule;
+		private byte _classPage;
+		private string _description;
+		private byte _isHidden;
+		private byte _isHtml;
+		private byte _checkLevel;
+		private byte _isContribute;
+		private byte _isComment;
+		private Int16 _readaccess;
+		private byte _siteID;
+		private DateTime _addDate;
+		private string _relation;
+		private Int16 _orderID;
+		private string _imgUrl;
+		private string _keywords;
+		private string _crossID;
+		private string _content;
+		/// <summary>
+		/// æ ç›®ID
+		/// </summary>
+		public int CID
+		{
+			set { _cID = value; }
+			get { return _cID; }
+		}
+		/// <summary>
+		/// æ ç›®çˆ¶IDï¼Œé»˜è®¤0ä¸ºé¡¶çº§æ ç›®
+		/// </summary>
+		public int ParentID
+		{
+			set { _parentID = value; }
+			get { return _parentID; }
+		}
+		/// <summary>
+		/// æ ç›®å±æ€§ï¼Œ1å°é¢ï¼Œ2åˆ—è¡¨ï¼Œ3å•é¡µé¢ï¼Œ4é“¾æ¥åœ°å€
+		/// </summary>
+		public byte Attribute
+		{
+			set { _attribute = value; }
+			get { return _attribute; }
+		}
+		/// <summary>
+		/// æ ç›®åç§°
+		/// </summary>
+		public string ClassName
+		{
+			set { _className = value; }
+			get { return _className; }
+		}
+		/// <summary>
+		/// æ ç›®è‹±æ–‡åç§°
+		/// </summary>
+		public string ClassEName
+		{
+			set { _classEName = value; }
+			get { return _classEName; }
+		}
+		/// <summary>
+		/// æ ç›®ç±»å‹
+		/// </summary>
+		public byte ClassType
+		{
+			set { _classType = value; }
+			get { return _classType; }
+		}
+		/// <summary>
+		/// æ ç›®äºŒçº§åŸŸå
+		/// </summary>
+		public string ClassDomain
+		{
+			set { _classDomain = value; }
+			get { return _classDomain; }
+		}
+		/// <summary>
+		/// æ ç›®ç›®å½•ï¼Œ{#CmsPath}/Archive/
+		/// </summary>
+		public string ClassPath
+		{
+			set { _classPath = value; }
+			get { return _classPath; }
+		}
+		/// <summary>
+		/// å°é¢æ¨¡ç‰ˆ
+		/// </summary>
+		public string IndexTemplet
+		{
+			set { _indexTemplet = value; }
+			get { return _indexTemplet; }
+		}
+		/// <summary>
+		/// åˆ—è¡¨æ¨¡ç‰ˆ
+		/// </summary>
+		public string ListTemplet
+		{
+			set { _listTemplet = value; }
+			get { return _listTemplet; }
+		}
+		/// <summary>
+		/// æ–‡æ¡£æ¨¡ç‰ˆ
+		/// </summary>
+		public string ArchiveTemplet
+		{
+			set { _archiveTemplet = value; }
+			get { return _archiveTemplet; }
+		}
+		/// <summary>
+		/// å°é¢é¡µè§„åˆ™
+		/// </summary>
+		public string IndexRule
+		{
+			set { _indexRule = value; }
+			get { return _indexRule; }
+		}
+		/// <summary>
+		/// åˆ—è¡¨é¡µè§„åˆ™ï¼Œè®¿é—®è·¯å¾„
+		/// </summary>
+		public string ListRule
+		{
+			set { _listRule = value; }
+			get { return _listRule; }
+		}
+		/// <summary>
+		/// æ–‡æ¡£é¡µè§„åˆ™ï¼Œè®¿é—®è·¯å¾„
+		/// </summary>
+		public string ArchiveRule
+		{
+			set { _archiveRule = value; }
+			get { return _archiveRule; }
+		}
+		/// <summary>
+		/// æ ç›®åˆ†é¡µå¤§å°,åˆ—è¡¨æ¡æ•°
+		/// </summary>
+		public byte ClassPage
+		{
+			set { _classPage = value; }
+			get { return _classPage; }
+		}
+		/// <summary>
+		/// æ ç›®æè¿°
+		/// </summary>
+		public string Description
+		{
+			set { _description = value; }
+			get { return _description; }
+		}
+		/// <summary>
+		/// æ˜¯å¦éšè—ï¼Œ1å¯ç”¨ï¼Œ0éšè—
+		/// </summary>
+		public byte IsHidden
+		{
+			set { _isHidden = value; }
+			get { return _isHidden; }
+		}
+		/// <summary>
+		/// æ˜¯å¦å…è®¸ç”Ÿæˆé™æ€é¡µï¼Œ1ç”Ÿæˆé™æ€ï¼Œ0åŠ¨æ€è®¿é—®
+		/// </summary>
+		public byte IsHtml
+		{
+			set { _isHtml = value; }
+			get { return _isHtml; }
+		}
+		/// <summary>
+		/// å®¡æ ¸æœºåˆ¶
+		/// </summary>
+		public byte CheckLevel
+		{
+			set { _checkLevel = value; }
+			get { return _checkLevel; }
+		}
+		/// <summary>
+		/// æ˜¯å¦å…è®¸æŠ•ç¨¿ï¼Œ1å…è®¸ï¼Œ0ä¸å…è®¸
+		/// </summary>
+		public byte IsContribute
+		{
+			set { _isContribute = value; }
+			get { return _isContribute; }
+		}
+		/// <summary>
+		/// æœ¬æ ç›®æ–‡ç« æ˜¯å¦å…è®¸è¯„è®ºï¼Œ1å…è®¸ï¼Œ0ä¸å…è®¸
+		/// </summary>
+		public byte IsComment
+		{
+			set { _isComment = value; }
+			get { return _isComment; }
+		}
+		/// <summary>
+		/// é˜…è¯»æƒé™
+		/// </summary>
+		public Int16 Readaccess
+		{
+			set { _readaccess = value; }
+			get { return _readaccess; }
+		}
+		/// <summary>
+		/// ç«™ç‚¹ID
+		/// </summary>
+		public byte SiteID
+		{
+			set { _siteID = value; }
+			get { return _siteID; }
+		}
+		/// <summary>
+		/// æ·»åŠ æ—¶é—´
+		/// </summary>
+		public DateTime AddDate
+		{
+			set { _addDate = value; }
+			get { return _addDate; }
+		}
+		/// <summary>
+		/// æ ç›®å…³ç³»
+		/// </summary>
+		public string Relation
+		{
+			set { _relation = value; }
+			get { return _relation; }
+		}
+		/// <summary>
+		/// æ ç›®æ’åºï¼Œå‡åºæ’åˆ—
+		/// </summary>
+		public Int16 OrderID
+		{
+			set { _orderID = value; }
+			get { return _orderID; }
+		}
+		/// <summary>
+		/// æ ç›®å›¾ç‰‡åœ°å€
+		/// </summary>
+		public string ImgUrl
+		{
+			set { _imgUrl = value; }
+			get { return _imgUrl; }
+		}
+		/// <summary>
+		/// æ ç›®å…³é”®å­—
+		/// </summary>
+		public string Keywords
+		{
+			set { _keywords = value; }
+			get { return _keywords; }
+		}
+		/// <summary>
+		/// äº¤å‰æ ç›®ï¼Œå¤šä¸ªæ ç›®ç”¨,å·éš”å¼€
+		/// </summary>
+		public string CrossID
+		{
+			set { _crossID = value; }
+			get { return _crossID; }
+		}
+		/// <summary>
+		/// æ ç›®å†…å®¹
+		/// </summary>
+		public string Content
+		{
+			set { _content = value; }
+			get { return _content; }
+		}
+		#endregion
+	}
 }
-

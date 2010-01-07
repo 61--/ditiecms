@@ -1,63 +1,89 @@
-﻿using System;
+﻿//------------------------------------------------------------------------------
+// 创建标识: Copyright (C) 2010 91aspx.com 版权所有
+// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 功能描述: 
+// 修改标识: 
+// 修改描述: 
+//------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Text;
-using DTCMS.DALFactory;
-using DTCMS.IDAL;
 using DTCMS.Entity;
-using System.Data;
+using DTCMS.IDAL;
+using DTCMS.DALFactory;
 
 namespace DTCMS.BLL
 {
-    public class AttachMentBLL
-    {
-        IDAL_AttachMent dalAttachMent = DataAccess.CreateFactoryDAL<IDAL_AttachMent>("AttachMentDAL");
+	/// <summary>
+	/// 业务逻辑类 AttachMent
+	/// </summary>
+	public class AttachMentBLL
+	{
+		private readonly IDAL_AttachMent dal = DataAccess.CreateFactoryDAL<IDAL_AttachMent>("AttachMentDAL");
+		public AttachMent()
+		{ }
 
         /// <summary>
-        /// 增加附件数据
-        /// </summary>
-        public int Add(AttachMent model)
+		/// 增加一条数据
+		/// </summary>
+        public void Add(AttachMent model)
         {
-            return dalAttachMent.Add(model);
-        }
-
-        /// <summary>
-        /// 更新附件数据
-        /// </summary>
-        public int Update(AttachMent model)
-        {
-            return dalAttachMent.Update(model);
+            dal.Add(model);
         }
 
         /// <summary>
-        /// 删除附件数据
-        /// </summary>
-        public int Delete(string AttachMentID)
+		/// 更新一条数据
+		/// </summary>
+        public void Update(AttachMent model)
         {
-            return dalAttachMent.Delete(AttachMentID);
-        }
-        /// <summary>
-        /// 获取一个附件
-        /// </summary>
-        /// <param name="AttachMentID">附件ID</param>
-        public AttachMent GetModel(int AttachMentID) 
-        {
-            return dalAttachMent.GetModel(AttachMentID);
+            dal.Update(model);
         }
 
         /// <summary>
-        /// 获取附件-图片
-        /// </summary>
-        /// <param name="pageCurrent">当前页</param>
-        /// <param name="pageSize">页大小</param>
-        /// <param name="where">查询条件</param>
-        /// <param name="pagecount">总页数</param>
-        /// <returns></returns>
-        public DataTable GetAttachmentList(int pageCurrent,int pageSize,string where,out int pagecount)
+		/// 删除一条数据
+		/// </summary>
+        public void Delete(int AttachMentID)
         {
-            return dalAttachMent.GetDataTable("DT_AttachMent","AttachMentID",pageCurrent,pageSize
-                ,"AttachMentDisplayName,AttachMentPath,AttachMentSize,AbbrPhotoPath,PubLisher,AddDate,PhotoDescription"
-                , "AddDate desc", where,out pagecount);
+            dal.Delete(AttachMentID);
         }
-        
-    }
+
+        /// <summary>
+		/// 是否存在该记录
+		/// </summary>
+        public bool Exists(int AttachMentID)
+        {
+            return dal.Exists(AttachMentID);
+        }
+
+        /// <summary>
+		/// 得到一个对象实体
+		/// </summary>
+        public AttachMent GetModel(int AttachMentID)
+        {
+            return dal.GetModel(AttachMentID);
+        }
+
+        /// <summary>
+		/// 获得泛型数据列表
+		/// </summary>
+        public List<AttachMent> GetList(out long count)
+        {
+            return dal.GetList(out count);
+        }
+
+        /// <summary>
+		/// 分页获取泛型数据列表
+		/// </summary>
+        public List<AttachMent> GetPageList(int pageSize, int pageIndex, out long count)
+        {
+            if (pageSize <= 0)
+                throw new Exception("每页数据条数必须大于0。");
+
+            if (pageIndex <= 0)
+                throw new Exception("页索引必须大于0。");
+
+            return dal.GetPageList(pageSize, pageIndex, out count);
+        }
+	}
 }

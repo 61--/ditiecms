@@ -42,9 +42,19 @@
   <ItemGroup>
     <Compile Include="IDAL_Arc_Article.cs" />
     <Compile Include="IDAL_Arc_Class.cs" />
+    <Compile Include="IDAL_Arc_Soft.cs" />
     <Compile Include="IDAL_AttachMent.cs" />
+    <Compile Include="IDAL_Help.cs" />
+    <Compile Include="IDAL_ModuleControl.cs" />
+    <Compile Include="IDAL_Modules.cs" />
+    <Compile Include="IDAL_Roles.cs" />
+    <Compile Include="IDAL_RolesInModules.cs" />
+    <Compile Include="IDAL_SYS_Dict.cs" />
     <Compile Include="IDAL_Sys_Publish.cs" />
     <Compile Include="IDAL_Sys_Template.cs" />
+    <Compile Include="IDAL_Userfields.cs" />
+    <Compile Include="IDAL_Usergroup.cs" />
+    <Compile Include="IDAL_Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

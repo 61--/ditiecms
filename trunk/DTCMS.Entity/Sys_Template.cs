@@ -1,78 +1,87 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
+﻿//------------------------------------------------------------------------------
+// 创建标识: Copyright (C) 2010 91aspx.com 版权所有
+// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 功能描述: 
+// 修改标识: 
+// 修改描述: 
+//------------------------------------------------------------------------------
+
+using System;
+
 namespace DTCMS.Entity
 {
-    public class Sys_Template
-    {
-        public Sys_Template() { }
-        #region Model
-        private int _templateid;
-        private string _templatename;
-        private string _templatedirectory;
-        private int _isenable;
-        private string _author;
-        private DateTime? _createdatetime;
-        private string _templateimg;
-        /// <summary>
-        /// 模板主键
-        /// </summary>
-        public int TemplateID
-        {
-            set { _templateid = value; }
-            get { return _templateid; }
-        }
-        /// <summary>
-        /// 模板名称
-        /// </summary>
-        public string TemplateName
-        {
-            set { _templatename = value; }
-            get { return _templatename; }
-        }
-        /// <summary>
-        /// 模板目录
-        /// </summary>
-        public string TemplateDirectory
-        {
-            set { _templatedirectory = value; }
-            get { return _templatedirectory; }
-        }
-        /// <summary>
-        /// 是否启用
-        /// </summary>
-        public int isEnable
-        {
-            set { _isenable = value; }
-            get { return _isenable; }
-        }
-        /// <summary>
-        /// 创建时间
-        /// </summary>
-        public DateTime? CreateDateTime
-        {
-            set { _createdatetime = value; }
-            get { return _createdatetime; }
-        }
-        /// <summary>
-        /// 模板缩略图
-        /// </summary>
-        public string TemplateImg
-        {
-            set { _templateimg = value; }
-            get { return _templateimg; }
-        }
+	/// <summary>
+	/// 实体类 SYS_Template
+	/// </summary>
+	public class SYS_Template
+	{
+		public SYS_Template()
+		{ }
 
-        /// <summary>
-        /// 作者
-        /// </summary>
-        public string Author
-        {
-            set { _author = value; }
-            get { return _author; }
-        }
-        #endregion Model
-       
-    }
+		#region Model
+		private int _templateID;
+		private string _templateName;
+		private string _templateDirectory;
+		private byte _isEnable;
+		private DateTime _createDateTime;
+		private string _templateImg;
+		private string _author;
+		/// <summary>
+		/// 模板主键
+		/// </summary>
+		public int TemplateID
+		{
+			set { _templateID = value; }
+			get { return _templateID; }
+		}
+		/// <summary>
+		/// 模板名称
+		/// </summary>
+		public string TemplateName
+		{
+			set { _templateName = value; }
+			get { return _templateName; }
+		}
+		/// <summary>
+		/// 模板目录
+		/// </summary>
+		public string TemplateDirectory
+		{
+			set { _templateDirectory = value; }
+			get { return _templateDirectory; }
+		}
+		/// <summary>
+		/// 是否启用
+		/// </summary>
+		public byte isEnable
+		{
+			set { _isEnable = value; }
+			get { return _isEnable; }
+		}
+		/// <summary>
+		/// 创建时间
+		/// </summary>
+		public DateTime CreateDateTime
+		{
+			set { _createDateTime = value; }
+			get { return _createDateTime; }
+		}
+		/// <summary>
+		/// 模板缩略图
+		/// </summary>
+		public string TemplateImg
+		{
+			set { _templateImg = value; }
+			get { return _templateImg; }
+		}
+		/// <summary>
+		/// 作者
+		/// </summary>
+		public string Author
+		{
+			set { _author = value; }
+			get { return _author; }
+		}
+		#endregion
+	}
 }
