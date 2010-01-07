@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.Common;
 using DTCMS.Entity;
 using DTCMS.DBUtility;
 using DTCMS.IDAL;
+
 namespace DTCMS.SqlServerDAL
 {
-    public class Sys_PublishDAL:BaseDAL,IDAL_Sys_Publish
+    public class Sys_PublishDAL : BaseDAL, IDAL_Sys_Publish
     {
         /// <summary>
         /// 根据栏目编号获取栏目信息
@@ -24,7 +25,7 @@ namespace DTCMS.SqlServerDAL
             strSql.Append(" WHERE ");
             strSql.Append(string.Format(" CID={0} ", CID));
 
-            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+            using (DbDataReader dataReader = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
             {
 
                 object ojb;
@@ -124,7 +125,7 @@ namespace DTCMS.SqlServerDAL
         /// </summary>
         /// <param name="totalCount">共多少条数据</param>
         /// <returns></returns>
-        public DataTable GetClassByClassID(int CID,out int totalCount)
+        public DataTable GetClassByClassID(int CID, out int totalCount)
         {
             StringBuilder strSearch = new StringBuilder();
             strSearch.AppendFormat(" isHidden=0  AND(  relation like'%.{0}.%' OR CID={0} ) ", CID);
@@ -134,13 +135,13 @@ namespace DTCMS.SqlServerDAL
             strSql.Append("FROM DT_Arc_Class ");
             strSql.Append("WHERE ");
             strSql.Append(strSearch.ToString());
-            string sqlCount =string.Format( " SELECT COUNT(CID) FROM DT_Arc_Class WHERE {0} ",strSearch.ToString());
-            totalCount =Convert.ToInt32( SqlHelper.ExecuteScalar(CommandType.Text, sqlCount, null));
-            return SqlHelper.FillDataset(CommandType.Text, strSql.ToString(), null).Tables[0];
+            string sqlCount = string.Format(" SELECT COUNT(CID) FROM DT_Arc_Class WHERE {0} ", strSearch.ToString());
+            totalCount = Convert.ToInt32(dbHelper.ExecuteScalar(CommandType.Text, sqlCount, null));
+            return dbHelper.FillDataset(CommandType.Text, strSql.ToString(), null).Tables[0];
 
         }
 
-  
+
 
         /// <summary>
         /// 按照类别编号发布文章
@@ -151,15 +152,15 @@ namespace DTCMS.SqlServerDAL
         /// <param name="orderWay">排序方式 desc asc</param>
         /// <param name="totalCount">共有多少条</param>
         /// <returns></returns>
-        public DataTable GetArticleByClassID(int CID,string orderBy,string orderWay,out int totalCount)
+        public DataTable GetArticleByClassID(int CID, string orderBy, string orderWay, out int totalCount)
         {
             StringBuilder strSearch = new StringBuilder();
-     
+
             strSearch.Append(" a.ClassID=b.CID  AND  a.IsChecked=1 AND a.IsRecycle=0 AND a.IsHtml=1 ");
             strSearch.AppendFormat(" AND(  b.relation like'%.{0}.%' OR  b.CID={0} ) ", CID);
 
-            
-            StringBuilder strSql=new StringBuilder ();
+
+            StringBuilder strSql = new StringBuilder();
             strSql.Append(" SELECT ");
             strSql.Append(" a.[ID],a.Title,a.ShortTitle,a.TitleStyle,a.TitleFlag,a.Tags,a.ImgUrl,a.Author,a.Source,a.Templet,a.Keywords,a.Description,a.Content,a.Click,a.Good,a.Bad,a.Readaccess,a.Money,a.IsComment,a.IsRedirect,a.FilePath,a.SimilarArticle,a.PubDate,b.CID,b.ClassName,b.ClassType");
             strSql.Append(" FROM DT_Arc_Article as a,DT_Arc_Class as b  ");
@@ -169,15 +170,15 @@ namespace DTCMS.SqlServerDAL
             if (string.IsNullOrEmpty(orderWay))
                 orderWay = "DESC";
             if (string.IsNullOrEmpty(orderBy))
-                strSql.AppendFormat(" ORDER BY a.[ID] {0} ",orderWay);
+                strSql.AppendFormat(" ORDER BY a.[ID] {0} ", orderWay);
             else
-                strSql.AppendFormat("ORDER BY a.[{0}] {1} ",orderBy,orderWay);
-          
-            string sqlCount=string.Format(" SELECT Count(a.ID) FROM DT_Arc_Article as a,DT_Arc_Class as b  WHERE {0}",strSearch.ToString());
+                strSql.AppendFormat("ORDER BY a.[{0}] {1} ", orderBy, orderWay);
 
-            totalCount=Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text,sqlCount.ToString()));
-                
-            return SqlHelper.FillDataset(CommandType.Text,strSql.ToString(),null).Tables[0];
+            string sqlCount = string.Format(" SELECT Count(a.ID) FROM DT_Arc_Article as a,DT_Arc_Class as b  WHERE {0}", strSearch.ToString());
+
+            totalCount = Convert.ToInt32(dbHelper.ExecuteScalar(CommandType.Text, sqlCount.ToString()));
+
+            return dbHelper.FillDataset(CommandType.Text, strSql.ToString(), null).Tables[0];
         }
 
         /// <summary>
@@ -188,12 +189,12 @@ namespace DTCMS.SqlServerDAL
         /// <param name="orderBy">文章排序</param>
         /// <param name="totalCount">共有多少条</param>
         /// <returns></returns>
-        public DataTable GetArticleByTime(DateTime startTime,DateTime endTime, out int totalCount)
+        public DataTable GetArticleByTime(DateTime startTime, DateTime endTime, out int totalCount)
         {
             StringBuilder strSearch = new StringBuilder();
             strSearch.Append(" a.ClassID=b.CID AND IsChecked=1 AND IsRecycle=1 AND IsHtml=1 ");
-            strSearch.AppendFormat(" AND AddDate Between '{0}' AND '{1}' ",startTime,endTime);
-            
+            strSearch.AppendFormat(" AND AddDate Between '{0}' AND '{1}' ", startTime, endTime);
+
             StringBuilder strSql = new StringBuilder();
             strSql.Append(" SELECT ");
             strSql.Append(" a.[ID],a.Title,a.ShortTitle,a.TitleStyle,a.TitleFlag,a.Tags,a.ImgUrl,a.Author,a.Source,a.Templet,a.Keywords,a.Description,a.Content,a.Click,a.Good,a.Bad,a.Readaccess,a.Money,a.IsComment,a.IsRedirect,a.FilePath,a.SimilarArticle,a.PubDate,b.ClassID,b.ClassName,b.ClassType");
@@ -204,9 +205,9 @@ namespace DTCMS.SqlServerDAL
 
             string sqlCount = string.Format(" SELECT Count(a.ClassID) FROM DT_Arc_Article as a,DT_Arc_Class as b  WHERE {0}", strSearch.ToString());
 
-            totalCount = Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text, sqlCount.ToString(),null));
+            totalCount = Convert.ToInt32(dbHelper.ExecuteScalar(CommandType.Text, sqlCount.ToString(), null));
 
-            return SqlHelper.FillDataset(CommandType.Text, strSql.ToString(), null).Tables[0];
+            return dbHelper.FillDataset(CommandType.Text, strSql.ToString(), null).Tables[0];
         }
 
         /// <summary>
@@ -216,7 +217,7 @@ namespace DTCMS.SqlServerDAL
         /// <param name="maxId">结束编号</param>
         /// <param name="totalCount">共有几条数据</param>
         /// <returns></returns>
-        public DataTable GetArticleByID(int minId,int maxId,out int totalCount )
+        public DataTable GetArticleByID(int minId, int maxId, out int totalCount)
         {
             StringBuilder strSearch = new StringBuilder();
             strSearch.Append(" a.ClassID=b.CID AND IsChecked=1 AND IsRecycle=1 AND IsHtml=1 ");
@@ -232,9 +233,9 @@ namespace DTCMS.SqlServerDAL
 
             string sqlCount = string.Format(" SELECT Count(a.ClassID) FROM DT_Arc_Article as a,DT_Arc_Class as b  WHERE {0}", strSearch.ToString());
 
-            totalCount = Convert.ToInt32(SqlHelper.ExecuteScalar(CommandType.Text,sqlCount.ToString(),null));
+            totalCount = Convert.ToInt32(dbHelper.ExecuteScalar(CommandType.Text, sqlCount.ToString(), null));
 
-            return SqlHelper.FillDataset(CommandType.Text, strSql.ToString(), null).Tables[0];
+            return dbHelper.FillDataset(CommandType.Text, strSql.ToString(), null).Tables[0];
         }
 
         /// <summary>
@@ -245,14 +246,14 @@ namespace DTCMS.SqlServerDAL
         /// <param name="orderWay">排序方式 desc asc</param>
         /// <param name="search">组合条件</param>
         /// <returns></returns>
-        public DataTable GetTopArticleBySearch(int topnum,string orderBy,string orderWay,string search)
+        public DataTable GetTopArticleBySearch(int topnum, string orderBy, string orderWay, string search)
         {
             StringBuilder strSearch = new StringBuilder();
             strSearch.Append(" a.ClassID=b.CID AND a.isChecked=1 AND a.IsRecycle=0 AND a.IsHtml=1 ");
             if (!string.IsNullOrEmpty(search))
-                strSearch.AppendFormat(" AND {0} ",search);
+                strSearch.AppendFormat(" AND {0} ", search);
             StringBuilder strSql = new StringBuilder();
-            strSql.AppendFormat(" SELECT TOP {0} ",topnum);
+            strSql.AppendFormat(" SELECT TOP {0} ", topnum);
             strSql.Append(" a.[ID],a.Title,a.ShortTitle,a.TitleStyle,a.TitleFlag,a.Tags,a.ImgUrl,a.Author,a.Source,a.Templet,a.Keywords,a.Description,a.Content,a.Click,a.Good,a.Bad,a.Readaccess,a.Money,a.IsComment,a.IsRedirect,a.FilePath,a.SimilarArticle,a.PubDate,b.CID,b.ClassName,b.ClassType,");
             strSql.Append(" FROM DT_Arc_Article as a,DT_Arc_Class as b  ");
             strSql.Append(" WHERE ");
@@ -265,7 +266,7 @@ namespace DTCMS.SqlServerDAL
             else
                 strSql.AppendFormat("ORDER BY a.[{0}] {1} ", orderBy, orderWay);
 
-            return SqlHelper.FillDataset(CommandType.Text, strSql.ToString(), null).Tables[0];
+            return dbHelper.FillDataset(CommandType.Text, strSql.ToString(), null).Tables[0];
         }
 
         /// <summary>
@@ -275,14 +276,14 @@ namespace DTCMS.SqlServerDAL
         /// <returns>栏目集合</returns>
         public List<Arc_Class> GetParentClassList(int CID)
         {
-            string sql ="SELECT CID,ClassName,Relation,ParentID From DT_Arc_Class WHERE CID=@CID ";
+            string sql = "SELECT CID,ClassName,Relation,ParentID From DT_Arc_Class WHERE CID=@CID ";
             SqlParameter[] param = new SqlParameter[]{
                          new SqlParameter("@CID",SqlDbType.Int,4)
             };
             param[0].Value = CID;
 
-            Arc_Class model=new Arc_Class ();
-            using (SqlDataReader reader = SqlHelper.ExecuteReader(CommandType.Text, sql, param))
+            Arc_Class model = new Arc_Class();
+            using (DbDataReader reader = dbHelper.ExecuteReader(CommandType.Text, sql, param))
             {
                 if (reader.HasRows)
                 {
@@ -313,13 +314,13 @@ namespace DTCMS.SqlServerDAL
                 }
                 else
                 {
-                     list.Add(model);
+                    list.Add(model);
                 }
                 return list;
             }
             return null;
-           
-            
+
+
 
         }
 

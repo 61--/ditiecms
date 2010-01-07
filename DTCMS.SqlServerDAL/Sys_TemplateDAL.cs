@@ -1,177 +1,201 @@
-﻿using System;
+﻿//------------------------------------------------------------------------------
+// 创建标识: Copyright (C) 2010 91aspx.com 版权所有
+// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 功能描述: 
+// 修改标识: 
+// 修改描述: 
+//------------------------------------------------------------------------------
+
 using System.Collections.Generic;
-using System.Text;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.Common;
+using System.Text;
 using DTCMS.Entity;
 using DTCMS.IDAL;
-using DTCMS.DBUtility;
-using DTCMS.Common;
+
 namespace DTCMS.SqlServerDAL
 {
-    public class Sys_TemplateDAL:BaseDAL,IDAL_Sys_Template
-    {
-
-        #region IDAL_Sys_Template 成员
-
-        /// <summary>
-        /// 添加模板风格数据
-        /// </summary>
-        /// <param name="model">模板风格实体</param>
-        /// <returns></returns>
-        public int Add(Sys_Template model)
-        {
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("insert into DT_SYS_Template(");
+	/// <summary>
+	/// 数据访问类 SYS_Template
+	/// </summary>
+	public class SYS_TemplateDAL : BaseDAL, IDAL_SYS_Template
+	{
+		/// <summary>
+		/// 增加一条数据
+		/// </summary>
+		public int Add(SYS_Template model)
+		{
+			StringBuilder strSql = new StringBuilder();
+			strSql.Append("INSERT INTO SYS_Template(");
             strSql.Append("TemplateName,TemplateDirectory,isEnable,CreateDateTime,TemplateImg,Author)");
-            strSql.Append(" values (");
+			strSql.Append(" VALUES (");
             strSql.Append("@TemplateName,@TemplateDirectory,@isEnable,@CreateDateTime,@TemplateImg,@Author)");
-            SqlParameter[] parameters = {
-					new SqlParameter("@TemplateName", SqlDbType.NVarChar,50),
-					new SqlParameter("@TemplateDirectory", SqlDbType.NVarChar,200),
-					new SqlParameter("@isEnable", SqlDbType.TinyInt,1),
-					new SqlParameter("@CreateDateTime", SqlDbType.DateTime),
-					new SqlParameter("@TemplateImg", SqlDbType.NVarChar,200),
-                    new SqlParameter("@Author",SqlDbType.NVarChar,50)};
-           
-            parameters[0].Value = model.TemplateName;
-            parameters[1].Value = model.TemplateDirectory;
-            parameters[2].Value = model.isEnable;
-            parameters[3].Value = model.CreateDateTime;
-            parameters[4].Value = model.TemplateImg;
-            parameters[5].Value = model.Author;
-            return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters);
-        }
+			DbParameter[] cmdParms = {
+				dbHelper.CreateInDbParameter("@TemplateName", DbType.String, model.TemplateName),
+				dbHelper.CreateInDbParameter("@TemplateDirectory", DbType.String, model.TemplateDirectory),
+				dbHelper.CreateInDbParameter("@isEnable", DbType.Byte, model.isEnable),
+				dbHelper.CreateInDbParameter("@CreateDateTime", DbType.String, model.CreateDateTime),
+				dbHelper.CreateInDbParameter("@TemplateImg", DbType.String, model.TemplateImg),
+				dbHelper.CreateInDbParameter("@Author", DbType.String, model.Author)};
 
-        /// <summary>
-        /// 更新模板风格
-        /// </summary>
-        /// <param name="model">模板实体</param>
-        /// <returns></returns>
-        public int Update(Sys_Template model)
-        {
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("update DT_SYS_Template set ");
-            strSql.Append("TemplateName=@TemplateName,");
-            strSql.Append("TemplateDirectory=@TemplateDirectory,");
-            strSql.Append("isEnable=@isEnable,");
-            strSql.Append("CreateDateTime=@CreateDateTime,");
-            strSql.Append("TemplateImg=@TemplateImg,");
-            strSql.Append("Author=@Author");
-            strSql.Append(" where TemplateID=@TemplateID ");
-            SqlParameter[] parameters = {
-					new SqlParameter("@TemplateID", SqlDbType.Int,4),
-					new SqlParameter("@TemplateName", SqlDbType.NVarChar,50),
-					new SqlParameter("@TemplateDirectory", SqlDbType.NVarChar,200),
-					new SqlParameter("@isEnable", SqlDbType.TinyInt,1),
-					new SqlParameter("@CreateDateTime", SqlDbType.DateTime),
-					new SqlParameter("@TemplateImg", SqlDbType.NVarChar,200),
-                    new SqlParameter("@Author",SqlDbType.NVarChar,50)};
-            parameters[0].Value = model.TemplateID;
-            parameters[1].Value = model.TemplateName;
-            parameters[2].Value = model.TemplateDirectory;
-            parameters[3].Value = model.isEnable;
-            parameters[4].Value = model.CreateDateTime;
-            parameters[5].Value = model.TemplateImg;
-            parameters[6].Value = model.Author;
-            return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters);
-        }
+			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
+		}
 
-        /// <summary>
-        /// 删除模板风格数据
-        /// </summary>
-        /// <param name="TemplateID">主键</param>
-        /// <returns></returns>
-        public int Delete(string TemplateID)
-        {
-            string strSql = string.Format("delete DT_SYS_Template  where TemplateID in ({0})", TemplateID);
-            return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql);	
-        }
+		/// <summary>
+		/// 更新一条数据
+		/// </summary>
+		public int Update(SYS_Template model)
+		{
+			StringBuilder strSql = new StringBuilder();
+			strSql.Append("UPDATE SYS_Template SET ");
+			strSql.Append("TemplateName=@TemplateName,");
+			strSql.Append("TemplateDirectory=@TemplateDirectory,");
+			strSql.Append("isEnable=@isEnable,");
+			strSql.Append("CreateDateTime=@CreateDateTime,");
+			strSql.Append("TemplateImg=@TemplateImg,");
+			strSql.Append("Author=@Author");
+			strSql.Append(" WHERE TemplateID=@TemplateID");
+			DbParameter[] cmdParms = {
+				dbHelper.CreateInDbParameter("@TemplateName", DbType.String, model.TemplateName),
+				dbHelper.CreateInDbParameter("@TemplateDirectory", DbType.String, model.TemplateDirectory),
+				dbHelper.CreateInDbParameter("@isEnable", DbType.Byte, model.isEnable),
+				dbHelper.CreateInDbParameter("@CreateDateTime", DbType.String, model.CreateDateTime),
+				dbHelper.CreateInDbParameter("@TemplateImg", DbType.String, model.TemplateImg),
+				dbHelper.CreateInDbParameter("@Author", DbType.String, model.Author),
+				dbHelper.CreateInDbParameter("@TemplateID", DbType.Int32, model.TemplateID)};
 
-        /// <summary>
-        /// 获取模板风格实体
-        /// </summary>
-        /// <param name="ID">模板风格主键</param>
-        /// <returns>模板风格实体</returns>
-        public Sys_Template GetModel(int TemplateID)
-        {
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("select TemplateID,TemplateName,TemplateDirectory,isEnable,CreateDateTime,TemplateImg,Author from DT_SYS_Template ");
-            strSql.Append(" where TemplateID=@TemplateID ");
-            SqlParameter[] parameters = { new SqlParameter("@TemplateID", SqlDbType.Int, 4) };
-            parameters[0].Value = TemplateID;
-            Sys_Template model=new Sys_Template ();
-            using (SqlDataReader dataReader = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), parameters))
-            {
-                if (dataReader.Read())
-                {
-                    model = DataReaderToModel<Sys_Template>(dataReader);
-                }
-            }
-           
-            return model;
-        }
+			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
+		}
 
-        /// <summary>
-        /// 设置风格为启动状态
-        /// </summary>
-        /// <param name="tempID">风格编号</param>
-        /// <param name="isEnable"> 1启动 </param>
-        /// <returns></returns>
-        public bool UpdateEnable(int TemplateID,int isEnable)
-        {
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append(" UPDATE DT_Sys_Template SET isEnable=0 WHERE isEnable=1 ");
-            strSql.Append(" UPDATE DT_Sys_Template SET isEnable=1 WHERE TemplateID=@TemplateID ");
+		/// <summary>
+		/// 删除一条数据
+		/// </summary>
+		public int Delete(int TemplateID)
+		{
+			StringBuilder strSql = new StringBuilder();
+			strSql.Append("DELETE FROM SYS_Template ");
+			strSql.Append(" WHERE TemplateID=@TemplateID");
+			DbParameter[] cmdParms = {
+				dbHelper.CreateInDbParameter("@TemplateID", DbType.Int32, TemplateID)};
 
-            SqlParameter[] parameters = { new SqlParameter("@TemplateID",SqlDbType.Int,4) };
-            parameters[0].Value = TemplateID;
-       
-            return SqlHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), parameters)>0;
-           
-        }
+			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
+		}
 
-        /// <summary>
-        /// 是否存在该记录
-        /// </summary>
-        /// <param name="CID">类别主键</param>
-        /// <param name="FiledName">字段名称</param>
-        /// <param name="FiledValue">字段值</param>
-        public bool Exists(int TemplateID, string filedName, string filedValue) 
-        {
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append(" SELECT Count(TemplateID) FROM DT_Sys_Template WHERE ");
-            strSql.Append(string.Format(" {0}=@{0} ",filedName));
-            strSql.Append(" AND TemplateID=@TemplateID ");
+		/// <summary>
+		/// 是否存在该记录
+		/// </summary>
+		public bool Exists(int TemplateID)
+		{
+			StringBuilder strSql = new StringBuilder();
+			strSql.Append("SELECT COUNT(1) FROM SYS_Template");
+			strSql.Append(" WHERE TemplateID=@TemplateID");
+			DbParameter[] cmdParms = {
+				dbHelper.CreateInDbParameter("@TemplateID", DbType.Int32, TemplateID)};
 
-            SqlParameter[] parameters = { new SqlParameter("@TemplateID", SqlDbType.Int, 4),
-                                          new SqlParameter(string.Format("@{0}",filedName), SqlDbType.NVarChar,100) 
-                                        };
-            parameters[0].Value = TemplateID;
-            parameters[1].Value = filedValue;
+			object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), cmdParms);
+			return dbHelper.GetInt(obj) > 0;
+		}
 
-            return TypeConvert.ObjectToInt(SqlHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), parameters)) > 0;
-        }
+		/// <summary>
+		/// 得到一个对象实体
+		/// </summary>
+		public SYS_Template GetModel(int TemplateID)
+		{
+			StringBuilder strSql = new StringBuilder();
+			strSql.Append("SELECT TemplateID,TemplateName,TemplateDirectory,isEnable,CreateDateTime,TemplateImg,Author FROM SYS_Template");
+			strSql.Append(" WHERE TemplateID=@TemplateID");
+			DbParameter[] cmdParms = {
+				dbHelper.CreateInDbParameter("@TemplateID", DbType.Int32, TemplateID)};
 
+			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
+			{
+				if (dr.Read())
+				{
+					return GetModel(dr);
+				}
+				return null;
+			}
+		}
 
-        /// <summary>
-        /// 获取风格数据
-        /// </summary>
-        /// <param name="Fileds">要查询的字段</param>
-        /// <returns></returns>
-        public DataTable GetDataTable(string Fileds)
-        {
-            string strSql = string.Format(" SELECT {0} FROM DT_Sys_Template ", Fileds);
-            DataSet ds = SqlHelper.FillDataset(CommandType.Text, strSql);
-            if (ds != null && ds.Tables.Count > 0)
-            {
-                return ds.Tables[0];
-            }
-            else
-            {
-                return null;
-            }
-        }
-        #endregion
-    }
+		/// <summary>
+		/// 获取泛型数据列表
+		/// </summary>
+		public List<SYS_Template> GetList(out long count)
+		{
+			StringBuilder strSql = new StringBuilder();
+			strSql.Append("SELECT TemplateID,TemplateName,TemplateDirectory,isEnable,CreateDateTime,TemplateImg,Author FROM SYS_Template");
+			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+			{
+				List<SYS_Template> lst = GetList(dr, out count);
+				return lst;
+			}
+		}
+
+		/// <summary>
+		/// 分页获取泛型数据列表
+		/// </summary>
+		public List<SYS_Template> GetPageList(int pageSize, int pageIndex, out long count)
+		{
+			StringBuilder strSql = new StringBuilder();
+			strSql.Append("SELECT TemplateID,TemplateName,TemplateDirectory,isEnable,CreateDateTime,TemplateImg,Author FROM SYS_Template");
+			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+			{
+				List<SYS_Template> lst = GetPageList(dr, pageSize, pageIndex, out count);
+				return lst;
+			}
+		}
+
+		#region -------- 私有方法，通常情况下无需修改 --------
+		/// <summary>
+		/// 由一行数据得到一个实体
+		/// </summary>
+		private SYS_Template GetModel(DbDataReader dr)
+		{
+			SYS_Template model = new SYS_Template();
+			model.TemplateID = dbHelper.GetInt(dr["TemplateID"]);
+			model.TemplateName = dbHelper.GetString(dr["TemplateName"]);
+			model.TemplateDirectory = dbHelper.GetString(dr["TemplateDirectory"]);
+			model.isEnable = dbHelper.GetByte(dr["isEnable"]);
+			model.CreateDateTime = dbHelper.GetDateTime(dr["CreateDateTime"]);
+			model.TemplateImg = dbHelper.GetString(dr["TemplateImg"]);
+			model.Author = dbHelper.GetString(dr["Author"]);
+			return model;
+		}
+
+		/// <summary>
+		/// 由DbDataReader得到泛型数据列表
+		/// </summary>
+		private List<SYS_Template> GetList(DbDataReader dr, out long count)
+		{
+			count = 0;
+			List<SYS_Template> lst = new List<SYS_Template>();
+			while (dr.Read())
+			{
+				count++;
+				lst.Add(GetModel(dr));
+			}
+			return lst;
+		}
+
+		/// <summary>
+		/// 由DbDataReader得到分页泛型数据列表
+		/// </summary>
+		private List<SYS_Template> GetPageList(DbDataReader dr, int pageSize, int pageIndex, out long count)
+		{
+			long first = GetFirstIndex(pageSize, pageIndex);
+			long last = GetLastIndex(pageSize, pageIndex);
+
+			count = 0;
+
+			List<SYS_Template> lst = new List<SYS_Template>();
+			while (dr.Read())
+			{
+				count++;
+				if (count >= first && count <= last)
+					lst.Add(GetModel(dr));
+			}
+			return lst;
+		}
+		#endregion
+	}
 }

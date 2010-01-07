@@ -1,88 +1,57 @@
+ï»¿//------------------------------------------------------------------------------
+// åˆ›å»ºæ ‡è¯†: Copyright (C) 2010 91aspx.com ç‰ˆæƒæ‰€æœ‰
+// åˆ›å»ºæè¿°: DTCMS V1.0 åˆ›å»ºäº 2010-1-7 23:34:18
+// åŠŸèƒ½æè¿°: 
+// ä¿®æ”¹æ ‡è¯†: 
+// ä¿®æ”¹æè¿°: 
+//------------------------------------------------------------------------------
+
 using System;
 using System.Data;
+using System.Collections;
+using System.Collections.Generic;
 using DTCMS.Entity;
 
 namespace DTCMS.IDAL
 {
 	/// <summary>
-	/// ½Ó¿Ú²ãIDT_Arc_Class µÄÕªÒªËµÃ÷¡£
+	/// æ¥å£å±‚ IArc_Class
 	/// </summary>
 	public interface IDAL_Arc_Class
 	{
-		#region  ³ÉÔ±·½·¨
 		/// <summary>
-		/// ÊÇ·ñ´æÔÚ¸Ã¼ÇÂ¼
+		/// å¢åŠ ä¸€æ¡æ•°æ®
 		/// </summary>
-        /// <param name="CID">Àà±ğÖ÷¼ü</param>
-        /// <param name="FiledName">×Ö¶ÎÃû³Æ</param>
-        /// <param name="FiledValue">×Ö¶ÎÖµ</param>
-		bool Exists(int CID,string filedName,string filedValue);
+		int Add(Arc_Class model);
+
 		/// <summary>
-		/// Ôö¼ÓÒ»ÌõÊı¾İ
+		/// æ›´æ–°ä¸€æ¡æ•°æ®
 		/// </summary>
-        int Add(Arc_Class model);
+		int Update(Arc_Class model);
+
 		/// <summary>
-		/// ¸üĞÂÒ»ÌõÊı¾İ`
+		/// åˆ é™¤ä¸€æ¡æ•°æ®
 		/// </summary>
-        int Update(Arc_Class model);
-         /// <summary>
-        /// ¸üĞÂÅÅĞò
-        /// </summary>
-        /// <param name="cid">À¸Ä¿ID</param>
-        /// <param name="order">ÅÅĞò±àºÅ</param>
-        /// <returns></returns>
-        int UpdateOrder(int cid, int order);
+		int Delete(int CID);
+
 		/// <summary>
-		/// É¾³ıÒ»ÌõÊı¾İ
+		/// æ˜¯å¦å­˜åœ¨è¯¥è®°å½•
 		/// </summary>
-        int Delete(string CID);
+		bool Exists(int CID);
+
 		/// <summary>
-		/// µÃµ½Ò»¸ö¶ÔÏóÊµÌå
+		/// å¾—åˆ°ä¸€ä¸ªå¯¹è±¡å®ä½“
 		/// </summary>
 		Arc_Class GetModel(int CID);
 
-        /// <summary>
-        /// »ñÈ¡À¸Ä¿¹ØÏµ
-        /// </summary>
-        /// <param name="ParentID"></param>
-        /// <returns></returns>
-        string GetRelation(int ParentID);
-        /// <summary>
-        /// »ñÈ¡À¸Ä¿Ãû³Æ
-        /// </summary>
-        /// <param name="ParentID">À¸Ä¿ID</param>
-        /// <returns></returns>
-        string GetClassName(int CID);
+		/// <summary>
+		/// è·å–æ³›å‹æ•°æ®åˆ—è¡¨
+		/// </summary>
+		List<Arc_Class> GetList(out long count);
 
-        /// <summary>
-        /// »ñÈ¡À¸Ä¿Êı¾İ
-        /// </summary>
-        /// <param name="Fileds">Òª²éÑ¯µÄ×Ö¶Î</param>
-        /// <returns></returns>
-        DataTable  GetDataTable(string Fileds);
-
-        /// <summary>
-        /// ¸ù¾İ²éÑ¯×Ö¶Î²éÑ¯À¸Ä¿Êı¾İ
-        /// </summary>
-        /// <param name="Fileds">Òª²éÑ¯µÄ×Ö¶Î</param>
-        /// <returns>DataTableÊı¾İ¼¯ºÏ</returns>
-        DataTable GetDataTable(string Fileds, string where);
-
-        /// <summary>
-        /// ÅĞ¶Ïµ±Ç°½ÚµãÊÇ·ñ´æÔÚ×Ó½Úµã
-        /// </summary>
-        /// <param name="ParentID"></param>
-        /// <returns></returns>
-        bool ExistsChildNode(int CID);
-
-        /// <summary>
-        /// ÅĞ¶ÏÀ¸Ä¿ÊÇ·ñÒÑ¾­´æÔÚ
-        /// </summary>
-        /// <param name="ClassName"></param>
-        /// <returns></returns>
-        bool ExistsClassName(int CID, string ClassName);
-
-
-		#endregion  ³ÉÔ±·½·¨
+		/// <summary>
+		/// åˆ†é¡µè·å–æ³›å‹æ•°æ®åˆ—è¡¨
+		/// </summary>
+		List<Arc_Class> GetPageList(int pageSize, int pageIndex, out long count);
 	}
 }

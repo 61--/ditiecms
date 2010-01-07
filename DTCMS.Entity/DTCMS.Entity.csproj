@@ -42,16 +42,25 @@
   <ItemGroup>
     <Compile Include="Arc_Article.cs" />
     <Compile Include="Arc_Class.cs" />
+    <Compile Include="Arc_Soft.cs" />
     <Compile Include="AttachMent.cs" />
     <Compile Include="Config\Attachment.cs" />
     <Compile Include="Config\SysInfoParam.cs" />
     <Compile Include="Config\SystemConfig.cs" />
     <Compile Include="Config\WaterImage.cs" />
     <Compile Include="Enum\EClassAttribute.cs" />
+    <Compile Include="Help.cs" />
+    <Compile Include="ModuleControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roles.cs" />
+    <Compile Include="RolesInModules.cs" />
+    <Compile Include="SYS_Dict.cs" />
     <Compile Include="Sys_FileInfo.cs" />
     <Compile Include="Modules.cs" />
     <Compile Include="Sys_Template.cs" />
+    <Compile Include="Userfields.cs" />
+    <Compile Include="Usergroup.cs" />
+    <Compile Include="Users.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

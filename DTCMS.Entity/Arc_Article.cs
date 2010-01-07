@@ -1,27 +1,36 @@
+ï»¿//------------------------------------------------------------------------------
+// åˆ›å»ºæ ‡è¯†: Copyright (C) 2010 91aspx.com ç‰ˆæƒæ‰€æœ‰
+// åˆ›å»ºæè¿°: DTCMS V1.0 åˆ›å»ºäº 2010-1-7 23:34:18
+// åŠŸèƒ½æè¿°: 
+// ä¿®æ”¹æ ‡è¯†: 
+// ä¿®æ”¹æè¿°: 
+//------------------------------------------------------------------------------
+
 using System;
+
 namespace DTCMS.Entity
 {
 	/// <summary>
-	/// ÊµÌåÀàDT_Arc_Article ¡£(ÊôĞÔËµÃ÷×Ô¶¯ÌáÈ¡Êı¾İ¿â×Ö¶ÎµÄÃèÊöĞÅÏ¢)
+	/// å®ä½“ç±» Arc_Article
 	/// </summary>
 	public class Arc_Article
 	{
-        public Arc_Article()
+		public Arc_Article()
 		{ }
-        #region Entity
 
-		private int _id;
-		private int _classid;
-		private int? _viceclassid;
+		#region Model
+		private int _iD;
+		private int _classID;
+		private int _viceClassID;
 		private string _title;
-		private string _shorttitle;
-		private string _titlestyle;
-		private int? _titleflag;
+		private string _shortTitle;
+		private string _titleStyle;
+		private int _titleFlag;
 		private string _tags;
-		private string _imgurl;
+		private string _imgUrl;
 		private string _author;
 		private string _editor;
-		private string _publisher;
+		private string _pubLisher;
 		private string _source;
 		private string _templet;
 		private string _keywords;
@@ -30,294 +39,292 @@ namespace DTCMS.Entity
 		private int _click;
 		private int _good;
 		private int _bad;
-		private int? _readaccess;
-		private int? _money;
+		private Int16 _readaccess;
+		private Int16 _money;
 		private string _attribute;
-		private int? _iscomment;
-		private int _ischecked;
-		private int _isrecycle;
-		private int _isredirect;
-		private int? _ishtml;
-		private int? _ispaging;
-		private string _filepath;
-		private string _similararticle;
-		private DateTime _adddate;
-		private DateTime _pubdate;
-		private int? _orderid;
+		private byte _isComment;
+		private byte _isChecked;
+		private byte _isRecycle;
+		private int _isRedirect;
+		private byte _isHtml;
+		private byte _isPaging;
+		private string _filePath;
+		private string _similarArticle;
+		private DateTime _addDate;
+		private DateTime _pubDate;
+		private byte _orderID;
 		/// <summary>
-		/// 
+		/// ID
 		/// </summary>
 		public int ID
 		{
-			set{ _id=value;}
-			get{return _id;}
+			set { _iD = value; }
+			get { return _iD; }
 		}
 		/// <summary>
-		/// À¸Ä¿ID
+		/// æ ç›®ID
 		/// </summary>
 		public int ClassID
 		{
-			set{ _classid=value;}
-			get{return _classid;}
+			set { _classID = value; }
+			get { return _classID; }
 		}
 		/// <summary>
-		/// ¸±À¸Ä¿ID
+		/// å‰¯æ ç›®ID,-1æ²¡æœ‰å‰¯æ ç›®
 		/// </summary>
-		public int? ViceClassID
+		public int ViceClassID
 		{
-			set{ _viceclassid=value;}
-			get{return _viceclassid;}
+			set { _viceClassID = value; }
+			get { return _viceClassID; }
 		}
 		/// <summary>
-		/// ÎÄÕÂ±êÌâ
+		/// æ–‡ç« æ ‡é¢˜
 		/// </summary>
 		public string Title
 		{
-			set{ _title=value;}
-			get{return _title;}
+			set { _title = value; }
+			get { return _title; }
 		}
 		/// <summary>
-		/// ÎÄÕÂËõÂÔ±êÌâ
+		/// æ–‡ç« ç¼©ç•¥æ ‡é¢˜
 		/// </summary>
 		public string ShortTitle
 		{
-			set{ _shorttitle=value;}
-			get{return _shorttitle;}
+			set { _shortTitle = value; }
+			get { return _shortTitle; }
 		}
 		/// <summary>
-		/// ±êÌâÑùÊ½
+		/// æ ‡é¢˜æ ·å¼
 		/// </summary>
 		public string TitleStyle
 		{
-			set{ _titlestyle=value;}
-			get{return _titlestyle;}
+			set { _titleStyle = value; }
+			get { return _titleStyle; }
 		}
 		/// <summary>
-		/// ±êÌâ±êÇ©£¬ÈçÔ­´´¡¢×ªÔØ
+		/// æ ‡é¢˜æ ‡ç­¾ï¼Œå¦‚åŸåˆ›ã€è½¬è½½
 		/// </summary>
-		public int? TitleFlag
+		public int TitleFlag
 		{
-			set{ _titleflag=value;}
-			get{return _titleflag;}
+			set { _titleFlag = value; }
+			get { return _titleFlag; }
 		}
 		/// <summary>
-		/// ÎÄÕÂTAG
+		/// æ–‡ç« TAG
 		/// </summary>
 		public string Tags
 		{
-			set{ _tags=value;}
-			get{return _tags;}
+			set { _tags = value; }
+			get { return _tags; }
 		}
 		/// <summary>
-		/// ÎÄÕÂËõÂÔÍ¼
+		/// æ–‡ç« ç¼©ç•¥å›¾
 		/// </summary>
 		public string ImgUrl
 		{
-			set{ _imgurl=value;}
-			get{return _imgurl;}
+			set { _imgUrl = value; }
+			get { return _imgUrl; }
 		}
 		/// <summary>
-		/// ÎÄÕÂ×÷Õß
+		/// æ–‡ç« ä½œè€…
 		/// </summary>
 		public string Author
 		{
-			set{ _author=value;}
-			get{return _author;}
+			set { _author = value; }
+			get { return _author; }
 		}
 		/// <summary>
-		/// ÔğÈÎ±à¼­
+		/// è´£ä»»ç¼–è¾‘
 		/// </summary>
 		public string Editor
 		{
-			set{ _editor=value;}
-			get{return _editor;}
+			set { _editor = value; }
+			get { return _editor; }
 		}
 		/// <summary>
-		/// ·¢²¼Õß
+		/// å‘å¸ƒè€…
 		/// </summary>
 		public string PubLisher
 		{
-			set{ _publisher=value;}
-			get{return _publisher;}
+			set { _pubLisher = value; }
+			get { return _pubLisher; }
 		}
 		/// <summary>
-		/// ÎÄÕÂÀ´Ô´
+		/// æ–‡ç« æ¥æº
 		/// </summary>
 		public string Source
 		{
-			set{ _source=value;}
-			get{return _source;}
+			set { _source = value; }
+			get { return _source; }
 		}
 		/// <summary>
-		/// ÎÄÕÂÄ£°æ
+		/// æ–‡ç« æ¨¡ç‰ˆ
 		/// </summary>
 		public string Templet
 		{
-			set{ _templet=value;}
-			get{return _templet;}
+			set { _templet = value; }
+			get { return _templet; }
 		}
 		/// <summary>
-		/// ¹Ø¼ü×Ö
+		/// å…³é”®å­—
 		/// </summary>
 		public string Keywords
 		{
-			set{ _keywords=value;}
-			get{return _keywords;}
+			set { _keywords = value; }
+			get { return _keywords; }
 		}
 		/// <summary>
-		/// ÎÄÕÂÃèÊö
+		/// æ–‡ç« æè¿°
 		/// </summary>
 		public string Description
 		{
-			set{ _description=value;}
-			get{return _description;}
+			set { _description = value; }
+			get { return _description; }
 		}
 		/// <summary>
-		/// ÎÄÕÂÕıÎÄ
+		/// æ–‡ç« æ­£æ–‡
 		/// </summary>
 		public string Content
 		{
-			set{ _content=value;}
-			get{return _content;}
+			set { _content = value; }
+			get { return _content; }
 		}
 		/// <summary>
-		/// ÎÄÕÂµã»÷
+		/// æ–‡ç« ç‚¹å‡»
 		/// </summary>
 		public int Click
 		{
-			set{ _click=value;}
-			get{return _click;}
+			set { _click = value; }
+			get { return _click; }
 		}
 		/// <summary>
-		/// ¶¥
+		/// é¡¶
 		/// </summary>
 		public int Good
 		{
-			set{ _good=value;}
-			get{return _good;}
+			set { _good = value; }
+			get { return _good; }
 		}
 		/// <summary>
-		/// ²È
+		/// è¸©
 		/// </summary>
 		public int Bad
 		{
-			set{ _bad=value;}
-			get{return _bad;}
+			set { _bad = value; }
+			get { return _bad; }
 		}
 		/// <summary>
-		/// ÔÄ¶ÁÈ¨ÏŞ£¬»áÔ±×é
+		/// é˜…è¯»æƒé™ï¼Œä¼šå‘˜ç»„
 		/// </summary>
-		public int? Readaccess
+		public Int16 Readaccess
 		{
-			set{ _readaccess=value;}
-			get{return _readaccess;}
+			set { _readaccess = value; }
+			get { return _readaccess; }
 		}
 		/// <summary>
-		/// Ïû·ÑµãÊı
+		/// æ¶ˆè´¹ç‚¹æ•°
 		/// </summary>
-		public int? Money
+		public Int16 Money
 		{
-			set{ _money=value;}
-			get{return _money;}
+			set { _money = value; }
+			get { return _money; }
 		}
 		/// <summary>
-		/// ÎÄÕÂÊôĞÔ£¬hÍ·Ìõ£¬cÍÆ¼ö£¬pÍ¼Æ¬£¬fµÆ»Ã£¬s¹ö¶¯
+		/// æ–‡ç« å±æ€§ï¼Œhå¤´æ¡ï¼Œcæ¨èï¼Œpå›¾ç‰‡ï¼Œfç¯å¹»ï¼Œsæ»šåŠ¨
 		/// </summary>
 		public string Attribute
 		{
-			set{ _attribute=value;}
-			get{return _attribute;}
+			set { _attribute = value; }
+			get { return _attribute; }
 		}
 		/// <summary>
-		/// ÊÇ·ñÔÊĞíÆÀÂÛ£¬1ÔÊĞí£¬0²»ÔÊĞí
+		/// æ˜¯å¦å…è®¸è¯„è®ºï¼Œ1å…è®¸ï¼Œ0ä¸å…è®¸
 		/// </summary>
-		public int? IsComment
+		public byte IsComment
 		{
-			set{ _iscomment=value;}
-			get{return _iscomment;}
+			set { _isComment = value; }
+			get { return _isComment; }
 		}
 		/// <summary>
-		/// ÊÇ·ñÉóºË£¬0Î´ÉóºË£¬1ÉóºË
+		/// æ˜¯å¦å®¡æ ¸ï¼Œ0æœªå®¡æ ¸ï¼Œ1å®¡æ ¸
 		/// </summary>
-		public int IsChecked
+		public byte IsChecked
 		{
-			set{ _ischecked=value;}
-			get{return _ischecked;}
+			set { _isChecked = value; }
+			get { return _isChecked; }
 		}
 		/// <summary>
-		/// ÊÇ·ñ·ÅÈë»ØÊÕÕ¾£¬0Õı³££¬1»ØÊÕÕ¾
+		/// æ˜¯å¦æ”¾å…¥å›æ”¶ç«™ï¼Œ0æ­£å¸¸ï¼Œ1å›æ”¶ç«™
 		/// </summary>
-		public int IsRecycle
+		public byte IsRecycle
 		{
-			set{ _isrecycle=value;}
-			get{return _isrecycle;}
+			set { _isRecycle = value; }
+			get { return _isRecycle; }
 		}
 		/// <summary>
-		/// ÊÇ·ñÌø×ªµØÖ·£¬1ÊÇ£¬0·ñ
+		/// æ˜¯å¦è·³è½¬åœ°å€ï¼Œ1æ˜¯ï¼Œ0å¦
 		/// </summary>
 		public int IsRedirect
 		{
-			set{ _isredirect=value;}
-			get{return _isredirect;}
+			set { _isRedirect = value; }
+			get { return _isRedirect; }
 		}
 		/// <summary>
-		/// ÊÇ·ñÉú³É¾²Ì¬Ò³£¬1Éú³É¾²Ì¬£¬0¶¯Ì¬·ÃÎÊ
+		/// æ˜¯å¦ç”Ÿæˆé™æ€é¡µï¼Œ1ç”Ÿæˆé™æ€ï¼Œ0åŠ¨æ€è®¿é—®
 		/// </summary>
-		public int? IsHtml
+		public byte IsHtml
 		{
-			set{ _ishtml=value;}
-			get{return _ishtml;}
+			set { _isHtml = value; }
+			get { return _isHtml; }
 		}
 		/// <summary>
-		/// ÊÇ·ñ·ÖÒ³
+		/// æ˜¯å¦åˆ†é¡µï¼Œ1åˆ†é¡µï¼Œ0ä¸åˆ†é¡µ
 		/// </summary>
-		public int? IsPaging
+		public byte IsPaging
 		{
-			set{ _ispaging=value;}
-			get{return _ispaging;}
+			set { _isPaging = value; }
+			get { return _isPaging; }
 		}
 		/// <summary>
-		/// ´æ´¢Â·¾¶
+		/// å­˜å‚¨è·¯å¾„
 		/// </summary>
 		public string FilePath
 		{
-			set{ _filepath=value;}
-			get{return _filepath;}
+			set { _filePath = value; }
+			get { return _filePath; }
 		}
 		/// <summary>
-        /// Ïà¹ØÎÄÕÂ
+		/// ç›¸å…³æ–‡ç« 
 		/// </summary>
 		public string SimilarArticle
 		{
-			set{ _similararticle=value;}
-			get{return _similararticle;}
+			set { _similarArticle = value; }
+			get { return _similarArticle; }
 		}
 		/// <summary>
-		/// Ìí¼ÓÊ±¼ä
+		/// æ·»åŠ æ—¶é—´
 		/// </summary>
 		public DateTime AddDate
 		{
-			set{ _adddate=value;}
-			get{return _adddate;}
+			set { _addDate = value; }
+			get { return _addDate; }
 		}
 		/// <summary>
-		/// ·¢²¼Ê±¼ä
+		/// å‘å¸ƒæ—¶é—´
 		/// </summary>
 		public DateTime PubDate
 		{
-			set{ _pubdate=value;}
-			get{return _pubdate;}
+			set { _pubDate = value; }
+			get { return _pubDate; }
 		}
 		/// <summary>
-		/// ÎÄÕÂÅÅĞò
+		/// æ–‡ç« æ’åº
 		/// </summary>
-		public int? OrderID
+		public byte OrderID
 		{
-			set{ _orderid=value;}
-			get{return _orderid;}
+			set { _orderID = value; }
+			get { return _orderID; }
 		}
-        #endregion Entity
-
-    }
+		#endregion
+	}
 }
-

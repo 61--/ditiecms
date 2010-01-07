@@ -1,142 +1,150 @@
-﻿using System;
+﻿//------------------------------------------------------------------------------
+// 创建标识: Copyright (C) 2010 91aspx.com 版权所有
+// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 功能描述: 
+// 修改标识: 
+// 修改描述: 
+//------------------------------------------------------------------------------
+
+using System;
 
 namespace DTCMS.Entity
 {
-    /// <summary>
-	/// 实体类DT_Modules 。(属性说明自动提取数据库字段的描述信息)
+	/// <summary>
+	/// 实体类 Modules
 	/// </summary>
 	public class Modules
 	{
-        public Modules()
-		{}
-		#region Entity
-		private int _id;
-		private int _moduleid;
-		private int _parentid;
+		public Modules()
+		{ }
+
+		#region Model
+		private int _iD;
+		private string _moduleID;
+		private string _parentID;
 		private string _name;
-		private string _ename;
-		private int? _moduledepth;
-		private string _moduleurl;
+		private string _eName;
+		private byte _moduleDepth;
+		private string _moduleURL;
 		private string _target;
 		private string _description;
-		private DateTime? _createtime;
-		private int? _isquickmenu;
-		private int? _issystem;
-		private int? _isenable;
-		private int? _orderid;
+		private DateTime _createTime;
+		private byte _isQuickMenu;
+		private byte _isSystem;
+		private byte _isEnable;
+		private int _orderID;
 		/// <summary>
-		/// 
+		/// ID
 		/// </summary>
 		public int ID
 		{
-			set{ _id=value;}
-			get{return _id;}
+			set { _iD = value; }
+			get { return _iD; }
 		}
 		/// <summary>
 		/// 模块ID
 		/// </summary>
-		public int ModuleID
+		public string ModuleID
 		{
-			set{ _moduleid=value;}
-			get{return _moduleid;}
+			set { _moduleID = value; }
+			get { return _moduleID; }
 		}
 		/// <summary>
 		/// 模块父ID
 		/// </summary>
-		public int ParentID
+		public string ParentID
 		{
-			set{ _parentid=value;}
-			get{return _parentid;}
+			set { _parentID = value; }
+			get { return _parentID; }
 		}
 		/// <summary>
 		/// 模块名称
 		/// </summary>
 		public string Name
 		{
-			set{ _name=value;}
-			get{return _name;}
+			set { _name = value; }
+			get { return _name; }
 		}
 		/// <summary>
 		/// 模块英文名
 		/// </summary>
 		public string EName
 		{
-			set{ _ename=value;}
-			get{return _ename;}
+			set { _eName = value; }
+			get { return _eName; }
 		}
 		/// <summary>
 		/// 模块深度，1为顶级模块分类
 		/// </summary>
-		public int? ModuleDepth
+		public byte ModuleDepth
 		{
-			set{ _moduledepth=value;}
-			get{return _moduledepth;}
+			set { _moduleDepth = value; }
+			get { return _moduleDepth; }
 		}
 		/// <summary>
 		/// 模块URL地址
 		/// </summary>
 		public string ModuleURL
 		{
-			set{ _moduleurl=value;}
-			get{return _moduleurl;}
+			set { _moduleURL = value; }
+			get { return _moduleURL; }
 		}
 		/// <summary>
 		/// 页面打开方式
 		/// </summary>
 		public string Target
 		{
-			set{ _target=value;}
-			get{return _target;}
+			set { _target = value; }
+			get { return _target; }
 		}
 		/// <summary>
 		/// 模块说明
 		/// </summary>
 		public string Description
 		{
-			set{ _description=value;}
-			get{return _description;}
+			set { _description = value; }
+			get { return _description; }
 		}
 		/// <summary>
 		/// 创建时间
 		/// </summary>
-		public DateTime? CreateTime
+		public DateTime CreateTime
 		{
-			set{ _createtime=value;}
-			get{return _createtime;}
+			set { _createTime = value; }
+			get { return _createTime; }
 		}
 		/// <summary>
 		/// 是否添加到快捷菜单
 		/// </summary>
-		public int? IsQuickMenu
+		public byte IsQuickMenu
 		{
-			set{ _isquickmenu=value;}
-			get{return _isquickmenu;}
+			set { _isQuickMenu = value; }
+			get { return _isQuickMenu; }
 		}
 		/// <summary>
 		/// 是否系统导航
 		/// </summary>
-		public int? IsSystem
+		public byte IsSystem
 		{
-			set{ _issystem=value;}
-			get{return _issystem;}
+			set { _isSystem = value; }
+			get { return _isSystem; }
 		}
 		/// <summary>
 		/// 是否应用
 		/// </summary>
-		public int? IsEnable
+		public byte IsEnable
 		{
-			set{ _isenable=value;}
-			get{return _isenable;}
+			set { _isEnable = value; }
+			get { return _isEnable; }
 		}
 		/// <summary>
 		/// 排序
 		/// </summary>
-		public int? OrderID
+		public int OrderID
 		{
-			set{ _orderid=value;}
-			get{return _orderid;}
-        }
-        #endregion Entity
-
-    }
+			set { _orderID = value; }
+			get { return _orderID; }
+		}
+		#endregion
+	}
 }
