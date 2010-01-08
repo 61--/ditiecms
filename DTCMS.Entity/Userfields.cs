@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
+// 创建描述: DTCMS V1.0 创建于 2010-1-9 0:23:01
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -33,7 +33,7 @@ namespace DTCMS.Entity
 		private string _introduce;
 		private string _website;
 		/// <summary>
-		/// UID
+		/// 用户ID，user表外键
 		/// </summary>
 		public int UID
 		{
@@ -41,7 +41,7 @@ namespace DTCMS.Entity
 			get { return _uID; }
 		}
 		/// <summary>
-		/// Realname
+		/// 真实姓名
 		/// </summary>
 		public string Realname
 		{
@@ -49,7 +49,7 @@ namespace DTCMS.Entity
 			get { return _realname; }
 		}
 		/// <summary>
-		/// QQ
+		/// QQ号码，支持Email帐号
 		/// </summary>
 		public string QQ
 		{
@@ -57,7 +57,7 @@ namespace DTCMS.Entity
 			get { return _qQ; }
 		}
 		/// <summary>
-		/// MSN
+		/// MSN帐号
 		/// </summary>
 		public string MSN
 		{
@@ -65,7 +65,7 @@ namespace DTCMS.Entity
 			get { return _mSN; }
 		}
 		/// <summary>
-		/// Skype
+		/// Skype帐号
 		/// </summary>
 		public string Skype
 		{
@@ -73,7 +73,7 @@ namespace DTCMS.Entity
 			get { return _skype; }
 		}
 		/// <summary>
-		/// Phone
+		/// 固定电话
 		/// </summary>
 		public string Phone
 		{
@@ -97,7 +97,7 @@ namespace DTCMS.Entity
 			get { return _location; }
 		}
 		/// <summary>
-		/// Adress
+		/// 地址
 		/// </summary>
 		public string Adress
 		{
@@ -105,7 +105,7 @@ namespace DTCMS.Entity
 			get { return _adress; }
 		}
 		/// <summary>
-		/// IDcard
+		/// 身份证
 		/// </summary>
 		public string IDcard
 		{
@@ -113,7 +113,7 @@ namespace DTCMS.Entity
 			get { return _iDcard; }
 		}
 		/// <summary>
-		/// Signature
+		/// 个性签名
 		/// </summary>
 		public string Signature
 		{
@@ -121,7 +121,7 @@ namespace DTCMS.Entity
 			get { return _signature; }
 		}
 		/// <summary>
-		/// Introduce
+		/// 个人简介
 		/// </summary>
 		public string Introduce
 		{
@@ -129,7 +129,7 @@ namespace DTCMS.Entity
 			get { return _introduce; }
 		}
 		/// <summary>
-		/// Website
+		/// 个人网站
 		/// </summary>
 		public string Website
 		{

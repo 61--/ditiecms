@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
+// 创建描述: DTCMS V1.0 创建于 2010-1-9 0:23:01
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -35,7 +35,7 @@ namespace DTCMS.Entity
 		private string _templet;
 		private string _keywords;
 		private string _description;
-		private string _articleContent;
+		private string _aContent;
 		private int _click;
 		private int _good;
 		private int _bad;
@@ -54,7 +54,7 @@ namespace DTCMS.Entity
 		private DateTime _pubDate;
 		private int _orderID;
 		/// <summary>
-		/// ID
+		/// 文章ID
 		/// </summary>
 		public int ID
 		{
@@ -70,7 +70,7 @@ namespace DTCMS.Entity
 			get { return _classID; }
 		}
 		/// <summary>
-		/// ViceClassID
+		/// 副栏目ID,-1没有副栏目
 		/// </summary>
 		public int ViceClassID
 		{
@@ -184,10 +184,10 @@ namespace DTCMS.Entity
 		/// <summary>
 		/// 文章正文
 		/// </summary>
-		public string ArticleContent
+		public string AContent
 		{
-			set { _articleContent = value; }
-			get { return _articleContent; }
+			set { _aContent = value; }
+			get { return _aContent; }
 		}
 		/// <summary>
 		/// 文章点击
@@ -278,7 +278,7 @@ namespace DTCMS.Entity
 			get { return _isHtml; }
 		}
 		/// <summary>
-		/// 是否分页
+		/// 是否分页，1分页，0不分页
 		/// </summary>
 		public byte IsPaging
 		{
@@ -294,7 +294,7 @@ namespace DTCMS.Entity
 			get { return _filePath; }
 		}
 		/// <summary>
-		/// SimilarArticle
+		/// 相关文章
 		/// </summary>
 		public string SimilarArticle
 		{

@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
-using System.Data.Common;
+using System.Data.SqlClient;
 using DTCMS.Entity;
 using DTCMS.DBUtility;
 using DTCMS.IDAL;
@@ -31,10 +31,10 @@ namespace DTCMS.SqlServerDAL
             			StringBuilder strSql = new StringBuilder();
 			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent FROM Arc_Class");
 			strSql.Append(" WHERE CID=@CID");
-			DbParameter[] cmdParms = {
-				AddInParameter("@CID", DbType.Int32, CID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@CID", SqlDbType.Int, CID)};
 
-			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
+			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
 			{
 				if (dr.Read())
 				{
@@ -201,11 +201,11 @@ namespace DTCMS.SqlServerDAL
         public List<Arc_Class> GetParentClassList(int CID)
         {
             string sql = "SELECT CID,ClassName,Relation,ParentID From DT_Arc_Class WHERE CID=@CID ";
-            DbParameter[] cmdParms = {
-				AddInParameter("@CID", DbType.Int32, CID)};
+            SqlParameter[] cmdParms = {
+				AddInParameter("@CID", SqlDbType.Int, CID)};
 
             Arc_Class model = new Arc_Class();
-            using (DbDataReader reader = dbHelper.ExecuteReader(CommandType.Text, sql, cmdParms))
+            using (SqlDataReader reader = dbHelper.ExecuteReader(CommandType.Text, sql, cmdParms))
             {
                 if (reader.HasRows)
                 {
@@ -225,7 +225,7 @@ namespace DTCMS.SqlServerDAL
                     strSql.AppendFormat(" CID IN ({0}) ", model.Relation);
                     strSql.Append(" ORDER BY LEN(Relation) ASC ");
 
-                    using (DbDataReader readerList = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+                    using (SqlDataReader readerList = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
                     {
                         while (readerList.Read())
                         {
@@ -247,7 +247,7 @@ namespace DTCMS.SqlServerDAL
         /// <summary>
         /// 由一行数据得到一个实体
         /// </summary>
-        private Arc_Class GetModel(DbDataReader dr)
+        private Arc_Class GetModel(SqlDataReader dr)
         {
             Arc_Class model = new Arc_Class();
             model.CID = dbHelper.GetInt(dr["CID"]);
@@ -284,9 +284,9 @@ namespace DTCMS.SqlServerDAL
         }
 
         /// <summary>
-        /// 由DbDataReader得到泛型数据列表
+        /// 由SqlDataReader得到泛型数据列表
         /// </summary>
-        private List<Arc_Class> GetList(DbDataReader dr)
+        private List<Arc_Class> GetList(SqlDataReader dr)
         {
             List<Arc_Class> lst = new List<Arc_Class>();
             while (dr.Read())
