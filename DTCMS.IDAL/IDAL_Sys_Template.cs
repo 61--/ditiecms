@@ -17,17 +17,17 @@ namespace DTCMS.IDAL
 	/// <summary>
 	/// 接口层 ISYS_Template
 	/// </summary>
-	public interface IDAL_SYS_Template
+	public interface IDAL_Sys_Template
 	{
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		int Add(SYS_Template model);
+        int Add(Sys_Template model);
 
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		int Update(SYS_Template model);
+        int Update(Sys_Template model);
 
 		/// <summary>
 		/// 删除一条数据
@@ -42,16 +42,16 @@ namespace DTCMS.IDAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		SYS_Template GetModel(int TemplateID);
+        Sys_Template GetModel(int TemplateID);
 
 		/// <summary>
 		/// 获取泛型数据列表
 		/// </summary>
-		List<SYS_Template> GetList(out long count);
+        List<Sys_Template> GetList(out long count);
 
 		/// <summary>
 		/// 分页获取泛型数据列表
 		/// </summary>
-		List<SYS_Template> GetPageList(int pageSize, int pageIndex, out long count);
+        List<Sys_Template> GetPageList(int pageSize, int pageIndex, out long count);
 	}
 }

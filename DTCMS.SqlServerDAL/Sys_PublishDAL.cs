@@ -1,4 +1,11 @@
-﻿using System;
+﻿//------------------------------------------------------------------------------
+// 创建标识: Copyright (C) 2010 91aspx.com 版权所有
+// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
+// 功能描述: 
+// 修改标识: 
+// 修改描述: 
+//------------------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
@@ -11,6 +18,9 @@ namespace DTCMS.SqlServerDAL
 {
     public class Sys_PublishDAL : BaseDAL, IDAL_Sys_Publish
     {
+        public Sys_PublishDAL()
+		{ }
+
         /// <summary>
         /// 根据栏目编号获取栏目信息
         /// </summary>
@@ -18,105 +28,19 @@ namespace DTCMS.SqlServerDAL
         /// <returns></returns>
         public Arc_Class GetClassByID(int CID)
         {
-            Arc_Class model = new Arc_Class();
-            StringBuilder strSql = new StringBuilder();
-            strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,Content ");
-            strSql.Append(" FROM DT_Arc_Class ");
-            strSql.Append(" WHERE ");
-            strSql.Append(string.Format(" CID={0} ", CID));
+            			StringBuilder strSql = new StringBuilder();
+			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent FROM Arc_Class");
+			strSql.Append(" WHERE CID=@CID");
+			DbParameter[] cmdParms = {
+				dbHelper.CreateInDbParameter("@CID", DbType.Int32, CID)};
 
-            using (DbDataReader dataReader = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
-            {
-
-                object ojb;
-                ojb = dataReader["CID"];
-                if (ojb != null && ojb != DBNull.Value)
-                {
-                    model.CID = (int)ojb;
-                }
-                ojb = dataReader["ParentID"];
-                if (ojb != null && ojb != DBNull.Value)
-                {
-                    model.ParentID = (int)ojb;
-                }
-                ojb = dataReader["Attribute"];
-                if (ojb != null && ojb != DBNull.Value)
-                {
-                    model.Attribute = (int)ojb;
-                }
-                model.ClassName = dataReader["ClassName"].ToString();
-                model.ClassEName = dataReader["ClassEName"].ToString();
-                ojb = dataReader["ClassType"];
-                if (ojb != null && ojb != DBNull.Value)
-                {
-                    model.ClassType = (int)ojb;
-                }
-                model.ClassDomain = dataReader["ClassDomain"].ToString();
-                model.ClassPath = dataReader["ClassPath"].ToString();
-                model.IndexTemplet = dataReader["IndexTemplet"].ToString();
-                model.ListTemplet = dataReader["ListTemplet"].ToString();
-                model.ArchiveTemplet = dataReader["ArchiveTemplet"].ToString();
-                model.IndexRule = dataReader["IndexRule"].ToString();
-                model.ListRule = dataReader["ListRule"].ToString();
-                model.ArchiveRule = dataReader["ArchiveRule"].ToString();
-                ojb = dataReader["ClassPage"];
-                if (ojb != null && ojb != DBNull.Value)
-                {
-                    model.ClassPage = (int)ojb;
-                }
-                model.Description = dataReader["Description"].ToString();
-                ojb = dataReader["IsHidden"];
-                if (ojb != null && ojb != DBNull.Value)
-                {
-                    model.IsHidden = (int)ojb;
-                }
-                ojb = dataReader["IsHtml"];
-                if (ojb != null && ojb != DBNull.Value)
-                {
-                    model.IsHtml = (int)ojb;
-                }
-                ojb = dataReader["CheckLevel"];
-                if (ojb != null && ojb != DBNull.Value)
-                {
-                    model.CheckLevel = (int)ojb;
-                }
-                ojb = dataReader["IsContribute"];
-                if (ojb != null && ojb != DBNull.Value)
-                {
-                    model.IsContribute = (int)ojb;
-                }
-                ojb = dataReader["IsComment"];
-                if (ojb != null && ojb != DBNull.Value)
-                {
-                    model.IsComment = (int)ojb;
-                }
-                ojb = dataReader["Readaccess"];
-                if (ojb != null && ojb != DBNull.Value)
-                {
-                    model.Readaccess = (int)ojb;
-                }
-                ojb = dataReader["SiteID"];
-                if (ojb != null && ojb != DBNull.Value)
-                {
-                    model.SiteID = (int)ojb;
-                }
-                ojb = dataReader["AddDate"];
-                if (ojb != null && ojb != DBNull.Value)
-                {
-                    model.AddDate = (DateTime)ojb;
-                }
-                model.Relation = dataReader["Relation"].ToString();
-                ojb = dataReader["OrderID"];
-                if (ojb != null && ojb != DBNull.Value)
-                {
-                    model.OrderID = (int)ojb;
-                }
-                model.ImgUrl = dataReader["ImgUrl"].ToString();
-                model.Keywords = dataReader["Keywords"].ToString();
-                model.CrossID = dataReader["CrossID"].ToString();
-                model.Content = dataReader["Content"].ToString();
-                return model;
-
+			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
+			{
+				if (dr.Read())
+				{
+					return GetModel(dr);
+				}
+				return null;
             }
         }
 
@@ -137,7 +61,7 @@ namespace DTCMS.SqlServerDAL
             strSql.Append(strSearch.ToString());
             string sqlCount = string.Format(" SELECT COUNT(CID) FROM DT_Arc_Class WHERE {0} ", strSearch.ToString());
             totalCount = Convert.ToInt32(dbHelper.ExecuteScalar(CommandType.Text, sqlCount, null));
-            return dbHelper.FillDataset(CommandType.Text, strSql.ToString(), null).Tables[0];
+            return dbHelper.ExecuteQuery(CommandType.Text, strSql.ToString(), null).Tables[0];
 
         }
 
@@ -178,7 +102,7 @@ namespace DTCMS.SqlServerDAL
 
             totalCount = Convert.ToInt32(dbHelper.ExecuteScalar(CommandType.Text, sqlCount.ToString()));
 
-            return dbHelper.FillDataset(CommandType.Text, strSql.ToString(), null).Tables[0];
+            return dbHelper.ExecuteQuery(CommandType.Text, strSql.ToString(), null).Tables[0];
         }
 
         /// <summary>
@@ -207,7 +131,7 @@ namespace DTCMS.SqlServerDAL
 
             totalCount = Convert.ToInt32(dbHelper.ExecuteScalar(CommandType.Text, sqlCount.ToString(), null));
 
-            return dbHelper.FillDataset(CommandType.Text, strSql.ToString(), null).Tables[0];
+            return dbHelper.ExecuteQuery(CommandType.Text, strSql.ToString(), null).Tables[0];
         }
 
         /// <summary>
@@ -235,7 +159,7 @@ namespace DTCMS.SqlServerDAL
 
             totalCount = Convert.ToInt32(dbHelper.ExecuteScalar(CommandType.Text, sqlCount.ToString(), null));
 
-            return dbHelper.FillDataset(CommandType.Text, strSql.ToString(), null).Tables[0];
+            return dbHelper.ExecuteQuery(CommandType.Text, strSql.ToString(), null).Tables[0];
         }
 
         /// <summary>
@@ -266,7 +190,7 @@ namespace DTCMS.SqlServerDAL
             else
                 strSql.AppendFormat("ORDER BY a.[{0}] {1} ", orderBy, orderWay);
 
-            return dbHelper.FillDataset(CommandType.Text, strSql.ToString(), null).Tables[0];
+            return dbHelper.ExecuteQuery(CommandType.Text, strSql.ToString(), null).Tables[0];
         }
 
         /// <summary>
@@ -277,17 +201,15 @@ namespace DTCMS.SqlServerDAL
         public List<Arc_Class> GetParentClassList(int CID)
         {
             string sql = "SELECT CID,ClassName,Relation,ParentID From DT_Arc_Class WHERE CID=@CID ";
-            SqlParameter[] param = new SqlParameter[]{
-                         new SqlParameter("@CID",SqlDbType.Int,4)
-            };
-            param[0].Value = CID;
+            DbParameter[] cmdParms = {
+				dbHelper.CreateInDbParameter("@CID", DbType.Int32, CID)};
 
             Arc_Class model = new Arc_Class();
-            using (DbDataReader reader = dbHelper.ExecuteReader(CommandType.Text, sql, param))
+            using (DbDataReader reader = dbHelper.ExecuteReader(CommandType.Text, sql, cmdParms))
             {
                 if (reader.HasRows)
                 {
-                    model = DataReaderToModel<Arc_Class>(reader);
+                    model = GetModel(reader);
                 }
             }
             if (!string.IsNullOrEmpty(model.Relation))
@@ -303,7 +225,7 @@ namespace DTCMS.SqlServerDAL
                     strSql.AppendFormat(" CID IN ({0}) ", model.Relation);
                     strSql.Append(" ORDER BY LEN(Relation) ASC ");
 
-                    using (SqlDataReader readerList = SqlHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+                    using (DbDataReader readerList = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
                     {
                         while (readerList.Read())
                         {
@@ -319,11 +241,60 @@ namespace DTCMS.SqlServerDAL
                 return list;
             }
             return null;
-
-
-
         }
 
+        #region -------- 私有方法，通常情况下无需修改 --------
+        /// <summary>
+        /// 由一行数据得到一个实体
+        /// </summary>
+        private Arc_Class GetModel(DbDataReader dr)
+        {
+            Arc_Class model = new Arc_Class();
+            model.CID = dbHelper.GetInt(dr["CID"]);
+            model.ParentID = dbHelper.GetInt(dr["ParentID"]);
+            model.Attribute = dbHelper.GetByte(dr["Attribute"]);
+            model.ClassName = dbHelper.GetString(dr["ClassName"]);
+            model.ClassEName = dbHelper.GetString(dr["ClassEName"]);
+            model.ClassType = dbHelper.GetByte(dr["ClassType"]);
+            model.ClassDomain = dbHelper.GetString(dr["ClassDomain"]);
+            model.ClassPath = dbHelper.GetString(dr["ClassPath"]);
+            model.IndexTemplet = dbHelper.GetString(dr["IndexTemplet"]);
+            model.ListTemplet = dbHelper.GetString(dr["ListTemplet"]);
+            model.ArchiveTemplet = dbHelper.GetString(dr["ArchiveTemplet"]);
+            model.IndexRule = dbHelper.GetString(dr["IndexRule"]);
+            model.ListRule = dbHelper.GetString(dr["ListRule"]);
+            model.ArchiveRule = dbHelper.GetString(dr["ArchiveRule"]);
+            model.ClassPage = dbHelper.GetByte(dr["ClassPage"]);
+            model.Description = dbHelper.GetString(dr["Description"]);
+            model.IsHidden = dbHelper.GetByte(dr["IsHidden"]);
+            model.IsHtml = dbHelper.GetByte(dr["IsHtml"]);
+            model.CheckLevel = dbHelper.GetByte(dr["CheckLevel"]);
+            model.IsContribute = dbHelper.GetByte(dr["IsContribute"]);
+            model.IsComment = dbHelper.GetByte(dr["IsComment"]);
+            model.Readaccess = dbHelper.GetInt16(dr["Readaccess"]);
+            model.SiteID = dbHelper.GetByte(dr["SiteID"]);
+            model.AddDate = dbHelper.GetDateTime(dr["AddDate"]);
+            model.Relation = dbHelper.GetString(dr["Relation"]);
+            model.OrderID = dbHelper.GetInt16(dr["OrderID"]);
+            model.ImgUrl = dbHelper.GetString(dr["ImgUrl"]);
+            model.Keywords = dbHelper.GetString(dr["Keywords"]);
+            model.CrossID = dbHelper.GetString(dr["CrossID"]);
+            model.ClassContent = dbHelper.GetString(dr["ClassContent"]);
+            return model;
+        }
 
+        /// <summary>
+        /// 由DbDataReader得到泛型数据列表
+        /// </summary>
+        private List<Arc_Class> GetList(DbDataReader dr)
+        {
+            List<Arc_Class> lst = new List<Arc_Class>();
+            while (dr.Read())
+            {
+                lst.Add(GetModel(dr));
+            }
+            return lst;
+        }
+        #endregion
     }
 }
