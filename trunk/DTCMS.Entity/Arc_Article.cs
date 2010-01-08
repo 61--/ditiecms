@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -25,7 +25,7 @@ namespace DTCMS.Entity
 		private string _title;
 		private string _shortTitle;
 		private string _titleStyle;
-		private int _titleFlag;
+		private byte _titleFlag;
 		private string _tags;
 		private string _imgUrl;
 		private string _author;
@@ -35,24 +35,24 @@ namespace DTCMS.Entity
 		private string _templet;
 		private string _keywords;
 		private string _description;
-		private string _content;
+		private string _articleContent;
 		private int _click;
 		private int _good;
 		private int _bad;
 		private Int16 _readaccess;
 		private Int16 _money;
-		private string _attribute;
+		private Int16 _attribute;
 		private byte _isComment;
 		private byte _isChecked;
 		private byte _isRecycle;
-		private int _isRedirect;
+		private byte _isRedirect;
 		private byte _isHtml;
 		private byte _isPaging;
 		private string _filePath;
 		private string _similarArticle;
 		private DateTime _addDate;
 		private DateTime _pubDate;
-		private byte _orderID;
+		private int _orderID;
 		/// <summary>
 		/// ID
 		/// </summary>
@@ -70,7 +70,7 @@ namespace DTCMS.Entity
 			get { return _classID; }
 		}
 		/// <summary>
-		/// 副栏目ID,-1没有副栏目
+		/// ViceClassID
 		/// </summary>
 		public int ViceClassID
 		{
@@ -104,7 +104,7 @@ namespace DTCMS.Entity
 		/// <summary>
 		/// 标题标签，如原创、转载
 		/// </summary>
-		public int TitleFlag
+		public byte TitleFlag
 		{
 			set { _titleFlag = value; }
 			get { return _titleFlag; }
@@ -184,10 +184,10 @@ namespace DTCMS.Entity
 		/// <summary>
 		/// 文章正文
 		/// </summary>
-		public string Content
+		public string ArticleContent
 		{
-			set { _content = value; }
-			get { return _content; }
+			set { _articleContent = value; }
+			get { return _articleContent; }
 		}
 		/// <summary>
 		/// 文章点击
@@ -230,9 +230,9 @@ namespace DTCMS.Entity
 			get { return _money; }
 		}
 		/// <summary>
-		/// 文章属性，h头条，c推荐，p图片，f灯幻，s滚动
+		/// 文章属性，1头条，2推荐，4图片，8灯幻，16滚动
 		/// </summary>
-		public string Attribute
+		public Int16 Attribute
 		{
 			set { _attribute = value; }
 			get { return _attribute; }
@@ -264,7 +264,7 @@ namespace DTCMS.Entity
 		/// <summary>
 		/// 是否跳转地址，1是，0否
 		/// </summary>
-		public int IsRedirect
+		public byte IsRedirect
 		{
 			set { _isRedirect = value; }
 			get { return _isRedirect; }
@@ -278,7 +278,7 @@ namespace DTCMS.Entity
 			get { return _isHtml; }
 		}
 		/// <summary>
-		/// 是否分页，1分页，0不分页
+		/// 是否分页
 		/// </summary>
 		public byte IsPaging
 		{
@@ -294,7 +294,7 @@ namespace DTCMS.Entity
 			get { return _filePath; }
 		}
 		/// <summary>
-		/// 相关文章
+		/// SimilarArticle
 		/// </summary>
 		public string SimilarArticle
 		{
@@ -320,7 +320,7 @@ namespace DTCMS.Entity
 		/// <summary>
 		/// 文章排序
 		/// </summary>
-		public byte OrderID
+		public int OrderID
 		{
 			set { _orderID = value; }
 			get { return _orderID; }

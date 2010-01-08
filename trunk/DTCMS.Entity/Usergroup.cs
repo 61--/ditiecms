@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -44,7 +44,7 @@ namespace DTCMS.Entity
 		private string _attachExtension;
 		private int _orderID;
 		/// <summary>
-		/// 用户组ID
+		/// ID
 		/// </summary>
 		public int ID
 		{
@@ -52,7 +52,7 @@ namespace DTCMS.Entity
 			get { return _iD; }
 		}
 		/// <summary>
-		/// 用户组类型，0系统组，1管理组，2用户组
+		/// Type
 		/// </summary>
 		public byte Type
 		{
@@ -60,7 +60,7 @@ namespace DTCMS.Entity
 			get { return _type; }
 		}
 		/// <summary>
-		/// 是否系统内置组，系统内置组不能被删除
+		/// IsSystem
 		/// </summary>
 		public byte IsSystem
 		{
@@ -68,7 +68,7 @@ namespace DTCMS.Entity
 			get { return _isSystem; }
 		}
 		/// <summary>
-		/// 用户组名
+		/// GroupName
 		/// </summary>
 		public string GroupName
 		{
@@ -76,7 +76,7 @@ namespace DTCMS.Entity
 			get { return _groupName; }
 		}
 		/// <summary>
-		/// 用户组描述
+		/// Description
 		/// </summary>
 		public string Description
 		{
@@ -84,7 +84,7 @@ namespace DTCMS.Entity
 			get { return _description; }
 		}
 		/// <summary>
-		/// 开始积分
+		/// CreditBegin
 		/// </summary>
 		public int CreditBegin
 		{
@@ -92,7 +92,7 @@ namespace DTCMS.Entity
 			get { return _creditBegin; }
 		}
 		/// <summary>
-		/// 结束积分
+		/// CreditEnd
 		/// </summary>
 		public int CreditEnd
 		{
@@ -100,7 +100,7 @@ namespace DTCMS.Entity
 			get { return _creditEnd; }
 		}
 		/// <summary>
-		/// 星星等级
+		/// stars
 		/// </summary>
 		public byte stars
 		{
@@ -108,7 +108,7 @@ namespace DTCMS.Entity
 			get { return _stars; }
 		}
 		/// <summary>
-		/// 用户组头像
+		/// GroupAvatar
 		/// </summary>
 		public string GroupAvatar
 		{
@@ -116,7 +116,7 @@ namespace DTCMS.Entity
 			get { return _groupAvatar; }
 		}
 		/// <summary>
-		/// 阅读权限
+		/// Readaccess
 		/// </summary>
 		public int Readaccess
 		{
@@ -124,7 +124,7 @@ namespace DTCMS.Entity
 			get { return _readaccess; }
 		}
 		/// <summary>
-		/// 允许发布文章，1允许，0不允许
+		/// AllowPost
 		/// </summary>
 		public byte AllowPost
 		{
@@ -132,7 +132,7 @@ namespace DTCMS.Entity
 			get { return _allowPost; }
 		}
 		/// <summary>
-		/// 允许评论
+		/// AllowComment
 		/// </summary>
 		public byte AllowComment
 		{
@@ -140,7 +140,7 @@ namespace DTCMS.Entity
 			get { return _allowComment; }
 		}
 		/// <summary>
-		/// 允许下载附件
+		/// AllowDownload
 		/// </summary>
 		public byte AllowDownload
 		{
@@ -148,7 +148,7 @@ namespace DTCMS.Entity
 			get { return _allowDownload; }
 		}
 		/// <summary>
-		/// 允许使用头像，0不允许，1允许使用系统自带头像，2允许使用URL地址头像，3允许使用上传头像
+		/// AllowAvatar
 		/// </summary>
 		public byte AllowAvatar
 		{
@@ -156,7 +156,7 @@ namespace DTCMS.Entity
 			get { return _allowAvatar; }
 		}
 		/// <summary>
-		/// 允许开通个人空间
+		/// AllowSpace
 		/// </summary>
 		public byte AllowSpace
 		{
@@ -164,7 +164,7 @@ namespace DTCMS.Entity
 			get { return _allowSpace; }
 		}
 		/// <summary>
-		/// 允许积分转账
+		/// AllowTransfer
 		/// </summary>
 		public byte AllowTransfer
 		{
@@ -172,7 +172,7 @@ namespace DTCMS.Entity
 			get { return _allowTransfer; }
 		}
 		/// <summary>
-		/// 允许查看其他用户资料
+		/// AllowViewInfo
 		/// </summary>
 		public byte AllowViewInfo
 		{
@@ -180,7 +180,7 @@ namespace DTCMS.Entity
 			get { return _allowViewInfo; }
 		}
 		/// <summary>
-		/// 允许使用昵称
+		/// AllowNickname
 		/// </summary>
 		public byte AllowNickname
 		{
@@ -188,7 +188,7 @@ namespace DTCMS.Entity
 			get { return _allowNickname; }
 		}
 		/// <summary>
-		/// 短消息最大条数
+		/// MaxPMNum
 		/// </summary>
 		public Int16 MaxPMNum
 		{
@@ -196,7 +196,7 @@ namespace DTCMS.Entity
 			get { return _maxPMNum; }
 		}
 		/// <summary>
-		/// 签名最大字节数
+		/// MaxSignSize
 		/// </summary>
 		public Int16 MaxSignSize
 		{
@@ -204,7 +204,7 @@ namespace DTCMS.Entity
 			get { return _maxSignSize; }
 		}
 		/// <summary>
-		/// 附件最大尺寸
+		/// MaxAttachSize
 		/// </summary>
 		public int MaxAttachSize
 		{
@@ -212,7 +212,7 @@ namespace DTCMS.Entity
 			get { return _maxAttachSize; }
 		}
 		/// <summary>
-		/// 附件最大总尺寸
+		/// MaxAttachTotalSize
 		/// </summary>
 		public int MaxAttachTotalSize
 		{
@@ -220,7 +220,7 @@ namespace DTCMS.Entity
 			get { return _maxAttachTotalSize; }
 		}
 		/// <summary>
-		/// 允许上传附件类型，例：.txt,.rar,.jpg
+		/// AttachExtension
 		/// </summary>
 		public string AttachExtension
 		{
@@ -228,7 +228,7 @@ namespace DTCMS.Entity
 			get { return _attachExtension; }
 		}
 		/// <summary>
-		/// 用户组排序
+		/// OrderID
 		/// </summary>
 		public int OrderID
 		{

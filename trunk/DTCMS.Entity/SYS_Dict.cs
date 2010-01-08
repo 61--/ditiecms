@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -34,7 +34,7 @@ namespace DTCMS.Entity
 			get { return _iD; }
 		}
 		/// <summary>
-		/// 类型
+		/// Type
 		/// </summary>
 		public string Type
 		{
@@ -42,7 +42,7 @@ namespace DTCMS.Entity
 			get { return _type; }
 		}
 		/// <summary>
-		/// 标题
+		/// Title
 		/// </summary>
 		public string Title
 		{
@@ -66,7 +66,7 @@ namespace DTCMS.Entity
 			get { return _email; }
 		}
 		/// <summary>
-		/// 点击数
+		/// Hits
 		/// </summary>
 		public int Hits
 		{

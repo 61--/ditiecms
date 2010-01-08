@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -20,16 +20,16 @@ namespace DTCMS.Entity
 
 		#region Model
 		private int _attachMentID;
-		private int _attachMentAttribute;
-		private string _attachMentDisplayName;
+		private byte _attribute;
+		private string _displayName;
 		private string _attachMentPath;
-		private string _attachMentSize;
+		private int _attachMentSize;
 		private string _abbrPhotoPath;
 		private string _pubLisher;
 		private DateTime _addDate;
 		private string _photoDescription;
 		/// <summary>
-		/// 附件ID
+		/// AttachMentID
 		/// </summary>
 		public int AttachMentID
 		{
@@ -37,23 +37,23 @@ namespace DTCMS.Entity
 			get { return _attachMentID; }
 		}
 		/// <summary>
-		/// 附件类型属性，1图片、2视频、3音频、4flash、5附件、6其它
+		/// Attribute
 		/// </summary>
-		public int AttachMentAttribute
+		public byte Attribute
 		{
-			set { _attachMentAttribute = value; }
-			get { return _attachMentAttribute; }
+			set { _attribute = value; }
+			get { return _attribute; }
 		}
 		/// <summary>
-		/// 附件显示名称，上传文件名称
+		/// DisplayName
 		/// </summary>
-		public string AttachMentDisplayName
+		public string DisplayName
 		{
-			set { _attachMentDisplayName = value; }
-			get { return _attachMentDisplayName; }
+			set { _displayName = value; }
+			get { return _displayName; }
 		}
 		/// <summary>
-		/// 附件地址
+		/// AttachMentPath
 		/// </summary>
 		public string AttachMentPath
 		{
@@ -61,15 +61,15 @@ namespace DTCMS.Entity
 			get { return _attachMentPath; }
 		}
 		/// <summary>
-		/// 附件大小
+		/// AttachMentSize
 		/// </summary>
-		public string AttachMentSize
+		public int AttachMentSize
 		{
 			set { _attachMentSize = value; }
 			get { return _attachMentSize; }
 		}
 		/// <summary>
-		/// 缩略图地址
+		/// AbbrPhotoPath
 		/// </summary>
 		public string AbbrPhotoPath
 		{
@@ -77,7 +77,7 @@ namespace DTCMS.Entity
 			get { return _abbrPhotoPath; }
 		}
 		/// <summary>
-		/// 发布者
+		/// PubLisher
 		/// </summary>
 		public string PubLisher
 		{
@@ -85,7 +85,7 @@ namespace DTCMS.Entity
 			get { return _pubLisher; }
 		}
 		/// <summary>
-		/// 发布时间
+		/// AddDate
 		/// </summary>
 		public DateTime AddDate
 		{
@@ -93,7 +93,7 @@ namespace DTCMS.Entity
 			get { return _addDate; }
 		}
 		/// <summary>
-		/// 附件描述
+		/// PhotoDescription
 		/// </summary>
 		public string PhotoDescription
 		{
