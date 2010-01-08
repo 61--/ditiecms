@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
+// 创建描述: DTCMS V1.0 创建于 2010-1-9 0:23:01
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -24,7 +24,7 @@ namespace DTCMS.Entity
 		private string _description;
 		private int _orderID;
 		/// <summary>
-		/// ID
+		/// 角色ID
 		/// </summary>
 		public int ID
 		{
@@ -32,7 +32,7 @@ namespace DTCMS.Entity
 			get { return _iD; }
 		}
 		/// <summary>
-		/// RoleName
+		/// 角色名称
 		/// </summary>
 		public string RoleName
 		{
@@ -40,7 +40,7 @@ namespace DTCMS.Entity
 			get { return _roleName; }
 		}
 		/// <summary>
-		/// Description
+		/// 角色描述
 		/// </summary>
 		public string Description
 		{
@@ -48,7 +48,7 @@ namespace DTCMS.Entity
 			get { return _description; }
 		}
 		/// <summary>
-		/// OrderID
+		/// 排序
 		/// </summary>
 		public int OrderID
 		{

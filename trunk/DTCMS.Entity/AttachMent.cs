@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
+// 创建描述: DTCMS V1.0 创建于 2010-1-9 0:23:01
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -19,7 +19,7 @@ namespace DTCMS.Entity
 		{ }
 
 		#region Model
-		private int _attachMentID;
+		private int _aID;
 		private byte _attribute;
 		private string _displayName;
 		private string _attachMentPath;
@@ -29,15 +29,15 @@ namespace DTCMS.Entity
 		private DateTime _addDate;
 		private string _photoDescription;
 		/// <summary>
-		/// AttachMentID
+		/// 附件ID
 		/// </summary>
-		public int AttachMentID
+		public int AID
 		{
-			set { _attachMentID = value; }
-			get { return _attachMentID; }
+			set { _aID = value; }
+			get { return _aID; }
 		}
 		/// <summary>
-		/// Attribute
+		/// 附件类型属性，1图片、2视频、3音频、4flash、5附件、6其它
 		/// </summary>
 		public byte Attribute
 		{
@@ -45,7 +45,7 @@ namespace DTCMS.Entity
 			get { return _attribute; }
 		}
 		/// <summary>
-		/// DisplayName
+		/// 附件显示名称，上传文件名称
 		/// </summary>
 		public string DisplayName
 		{
@@ -53,7 +53,7 @@ namespace DTCMS.Entity
 			get { return _displayName; }
 		}
 		/// <summary>
-		/// AttachMentPath
+		/// 附件地址
 		/// </summary>
 		public string AttachMentPath
 		{
@@ -61,7 +61,7 @@ namespace DTCMS.Entity
 			get { return _attachMentPath; }
 		}
 		/// <summary>
-		/// AttachMentSize
+		/// 附件大小
 		/// </summary>
 		public int AttachMentSize
 		{
@@ -69,7 +69,7 @@ namespace DTCMS.Entity
 			get { return _attachMentSize; }
 		}
 		/// <summary>
-		/// AbbrPhotoPath
+		/// 缩略图地址
 		/// </summary>
 		public string AbbrPhotoPath
 		{
@@ -77,7 +77,7 @@ namespace DTCMS.Entity
 			get { return _abbrPhotoPath; }
 		}
 		/// <summary>
-		/// PubLisher
+		/// 发布者
 		/// </summary>
 		public string PubLisher
 		{
@@ -85,7 +85,7 @@ namespace DTCMS.Entity
 			get { return _pubLisher; }
 		}
 		/// <summary>
-		/// AddDate
+		/// 发布时间
 		/// </summary>
 		public DateTime AddDate
 		{
@@ -93,7 +93,7 @@ namespace DTCMS.Entity
 			get { return _addDate; }
 		}
 		/// <summary>
-		/// PhotoDescription
+		/// 附件描述
 		/// </summary>
 		public string PhotoDescription
 		{

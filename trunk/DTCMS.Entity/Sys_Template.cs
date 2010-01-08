@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
+// 创建描述: DTCMS V1.0 创建于 2010-1-9 0:23:01
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -11,11 +11,11 @@ using System;
 namespace DTCMS.Entity
 {
 	/// <summary>
-	/// 实体类 SYS_Template
+	/// 实体类 Sys_Template
 	/// </summary>
 	public class Sys_Template
 	{
-        public Sys_Template()
+		public Sys_Template()
 		{ }
 
 		#region Model
@@ -27,7 +27,7 @@ namespace DTCMS.Entity
 		private string _templateImg;
 		private string _author;
 		/// <summary>
-		/// TemplateID
+		/// 模板主键
 		/// </summary>
 		public int TemplateID
 		{
@@ -35,7 +35,7 @@ namespace DTCMS.Entity
 			get { return _templateID; }
 		}
 		/// <summary>
-		/// TemplateName
+		/// 模板名称
 		/// </summary>
 		public string TemplateName
 		{
@@ -43,7 +43,7 @@ namespace DTCMS.Entity
 			get { return _templateName; }
 		}
 		/// <summary>
-		/// TemplateDirectory
+		/// 模板目录
 		/// </summary>
 		public string TemplateDirectory
 		{
@@ -51,15 +51,15 @@ namespace DTCMS.Entity
 			get { return _templateDirectory; }
 		}
 		/// <summary>
-		/// isEnable
+		/// 是否启用
 		/// </summary>
-		public byte isEnable
+		public byte IsEnable
 		{
 			set { _isEnable = value; }
 			get { return _isEnable; }
 		}
 		/// <summary>
-		/// CreateDateTime
+		/// 创建时间
 		/// </summary>
 		public DateTime CreateDateTime
 		{
@@ -67,7 +67,7 @@ namespace DTCMS.Entity
 			get { return _createDateTime; }
 		}
 		/// <summary>
-		/// TemplateImg
+		/// 模板缩略图
 		/// </summary>
 		public string TemplateImg
 		{
@@ -75,7 +75,7 @@ namespace DTCMS.Entity
 			get { return _templateImg; }
 		}
 		/// <summary>
-		/// Author
+		/// 作者
 		/// </summary>
 		public string Author
 		{

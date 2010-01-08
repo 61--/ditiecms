@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
+// 创建描述: DTCMS V1.0 创建于 2010-1-9 0:23:01
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -42,7 +42,7 @@ namespace DTCMS.Entity
 			get { return _iD; }
 		}
 		/// <summary>
-		/// ModuleID
+		/// 模块ID
 		/// </summary>
 		public string ModuleID
 		{
@@ -50,7 +50,7 @@ namespace DTCMS.Entity
 			get { return _moduleID; }
 		}
 		/// <summary>
-		/// ParentID
+		/// 模块父ID
 		/// </summary>
 		public string ParentID
 		{
@@ -58,7 +58,7 @@ namespace DTCMS.Entity
 			get { return _parentID; }
 		}
 		/// <summary>
-		/// Name
+		/// 模块名称
 		/// </summary>
 		public string Name
 		{
@@ -66,7 +66,7 @@ namespace DTCMS.Entity
 			get { return _name; }
 		}
 		/// <summary>
-		/// EName
+		/// 模块英文名
 		/// </summary>
 		public string EName
 		{
@@ -74,7 +74,7 @@ namespace DTCMS.Entity
 			get { return _eName; }
 		}
 		/// <summary>
-		/// ModuleDepth
+		/// 模块深度，1为顶级模块分类
 		/// </summary>
 		public byte ModuleDepth
 		{
@@ -82,7 +82,7 @@ namespace DTCMS.Entity
 			get { return _moduleDepth; }
 		}
 		/// <summary>
-		/// ModuleURL
+		/// 模块URL地址
 		/// </summary>
 		public string ModuleURL
 		{
@@ -90,7 +90,7 @@ namespace DTCMS.Entity
 			get { return _moduleURL; }
 		}
 		/// <summary>
-		/// Target
+		/// 页面打开方式
 		/// </summary>
 		public string Target
 		{
@@ -98,7 +98,7 @@ namespace DTCMS.Entity
 			get { return _target; }
 		}
 		/// <summary>
-		/// Description
+		/// 模块说明
 		/// </summary>
 		public string Description
 		{
@@ -106,7 +106,7 @@ namespace DTCMS.Entity
 			get { return _description; }
 		}
 		/// <summary>
-		/// CreateTime
+		/// 创建时间
 		/// </summary>
 		public DateTime CreateTime
 		{
@@ -114,7 +114,7 @@ namespace DTCMS.Entity
 			get { return _createTime; }
 		}
 		/// <summary>
-		/// IsQuickMenu
+		/// 是否添加到快捷菜单
 		/// </summary>
 		public byte IsQuickMenu
 		{
@@ -122,7 +122,7 @@ namespace DTCMS.Entity
 			get { return _isQuickMenu; }
 		}
 		/// <summary>
-		/// IsSystem
+		/// 是否系统导航
 		/// </summary>
 		public byte IsSystem
 		{
@@ -130,7 +130,7 @@ namespace DTCMS.Entity
 			get { return _isSystem; }
 		}
 		/// <summary>
-		/// IsEnable
+		/// 是否应用
 		/// </summary>
 		public byte IsEnable
 		{
@@ -138,7 +138,7 @@ namespace DTCMS.Entity
 			get { return _isEnable; }
 		}
 		/// <summary>
-		/// OrderID
+		/// 排序
 		/// </summary>
 		public int OrderID
 		{

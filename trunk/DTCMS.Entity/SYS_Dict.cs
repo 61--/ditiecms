@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
+// 创建描述: DTCMS V1.0 创建于 2010-1-9 0:23:01
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -11,11 +11,11 @@ using System;
 namespace DTCMS.Entity
 {
 	/// <summary>
-	/// 实体类 SYS_Dict
+	/// 实体类 Sys_Dict
 	/// </summary>
-	public class SYS_Dict
+	public class Sys_Dict
 	{
-		public SYS_Dict()
+		public Sys_Dict()
 		{ }
 
 		#region Model
@@ -24,7 +24,7 @@ namespace DTCMS.Entity
 		private string _title;
 		private string _url;
 		private string _email;
-		private int _hits;
+		private int _click;
 		/// <summary>
 		/// ID
 		/// </summary>
@@ -34,7 +34,7 @@ namespace DTCMS.Entity
 			get { return _iD; }
 		}
 		/// <summary>
-		/// Type
+		/// 类型
 		/// </summary>
 		public string Type
 		{
@@ -42,7 +42,7 @@ namespace DTCMS.Entity
 			get { return _type; }
 		}
 		/// <summary>
-		/// Title
+		/// 标题
 		/// </summary>
 		public string Title
 		{
@@ -66,12 +66,12 @@ namespace DTCMS.Entity
 			get { return _email; }
 		}
 		/// <summary>
-		/// Hits
+		/// 点击数
 		/// </summary>
-		public int Hits
+		public int Click
 		{
-			set { _hits = value; }
-			get { return _hits; }
+			set { _click = value; }
+			get { return _click; }
 		}
 		#endregion
 	}
