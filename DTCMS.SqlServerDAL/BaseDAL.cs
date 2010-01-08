@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: V5.0.0.2 创建于 2010-1-7 23:34:18
+// 创建描述: V5.0.0.3 创建于 2010-1-8 11:52:52
 //
 // 功能描述: 
 //
@@ -29,12 +29,6 @@ namespace DTCMS.SqlServerDAL
             string providerName = System.Configuration.ConfigurationManager.ConnectionStrings[connectionStringName].ProviderName;
             switch (providerName)
             {
-                case "System.Data.OracleClient":
-                    dbHelper.DatabaseType = DBHelper.DatabaseTypes.Oracle;
-                    break;
-                case "MySql.Data.MySqlClient":
-                    dbHelper.DatabaseType = DBHelper.DatabaseTypes.MySql;
-                    break;
                 case "System.Data.OleDb":
                     dbHelper.DatabaseType = DBHelper.DatabaseTypes.OleDb;
                     break;

@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -27,7 +27,7 @@ namespace DTCMS.Entity
 		private string _templateImg;
 		private string _author;
 		/// <summary>
-		/// 模板主键
+		/// TemplateID
 		/// </summary>
 		public int TemplateID
 		{
@@ -35,7 +35,7 @@ namespace DTCMS.Entity
 			get { return _templateID; }
 		}
 		/// <summary>
-		/// 模板名称
+		/// TemplateName
 		/// </summary>
 		public string TemplateName
 		{
@@ -43,7 +43,7 @@ namespace DTCMS.Entity
 			get { return _templateName; }
 		}
 		/// <summary>
-		/// 模板目录
+		/// TemplateDirectory
 		/// </summary>
 		public string TemplateDirectory
 		{
@@ -51,7 +51,7 @@ namespace DTCMS.Entity
 			get { return _templateDirectory; }
 		}
 		/// <summary>
-		/// 是否启用
+		/// isEnable
 		/// </summary>
 		public byte isEnable
 		{
@@ -59,7 +59,7 @@ namespace DTCMS.Entity
 			get { return _isEnable; }
 		}
 		/// <summary>
-		/// 创建时间
+		/// CreateDateTime
 		/// </summary>
 		public DateTime CreateDateTime
 		{
@@ -67,7 +67,7 @@ namespace DTCMS.Entity
 			get { return _createDateTime; }
 		}
 		/// <summary>
-		/// 模板缩略图
+		/// TemplateImg
 		/// </summary>
 		public string TemplateImg
 		{
@@ -75,7 +75,7 @@ namespace DTCMS.Entity
 			get { return _templateImg; }
 		}
 		/// <summary>
-		/// 作者
+		/// Author
 		/// </summary>
 		public string Author
 		{

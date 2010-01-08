@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -48,9 +48,9 @@ namespace DTCMS.Entity
 		private string _imgUrl;
 		private string _keywords;
 		private string _crossID;
-		private string _content;
+		private string _classContent;
 		/// <summary>
-		/// 栏目ID
+		/// CID
 		/// </summary>
 		public int CID
 		{
@@ -58,7 +58,7 @@ namespace DTCMS.Entity
 			get { return _cID; }
 		}
 		/// <summary>
-		/// 栏目父ID，默认0为顶级栏目
+		/// ParentID
 		/// </summary>
 		public int ParentID
 		{
@@ -66,7 +66,7 @@ namespace DTCMS.Entity
 			get { return _parentID; }
 		}
 		/// <summary>
-		/// 栏目属性，1封面，2列表，3单页面，4链接地址
+		/// Attribute
 		/// </summary>
 		public byte Attribute
 		{
@@ -74,7 +74,7 @@ namespace DTCMS.Entity
 			get { return _attribute; }
 		}
 		/// <summary>
-		/// 栏目名称
+		/// ClassName
 		/// </summary>
 		public string ClassName
 		{
@@ -82,7 +82,7 @@ namespace DTCMS.Entity
 			get { return _className; }
 		}
 		/// <summary>
-		/// 栏目英文名称
+		/// ClassEName
 		/// </summary>
 		public string ClassEName
 		{
@@ -90,7 +90,7 @@ namespace DTCMS.Entity
 			get { return _classEName; }
 		}
 		/// <summary>
-		/// 栏目类型
+		/// ClassType
 		/// </summary>
 		public byte ClassType
 		{
@@ -98,7 +98,7 @@ namespace DTCMS.Entity
 			get { return _classType; }
 		}
 		/// <summary>
-		/// 栏目二级域名
+		/// ClassDomain
 		/// </summary>
 		public string ClassDomain
 		{
@@ -106,7 +106,7 @@ namespace DTCMS.Entity
 			get { return _classDomain; }
 		}
 		/// <summary>
-		/// 栏目目录，{#CmsPath}/Archive/
+		/// ClassPath
 		/// </summary>
 		public string ClassPath
 		{
@@ -114,7 +114,7 @@ namespace DTCMS.Entity
 			get { return _classPath; }
 		}
 		/// <summary>
-		/// 封面模版
+		/// IndexTemplet
 		/// </summary>
 		public string IndexTemplet
 		{
@@ -122,7 +122,7 @@ namespace DTCMS.Entity
 			get { return _indexTemplet; }
 		}
 		/// <summary>
-		/// 列表模版
+		/// ListTemplet
 		/// </summary>
 		public string ListTemplet
 		{
@@ -130,7 +130,7 @@ namespace DTCMS.Entity
 			get { return _listTemplet; }
 		}
 		/// <summary>
-		/// 文档模版
+		/// ArchiveTemplet
 		/// </summary>
 		public string ArchiveTemplet
 		{
@@ -138,7 +138,7 @@ namespace DTCMS.Entity
 			get { return _archiveTemplet; }
 		}
 		/// <summary>
-		/// 封面页规则
+		/// IndexRule
 		/// </summary>
 		public string IndexRule
 		{
@@ -146,7 +146,7 @@ namespace DTCMS.Entity
 			get { return _indexRule; }
 		}
 		/// <summary>
-		/// 列表页规则，访问路径
+		/// ListRule
 		/// </summary>
 		public string ListRule
 		{
@@ -154,7 +154,7 @@ namespace DTCMS.Entity
 			get { return _listRule; }
 		}
 		/// <summary>
-		/// 文档页规则，访问路径
+		/// ArchiveRule
 		/// </summary>
 		public string ArchiveRule
 		{
@@ -162,7 +162,7 @@ namespace DTCMS.Entity
 			get { return _archiveRule; }
 		}
 		/// <summary>
-		/// 栏目分页大小,列表条数
+		/// ClassPage
 		/// </summary>
 		public byte ClassPage
 		{
@@ -170,7 +170,7 @@ namespace DTCMS.Entity
 			get { return _classPage; }
 		}
 		/// <summary>
-		/// 栏目描述
+		/// Description
 		/// </summary>
 		public string Description
 		{
@@ -178,7 +178,7 @@ namespace DTCMS.Entity
 			get { return _description; }
 		}
 		/// <summary>
-		/// 是否隐藏，1启用，0隐藏
+		/// IsHidden
 		/// </summary>
 		public byte IsHidden
 		{
@@ -186,7 +186,7 @@ namespace DTCMS.Entity
 			get { return _isHidden; }
 		}
 		/// <summary>
-		/// 是否允许生成静态页，1生成静态，0动态访问
+		/// IsHtml
 		/// </summary>
 		public byte IsHtml
 		{
@@ -194,7 +194,7 @@ namespace DTCMS.Entity
 			get { return _isHtml; }
 		}
 		/// <summary>
-		/// 审核机制
+		/// CheckLevel
 		/// </summary>
 		public byte CheckLevel
 		{
@@ -202,7 +202,7 @@ namespace DTCMS.Entity
 			get { return _checkLevel; }
 		}
 		/// <summary>
-		/// 是否允许投稿，1允许，0不允许
+		/// IsContribute
 		/// </summary>
 		public byte IsContribute
 		{
@@ -210,7 +210,7 @@ namespace DTCMS.Entity
 			get { return _isContribute; }
 		}
 		/// <summary>
-		/// 本栏目文章是否允许评论，1允许，0不允许
+		/// IsComment
 		/// </summary>
 		public byte IsComment
 		{
@@ -218,7 +218,7 @@ namespace DTCMS.Entity
 			get { return _isComment; }
 		}
 		/// <summary>
-		/// 阅读权限
+		/// Readaccess
 		/// </summary>
 		public Int16 Readaccess
 		{
@@ -226,7 +226,7 @@ namespace DTCMS.Entity
 			get { return _readaccess; }
 		}
 		/// <summary>
-		/// 站点ID
+		/// SiteID
 		/// </summary>
 		public byte SiteID
 		{
@@ -234,7 +234,7 @@ namespace DTCMS.Entity
 			get { return _siteID; }
 		}
 		/// <summary>
-		/// 添加时间
+		/// AddDate
 		/// </summary>
 		public DateTime AddDate
 		{
@@ -242,7 +242,7 @@ namespace DTCMS.Entity
 			get { return _addDate; }
 		}
 		/// <summary>
-		/// 栏目关系
+		/// Relation
 		/// </summary>
 		public string Relation
 		{
@@ -250,7 +250,7 @@ namespace DTCMS.Entity
 			get { return _relation; }
 		}
 		/// <summary>
-		/// 栏目排序，升序排列
+		/// OrderID
 		/// </summary>
 		public Int16 OrderID
 		{
@@ -258,7 +258,7 @@ namespace DTCMS.Entity
 			get { return _orderID; }
 		}
 		/// <summary>
-		/// 栏目图片地址
+		/// ImgUrl
 		/// </summary>
 		public string ImgUrl
 		{
@@ -266,7 +266,7 @@ namespace DTCMS.Entity
 			get { return _imgUrl; }
 		}
 		/// <summary>
-		/// 栏目关键字
+		/// Keywords
 		/// </summary>
 		public string Keywords
 		{
@@ -274,7 +274,7 @@ namespace DTCMS.Entity
 			get { return _keywords; }
 		}
 		/// <summary>
-		/// 交叉栏目，多个栏目用,号隔开
+		/// CrossID
 		/// </summary>
 		public string CrossID
 		{
@@ -282,12 +282,12 @@ namespace DTCMS.Entity
 			get { return _crossID; }
 		}
 		/// <summary>
-		/// 栏目内容
+		/// ClassContent
 		/// </summary>
-		public string Content
+		public string ClassContent
 		{
-			set { _content = value; }
-			get { return _content; }
+			set { _classContent = value; }
+			get { return _classContent; }
 		}
 		#endregion
 	}

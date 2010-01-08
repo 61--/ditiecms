@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -20,6 +20,8 @@ namespace DTCMS.SqlServerDAL
 	/// </summary>
 	public class SYS_TemplateDAL : BaseDAL, IDAL_SYS_Template
 	{
+		public SYS_TemplateDAL()
+		{ }
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
@@ -32,10 +34,10 @@ namespace DTCMS.SqlServerDAL
             strSql.Append("@TemplateName,@TemplateDirectory,@isEnable,@CreateDateTime,@TemplateImg,@Author)");
 			DbParameter[] cmdParms = {
 				dbHelper.CreateInDbParameter("@TemplateName", DbType.String, model.TemplateName),
-				dbHelper.CreateInDbParameter("@TemplateDirectory", DbType.String, model.TemplateDirectory),
+				dbHelper.CreateInDbParameter("@TemplateDirectory", DbType.AnsiString, model.TemplateDirectory),
 				dbHelper.CreateInDbParameter("@isEnable", DbType.Byte, model.isEnable),
 				dbHelper.CreateInDbParameter("@CreateDateTime", DbType.String, model.CreateDateTime),
-				dbHelper.CreateInDbParameter("@TemplateImg", DbType.String, model.TemplateImg),
+				dbHelper.CreateInDbParameter("@TemplateImg", DbType.AnsiString, model.TemplateImg),
 				dbHelper.CreateInDbParameter("@Author", DbType.String, model.Author)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
@@ -57,10 +59,10 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append(" WHERE TemplateID=@TemplateID");
 			DbParameter[] cmdParms = {
 				dbHelper.CreateInDbParameter("@TemplateName", DbType.String, model.TemplateName),
-				dbHelper.CreateInDbParameter("@TemplateDirectory", DbType.String, model.TemplateDirectory),
+				dbHelper.CreateInDbParameter("@TemplateDirectory", DbType.AnsiString, model.TemplateDirectory),
 				dbHelper.CreateInDbParameter("@isEnable", DbType.Byte, model.isEnable),
 				dbHelper.CreateInDbParameter("@CreateDateTime", DbType.String, model.CreateDateTime),
-				dbHelper.CreateInDbParameter("@TemplateImg", DbType.String, model.TemplateImg),
+				dbHelper.CreateInDbParameter("@TemplateImg", DbType.AnsiString, model.TemplateImg),
 				dbHelper.CreateInDbParameter("@Author", DbType.String, model.Author),
 				dbHelper.CreateInDbParameter("@TemplateID", DbType.Int32, model.TemplateID)};
 

@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -20,6 +20,8 @@ namespace DTCMS.SqlServerDAL
 	/// </summary>
 	public class UsersDAL : BaseDAL, IDAL_Users
 	{
+		public UsersDAL()
+		{ }
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
@@ -27,22 +29,37 @@ namespace DTCMS.SqlServerDAL
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("INSERT INTO Users(");
-            strSql.Append("UserName,NickName,Password,SecureQuestion,SecureAnswer,Email,RegisterIP,LastloginIP,ExtCredits4,ExtCredits5,Avatar,Birthday)");
+            strSql.Append("UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock)");
 			strSql.Append(" VALUES (");
-            strSql.Append("@UserName,@NickName,@Password,@SecureQuestion,@SecureAnswer,@Email,@RegisterIP,@LastloginIP,@ExtCredits4,@ExtCredits5,@Avatar,@Birthday)");
+            strSql.Append("@UserName,@NickName,@Password,@SecureQuestion,@SecureAnswer,@Sex,@Email,@RoleID,@UsergroupID,@RegisterIP,@RegisterTime,@LastloginIP,@LastloginTime,@LoginCount,@PostCount,@OnlineTime,@Credits,@ExtCredits1,@ExtCredits2,@ExtCredits3,@ExtCredits4,@ExtCredits5,@Avatar,@Birthday,@PMCount,@IsVerify,@IsLock)");
 			DbParameter[] cmdParms = {
 				dbHelper.CreateInDbParameter("@UserName", DbType.String, model.UserName),
 				dbHelper.CreateInDbParameter("@NickName", DbType.String, model.NickName),
 				dbHelper.CreateInDbParameter("@Password", DbType.AnsiStringFixedLength, model.Password),
 				dbHelper.CreateInDbParameter("@SecureQuestion", DbType.String, model.SecureQuestion),
 				dbHelper.CreateInDbParameter("@SecureAnswer", DbType.String, model.SecureAnswer),
+				dbHelper.CreateInDbParameter("@Sex", DbType.Byte, model.Sex),
 				dbHelper.CreateInDbParameter("@Email", DbType.AnsiString, model.Email),
+				dbHelper.CreateInDbParameter("@RoleID", DbType.Int32, model.RoleID),
+				dbHelper.CreateInDbParameter("@UsergroupID", DbType.Int32, model.UsergroupID),
 				dbHelper.CreateInDbParameter("@RegisterIP", DbType.AnsiStringFixedLength, model.RegisterIP),
+				dbHelper.CreateInDbParameter("@RegisterTime", DbType.String, model.RegisterTime),
 				dbHelper.CreateInDbParameter("@LastloginIP", DbType.AnsiStringFixedLength, model.LastloginIP),
+				dbHelper.CreateInDbParameter("@LastloginTime", DbType.String, model.LastloginTime),
+				dbHelper.CreateInDbParameter("@LoginCount", DbType.Int32, model.LoginCount),
+				dbHelper.CreateInDbParameter("@PostCount", DbType.Int32, model.PostCount),
+				dbHelper.CreateInDbParameter("@OnlineTime", DbType.Int32, model.OnlineTime),
+				dbHelper.CreateInDbParameter("@Credits", DbType.Int32, model.Credits),
+				dbHelper.CreateInDbParameter("@ExtCredits1", DbType.Double, model.ExtCredits1),
+				dbHelper.CreateInDbParameter("@ExtCredits2", DbType.Double, model.ExtCredits2),
+				dbHelper.CreateInDbParameter("@ExtCredits3", DbType.Double, model.ExtCredits3),
 				dbHelper.CreateInDbParameter("@ExtCredits4", DbType.Double, model.ExtCredits4),
 				dbHelper.CreateInDbParameter("@ExtCredits5", DbType.Double, model.ExtCredits5),
 				dbHelper.CreateInDbParameter("@Avatar", DbType.AnsiString, model.Avatar),
-				dbHelper.CreateInDbParameter("@Birthday", DbType.String, model.Birthday)};
+				dbHelper.CreateInDbParameter("@Birthday", DbType.String, model.Birthday),
+				dbHelper.CreateInDbParameter("@PMCount", DbType.Int32, model.PMCount),
+				dbHelper.CreateInDbParameter("@IsVerify", DbType.Byte, model.IsVerify),
+				dbHelper.CreateInDbParameter("@IsLock", DbType.Byte, model.IsLock)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}

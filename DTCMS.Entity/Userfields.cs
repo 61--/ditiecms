@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -33,7 +33,7 @@ namespace DTCMS.Entity
 		private string _introduce;
 		private string _website;
 		/// <summary>
-		/// 用户ID，user表外键
+		/// UID
 		/// </summary>
 		public int UID
 		{
@@ -41,7 +41,7 @@ namespace DTCMS.Entity
 			get { return _uID; }
 		}
 		/// <summary>
-		/// 真实姓名
+		/// Realname
 		/// </summary>
 		public string Realname
 		{
@@ -49,7 +49,7 @@ namespace DTCMS.Entity
 			get { return _realname; }
 		}
 		/// <summary>
-		/// QQ号码，支持Email帐号
+		/// QQ
 		/// </summary>
 		public string QQ
 		{
@@ -57,7 +57,7 @@ namespace DTCMS.Entity
 			get { return _qQ; }
 		}
 		/// <summary>
-		/// MSN帐号
+		/// MSN
 		/// </summary>
 		public string MSN
 		{
@@ -65,7 +65,7 @@ namespace DTCMS.Entity
 			get { return _mSN; }
 		}
 		/// <summary>
-		/// Skype帐号
+		/// Skype
 		/// </summary>
 		public string Skype
 		{
@@ -73,7 +73,7 @@ namespace DTCMS.Entity
 			get { return _skype; }
 		}
 		/// <summary>
-		/// 固定电话
+		/// Phone
 		/// </summary>
 		public string Phone
 		{
@@ -97,7 +97,7 @@ namespace DTCMS.Entity
 			get { return _location; }
 		}
 		/// <summary>
-		/// 地址
+		/// Adress
 		/// </summary>
 		public string Adress
 		{
@@ -105,7 +105,7 @@ namespace DTCMS.Entity
 			get { return _adress; }
 		}
 		/// <summary>
-		/// 身份证
+		/// IDcard
 		/// </summary>
 		public string IDcard
 		{
@@ -113,7 +113,7 @@ namespace DTCMS.Entity
 			get { return _iDcard; }
 		}
 		/// <summary>
-		/// 个性签名
+		/// Signature
 		/// </summary>
 		public string Signature
 		{
@@ -121,7 +121,7 @@ namespace DTCMS.Entity
 			get { return _signature; }
 		}
 		/// <summary>
-		/// 个人简介
+		/// Introduce
 		/// </summary>
 		public string Introduce
 		{
@@ -129,7 +129,7 @@ namespace DTCMS.Entity
 			get { return _introduce; }
 		}
 		/// <summary>
-		/// 个人网站
+		/// Website
 		/// </summary>
 		public string Website
 		{

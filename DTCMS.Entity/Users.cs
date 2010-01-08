@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -48,7 +48,7 @@ namespace DTCMS.Entity
 		private byte _isVerify;
 		private byte _isLock;
 		/// <summary>
-		/// 用户UID编号
+		/// UID
 		/// </summary>
 		public int UID
 		{
@@ -56,7 +56,7 @@ namespace DTCMS.Entity
 			get { return _uID; }
 		}
 		/// <summary>
-		/// 用户名
+		/// UserName
 		/// </summary>
 		public string UserName
 		{
@@ -64,7 +64,7 @@ namespace DTCMS.Entity
 			get { return _userName; }
 		}
 		/// <summary>
-		/// 用户昵称
+		/// NickName
 		/// </summary>
 		public string NickName
 		{
@@ -80,7 +80,7 @@ namespace DTCMS.Entity
 			get { return _password; }
 		}
 		/// <summary>
-		/// 安全提示问题
+		/// SecureQuestion
 		/// </summary>
 		public string SecureQuestion
 		{
@@ -88,7 +88,7 @@ namespace DTCMS.Entity
 			get { return _secureQuestion; }
 		}
 		/// <summary>
-		/// 安全提示答案
+		/// SecureAnswer
 		/// </summary>
 		public string SecureAnswer
 		{
@@ -96,7 +96,7 @@ namespace DTCMS.Entity
 			get { return _secureAnswer; }
 		}
 		/// <summary>
-		/// 性别
+		/// Sex
 		/// </summary>
 		public byte Sex
 		{
@@ -104,7 +104,7 @@ namespace DTCMS.Entity
 			get { return _sex; }
 		}
 		/// <summary>
-		/// Email地址
+		/// Email
 		/// </summary>
 		public string Email
 		{
@@ -112,7 +112,7 @@ namespace DTCMS.Entity
 			get { return _email; }
 		}
 		/// <summary>
-		/// 用户权限ID
+		/// RoleID
 		/// </summary>
 		public int RoleID
 		{
@@ -120,7 +120,7 @@ namespace DTCMS.Entity
 			get { return _roleID; }
 		}
 		/// <summary>
-		/// 用户组ID
+		/// UsergroupID
 		/// </summary>
 		public int UsergroupID
 		{
@@ -128,7 +128,7 @@ namespace DTCMS.Entity
 			get { return _usergroupID; }
 		}
 		/// <summary>
-		/// 注册IP
+		/// RegisterIP
 		/// </summary>
 		public string RegisterIP
 		{
@@ -136,7 +136,7 @@ namespace DTCMS.Entity
 			get { return _registerIP; }
 		}
 		/// <summary>
-		/// 注册时间
+		/// RegisterTime
 		/// </summary>
 		public DateTime RegisterTime
 		{
@@ -144,7 +144,7 @@ namespace DTCMS.Entity
 			get { return _registerTime; }
 		}
 		/// <summary>
-		/// 上次登陆IP
+		/// LastloginIP
 		/// </summary>
 		public string LastloginIP
 		{
@@ -152,7 +152,7 @@ namespace DTCMS.Entity
 			get { return _lastloginIP; }
 		}
 		/// <summary>
-		/// 上次登陆时间
+		/// LastloginTime
 		/// </summary>
 		public DateTime LastloginTime
 		{
@@ -160,7 +160,7 @@ namespace DTCMS.Entity
 			get { return _lastloginTime; }
 		}
 		/// <summary>
-		/// 登陆次数
+		/// LoginCount
 		/// </summary>
 		public int LoginCount
 		{
@@ -168,7 +168,7 @@ namespace DTCMS.Entity
 			get { return _loginCount; }
 		}
 		/// <summary>
-		/// 发布文章数
+		/// PostCount
 		/// </summary>
 		public int PostCount
 		{
@@ -176,7 +176,7 @@ namespace DTCMS.Entity
 			get { return _postCount; }
 		}
 		/// <summary>
-		/// 在线时间（单位：分钟）
+		/// OnlineTime
 		/// </summary>
 		public int OnlineTime
 		{
@@ -184,7 +184,7 @@ namespace DTCMS.Entity
 			get { return _onlineTime; }
 		}
 		/// <summary>
-		/// 用户积分
+		/// Credits
 		/// </summary>
 		public int Credits
 		{
@@ -192,7 +192,7 @@ namespace DTCMS.Entity
 			get { return _credits; }
 		}
 		/// <summary>
-		/// 扩展积分
+		/// ExtCredits1
 		/// </summary>
 		public double ExtCredits1
 		{
@@ -200,7 +200,7 @@ namespace DTCMS.Entity
 			get { return _extCredits1; }
 		}
 		/// <summary>
-		/// 扩展积分2
+		/// ExtCredits2
 		/// </summary>
 		public double ExtCredits2
 		{
@@ -208,7 +208,7 @@ namespace DTCMS.Entity
 			get { return _extCredits2; }
 		}
 		/// <summary>
-		/// 扩展积分3
+		/// ExtCredits3
 		/// </summary>
 		public double ExtCredits3
 		{
@@ -216,7 +216,7 @@ namespace DTCMS.Entity
 			get { return _extCredits3; }
 		}
 		/// <summary>
-		/// 扩展积分4
+		/// ExtCredits4
 		/// </summary>
 		public double ExtCredits4
 		{
@@ -224,7 +224,7 @@ namespace DTCMS.Entity
 			get { return _extCredits4; }
 		}
 		/// <summary>
-		/// 扩展积分
+		/// ExtCredits5
 		/// </summary>
 		public double ExtCredits5
 		{
@@ -232,7 +232,7 @@ namespace DTCMS.Entity
 			get { return _extCredits5; }
 		}
 		/// <summary>
-		/// 用户头像
+		/// Avatar
 		/// </summary>
 		public string Avatar
 		{
@@ -240,7 +240,7 @@ namespace DTCMS.Entity
 			get { return _avatar; }
 		}
 		/// <summary>
-		/// 生日
+		/// Birthday
 		/// </summary>
 		public DateTime Birthday
 		{
@@ -248,7 +248,7 @@ namespace DTCMS.Entity
 			get { return _birthday; }
 		}
 		/// <summary>
-		/// 新短消息数
+		/// PMCount
 		/// </summary>
 		public int PMCount
 		{
@@ -256,7 +256,7 @@ namespace DTCMS.Entity
 			get { return _pMCount; }
 		}
 		/// <summary>
-		/// 是否审核
+		/// IsVerify
 		/// </summary>
 		public byte IsVerify
 		{
@@ -264,7 +264,7 @@ namespace DTCMS.Entity
 			get { return _isVerify; }
 		}
 		/// <summary>
-		/// 是否锁定
+		/// IsLock
 		/// </summary>
 		public byte IsLock
 		{

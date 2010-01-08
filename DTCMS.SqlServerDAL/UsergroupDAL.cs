@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -20,6 +20,8 @@ namespace DTCMS.SqlServerDAL
 	/// </summary>
 	public class UsergroupDAL : BaseDAL, IDAL_Usergroup
 	{
+		public UsergroupDAL()
+		{ }
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
@@ -27,13 +29,27 @@ namespace DTCMS.SqlServerDAL
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("INSERT INTO Usergroup(");
-            strSql.Append("GroupName,Description,GroupAvatar,MaxPMNum,MaxSignSize,MaxAttachSize,MaxAttachTotalSize,AttachExtension,OrderID)");
+            strSql.Append("Type,IsSystem,GroupName,Description,CreditBegin,CreditEnd,stars,GroupAvatar,Readaccess,AllowPost,AllowComment,AllowDownload,AllowAvatar,AllowSpace,AllowTransfer,AllowViewInfo,AllowNickname,MaxPMNum,MaxSignSize,MaxAttachSize,MaxAttachTotalSize,AttachExtension,OrderID)");
 			strSql.Append(" VALUES (");
-            strSql.Append("@GroupName,@Description,@GroupAvatar,@MaxPMNum,@MaxSignSize,@MaxAttachSize,@MaxAttachTotalSize,@AttachExtension,@OrderID)");
+            strSql.Append("@Type,@IsSystem,@GroupName,@Description,@CreditBegin,@CreditEnd,@stars,@GroupAvatar,@Readaccess,@AllowPost,@AllowComment,@AllowDownload,@AllowAvatar,@AllowSpace,@AllowTransfer,@AllowViewInfo,@AllowNickname,@MaxPMNum,@MaxSignSize,@MaxAttachSize,@MaxAttachTotalSize,@AttachExtension,@OrderID)");
 			DbParameter[] cmdParms = {
+				dbHelper.CreateInDbParameter("@Type", DbType.Byte, model.Type),
+				dbHelper.CreateInDbParameter("@IsSystem", DbType.Byte, model.IsSystem),
 				dbHelper.CreateInDbParameter("@GroupName", DbType.String, model.GroupName),
 				dbHelper.CreateInDbParameter("@Description", DbType.String, model.Description),
+				dbHelper.CreateInDbParameter("@CreditBegin", DbType.Int32, model.CreditBegin),
+				dbHelper.CreateInDbParameter("@CreditEnd", DbType.Int32, model.CreditEnd),
+				dbHelper.CreateInDbParameter("@stars", DbType.Byte, model.stars),
 				dbHelper.CreateInDbParameter("@GroupAvatar", DbType.AnsiString, model.GroupAvatar),
+				dbHelper.CreateInDbParameter("@Readaccess", DbType.Int32, model.Readaccess),
+				dbHelper.CreateInDbParameter("@AllowPost", DbType.Byte, model.AllowPost),
+				dbHelper.CreateInDbParameter("@AllowComment", DbType.Byte, model.AllowComment),
+				dbHelper.CreateInDbParameter("@AllowDownload", DbType.Byte, model.AllowDownload),
+				dbHelper.CreateInDbParameter("@AllowAvatar", DbType.Byte, model.AllowAvatar),
+				dbHelper.CreateInDbParameter("@AllowSpace", DbType.Byte, model.AllowSpace),
+				dbHelper.CreateInDbParameter("@AllowTransfer", DbType.Byte, model.AllowTransfer),
+				dbHelper.CreateInDbParameter("@AllowViewInfo", DbType.Byte, model.AllowViewInfo),
+				dbHelper.CreateInDbParameter("@AllowNickname", DbType.Byte, model.AllowNickname),
 				dbHelper.CreateInDbParameter("@MaxPMNum", DbType.Int16, model.MaxPMNum),
 				dbHelper.CreateInDbParameter("@MaxSignSize", DbType.Int16, model.MaxSignSize),
 				dbHelper.CreateInDbParameter("@MaxAttachSize", DbType.Int32, model.MaxAttachSize),

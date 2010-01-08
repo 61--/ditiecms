@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -20,6 +20,8 @@ namespace DTCMS.SqlServerDAL
 	/// </summary>
 	public class HelpDAL : BaseDAL, IDAL_Help
 	{
+		public HelpDAL()
+		{ }
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
@@ -27,14 +29,15 @@ namespace DTCMS.SqlServerDAL
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("INSERT INTO Help(");
-            strSql.Append("HelpID,PID,Title,Message)");
+            strSql.Append("HelpID,PID,Title,Message,OrderID)");
 			strSql.Append(" VALUES (");
-            strSql.Append("@HelpID,@PID,@Title,@Message)");
+            strSql.Append("@HelpID,@PID,@Title,@Message,@OrderID)");
 			DbParameter[] cmdParms = {
 				dbHelper.CreateInDbParameter("@HelpID", DbType.AnsiStringFixedLength, model.HelpID),
 				dbHelper.CreateInDbParameter("@PID", DbType.AnsiStringFixedLength, model.PID),
 				dbHelper.CreateInDbParameter("@Title", DbType.String, model.Title),
-				dbHelper.CreateInDbParameter("@Message", DbType.String, model.Message)};
+				dbHelper.CreateInDbParameter("@Message", DbType.String, model.Message),
+				dbHelper.CreateInDbParameter("@OrderID", DbType.Int32, model.OrderID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}

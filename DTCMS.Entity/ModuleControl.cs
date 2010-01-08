@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -33,7 +33,7 @@ namespace DTCMS.Entity
 			get { return _iD; }
 		}
 		/// <summary>
-		/// 操作名字
+		/// ControlName
 		/// </summary>
 		public string ControlName
 		{
@@ -41,7 +41,7 @@ namespace DTCMS.Entity
 			get { return _controlName; }
 		}
 		/// <summary>
-		/// 模块ID
+		/// ModuleID
 		/// </summary>
 		public int ModuleID
 		{
@@ -49,7 +49,7 @@ namespace DTCMS.Entity
 			get { return _moduleID; }
 		}
 		/// <summary>
-		/// 操作值
+		/// ControlValue
 		/// </summary>
 		public int ControlValue
 		{
@@ -57,7 +57,7 @@ namespace DTCMS.Entity
 			get { return _controlValue; }
 		}
 		/// <summary>
-		/// 排序
+		/// OrderID
 		/// </summary>
 		public int OrderID
 		{

@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -20,6 +20,8 @@ namespace DTCMS.SqlServerDAL
 	/// </summary>
 	public class UserfieldsDAL : BaseDAL, IDAL_Userfields
 	{
+		public UserfieldsDAL()
+		{ }
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>

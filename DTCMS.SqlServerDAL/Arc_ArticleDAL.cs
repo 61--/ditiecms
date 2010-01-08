@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -20,6 +20,8 @@ namespace DTCMS.SqlServerDAL
 	/// </summary>
 	public class Arc_ArticleDAL : BaseDAL, IDAL_Arc_Article
 	{
+		public Arc_ArticleDAL()
+		{ }
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
@@ -27,30 +29,43 @@ namespace DTCMS.SqlServerDAL
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("INSERT INTO Arc_Article(");
-            strSql.Append("ClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,Content,IsComment,FilePath,SimilarArticle,AddDate,PubDate)");
+            strSql.Append("ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,ArticleContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID)");
 			strSql.Append(" VALUES (");
-            strSql.Append("@ClassID,@Title,@ShortTitle,@TitleStyle,@TitleFlag,@Tags,@ImgUrl,@Author,@Editor,@PubLisher,@Source,@Templet,@Keywords,@Description,@Content,@IsComment,@FilePath,@SimilarArticle,@AddDate,@PubDate)");
+            strSql.Append("@ClassID,@ViceClassID,@Title,@ShortTitle,@TitleStyle,@TitleFlag,@Tags,@ImgUrl,@Author,@Editor,@PubLisher,@Source,@Templet,@Keywords,@Description,@ArticleContent,@Click,@Good,@Bad,@Readaccess,@Money,@Attribute,@IsComment,@IsChecked,@IsRecycle,@IsRedirect,@IsHtml,@IsPaging,@FilePath,@SimilarArticle,@AddDate,@PubDate,@OrderID)");
 			DbParameter[] cmdParms = {
 				dbHelper.CreateInDbParameter("@ClassID", DbType.Int32, model.ClassID),
+				dbHelper.CreateInDbParameter("@ViceClassID", DbType.Int32, model.ViceClassID),
 				dbHelper.CreateInDbParameter("@Title", DbType.String, model.Title),
 				dbHelper.CreateInDbParameter("@ShortTitle", DbType.String, model.ShortTitle),
-				dbHelper.CreateInDbParameter("@TitleStyle", DbType.String, model.TitleStyle),
-				dbHelper.CreateInDbParameter("@TitleFlag", DbType.Int32, model.TitleFlag),
+				dbHelper.CreateInDbParameter("@TitleStyle", DbType.AnsiString, model.TitleStyle),
+				dbHelper.CreateInDbParameter("@TitleFlag", DbType.Byte, model.TitleFlag),
 				dbHelper.CreateInDbParameter("@Tags", DbType.String, model.Tags),
-				dbHelper.CreateInDbParameter("@ImgUrl", DbType.String, model.ImgUrl),
+				dbHelper.CreateInDbParameter("@ImgUrl", DbType.AnsiString, model.ImgUrl),
 				dbHelper.CreateInDbParameter("@Author", DbType.String, model.Author),
 				dbHelper.CreateInDbParameter("@Editor", DbType.String, model.Editor),
 				dbHelper.CreateInDbParameter("@PubLisher", DbType.String, model.PubLisher),
 				dbHelper.CreateInDbParameter("@Source", DbType.String, model.Source),
-				dbHelper.CreateInDbParameter("@Templet", DbType.String, model.Templet),
+				dbHelper.CreateInDbParameter("@Templet", DbType.AnsiString, model.Templet),
 				dbHelper.CreateInDbParameter("@Keywords", DbType.String, model.Keywords),
 				dbHelper.CreateInDbParameter("@Description", DbType.String, model.Description),
-				dbHelper.CreateInDbParameter("@Content", DbType.String, model.Content),
+				dbHelper.CreateInDbParameter("@ArticleContent", DbType.String, model.ArticleContent),
+				dbHelper.CreateInDbParameter("@Click", DbType.Int32, model.Click),
+				dbHelper.CreateInDbParameter("@Good", DbType.Int32, model.Good),
+				dbHelper.CreateInDbParameter("@Bad", DbType.Int32, model.Bad),
+				dbHelper.CreateInDbParameter("@Readaccess", DbType.Int16, model.Readaccess),
+				dbHelper.CreateInDbParameter("@Money", DbType.Int16, model.Money),
+				dbHelper.CreateInDbParameter("@Attribute", DbType.Int16, model.Attribute),
 				dbHelper.CreateInDbParameter("@IsComment", DbType.Byte, model.IsComment),
-				dbHelper.CreateInDbParameter("@FilePath", DbType.String, model.FilePath),
-				dbHelper.CreateInDbParameter("@SimilarArticle", DbType.StringFixedLength, model.SimilarArticle),
+				dbHelper.CreateInDbParameter("@IsChecked", DbType.Byte, model.IsChecked),
+				dbHelper.CreateInDbParameter("@IsRecycle", DbType.Byte, model.IsRecycle),
+				dbHelper.CreateInDbParameter("@IsRedirect", DbType.Byte, model.IsRedirect),
+				dbHelper.CreateInDbParameter("@IsHtml", DbType.Byte, model.IsHtml),
+				dbHelper.CreateInDbParameter("@IsPaging", DbType.Byte, model.IsPaging),
+				dbHelper.CreateInDbParameter("@FilePath", DbType.AnsiString, model.FilePath),
+				dbHelper.CreateInDbParameter("@SimilarArticle", DbType.AnsiString, model.SimilarArticle),
 				dbHelper.CreateInDbParameter("@AddDate", DbType.String, model.AddDate),
-				dbHelper.CreateInDbParameter("@PubDate", DbType.String, model.PubDate)};
+				dbHelper.CreateInDbParameter("@PubDate", DbType.String, model.PubDate),
+				dbHelper.CreateInDbParameter("@OrderID", DbType.Int32, model.OrderID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -77,7 +92,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("Templet=@Templet,");
 			strSql.Append("Keywords=@Keywords,");
 			strSql.Append("Description=@Description,");
-			strSql.Append("Content=@Content,");
+			strSql.Append("ArticleContent=@ArticleContent,");
 			strSql.Append("Click=@Click,");
 			strSql.Append("Good=@Good,");
 			strSql.Append("Bad=@Bad,");
@@ -101,35 +116,35 @@ namespace DTCMS.SqlServerDAL
 				dbHelper.CreateInDbParameter("@ViceClassID", DbType.Int32, model.ViceClassID),
 				dbHelper.CreateInDbParameter("@Title", DbType.String, model.Title),
 				dbHelper.CreateInDbParameter("@ShortTitle", DbType.String, model.ShortTitle),
-				dbHelper.CreateInDbParameter("@TitleStyle", DbType.String, model.TitleStyle),
-				dbHelper.CreateInDbParameter("@TitleFlag", DbType.Int32, model.TitleFlag),
+				dbHelper.CreateInDbParameter("@TitleStyle", DbType.AnsiString, model.TitleStyle),
+				dbHelper.CreateInDbParameter("@TitleFlag", DbType.Byte, model.TitleFlag),
 				dbHelper.CreateInDbParameter("@Tags", DbType.String, model.Tags),
-				dbHelper.CreateInDbParameter("@ImgUrl", DbType.String, model.ImgUrl),
+				dbHelper.CreateInDbParameter("@ImgUrl", DbType.AnsiString, model.ImgUrl),
 				dbHelper.CreateInDbParameter("@Author", DbType.String, model.Author),
 				dbHelper.CreateInDbParameter("@Editor", DbType.String, model.Editor),
 				dbHelper.CreateInDbParameter("@PubLisher", DbType.String, model.PubLisher),
 				dbHelper.CreateInDbParameter("@Source", DbType.String, model.Source),
-				dbHelper.CreateInDbParameter("@Templet", DbType.String, model.Templet),
+				dbHelper.CreateInDbParameter("@Templet", DbType.AnsiString, model.Templet),
 				dbHelper.CreateInDbParameter("@Keywords", DbType.String, model.Keywords),
 				dbHelper.CreateInDbParameter("@Description", DbType.String, model.Description),
-				dbHelper.CreateInDbParameter("@Content", DbType.String, model.Content),
+				dbHelper.CreateInDbParameter("@ArticleContent", DbType.String, model.ArticleContent),
 				dbHelper.CreateInDbParameter("@Click", DbType.Int32, model.Click),
 				dbHelper.CreateInDbParameter("@Good", DbType.Int32, model.Good),
 				dbHelper.CreateInDbParameter("@Bad", DbType.Int32, model.Bad),
 				dbHelper.CreateInDbParameter("@Readaccess", DbType.Int16, model.Readaccess),
 				dbHelper.CreateInDbParameter("@Money", DbType.Int16, model.Money),
-				dbHelper.CreateInDbParameter("@Attribute", DbType.AnsiStringFixedLength, model.Attribute),
+				dbHelper.CreateInDbParameter("@Attribute", DbType.Int16, model.Attribute),
 				dbHelper.CreateInDbParameter("@IsComment", DbType.Byte, model.IsComment),
 				dbHelper.CreateInDbParameter("@IsChecked", DbType.Byte, model.IsChecked),
 				dbHelper.CreateInDbParameter("@IsRecycle", DbType.Byte, model.IsRecycle),
-				dbHelper.CreateInDbParameter("@IsRedirect", DbType.Int32, model.IsRedirect),
+				dbHelper.CreateInDbParameter("@IsRedirect", DbType.Byte, model.IsRedirect),
 				dbHelper.CreateInDbParameter("@IsHtml", DbType.Byte, model.IsHtml),
 				dbHelper.CreateInDbParameter("@IsPaging", DbType.Byte, model.IsPaging),
-				dbHelper.CreateInDbParameter("@FilePath", DbType.String, model.FilePath),
-				dbHelper.CreateInDbParameter("@SimilarArticle", DbType.StringFixedLength, model.SimilarArticle),
+				dbHelper.CreateInDbParameter("@FilePath", DbType.AnsiString, model.FilePath),
+				dbHelper.CreateInDbParameter("@SimilarArticle", DbType.AnsiString, model.SimilarArticle),
 				dbHelper.CreateInDbParameter("@AddDate", DbType.String, model.AddDate),
 				dbHelper.CreateInDbParameter("@PubDate", DbType.String, model.PubDate),
-				dbHelper.CreateInDbParameter("@OrderID", DbType.Byte, model.OrderID),
+				dbHelper.CreateInDbParameter("@OrderID", DbType.Int32, model.OrderID),
 				dbHelper.CreateInDbParameter("@ID", DbType.Int32, model.ID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
@@ -170,7 +185,7 @@ namespace DTCMS.SqlServerDAL
 		public Arc_Article GetModel(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,Content,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM Arc_Article");
+			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,ArticleContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM Arc_Article");
 			strSql.Append(" WHERE ID=@ID");
 			DbParameter[] cmdParms = {
 				dbHelper.CreateInDbParameter("@ID", DbType.Int32, ID)};
@@ -191,7 +206,7 @@ namespace DTCMS.SqlServerDAL
 		public List<Arc_Article> GetList(out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,Content,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM Arc_Article");
+			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,ArticleContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM Arc_Article");
 			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Arc_Article> lst = GetList(dr, out count);
@@ -205,7 +220,7 @@ namespace DTCMS.SqlServerDAL
 		public List<Arc_Article> GetPageList(int pageSize, int pageIndex, out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,Content,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM Arc_Article");
+			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,ArticleContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM Arc_Article");
 			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Arc_Article> lst = GetPageList(dr, pageSize, pageIndex, out count);
@@ -226,7 +241,7 @@ namespace DTCMS.SqlServerDAL
 			model.Title = dbHelper.GetString(dr["Title"]);
 			model.ShortTitle = dbHelper.GetString(dr["ShortTitle"]);
 			model.TitleStyle = dbHelper.GetString(dr["TitleStyle"]);
-			model.TitleFlag = dbHelper.GetInt(dr["TitleFlag"]);
+			model.TitleFlag = dbHelper.GetByte(dr["TitleFlag"]);
 			model.Tags = dbHelper.GetString(dr["Tags"]);
 			model.ImgUrl = dbHelper.GetString(dr["ImgUrl"]);
 			model.Author = dbHelper.GetString(dr["Author"]);
@@ -236,24 +251,24 @@ namespace DTCMS.SqlServerDAL
 			model.Templet = dbHelper.GetString(dr["Templet"]);
 			model.Keywords = dbHelper.GetString(dr["Keywords"]);
 			model.Description = dbHelper.GetString(dr["Description"]);
-			model.Content = dbHelper.GetString(dr["Content"]);
+			model.ArticleContent = dbHelper.GetString(dr["ArticleContent"]);
 			model.Click = dbHelper.GetInt(dr["Click"]);
 			model.Good = dbHelper.GetInt(dr["Good"]);
 			model.Bad = dbHelper.GetInt(dr["Bad"]);
 			model.Readaccess = dbHelper.GetInt16(dr["Readaccess"]);
 			model.Money = dbHelper.GetInt16(dr["Money"]);
-			model.Attribute = dbHelper.GetString(dr["Attribute"]);
+			model.Attribute = dbHelper.GetInt16(dr["Attribute"]);
 			model.IsComment = dbHelper.GetByte(dr["IsComment"]);
 			model.IsChecked = dbHelper.GetByte(dr["IsChecked"]);
 			model.IsRecycle = dbHelper.GetByte(dr["IsRecycle"]);
-			model.IsRedirect = dbHelper.GetInt(dr["IsRedirect"]);
+			model.IsRedirect = dbHelper.GetByte(dr["IsRedirect"]);
 			model.IsHtml = dbHelper.GetByte(dr["IsHtml"]);
 			model.IsPaging = dbHelper.GetByte(dr["IsPaging"]);
 			model.FilePath = dbHelper.GetString(dr["FilePath"]);
 			model.SimilarArticle = dbHelper.GetString(dr["SimilarArticle"]);
 			model.AddDate = dbHelper.GetDateTime(dr["AddDate"]);
 			model.PubDate = dbHelper.GetDateTime(dr["PubDate"]);
-			model.OrderID = dbHelper.GetByte(dr["OrderID"]);
+			model.OrderID = dbHelper.GetInt(dr["OrderID"]);
 			return model;
 		}
 

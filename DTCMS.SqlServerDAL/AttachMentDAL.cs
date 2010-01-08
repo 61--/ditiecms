@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-7 23:34:18
+// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -20,6 +20,8 @@ namespace DTCMS.SqlServerDAL
 	/// </summary>
 	public class AttachMentDAL : BaseDAL, IDAL_AttachMent
 	{
+		public AttachMentDAL()
+		{ }
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
@@ -27,15 +29,15 @@ namespace DTCMS.SqlServerDAL
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("INSERT INTO AttachMent(");
-            strSql.Append("AttachMentAttribute,AttachMentDisplayName,AttachMentPath,AttachMentSize,AbbrPhotoPath,PubLisher,AddDate,PhotoDescription)");
+            strSql.Append("Attribute,DisplayName,AttachMentPath,AttachMentSize,AbbrPhotoPath,PubLisher,AddDate,PhotoDescription)");
 			strSql.Append(" VALUES (");
-            strSql.Append("@AttachMentAttribute,@AttachMentDisplayName,@AttachMentPath,@AttachMentSize,@AbbrPhotoPath,@PubLisher,@AddDate,@PhotoDescription)");
+            strSql.Append("@Attribute,@DisplayName,@AttachMentPath,@AttachMentSize,@AbbrPhotoPath,@PubLisher,@AddDate,@PhotoDescription)");
 			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@AttachMentAttribute", DbType.Int32, model.AttachMentAttribute),
-				dbHelper.CreateInDbParameter("@AttachMentDisplayName", DbType.String, model.AttachMentDisplayName),
-				dbHelper.CreateInDbParameter("@AttachMentPath", DbType.String, model.AttachMentPath),
-				dbHelper.CreateInDbParameter("@AttachMentSize", DbType.String, model.AttachMentSize),
-				dbHelper.CreateInDbParameter("@AbbrPhotoPath", DbType.String, model.AbbrPhotoPath),
+				dbHelper.CreateInDbParameter("@Attribute", DbType.Byte, model.Attribute),
+				dbHelper.CreateInDbParameter("@DisplayName", DbType.String, model.DisplayName),
+				dbHelper.CreateInDbParameter("@AttachMentPath", DbType.AnsiString, model.AttachMentPath),
+				dbHelper.CreateInDbParameter("@AttachMentSize", DbType.Int32, model.AttachMentSize),
+				dbHelper.CreateInDbParameter("@AbbrPhotoPath", DbType.AnsiString, model.AbbrPhotoPath),
 				dbHelper.CreateInDbParameter("@PubLisher", DbType.String, model.PubLisher),
 				dbHelper.CreateInDbParameter("@AddDate", DbType.String, model.AddDate),
 				dbHelper.CreateInDbParameter("@PhotoDescription", DbType.String, model.PhotoDescription)};
@@ -50,8 +52,8 @@ namespace DTCMS.SqlServerDAL
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("UPDATE AttachMent SET ");
-			strSql.Append("AttachMentAttribute=@AttachMentAttribute,");
-			strSql.Append("AttachMentDisplayName=@AttachMentDisplayName,");
+			strSql.Append("Attribute=@Attribute,");
+			strSql.Append("DisplayName=@DisplayName,");
 			strSql.Append("AttachMentPath=@AttachMentPath,");
 			strSql.Append("AttachMentSize=@AttachMentSize,");
 			strSql.Append("AbbrPhotoPath=@AbbrPhotoPath,");
@@ -60,11 +62,11 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("PhotoDescription=@PhotoDescription");
 			strSql.Append(" WHERE AttachMentID=@AttachMentID");
 			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@AttachMentAttribute", DbType.Int32, model.AttachMentAttribute),
-				dbHelper.CreateInDbParameter("@AttachMentDisplayName", DbType.String, model.AttachMentDisplayName),
-				dbHelper.CreateInDbParameter("@AttachMentPath", DbType.String, model.AttachMentPath),
-				dbHelper.CreateInDbParameter("@AttachMentSize", DbType.String, model.AttachMentSize),
-				dbHelper.CreateInDbParameter("@AbbrPhotoPath", DbType.String, model.AbbrPhotoPath),
+				dbHelper.CreateInDbParameter("@Attribute", DbType.Byte, model.Attribute),
+				dbHelper.CreateInDbParameter("@DisplayName", DbType.String, model.DisplayName),
+				dbHelper.CreateInDbParameter("@AttachMentPath", DbType.AnsiString, model.AttachMentPath),
+				dbHelper.CreateInDbParameter("@AttachMentSize", DbType.Int32, model.AttachMentSize),
+				dbHelper.CreateInDbParameter("@AbbrPhotoPath", DbType.AnsiString, model.AbbrPhotoPath),
 				dbHelper.CreateInDbParameter("@PubLisher", DbType.String, model.PubLisher),
 				dbHelper.CreateInDbParameter("@AddDate", DbType.String, model.AddDate),
 				dbHelper.CreateInDbParameter("@PhotoDescription", DbType.String, model.PhotoDescription),
@@ -108,7 +110,7 @@ namespace DTCMS.SqlServerDAL
 		public AttachMent GetModel(int AttachMentID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT AttachMentID,AttachMentAttribute,AttachMentDisplayName,AttachMentPath,AttachMentSize,AbbrPhotoPath,PubLisher,AddDate,PhotoDescription FROM AttachMent");
+			strSql.Append("SELECT AttachMentID,Attribute,DisplayName,AttachMentPath,AttachMentSize,AbbrPhotoPath,PubLisher,AddDate,PhotoDescription FROM AttachMent");
 			strSql.Append(" WHERE AttachMentID=@AttachMentID");
 			DbParameter[] cmdParms = {
 				dbHelper.CreateInDbParameter("@AttachMentID", DbType.Int32, AttachMentID)};
@@ -129,7 +131,7 @@ namespace DTCMS.SqlServerDAL
 		public List<AttachMent> GetList(out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT AttachMentID,AttachMentAttribute,AttachMentDisplayName,AttachMentPath,AttachMentSize,AbbrPhotoPath,PubLisher,AddDate,PhotoDescription FROM AttachMent");
+			strSql.Append("SELECT AttachMentID,Attribute,DisplayName,AttachMentPath,AttachMentSize,AbbrPhotoPath,PubLisher,AddDate,PhotoDescription FROM AttachMent");
 			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<AttachMent> lst = GetList(dr, out count);
@@ -143,7 +145,7 @@ namespace DTCMS.SqlServerDAL
 		public List<AttachMent> GetPageList(int pageSize, int pageIndex, out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT AttachMentID,AttachMentAttribute,AttachMentDisplayName,AttachMentPath,AttachMentSize,AbbrPhotoPath,PubLisher,AddDate,PhotoDescription FROM AttachMent");
+			strSql.Append("SELECT AttachMentID,Attribute,DisplayName,AttachMentPath,AttachMentSize,AbbrPhotoPath,PubLisher,AddDate,PhotoDescription FROM AttachMent");
 			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<AttachMent> lst = GetPageList(dr, pageSize, pageIndex, out count);
@@ -159,10 +161,10 @@ namespace DTCMS.SqlServerDAL
 		{
 			AttachMent model = new AttachMent();
 			model.AttachMentID = dbHelper.GetInt(dr["AttachMentID"]);
-			model.AttachMentAttribute = dbHelper.GetInt(dr["AttachMentAttribute"]);
-			model.AttachMentDisplayName = dbHelper.GetString(dr["AttachMentDisplayName"]);
+			model.Attribute = dbHelper.GetByte(dr["Attribute"]);
+			model.DisplayName = dbHelper.GetString(dr["DisplayName"]);
 			model.AttachMentPath = dbHelper.GetString(dr["AttachMentPath"]);
-			model.AttachMentSize = dbHelper.GetString(dr["AttachMentSize"]);
+			model.AttachMentSize = dbHelper.GetInt(dr["AttachMentSize"]);
 			model.AbbrPhotoPath = dbHelper.GetString(dr["AbbrPhotoPath"]);
 			model.PubLisher = dbHelper.GetString(dr["PubLisher"]);
 			model.AddDate = dbHelper.GetDateTime(dr["AddDate"]);
