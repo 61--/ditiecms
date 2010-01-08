@@ -13,9 +13,9 @@ namespace DTCMS.Entity
 	/// <summary>
 	/// 实体类 SYS_Template
 	/// </summary>
-	public class SYS_Template
+	public class Sys_Template
 	{
-		public SYS_Template()
+        public Sys_Template()
 		{ }
 
 		#region Model

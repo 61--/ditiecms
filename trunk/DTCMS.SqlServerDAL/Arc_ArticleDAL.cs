@@ -22,9 +22,35 @@ namespace DTCMS.SqlServerDAL
 	{
 		public Arc_ArticleDAL()
 		{ }
-		/// <summary>
-		/// 增加一条数据
-		/// </summary>
+
+        /// <summary>
+        /// 判断某个字段值是否存在
+        /// </summary>
+        /// <param name="CID">栏目编号</param>
+        /// <param name="filedName">字段名称</param>
+        /// <param name="filedValue">字段值</param>
+        /// <returns>成功返回true，失败返回false</returns>
+        public bool Exists(int CID, string filedName, string filedValue)
+        {
+            string strSql = "";
+            if (filedName != "")
+            {
+                strSql += "select count(CID) from DT_Arc_Class where CID<>{0} ";
+                strSql += " and {1}='{2}'";
+                return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, string.Format(strSql, CID, filedName, filedValue))) > 0;
+            }
+            else
+            {
+                strSql += "select count(CID) from DT_Arc_Class where CID={0} ";
+                return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, string.Format(strSql, CID))) > 0;
+            }
+        }
+
+        /// <summary>
+        /// 添加文章
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
 		public int Add(Arc_Article model)
 		{
 			StringBuilder strSql = new StringBuilder();
@@ -70,9 +96,11 @@ namespace DTCMS.SqlServerDAL
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
 
-		/// <summary>
-		/// 更新一条数据
-		/// </summary>
+        /// <summary>
+        /// 更新文章
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
 		public int Update(Arc_Article model)
 		{
 			StringBuilder strSql = new StringBuilder();
@@ -151,8 +179,10 @@ namespace DTCMS.SqlServerDAL
 		}
 
 		/// <summary>
-		/// 删除一条数据
+		/// 删除一篇文章
 		/// </summary>
+		/// <param name="ID"></param>
+		/// <returns></returns>
 		public int Delete(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
@@ -163,6 +193,17 @@ namespace DTCMS.SqlServerDAL
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
+
+        /// <summary>
+        /// 批量删除文章
+        /// </summary>
+        /// <param name="ID">文章ID间用,号隔开</param>
+        /// <returns></returns>
+        public int Delete(string ID)
+        {
+            string strSql = string.Format(" delete DT_Arc_Article where ID in({0}) ", ID);
+            return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString());
+        }
 
 		/// <summary>
 		/// 是否存在该记录
@@ -199,6 +240,35 @@ namespace DTCMS.SqlServerDAL
 				return null;
 			}
 		}
+
+        /// <summary>
+        /// 根据栏目id 判断此栏目是否存在文章
+        /// </summary>
+        /// <param name="CID">栏目编号</param>
+        /// <returns>true存在,false不存在</returns>
+        public bool ExistAtricleToClass(int CID)
+        {
+            string strSql = "select count(ID) from DT_Arc_Article where ClassID=@ClassID";
+
+            DbParameter[] cmdParms = {
+				dbHelper.CreateInDbParameter("@ClassID", DbType.Int32, CID)};
+
+            return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, strSql, cmdParms)) > 0;
+        }
+
+        /// <summary>
+        /// 判断文章是否已经存在
+        /// </summary>
+        /// <param name="Title"></param>
+        /// <returns>添加ArticleID：-1</returns>
+        public bool ExistsArticleName(int ArticleID, string Title)
+        {
+            string strSql = "select count(ID) from DT_Arc_Article where ClassID=@ClassID";
+            DbParameter[] cmdParms = {
+				dbHelper.CreateInDbParameter("@Title", DbType.String, Title),
+                dbHelper.CreateInDbParameter("@Value", DbType.Int32, ArticleID)};
+            return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, strSql, cmdParms)) > 0;
+        }
 
 		/// <summary>
 		/// 获取泛型数据列表

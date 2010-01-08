@@ -16,19 +16,19 @@ using DTCMS.IDAL;
 namespace DTCMS.SqlServerDAL
 {
 	/// <summary>
-	/// 数据访问类 SYS_Template
+	/// 数据访问类 Sys_Template
 	/// </summary>
-	public class SYS_TemplateDAL : BaseDAL, IDAL_SYS_Template
+	public class Sys_TemplateDAL : BaseDAL, IDAL_Sys_Template
 	{
-		public SYS_TemplateDAL()
+        public Sys_TemplateDAL()
 		{ }
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public int Add(SYS_Template model)
+		public int Add(Sys_Template model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("INSERT INTO SYS_Template(");
+			strSql.Append("INSERT INTO Sys_Template(");
             strSql.Append("TemplateName,TemplateDirectory,isEnable,CreateDateTime,TemplateImg,Author)");
 			strSql.Append(" VALUES (");
             strSql.Append("@TemplateName,@TemplateDirectory,@isEnable,@CreateDateTime,@TemplateImg,@Author)");
@@ -46,10 +46,10 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public int Update(SYS_Template model)
+		public int Update(Sys_Template model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("UPDATE SYS_Template SET ");
+			strSql.Append("UPDATE Sys_Template SET ");
 			strSql.Append("TemplateName=@TemplateName,");
 			strSql.Append("TemplateDirectory=@TemplateDirectory,");
 			strSql.Append("isEnable=@isEnable,");
@@ -75,7 +75,7 @@ namespace DTCMS.SqlServerDAL
 		public int Delete(int TemplateID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("DELETE FROM SYS_Template ");
+			strSql.Append("DELETE FROM Sys_Template ");
 			strSql.Append(" WHERE TemplateID=@TemplateID");
 			DbParameter[] cmdParms = {
 				dbHelper.CreateInDbParameter("@TemplateID", DbType.Int32, TemplateID)};
@@ -89,7 +89,7 @@ namespace DTCMS.SqlServerDAL
 		public bool Exists(int TemplateID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT COUNT(1) FROM SYS_Template");
+			strSql.Append("SELECT COUNT(1) FROM Sys_Template");
 			strSql.Append(" WHERE TemplateID=@TemplateID");
 			DbParameter[] cmdParms = {
 				dbHelper.CreateInDbParameter("@TemplateID", DbType.Int32, TemplateID)};
@@ -101,10 +101,10 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public SYS_Template GetModel(int TemplateID)
+		public Sys_Template GetModel(int TemplateID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT TemplateID,TemplateName,TemplateDirectory,isEnable,CreateDateTime,TemplateImg,Author FROM SYS_Template");
+			strSql.Append("SELECT TemplateID,TemplateName,TemplateDirectory,isEnable,CreateDateTime,TemplateImg,Author FROM Sys_Template");
 			strSql.Append(" WHERE TemplateID=@TemplateID");
 			DbParameter[] cmdParms = {
 				dbHelper.CreateInDbParameter("@TemplateID", DbType.Int32, TemplateID)};
@@ -122,13 +122,13 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 获取泛型数据列表
 		/// </summary>
-		public List<SYS_Template> GetList(out long count)
+		public List<Sys_Template> GetList(out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT TemplateID,TemplateName,TemplateDirectory,isEnable,CreateDateTime,TemplateImg,Author FROM SYS_Template");
+			strSql.Append("SELECT TemplateID,TemplateName,TemplateDirectory,isEnable,CreateDateTime,TemplateImg,Author FROM Sys_Template");
 			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
-				List<SYS_Template> lst = GetList(dr, out count);
+				List<Sys_Template> lst = GetList(dr, out count);
 				return lst;
 			}
 		}
@@ -136,13 +136,13 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 分页获取泛型数据列表
 		/// </summary>
-		public List<SYS_Template> GetPageList(int pageSize, int pageIndex, out long count)
+		public List<Sys_Template> GetPageList(int pageSize, int pageIndex, out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT TemplateID,TemplateName,TemplateDirectory,isEnable,CreateDateTime,TemplateImg,Author FROM SYS_Template");
+			strSql.Append("SELECT TemplateID,TemplateName,TemplateDirectory,isEnable,CreateDateTime,TemplateImg,Author FROM Sys_Template");
 			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
-				List<SYS_Template> lst = GetPageList(dr, pageSize, pageIndex, out count);
+				List<Sys_Template> lst = GetPageList(dr, pageSize, pageIndex, out count);
 				return lst;
 			}
 		}
@@ -151,9 +151,9 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 由一行数据得到一个实体
 		/// </summary>
-		private SYS_Template GetModel(DbDataReader dr)
+		private Sys_Template GetModel(DbDataReader dr)
 		{
-			SYS_Template model = new SYS_Template();
+			Sys_Template model = new Sys_Template();
 			model.TemplateID = dbHelper.GetInt(dr["TemplateID"]);
 			model.TemplateName = dbHelper.GetString(dr["TemplateName"]);
 			model.TemplateDirectory = dbHelper.GetString(dr["TemplateDirectory"]);
@@ -167,10 +167,10 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 由DbDataReader得到泛型数据列表
 		/// </summary>
-		private List<SYS_Template> GetList(DbDataReader dr, out long count)
+		private List<Sys_Template> GetList(DbDataReader dr, out long count)
 		{
 			count = 0;
-			List<SYS_Template> lst = new List<SYS_Template>();
+			List<Sys_Template> lst = new List<Sys_Template>();
 			while (dr.Read())
 			{
 				count++;
@@ -182,14 +182,14 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 由DbDataReader得到分页泛型数据列表
 		/// </summary>
-		private List<SYS_Template> GetPageList(DbDataReader dr, int pageSize, int pageIndex, out long count)
+		private List<Sys_Template> GetPageList(DbDataReader dr, int pageSize, int pageIndex, out long count)
 		{
 			long first = GetFirstIndex(pageSize, pageIndex);
 			long last = GetLastIndex(pageSize, pageIndex);
 
 			count = 0;
 
-			List<SYS_Template> lst = new List<SYS_Template>();
+			List<Sys_Template> lst = new List<Sys_Template>();
 			while (dr.Read())
 			{
 				count++;
