@@ -1,15 +1,16 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
+// 创建描述: DTCMS V1.0 创建于 2010-1-9 0:23:01
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
 //------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
 using System.Data;
-using System.Data.Common;
+using System.Data.SqlClient;
 using System.Text;
+using System.Collections.Generic;
 using DTCMS.Entity;
 using DTCMS.IDAL;
 
@@ -22,6 +23,7 @@ namespace DTCMS.SqlServerDAL
 	{
 		public UsersDAL()
 		{ }
+
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
@@ -29,37 +31,22 @@ namespace DTCMS.SqlServerDAL
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("INSERT INTO Users(");
-            strSql.Append("UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock)");
+            strSql.Append("UserName,NickName,Password,SecureQuestion,SecureAnswer,Email,RegisterIP,LastloginIP,ExtCredits4,ExtCredits5,Avatar,Birthday)");
 			strSql.Append(" VALUES (");
-            strSql.Append("@UserName,@NickName,@Password,@SecureQuestion,@SecureAnswer,@Sex,@Email,@RoleID,@UsergroupID,@RegisterIP,@RegisterTime,@LastloginIP,@LastloginTime,@LoginCount,@PostCount,@OnlineTime,@Credits,@ExtCredits1,@ExtCredits2,@ExtCredits3,@ExtCredits4,@ExtCredits5,@Avatar,@Birthday,@PMCount,@IsVerify,@IsLock)");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@UserName", DbType.String, model.UserName),
-				dbHelper.CreateInDbParameter("@NickName", DbType.String, model.NickName),
-				dbHelper.CreateInDbParameter("@Password", DbType.AnsiStringFixedLength, model.Password),
-				dbHelper.CreateInDbParameter("@SecureQuestion", DbType.String, model.SecureQuestion),
-				dbHelper.CreateInDbParameter("@SecureAnswer", DbType.String, model.SecureAnswer),
-				dbHelper.CreateInDbParameter("@Sex", DbType.Byte, model.Sex),
-				dbHelper.CreateInDbParameter("@Email", DbType.AnsiString, model.Email),
-				dbHelper.CreateInDbParameter("@RoleID", DbType.Int32, model.RoleID),
-				dbHelper.CreateInDbParameter("@UsergroupID", DbType.Int32, model.UsergroupID),
-				dbHelper.CreateInDbParameter("@RegisterIP", DbType.AnsiStringFixedLength, model.RegisterIP),
-				dbHelper.CreateInDbParameter("@RegisterTime", DbType.String, model.RegisterTime),
-				dbHelper.CreateInDbParameter("@LastloginIP", DbType.AnsiStringFixedLength, model.LastloginIP),
-				dbHelper.CreateInDbParameter("@LastloginTime", DbType.String, model.LastloginTime),
-				dbHelper.CreateInDbParameter("@LoginCount", DbType.Int32, model.LoginCount),
-				dbHelper.CreateInDbParameter("@PostCount", DbType.Int32, model.PostCount),
-				dbHelper.CreateInDbParameter("@OnlineTime", DbType.Int32, model.OnlineTime),
-				dbHelper.CreateInDbParameter("@Credits", DbType.Int32, model.Credits),
-				dbHelper.CreateInDbParameter("@ExtCredits1", DbType.Double, model.ExtCredits1),
-				dbHelper.CreateInDbParameter("@ExtCredits2", DbType.Double, model.ExtCredits2),
-				dbHelper.CreateInDbParameter("@ExtCredits3", DbType.Double, model.ExtCredits3),
-				dbHelper.CreateInDbParameter("@ExtCredits4", DbType.Double, model.ExtCredits4),
-				dbHelper.CreateInDbParameter("@ExtCredits5", DbType.Double, model.ExtCredits5),
-				dbHelper.CreateInDbParameter("@Avatar", DbType.AnsiString, model.Avatar),
-				dbHelper.CreateInDbParameter("@Birthday", DbType.String, model.Birthday),
-				dbHelper.CreateInDbParameter("@PMCount", DbType.Int32, model.PMCount),
-				dbHelper.CreateInDbParameter("@IsVerify", DbType.Byte, model.IsVerify),
-				dbHelper.CreateInDbParameter("@IsLock", DbType.Byte, model.IsLock)};
+            strSql.Append("@UserName,@NickName,@Password,@SecureQuestion,@SecureAnswer,@Email,@RegisterIP,@LastloginIP,@ExtCredits4,@ExtCredits5,@Avatar,@Birthday)");
+			SqlParameter[] cmdParms = {
+				AddInParameter("@UserName", SqlDbType.SmallInt, model.UserName),
+				AddInParameter("@NickName", SqlDbType.SmallInt, model.NickName),
+				AddInParameter("@Password", SqlDbType.VarChar, model.Password),
+				AddInParameter("@SecureQuestion", SqlDbType.SmallInt, model.SecureQuestion),
+				AddInParameter("@SecureAnswer", SqlDbType.SmallInt, model.SecureAnswer),
+				AddInParameter("@Email", SqlDbType.BigInt, model.Email),
+				AddInParameter("@RegisterIP", SqlDbType.VarChar, model.RegisterIP),
+				AddInParameter("@LastloginIP", SqlDbType.VarChar, model.LastloginIP),
+				AddInParameter("@ExtCredits4", SqlDbType.Int, model.ExtCredits4),
+				AddInParameter("@ExtCredits5", SqlDbType.Int, model.ExtCredits5),
+				AddInParameter("@Avatar", SqlDbType.BigInt, model.Avatar),
+				AddInParameter("@Birthday", SqlDbType.Float, model.Birthday)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -99,35 +86,35 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("IsVerify=@IsVerify,");
 			strSql.Append("IsLock=@IsLock");
 			strSql.Append(" WHERE UID=@UID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@UserName", DbType.String, model.UserName),
-				dbHelper.CreateInDbParameter("@NickName", DbType.String, model.NickName),
-				dbHelper.CreateInDbParameter("@Password", DbType.AnsiStringFixedLength, model.Password),
-				dbHelper.CreateInDbParameter("@SecureQuestion", DbType.String, model.SecureQuestion),
-				dbHelper.CreateInDbParameter("@SecureAnswer", DbType.String, model.SecureAnswer),
-				dbHelper.CreateInDbParameter("@Sex", DbType.Byte, model.Sex),
-				dbHelper.CreateInDbParameter("@Email", DbType.AnsiString, model.Email),
-				dbHelper.CreateInDbParameter("@RoleID", DbType.Int32, model.RoleID),
-				dbHelper.CreateInDbParameter("@UsergroupID", DbType.Int32, model.UsergroupID),
-				dbHelper.CreateInDbParameter("@RegisterIP", DbType.AnsiStringFixedLength, model.RegisterIP),
-				dbHelper.CreateInDbParameter("@RegisterTime", DbType.String, model.RegisterTime),
-				dbHelper.CreateInDbParameter("@LastloginIP", DbType.AnsiStringFixedLength, model.LastloginIP),
-				dbHelper.CreateInDbParameter("@LastloginTime", DbType.String, model.LastloginTime),
-				dbHelper.CreateInDbParameter("@LoginCount", DbType.Int32, model.LoginCount),
-				dbHelper.CreateInDbParameter("@PostCount", DbType.Int32, model.PostCount),
-				dbHelper.CreateInDbParameter("@OnlineTime", DbType.Int32, model.OnlineTime),
-				dbHelper.CreateInDbParameter("@Credits", DbType.Int32, model.Credits),
-				dbHelper.CreateInDbParameter("@ExtCredits1", DbType.Double, model.ExtCredits1),
-				dbHelper.CreateInDbParameter("@ExtCredits2", DbType.Double, model.ExtCredits2),
-				dbHelper.CreateInDbParameter("@ExtCredits3", DbType.Double, model.ExtCredits3),
-				dbHelper.CreateInDbParameter("@ExtCredits4", DbType.Double, model.ExtCredits4),
-				dbHelper.CreateInDbParameter("@ExtCredits5", DbType.Double, model.ExtCredits5),
-				dbHelper.CreateInDbParameter("@Avatar", DbType.AnsiString, model.Avatar),
-				dbHelper.CreateInDbParameter("@Birthday", DbType.String, model.Birthday),
-				dbHelper.CreateInDbParameter("@PMCount", DbType.Int32, model.PMCount),
-				dbHelper.CreateInDbParameter("@IsVerify", DbType.Byte, model.IsVerify),
-				dbHelper.CreateInDbParameter("@IsLock", DbType.Byte, model.IsLock),
-				dbHelper.CreateInDbParameter("@UID", DbType.Int32, model.UID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@UserName", SqlDbType.SmallInt, model.UserName),
+				AddInParameter("@NickName", SqlDbType.SmallInt, model.NickName),
+				AddInParameter("@Password", SqlDbType.VarChar, model.Password),
+				AddInParameter("@SecureQuestion", SqlDbType.SmallInt, model.SecureQuestion),
+				AddInParameter("@SecureAnswer", SqlDbType.SmallInt, model.SecureAnswer),
+				AddInParameter("@Sex", SqlDbType.Bit, model.Sex),
+				AddInParameter("@Email", SqlDbType.BigInt, model.Email),
+				AddInParameter("@RoleID", SqlDbType.NText, model.RoleID),
+				AddInParameter("@UsergroupID", SqlDbType.NText, model.UsergroupID),
+				AddInParameter("@RegisterIP", SqlDbType.VarChar, model.RegisterIP),
+				AddInParameter("@RegisterTime", SqlDbType.Float, model.RegisterTime),
+				AddInParameter("@LastloginIP", SqlDbType.VarChar, model.LastloginIP),
+				AddInParameter("@LastloginTime", SqlDbType.Float, model.LastloginTime),
+				AddInParameter("@LoginCount", SqlDbType.NText, model.LoginCount),
+				AddInParameter("@PostCount", SqlDbType.NText, model.PostCount),
+				AddInParameter("@OnlineTime", SqlDbType.NText, model.OnlineTime),
+				AddInParameter("@Credits", SqlDbType.NText, model.Credits),
+				AddInParameter("@ExtCredits1", SqlDbType.Int, model.ExtCredits1),
+				AddInParameter("@ExtCredits2", SqlDbType.Int, model.ExtCredits2),
+				AddInParameter("@ExtCredits3", SqlDbType.Int, model.ExtCredits3),
+				AddInParameter("@ExtCredits4", SqlDbType.Int, model.ExtCredits4),
+				AddInParameter("@ExtCredits5", SqlDbType.Int, model.ExtCredits5),
+				AddInParameter("@Avatar", SqlDbType.BigInt, model.Avatar),
+				AddInParameter("@Birthday", SqlDbType.Float, model.Birthday),
+				AddInParameter("@PMCount", SqlDbType.NText, model.PMCount),
+				AddInParameter("@IsVerify", SqlDbType.Bit, model.IsVerify),
+				AddInParameter("@IsLock", SqlDbType.Bit, model.IsLock),
+				AddInParameter("@UID", SqlDbType.NText, model.UID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -140,8 +127,8 @@ namespace DTCMS.SqlServerDAL
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("DELETE FROM Users ");
 			strSql.Append(" WHERE UID=@UID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@UID", DbType.Int32, UID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@UID", SqlDbType.NText, UID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -154,8 +141,8 @@ namespace DTCMS.SqlServerDAL
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("SELECT COUNT(1) FROM Users");
 			strSql.Append(" WHERE UID=@UID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@UID", DbType.Int32, UID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@UID", SqlDbType.NText, UID)};
 
 			object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), cmdParms);
 			return dbHelper.GetInt(obj) > 0;
@@ -169,10 +156,10 @@ namespace DTCMS.SqlServerDAL
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("SELECT UID,UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock FROM Users");
 			strSql.Append(" WHERE UID=@UID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@UID", DbType.Int32, UID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@UID", SqlDbType.NText, UID)};
 
-			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
+			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
 			{
 				if (dr.Read())
 				{
@@ -189,7 +176,7 @@ namespace DTCMS.SqlServerDAL
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("SELECT UID,UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock FROM Users");
-			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Users> lst = GetList(dr, out count);
 				return lst;
@@ -203,18 +190,18 @@ namespace DTCMS.SqlServerDAL
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("SELECT UID,UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock FROM Users");
-			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Users> lst = GetPageList(dr, pageSize, pageIndex, out count);
 				return lst;
 			}
 		}
 
-		#region -------- 私有方法，通常情况下无需修改 --------
+		#region 私有方法，通常情况下无需修改
 		/// <summary>
 		/// 由一行数据得到一个实体
 		/// </summary>
-		private Users GetModel(DbDataReader dr)
+		private Users GetModel(SqlDataReader dr)
 		{
 			Users model = new Users();
 			model.UID = dbHelper.GetInt(dr["UID"]);
@@ -249,9 +236,9 @@ namespace DTCMS.SqlServerDAL
 		}
 
 		/// <summary>
-		/// 由DbDataReader得到泛型数据列表
+		/// 由SqlDataReader得到泛型数据列表
 		/// </summary>
-		private List<Users> GetList(DbDataReader dr, out long count)
+		private List<Users> GetList(SqlDataReader dr, out long count)
 		{
 			count = 0;
 			List<Users> lst = new List<Users>();
@@ -264,9 +251,9 @@ namespace DTCMS.SqlServerDAL
 		}
 
 		/// <summary>
-		/// 由DbDataReader得到分页泛型数据列表
+		/// 由SqlDataReader得到分页泛型数据列表
 		/// </summary>
-		private List<Users> GetPageList(DbDataReader dr, int pageSize, int pageIndex, out long count)
+		private List<Users> GetPageList(SqlDataReader dr, int pageSize, int pageIndex, out long count)
 		{
 			long first = GetFirstIndex(pageSize, pageIndex);
 			long last = GetLastIndex(pageSize, pageIndex);

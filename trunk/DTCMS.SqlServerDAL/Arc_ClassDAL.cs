@@ -1,15 +1,16 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
+// 创建描述: DTCMS V1.0 创建于 2010-1-9 0:23:01
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
 //------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
 using System.Data;
-using System.Data.Common;
+using System.Data.SqlClient;
 using System.Text;
+using System.Collections.Generic;
 using DTCMS.Entity;
 using DTCMS.IDAL;
 
@@ -22,6 +23,7 @@ namespace DTCMS.SqlServerDAL
 	{
 		public Arc_ClassDAL()
 		{ }
+
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
@@ -29,39 +31,38 @@ namespace DTCMS.SqlServerDAL
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("INSERT INTO Arc_Class(");
-            strSql.Append("ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent)");
+            strSql.Append("Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,Content)");
 			strSql.Append(" VALUES (");
-            strSql.Append("@ParentID,@Attribute,@ClassName,@ClassEName,@ClassType,@ClassDomain,@ClassPath,@IndexTemplet,@ListTemplet,@ArchiveTemplet,@IndexRule,@ListRule,@ArchiveRule,@ClassPage,@Description,@IsHidden,@IsHtml,@CheckLevel,@IsContribute,@IsComment,@Readaccess,@SiteID,@AddDate,@Relation,@OrderID,@ImgUrl,@Keywords,@CrossID,@ClassContent)");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@ParentID", DbType.Int32, model.ParentID),
-				dbHelper.CreateInDbParameter("@Attribute", DbType.Byte, model.Attribute),
-				dbHelper.CreateInDbParameter("@ClassName", DbType.String, model.ClassName),
-				dbHelper.CreateInDbParameter("@ClassEName", DbType.AnsiString, model.ClassEName),
-				dbHelper.CreateInDbParameter("@ClassType", DbType.Byte, model.ClassType),
-				dbHelper.CreateInDbParameter("@ClassDomain", DbType.AnsiString, model.ClassDomain),
-				dbHelper.CreateInDbParameter("@ClassPath", DbType.AnsiString, model.ClassPath),
-				dbHelper.CreateInDbParameter("@IndexTemplet", DbType.AnsiString, model.IndexTemplet),
-				dbHelper.CreateInDbParameter("@ListTemplet", DbType.AnsiString, model.ListTemplet),
-				dbHelper.CreateInDbParameter("@ArchiveTemplet", DbType.AnsiString, model.ArchiveTemplet),
-				dbHelper.CreateInDbParameter("@IndexRule", DbType.AnsiString, model.IndexRule),
-				dbHelper.CreateInDbParameter("@ListRule", DbType.AnsiString, model.ListRule),
-				dbHelper.CreateInDbParameter("@ArchiveRule", DbType.AnsiString, model.ArchiveRule),
-				dbHelper.CreateInDbParameter("@ClassPage", DbType.Byte, model.ClassPage),
-				dbHelper.CreateInDbParameter("@Description", DbType.String, model.Description),
-				dbHelper.CreateInDbParameter("@IsHidden", DbType.Byte, model.IsHidden),
-				dbHelper.CreateInDbParameter("@IsHtml", DbType.Byte, model.IsHtml),
-				dbHelper.CreateInDbParameter("@CheckLevel", DbType.Byte, model.CheckLevel),
-				dbHelper.CreateInDbParameter("@IsContribute", DbType.Byte, model.IsContribute),
-				dbHelper.CreateInDbParameter("@IsComment", DbType.Byte, model.IsComment),
-				dbHelper.CreateInDbParameter("@Readaccess", DbType.Int16, model.Readaccess),
-				dbHelper.CreateInDbParameter("@SiteID", DbType.Byte, model.SiteID),
-				dbHelper.CreateInDbParameter("@AddDate", DbType.String, model.AddDate),
-				dbHelper.CreateInDbParameter("@Relation", DbType.AnsiString, model.Relation),
-				dbHelper.CreateInDbParameter("@OrderID", DbType.Int16, model.OrderID),
-				dbHelper.CreateInDbParameter("@ImgUrl", DbType.AnsiString, model.ImgUrl),
-				dbHelper.CreateInDbParameter("@Keywords", DbType.String, model.Keywords),
-				dbHelper.CreateInDbParameter("@CrossID", DbType.AnsiString, model.CrossID),
-				dbHelper.CreateInDbParameter("@ClassContent", DbType.String, model.ClassContent)};
+            strSql.Append("@Attribute,@ClassName,@ClassEName,@ClassType,@ClassDomain,@ClassPath,@IndexTemplet,@ListTemplet,@ArchiveTemplet,@IndexRule,@ListRule,@ArchiveRule,@ClassPage,@Description,@IsHidden,@IsHtml,@CheckLevel,@IsContribute,@IsComment,@Readaccess,@SiteID,@AddDate,@Relation,@OrderID,@ImgUrl,@Keywords,@CrossID,@Content)");
+			SqlParameter[] cmdParms = {
+				AddInParameter("@Attribute", SqlDbType.Bit, model.Attribute),
+				AddInParameter("@ClassName", SqlDbType.SmallInt, model.ClassName),
+				AddInParameter("@ClassEName", SqlDbType.BigInt, model.ClassEName),
+				AddInParameter("@ClassType", SqlDbType.Bit, model.ClassType),
+				AddInParameter("@ClassDomain", SqlDbType.BigInt, model.ClassDomain),
+				AddInParameter("@ClassPath", SqlDbType.BigInt, model.ClassPath),
+				AddInParameter("@IndexTemplet", SqlDbType.BigInt, model.IndexTemplet),
+				AddInParameter("@ListTemplet", SqlDbType.BigInt, model.ListTemplet),
+				AddInParameter("@ArchiveTemplet", SqlDbType.BigInt, model.ArchiveTemplet),
+				AddInParameter("@IndexRule", SqlDbType.BigInt, model.IndexRule),
+				AddInParameter("@ListRule", SqlDbType.BigInt, model.ListRule),
+				AddInParameter("@ArchiveRule", SqlDbType.BigInt, model.ArchiveRule),
+				AddInParameter("@ClassPage", SqlDbType.Bit, model.ClassPage),
+				AddInParameter("@Description", SqlDbType.SmallInt, model.Description),
+				AddInParameter("@IsHidden", SqlDbType.Bit, model.IsHidden),
+				AddInParameter("@IsHtml", SqlDbType.Bit, model.IsHtml),
+				AddInParameter("@CheckLevel", SqlDbType.Bit, model.CheckLevel),
+				AddInParameter("@IsContribute", SqlDbType.Bit, model.IsContribute),
+				AddInParameter("@IsComment", SqlDbType.Bit, model.IsComment),
+				AddInParameter("@Readaccess", SqlDbType.NChar, model.Readaccess),
+				AddInParameter("@SiteID", SqlDbType.Bit, model.SiteID),
+				AddInParameter("@AddDate", SqlDbType.Float, model.AddDate),
+				AddInParameter("@Relation", SqlDbType.BigInt, model.Relation),
+				AddInParameter("@OrderID", SqlDbType.NChar, model.OrderID),
+				AddInParameter("@ImgUrl", SqlDbType.BigInt, model.ImgUrl),
+				AddInParameter("@Keywords", SqlDbType.SmallInt, model.Keywords),
+				AddInParameter("@CrossID", SqlDbType.BigInt, model.CrossID),
+				AddInParameter("@Content", SqlDbType.SmallInt, model.Content)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -101,39 +102,39 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("ImgUrl=@ImgUrl,");
 			strSql.Append("Keywords=@Keywords,");
 			strSql.Append("CrossID=@CrossID,");
-			strSql.Append("ClassContent=@ClassContent");
+			strSql.Append("Content=@Content");
 			strSql.Append(" WHERE CID=@CID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@ParentID", DbType.Int32, model.ParentID),
-				dbHelper.CreateInDbParameter("@Attribute", DbType.Byte, model.Attribute),
-				dbHelper.CreateInDbParameter("@ClassName", DbType.String, model.ClassName),
-				dbHelper.CreateInDbParameter("@ClassEName", DbType.AnsiString, model.ClassEName),
-				dbHelper.CreateInDbParameter("@ClassType", DbType.Byte, model.ClassType),
-				dbHelper.CreateInDbParameter("@ClassDomain", DbType.AnsiString, model.ClassDomain),
-				dbHelper.CreateInDbParameter("@ClassPath", DbType.AnsiString, model.ClassPath),
-				dbHelper.CreateInDbParameter("@IndexTemplet", DbType.AnsiString, model.IndexTemplet),
-				dbHelper.CreateInDbParameter("@ListTemplet", DbType.AnsiString, model.ListTemplet),
-				dbHelper.CreateInDbParameter("@ArchiveTemplet", DbType.AnsiString, model.ArchiveTemplet),
-				dbHelper.CreateInDbParameter("@IndexRule", DbType.AnsiString, model.IndexRule),
-				dbHelper.CreateInDbParameter("@ListRule", DbType.AnsiString, model.ListRule),
-				dbHelper.CreateInDbParameter("@ArchiveRule", DbType.AnsiString, model.ArchiveRule),
-				dbHelper.CreateInDbParameter("@ClassPage", DbType.Byte, model.ClassPage),
-				dbHelper.CreateInDbParameter("@Description", DbType.String, model.Description),
-				dbHelper.CreateInDbParameter("@IsHidden", DbType.Byte, model.IsHidden),
-				dbHelper.CreateInDbParameter("@IsHtml", DbType.Byte, model.IsHtml),
-				dbHelper.CreateInDbParameter("@CheckLevel", DbType.Byte, model.CheckLevel),
-				dbHelper.CreateInDbParameter("@IsContribute", DbType.Byte, model.IsContribute),
-				dbHelper.CreateInDbParameter("@IsComment", DbType.Byte, model.IsComment),
-				dbHelper.CreateInDbParameter("@Readaccess", DbType.Int16, model.Readaccess),
-				dbHelper.CreateInDbParameter("@SiteID", DbType.Byte, model.SiteID),
-				dbHelper.CreateInDbParameter("@AddDate", DbType.String, model.AddDate),
-				dbHelper.CreateInDbParameter("@Relation", DbType.AnsiString, model.Relation),
-				dbHelper.CreateInDbParameter("@OrderID", DbType.Int16, model.OrderID),
-				dbHelper.CreateInDbParameter("@ImgUrl", DbType.AnsiString, model.ImgUrl),
-				dbHelper.CreateInDbParameter("@Keywords", DbType.String, model.Keywords),
-				dbHelper.CreateInDbParameter("@CrossID", DbType.AnsiString, model.CrossID),
-				dbHelper.CreateInDbParameter("@ClassContent", DbType.String, model.ClassContent),
-				dbHelper.CreateInDbParameter("@CID", DbType.Int32, model.CID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@ParentID", SqlDbType.NText, model.ParentID),
+				AddInParameter("@Attribute", SqlDbType.Bit, model.Attribute),
+				AddInParameter("@ClassName", SqlDbType.SmallInt, model.ClassName),
+				AddInParameter("@ClassEName", SqlDbType.BigInt, model.ClassEName),
+				AddInParameter("@ClassType", SqlDbType.Bit, model.ClassType),
+				AddInParameter("@ClassDomain", SqlDbType.BigInt, model.ClassDomain),
+				AddInParameter("@ClassPath", SqlDbType.BigInt, model.ClassPath),
+				AddInParameter("@IndexTemplet", SqlDbType.BigInt, model.IndexTemplet),
+				AddInParameter("@ListTemplet", SqlDbType.BigInt, model.ListTemplet),
+				AddInParameter("@ArchiveTemplet", SqlDbType.BigInt, model.ArchiveTemplet),
+				AddInParameter("@IndexRule", SqlDbType.BigInt, model.IndexRule),
+				AddInParameter("@ListRule", SqlDbType.BigInt, model.ListRule),
+				AddInParameter("@ArchiveRule", SqlDbType.BigInt, model.ArchiveRule),
+				AddInParameter("@ClassPage", SqlDbType.Bit, model.ClassPage),
+				AddInParameter("@Description", SqlDbType.SmallInt, model.Description),
+				AddInParameter("@IsHidden", SqlDbType.Bit, model.IsHidden),
+				AddInParameter("@IsHtml", SqlDbType.Bit, model.IsHtml),
+				AddInParameter("@CheckLevel", SqlDbType.Bit, model.CheckLevel),
+				AddInParameter("@IsContribute", SqlDbType.Bit, model.IsContribute),
+				AddInParameter("@IsComment", SqlDbType.Bit, model.IsComment),
+				AddInParameter("@Readaccess", SqlDbType.NChar, model.Readaccess),
+				AddInParameter("@SiteID", SqlDbType.Bit, model.SiteID),
+				AddInParameter("@AddDate", SqlDbType.Float, model.AddDate),
+				AddInParameter("@Relation", SqlDbType.BigInt, model.Relation),
+				AddInParameter("@OrderID", SqlDbType.NChar, model.OrderID),
+				AddInParameter("@ImgUrl", SqlDbType.BigInt, model.ImgUrl),
+				AddInParameter("@Keywords", SqlDbType.SmallInt, model.Keywords),
+				AddInParameter("@CrossID", SqlDbType.BigInt, model.CrossID),
+				AddInParameter("@Content", SqlDbType.SmallInt, model.Content),
+				AddInParameter("@CID", SqlDbType.NText, model.CID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -146,8 +147,8 @@ namespace DTCMS.SqlServerDAL
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("DELETE FROM Arc_Class ");
 			strSql.Append(" WHERE CID=@CID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@CID", DbType.Int32, CID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@CID", SqlDbType.NText, CID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -160,8 +161,8 @@ namespace DTCMS.SqlServerDAL
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("SELECT COUNT(1) FROM Arc_Class");
 			strSql.Append(" WHERE CID=@CID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@CID", DbType.Int32, CID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@CID", SqlDbType.NText, CID)};
 
 			object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), cmdParms);
 			return dbHelper.GetInt(obj) > 0;
@@ -173,12 +174,12 @@ namespace DTCMS.SqlServerDAL
 		public Arc_Class GetModel(int CID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent FROM Arc_Class");
+			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,Content FROM Arc_Class");
 			strSql.Append(" WHERE CID=@CID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@CID", DbType.Int32, CID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@CID", SqlDbType.NText, CID)};
 
-			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
+			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
 			{
 				if (dr.Read())
 				{
@@ -194,8 +195,8 @@ namespace DTCMS.SqlServerDAL
 		public List<Arc_Class> GetList(out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent FROM Arc_Class");
-			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,Content FROM Arc_Class");
+			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Arc_Class> lst = GetList(dr, out count);
 				return lst;
@@ -208,19 +209,19 @@ namespace DTCMS.SqlServerDAL
 		public List<Arc_Class> GetPageList(int pageSize, int pageIndex, out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent FROM Arc_Class");
-			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,Content FROM Arc_Class");
+			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Arc_Class> lst = GetPageList(dr, pageSize, pageIndex, out count);
 				return lst;
 			}
 		}
 
-		#region -------- 私有方法，通常情况下无需修改 --------
+		#region 私有方法，通常情况下无需修改
 		/// <summary>
 		/// 由一行数据得到一个实体
 		/// </summary>
-		private Arc_Class GetModel(DbDataReader dr)
+		private Arc_Class GetModel(SqlDataReader dr)
 		{
 			Arc_Class model = new Arc_Class();
 			model.CID = dbHelper.GetInt(dr["CID"]);
@@ -252,14 +253,14 @@ namespace DTCMS.SqlServerDAL
 			model.ImgUrl = dbHelper.GetString(dr["ImgUrl"]);
 			model.Keywords = dbHelper.GetString(dr["Keywords"]);
 			model.CrossID = dbHelper.GetString(dr["CrossID"]);
-			model.ClassContent = dbHelper.GetString(dr["ClassContent"]);
+			model.Content = dbHelper.GetString(dr["Content"]);
 			return model;
 		}
 
 		/// <summary>
-		/// 由DbDataReader得到泛型数据列表
+		/// 由SqlDataReader得到泛型数据列表
 		/// </summary>
-		private List<Arc_Class> GetList(DbDataReader dr, out long count)
+		private List<Arc_Class> GetList(SqlDataReader dr, out long count)
 		{
 			count = 0;
 			List<Arc_Class> lst = new List<Arc_Class>();
@@ -272,9 +273,9 @@ namespace DTCMS.SqlServerDAL
 		}
 
 		/// <summary>
-		/// 由DbDataReader得到分页泛型数据列表
+		/// 由SqlDataReader得到分页泛型数据列表
 		/// </summary>
-		private List<Arc_Class> GetPageList(DbDataReader dr, int pageSize, int pageIndex, out long count)
+		private List<Arc_Class> GetPageList(SqlDataReader dr, int pageSize, int pageIndex, out long count)
 		{
 			long first = GetFirstIndex(pageSize, pageIndex);
 			long last = GetLastIndex(pageSize, pageIndex);

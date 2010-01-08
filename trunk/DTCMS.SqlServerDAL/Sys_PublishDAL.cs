@@ -32,7 +32,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent FROM Arc_Class");
 			strSql.Append(" WHERE CID=@CID");
 			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@CID", DbType.Int32, CID)};
+				AddInParameter("@CID", DbType.Int32, CID)};
 
 			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
 			{
@@ -202,7 +202,7 @@ namespace DTCMS.SqlServerDAL
         {
             string sql = "SELECT CID,ClassName,Relation,ParentID From DT_Arc_Class WHERE CID=@CID ";
             DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@CID", DbType.Int32, CID)};
+				AddInParameter("@CID", DbType.Int32, CID)};
 
             Arc_Class model = new Arc_Class();
             using (DbDataReader reader = dbHelper.ExecuteReader(CommandType.Text, sql, cmdParms))

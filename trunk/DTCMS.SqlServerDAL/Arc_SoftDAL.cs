@@ -1,15 +1,16 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
+// 创建描述: DTCMS V1.0 创建于 2010-1-9 0:23:01
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
 //------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
 using System.Data;
-using System.Data.Common;
+using System.Data.SqlClient;
 using System.Text;
+using System.Collections.Generic;
 using DTCMS.Entity;
 using DTCMS.IDAL;
 
@@ -22,6 +23,7 @@ namespace DTCMS.SqlServerDAL
 	{
 		public Arc_SoftDAL()
 		{ }
+
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
@@ -32,8 +34,8 @@ namespace DTCMS.SqlServerDAL
             strSql.Append("AID)");
 			strSql.Append(" VALUES (");
             strSql.Append("@AID)");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@AID", DbType.Int32, model.AID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@AID", SqlDbType.NText, model.AID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -47,9 +49,9 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("UPDATE Arc_Soft SET ");
 			strSql.Append("AID=@AID");
 			strSql.Append(" WHERE AID=@AID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@AID", DbType.Int32, model.AID),
-				dbHelper.CreateInDbParameter("@AID", DbType.Int32, model.AID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@AID", SqlDbType.NText, model.AID),
+				AddInParameter("@AID", SqlDbType.NText, model.AID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -62,8 +64,8 @@ namespace DTCMS.SqlServerDAL
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("DELETE FROM Arc_Soft ");
 			strSql.Append(" WHERE AID=@AID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@AID", DbType.Int32, AID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@AID", SqlDbType.NText, AID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -76,8 +78,8 @@ namespace DTCMS.SqlServerDAL
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("SELECT COUNT(1) FROM Arc_Soft");
 			strSql.Append(" WHERE AID=@AID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@AID", DbType.Int32, AID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@AID", SqlDbType.NText, AID)};
 
 			object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), cmdParms);
 			return dbHelper.GetInt(obj) > 0;
@@ -91,10 +93,10 @@ namespace DTCMS.SqlServerDAL
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("SELECT AID FROM Arc_Soft");
 			strSql.Append(" WHERE AID=@AID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@AID", DbType.Int32, AID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@AID", SqlDbType.NText, AID)};
 
-			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
+			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
 			{
 				if (dr.Read())
 				{
@@ -111,7 +113,7 @@ namespace DTCMS.SqlServerDAL
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("SELECT AID FROM Arc_Soft");
-			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Arc_Soft> lst = GetList(dr, out count);
 				return lst;
@@ -125,18 +127,18 @@ namespace DTCMS.SqlServerDAL
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("SELECT AID FROM Arc_Soft");
-			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Arc_Soft> lst = GetPageList(dr, pageSize, pageIndex, out count);
 				return lst;
 			}
 		}
 
-		#region -------- 私有方法，通常情况下无需修改 --------
+		#region 私有方法，通常情况下无需修改
 		/// <summary>
 		/// 由一行数据得到一个实体
 		/// </summary>
-		private Arc_Soft GetModel(DbDataReader dr)
+		private Arc_Soft GetModel(SqlDataReader dr)
 		{
 			Arc_Soft model = new Arc_Soft();
 			model.AID = dbHelper.GetInt(dr["AID"]);
@@ -144,9 +146,9 @@ namespace DTCMS.SqlServerDAL
 		}
 
 		/// <summary>
-		/// 由DbDataReader得到泛型数据列表
+		/// 由SqlDataReader得到泛型数据列表
 		/// </summary>
-		private List<Arc_Soft> GetList(DbDataReader dr, out long count)
+		private List<Arc_Soft> GetList(SqlDataReader dr, out long count)
 		{
 			count = 0;
 			List<Arc_Soft> lst = new List<Arc_Soft>();
@@ -159,9 +161,9 @@ namespace DTCMS.SqlServerDAL
 		}
 
 		/// <summary>
-		/// 由DbDataReader得到分页泛型数据列表
+		/// 由SqlDataReader得到分页泛型数据列表
 		/// </summary>
-		private List<Arc_Soft> GetPageList(DbDataReader dr, int pageSize, int pageIndex, out long count)
+		private List<Arc_Soft> GetPageList(SqlDataReader dr, int pageSize, int pageIndex, out long count)
 		{
 			long first = GetFirstIndex(pageSize, pageIndex);
 			long last = GetLastIndex(pageSize, pageIndex);

@@ -18,91 +18,98 @@ namespace DTCMS.SqlServerDAL
     {
         protected static SqlHelper dbHelper = new SqlHelper();
 
-        #region === 创造SqlParameter的实例 ===
+        #region 创造SqlParameter的实例
         /// <summary>
         /// 创造输入SqlParameter的实例
         /// </summary>
-        public SqlParameter AddInSqlParameter(string paraName, DbType dbType, int size, object value)
+        protected static SqlParameter AddInParameter(string paraName, SqlDbType SqlDbType, int size, object value)
         {
-            return AddSqlParameter(paraName, dbType, size, value, ParameterDirection.Input);
+            return AddSqlParameter(paraName, SqlDbType, size, value, ParameterDirection.Input);
         }
 
         /// <summary>
         /// 创造输入SqlParameter的实例
         /// </summary>
-        public SqlParameter AddInSqlParameter(string paraName, DbType dbType, object value)
+        protected static SqlParameter AddInParameter(string paraName, SqlDbType SqlDbType, object value)
         {
-            return AddSqlParameter(paraName, dbType, 0, value, ParameterDirection.Input);
+            return AddSqlParameter(paraName, SqlDbType, 0, value, ParameterDirection.Input);
         }
 
         /// <summary>
         /// 创造输出SqlParameter的实例
         /// </summary>        
-        public SqlParameter AddOutSqlParameter(string paraName, DbType dbType, int size)
+        protected static SqlParameter AddOutParameter(string paraName, SqlDbType SqlDbType, int size)
         {
-            return AddSqlParameter(paraName, dbType, size, null, ParameterDirection.Output);
+            return AddSqlParameter(paraName, SqlDbType, size, null, ParameterDirection.Output);
         }
 
         /// <summary>
         /// 创造输出SqlParameter的实例
         /// </summary>        
-        public SqlParameter AddOutSqlParameter(string paraName, DbType dbType)
+        protected static SqlParameter AddOutParameter(string paraName, SqlDbType SqlDbType)
         {
-            return AddSqlParameter(paraName, dbType, 0, null, ParameterDirection.Output);
+            return AddSqlParameter(paraName, SqlDbType, 0, null, ParameterDirection.Output);
         }
 
         /// <summary>
         /// 创造返回SqlParameter的实例
         /// </summary>        
-        public SqlParameter AddReturnSqlParameter(string paraName, DbType dbType, int size)
+        protected static SqlParameter AddReturnParameter(string paraName, SqlDbType SqlDbType, int size)
         {
-            return AddSqlParameter(paraName, dbType, size, null, ParameterDirection.ReturnValue);
+            return AddSqlParameter(paraName, SqlDbType, size, null, ParameterDirection.ReturnValue);
         }
 
         /// <summary>
         /// 创造返回SqlParameter的实例
         /// </summary>        
-        public SqlParameter AddReturnSqlParameter(string paraName, DbType dbType)
+        protected static SqlParameter AddReturnParameter(string paraName, SqlDbType SqlDbType)
         {
-            return AddSqlParameter(paraName, dbType, 0, null, ParameterDirection.ReturnValue);
+            return AddSqlParameter(paraName, SqlDbType, 0, null, ParameterDirection.ReturnValue);
         }
 
         /// <summary>
         /// 创造SqlParameter的实例
         /// </summary>
-        public SqlParameter AddSqlParameter(string paraName, DbType dbType, int size, object value, ParameterDirection direction)
+        private static SqlParameter AddSqlParameter(string paraName, SqlDbType SqlDbType, int size, object value, ParameterDirection direction)
         {
-            SqlParameter para;
-            switch (_databaseType)
-            {
-                case DatabaseTypes.MySql:
-                    para = new MySqlParameter();
-                    break;
-                case DatabaseTypes.Oracle:
-                    para = new OracleParameter();
-                    break;
-                case DatabaseTypes.OleDb:
-                    para = new OleSqlParameter();
-                    break;
-                case DatabaseTypes.Sql:
-                default:
-                    para = new SqlParameter();
-                    break;
-            }
-            para.ParameterName = paraName;
+            SqlParameter param = new SqlParameter();
+
+            param.ParameterName = paraName;
 
             if (size != 0)
-                para.Size = size;
+                param.Size = size;
 
-            para.DbType = dbType;
+            param.SqlDbType = SqlDbType;
 
             if (value != null)
-                para.Value = value;
+                param.Value = value;
 
-            para.Direction = direction;
+            param.Direction = direction;
 
-            return para;
+            return param;
         }
         #endregion
+
+        /// <summary>
+        /// 取得分页数据的第一个索引
+        /// </summary>
+        /// <param name="pageSize">页大小</param>
+        /// <param name="pageIndex">页索引</param>
+        /// <returns>分页数据的第一个索引</returns>
+        protected static long GetFirstIndex(int pageSize, int pageIndex)
+        {
+            return pageSize * (pageIndex - 1) + 1;
+        }
+
+        /// <summary>
+        /// 取得分页数据的最后一个索引
+        /// </summary>
+        /// <param name="pageSize">页大小</param>
+        /// <param name="pageIndex">页索引</param>
+        /// <returns>分页数据的最后一个索引</returns>
+        protected static long GetLastIndex(int pageSize, int pageIndex)
+        {
+            return pageSize * pageIndex;
+        }
     }
 }

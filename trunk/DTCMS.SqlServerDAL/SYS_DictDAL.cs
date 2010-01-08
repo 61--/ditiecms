@@ -1,43 +1,44 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
+// 创建描述: DTCMS V1.0 创建于 2010-1-9 0:23:01
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
 //------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
 using System.Data;
-using System.Data.Common;
+using System.Data.SqlClient;
 using System.Text;
+using System.Collections.Generic;
 using DTCMS.Entity;
 using DTCMS.IDAL;
 
 namespace DTCMS.SqlServerDAL
 {
 	/// <summary>
-	/// 数据访问类 SYS_Dict
+	/// 数据访问类 Sys_Dict
 	/// </summary>
-	public class SYS_DictDAL : BaseDAL, IDAL_SYS_Dict
+	public class Sys_DictDAL : BaseDAL, IDAL_Sys_Dict
 	{
-		public SYS_DictDAL()
+		public Sys_DictDAL()
 		{ }
+
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public int Add(SYS_Dict model)
+		public int Add(Sys_Dict model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("INSERT INTO SYS_Dict(");
-            strSql.Append("Type,Title,Url,Email,Hits)");
+			strSql.Append("INSERT INTO Sys_Dict(");
+            strSql.Append("Type,Title,Url,Email)");
 			strSql.Append(" VALUES (");
-            strSql.Append("@Type,@Title,@Url,@Email,@Hits)");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@Type", DbType.String, model.Type),
-				dbHelper.CreateInDbParameter("@Title", DbType.String, model.Title),
-				dbHelper.CreateInDbParameter("@Url", DbType.AnsiString, model.Url),
-				dbHelper.CreateInDbParameter("@Email", DbType.AnsiString, model.Email),
-				dbHelper.CreateInDbParameter("@Hits", DbType.Int32, model.Hits)};
+            strSql.Append("@Type,@Title,@Url,@Email)");
+			SqlParameter[] cmdParms = {
+				AddInParameter("@Type", SqlDbType.BigInt, model.Type),
+				AddInParameter("@Title", SqlDbType.SmallInt, model.Title),
+				AddInParameter("@Url", SqlDbType.BigInt, model.Url),
+				AddInParameter("@Email", SqlDbType.BigInt, model.Email)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -45,23 +46,23 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public int Update(SYS_Dict model)
+		public int Update(Sys_Dict model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("UPDATE SYS_Dict SET ");
+			strSql.Append("UPDATE Sys_Dict SET ");
 			strSql.Append("Type=@Type,");
 			strSql.Append("Title=@Title,");
 			strSql.Append("Url=@Url,");
 			strSql.Append("Email=@Email,");
-			strSql.Append("Hits=@Hits");
+			strSql.Append("Click=@Click");
 			strSql.Append(" WHERE ID=@ID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@Type", DbType.String, model.Type),
-				dbHelper.CreateInDbParameter("@Title", DbType.String, model.Title),
-				dbHelper.CreateInDbParameter("@Url", DbType.AnsiString, model.Url),
-				dbHelper.CreateInDbParameter("@Email", DbType.AnsiString, model.Email),
-				dbHelper.CreateInDbParameter("@Hits", DbType.Int32, model.Hits),
-				dbHelper.CreateInDbParameter("@ID", DbType.Int32, model.ID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@Type", SqlDbType.BigInt, model.Type),
+				AddInParameter("@Title", SqlDbType.SmallInt, model.Title),
+				AddInParameter("@Url", SqlDbType.BigInt, model.Url),
+				AddInParameter("@Email", SqlDbType.BigInt, model.Email),
+				AddInParameter("@Click", SqlDbType.NText, model.Click),
+				AddInParameter("@ID", SqlDbType.NText, model.ID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -72,10 +73,10 @@ namespace DTCMS.SqlServerDAL
 		public int Delete(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("DELETE FROM SYS_Dict ");
+			strSql.Append("DELETE FROM Sys_Dict ");
 			strSql.Append(" WHERE ID=@ID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@ID", DbType.Int32, ID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@ID", SqlDbType.NText, ID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -86,10 +87,10 @@ namespace DTCMS.SqlServerDAL
 		public bool Exists(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT COUNT(1) FROM SYS_Dict");
+			strSql.Append("SELECT COUNT(1) FROM Sys_Dict");
 			strSql.Append(" WHERE ID=@ID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@ID", DbType.Int32, ID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@ID", SqlDbType.NText, ID)};
 
 			object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), cmdParms);
 			return dbHelper.GetInt(obj) > 0;
@@ -98,15 +99,15 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public SYS_Dict GetModel(int ID)
+		public Sys_Dict GetModel(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,Type,Title,Url,Email,Hits FROM SYS_Dict");
+			strSql.Append("SELECT ID,Type,Title,Url,Email,Click FROM Sys_Dict");
 			strSql.Append(" WHERE ID=@ID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@ID", DbType.Int32, ID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@ID", SqlDbType.NText, ID)};
 
-			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
+			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
 			{
 				if (dr.Read())
 				{
@@ -119,13 +120,13 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 获取泛型数据列表
 		/// </summary>
-		public List<SYS_Dict> GetList(out long count)
+		public List<Sys_Dict> GetList(out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,Type,Title,Url,Email,Hits FROM SYS_Dict");
-			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+			strSql.Append("SELECT ID,Type,Title,Url,Email,Click FROM Sys_Dict");
+			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
-				List<SYS_Dict> lst = GetList(dr, out count);
+				List<Sys_Dict> lst = GetList(dr, out count);
 				return lst;
 			}
 		}
@@ -133,40 +134,40 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 分页获取泛型数据列表
 		/// </summary>
-		public List<SYS_Dict> GetPageList(int pageSize, int pageIndex, out long count)
+		public List<Sys_Dict> GetPageList(int pageSize, int pageIndex, out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,Type,Title,Url,Email,Hits FROM SYS_Dict");
-			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+			strSql.Append("SELECT ID,Type,Title,Url,Email,Click FROM Sys_Dict");
+			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
-				List<SYS_Dict> lst = GetPageList(dr, pageSize, pageIndex, out count);
+				List<Sys_Dict> lst = GetPageList(dr, pageSize, pageIndex, out count);
 				return lst;
 			}
 		}
 
-		#region -------- 私有方法，通常情况下无需修改 --------
+		#region 私有方法，通常情况下无需修改
 		/// <summary>
 		/// 由一行数据得到一个实体
 		/// </summary>
-		private SYS_Dict GetModel(DbDataReader dr)
+		private Sys_Dict GetModel(SqlDataReader dr)
 		{
-			SYS_Dict model = new SYS_Dict();
+			Sys_Dict model = new Sys_Dict();
 			model.ID = dbHelper.GetInt(dr["ID"]);
 			model.Type = dbHelper.GetString(dr["Type"]);
 			model.Title = dbHelper.GetString(dr["Title"]);
 			model.Url = dbHelper.GetString(dr["Url"]);
 			model.Email = dbHelper.GetString(dr["Email"]);
-			model.Hits = dbHelper.GetInt(dr["Hits"]);
+			model.Click = dbHelper.GetInt(dr["Click"]);
 			return model;
 		}
 
 		/// <summary>
-		/// 由DbDataReader得到泛型数据列表
+		/// 由SqlDataReader得到泛型数据列表
 		/// </summary>
-		private List<SYS_Dict> GetList(DbDataReader dr, out long count)
+		private List<Sys_Dict> GetList(SqlDataReader dr, out long count)
 		{
 			count = 0;
-			List<SYS_Dict> lst = new List<SYS_Dict>();
+			List<Sys_Dict> lst = new List<Sys_Dict>();
 			while (dr.Read())
 			{
 				count++;
@@ -176,16 +177,16 @@ namespace DTCMS.SqlServerDAL
 		}
 
 		/// <summary>
-		/// 由DbDataReader得到分页泛型数据列表
+		/// 由SqlDataReader得到分页泛型数据列表
 		/// </summary>
-		private List<SYS_Dict> GetPageList(DbDataReader dr, int pageSize, int pageIndex, out long count)
+		private List<Sys_Dict> GetPageList(SqlDataReader dr, int pageSize, int pageIndex, out long count)
 		{
 			long first = GetFirstIndex(pageSize, pageIndex);
 			long last = GetLastIndex(pageSize, pageIndex);
 
 			count = 0;
 
-			List<SYS_Dict> lst = new List<SYS_Dict>();
+			List<Sys_Dict> lst = new List<Sys_Dict>();
 			while (dr.Read())
 			{
 				count++;
