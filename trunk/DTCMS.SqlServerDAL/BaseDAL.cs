@@ -1,85 +1,108 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: V5.0.0.3 创建于 2010-1-9 0:17:56
-//
+// 创建描述: V1.0 创建于 2010-1-9 0:17:56
 // 功能描述: 
-//
 // 修改标识: 
 // 修改描述: 
 //------------------------------------------------------------------------------
-
+using System;
 using System.Configuration;
 using System.Web;
+using System.Data;
+using System.Data.SqlClient;
 using DTCMS.DBUtility;
 
 namespace DTCMS.SqlServerDAL
 {
-    public class DALHelper
+    public class BaseDAL
     {
-        protected static DBHelper dbHelper = GetHelper("DB");
+        protected static SqlHelper dbHelper = new SqlHelper();
+
+        #region === 创造SqlParameter的实例 ===
+        /// <summary>
+        /// 创造输入SqlParameter的实例
+        /// </summary>
+        public SqlParameter AddInSqlParameter(string paraName, DbType dbType, int size, object value)
+        {
+            return AddSqlParameter(paraName, dbType, size, value, ParameterDirection.Input);
+        }
 
         /// <summary>
-        /// 从Web.config从读取数据库的连接以及数据库类型
+        /// 创造输入SqlParameter的实例
         /// </summary>
-        private static DBHelper GetHelper(string connectionStringName)
+        public SqlParameter AddInSqlParameter(string paraName, DbType dbType, object value)
         {
-            DBHelper dbHelper = new DBHelper();
+            return AddSqlParameter(paraName, dbType, 0, value, ParameterDirection.Input);
+        }
 
-            // 从Web.config中读取数据库类型
-            string providerName = System.Configuration.ConfigurationManager.ConnectionStrings[connectionStringName].ProviderName;
-            switch (providerName)
+        /// <summary>
+        /// 创造输出SqlParameter的实例
+        /// </summary>        
+        public SqlParameter AddOutSqlParameter(string paraName, DbType dbType, int size)
+        {
+            return AddSqlParameter(paraName, dbType, size, null, ParameterDirection.Output);
+        }
+
+        /// <summary>
+        /// 创造输出SqlParameter的实例
+        /// </summary>        
+        public SqlParameter AddOutSqlParameter(string paraName, DbType dbType)
+        {
+            return AddSqlParameter(paraName, dbType, 0, null, ParameterDirection.Output);
+        }
+
+        /// <summary>
+        /// 创造返回SqlParameter的实例
+        /// </summary>        
+        public SqlParameter AddReturnSqlParameter(string paraName, DbType dbType, int size)
+        {
+            return AddSqlParameter(paraName, dbType, size, null, ParameterDirection.ReturnValue);
+        }
+
+        /// <summary>
+        /// 创造返回SqlParameter的实例
+        /// </summary>        
+        public SqlParameter AddReturnSqlParameter(string paraName, DbType dbType)
+        {
+            return AddSqlParameter(paraName, dbType, 0, null, ParameterDirection.ReturnValue);
+        }
+
+        /// <summary>
+        /// 创造SqlParameter的实例
+        /// </summary>
+        public SqlParameter AddSqlParameter(string paraName, DbType dbType, int size, object value, ParameterDirection direction)
+        {
+            SqlParameter para;
+            switch (_databaseType)
             {
-                case "System.Data.OracleClient":
-                    dbHelper.DatabaseType = DBHelper.DatabaseTypes.Oracle;
+                case DatabaseTypes.MySql:
+                    para = new MySqlParameter();
                     break;
-                case "MySql.Data.MySqlClient":
-                    dbHelper.DatabaseType = DBHelper.DatabaseTypes.MySql;
+                case DatabaseTypes.Oracle:
+                    para = new OracleParameter();
                     break;
-                case "System.Data.OleDb":
-                    dbHelper.DatabaseType = DBHelper.DatabaseTypes.OleDb;
+                case DatabaseTypes.OleDb:
+                    para = new OleSqlParameter();
                     break;
-                case "System.Data.SqlClient":
+                case DatabaseTypes.Sql:
                 default:
-                    dbHelper.DatabaseType = DBHelper.DatabaseTypes.Sql;
+                    para = new SqlParameter();
                     break;
             }
+            para.ParameterName = paraName;
 
-            // 从Web.config中读取数据库连接
-            switch (dbHelper.DatabaseType)
-            {
-                case DBHelper.DatabaseTypes.OleDb:
-                    dbHelper.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Persist Security Info=true;Data Source="
-                        + HttpContext.Current.Request.PhysicalApplicationPath
-                        + System.Configuration.ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
-                    break;
-                default:
-                    dbHelper.ConnectionString = ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
-                    break;
-            }
+            if (size != 0)
+                para.Size = size;
 
-            return dbHelper;
+            para.DbType = dbType;
+
+            if (value != null)
+                para.Value = value;
+
+            para.Direction = direction;
+
+            return para;
         }
-
-        /// <summary>
-        /// 取得分页数据的第一个索引
-        /// </summary>
-        /// <param name="pageSize">页大小</param>
-        /// <param name="pageIndex">页索引</param>
-        /// <returns>分页数据的第一个索引</returns>
-        protected static long GetFirstIndex(int pageSize, int pageIndex)
-        {
-            return pageSize * (pageIndex - 1) + 1;
-        }
-
-        /// <summary>
-        /// 取得分页数据的最后一个索引
-        /// </summary>
-        /// <param name="pageSize">页大小</param>
-        /// <param name="pageIndex">页索引</param>
-        /// <returns>分页数据的最后一个索引</returns>
-        protected static long GetLastIndex(int pageSize, int pageIndex)
-        {
-            return pageSize * pageIndex;
-        }
+        #endregion
     }
 }
