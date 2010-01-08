@@ -1,15 +1,16 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
+// 创建描述: DTCMS V1.0 创建于 2010-1-9 0:23:01
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
 //------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
 using System.Data;
-using System.Data.Common;
+using System.Data.SqlClient;
 using System.Text;
+using System.Collections.Generic;
 using DTCMS.Entity;
 using DTCMS.IDAL;
 
@@ -23,84 +24,44 @@ namespace DTCMS.SqlServerDAL
 		public Arc_ArticleDAL()
 		{ }
 
-        /// <summary>
-        /// 判断某个字段值是否存在
-        /// </summary>
-        /// <param name="CID">栏目编号</param>
-        /// <param name="filedName">字段名称</param>
-        /// <param name="filedValue">字段值</param>
-        /// <returns>成功返回true，失败返回false</returns>
-        public bool Exists(int CID, string filedName, string filedValue)
-        {
-            string strSql = "";
-            if (filedName != "")
-            {
-                strSql += "select count(CID) from DT_Arc_Class where CID<>{0} ";
-                strSql += " and {1}='{2}'";
-                return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, string.Format(strSql, CID, filedName, filedValue))) > 0;
-            }
-            else
-            {
-                strSql += "select count(CID) from DT_Arc_Class where CID={0} ";
-                return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, string.Format(strSql, CID))) > 0;
-            }
-        }
-
-        /// <summary>
-        /// 添加文章
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
+		/// <summary>
+		/// 增加一条数据
+		/// </summary>
 		public int Add(Arc_Article model)
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("INSERT INTO Arc_Article(");
-            strSql.Append("ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,ArticleContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID)");
+            strSql.Append("ClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,AContent,IsComment,FilePath,SimilarArticle,AddDate,PubDate)");
 			strSql.Append(" VALUES (");
-            strSql.Append("@ClassID,@ViceClassID,@Title,@ShortTitle,@TitleStyle,@TitleFlag,@Tags,@ImgUrl,@Author,@Editor,@PubLisher,@Source,@Templet,@Keywords,@Description,@ArticleContent,@Click,@Good,@Bad,@Readaccess,@Money,@Attribute,@IsComment,@IsChecked,@IsRecycle,@IsRedirect,@IsHtml,@IsPaging,@FilePath,@SimilarArticle,@AddDate,@PubDate,@OrderID)");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@ClassID", DbType.Int32, model.ClassID),
-				dbHelper.CreateInDbParameter("@ViceClassID", DbType.Int32, model.ViceClassID),
-				dbHelper.CreateInDbParameter("@Title", DbType.String, model.Title),
-				dbHelper.CreateInDbParameter("@ShortTitle", DbType.String, model.ShortTitle),
-				dbHelper.CreateInDbParameter("@TitleStyle", DbType.AnsiString, model.TitleStyle),
-				dbHelper.CreateInDbParameter("@TitleFlag", DbType.Byte, model.TitleFlag),
-				dbHelper.CreateInDbParameter("@Tags", DbType.String, model.Tags),
-				dbHelper.CreateInDbParameter("@ImgUrl", DbType.AnsiString, model.ImgUrl),
-				dbHelper.CreateInDbParameter("@Author", DbType.String, model.Author),
-				dbHelper.CreateInDbParameter("@Editor", DbType.String, model.Editor),
-				dbHelper.CreateInDbParameter("@PubLisher", DbType.String, model.PubLisher),
-				dbHelper.CreateInDbParameter("@Source", DbType.String, model.Source),
-				dbHelper.CreateInDbParameter("@Templet", DbType.AnsiString, model.Templet),
-				dbHelper.CreateInDbParameter("@Keywords", DbType.String, model.Keywords),
-				dbHelper.CreateInDbParameter("@Description", DbType.String, model.Description),
-				dbHelper.CreateInDbParameter("@ArticleContent", DbType.String, model.ArticleContent),
-				dbHelper.CreateInDbParameter("@Click", DbType.Int32, model.Click),
-				dbHelper.CreateInDbParameter("@Good", DbType.Int32, model.Good),
-				dbHelper.CreateInDbParameter("@Bad", DbType.Int32, model.Bad),
-				dbHelper.CreateInDbParameter("@Readaccess", DbType.Int16, model.Readaccess),
-				dbHelper.CreateInDbParameter("@Money", DbType.Int16, model.Money),
-				dbHelper.CreateInDbParameter("@Attribute", DbType.Int16, model.Attribute),
-				dbHelper.CreateInDbParameter("@IsComment", DbType.Byte, model.IsComment),
-				dbHelper.CreateInDbParameter("@IsChecked", DbType.Byte, model.IsChecked),
-				dbHelper.CreateInDbParameter("@IsRecycle", DbType.Byte, model.IsRecycle),
-				dbHelper.CreateInDbParameter("@IsRedirect", DbType.Byte, model.IsRedirect),
-				dbHelper.CreateInDbParameter("@IsHtml", DbType.Byte, model.IsHtml),
-				dbHelper.CreateInDbParameter("@IsPaging", DbType.Byte, model.IsPaging),
-				dbHelper.CreateInDbParameter("@FilePath", DbType.AnsiString, model.FilePath),
-				dbHelper.CreateInDbParameter("@SimilarArticle", DbType.AnsiString, model.SimilarArticle),
-				dbHelper.CreateInDbParameter("@AddDate", DbType.String, model.AddDate),
-				dbHelper.CreateInDbParameter("@PubDate", DbType.String, model.PubDate),
-				dbHelper.CreateInDbParameter("@OrderID", DbType.Int32, model.OrderID)};
+            strSql.Append("@ClassID,@Title,@ShortTitle,@TitleStyle,@TitleFlag,@Tags,@ImgUrl,@Author,@Editor,@PubLisher,@Source,@Templet,@Keywords,@Description,@AContent,@IsComment,@FilePath,@SimilarArticle,@AddDate,@PubDate)");
+			SqlParameter[] cmdParms = {
+				AddInParameter("@ClassID", SqlDbType.NText, model.ClassID),
+				AddInParameter("@Title", SqlDbType.SmallInt, model.Title),
+				AddInParameter("@ShortTitle", SqlDbType.SmallInt, model.ShortTitle),
+				AddInParameter("@TitleStyle", SqlDbType.BigInt, model.TitleStyle),
+				AddInParameter("@TitleFlag", SqlDbType.Bit, model.TitleFlag),
+				AddInParameter("@Tags", SqlDbType.SmallInt, model.Tags),
+				AddInParameter("@ImgUrl", SqlDbType.BigInt, model.ImgUrl),
+				AddInParameter("@Author", SqlDbType.SmallInt, model.Author),
+				AddInParameter("@Editor", SqlDbType.SmallInt, model.Editor),
+				AddInParameter("@PubLisher", SqlDbType.SmallInt, model.PubLisher),
+				AddInParameter("@Source", SqlDbType.SmallInt, model.Source),
+				AddInParameter("@Templet", SqlDbType.BigInt, model.Templet),
+				AddInParameter("@Keywords", SqlDbType.SmallInt, model.Keywords),
+				AddInParameter("@Description", SqlDbType.SmallInt, model.Description),
+				AddInParameter("@AContent", SqlDbType.SmallInt, model.AContent),
+				AddInParameter("@IsComment", SqlDbType.Bit, model.IsComment),
+				AddInParameter("@FilePath", SqlDbType.BigInt, model.FilePath),
+				AddInParameter("@SimilarArticle", SqlDbType.BigInt, model.SimilarArticle),
+				AddInParameter("@AddDate", SqlDbType.Float, model.AddDate),
+				AddInParameter("@PubDate", SqlDbType.Float, model.PubDate)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
 
-        /// <summary>
-        /// 更新文章
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
+		/// <summary>
+		/// 更新一条数据
+		/// </summary>
 		public int Update(Arc_Article model)
 		{
 			StringBuilder strSql = new StringBuilder();
@@ -120,7 +81,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("Templet=@Templet,");
 			strSql.Append("Keywords=@Keywords,");
 			strSql.Append("Description=@Description,");
-			strSql.Append("ArticleContent=@ArticleContent,");
+			strSql.Append("AContent=@AContent,");
 			strSql.Append("Click=@Click,");
 			strSql.Append("Good=@Good,");
 			strSql.Append("Bad=@Bad,");
@@ -139,71 +100,58 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("PubDate=@PubDate,");
 			strSql.Append("OrderID=@OrderID");
 			strSql.Append(" WHERE ID=@ID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@ClassID", DbType.Int32, model.ClassID),
-				dbHelper.CreateInDbParameter("@ViceClassID", DbType.Int32, model.ViceClassID),
-				dbHelper.CreateInDbParameter("@Title", DbType.String, model.Title),
-				dbHelper.CreateInDbParameter("@ShortTitle", DbType.String, model.ShortTitle),
-				dbHelper.CreateInDbParameter("@TitleStyle", DbType.AnsiString, model.TitleStyle),
-				dbHelper.CreateInDbParameter("@TitleFlag", DbType.Byte, model.TitleFlag),
-				dbHelper.CreateInDbParameter("@Tags", DbType.String, model.Tags),
-				dbHelper.CreateInDbParameter("@ImgUrl", DbType.AnsiString, model.ImgUrl),
-				dbHelper.CreateInDbParameter("@Author", DbType.String, model.Author),
-				dbHelper.CreateInDbParameter("@Editor", DbType.String, model.Editor),
-				dbHelper.CreateInDbParameter("@PubLisher", DbType.String, model.PubLisher),
-				dbHelper.CreateInDbParameter("@Source", DbType.String, model.Source),
-				dbHelper.CreateInDbParameter("@Templet", DbType.AnsiString, model.Templet),
-				dbHelper.CreateInDbParameter("@Keywords", DbType.String, model.Keywords),
-				dbHelper.CreateInDbParameter("@Description", DbType.String, model.Description),
-				dbHelper.CreateInDbParameter("@ArticleContent", DbType.String, model.ArticleContent),
-				dbHelper.CreateInDbParameter("@Click", DbType.Int32, model.Click),
-				dbHelper.CreateInDbParameter("@Good", DbType.Int32, model.Good),
-				dbHelper.CreateInDbParameter("@Bad", DbType.Int32, model.Bad),
-				dbHelper.CreateInDbParameter("@Readaccess", DbType.Int16, model.Readaccess),
-				dbHelper.CreateInDbParameter("@Money", DbType.Int16, model.Money),
-				dbHelper.CreateInDbParameter("@Attribute", DbType.Int16, model.Attribute),
-				dbHelper.CreateInDbParameter("@IsComment", DbType.Byte, model.IsComment),
-				dbHelper.CreateInDbParameter("@IsChecked", DbType.Byte, model.IsChecked),
-				dbHelper.CreateInDbParameter("@IsRecycle", DbType.Byte, model.IsRecycle),
-				dbHelper.CreateInDbParameter("@IsRedirect", DbType.Byte, model.IsRedirect),
-				dbHelper.CreateInDbParameter("@IsHtml", DbType.Byte, model.IsHtml),
-				dbHelper.CreateInDbParameter("@IsPaging", DbType.Byte, model.IsPaging),
-				dbHelper.CreateInDbParameter("@FilePath", DbType.AnsiString, model.FilePath),
-				dbHelper.CreateInDbParameter("@SimilarArticle", DbType.AnsiString, model.SimilarArticle),
-				dbHelper.CreateInDbParameter("@AddDate", DbType.String, model.AddDate),
-				dbHelper.CreateInDbParameter("@PubDate", DbType.String, model.PubDate),
-				dbHelper.CreateInDbParameter("@OrderID", DbType.Int32, model.OrderID),
-				dbHelper.CreateInDbParameter("@ID", DbType.Int32, model.ID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@ClassID", SqlDbType.NText, model.ClassID),
+				AddInParameter("@ViceClassID", SqlDbType.NText, model.ViceClassID),
+				AddInParameter("@Title", SqlDbType.SmallInt, model.Title),
+				AddInParameter("@ShortTitle", SqlDbType.SmallInt, model.ShortTitle),
+				AddInParameter("@TitleStyle", SqlDbType.BigInt, model.TitleStyle),
+				AddInParameter("@TitleFlag", SqlDbType.Bit, model.TitleFlag),
+				AddInParameter("@Tags", SqlDbType.SmallInt, model.Tags),
+				AddInParameter("@ImgUrl", SqlDbType.BigInt, model.ImgUrl),
+				AddInParameter("@Author", SqlDbType.SmallInt, model.Author),
+				AddInParameter("@Editor", SqlDbType.SmallInt, model.Editor),
+				AddInParameter("@PubLisher", SqlDbType.SmallInt, model.PubLisher),
+				AddInParameter("@Source", SqlDbType.SmallInt, model.Source),
+				AddInParameter("@Templet", SqlDbType.BigInt, model.Templet),
+				AddInParameter("@Keywords", SqlDbType.SmallInt, model.Keywords),
+				AddInParameter("@Description", SqlDbType.SmallInt, model.Description),
+				AddInParameter("@AContent", SqlDbType.SmallInt, model.AContent),
+				AddInParameter("@Click", SqlDbType.NText, model.Click),
+				AddInParameter("@Good", SqlDbType.NText, model.Good),
+				AddInParameter("@Bad", SqlDbType.NText, model.Bad),
+				AddInParameter("@Readaccess", SqlDbType.NChar, model.Readaccess),
+				AddInParameter("@Money", SqlDbType.NChar, model.Money),
+				AddInParameter("@Attribute", SqlDbType.NChar, model.Attribute),
+				AddInParameter("@IsComment", SqlDbType.Bit, model.IsComment),
+				AddInParameter("@IsChecked", SqlDbType.Bit, model.IsChecked),
+				AddInParameter("@IsRecycle", SqlDbType.Bit, model.IsRecycle),
+				AddInParameter("@IsRedirect", SqlDbType.Bit, model.IsRedirect),
+				AddInParameter("@IsHtml", SqlDbType.Bit, model.IsHtml),
+				AddInParameter("@IsPaging", SqlDbType.Bit, model.IsPaging),
+				AddInParameter("@FilePath", SqlDbType.BigInt, model.FilePath),
+				AddInParameter("@SimilarArticle", SqlDbType.BigInt, model.SimilarArticle),
+				AddInParameter("@AddDate", SqlDbType.Float, model.AddDate),
+				AddInParameter("@PubDate", SqlDbType.Float, model.PubDate),
+				AddInParameter("@OrderID", SqlDbType.NText, model.OrderID),
+				AddInParameter("@ID", SqlDbType.NText, model.ID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
 
 		/// <summary>
-		/// 删除一篇文章
+		/// 删除一条数据
 		/// </summary>
-		/// <param name="ID"></param>
-		/// <returns></returns>
 		public int Delete(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("DELETE FROM Arc_Article ");
 			strSql.Append(" WHERE ID=@ID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@ID", DbType.Int32, ID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@ID", SqlDbType.NText, ID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
-
-        /// <summary>
-        /// 批量删除文章
-        /// </summary>
-        /// <param name="ID">文章ID间用,号隔开</param>
-        /// <returns></returns>
-        public int Delete(string ID)
-        {
-            string strSql = string.Format(" delete DT_Arc_Article where ID in({0}) ", ID);
-            return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString());
-        }
 
 		/// <summary>
 		/// 是否存在该记录
@@ -213,8 +161,8 @@ namespace DTCMS.SqlServerDAL
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("SELECT COUNT(1) FROM Arc_Article");
 			strSql.Append(" WHERE ID=@ID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@ID", DbType.Int32, ID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@ID", SqlDbType.NText, ID)};
 
 			object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), cmdParms);
 			return dbHelper.GetInt(obj) > 0;
@@ -226,12 +174,12 @@ namespace DTCMS.SqlServerDAL
 		public Arc_Article GetModel(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,ArticleContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM Arc_Article");
+			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,AContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM Arc_Article");
 			strSql.Append(" WHERE ID=@ID");
-			DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@ID", DbType.Int32, ID)};
+			SqlParameter[] cmdParms = {
+				AddInParameter("@ID", SqlDbType.NText, ID)};
 
-			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
+			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
 			{
 				if (dr.Read())
 				{
@@ -241,43 +189,14 @@ namespace DTCMS.SqlServerDAL
 			}
 		}
 
-        /// <summary>
-        /// 根据栏目id 判断此栏目是否存在文章
-        /// </summary>
-        /// <param name="CID">栏目编号</param>
-        /// <returns>true存在,false不存在</returns>
-        public bool ExistAtricleToClass(int CID)
-        {
-            string strSql = "select count(ID) from DT_Arc_Article where ClassID=@ClassID";
-
-            DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@ClassID", DbType.Int32, CID)};
-
-            return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, strSql, cmdParms)) > 0;
-        }
-
-        /// <summary>
-        /// 判断文章是否已经存在
-        /// </summary>
-        /// <param name="Title"></param>
-        /// <returns>添加ArticleID：-1</returns>
-        public bool ExistsArticleName(int ArticleID, string Title)
-        {
-            string strSql = "select count(ID) from DT_Arc_Article where ClassID=@ClassID";
-            DbParameter[] cmdParms = {
-				dbHelper.CreateInDbParameter("@Title", DbType.String, Title),
-                dbHelper.CreateInDbParameter("@Value", DbType.Int32, ArticleID)};
-            return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, strSql, cmdParms)) > 0;
-        }
-
 		/// <summary>
 		/// 获取泛型数据列表
 		/// </summary>
 		public List<Arc_Article> GetList(out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,ArticleContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM Arc_Article");
-			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,AContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM Arc_Article");
+			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Arc_Article> lst = GetList(dr, out count);
 				return lst;
@@ -290,19 +209,19 @@ namespace DTCMS.SqlServerDAL
 		public List<Arc_Article> GetPageList(int pageSize, int pageIndex, out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,ArticleContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM Arc_Article");
-			using (DbDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,AContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM Arc_Article");
+			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Arc_Article> lst = GetPageList(dr, pageSize, pageIndex, out count);
 				return lst;
 			}
 		}
 
-		#region -------- 私有方法，通常情况下无需修改 --------
+		#region 私有方法，通常情况下无需修改
 		/// <summary>
 		/// 由一行数据得到一个实体
 		/// </summary>
-		private Arc_Article GetModel(DbDataReader dr)
+		private Arc_Article GetModel(SqlDataReader dr)
 		{
 			Arc_Article model = new Arc_Article();
 			model.ID = dbHelper.GetInt(dr["ID"]);
@@ -321,7 +240,7 @@ namespace DTCMS.SqlServerDAL
 			model.Templet = dbHelper.GetString(dr["Templet"]);
 			model.Keywords = dbHelper.GetString(dr["Keywords"]);
 			model.Description = dbHelper.GetString(dr["Description"]);
-			model.ArticleContent = dbHelper.GetString(dr["ArticleContent"]);
+			model.AContent = dbHelper.GetString(dr["AContent"]);
 			model.Click = dbHelper.GetInt(dr["Click"]);
 			model.Good = dbHelper.GetInt(dr["Good"]);
 			model.Bad = dbHelper.GetInt(dr["Bad"]);
@@ -343,9 +262,9 @@ namespace DTCMS.SqlServerDAL
 		}
 
 		/// <summary>
-		/// 由DbDataReader得到泛型数据列表
+		/// 由SqlDataReader得到泛型数据列表
 		/// </summary>
-		private List<Arc_Article> GetList(DbDataReader dr, out long count)
+		private List<Arc_Article> GetList(SqlDataReader dr, out long count)
 		{
 			count = 0;
 			List<Arc_Article> lst = new List<Arc_Article>();
@@ -358,9 +277,9 @@ namespace DTCMS.SqlServerDAL
 		}
 
 		/// <summary>
-		/// 由DbDataReader得到分页泛型数据列表
+		/// 由SqlDataReader得到分页泛型数据列表
 		/// </summary>
-		private List<Arc_Article> GetPageList(DbDataReader dr, int pageSize, int pageIndex, out long count)
+		private List<Arc_Article> GetPageList(SqlDataReader dr, int pageSize, int pageIndex, out long count)
 		{
 			long first = GetFirstIndex(pageSize, pageIndex);
 			long last = GetLastIndex(pageSize, pageIndex);
