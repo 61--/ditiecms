@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
+// 创建描述: DTCMS V1.0 创建于 2010-1-9 0:23:01
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -43,25 +43,25 @@ namespace DTCMS.BLL
         /// <summary>
 		/// 删除一条数据
 		/// </summary>
-        public void Delete(int AttachMentID)
+        public void Delete(int AID)
         {
-            dal.Delete(AttachMentID);
+            dal.Delete(AID);
         }
 
         /// <summary>
 		/// 是否存在该记录
 		/// </summary>
-        public bool Exists(int AttachMentID)
+        public bool Exists(int AID)
         {
-            return dal.Exists(AttachMentID);
+            return dal.Exists(AID);
         }
 
         /// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-        public AttachMent GetModel(int AttachMentID)
+        public AttachMent GetModel(int AID)
         {
-            return dal.GetModel(AttachMentID);
+            return dal.GetModel(AID);
         }
 
         /// <summary>

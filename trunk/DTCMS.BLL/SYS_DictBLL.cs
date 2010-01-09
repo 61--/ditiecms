@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-8 11:52:52
+// 创建描述: DTCMS V1.0 创建于 2010-1-9 0:23:01
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -16,18 +16,18 @@ using DTCMS.DALFactory;
 namespace DTCMS.BLL
 {
 	/// <summary>
-	/// 业务逻辑类 SYS_Dict
+	/// 业务逻辑类 Sys_Dict
 	/// </summary>
-	public class SYS_DictBLL
+	public class Sys_DictBLL
 	{
-		private readonly IDAL_SYS_Dict dal = DataAccess.CreateFactoryDAL<IDAL_SYS_Dict>("SYS_DictDAL");
-		public SYS_DictBLL()
+		private readonly IDAL_Sys_Dict dal = DataAccess.CreateFactoryDAL<IDAL_Sys_Dict>("Sys_DictDAL");
+		public Sys_DictBLL()
 		{ }
 
         /// <summary>
 		/// 增加一条数据
 		/// </summary>
-        public void Add(SYS_Dict model)
+        public void Add(Sys_Dict model)
         {
             dal.Add(model);
         }
@@ -35,7 +35,7 @@ namespace DTCMS.BLL
         /// <summary>
 		/// 更新一条数据
 		/// </summary>
-        public void Update(SYS_Dict model)
+        public void Update(Sys_Dict model)
         {
             dal.Update(model);
         }
@@ -59,7 +59,7 @@ namespace DTCMS.BLL
         /// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-        public SYS_Dict GetModel(int ID)
+        public Sys_Dict GetModel(int ID)
         {
             return dal.GetModel(ID);
         }
@@ -67,7 +67,7 @@ namespace DTCMS.BLL
         /// <summary>
 		/// 获得泛型数据列表
 		/// </summary>
-        public List<SYS_Dict> GetList(out long count)
+        public List<Sys_Dict> GetList(out long count)
         {
             return dal.GetList(out count);
         }
@@ -75,7 +75,7 @@ namespace DTCMS.BLL
         /// <summary>
 		/// 分页获取泛型数据列表
 		/// </summary>
-        public List<SYS_Dict> GetPageList(int pageSize, int pageIndex, out long count)
+        public List<Sys_Dict> GetPageList(int pageSize, int pageIndex, out long count)
         {
             if (pageSize <= 0)
                 throw new Exception("每页数据条数必须大于0。");
