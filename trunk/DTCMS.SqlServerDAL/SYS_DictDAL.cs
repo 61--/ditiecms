@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-9 0:23:01
+// 创建描述: DTCMS V1.0 创建于 2010-1-9 13:04:38
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -31,14 +31,15 @@ namespace DTCMS.SqlServerDAL
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("INSERT INTO Sys_Dict(");
-            strSql.Append("Type,Title,Url,Email)");
+            strSql.Append("Type,Title,Url,Email,Click)");
 			strSql.Append(" VALUES (");
-            strSql.Append("@Type,@Title,@Url,@Email)");
+            strSql.Append("@Type,@Title,@Url,@Email,@Click)");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@Type", SqlDbType.BigInt, model.Type),
-				AddInParameter("@Title", SqlDbType.SmallInt, model.Title),
-				AddInParameter("@Url", SqlDbType.BigInt, model.Url),
-				AddInParameter("@Email", SqlDbType.BigInt, model.Email)};
+				AddInParameter("@Type", SqlDbType.VarChar, model.Type),
+				AddInParameter("@Title", SqlDbType.NVarChar, model.Title),
+				AddInParameter("@Url", SqlDbType.VarChar, model.Url),
+				AddInParameter("@Email", SqlDbType.VarChar, model.Email),
+				AddInParameter("@Click", SqlDbType.Int, model.Click)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -57,12 +58,12 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("Click=@Click");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@Type", SqlDbType.BigInt, model.Type),
-				AddInParameter("@Title", SqlDbType.SmallInt, model.Title),
-				AddInParameter("@Url", SqlDbType.BigInt, model.Url),
-				AddInParameter("@Email", SqlDbType.BigInt, model.Email),
-				AddInParameter("@Click", SqlDbType.NText, model.Click),
-				AddInParameter("@ID", SqlDbType.NText, model.ID)};
+				AddInParameter("@Type", SqlDbType.VarChar, model.Type),
+				AddInParameter("@Title", SqlDbType.NVarChar, model.Title),
+				AddInParameter("@Url", SqlDbType.VarChar, model.Url),
+				AddInParameter("@Email", SqlDbType.VarChar, model.Email),
+				AddInParameter("@Click", SqlDbType.Int, model.Click),
+				AddInParameter("@ID", SqlDbType.Int, model.ID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -76,7 +77,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("DELETE FROM Sys_Dict ");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ID", SqlDbType.NText, ID)};
+				AddInParameter("@ID", SqlDbType.Int, ID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -90,7 +91,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("SELECT COUNT(1) FROM Sys_Dict");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ID", SqlDbType.NText, ID)};
+				AddInParameter("@ID", SqlDbType.Int, ID)};
 
 			object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), cmdParms);
 			return dbHelper.GetInt(obj) > 0;
@@ -105,7 +106,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("SELECT ID,Type,Title,Url,Email,Click FROM Sys_Dict");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ID", SqlDbType.NText, ID)};
+				AddInParameter("@ID", SqlDbType.Int, ID)};
 
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
 			{
