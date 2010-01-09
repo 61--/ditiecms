@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-9 0:23:01
+// 创建描述: DTCMS V1.0 创建于 2010-1-9 13:04:38
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -35,12 +35,12 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append(" VALUES (");
             strSql.Append("@TemplateName,@TemplateDirectory,@IsEnable,@CreateDateTime,@TemplateImg,@Author)");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@TemplateName", SqlDbType.SmallInt, model.TemplateName),
-				AddInParameter("@TemplateDirectory", SqlDbType.BigInt, model.TemplateDirectory),
-				AddInParameter("@IsEnable", SqlDbType.Bit, model.IsEnable),
-				AddInParameter("@CreateDateTime", SqlDbType.Float, model.CreateDateTime),
-				AddInParameter("@TemplateImg", SqlDbType.BigInt, model.TemplateImg),
-				AddInParameter("@Author", SqlDbType.SmallInt, model.Author)};
+				AddInParameter("@TemplateName", SqlDbType.NVarChar, model.TemplateName),
+				AddInParameter("@TemplateDirectory", SqlDbType.VarChar, model.TemplateDirectory),
+				AddInParameter("@IsEnable", SqlDbType.TinyInt, model.IsEnable),
+				AddInParameter("@CreateDateTime", SqlDbType.DateTime, model.CreateDateTime),
+				AddInParameter("@TemplateImg", SqlDbType.VarChar, model.TemplateImg),
+				AddInParameter("@Author", SqlDbType.NVarChar, model.Author)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -60,13 +60,13 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("Author=@Author");
 			strSql.Append(" WHERE TemplateID=@TemplateID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@TemplateName", SqlDbType.SmallInt, model.TemplateName),
-				AddInParameter("@TemplateDirectory", SqlDbType.BigInt, model.TemplateDirectory),
-				AddInParameter("@IsEnable", SqlDbType.Bit, model.IsEnable),
-				AddInParameter("@CreateDateTime", SqlDbType.Float, model.CreateDateTime),
-				AddInParameter("@TemplateImg", SqlDbType.BigInt, model.TemplateImg),
-				AddInParameter("@Author", SqlDbType.SmallInt, model.Author),
-				AddInParameter("@TemplateID", SqlDbType.NText, model.TemplateID)};
+				AddInParameter("@TemplateName", SqlDbType.NVarChar, model.TemplateName),
+				AddInParameter("@TemplateDirectory", SqlDbType.VarChar, model.TemplateDirectory),
+				AddInParameter("@IsEnable", SqlDbType.TinyInt, model.IsEnable),
+				AddInParameter("@CreateDateTime", SqlDbType.DateTime, model.CreateDateTime),
+				AddInParameter("@TemplateImg", SqlDbType.VarChar, model.TemplateImg),
+				AddInParameter("@Author", SqlDbType.NVarChar, model.Author),
+				AddInParameter("@TemplateID", SqlDbType.Int, model.TemplateID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -80,7 +80,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("DELETE FROM Sys_Template ");
 			strSql.Append(" WHERE TemplateID=@TemplateID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@TemplateID", SqlDbType.NText, TemplateID)};
+				AddInParameter("@TemplateID", SqlDbType.Int, TemplateID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -94,7 +94,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("SELECT COUNT(1) FROM Sys_Template");
 			strSql.Append(" WHERE TemplateID=@TemplateID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@TemplateID", SqlDbType.NText, TemplateID)};
+				AddInParameter("@TemplateID", SqlDbType.Int, TemplateID)};
 
 			object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), cmdParms);
 			return dbHelper.GetInt(obj) > 0;
@@ -109,7 +109,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("SELECT TemplateID,TemplateName,TemplateDirectory,IsEnable,CreateDateTime,TemplateImg,Author FROM Sys_Template");
 			strSql.Append(" WHERE TemplateID=@TemplateID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@TemplateID", SqlDbType.NText, TemplateID)};
+				AddInParameter("@TemplateID", SqlDbType.Int, TemplateID)};
 
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
 			{

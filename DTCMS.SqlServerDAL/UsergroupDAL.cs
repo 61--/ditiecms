@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-9 0:23:01
+// 创建描述: DTCMS V1.0 创建于 2010-1-9 13:04:38
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -31,19 +31,33 @@ namespace DTCMS.SqlServerDAL
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("INSERT INTO Usergroup(");
-            strSql.Append("GroupName,Description,GroupAvatar,MaxPMNum,MaxSignSize,MaxAttachSize,MaxAttachTotalSize,AttachExtension,OrderID)");
+            strSql.Append("Type,IsSystem,GroupName,Description,CreditBegin,CreditEnd,stars,GroupAvatar,Readaccess,AllowPost,AllowComment,AllowDownload,AllowAvatar,AllowSpace,AllowTransfer,AllowViewInfo,AllowNickname,MaxPMNum,MaxSignSize,MaxAttachSize,MaxAttachTotalSize,AttachExtension,OrderID)");
 			strSql.Append(" VALUES (");
-            strSql.Append("@GroupName,@Description,@GroupAvatar,@MaxPMNum,@MaxSignSize,@MaxAttachSize,@MaxAttachTotalSize,@AttachExtension,@OrderID)");
+            strSql.Append("@Type,@IsSystem,@GroupName,@Description,@CreditBegin,@CreditEnd,@stars,@GroupAvatar,@Readaccess,@AllowPost,@AllowComment,@AllowDownload,@AllowAvatar,@AllowSpace,@AllowTransfer,@AllowViewInfo,@AllowNickname,@MaxPMNum,@MaxSignSize,@MaxAttachSize,@MaxAttachTotalSize,@AttachExtension,@OrderID)");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@GroupName", SqlDbType.SmallInt, model.GroupName),
-				AddInParameter("@Description", SqlDbType.SmallInt, model.Description),
-				AddInParameter("@GroupAvatar", SqlDbType.BigInt, model.GroupAvatar),
-				AddInParameter("@MaxPMNum", SqlDbType.NChar, model.MaxPMNum),
-				AddInParameter("@MaxSignSize", SqlDbType.NChar, model.MaxSignSize),
-				AddInParameter("@MaxAttachSize", SqlDbType.NText, model.MaxAttachSize),
-				AddInParameter("@MaxAttachTotalSize", SqlDbType.NText, model.MaxAttachTotalSize),
-				AddInParameter("@AttachExtension", SqlDbType.BigInt, model.AttachExtension),
-				AddInParameter("@OrderID", SqlDbType.NText, model.OrderID)};
+				AddInParameter("@Type", SqlDbType.TinyInt, model.Type),
+				AddInParameter("@IsSystem", SqlDbType.TinyInt, model.IsSystem),
+				AddInParameter("@GroupName", SqlDbType.NVarChar, model.GroupName),
+				AddInParameter("@Description", SqlDbType.NVarChar, model.Description),
+				AddInParameter("@CreditBegin", SqlDbType.Int, model.CreditBegin),
+				AddInParameter("@CreditEnd", SqlDbType.Int, model.CreditEnd),
+				AddInParameter("@stars", SqlDbType.TinyInt, model.stars),
+				AddInParameter("@GroupAvatar", SqlDbType.VarChar, model.GroupAvatar),
+				AddInParameter("@Readaccess", SqlDbType.Int, model.Readaccess),
+				AddInParameter("@AllowPost", SqlDbType.TinyInt, model.AllowPost),
+				AddInParameter("@AllowComment", SqlDbType.TinyInt, model.AllowComment),
+				AddInParameter("@AllowDownload", SqlDbType.TinyInt, model.AllowDownload),
+				AddInParameter("@AllowAvatar", SqlDbType.TinyInt, model.AllowAvatar),
+				AddInParameter("@AllowSpace", SqlDbType.TinyInt, model.AllowSpace),
+				AddInParameter("@AllowTransfer", SqlDbType.TinyInt, model.AllowTransfer),
+				AddInParameter("@AllowViewInfo", SqlDbType.TinyInt, model.AllowViewInfo),
+				AddInParameter("@AllowNickname", SqlDbType.TinyInt, model.AllowNickname),
+				AddInParameter("@MaxPMNum", SqlDbType.SmallInt, model.MaxPMNum),
+				AddInParameter("@MaxSignSize", SqlDbType.SmallInt, model.MaxSignSize),
+				AddInParameter("@MaxAttachSize", SqlDbType.Int, model.MaxAttachSize),
+				AddInParameter("@MaxAttachTotalSize", SqlDbType.Int, model.MaxAttachTotalSize),
+				AddInParameter("@AttachExtension", SqlDbType.VarChar, model.AttachExtension),
+				AddInParameter("@OrderID", SqlDbType.Int, model.OrderID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -80,30 +94,30 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("OrderID=@OrderID");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@Type", SqlDbType.Bit, model.Type),
-				AddInParameter("@IsSystem", SqlDbType.Bit, model.IsSystem),
-				AddInParameter("@GroupName", SqlDbType.SmallInt, model.GroupName),
-				AddInParameter("@Description", SqlDbType.SmallInt, model.Description),
-				AddInParameter("@CreditBegin", SqlDbType.NText, model.CreditBegin),
-				AddInParameter("@CreditEnd", SqlDbType.NText, model.CreditEnd),
-				AddInParameter("@stars", SqlDbType.Bit, model.stars),
-				AddInParameter("@GroupAvatar", SqlDbType.BigInt, model.GroupAvatar),
-				AddInParameter("@Readaccess", SqlDbType.NText, model.Readaccess),
-				AddInParameter("@AllowPost", SqlDbType.Bit, model.AllowPost),
-				AddInParameter("@AllowComment", SqlDbType.Bit, model.AllowComment),
-				AddInParameter("@AllowDownload", SqlDbType.Bit, model.AllowDownload),
-				AddInParameter("@AllowAvatar", SqlDbType.Bit, model.AllowAvatar),
-				AddInParameter("@AllowSpace", SqlDbType.Bit, model.AllowSpace),
-				AddInParameter("@AllowTransfer", SqlDbType.Bit, model.AllowTransfer),
-				AddInParameter("@AllowViewInfo", SqlDbType.Bit, model.AllowViewInfo),
-				AddInParameter("@AllowNickname", SqlDbType.Bit, model.AllowNickname),
-				AddInParameter("@MaxPMNum", SqlDbType.NChar, model.MaxPMNum),
-				AddInParameter("@MaxSignSize", SqlDbType.NChar, model.MaxSignSize),
-				AddInParameter("@MaxAttachSize", SqlDbType.NText, model.MaxAttachSize),
-				AddInParameter("@MaxAttachTotalSize", SqlDbType.NText, model.MaxAttachTotalSize),
-				AddInParameter("@AttachExtension", SqlDbType.BigInt, model.AttachExtension),
-				AddInParameter("@OrderID", SqlDbType.NText, model.OrderID),
-				AddInParameter("@ID", SqlDbType.NText, model.ID)};
+				AddInParameter("@Type", SqlDbType.TinyInt, model.Type),
+				AddInParameter("@IsSystem", SqlDbType.TinyInt, model.IsSystem),
+				AddInParameter("@GroupName", SqlDbType.NVarChar, model.GroupName),
+				AddInParameter("@Description", SqlDbType.NVarChar, model.Description),
+				AddInParameter("@CreditBegin", SqlDbType.Int, model.CreditBegin),
+				AddInParameter("@CreditEnd", SqlDbType.Int, model.CreditEnd),
+				AddInParameter("@stars", SqlDbType.TinyInt, model.stars),
+				AddInParameter("@GroupAvatar", SqlDbType.VarChar, model.GroupAvatar),
+				AddInParameter("@Readaccess", SqlDbType.Int, model.Readaccess),
+				AddInParameter("@AllowPost", SqlDbType.TinyInt, model.AllowPost),
+				AddInParameter("@AllowComment", SqlDbType.TinyInt, model.AllowComment),
+				AddInParameter("@AllowDownload", SqlDbType.TinyInt, model.AllowDownload),
+				AddInParameter("@AllowAvatar", SqlDbType.TinyInt, model.AllowAvatar),
+				AddInParameter("@AllowSpace", SqlDbType.TinyInt, model.AllowSpace),
+				AddInParameter("@AllowTransfer", SqlDbType.TinyInt, model.AllowTransfer),
+				AddInParameter("@AllowViewInfo", SqlDbType.TinyInt, model.AllowViewInfo),
+				AddInParameter("@AllowNickname", SqlDbType.TinyInt, model.AllowNickname),
+				AddInParameter("@MaxPMNum", SqlDbType.SmallInt, model.MaxPMNum),
+				AddInParameter("@MaxSignSize", SqlDbType.SmallInt, model.MaxSignSize),
+				AddInParameter("@MaxAttachSize", SqlDbType.Int, model.MaxAttachSize),
+				AddInParameter("@MaxAttachTotalSize", SqlDbType.Int, model.MaxAttachTotalSize),
+				AddInParameter("@AttachExtension", SqlDbType.VarChar, model.AttachExtension),
+				AddInParameter("@OrderID", SqlDbType.Int, model.OrderID),
+				AddInParameter("@ID", SqlDbType.Int, model.ID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -117,7 +131,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("DELETE FROM Usergroup ");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ID", SqlDbType.NText, ID)};
+				AddInParameter("@ID", SqlDbType.Int, ID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -131,7 +145,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("SELECT COUNT(1) FROM Usergroup");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ID", SqlDbType.NText, ID)};
+				AddInParameter("@ID", SqlDbType.Int, ID)};
 
 			object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), cmdParms);
 			return dbHelper.GetInt(obj) > 0;
@@ -146,7 +160,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("SELECT ID,Type,IsSystem,GroupName,Description,CreditBegin,CreditEnd,stars,GroupAvatar,Readaccess,AllowPost,AllowComment,AllowDownload,AllowAvatar,AllowSpace,AllowTransfer,AllowViewInfo,AllowNickname,MaxPMNum,MaxSignSize,MaxAttachSize,MaxAttachTotalSize,AttachExtension,OrderID FROM Usergroup");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ID", SqlDbType.NText, ID)};
+				AddInParameter("@ID", SqlDbType.Int, ID)};
 
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
 			{
