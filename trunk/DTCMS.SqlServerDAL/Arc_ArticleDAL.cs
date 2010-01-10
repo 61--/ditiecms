@@ -1,11 +1,10 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 15:13:13
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 19:36:36
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
 //------------------------------------------------------------------------------
-
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -27,10 +26,12 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
+		/// <param name="ID">编号ID</param>
+		/// <returns>返回影响行数</returns>
 		public int Add(Arc_Article model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("INSERT INTO " + tablePrefix + " Arc_Article(");
+			strSql.Append("INSERT INTO " + tablePrefix + "Arc_Article(");
             strSql.Append("ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,AContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID)");
 			strSql.Append(" VALUES (");
             strSql.Append("@ClassID,@ViceClassID,@Title,@ShortTitle,@TitleStyle,@TitleFlag,@Tags,@ImgUrl,@Author,@Editor,@PubLisher,@Source,@Templet,@Keywords,@Description,@AContent,@Click,@Good,@Bad,@Readaccess,@Money,@Attribute,@IsComment,@IsChecked,@IsRecycle,@IsRedirect,@IsHtml,@IsPaging,@FilePath,@SimilarArticle,@AddDate,@PubDate,@OrderID)");
@@ -75,10 +76,12 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
+		/// <param name="model">实体对象</param>
+		/// <returns>返回影响行数</returns>
 		public int Update(Arc_Article model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("UPDATE " + tablePrefix + " Arc_Article SET ");
+			strSql.Append("UPDATE " + tablePrefix + "Arc_Article SET ");
 			strSql.Append("ClassID=@ClassID,");
 			strSql.Append("ViceClassID=@ViceClassID,");
 			strSql.Append("Title=@Title,");
@@ -155,10 +158,12 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
+		/// <param name="ID">编号ID</param>
+		/// <returns>返回影响行数</returns>
 		public int Delete(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("DELETE FROM " + tablePrefix + " Arc_Article ");
+			strSql.Append("DELETE FROM " + tablePrefix + "Arc_Article");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
@@ -169,25 +174,36 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
-		public bool Exists(int ID)
+		/// <param name="ID">编号ID</param>
+		/// <param name="filedName">字段名称</param>
+		/// <param name="filedValue">字段值</param>
+		/// <returns>存在返回true，不存在返回false</returns>
+		public bool Exists(int ID, string filedName, string filedValue)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT COUNT(1) FROM " + tablePrefix + " Arc_Article");
-			strSql.Append(" WHERE ID=@ID");
-			SqlParameter[] cmdParms = {
-				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
-
-			object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), cmdParms);
-			return dbHelper.GetInt(obj) > 0;
+			if (filedName != "")
+			{
+				strSql.Append("SELECT COUNT(1) FROM " + tablePrefix + "Arc_Article");
+				strSql.Append(" WHERE ID<>{0} AND {1}={2}");
+				return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, string.Format(strSql.ToString(), ID, filedName, filedValue))) > 0;
+			}
+			else
+			{
+				strSql.Append("SELECT COUNT(1) FROM " + tablePrefix + "Arc_Article");
+				strSql.Append(" WHERE ID={0}");
+				return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, string.Format(strSql.ToString(), ID))) > 0;
+			}
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
+		/// <param name="ID">编号ID</param>
+		/// <returns>实体对象</returns>
 		public Arc_Article GetModel(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,AContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM " + tablePrefix + " Arc_Article");
+			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,AContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM " + tablePrefix + "Arc_Article");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
@@ -205,10 +221,12 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 获取泛型数据列表
 		/// </summary>
+		/// <param name="count">返回记录总数</param>
+		/// <returns>对象泛型集合</returns>
 		public List<Arc_Article> GetList(out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,AContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM " + tablePrefix + " Arc_Article");
+			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,AContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM " + tablePrefix + "Arc_Article");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Arc_Article> lst = GetList(dr, out count);
@@ -219,10 +237,14 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 分页获取泛型数据列表
 		/// </summary>
+		/// <param name="pageSize">分页大小</param>
+		/// <param name="pageIndex">当前页</param>
+		/// <param name="count">返回记录数</param>
+		/// <returns>分页对象泛型集合</returns>
 		public List<Arc_Article> GetPageList(int pageSize, int pageIndex, out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,AContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM " + tablePrefix + " Arc_Article");
+			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,AContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM " + tablePrefix + "Arc_Article");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Arc_Article> lst = GetPageList(dr, pageSize, pageIndex, out count);
@@ -234,6 +256,8 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 由一行数据得到一个实体
 		/// </summary>
+		/// <param name="dr">SqlDataReader对象</param>
+		/// <returns>实体对象</returns>
 		private Arc_Article GetModel(SqlDataReader dr)
 		{
 			Arc_Article model = new Arc_Article();
@@ -277,6 +301,9 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 由SqlDataReader得到泛型数据列表
 		/// </summary>
+		/// <param name="dr">SqlDataReader对象</param>
+		/// <param name="count">返回记录数</param>
+		/// <returns>对象泛型集合</returns>
 		private List<Arc_Article> GetList(SqlDataReader dr, out long count)
 		{
 			count = 0;
@@ -292,6 +319,11 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 由SqlDataReader得到分页泛型数据列表
 		/// </summary>
+		/// <param name="dr">SqlDataReader对象</param>
+		/// <param name="pageSize">分页大小</param>
+		/// <param name="pageIndex">当前页数</param>
+		/// <param name="count">返回记录总数</param>
+		/// <returns>分页对象泛型集合</returns>
 		private List<Arc_Article> GetPageList(SqlDataReader dr, int pageSize, int pageIndex, out long count)
 		{
 			long first = GetFirstIndex(pageSize, pageIndex);
