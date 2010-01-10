@@ -62,7 +62,7 @@ namespace DTCMS.IDAL
         /// <param name="filed"></param>
         /// <param name="where"></param>
         /// <returns></returns>
-        public object GetSingle(string filed, string where);
+        object GetSingle(string filed, string where);
 
         /// <summary>
         /// 根据查询字段查询栏目数据
