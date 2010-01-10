@@ -96,7 +96,7 @@ namespace DTCMS.BLL
         /// <returns>栏目关系</returns>
         public string GetRelation(int ParentID)
         {
-            return dal.GetRelation(ParentID);
+            return dal.GetSingle("Relation", "Cid=" + ParentID) as string;
         }
 
         /// <summary>
@@ -105,13 +105,13 @@ namespace DTCMS.BLL
         /// <returns>栏目深度</returns>
         public int GetClassDepth(int ParentID)
         {
-            string iRelation = GetRelation(ParentID);
+            string sRelation = GetRelation(ParentID);
 
-            if (iRelation == "")
+            if (sRelation == "")
             {
                 return 1;
             }
-            return iRelation.Split('.').Length + 1;
+            return sRelation.Split('.').Length + 1;
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace DTCMS.BLL
         /// <returns>栏目名称</returns>
         public string GetClassName(int CID)
         {
-            return dal.GetClassName(CID);
+             return dal.GetSingle("ClassName", "Cid=" + CID) as string;
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace DTCMS.BLL
         /// <returns>Joson数据</returns>
         public string GetDataTableJoson()
         {
-            DataTable dt = dal.GetDataTable("CID,ClassName,ClassType,AddDate,OrderID,ParentID");
+            DataTable dt = dal.GetDataTable("CID,ClassName,ClassType,AddDate,OrderID,ParentID","");
             if (dt != null)
             {
                 return Utils.DataTableToJson(dt).ToString();
@@ -169,7 +169,7 @@ namespace DTCMS.BLL
         /// <returns></returns>
         public bool ExistsClassName(int CID, string ClassName)
         {
-            return dal.ExistsClassName(CID, ClassName);
+            return dal.Exists(CID,"ClassName",ClassName);
         }
 
         /// <summary>

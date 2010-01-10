@@ -138,6 +138,7 @@ namespace DTCMS.BLL
             return dal.GetPageList(pageSize, pageIndex, out count);
         }
 
+
         /// <summary>
         /// 字符串缓存实现的通用分页存储过程
         /// </summary>
@@ -173,6 +174,5 @@ namespace DTCMS.BLL
                 return "";
             }
         }
-
 	}
 }
