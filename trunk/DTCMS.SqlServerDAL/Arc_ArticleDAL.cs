@@ -247,6 +247,17 @@ namespace DTCMS.SqlServerDAL
             SqlParameter[] cmdParms ={
                 AddInParameter("@Title",SqlDbType.NVarChar,100,Title),
                 AddInParameter("@ID", SqlDbType.Int, 4, ArticleID)};
+        /// <summary>
+        /// 根据栏目id 判断此栏目是否存在文章
+        /// </summary>
+        /// <param name="CID">栏目编号</param>
+        /// <returns>true存在,false不存在</returns>
+        public bool ExistAtricleToClass(int CID)
+        {
+            string strSql = "select count(ID) from DT_Arc_Article where ClassID=@ClassID";
+            SqlParameter[] cmdParms ={
+                                        AddInParameter("@ClassID",SqlDbType.Int,CID)
+                                     };
 
             return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, strSql, cmdParms)) > 0;
         }
