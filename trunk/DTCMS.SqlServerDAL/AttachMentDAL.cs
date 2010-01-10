@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:48:31
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 15:13:14
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -65,13 +65,13 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append(" WHERE AID=@AID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@Attribute", SqlDbType.TinyInt, 1, model.Attribute),
-				AddInParameter("@DisplayName", SqlDbType.NVarChar, 25, model.DisplayName),
+				AddInParameter("@DisplayName", SqlDbType.NVarChar, 50, model.DisplayName),
 				AddInParameter("@AttachMentPath", SqlDbType.VarChar, 255, model.AttachMentPath),
 				AddInParameter("@AttachMentSize", SqlDbType.Int, 4, model.AttachMentSize),
 				AddInParameter("@AbbrPhotoPath", SqlDbType.VarChar, 255, model.AbbrPhotoPath),
-				AddInParameter("@PubLisher", SqlDbType.NVarChar, 25, model.PubLisher),
+				AddInParameter("@PubLisher", SqlDbType.NVarChar, 50, model.PubLisher),
 				AddInParameter("@AddDate", SqlDbType.DateTime, 8, model.AddDate),
-				AddInParameter("@PhotoDescription", SqlDbType.NVarChar, 50, model.PhotoDescription),
+				AddInParameter("@PhotoDescription", SqlDbType.NVarChar, 100, model.PhotoDescription),
 				AddInParameter("@AID", SqlDbType.Int, 4, model.AID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);

@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:48:31
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 15:13:14
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -73,17 +73,17 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("Website=@Website");
 			strSql.Append(" WHERE UID=@UID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@Realname", SqlDbType.NVarChar, 25, model.Realname),
+				AddInParameter("@Realname", SqlDbType.NVarChar, 50, model.Realname),
 				AddInParameter("@QQ", SqlDbType.VarChar, 50, model.QQ),
 				AddInParameter("@MSN", SqlDbType.VarChar, 50, model.MSN),
 				AddInParameter("@Skype", SqlDbType.VarChar, 50, model.Skype),
 				AddInParameter("@Phone", SqlDbType.Char, 16, model.Phone),
 				AddInParameter("@Mobilephone", SqlDbType.Char, 11, model.Mobilephone),
-				AddInParameter("@Location", SqlDbType.NVarChar, 25, model.Location),
-				AddInParameter("@Adress", SqlDbType.NVarChar, 100, model.Adress),
+				AddInParameter("@Location", SqlDbType.NVarChar, 50, model.Location),
+				AddInParameter("@Adress", SqlDbType.NVarChar, 200, model.Adress),
 				AddInParameter("@IDcard", SqlDbType.VarChar, 18, model.IDcard),
-				AddInParameter("@Signature", SqlDbType.NVarChar, 100, model.Signature),
-				AddInParameter("@Introduce", SqlDbType.NVarChar, 250, model.Introduce),
+				AddInParameter("@Signature", SqlDbType.NVarChar, 200, model.Signature),
+				AddInParameter("@Introduce", SqlDbType.NVarChar, 500, model.Introduce),
 				AddInParameter("@Website", SqlDbType.VarChar, 200, model.Website),
 				AddInParameter("@UID", SqlDbType.Int, 4, model.UID)};
 
