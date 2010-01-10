@@ -32,6 +32,14 @@ namespace DTCMS.IDAL
 		/// <returns>返回影响行数</returns>
 		int Update(Arc_Class model);
 
+        /// <summary>
+        /// 根据ID和值更新一条数据
+        /// </summary>
+        /// <param name="CID">栏目ID</param>
+        /// <param name="value">更新值（fieldName=fieldValue）</param>
+        /// <returns>返回影响行数</returns>
+        int Update(int CID, string value);
+
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>

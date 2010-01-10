@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 19:36:36
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 21:40:22
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -57,6 +57,22 @@ namespace DTCMS.SqlServerDAL
 				AddInParameter("@AID", SqlDbType.Int, 4, model.AID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
+		}
+
+		/// <summary>
+		/// 根据ID和值更新一条数据
+		/// </summary>
+		/// <param name="AID">编号ID</param>
+		/// <param name="value">更新值（fieldName=fieldValue）</param>
+		/// <returns>返回影响行数</returns>
+		public int Update(int AID, string value)
+		{
+			StringBuilder strSql = new StringBuilder();
+			strSql.Append("UPDATE " + tablePrefix + "Arc_Soft SET ");
+			strSql.Append(value);
+			strSql.Append(" WHERE AID=");
+			strSql.Append(AID);
+			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString());
 		}
 
 		/// <summary>

@@ -35,7 +35,7 @@ namespace DTCMS.Web.admin.ajax
         protected string GetTemplateList()
         {
            StringBuilder sb = new StringBuilder();
-           DataTable dt= bllTemp.GetTemplateList();
+           DataTable dt = new DataTable();  //bllTemp.GetList();
            if (dt != null && dt.Rows.Count > 0)
            {
                int checkID = 1;

@@ -74,6 +74,23 @@ namespace DTCMS.SqlServerDAL
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
 
+        /// <summary>
+        /// 根据模版ID和值更新一条数据
+        /// </summary>
+        /// <param name="templateID">模版ID</param>
+        /// <param name="value">更新值（fieldName=fieldValue）</param>
+        /// <returns>返回影响行数</returns>
+        public int Update(int templateID, string value)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("UPDATE " + tablePrefix + "Sys_Template SET ");
+            strSql.Append(value);
+            strSql.Append(" WHERE templateID=");
+            strSql.Append(templateID);
+
+            return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString());
+        }
+
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>

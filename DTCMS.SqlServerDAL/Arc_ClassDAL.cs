@@ -26,7 +26,7 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		/// <param name="CID">编号ID</param>
+        /// <param name="model">栏目实体对象</param>
 		/// <returns>返回影响行数</returns>
 		public int Add(Arc_Class model)
 		{
@@ -142,6 +142,22 @@ namespace DTCMS.SqlServerDAL
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
+
+        /// <summary>
+        /// 根据ID和值更新一条数据
+        /// </summary>
+        /// <param name="CID">编号ID</param>
+        /// <param name="value">更新值（fieldName=fieldValue）</param>
+        /// <returns>返回影响行数</returns>
+        public int Update(int CID, string value)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("UPDATE " + tablePrefix + "Arc_Class SET ");
+            strSql.Append(value);
+            strSql.Append(" WHERE CID=");
+            strSql.Append(CID);
+            return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString());
+        }
 
 		/// <summary>
 		/// 删除一条数据

@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 19:36:36
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 21:34:57
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -31,6 +31,14 @@ namespace DTCMS.IDAL
 		/// <param name="model">实体对象</param>
 		/// <returns>返回影响行数</returns>
 		int Update(Userfields model);
+
+		/// <summary>
+		/// 根据ID和值更新一条数据
+		/// </summary>
+		/// <param name="UID">编号ID</param>
+		/// <param name="value">更新值（fieldName=fieldValue）</param>
+		/// <returns>返回影响行数</returns>
+		int Update(int UID, string value);
 
 		/// <summary>
 		/// 删除一条数据

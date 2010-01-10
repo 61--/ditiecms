@@ -32,6 +32,14 @@ namespace DTCMS.IDAL
 		/// <returns>返回影响行数</returns>
 		int Update(Sys_Template model);
 
+        /// <summary>
+        /// 根据模版ID和值更新一条数据
+        /// </summary>
+        /// <param name="templateID">模版ID</param>
+        /// <param name="value">更新值（fieldName=fieldValue）</param>
+        /// <returns>返回影响行数</returns>
+        int Update(int templateID, string value);
+
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>

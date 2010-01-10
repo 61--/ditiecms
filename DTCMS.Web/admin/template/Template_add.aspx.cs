@@ -44,8 +44,8 @@ namespace DTCMS.Web.admin
                 txt_Author.Value = model.Author;
                 txt_TemplateDirectory.Value = model.TemplateDirectory;
                 txt_TemplateImg.Value = model.TemplateImg;
-                hide_CreateDateTime.Value = model.CreateDateTime.HasValue ? model.CreateDateTime.ToString() : DateTime.Now.ToString();
-                if (model.isEnable == 1)
+                hide_CreateDateTime.Value = model.CreateDateTime.ToString();
+                if (model.IsEnable == 1)
                     rad_yes.Checked = true;
                 else
                     rad_no.Checked = true;
@@ -64,10 +64,10 @@ namespace DTCMS.Web.admin
             if(string.IsNullOrEmpty(hide_CreateDateTime.Value))
                 hide_CreateDateTime.Value=DateTime.Now.ToString();
             model.CreateDateTime =Convert.ToDateTime( hide_CreateDateTime.Value);
-            model.isEnable = 0;
+            model.IsEnable = 0;
             if (rad_yes.Checked)
             {
-                model.isEnable = 1;
+                model.IsEnable = 1;
                 bllTemplate.UpdateEnable(TempID, 1);//保证只有一个模板启用
             }
             return model;
@@ -80,8 +80,8 @@ namespace DTCMS.Web.admin
                 Message.Dialog("风格名称不能为空!","-1",MessageIcon.Error);
                 return;
             }
-                
-            if (!bllTemplate.ExistTemplateName(TempID, txt_TemplateName.Value.Trim()))
+
+            if (!bllTemplate.Exists(TempID, "TemplateName", txt_TemplateName.Value.Trim()))
             {
                 if (TempID > 0)
                 {
