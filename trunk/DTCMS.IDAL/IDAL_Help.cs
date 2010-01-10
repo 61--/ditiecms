@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 21:34:57
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 22:48:15
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -36,7 +36,7 @@ namespace DTCMS.IDAL
 		/// 根据ID和值更新一条数据
 		/// </summary>
 		/// <param name="ID">编号ID</param>
-		/// <param name="value">更新值（fieldName=fieldValue）</param>
+		/// <param name="value">更新值（filedName=filedValue）</param>
 		/// <returns>返回影响行数</returns>
 		int Update(int ID, string value);
 
@@ -62,6 +62,13 @@ namespace DTCMS.IDAL
 		/// <param name="ID">编号ID</param>
 		/// <returns>实体对象</returns>
 		Help GetModel(int ID);
+
+		/// <summary>
+		/// 根据查询字段获取列表
+		/// </summary>
+		/// <param name="fileds">要查询的字段，多个字段用,号隔开</param>
+		/// <returns>DataTable数据集合</returns>
+		DataTable GetDataTable(string fileds, string where);
 
 		/// <summary>
 		/// 获取泛型数据列表

@@ -159,7 +159,7 @@ namespace DTCMS.SqlServerDAL
 		/// 根据ID和值更新一条数据
 		/// </summary>
 		/// <param name="ID">编号ID</param>
-		/// <param name="value">更新值（fieldName=fieldValue）</param>
+		/// <param name="value">更新值（filedName=filedValue）</param>
 		/// <returns>返回影响行数</returns>
 		public int Update(int ID, string value)
 		{
@@ -231,8 +231,7 @@ namespace DTCMS.SqlServerDAL
         {
             string strSql = "SELECT count(1) FROM " + tablePrefix + "Arc_Article WHERE ClassID=@ClassID";
             SqlParameter[] cmdParms ={
-                                          AddInParameter("@ID", SqlDbType.Int, 4, CID)
-                                     };
+                AddInParameter("@ID", SqlDbType.Int, 4, CID)};
 
             return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, strSql, cmdParms)) > 0;
         }
@@ -246,9 +245,8 @@ namespace DTCMS.SqlServerDAL
         {
             string strSql = "select count(ID) from DT_Arc_Article where Title=@Title and ID<>@ID";
             SqlParameter[] cmdParms ={
-                                          AddInParameter("@Title",SqlDbType.NVarChar,100,Title),
-                                          AddInParameter("@ID", SqlDbType.Int, 4, ArticleID)
-                                     };
+                AddInParameter("@Title",SqlDbType.NVarChar,100,Title),
+                AddInParameter("@ID", SqlDbType.Int, 4, ArticleID)};
 
             return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, strSql, cmdParms)) > 0;
         }
