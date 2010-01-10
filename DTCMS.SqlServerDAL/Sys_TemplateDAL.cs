@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:24:59
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:48:31
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -30,7 +30,7 @@ namespace DTCMS.SqlServerDAL
 		public int Add(Sys_Template model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("INSERT INTO Sys_Template(");
+			strSql.Append("INSERT INTO " + tablePrefix + " Sys_Template(");
             strSql.Append("TemplateName,TemplateDirectory,IsEnable,CreateDateTime,TemplateImg,Author)");
 			strSql.Append(" VALUES (");
             strSql.Append("@TemplateName,@TemplateDirectory,@IsEnable,@CreateDateTime,@TemplateImg,@Author)");
@@ -51,7 +51,7 @@ namespace DTCMS.SqlServerDAL
 		public int Update(Sys_Template model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("UPDATE Sys_Template SET ");
+			strSql.Append("UPDATE " + tablePrefix + " Sys_Template SET ");
 			strSql.Append("TemplateName=@TemplateName,");
 			strSql.Append("TemplateDirectory=@TemplateDirectory,");
 			strSql.Append("IsEnable=@IsEnable,");
@@ -77,7 +77,7 @@ namespace DTCMS.SqlServerDAL
 		public int Delete(int TemplateID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("DELETE FROM Sys_Template ");
+			strSql.Append("DELETE FROM " + tablePrefix + " Sys_Template ");
 			strSql.Append(" WHERE TemplateID=@TemplateID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@TemplateID", SqlDbType.Int, 4, TemplateID)};
@@ -91,7 +91,7 @@ namespace DTCMS.SqlServerDAL
 		public bool Exists(int TemplateID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT COUNT(1) FROM Sys_Template");
+			strSql.Append("SELECT COUNT(1) FROM " + tablePrefix + " Sys_Template");
 			strSql.Append(" WHERE TemplateID=@TemplateID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@TemplateID", SqlDbType.Int, 4, TemplateID)};
@@ -106,7 +106,7 @@ namespace DTCMS.SqlServerDAL
 		public Sys_Template GetModel(int TemplateID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT TemplateID,TemplateName,TemplateDirectory,IsEnable,CreateDateTime,TemplateImg,Author FROM Sys_Template");
+			strSql.Append("SELECT TemplateID,TemplateName,TemplateDirectory,IsEnable,CreateDateTime,TemplateImg,Author FROM " + tablePrefix + " Sys_Template");
 			strSql.Append(" WHERE TemplateID=@TemplateID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@TemplateID", SqlDbType.Int, 4, TemplateID)};
@@ -127,7 +127,7 @@ namespace DTCMS.SqlServerDAL
 		public List<Sys_Template> GetList(out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT TemplateID,TemplateName,TemplateDirectory,IsEnable,CreateDateTime,TemplateImg,Author FROM Sys_Template");
+			strSql.Append("SELECT TemplateID,TemplateName,TemplateDirectory,IsEnable,CreateDateTime,TemplateImg,Author FROM " + tablePrefix + " Sys_Template");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Sys_Template> lst = GetList(dr, out count);
@@ -141,7 +141,7 @@ namespace DTCMS.SqlServerDAL
 		public List<Sys_Template> GetPageList(int pageSize, int pageIndex, out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT TemplateID,TemplateName,TemplateDirectory,IsEnable,CreateDateTime,TemplateImg,Author FROM Sys_Template");
+			strSql.Append("SELECT TemplateID,TemplateName,TemplateDirectory,IsEnable,CreateDateTime,TemplateImg,Author FROM " + tablePrefix + " Sys_Template");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Sys_Template> lst = GetPageList(dr, pageSize, pageIndex, out count);

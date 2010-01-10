@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:24:59
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:48:31
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -30,7 +30,7 @@ namespace DTCMS.SqlServerDAL
 		public int Add(Users model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("INSERT INTO Users(");
+			strSql.Append("INSERT INTO " + tablePrefix + " Users(");
             strSql.Append("UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock)");
 			strSql.Append(" VALUES (");
             strSql.Append("@UserName,@NickName,@Password,@SecureQuestion,@SecureAnswer,@Sex,@Email,@RoleID,@UsergroupID,@RegisterIP,@RegisterTime,@LastloginIP,@LastloginTime,@LoginCount,@PostCount,@OnlineTime,@Credits,@ExtCredits1,@ExtCredits2,@ExtCredits3,@ExtCredits4,@ExtCredits5,@Avatar,@Birthday,@PMCount,@IsVerify,@IsLock)");
@@ -72,7 +72,7 @@ namespace DTCMS.SqlServerDAL
 		public int Update(Users model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("UPDATE Users SET ");
+			strSql.Append("UPDATE " + tablePrefix + " Users SET ");
 			strSql.Append("UserName=@UserName,");
 			strSql.Append("NickName=@NickName,");
 			strSql.Append("Password=@Password,");
@@ -140,7 +140,7 @@ namespace DTCMS.SqlServerDAL
 		public int Delete(int UID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("DELETE FROM Users ");
+			strSql.Append("DELETE FROM " + tablePrefix + " Users ");
 			strSql.Append(" WHERE UID=@UID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@UID", SqlDbType.Int, 4, UID)};
@@ -154,7 +154,7 @@ namespace DTCMS.SqlServerDAL
 		public bool Exists(int UID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT COUNT(1) FROM Users");
+			strSql.Append("SELECT COUNT(1) FROM " + tablePrefix + " Users");
 			strSql.Append(" WHERE UID=@UID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@UID", SqlDbType.Int, 4, UID)};
@@ -169,7 +169,7 @@ namespace DTCMS.SqlServerDAL
 		public Users GetModel(int UID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT UID,UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock FROM Users");
+			strSql.Append("SELECT UID,UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock FROM " + tablePrefix + " Users");
 			strSql.Append(" WHERE UID=@UID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@UID", SqlDbType.Int, 4, UID)};
@@ -190,7 +190,7 @@ namespace DTCMS.SqlServerDAL
 		public List<Users> GetList(out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT UID,UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock FROM Users");
+			strSql.Append("SELECT UID,UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock FROM " + tablePrefix + " Users");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Users> lst = GetList(dr, out count);
@@ -204,7 +204,7 @@ namespace DTCMS.SqlServerDAL
 		public List<Users> GetPageList(int pageSize, int pageIndex, out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT UID,UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock FROM Users");
+			strSql.Append("SELECT UID,UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock FROM " + tablePrefix + " Users");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Users> lst = GetPageList(dr, pageSize, pageIndex, out count);

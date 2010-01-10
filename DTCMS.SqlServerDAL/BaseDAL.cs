@@ -18,6 +18,7 @@ namespace DTCMS.SqlServerDAL
     public class BaseDAL
     {
         protected static SqlHelper dbHelper = new SqlHelper();
+        protected static readonly string tablePrefix = "DT_";
 
         #region 创造SqlParameter的实例
         /// <summary>

@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:24:59
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:48:31
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -30,7 +30,7 @@ namespace DTCMS.SqlServerDAL
 		public int Add(Arc_Class model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("INSERT INTO Arc_Class(");
+			strSql.Append("INSERT INTO " + tablePrefix + " Arc_Class(");
             strSql.Append("ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent)");
 			strSql.Append(" VALUES (");
             strSql.Append("@ParentID,@Attribute,@ClassName,@ClassEName,@ClassType,@ClassDomain,@ClassPath,@IndexTemplet,@ListTemplet,@ArchiveTemplet,@IndexRule,@ListRule,@ArchiveRule,@ClassPage,@Description,@IsHidden,@IsHtml,@CheckLevel,@IsContribute,@IsComment,@Readaccess,@SiteID,@AddDate,@Relation,@OrderID,@ImgUrl,@Keywords,@CrossID,@ClassContent)");
@@ -74,7 +74,7 @@ namespace DTCMS.SqlServerDAL
 		public int Update(Arc_Class model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("UPDATE Arc_Class SET ");
+			strSql.Append("UPDATE " + tablePrefix + " Arc_Class SET ");
 			strSql.Append("ParentID=@ParentID,");
 			strSql.Append("Attribute=@Attribute,");
 			strSql.Append("ClassName=@ClassName,");
@@ -146,7 +146,7 @@ namespace DTCMS.SqlServerDAL
 		public int Delete(int CID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("DELETE FROM Arc_Class ");
+			strSql.Append("DELETE FROM " + tablePrefix + " Arc_Class ");
 			strSql.Append(" WHERE CID=@CID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@CID", SqlDbType.Int, 4, CID)};
@@ -160,7 +160,7 @@ namespace DTCMS.SqlServerDAL
 		public bool Exists(int CID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT COUNT(1) FROM Arc_Class");
+			strSql.Append("SELECT COUNT(1) FROM " + tablePrefix + " Arc_Class");
 			strSql.Append(" WHERE CID=@CID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@CID", SqlDbType.Int, 4, CID)};
@@ -175,7 +175,7 @@ namespace DTCMS.SqlServerDAL
 		public Arc_Class GetModel(int CID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent FROM Arc_Class");
+			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent FROM " + tablePrefix + " Arc_Class");
 			strSql.Append(" WHERE CID=@CID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@CID", SqlDbType.Int, 4, CID)};
@@ -196,7 +196,7 @@ namespace DTCMS.SqlServerDAL
 		public List<Arc_Class> GetList(out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent FROM Arc_Class");
+			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent FROM " + tablePrefix + " Arc_Class");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Arc_Class> lst = GetList(dr, out count);
@@ -210,7 +210,7 @@ namespace DTCMS.SqlServerDAL
 		public List<Arc_Class> GetPageList(int pageSize, int pageIndex, out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent FROM Arc_Class");
+			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent FROM " + tablePrefix + " Arc_Class");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Arc_Class> lst = GetPageList(dr, pageSize, pageIndex, out count);
