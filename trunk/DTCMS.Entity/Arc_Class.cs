@@ -40,11 +40,11 @@ namespace DTCMS.Entity
         private byte _checkLevel;
         private byte _isContribute;
         private byte _isComment;
-        private Int16 _readaccess;
+        private Int32 _readaccess;
         private byte _siteID;
         private DateTime _addDate;
         private string _relation;
-        private Int16 _orderID;
+        private Int32 _orderID;
         private string _imgUrl;
         private string _keywords;
         private string _crossID;
@@ -220,7 +220,7 @@ namespace DTCMS.Entity
         /// <summary>
         /// 阅读权限
         /// </summary>
-        public Int16 Readaccess
+        public Int32 Readaccess
         {
             set { _readaccess = value; }
             get { return _readaccess; }
@@ -252,7 +252,7 @@ namespace DTCMS.Entity
         /// <summary>
         /// 栏目排序，升序排列
         /// </summary>
-        public Int16 OrderID
+        public Int32 OrderID
         {
             set { _orderID = value; }
             get { return _orderID; }
