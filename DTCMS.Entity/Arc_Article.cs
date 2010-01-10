@@ -326,6 +326,7 @@ namespace DTCMS.Entity
 			get { return _orderID; }
 		}
 		#endregion
+
         #region 栏目成员
 
         private string _classname;
