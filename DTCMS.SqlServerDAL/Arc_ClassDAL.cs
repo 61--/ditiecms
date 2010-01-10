@@ -147,7 +147,7 @@ namespace DTCMS.SqlServerDAL
         /// 根据ID和值更新一条数据
         /// </summary>
         /// <param name="CID">编号ID</param>
-        /// <param name="value">更新值（fieldName=fieldValue）</param>
+        /// <param name="value">更新值（filedName=filedValue）</param>
         /// <returns>返回影响行数</returns>
         public int Update(int CID, string value)
         {
@@ -198,6 +198,45 @@ namespace DTCMS.SqlServerDAL
 				return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, string.Format(strSql.ToString(), CID))) > 0;
 			}
 		}
+
+        //public object GetSingle(string filed)
+        //{
+            
+        //}
+
+        /// <summary>
+        /// 根据查询字段获取栏目列表
+        /// </summary>
+        /// <param name="fileds">要查询的字段，多个字段用,号隔开</param>
+        /// <returns>DataTable数据集合</returns>
+        public DataTable GetDataTable(string fileds, string where)
+        {
+            string strSql = string.Format("SELECT {0} FROM {1}Arc_Article WHERE 1=1 {2}", fileds, tablePrefix, where);
+
+            DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                return ds.Tables[0];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 判断当前节点是否存在子节点
+        /// </summary>
+        /// <param name="ParentID"></param>
+        /// <returns></returns>
+        public bool ExistsChildNode(int CID)
+        {
+            string strSql = string.Format("SELECT COUNT(1) FROM {0}Arc_Class WHERE ParentID=@ParentID", tablePrefix);
+            SqlParameter[] cmdParms ={
+                AddInParameter("@ParentID", SqlDbType.Int, 4, CID)};
+
+            return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, strSql, cmdParms)) > 0;
+        }
 
 		/// <summary>
 		/// 得到一个对象实体

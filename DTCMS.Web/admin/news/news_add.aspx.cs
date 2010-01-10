@@ -98,15 +98,16 @@ namespace DTCMS.Web.admin
             else
             {
                 if (modelArticle.IsRedirect == 1)
-                {//是否是跳转地址
-                    if (txt_Redirect.Value.Trim() == "")
+                {
+                    //是否是跳转地址
+                    if (txt_Redirect.Value.Trim().Length == 0)
                     {
                         Message.Dialog("操作失败！跳转地址不能为空。", "-1", MessageIcon.Error, 0);
                         return;
                     }
 
                     modelArticle.FilePath = txt_Redirect.Value.Trim();
-                    modelArticle.Content = "";
+                    modelArticle.AContent = "";
                 }
 
                 try

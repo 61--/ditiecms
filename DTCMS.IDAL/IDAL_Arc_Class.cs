@@ -36,7 +36,7 @@ namespace DTCMS.IDAL
         /// 根据ID和值更新一条数据
         /// </summary>
         /// <param name="CID">栏目ID</param>
-        /// <param name="value">更新值（fieldName=fieldValue）</param>
+        /// <param name="value">更新值（filedName=filedValue）</param>
         /// <returns>返回影响行数</returns>
         int Update(int CID, string value);
 
@@ -55,6 +55,20 @@ namespace DTCMS.IDAL
 		/// <param name="filedValue">字段值</param>
 		/// <returns>存在返回true，不存在返回false</returns>
 		bool Exists(int CID, string filedName, string filedValue);
+
+        /// <summary>
+        /// 根据查询字段查询栏目数据
+        /// </summary>
+        /// <param name="Fileds">要查询的字段</param>
+        /// <returns>DataTable数据集合</returns>
+        DataTable GetDataTable(string Fileds, string where);
+
+        /// <summary>
+        /// 判断当前节点是否存在子节点
+        /// </summary>
+        /// <param name="ParentID"></param>
+        /// <returns></returns>
+        bool ExistsChildNode(int CID);
 
 		/// <summary>
 		/// 得到一个对象实体

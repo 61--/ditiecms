@@ -8,7 +8,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
 using DTCMS.Entity;
+using DTCMS.Common;
 using DTCMS.IDAL;
 using DTCMS.DALFactory;
 
@@ -85,6 +87,89 @@ namespace DTCMS.BLL
         public Arc_Class GetModel(int CID)
         {
             return dal.GetModel(CID);
+        }
+
+        /// <summary>
+        /// 获取栏目关系
+        /// </summary>
+        /// <param name="ParentID">父栏目ID</param>
+        /// <returns>栏目关系</returns>
+        public string GetRelation(int ParentID)
+        {
+            return dal.GetRelation(ParentID);
+        }
+
+        /// <summary>
+        /// 获取栏目深度
+        /// </summary>
+        /// <returns>栏目深度</returns>
+        public int GetClassDepth(int ParentID)
+        {
+            string iRelation = GetRelation(ParentID);
+
+            if (iRelation == "")
+            {
+                return 1;
+            }
+            return iRelation.Split('.').Length + 1;
+        }
+
+        /// <summary>
+        /// 获取父栏目名称
+        /// </summary>
+        /// <param name="ParentID">父栏目ID</param>
+        /// <returns>栏目名称</returns>
+        public string GetClassName(int CID)
+        {
+            return dal.GetClassName(CID);
+        }
+
+        /// <summary>
+        /// 获取DataTable，并转换成Joson数据
+        /// </summary>
+        /// <returns>Joson数据</returns>
+        public string GetDataTableJoson()
+        {
+            DataTable dt = dal.GetDataTable("CID,ClassName,ClassType,AddDate,OrderID,ParentID");
+            if (dt != null)
+            {
+                return Utils.DataTableToJson(dt).ToString();
+            }
+            return "";
+        }
+
+        /// <summary>
+        /// 获取DataTable，并转换成Joson数据，前台调用
+        /// </summary>
+        /// <returns>Joson数据</returns>
+        public string GetDataTableJsonPage(string where)
+        {
+            DataTable dt = dal.GetDataTable("CID,ClassName,ParentID", where);
+            if (dt != null)
+            {
+                return Utils.DataTableToJson(dt).ToString();
+            }
+            return "";
+        }
+
+        /// <summary>
+        /// 判断当前节点是否存在子节点
+        /// </summary>
+        /// <param name="ParentID"></param>
+        /// <returns></returns>
+        public bool ExistsChildNode(int CID)
+        {
+            return dal.ExistsChildNode(CID);
+        }
+
+        /// <summary>
+        /// 判断栏目是否已经存在
+        /// </summary>
+        /// <param name="ClassName"></param>
+        /// <returns></returns>
+        public bool ExistsClassName(int CID, string ClassName)
+        {
+            return dal.ExistsClassName(CID, ClassName);
         }
 
         /// <summary>

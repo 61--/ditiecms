@@ -36,7 +36,7 @@ namespace DTCMS.IDAL
         /// 根据模版ID和值更新一条数据
         /// </summary>
         /// <param name="templateID">模版ID</param>
-        /// <param name="value">更新值（fieldName=fieldValue）</param>
+        /// <param name="value">更新值（filedName=filedValue）</param>
         /// <returns>返回影响行数</returns>
         int Update(int templateID, string value);
 

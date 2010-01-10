@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 21:40:22
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 22:48:15
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -72,7 +72,7 @@ namespace DTCMS.SqlServerDAL
 		/// 根据ID和值更新一条数据
 		/// </summary>
 		/// <param name="ID">编号ID</param>
-		/// <param name="value">更新值（fieldName=fieldValue）</param>
+		/// <param name="value">更新值（filedName=filedValue）</param>
 		/// <returns>返回影响行数</returns>
 		public int Update(int ID, string value)
 		{
@@ -143,6 +143,26 @@ namespace DTCMS.SqlServerDAL
 				{
 					return GetModel(dr);
 				}
+				return null;
+			}
+		}
+
+		/// <summary>
+		/// 根据查询字段获取列表
+		/// </summary>
+		/// <param name="fileds">要查询的字段，多个字段用,号隔开</param>
+		/// <returns>DataTable数据集合</returns>
+		public DataTable GetDataTable(string fileds, string where)
+		{
+			string strSql = string.Format("SELECT {0} FROM {1}ModuleControl WHERE 1=1 {2}", fileds, tablePrefix, where);
+
+			DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
+			if (ds != null && ds.Tables.Count > 0)
+			{
+				return ds.Tables[0];
+			}
+			else
+			{
 				return null;
 			}
 		}
