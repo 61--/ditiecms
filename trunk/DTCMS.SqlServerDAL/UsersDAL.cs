@@ -52,11 +52,11 @@ namespace DTCMS.SqlServerDAL
 				AddInParameter("@PostCount", SqlDbType.Int, 4, model.PostCount),
 				AddInParameter("@OnlineTime", SqlDbType.Int, 4, model.OnlineTime),
 				AddInParameter("@Credits", SqlDbType.Int, 4, model.Credits),
-				AddInParameter("@ExtCredits1", SqlDbType.Float, 9, model.ExtCredits1),
-				AddInParameter("@ExtCredits2", SqlDbType.Float, 9, model.ExtCredits2),
-				AddInParameter("@ExtCredits3", SqlDbType.Float, 9, model.ExtCredits3),
-				AddInParameter("@ExtCredits4", SqlDbType.Float, 9, model.ExtCredits4),
-				AddInParameter("@ExtCredits5", SqlDbType.Float, 9, model.ExtCredits5),
+				AddInParameter("@ExtCredits1", SqlDbType.Decimal, 18, model.ExtCredits1),
+				AddInParameter("@ExtCredits2", SqlDbType.Decimal, 18, model.ExtCredits2),
+				AddInParameter("@ExtCredits3", SqlDbType.Decimal, 18, model.ExtCredits3),
+				AddInParameter("@ExtCredits4", SqlDbType.Decimal, 18, model.ExtCredits4),
+				AddInParameter("@ExtCredits5", SqlDbType.Decimal, 18, model.ExtCredits5),
 				AddInParameter("@Avatar", SqlDbType.VarChar, 200, model.Avatar),
 				AddInParameter("@Birthday", SqlDbType.DateTime, 4, model.Birthday),
 				AddInParameter("@PMCount", SqlDbType.Int, 4, model.PMCount),
@@ -119,11 +119,11 @@ namespace DTCMS.SqlServerDAL
 				AddInParameter("@PostCount", SqlDbType.Int, 4, model.PostCount),
 				AddInParameter("@OnlineTime", SqlDbType.Int, 4, model.OnlineTime),
 				AddInParameter("@Credits", SqlDbType.Int, 4, model.Credits),
-				AddInParameter("@ExtCredits1", SqlDbType.Float, 9, model.ExtCredits1),
-				AddInParameter("@ExtCredits2", SqlDbType.Float, 9, model.ExtCredits2),
-				AddInParameter("@ExtCredits3", SqlDbType.Float, 9, model.ExtCredits3),
-				AddInParameter("@ExtCredits4", SqlDbType.Float, 9, model.ExtCredits4),
-				AddInParameter("@ExtCredits5", SqlDbType.Float, 9, model.ExtCredits5),
+				AddInParameter("@ExtCredits1", SqlDbType.Decimal, 18, model.ExtCredits1),
+				AddInParameter("@ExtCredits2", SqlDbType.Decimal, 18, model.ExtCredits2),
+				AddInParameter("@ExtCredits3", SqlDbType.Decimal, 18, model.ExtCredits3),
+				AddInParameter("@ExtCredits4", SqlDbType.Decimal, 18, model.ExtCredits4),
+				AddInParameter("@ExtCredits5", SqlDbType.Decimal, 18, model.ExtCredits5),
 				AddInParameter("@Avatar", SqlDbType.VarChar, 200, model.Avatar),
 				AddInParameter("@Birthday", SqlDbType.DateTime, 4, model.Birthday),
 				AddInParameter("@PMCount", SqlDbType.Int, 4, model.PMCount),
@@ -237,11 +237,11 @@ namespace DTCMS.SqlServerDAL
 			model.PostCount = dbHelper.GetInt(dr["PostCount"]);
 			model.OnlineTime = dbHelper.GetInt(dr["OnlineTime"]);
 			model.Credits = dbHelper.GetInt(dr["Credits"]);
-			model.ExtCredits1 = dbHelper.GetDouble(dr["ExtCredits1"]);
-			model.ExtCredits2 = dbHelper.GetDouble(dr["ExtCredits2"]);
-			model.ExtCredits3 = dbHelper.GetDouble(dr["ExtCredits3"]);
-			model.ExtCredits4 = dbHelper.GetDouble(dr["ExtCredits4"]);
-			model.ExtCredits5 = dbHelper.GetDouble(dr["ExtCredits5"]);
+			model.ExtCredits1 = dbHelper.GetDecimal(dr["ExtCredits1"]);
+            model.ExtCredits2 = dbHelper.GetDecimal(dr["ExtCredits2"]);
+            model.ExtCredits3 = dbHelper.GetDecimal(dr["ExtCredits3"]);
+            model.ExtCredits4 = dbHelper.GetDecimal(dr["ExtCredits4"]);
+            model.ExtCredits5 = dbHelper.GetDecimal(dr["ExtCredits5"]);
 			model.Avatar = dbHelper.GetString(dr["Avatar"]);
 			model.Birthday = dbHelper.GetDateTime(dr["Birthday"]);
 			model.PMCount = dbHelper.GetInt(dr["PMCount"]);
