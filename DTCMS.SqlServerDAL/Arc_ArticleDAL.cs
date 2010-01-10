@@ -243,24 +243,14 @@ namespace DTCMS.SqlServerDAL
         /// <returns>添加ArticleID：-1</returns>
         public bool ExistsArticleName(int ArticleID, string Title)
         {
-            string strSql = "select count(ID) from DT_Arc_Article where Title=@Title and ID<>@ID";
+            string strSql = "SELECT count(ID) FROM " + tablePrefix + "Arc_Article where Title=@Title and ID<>@ID";
             SqlParameter[] cmdParms ={
                 AddInParameter("@Title",SqlDbType.NVarChar,100,Title),
                 AddInParameter("@ID", SqlDbType.Int, 4, ArticleID)};
-        /// <summary>
-        /// 根据栏目id 判断此栏目是否存在文章
-        /// </summary>
-        /// <param name="CID">栏目编号</param>
-        /// <returns>true存在,false不存在</returns>
-        public bool ExistAtricleToClass(int CID)
-        {
-            string strSql = "select count(ID) from DT_Arc_Article where ClassID=@ClassID";
-            SqlParameter[] cmdParms ={
-                                        AddInParameter("@ClassID",SqlDbType.Int,CID)
-                                     };
-
             return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, strSql, cmdParms)) > 0;
         }
+
+       
 
         /// <summary>
         /// 得到一个对象实体
