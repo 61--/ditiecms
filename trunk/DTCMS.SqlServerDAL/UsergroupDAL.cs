@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 13:57:20
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:24:59
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -37,8 +37,8 @@ namespace DTCMS.SqlServerDAL
 			SqlParameter[] cmdParms = {
 				AddInParameter("@Type", SqlDbType.TinyInt, 1, model.Type),
 				AddInParameter("@IsSystem", SqlDbType.TinyInt, 1, model.IsSystem),
-				AddInParameter("@GroupName", SqlDbType.NVarChar, 100, model.GroupName),
-				AddInParameter("@Description", SqlDbType.NVarChar, 510, model.Description),
+				AddInParameter("@GroupName", SqlDbType.NVarChar, 50, model.GroupName),
+				AddInParameter("@Description", SqlDbType.NVarChar, 255, model.Description),
 				AddInParameter("@CreditBegin", SqlDbType.Int, 4, model.CreditBegin),
 				AddInParameter("@CreditEnd", SqlDbType.Int, 4, model.CreditEnd),
 				AddInParameter("@stars", SqlDbType.TinyInt, 1, model.stars),
@@ -96,8 +96,8 @@ namespace DTCMS.SqlServerDAL
 			SqlParameter[] cmdParms = {
 				AddInParameter("@Type", SqlDbType.TinyInt, 1, model.Type),
 				AddInParameter("@IsSystem", SqlDbType.TinyInt, 1, model.IsSystem),
-				AddInParameter("@GroupName", SqlDbType.NVarChar, 100, model.GroupName),
-				AddInParameter("@Description", SqlDbType.NVarChar, 510, model.Description),
+				AddInParameter("@GroupName", SqlDbType.NVarChar, 25, model.GroupName),
+				AddInParameter("@Description", SqlDbType.NVarChar, 127, model.Description),
 				AddInParameter("@CreditBegin", SqlDbType.Int, 4, model.CreditBegin),
 				AddInParameter("@CreditEnd", SqlDbType.Int, 4, model.CreditEnd),
 				AddInParameter("@stars", SqlDbType.TinyInt, 1, model.stars),

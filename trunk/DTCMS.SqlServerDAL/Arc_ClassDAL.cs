@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 13:57:20
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:24:59
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -37,7 +37,7 @@ namespace DTCMS.SqlServerDAL
 			SqlParameter[] cmdParms = {
 				AddInParameter("@ParentID", SqlDbType.Int, 4, model.ParentID),
 				AddInParameter("@Attribute", SqlDbType.TinyInt, 1, model.Attribute),
-				AddInParameter("@ClassName", SqlDbType.NVarChar, 200, model.ClassName),
+				AddInParameter("@ClassName", SqlDbType.NVarChar, 100, model.ClassName),
 				AddInParameter("@ClassEName", SqlDbType.VarChar, 50, model.ClassEName),
 				AddInParameter("@ClassType", SqlDbType.TinyInt, 1, model.ClassType),
 				AddInParameter("@ClassDomain", SqlDbType.VarChar, 255, model.ClassDomain),
@@ -49,7 +49,7 @@ namespace DTCMS.SqlServerDAL
 				AddInParameter("@ListRule", SqlDbType.VarChar, 255, model.ListRule),
 				AddInParameter("@ArchiveRule", SqlDbType.VarChar, 255, model.ArchiveRule),
 				AddInParameter("@ClassPage", SqlDbType.TinyInt, 1, model.ClassPage),
-				AddInParameter("@Description", SqlDbType.NVarChar, 1000, model.Description),
+				AddInParameter("@Description", SqlDbType.NVarChar, 500, model.Description),
 				AddInParameter("@IsHidden", SqlDbType.TinyInt, 1, model.IsHidden),
 				AddInParameter("@IsHtml", SqlDbType.TinyInt, 1, model.IsHtml),
 				AddInParameter("@CheckLevel", SqlDbType.TinyInt, 1, model.CheckLevel),
@@ -61,9 +61,9 @@ namespace DTCMS.SqlServerDAL
 				AddInParameter("@Relation", SqlDbType.VarChar, 100, model.Relation),
 				AddInParameter("@OrderID", SqlDbType.SmallInt, 2, model.OrderID),
 				AddInParameter("@ImgUrl", SqlDbType.VarChar, 255, model.ImgUrl),
-				AddInParameter("@Keywords", SqlDbType.NVarChar, 400, model.Keywords),
+				AddInParameter("@Keywords", SqlDbType.NVarChar, 200, model.Keywords),
 				AddInParameter("@CrossID", SqlDbType.VarChar, 200, model.CrossID),
-				AddInParameter("@ClassContent", SqlDbType.NVarChar, 16, model.ClassContent)};
+				AddInParameter("@ClassContent", SqlDbType.NVarChar, 8, model.ClassContent)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -108,7 +108,7 @@ namespace DTCMS.SqlServerDAL
 			SqlParameter[] cmdParms = {
 				AddInParameter("@ParentID", SqlDbType.Int, 4, model.ParentID),
 				AddInParameter("@Attribute", SqlDbType.TinyInt, 1, model.Attribute),
-				AddInParameter("@ClassName", SqlDbType.NVarChar, 200, model.ClassName),
+				AddInParameter("@ClassName", SqlDbType.NVarChar, 50, model.ClassName),
 				AddInParameter("@ClassEName", SqlDbType.VarChar, 50, model.ClassEName),
 				AddInParameter("@ClassType", SqlDbType.TinyInt, 1, model.ClassType),
 				AddInParameter("@ClassDomain", SqlDbType.VarChar, 255, model.ClassDomain),
@@ -120,7 +120,7 @@ namespace DTCMS.SqlServerDAL
 				AddInParameter("@ListRule", SqlDbType.VarChar, 255, model.ListRule),
 				AddInParameter("@ArchiveRule", SqlDbType.VarChar, 255, model.ArchiveRule),
 				AddInParameter("@ClassPage", SqlDbType.TinyInt, 1, model.ClassPage),
-				AddInParameter("@Description", SqlDbType.NVarChar, 1000, model.Description),
+				AddInParameter("@Description", SqlDbType.NVarChar, 250, model.Description),
 				AddInParameter("@IsHidden", SqlDbType.TinyInt, 1, model.IsHidden),
 				AddInParameter("@IsHtml", SqlDbType.TinyInt, 1, model.IsHtml),
 				AddInParameter("@CheckLevel", SqlDbType.TinyInt, 1, model.CheckLevel),
@@ -132,9 +132,9 @@ namespace DTCMS.SqlServerDAL
 				AddInParameter("@Relation", SqlDbType.VarChar, 100, model.Relation),
 				AddInParameter("@OrderID", SqlDbType.SmallInt, 2, model.OrderID),
 				AddInParameter("@ImgUrl", SqlDbType.VarChar, 255, model.ImgUrl),
-				AddInParameter("@Keywords", SqlDbType.NVarChar, 400, model.Keywords),
+				AddInParameter("@Keywords", SqlDbType.NVarChar, 100, model.Keywords),
 				AddInParameter("@CrossID", SqlDbType.VarChar, 200, model.CrossID),
-				AddInParameter("@ClassContent", SqlDbType.NVarChar, 16, model.ClassContent),
+				AddInParameter("@ClassContent", SqlDbType.NVarChar, 4, model.ClassContent),
 				AddInParameter("@CID", SqlDbType.Int, 4, model.CID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);

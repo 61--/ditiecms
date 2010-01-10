@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 13:57:20
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:24:59
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -35,12 +35,12 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append(" VALUES (");
             strSql.Append("@TemplateName,@TemplateDirectory,@IsEnable,@CreateDateTime,@TemplateImg,@Author)");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@TemplateName", SqlDbType.NVarChar, 100, model.TemplateName),
+				AddInParameter("@TemplateName", SqlDbType.NVarChar, 50, model.TemplateName),
 				AddInParameter("@TemplateDirectory", SqlDbType.VarChar, 255, model.TemplateDirectory),
 				AddInParameter("@IsEnable", SqlDbType.TinyInt, 1, model.IsEnable),
 				AddInParameter("@CreateDateTime", SqlDbType.DateTime, 8, model.CreateDateTime),
 				AddInParameter("@TemplateImg", SqlDbType.VarChar, 255, model.TemplateImg),
-				AddInParameter("@Author", SqlDbType.NVarChar, 100, model.Author)};
+				AddInParameter("@Author", SqlDbType.NVarChar, 50, model.Author)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -60,12 +60,12 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("Author=@Author");
 			strSql.Append(" WHERE TemplateID=@TemplateID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@TemplateName", SqlDbType.NVarChar, 100, model.TemplateName),
+				AddInParameter("@TemplateName", SqlDbType.NVarChar, 25, model.TemplateName),
 				AddInParameter("@TemplateDirectory", SqlDbType.VarChar, 255, model.TemplateDirectory),
 				AddInParameter("@IsEnable", SqlDbType.TinyInt, 1, model.IsEnable),
 				AddInParameter("@CreateDateTime", SqlDbType.DateTime, 8, model.CreateDateTime),
 				AddInParameter("@TemplateImg", SqlDbType.VarChar, 255, model.TemplateImg),
-				AddInParameter("@Author", SqlDbType.NVarChar, 100, model.Author),
+				AddInParameter("@Author", SqlDbType.NVarChar, 25, model.Author),
 				AddInParameter("@TemplateID", SqlDbType.Int, 4, model.TemplateID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);

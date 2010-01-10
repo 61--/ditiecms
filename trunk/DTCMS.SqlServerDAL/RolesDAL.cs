@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 13:57:20
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:24:59
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -35,8 +35,8 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append(" VALUES (");
             strSql.Append("@RoleName,@Description,@OrderID)");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@RoleName", SqlDbType.NVarChar, 100, model.RoleName),
-				AddInParameter("@Description", SqlDbType.NVarChar, 400, model.Description),
+				AddInParameter("@RoleName", SqlDbType.NVarChar, 50, model.RoleName),
+				AddInParameter("@Description", SqlDbType.NVarChar, 200, model.Description),
 				AddInParameter("@OrderID", SqlDbType.Int, 4, model.OrderID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
@@ -54,8 +54,8 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("OrderID=@OrderID");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@RoleName", SqlDbType.NVarChar, 100, model.RoleName),
-				AddInParameter("@Description", SqlDbType.NVarChar, 400, model.Description),
+				AddInParameter("@RoleName", SqlDbType.NVarChar, 25, model.RoleName),
+				AddInParameter("@Description", SqlDbType.NVarChar, 100, model.Description),
 				AddInParameter("@OrderID", SqlDbType.Int, 4, model.OrderID),
 				AddInParameter("@ID", SqlDbType.Int, 4, model.ID)};
 

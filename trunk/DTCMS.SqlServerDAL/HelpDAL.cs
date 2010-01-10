@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 13:57:20
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:24:59
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -37,8 +37,8 @@ namespace DTCMS.SqlServerDAL
 			SqlParameter[] cmdParms = {
 				AddInParameter("@HelpID", SqlDbType.Char, 8, model.HelpID),
 				AddInParameter("@PID", SqlDbType.Char, 8, model.PID),
-				AddInParameter("@Title", SqlDbType.NVarChar, 200, model.Title),
-				AddInParameter("@Message", SqlDbType.NVarChar, 2000, model.Message),
+				AddInParameter("@Title", SqlDbType.NVarChar, 100, model.Title),
+				AddInParameter("@Message", SqlDbType.NVarChar, 1000, model.Message),
 				AddInParameter("@OrderID", SqlDbType.Int, 4, model.OrderID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
@@ -60,8 +60,8 @@ namespace DTCMS.SqlServerDAL
 			SqlParameter[] cmdParms = {
 				AddInParameter("@HelpID", SqlDbType.Char, 8, model.HelpID),
 				AddInParameter("@PID", SqlDbType.Char, 8, model.PID),
-				AddInParameter("@Title", SqlDbType.NVarChar, 200, model.Title),
-				AddInParameter("@Message", SqlDbType.NVarChar, 2000, model.Message),
+				AddInParameter("@Title", SqlDbType.NVarChar, 50, model.Title),
+				AddInParameter("@Message", SqlDbType.NVarChar, 500, model.Message),
 				AddInParameter("@OrderID", SqlDbType.Int, 4, model.OrderID),
 				AddInParameter("@ID", SqlDbType.Int, 4, model.ID)};
 
