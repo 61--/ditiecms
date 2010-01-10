@@ -199,10 +199,26 @@ namespace DTCMS.SqlServerDAL
 			}
 		}
 
-        //public object GetSingle(string filed)
-        //{
-            
-        //}
+        /// <summary>
+        /// 执行一条计算查询结果语句，返回查询结果（object）
+        /// </summary>
+        /// <param name="filed"></param>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        public object GetSingle(string filed,string where)
+        {
+            string strSql = string.Format("SELECT TOP 1 {0} FROM {1}Arc_Article WHERE 1=1 {2}", filed, tablePrefix, where);
+
+            object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql);
+            if (obj != null)
+            {
+                return obj;
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         /// <summary>
         /// 根据查询字段获取栏目列表

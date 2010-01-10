@@ -57,6 +57,14 @@ namespace DTCMS.IDAL
 		bool Exists(int CID, string filedName, string filedValue);
 
         /// <summary>
+        /// 执行一条计算查询结果语句，返回查询结果（object）
+        /// </summary>
+        /// <param name="filed"></param>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        public object GetSingle(string filed, string where);
+
+        /// <summary>
         /// 根据查询字段查询栏目数据
         /// </summary>
         /// <param name="Fileds">要查询的字段</param>
