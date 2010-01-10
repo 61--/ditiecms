@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-9 13:04:38
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 13:39:54
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -35,35 +35,35 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append(" VALUES (");
             strSql.Append("@ParentID,@Attribute,@ClassName,@ClassEName,@ClassType,@ClassDomain,@ClassPath,@IndexTemplet,@ListTemplet,@ArchiveTemplet,@IndexRule,@ListRule,@ArchiveRule,@ClassPage,@Description,@IsHidden,@IsHtml,@CheckLevel,@IsContribute,@IsComment,@Readaccess,@SiteID,@AddDate,@Relation,@OrderID,@ImgUrl,@Keywords,@CrossID,@ClassContent)");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ParentID", SqlDbType.Int, model.ParentID),
-				AddInParameter("@Attribute", SqlDbType.TinyInt, model.Attribute),
-				AddInParameter("@ClassName", SqlDbType.NVarChar, model.ClassName),
-				AddInParameter("@ClassEName", SqlDbType.VarChar, model.ClassEName),
-				AddInParameter("@ClassType", SqlDbType.TinyInt, model.ClassType),
-				AddInParameter("@ClassDomain", SqlDbType.VarChar, model.ClassDomain),
-				AddInParameter("@ClassPath", SqlDbType.VarChar, model.ClassPath),
-				AddInParameter("@IndexTemplet", SqlDbType.VarChar, model.IndexTemplet),
-				AddInParameter("@ListTemplet", SqlDbType.VarChar, model.ListTemplet),
-				AddInParameter("@ArchiveTemplet", SqlDbType.VarChar, model.ArchiveTemplet),
-				AddInParameter("@IndexRule", SqlDbType.VarChar, model.IndexRule),
-				AddInParameter("@ListRule", SqlDbType.VarChar, model.ListRule),
-				AddInParameter("@ArchiveRule", SqlDbType.VarChar, model.ArchiveRule),
-				AddInParameter("@ClassPage", SqlDbType.TinyInt, model.ClassPage),
-				AddInParameter("@Description", SqlDbType.NVarChar, model.Description),
-				AddInParameter("@IsHidden", SqlDbType.TinyInt, model.IsHidden),
-				AddInParameter("@IsHtml", SqlDbType.TinyInt, model.IsHtml),
-				AddInParameter("@CheckLevel", SqlDbType.TinyInt, model.CheckLevel),
-				AddInParameter("@IsContribute", SqlDbType.TinyInt, model.IsContribute),
-				AddInParameter("@IsComment", SqlDbType.TinyInt, model.IsComment),
-				AddInParameter("@Readaccess", SqlDbType.SmallInt, model.Readaccess),
-				AddInParameter("@SiteID", SqlDbType.TinyInt, model.SiteID),
-				AddInParameter("@AddDate", SqlDbType.DateTime, model.AddDate),
-				AddInParameter("@Relation", SqlDbType.VarChar, model.Relation),
-				AddInParameter("@OrderID", SqlDbType.SmallInt, model.OrderID),
-				AddInParameter("@ImgUrl", SqlDbType.VarChar, model.ImgUrl),
-				AddInParameter("@Keywords", SqlDbType.NVarChar, model.Keywords),
-				AddInParameter("@CrossID", SqlDbType.VarChar, model.CrossID),
-				AddInParameter("@ClassContent", SqlDbType.NVarChar, model.ClassContent)};
+				AddInParameter("@ParentID", SqlDbType.Int, 4, model.ParentID),
+				AddInParameter("@Attribute", SqlDbType.TinyInt, 1, model.Attribute),
+				AddInParameter("@ClassName", SqlDbType.NVarChar, 200, model.ClassName),
+				AddInParameter("@ClassEName", SqlDbType.VarChar, 50, model.ClassEName),
+				AddInParameter("@ClassType", SqlDbType.TinyInt, 1, model.ClassType),
+				AddInParameter("@ClassDomain", SqlDbType.VarChar, 255, model.ClassDomain),
+				AddInParameter("@ClassPath", SqlDbType.VarChar, 255, model.ClassPath),
+				AddInParameter("@IndexTemplet", SqlDbType.VarChar, 255, model.IndexTemplet),
+				AddInParameter("@ListTemplet", SqlDbType.VarChar, 255, model.ListTemplet),
+				AddInParameter("@ArchiveTemplet", SqlDbType.VarChar, 255, model.ArchiveTemplet),
+				AddInParameter("@IndexRule", SqlDbType.VarChar, 255, model.IndexRule),
+				AddInParameter("@ListRule", SqlDbType.VarChar, 255, model.ListRule),
+				AddInParameter("@ArchiveRule", SqlDbType.VarChar, 255, model.ArchiveRule),
+				AddInParameter("@ClassPage", SqlDbType.TinyInt, 1, model.ClassPage),
+				AddInParameter("@Description", SqlDbType.NVarChar, 1000, model.Description),
+				AddInParameter("@IsHidden", SqlDbType.TinyInt, 1, model.IsHidden),
+				AddInParameter("@IsHtml", SqlDbType.TinyInt, 1, model.IsHtml),
+				AddInParameter("@CheckLevel", SqlDbType.TinyInt, 1, model.CheckLevel),
+				AddInParameter("@IsContribute", SqlDbType.TinyInt, 1, model.IsContribute),
+				AddInParameter("@IsComment", SqlDbType.TinyInt, 1, model.IsComment),
+				AddInParameter("@Readaccess", SqlDbType.SmallInt, 2, model.Readaccess),
+				AddInParameter("@SiteID", SqlDbType.TinyInt, 1, model.SiteID),
+				AddInParameter("@AddDate", SqlDbType.DateTime, 8, model.AddDate),
+				AddInParameter("@Relation", SqlDbType.VarChar, 100, model.Relation),
+				AddInParameter("@OrderID", SqlDbType.SmallInt, 2, model.OrderID),
+				AddInParameter("@ImgUrl", SqlDbType.VarChar, 255, model.ImgUrl),
+				AddInParameter("@Keywords", SqlDbType.NVarChar, 400, model.Keywords),
+				AddInParameter("@CrossID", SqlDbType.VarChar, 200, model.CrossID),
+				AddInParameter("@ClassContent", SqlDbType.NVarChar, 16, model.ClassContent)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -106,36 +106,36 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("ClassContent=@ClassContent");
 			strSql.Append(" WHERE CID=@CID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ParentID", SqlDbType.Int, model.ParentID),
-				AddInParameter("@Attribute", SqlDbType.TinyInt, model.Attribute),
-				AddInParameter("@ClassName", SqlDbType.NVarChar, model.ClassName),
-				AddInParameter("@ClassEName", SqlDbType.VarChar, model.ClassEName),
-				AddInParameter("@ClassType", SqlDbType.TinyInt, model.ClassType),
-				AddInParameter("@ClassDomain", SqlDbType.VarChar, model.ClassDomain),
-				AddInParameter("@ClassPath", SqlDbType.VarChar, model.ClassPath),
-				AddInParameter("@IndexTemplet", SqlDbType.VarChar, model.IndexTemplet),
-				AddInParameter("@ListTemplet", SqlDbType.VarChar, model.ListTemplet),
-				AddInParameter("@ArchiveTemplet", SqlDbType.VarChar, model.ArchiveTemplet),
-				AddInParameter("@IndexRule", SqlDbType.VarChar, model.IndexRule),
-				AddInParameter("@ListRule", SqlDbType.VarChar, model.ListRule),
-				AddInParameter("@ArchiveRule", SqlDbType.VarChar, model.ArchiveRule),
-				AddInParameter("@ClassPage", SqlDbType.TinyInt, model.ClassPage),
-				AddInParameter("@Description", SqlDbType.NVarChar, model.Description),
-				AddInParameter("@IsHidden", SqlDbType.TinyInt, model.IsHidden),
-				AddInParameter("@IsHtml", SqlDbType.TinyInt, model.IsHtml),
-				AddInParameter("@CheckLevel", SqlDbType.TinyInt, model.CheckLevel),
-				AddInParameter("@IsContribute", SqlDbType.TinyInt, model.IsContribute),
-				AddInParameter("@IsComment", SqlDbType.TinyInt, model.IsComment),
-				AddInParameter("@Readaccess", SqlDbType.SmallInt, model.Readaccess),
-				AddInParameter("@SiteID", SqlDbType.TinyInt, model.SiteID),
-				AddInParameter("@AddDate", SqlDbType.DateTime, model.AddDate),
-				AddInParameter("@Relation", SqlDbType.VarChar, model.Relation),
-				AddInParameter("@OrderID", SqlDbType.SmallInt, model.OrderID),
-				AddInParameter("@ImgUrl", SqlDbType.VarChar, model.ImgUrl),
-				AddInParameter("@Keywords", SqlDbType.NVarChar, model.Keywords),
-				AddInParameter("@CrossID", SqlDbType.VarChar, model.CrossID),
-				AddInParameter("@ClassContent", SqlDbType.NVarChar, model.ClassContent),
-				AddInParameter("@CID", SqlDbType.Int, model.CID)};
+				AddInParameter("@ParentID", SqlDbType.Int, 4, model.ParentID),
+				AddInParameter("@Attribute", SqlDbType.TinyInt, 1, model.Attribute),
+				AddInParameter("@ClassName", SqlDbType.NVarChar, 200, model.ClassName),
+				AddInParameter("@ClassEName", SqlDbType.VarChar, 50, model.ClassEName),
+				AddInParameter("@ClassType", SqlDbType.TinyInt, 1, model.ClassType),
+				AddInParameter("@ClassDomain", SqlDbType.VarChar, 255, model.ClassDomain),
+				AddInParameter("@ClassPath", SqlDbType.VarChar, 255, model.ClassPath),
+				AddInParameter("@IndexTemplet", SqlDbType.VarChar, 255, model.IndexTemplet),
+				AddInParameter("@ListTemplet", SqlDbType.VarChar, 255, model.ListTemplet),
+				AddInParameter("@ArchiveTemplet", SqlDbType.VarChar, 255, model.ArchiveTemplet),
+				AddInParameter("@IndexRule", SqlDbType.VarChar, 255, model.IndexRule),
+				AddInParameter("@ListRule", SqlDbType.VarChar, 255, model.ListRule),
+				AddInParameter("@ArchiveRule", SqlDbType.VarChar, 255, model.ArchiveRule),
+				AddInParameter("@ClassPage", SqlDbType.TinyInt, 1, model.ClassPage),
+				AddInParameter("@Description", SqlDbType.NVarChar, 1000, model.Description),
+				AddInParameter("@IsHidden", SqlDbType.TinyInt, 1, model.IsHidden),
+				AddInParameter("@IsHtml", SqlDbType.TinyInt, 1, model.IsHtml),
+				AddInParameter("@CheckLevel", SqlDbType.TinyInt, 1, model.CheckLevel),
+				AddInParameter("@IsContribute", SqlDbType.TinyInt, 1, model.IsContribute),
+				AddInParameter("@IsComment", SqlDbType.TinyInt, 1, model.IsComment),
+				AddInParameter("@Readaccess", SqlDbType.SmallInt, 2, model.Readaccess),
+				AddInParameter("@SiteID", SqlDbType.TinyInt, 1, model.SiteID),
+				AddInParameter("@AddDate", SqlDbType.DateTime, 8, model.AddDate),
+				AddInParameter("@Relation", SqlDbType.VarChar, 100, model.Relation),
+				AddInParameter("@OrderID", SqlDbType.SmallInt, 2, model.OrderID),
+				AddInParameter("@ImgUrl", SqlDbType.VarChar, 255, model.ImgUrl),
+				AddInParameter("@Keywords", SqlDbType.NVarChar, 400, model.Keywords),
+				AddInParameter("@CrossID", SqlDbType.VarChar, 200, model.CrossID),
+				AddInParameter("@ClassContent", SqlDbType.NVarChar, 16, model.ClassContent),
+				AddInParameter("@CID", SqlDbType.Int, 4, model.CID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -149,7 +149,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("DELETE FROM Arc_Class ");
 			strSql.Append(" WHERE CID=@CID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@CID", SqlDbType.Int, CID)};
+				AddInParameter("@CID", SqlDbType.Int, 4, model.CID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -163,7 +163,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("SELECT COUNT(1) FROM Arc_Class");
 			strSql.Append(" WHERE CID=@CID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@CID", SqlDbType.Int, CID)};
+				AddInParameter("@CID", SqlDbType.Int, 4, model.CID)};
 
 			object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), cmdParms);
 			return dbHelper.GetInt(obj) > 0;
@@ -178,7 +178,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent FROM Arc_Class");
 			strSql.Append(" WHERE CID=@CID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@CID", SqlDbType.Int, CID)};
+				AddInParameter("@CID", SqlDbType.Int, 4, model.CID)};
 
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
 			{

@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-9 13:04:38
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 13:39:54
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -35,11 +35,11 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append(" VALUES (");
             strSql.Append("@HelpID,@PID,@Title,@Message,@OrderID)");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@HelpID", SqlDbType.Char, model.HelpID),
-				AddInParameter("@PID", SqlDbType.Char, model.PID),
-				AddInParameter("@Title", SqlDbType.NVarChar, model.Title),
-				AddInParameter("@Message", SqlDbType.NVarChar, model.Message),
-				AddInParameter("@OrderID", SqlDbType.Int, model.OrderID)};
+				AddInParameter("@HelpID", SqlDbType.Char, 8, model.HelpID),
+				AddInParameter("@PID", SqlDbType.Char, 8, model.PID),
+				AddInParameter("@Title", SqlDbType.NVarChar, 200, model.Title),
+				AddInParameter("@Message", SqlDbType.NVarChar, 2000, model.Message),
+				AddInParameter("@OrderID", SqlDbType.Int, 4, model.OrderID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -58,12 +58,12 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("OrderID=@OrderID");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@HelpID", SqlDbType.Char, model.HelpID),
-				AddInParameter("@PID", SqlDbType.Char, model.PID),
-				AddInParameter("@Title", SqlDbType.NVarChar, model.Title),
-				AddInParameter("@Message", SqlDbType.NVarChar, model.Message),
-				AddInParameter("@OrderID", SqlDbType.Int, model.OrderID),
-				AddInParameter("@ID", SqlDbType.Int, model.ID)};
+				AddInParameter("@HelpID", SqlDbType.Char, 8, model.HelpID),
+				AddInParameter("@PID", SqlDbType.Char, 8, model.PID),
+				AddInParameter("@Title", SqlDbType.NVarChar, 200, model.Title),
+				AddInParameter("@Message", SqlDbType.NVarChar, 2000, model.Message),
+				AddInParameter("@OrderID", SqlDbType.Int, 4, model.OrderID),
+				AddInParameter("@ID", SqlDbType.Int, 4, model.ID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -77,7 +77,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("DELETE FROM Help ");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ID", SqlDbType.Int, ID)};
+				AddInParameter("@ID", SqlDbType.Int, 4, model.ID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -91,7 +91,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("SELECT COUNT(1) FROM Help");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ID", SqlDbType.Int, ID)};
+				AddInParameter("@ID", SqlDbType.Int, 4, model.ID)};
 
 			object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), cmdParms);
 			return dbHelper.GetInt(obj) > 0;
@@ -106,7 +106,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("SELECT ID,HelpID,PID,Title,Message,OrderID FROM Help");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ID", SqlDbType.Int, ID)};
+				AddInParameter("@ID", SqlDbType.Int, 4, model.ID)};
 
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
 			{
