@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 13:39:54
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 13:57:20
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -77,7 +77,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("DELETE FROM Sys_Dict ");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ID", SqlDbType.Int, 4, model.ID)};
+				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -91,7 +91,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("SELECT COUNT(1) FROM Sys_Dict");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ID", SqlDbType.Int, 4, model.ID)};
+				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
 
 			object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), cmdParms);
 			return dbHelper.GetInt(obj) > 0;
@@ -106,7 +106,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("SELECT ID,Type,Title,Url,Email,Click FROM Sys_Dict");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ID", SqlDbType.Int, 4, model.ID)};
+				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
 
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
 			{
