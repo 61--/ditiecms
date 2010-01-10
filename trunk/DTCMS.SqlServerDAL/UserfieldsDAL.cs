@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 19:36:36
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 21:40:22
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -91,6 +91,22 @@ namespace DTCMS.SqlServerDAL
 				AddInParameter("@UID", SqlDbType.Int, 4, model.UID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
+		}
+
+		/// <summary>
+		/// 根据ID和值更新一条数据
+		/// </summary>
+		/// <param name="UID">编号ID</param>
+		/// <param name="value">更新值（fieldName=fieldValue）</param>
+		/// <returns>返回影响行数</returns>
+		public int Update(int UID, string value)
+		{
+			StringBuilder strSql = new StringBuilder();
+			strSql.Append("UPDATE " + tablePrefix + "Userfields SET ");
+			strSql.Append(value);
+			strSql.Append(" WHERE UID=");
+			strSql.Append(UID);
+			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString());
 		}
 
 		/// <summary>

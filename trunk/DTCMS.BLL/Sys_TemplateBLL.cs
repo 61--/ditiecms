@@ -20,6 +20,7 @@ namespace DTCMS.BLL
 	public class Sys_TemplateBLL
 	{
 		private readonly IDAL_Sys_Template dal = DataAccess.CreateFactoryDAL<IDAL_Sys_Template>("Sys_TemplateDAL");
+
 		public Sys_TemplateBLL()
 		{ }
 
@@ -44,6 +45,17 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
+        /// 设置风格为启动状态
+        /// </summary>
+        /// <param name="tempID">风格编号</param>
+        /// <param name="isEnable"> 1启动 </param>
+        /// <returns>成功返回true，失败返回false</returns>
+        public bool UpdateEnable(int TemplateID, int isEnable)
+        {
+            return dal.Update(TemplateID, "IsEnable=" + isEnable) > 0;
+        }
+
+        /// <summary>
 		/// 删除一条数据
 		/// </summary>
         /// <param name="TemplateID">TemplateID</param>
@@ -60,9 +72,9 @@ namespace DTCMS.BLL
         /// <param name="filedName">字段名称</param>
         /// <param name="filedValue">字段值</param>
         /// <returns>成功返回true，失败返回false</returns>
-        public bool Exists(int TemplateID, string filedName, string filedValue)
+        public bool Exists(int templateID, string filedName, string filedValue)
         {
-            return dal.Exists(TemplateID, filedName, filedValue);
+            return dal.Exists(templateID, filedName, filedValue);
         }
 
         /// <summary>

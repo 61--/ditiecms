@@ -20,13 +20,14 @@ namespace DTCMS.BLL
 	public class Arc_ClassBLL
 	{
 		private readonly IDAL_Arc_Class dal = DataAccess.CreateFactoryDAL<IDAL_Arc_Class>("Arc_ClassDAL");
+
 		public Arc_ClassBLL()
 		{ }
 
         /// <summary>
-		/// 增加一条数据
-		/// </summary>
-        /// <param name="model">实体对象</param>
+        /// 添加栏目
+        /// </summary>
+        /// <param name="model">栏目实体对象</param>
         /// <returns>返回影响行数</returns>
         public int Add(Arc_Class model)
         {
@@ -34,13 +35,24 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-		/// 更新一条数据
-		/// </summary>
-        /// <param name="model">实体对象</param>
+        /// 更新栏目
+        /// </summary>
+        /// <param name="model">栏目实体对象</param>
         /// <returns>返回影响行数</returns>
         public int Update(Arc_Class model)
         {
             return dal.Update(model);
+        }
+
+        /// <summary>
+        /// 更新排序
+        /// </summary>
+        /// <param name="cid">栏目ID</param>
+        /// <param name="order">排序编号</param>
+        /// <returns></returns>
+        public int UpdateOrder(int cid, int order)
+        {
+            return dal.Update(cid, "OrderID=" + order);
         }
 
         /// <summary>
