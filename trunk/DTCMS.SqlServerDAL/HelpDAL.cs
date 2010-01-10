@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:24:59
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:48:31
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -30,7 +30,7 @@ namespace DTCMS.SqlServerDAL
 		public int Add(Help model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("INSERT INTO Help(");
+			strSql.Append("INSERT INTO " + tablePrefix + " Help(");
             strSql.Append("HelpID,PID,Title,Message,OrderID)");
 			strSql.Append(" VALUES (");
             strSql.Append("@HelpID,@PID,@Title,@Message,@OrderID)");
@@ -50,7 +50,7 @@ namespace DTCMS.SqlServerDAL
 		public int Update(Help model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("UPDATE Help SET ");
+			strSql.Append("UPDATE " + tablePrefix + " Help SET ");
 			strSql.Append("HelpID=@HelpID,");
 			strSql.Append("PID=@PID,");
 			strSql.Append("Title=@Title,");
@@ -74,7 +74,7 @@ namespace DTCMS.SqlServerDAL
 		public int Delete(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("DELETE FROM Help ");
+			strSql.Append("DELETE FROM " + tablePrefix + " Help ");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
@@ -88,7 +88,7 @@ namespace DTCMS.SqlServerDAL
 		public bool Exists(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT COUNT(1) FROM Help");
+			strSql.Append("SELECT COUNT(1) FROM " + tablePrefix + " Help");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
@@ -103,7 +103,7 @@ namespace DTCMS.SqlServerDAL
 		public Help GetModel(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,HelpID,PID,Title,Message,OrderID FROM Help");
+			strSql.Append("SELECT ID,HelpID,PID,Title,Message,OrderID FROM " + tablePrefix + " Help");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
@@ -124,7 +124,7 @@ namespace DTCMS.SqlServerDAL
 		public List<Help> GetList(out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,HelpID,PID,Title,Message,OrderID FROM Help");
+			strSql.Append("SELECT ID,HelpID,PID,Title,Message,OrderID FROM " + tablePrefix + " Help");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Help> lst = GetList(dr, out count);
@@ -138,7 +138,7 @@ namespace DTCMS.SqlServerDAL
 		public List<Help> GetPageList(int pageSize, int pageIndex, out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,HelpID,PID,Title,Message,OrderID FROM Help");
+			strSql.Append("SELECT ID,HelpID,PID,Title,Message,OrderID FROM " + tablePrefix + " Help");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Help> lst = GetPageList(dr, pageSize, pageIndex, out count);

@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:24:59
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:48:31
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -30,7 +30,7 @@ namespace DTCMS.SqlServerDAL
 		public int Add(ModuleControl model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("INSERT INTO ModuleControl(");
+			strSql.Append("INSERT INTO " + tablePrefix + " ModuleControl(");
             strSql.Append("ControlName,ModuleID,ControlValue,OrderID)");
 			strSql.Append(" VALUES (");
             strSql.Append("@ControlName,@ModuleID,@ControlValue,@OrderID)");
@@ -49,7 +49,7 @@ namespace DTCMS.SqlServerDAL
 		public int Update(ModuleControl model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("UPDATE ModuleControl SET ");
+			strSql.Append("UPDATE " + tablePrefix + " ModuleControl SET ");
 			strSql.Append("ControlName=@ControlName,");
 			strSql.Append("ModuleID=@ModuleID,");
 			strSql.Append("ControlValue=@ControlValue,");
@@ -71,7 +71,7 @@ namespace DTCMS.SqlServerDAL
 		public int Delete(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("DELETE FROM ModuleControl ");
+			strSql.Append("DELETE FROM " + tablePrefix + " ModuleControl ");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
@@ -85,7 +85,7 @@ namespace DTCMS.SqlServerDAL
 		public bool Exists(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT COUNT(1) FROM ModuleControl");
+			strSql.Append("SELECT COUNT(1) FROM " + tablePrefix + " ModuleControl");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
@@ -100,7 +100,7 @@ namespace DTCMS.SqlServerDAL
 		public ModuleControl GetModel(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,ControlName,ModuleID,ControlValue,OrderID FROM ModuleControl");
+			strSql.Append("SELECT ID,ControlName,ModuleID,ControlValue,OrderID FROM " + tablePrefix + " ModuleControl");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
@@ -121,7 +121,7 @@ namespace DTCMS.SqlServerDAL
 		public List<ModuleControl> GetList(out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,ControlName,ModuleID,ControlValue,OrderID FROM ModuleControl");
+			strSql.Append("SELECT ID,ControlName,ModuleID,ControlValue,OrderID FROM " + tablePrefix + " ModuleControl");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<ModuleControl> lst = GetList(dr, out count);
@@ -135,7 +135,7 @@ namespace DTCMS.SqlServerDAL
 		public List<ModuleControl> GetPageList(int pageSize, int pageIndex, out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,ControlName,ModuleID,ControlValue,OrderID FROM ModuleControl");
+			strSql.Append("SELECT ID,ControlName,ModuleID,ControlValue,OrderID FROM " + tablePrefix + " ModuleControl");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<ModuleControl> lst = GetPageList(dr, pageSize, pageIndex, out count);

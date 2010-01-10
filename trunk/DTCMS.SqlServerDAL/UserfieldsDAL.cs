@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:24:59
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:48:31
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -30,7 +30,7 @@ namespace DTCMS.SqlServerDAL
 		public int Add(Userfields model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("INSERT INTO Userfields(");
+			strSql.Append("INSERT INTO " + tablePrefix + " Userfields(");
             strSql.Append("UID,Realname,QQ,MSN,Skype,Phone,Mobilephone,Location,Adress,IDcard,Signature,Introduce,Website)");
 			strSql.Append(" VALUES (");
             strSql.Append("@UID,@Realname,@QQ,@MSN,@Skype,@Phone,@Mobilephone,@Location,@Adress,@IDcard,@Signature,@Introduce,@Website)");
@@ -58,7 +58,7 @@ namespace DTCMS.SqlServerDAL
 		public int Update(Userfields model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("UPDATE Userfields SET ");
+			strSql.Append("UPDATE " + tablePrefix + " Userfields SET ");
 			strSql.Append("Realname=@Realname,");
 			strSql.Append("QQ=@QQ,");
 			strSql.Append("MSN=@MSN,");
@@ -96,7 +96,7 @@ namespace DTCMS.SqlServerDAL
 		public int Delete(int UID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("DELETE FROM Userfields ");
+			strSql.Append("DELETE FROM " + tablePrefix + " Userfields ");
 			strSql.Append(" WHERE UID=@UID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@UID", SqlDbType.Int, 4, UID)};
@@ -110,7 +110,7 @@ namespace DTCMS.SqlServerDAL
 		public bool Exists(int UID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT COUNT(1) FROM Userfields");
+			strSql.Append("SELECT COUNT(1) FROM " + tablePrefix + " Userfields");
 			strSql.Append(" WHERE UID=@UID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@UID", SqlDbType.Int, 4, UID)};
@@ -125,7 +125,7 @@ namespace DTCMS.SqlServerDAL
 		public Userfields GetModel(int UID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT UID,Realname,QQ,MSN,Skype,Phone,Mobilephone,Location,Adress,IDcard,Signature,Introduce,Website FROM Userfields");
+			strSql.Append("SELECT UID,Realname,QQ,MSN,Skype,Phone,Mobilephone,Location,Adress,IDcard,Signature,Introduce,Website FROM " + tablePrefix + " Userfields");
 			strSql.Append(" WHERE UID=@UID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@UID", SqlDbType.Int, 4, UID)};
@@ -146,7 +146,7 @@ namespace DTCMS.SqlServerDAL
 		public List<Userfields> GetList(out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT UID,Realname,QQ,MSN,Skype,Phone,Mobilephone,Location,Adress,IDcard,Signature,Introduce,Website FROM Userfields");
+			strSql.Append("SELECT UID,Realname,QQ,MSN,Skype,Phone,Mobilephone,Location,Adress,IDcard,Signature,Introduce,Website FROM " + tablePrefix + " Userfields");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Userfields> lst = GetList(dr, out count);
@@ -160,7 +160,7 @@ namespace DTCMS.SqlServerDAL
 		public List<Userfields> GetPageList(int pageSize, int pageIndex, out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT UID,Realname,QQ,MSN,Skype,Phone,Mobilephone,Location,Adress,IDcard,Signature,Introduce,Website FROM Userfields");
+			strSql.Append("SELECT UID,Realname,QQ,MSN,Skype,Phone,Mobilephone,Location,Adress,IDcard,Signature,Introduce,Website FROM " + tablePrefix + " Userfields");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Userfields> lst = GetPageList(dr, pageSize, pageIndex, out count);

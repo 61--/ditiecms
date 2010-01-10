@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:24:59
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:48:31
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -30,7 +30,7 @@ namespace DTCMS.SqlServerDAL
 		public int Add(Sys_Dict model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("INSERT INTO Sys_Dict(");
+			strSql.Append("INSERT INTO " + tablePrefix + " Sys_Dict(");
             strSql.Append("Type,Title,Url,Email,Click)");
 			strSql.Append(" VALUES (");
             strSql.Append("@Type,@Title,@Url,@Email,@Click)");
@@ -50,7 +50,7 @@ namespace DTCMS.SqlServerDAL
 		public int Update(Sys_Dict model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("UPDATE Sys_Dict SET ");
+			strSql.Append("UPDATE " + tablePrefix + " Sys_Dict SET ");
 			strSql.Append("Type=@Type,");
 			strSql.Append("Title=@Title,");
 			strSql.Append("Url=@Url,");
@@ -74,7 +74,7 @@ namespace DTCMS.SqlServerDAL
 		public int Delete(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("DELETE FROM Sys_Dict ");
+			strSql.Append("DELETE FROM " + tablePrefix + " Sys_Dict ");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
@@ -88,7 +88,7 @@ namespace DTCMS.SqlServerDAL
 		public bool Exists(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT COUNT(1) FROM Sys_Dict");
+			strSql.Append("SELECT COUNT(1) FROM " + tablePrefix + " Sys_Dict");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
@@ -103,7 +103,7 @@ namespace DTCMS.SqlServerDAL
 		public Sys_Dict GetModel(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,Type,Title,Url,Email,Click FROM Sys_Dict");
+			strSql.Append("SELECT ID,Type,Title,Url,Email,Click FROM " + tablePrefix + " Sys_Dict");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
@@ -124,7 +124,7 @@ namespace DTCMS.SqlServerDAL
 		public List<Sys_Dict> GetList(out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,Type,Title,Url,Email,Click FROM Sys_Dict");
+			strSql.Append("SELECT ID,Type,Title,Url,Email,Click FROM " + tablePrefix + " Sys_Dict");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Sys_Dict> lst = GetList(dr, out count);
@@ -138,7 +138,7 @@ namespace DTCMS.SqlServerDAL
 		public List<Sys_Dict> GetPageList(int pageSize, int pageIndex, out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,Type,Title,Url,Email,Click FROM Sys_Dict");
+			strSql.Append("SELECT ID,Type,Title,Url,Email,Click FROM " + tablePrefix + " Sys_Dict");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Sys_Dict> lst = GetPageList(dr, pageSize, pageIndex, out count);
