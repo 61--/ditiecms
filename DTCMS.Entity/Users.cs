@@ -37,11 +37,11 @@ namespace DTCMS.Entity
 		private int _postCount;
 		private int _onlineTime;
 		private int _credits;
-		private double _extCredits1;
-		private double _extCredits2;
-		private double _extCredits3;
-		private double _extCredits4;
-		private double _extCredits5;
+		private decimal _extCredits1;
+        private decimal _extCredits2;
+        private decimal _extCredits3;
+        private decimal _extCredits4;
+        private decimal _extCredits5;
 		private string _avatar;
 		private DateTime _birthday;
 		private int _pMCount;
@@ -194,7 +194,7 @@ namespace DTCMS.Entity
 		/// <summary>
 		/// 扩展积分
 		/// </summary>
-		public double ExtCredits1
+		public decimal ExtCredits1
 		{
 			set { _extCredits1 = value; }
 			get { return _extCredits1; }
@@ -202,7 +202,7 @@ namespace DTCMS.Entity
 		/// <summary>
 		/// 扩展积分2
 		/// </summary>
-		public double ExtCredits2
+        public decimal ExtCredits2
 		{
 			set { _extCredits2 = value; }
 			get { return _extCredits2; }
@@ -210,7 +210,7 @@ namespace DTCMS.Entity
 		/// <summary>
 		/// 扩展积分3
 		/// </summary>
-		public double ExtCredits3
+        public decimal ExtCredits3
 		{
 			set { _extCredits3 = value; }
 			get { return _extCredits3; }
@@ -218,15 +218,15 @@ namespace DTCMS.Entity
 		/// <summary>
 		/// 扩展积分4
 		/// </summary>
-		public double ExtCredits4
+        public decimal ExtCredits4
 		{
 			set { _extCredits4 = value; }
 			get { return _extCredits4; }
 		}
 		/// <summary>
-		/// 扩展积分
+		/// 扩展积分5
 		/// </summary>
-		public double ExtCredits5
+        public decimal ExtCredits5
 		{
 			set { _extCredits5 = value; }
 			get { return _extCredits5; }
