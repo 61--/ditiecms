@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 13:57:20
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:24:59
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -37,12 +37,12 @@ namespace DTCMS.SqlServerDAL
 			SqlParameter[] cmdParms = {
 				AddInParameter("@ModuleID", SqlDbType.Char, 8, model.ModuleID),
 				AddInParameter("@ParentID", SqlDbType.Char, 8, model.ParentID),
-				AddInParameter("@Name", SqlDbType.NVarChar, 100, model.Name),
+				AddInParameter("@Name", SqlDbType.NVarChar, 50, model.Name),
 				AddInParameter("@EName", SqlDbType.VarChar, 50, model.EName),
 				AddInParameter("@ModuleDepth", SqlDbType.TinyInt, 1, model.ModuleDepth),
 				AddInParameter("@ModuleURL", SqlDbType.VarChar, 255, model.ModuleURL),
 				AddInParameter("@Target", SqlDbType.VarChar, 20, model.Target),
-				AddInParameter("@Description", SqlDbType.NVarChar, 400, model.Description),
+				AddInParameter("@Description", SqlDbType.NVarChar, 200, model.Description),
 				AddInParameter("@CreateTime", SqlDbType.DateTime, 8, model.CreateTime),
 				AddInParameter("@IsQuickMenu", SqlDbType.TinyInt, 1, model.IsQuickMenu),
 				AddInParameter("@IsSystem", SqlDbType.TinyInt, 1, model.IsSystem),
@@ -76,12 +76,12 @@ namespace DTCMS.SqlServerDAL
 			SqlParameter[] cmdParms = {
 				AddInParameter("@ModuleID", SqlDbType.Char, 8, model.ModuleID),
 				AddInParameter("@ParentID", SqlDbType.Char, 8, model.ParentID),
-				AddInParameter("@Name", SqlDbType.NVarChar, 100, model.Name),
+				AddInParameter("@Name", SqlDbType.NVarChar, 25, model.Name),
 				AddInParameter("@EName", SqlDbType.VarChar, 50, model.EName),
 				AddInParameter("@ModuleDepth", SqlDbType.TinyInt, 1, model.ModuleDepth),
 				AddInParameter("@ModuleURL", SqlDbType.VarChar, 255, model.ModuleURL),
 				AddInParameter("@Target", SqlDbType.VarChar, 20, model.Target),
-				AddInParameter("@Description", SqlDbType.NVarChar, 400, model.Description),
+				AddInParameter("@Description", SqlDbType.NVarChar, 100, model.Description),
 				AddInParameter("@CreateTime", SqlDbType.DateTime, 8, model.CreateTime),
 				AddInParameter("@IsQuickMenu", SqlDbType.TinyInt, 1, model.IsQuickMenu),
 				AddInParameter("@IsSystem", SqlDbType.TinyInt, 1, model.IsSystem),
