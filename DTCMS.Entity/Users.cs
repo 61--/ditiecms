@@ -192,7 +192,7 @@ namespace DTCMS.Entity
 			get { return _credits; }
 		}
 		/// <summary>
-		/// 扩展积分
+		/// 扩展积分1
 		/// </summary>
 		public decimal ExtCredits1
 		{

@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:48:31
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 15:13:14
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -102,11 +102,11 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("IsLock=@IsLock");
 			strSql.Append(" WHERE UID=@UID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@UserName", SqlDbType.NVarChar, 25, model.UserName),
-				AddInParameter("@NickName", SqlDbType.NVarChar, 25, model.NickName),
+				AddInParameter("@UserName", SqlDbType.NVarChar, 50, model.UserName),
+				AddInParameter("@NickName", SqlDbType.NVarChar, 50, model.NickName),
 				AddInParameter("@Password", SqlDbType.Char, 32, model.Password),
-				AddInParameter("@SecureQuestion", SqlDbType.NVarChar, 25, model.SecureQuestion),
-				AddInParameter("@SecureAnswer", SqlDbType.NVarChar, 25, model.SecureAnswer),
+				AddInParameter("@SecureQuestion", SqlDbType.NVarChar, 50, model.SecureQuestion),
+				AddInParameter("@SecureAnswer", SqlDbType.NVarChar, 50, model.SecureAnswer),
 				AddInParameter("@Sex", SqlDbType.TinyInt, 1, model.Sex),
 				AddInParameter("@Email", SqlDbType.VarChar, 50, model.Email),
 				AddInParameter("@RoleID", SqlDbType.Int, 4, model.RoleID),

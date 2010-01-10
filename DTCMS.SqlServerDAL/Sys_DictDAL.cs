@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 14:48:31
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 15:13:14
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -59,7 +59,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@Type", SqlDbType.VarChar, 50, model.Type),
-				AddInParameter("@Title", SqlDbType.NVarChar, 25, model.Title),
+				AddInParameter("@Title", SqlDbType.NVarChar, 50, model.Title),
 				AddInParameter("@Url", SqlDbType.VarChar, 255, model.Url),
 				AddInParameter("@Email", SqlDbType.VarChar, 50, model.Email),
 				AddInParameter("@Click", SqlDbType.Int, 4, model.Click),
