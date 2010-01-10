@@ -326,5 +326,18 @@ namespace DTCMS.Entity
 			get { return _orderID; }
 		}
 		#endregion
-	}
+        #region 栏目成员
+
+        private string _classname;
+        /// <summary>
+        /// 栏目名称
+        /// </summary>
+        public string ClassName
+        {
+            set { _classname = value; }
+            get { return  _classname; }
+        }
+
+        #endregion
+    }
 }
