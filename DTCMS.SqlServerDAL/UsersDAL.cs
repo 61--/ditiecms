@@ -1,11 +1,10 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-10 15:13:14
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 19:36:36
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
 //------------------------------------------------------------------------------
-
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -27,10 +26,12 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
+		/// <param name="UID">编号ID</param>
+		/// <returns>返回影响行数</returns>
 		public int Add(Users model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("INSERT INTO " + tablePrefix + " Users(");
+			strSql.Append("INSERT INTO " + tablePrefix + "Users(");
             strSql.Append("UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock)");
 			strSql.Append(" VALUES (");
             strSql.Append("@UserName,@NickName,@Password,@SecureQuestion,@SecureAnswer,@Sex,@Email,@RoleID,@UsergroupID,@RegisterIP,@RegisterTime,@LastloginIP,@LastloginTime,@LoginCount,@PostCount,@OnlineTime,@Credits,@ExtCredits1,@ExtCredits2,@ExtCredits3,@ExtCredits4,@ExtCredits5,@Avatar,@Birthday,@PMCount,@IsVerify,@IsLock)");
@@ -69,10 +70,12 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
+		/// <param name="model">实体对象</param>
+		/// <returns>返回影响行数</returns>
 		public int Update(Users model)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("UPDATE " + tablePrefix + " Users SET ");
+			strSql.Append("UPDATE " + tablePrefix + "Users SET ");
 			strSql.Append("UserName=@UserName,");
 			strSql.Append("NickName=@NickName,");
 			strSql.Append("Password=@Password,");
@@ -137,10 +140,12 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
+		/// <param name="UID">编号ID</param>
+		/// <returns>返回影响行数</returns>
 		public int Delete(int UID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("DELETE FROM " + tablePrefix + " Users ");
+			strSql.Append("DELETE FROM " + tablePrefix + "Users");
 			strSql.Append(" WHERE UID=@UID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@UID", SqlDbType.Int, 4, UID)};
@@ -151,25 +156,36 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
-		public bool Exists(int UID)
+		/// <param name="UID">编号ID</param>
+		/// <param name="filedName">字段名称</param>
+		/// <param name="filedValue">字段值</param>
+		/// <returns>存在返回true，不存在返回false</returns>
+		public bool Exists(int UID, string filedName, string filedValue)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT COUNT(1) FROM " + tablePrefix + " Users");
-			strSql.Append(" WHERE UID=@UID");
-			SqlParameter[] cmdParms = {
-				AddInParameter("@UID", SqlDbType.Int, 4, UID)};
-
-			object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), cmdParms);
-			return dbHelper.GetInt(obj) > 0;
+			if (filedName != "")
+			{
+				strSql.Append("SELECT COUNT(1) FROM " + tablePrefix + "Users");
+				strSql.Append(" WHERE UID<>{0} AND {1}={2}");
+				return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, string.Format(strSql.ToString(), UID, filedName, filedValue))) > 0;
+			}
+			else
+			{
+				strSql.Append("SELECT COUNT(1) FROM " + tablePrefix + "Users");
+				strSql.Append(" WHERE UID={0}");
+				return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, string.Format(strSql.ToString(), UID))) > 0;
+			}
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
+		/// <param name="UID">编号ID</param>
+		/// <returns>实体对象</returns>
 		public Users GetModel(int UID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT UID,UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock FROM " + tablePrefix + " Users");
+			strSql.Append("SELECT UID,UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock FROM " + tablePrefix + "Users");
 			strSql.Append(" WHERE UID=@UID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@UID", SqlDbType.Int, 4, UID)};
@@ -187,10 +203,12 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 获取泛型数据列表
 		/// </summary>
+		/// <param name="count">返回记录总数</param>
+		/// <returns>对象泛型集合</returns>
 		public List<Users> GetList(out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT UID,UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock FROM " + tablePrefix + " Users");
+			strSql.Append("SELECT UID,UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock FROM " + tablePrefix + "Users");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Users> lst = GetList(dr, out count);
@@ -201,10 +219,14 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 分页获取泛型数据列表
 		/// </summary>
+		/// <param name="pageSize">分页大小</param>
+		/// <param name="pageIndex">当前页</param>
+		/// <param name="count">返回记录数</param>
+		/// <returns>分页对象泛型集合</returns>
 		public List<Users> GetPageList(int pageSize, int pageIndex, out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT UID,UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock FROM " + tablePrefix + " Users");
+			strSql.Append("SELECT UID,UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock FROM " + tablePrefix + "Users");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Users> lst = GetPageList(dr, pageSize, pageIndex, out count);
@@ -216,6 +238,8 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 由一行数据得到一个实体
 		/// </summary>
+		/// <param name="dr">SqlDataReader对象</param>
+		/// <returns>实体对象</returns>
 		private Users GetModel(SqlDataReader dr)
 		{
 			Users model = new Users();
@@ -253,6 +277,9 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 由SqlDataReader得到泛型数据列表
 		/// </summary>
+		/// <param name="dr">SqlDataReader对象</param>
+		/// <param name="count">返回记录数</param>
+		/// <returns>对象泛型集合</returns>
 		private List<Users> GetList(SqlDataReader dr, out long count)
 		{
 			count = 0;
@@ -268,6 +295,11 @@ namespace DTCMS.SqlServerDAL
 		/// <summary>
 		/// 由SqlDataReader得到分页泛型数据列表
 		/// </summary>
+		/// <param name="dr">SqlDataReader对象</param>
+		/// <param name="pageSize">分页大小</param>
+		/// <param name="pageIndex">当前页数</param>
+		/// <param name="count">返回记录总数</param>
+		/// <returns>分页对象泛型集合</returns>
 		private List<Users> GetPageList(SqlDataReader dr, int pageSize, int pageIndex, out long count)
 		{
 			long first = GetFirstIndex(pageSize, pageIndex);
