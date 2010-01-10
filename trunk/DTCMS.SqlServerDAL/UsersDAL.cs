@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-9 13:04:38
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 13:39:54
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -35,33 +35,33 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append(" VALUES (");
             strSql.Append("@UserName,@NickName,@Password,@SecureQuestion,@SecureAnswer,@Sex,@Email,@RoleID,@UsergroupID,@RegisterIP,@RegisterTime,@LastloginIP,@LastloginTime,@LoginCount,@PostCount,@OnlineTime,@Credits,@ExtCredits1,@ExtCredits2,@ExtCredits3,@ExtCredits4,@ExtCredits5,@Avatar,@Birthday,@PMCount,@IsVerify,@IsLock)");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@UserName", SqlDbType.NVarChar, model.UserName),
-				AddInParameter("@NickName", SqlDbType.NVarChar, model.NickName),
-				AddInParameter("@Password", SqlDbType.Char, model.Password),
-				AddInParameter("@SecureQuestion", SqlDbType.NVarChar, model.SecureQuestion),
-				AddInParameter("@SecureAnswer", SqlDbType.NVarChar, model.SecureAnswer),
-				AddInParameter("@Sex", SqlDbType.TinyInt, model.Sex),
-				AddInParameter("@Email", SqlDbType.VarChar, model.Email),
-				AddInParameter("@RoleID", SqlDbType.Int, model.RoleID),
-				AddInParameter("@UsergroupID", SqlDbType.Int, model.UsergroupID),
-				AddInParameter("@RegisterIP", SqlDbType.Char, model.RegisterIP),
-				AddInParameter("@RegisterTime", SqlDbType.DateTime, model.RegisterTime),
-				AddInParameter("@LastloginIP", SqlDbType.Char, model.LastloginIP),
-				AddInParameter("@LastloginTime", SqlDbType.DateTime, model.LastloginTime),
-				AddInParameter("@LoginCount", SqlDbType.Int, model.LoginCount),
-				AddInParameter("@PostCount", SqlDbType.Int, model.PostCount),
-				AddInParameter("@OnlineTime", SqlDbType.Int, model.OnlineTime),
-				AddInParameter("@Credits", SqlDbType.Int, model.Credits),
-				AddInParameter("@ExtCredits1", SqlDbType.Float, model.ExtCredits1),
-				AddInParameter("@ExtCredits2", SqlDbType.Float, model.ExtCredits2),
-				AddInParameter("@ExtCredits3", SqlDbType.Float, model.ExtCredits3),
-				AddInParameter("@ExtCredits4", SqlDbType.Float, model.ExtCredits4),
-				AddInParameter("@ExtCredits5", SqlDbType.Float, model.ExtCredits5),
-				AddInParameter("@Avatar", SqlDbType.VarChar, model.Avatar),
-				AddInParameter("@Birthday", SqlDbType.DateTime, model.Birthday),
-				AddInParameter("@PMCount", SqlDbType.Int, model.PMCount),
-				AddInParameter("@IsVerify", SqlDbType.TinyInt, model.IsVerify),
-				AddInParameter("@IsLock", SqlDbType.TinyInt, model.IsLock)};
+				AddInParameter("@UserName", SqlDbType.NVarChar, 100, model.UserName),
+				AddInParameter("@NickName", SqlDbType.NVarChar, 100, model.NickName),
+				AddInParameter("@Password", SqlDbType.Char, 32, model.Password),
+				AddInParameter("@SecureQuestion", SqlDbType.NVarChar, 100, model.SecureQuestion),
+				AddInParameter("@SecureAnswer", SqlDbType.NVarChar, 100, model.SecureAnswer),
+				AddInParameter("@Sex", SqlDbType.TinyInt, 1, model.Sex),
+				AddInParameter("@Email", SqlDbType.VarChar, 50, model.Email),
+				AddInParameter("@RoleID", SqlDbType.Int, 4, model.RoleID),
+				AddInParameter("@UsergroupID", SqlDbType.Int, 4, model.UsergroupID),
+				AddInParameter("@RegisterIP", SqlDbType.Char, 15, model.RegisterIP),
+				AddInParameter("@RegisterTime", SqlDbType.DateTime, 8, model.RegisterTime),
+				AddInParameter("@LastloginIP", SqlDbType.Char, 15, model.LastloginIP),
+				AddInParameter("@LastloginTime", SqlDbType.DateTime, 8, model.LastloginTime),
+				AddInParameter("@LoginCount", SqlDbType.Int, 4, model.LoginCount),
+				AddInParameter("@PostCount", SqlDbType.Int, 4, model.PostCount),
+				AddInParameter("@OnlineTime", SqlDbType.Int, 4, model.OnlineTime),
+				AddInParameter("@Credits", SqlDbType.Int, 4, model.Credits),
+				AddInParameter("@ExtCredits1", SqlDbType.Float, 9, model.ExtCredits1),
+				AddInParameter("@ExtCredits2", SqlDbType.Float, 9, model.ExtCredits2),
+				AddInParameter("@ExtCredits3", SqlDbType.Float, 9, model.ExtCredits3),
+				AddInParameter("@ExtCredits4", SqlDbType.Float, 9, model.ExtCredits4),
+				AddInParameter("@ExtCredits5", SqlDbType.Float, 9, model.ExtCredits5),
+				AddInParameter("@Avatar", SqlDbType.VarChar, 200, model.Avatar),
+				AddInParameter("@Birthday", SqlDbType.DateTime, 4, model.Birthday),
+				AddInParameter("@PMCount", SqlDbType.Int, 4, model.PMCount),
+				AddInParameter("@IsVerify", SqlDbType.TinyInt, 1, model.IsVerify),
+				AddInParameter("@IsLock", SqlDbType.TinyInt, 1, model.IsLock)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -102,34 +102,34 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("IsLock=@IsLock");
 			strSql.Append(" WHERE UID=@UID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@UserName", SqlDbType.NVarChar, model.UserName),
-				AddInParameter("@NickName", SqlDbType.NVarChar, model.NickName),
-				AddInParameter("@Password", SqlDbType.Char, model.Password),
-				AddInParameter("@SecureQuestion", SqlDbType.NVarChar, model.SecureQuestion),
-				AddInParameter("@SecureAnswer", SqlDbType.NVarChar, model.SecureAnswer),
-				AddInParameter("@Sex", SqlDbType.TinyInt, model.Sex),
-				AddInParameter("@Email", SqlDbType.VarChar, model.Email),
-				AddInParameter("@RoleID", SqlDbType.Int, model.RoleID),
-				AddInParameter("@UsergroupID", SqlDbType.Int, model.UsergroupID),
-				AddInParameter("@RegisterIP", SqlDbType.Char, model.RegisterIP),
-				AddInParameter("@RegisterTime", SqlDbType.DateTime, model.RegisterTime),
-				AddInParameter("@LastloginIP", SqlDbType.Char, model.LastloginIP),
-				AddInParameter("@LastloginTime", SqlDbType.DateTime, model.LastloginTime),
-				AddInParameter("@LoginCount", SqlDbType.Int, model.LoginCount),
-				AddInParameter("@PostCount", SqlDbType.Int, model.PostCount),
-				AddInParameter("@OnlineTime", SqlDbType.Int, model.OnlineTime),
-				AddInParameter("@Credits", SqlDbType.Int, model.Credits),
-				AddInParameter("@ExtCredits1", SqlDbType.Float, model.ExtCredits1),
-				AddInParameter("@ExtCredits2", SqlDbType.Float, model.ExtCredits2),
-				AddInParameter("@ExtCredits3", SqlDbType.Float, model.ExtCredits3),
-				AddInParameter("@ExtCredits4", SqlDbType.Float, model.ExtCredits4),
-				AddInParameter("@ExtCredits5", SqlDbType.Float, model.ExtCredits5),
-				AddInParameter("@Avatar", SqlDbType.VarChar, model.Avatar),
-				AddInParameter("@Birthday", SqlDbType.DateTime, model.Birthday),
-				AddInParameter("@PMCount", SqlDbType.Int, model.PMCount),
-				AddInParameter("@IsVerify", SqlDbType.TinyInt, model.IsVerify),
-				AddInParameter("@IsLock", SqlDbType.TinyInt, model.IsLock),
-				AddInParameter("@UID", SqlDbType.Int, model.UID)};
+				AddInParameter("@UserName", SqlDbType.NVarChar, 100, model.UserName),
+				AddInParameter("@NickName", SqlDbType.NVarChar, 100, model.NickName),
+				AddInParameter("@Password", SqlDbType.Char, 32, model.Password),
+				AddInParameter("@SecureQuestion", SqlDbType.NVarChar, 100, model.SecureQuestion),
+				AddInParameter("@SecureAnswer", SqlDbType.NVarChar, 100, model.SecureAnswer),
+				AddInParameter("@Sex", SqlDbType.TinyInt, 1, model.Sex),
+				AddInParameter("@Email", SqlDbType.VarChar, 50, model.Email),
+				AddInParameter("@RoleID", SqlDbType.Int, 4, model.RoleID),
+				AddInParameter("@UsergroupID", SqlDbType.Int, 4, model.UsergroupID),
+				AddInParameter("@RegisterIP", SqlDbType.Char, 15, model.RegisterIP),
+				AddInParameter("@RegisterTime", SqlDbType.DateTime, 8, model.RegisterTime),
+				AddInParameter("@LastloginIP", SqlDbType.Char, 15, model.LastloginIP),
+				AddInParameter("@LastloginTime", SqlDbType.DateTime, 8, model.LastloginTime),
+				AddInParameter("@LoginCount", SqlDbType.Int, 4, model.LoginCount),
+				AddInParameter("@PostCount", SqlDbType.Int, 4, model.PostCount),
+				AddInParameter("@OnlineTime", SqlDbType.Int, 4, model.OnlineTime),
+				AddInParameter("@Credits", SqlDbType.Int, 4, model.Credits),
+				AddInParameter("@ExtCredits1", SqlDbType.Float, 9, model.ExtCredits1),
+				AddInParameter("@ExtCredits2", SqlDbType.Float, 9, model.ExtCredits2),
+				AddInParameter("@ExtCredits3", SqlDbType.Float, 9, model.ExtCredits3),
+				AddInParameter("@ExtCredits4", SqlDbType.Float, 9, model.ExtCredits4),
+				AddInParameter("@ExtCredits5", SqlDbType.Float, 9, model.ExtCredits5),
+				AddInParameter("@Avatar", SqlDbType.VarChar, 200, model.Avatar),
+				AddInParameter("@Birthday", SqlDbType.DateTime, 4, model.Birthday),
+				AddInParameter("@PMCount", SqlDbType.Int, 4, model.PMCount),
+				AddInParameter("@IsVerify", SqlDbType.TinyInt, 1, model.IsVerify),
+				AddInParameter("@IsLock", SqlDbType.TinyInt, 1, model.IsLock),
+				AddInParameter("@UID", SqlDbType.Int, 4, model.UID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -143,7 +143,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("DELETE FROM Users ");
 			strSql.Append(" WHERE UID=@UID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@UID", SqlDbType.Int, UID)};
+				AddInParameter("@UID", SqlDbType.Int, 4, model.UID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -157,7 +157,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("SELECT COUNT(1) FROM Users");
 			strSql.Append(" WHERE UID=@UID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@UID", SqlDbType.Int, UID)};
+				AddInParameter("@UID", SqlDbType.Int, 4, model.UID)};
 
 			object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), cmdParms);
 			return dbHelper.GetInt(obj) > 0;
@@ -172,7 +172,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("SELECT UID,UserName,NickName,Password,SecureQuestion,SecureAnswer,Sex,Email,RoleID,UsergroupID,RegisterIP,RegisterTime,LastloginIP,LastloginTime,LoginCount,PostCount,OnlineTime,Credits,ExtCredits1,ExtCredits2,ExtCredits3,ExtCredits4,ExtCredits5,Avatar,Birthday,PMCount,IsVerify,IsLock FROM Users");
 			strSql.Append(" WHERE UID=@UID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@UID", SqlDbType.Int, UID)};
+				AddInParameter("@UID", SqlDbType.Int, 4, model.UID)};
 
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
 			{

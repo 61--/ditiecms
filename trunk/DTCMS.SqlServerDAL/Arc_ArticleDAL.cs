@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-1-9 13:04:38
+// 创建描述: DTCMS V1.0 创建于 2010-1-10 13:39:54
 // 功能描述: 
 // 修改标识: 
 // 修改描述: 
@@ -35,39 +35,39 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append(" VALUES (");
             strSql.Append("@ClassID,@ViceClassID,@Title,@ShortTitle,@TitleStyle,@TitleFlag,@Tags,@ImgUrl,@Author,@Editor,@PubLisher,@Source,@Templet,@Keywords,@Description,@AContent,@Click,@Good,@Bad,@Readaccess,@Money,@Attribute,@IsComment,@IsChecked,@IsRecycle,@IsRedirect,@IsHtml,@IsPaging,@FilePath,@SimilarArticle,@AddDate,@PubDate,@OrderID)");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ClassID", SqlDbType.Int, model.ClassID),
-				AddInParameter("@ViceClassID", SqlDbType.Int, model.ViceClassID),
-				AddInParameter("@Title", SqlDbType.NVarChar, model.Title),
-				AddInParameter("@ShortTitle", SqlDbType.NVarChar, model.ShortTitle),
-				AddInParameter("@TitleStyle", SqlDbType.VarChar, model.TitleStyle),
-				AddInParameter("@TitleFlag", SqlDbType.TinyInt, model.TitleFlag),
-				AddInParameter("@Tags", SqlDbType.NVarChar, model.Tags),
-				AddInParameter("@ImgUrl", SqlDbType.VarChar, model.ImgUrl),
-				AddInParameter("@Author", SqlDbType.NVarChar, model.Author),
-				AddInParameter("@Editor", SqlDbType.NVarChar, model.Editor),
-				AddInParameter("@PubLisher", SqlDbType.NVarChar, model.PubLisher),
-				AddInParameter("@Source", SqlDbType.NVarChar, model.Source),
-				AddInParameter("@Templet", SqlDbType.VarChar, model.Templet),
-				AddInParameter("@Keywords", SqlDbType.NVarChar, model.Keywords),
-				AddInParameter("@Description", SqlDbType.NVarChar, model.Description),
-				AddInParameter("@AContent", SqlDbType.NVarChar, model.AContent),
-				AddInParameter("@Click", SqlDbType.Int, model.Click),
-				AddInParameter("@Good", SqlDbType.Int, model.Good),
-				AddInParameter("@Bad", SqlDbType.Int, model.Bad),
-				AddInParameter("@Readaccess", SqlDbType.SmallInt, model.Readaccess),
-				AddInParameter("@Money", SqlDbType.SmallInt, model.Money),
-				AddInParameter("@Attribute", SqlDbType.SmallInt, model.Attribute),
-				AddInParameter("@IsComment", SqlDbType.TinyInt, model.IsComment),
-				AddInParameter("@IsChecked", SqlDbType.TinyInt, model.IsChecked),
-				AddInParameter("@IsRecycle", SqlDbType.TinyInt, model.IsRecycle),
-				AddInParameter("@IsRedirect", SqlDbType.TinyInt, model.IsRedirect),
-				AddInParameter("@IsHtml", SqlDbType.TinyInt, model.IsHtml),
-				AddInParameter("@IsPaging", SqlDbType.TinyInt, model.IsPaging),
-				AddInParameter("@FilePath", SqlDbType.VarChar, model.FilePath),
-				AddInParameter("@SimilarArticle", SqlDbType.VarChar, model.SimilarArticle),
-				AddInParameter("@AddDate", SqlDbType.DateTime, model.AddDate),
-				AddInParameter("@PubDate", SqlDbType.DateTime, model.PubDate),
-				AddInParameter("@OrderID", SqlDbType.Int, model.OrderID)};
+				AddInParameter("@ClassID", SqlDbType.Int, 4, model.ClassID),
+				AddInParameter("@ViceClassID", SqlDbType.Int, 4, model.ViceClassID),
+				AddInParameter("@Title", SqlDbType.NVarChar, 200, model.Title),
+				AddInParameter("@ShortTitle", SqlDbType.NVarChar, 200, model.ShortTitle),
+				AddInParameter("@TitleStyle", SqlDbType.VarChar, 100, model.TitleStyle),
+				AddInParameter("@TitleFlag", SqlDbType.TinyInt, 1, model.TitleFlag),
+				AddInParameter("@Tags", SqlDbType.NVarChar, 200, model.Tags),
+				AddInParameter("@ImgUrl", SqlDbType.VarChar, 255, model.ImgUrl),
+				AddInParameter("@Author", SqlDbType.NVarChar, 100, model.Author),
+				AddInParameter("@Editor", SqlDbType.NVarChar, 100, model.Editor),
+				AddInParameter("@PubLisher", SqlDbType.NVarChar, 100, model.PubLisher),
+				AddInParameter("@Source", SqlDbType.NVarChar, 200, model.Source),
+				AddInParameter("@Templet", SqlDbType.VarChar, 255, model.Templet),
+				AddInParameter("@Keywords", SqlDbType.NVarChar, 400, model.Keywords),
+				AddInParameter("@Description", SqlDbType.NVarChar, 1000, model.Description),
+				AddInParameter("@AContent", SqlDbType.NVarChar, 16, model.AContent),
+				AddInParameter("@Click", SqlDbType.Int, 4, model.Click),
+				AddInParameter("@Good", SqlDbType.Int, 4, model.Good),
+				AddInParameter("@Bad", SqlDbType.Int, 4, model.Bad),
+				AddInParameter("@Readaccess", SqlDbType.SmallInt, 2, model.Readaccess),
+				AddInParameter("@Money", SqlDbType.SmallInt, 2, model.Money),
+				AddInParameter("@Attribute", SqlDbType.SmallInt, 2, model.Attribute),
+				AddInParameter("@IsComment", SqlDbType.TinyInt, 1, model.IsComment),
+				AddInParameter("@IsChecked", SqlDbType.TinyInt, 1, model.IsChecked),
+				AddInParameter("@IsRecycle", SqlDbType.TinyInt, 1, model.IsRecycle),
+				AddInParameter("@IsRedirect", SqlDbType.TinyInt, 1, model.IsRedirect),
+				AddInParameter("@IsHtml", SqlDbType.TinyInt, 1, model.IsHtml),
+				AddInParameter("@IsPaging", SqlDbType.TinyInt, 1, model.IsPaging),
+				AddInParameter("@FilePath", SqlDbType.VarChar, 255, model.FilePath),
+				AddInParameter("@SimilarArticle", SqlDbType.VarChar, 200, model.SimilarArticle),
+				AddInParameter("@AddDate", SqlDbType.DateTime, 8, model.AddDate),
+				AddInParameter("@PubDate", SqlDbType.DateTime, 8, model.PubDate),
+				AddInParameter("@OrderID", SqlDbType.Int, 4, model.OrderID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -114,40 +114,40 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("OrderID=@OrderID");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ClassID", SqlDbType.Int, model.ClassID),
-				AddInParameter("@ViceClassID", SqlDbType.Int, model.ViceClassID),
-				AddInParameter("@Title", SqlDbType.NVarChar, model.Title),
-				AddInParameter("@ShortTitle", SqlDbType.NVarChar, model.ShortTitle),
-				AddInParameter("@TitleStyle", SqlDbType.VarChar, model.TitleStyle),
-				AddInParameter("@TitleFlag", SqlDbType.TinyInt, model.TitleFlag),
-				AddInParameter("@Tags", SqlDbType.NVarChar, model.Tags),
-				AddInParameter("@ImgUrl", SqlDbType.VarChar, model.ImgUrl),
-				AddInParameter("@Author", SqlDbType.NVarChar, model.Author),
-				AddInParameter("@Editor", SqlDbType.NVarChar, model.Editor),
-				AddInParameter("@PubLisher", SqlDbType.NVarChar, model.PubLisher),
-				AddInParameter("@Source", SqlDbType.NVarChar, model.Source),
-				AddInParameter("@Templet", SqlDbType.VarChar, model.Templet),
-				AddInParameter("@Keywords", SqlDbType.NVarChar, model.Keywords),
-				AddInParameter("@Description", SqlDbType.NVarChar, model.Description),
-				AddInParameter("@AContent", SqlDbType.NVarChar, model.AContent),
-				AddInParameter("@Click", SqlDbType.Int, model.Click),
-				AddInParameter("@Good", SqlDbType.Int, model.Good),
-				AddInParameter("@Bad", SqlDbType.Int, model.Bad),
-				AddInParameter("@Readaccess", SqlDbType.SmallInt, model.Readaccess),
-				AddInParameter("@Money", SqlDbType.SmallInt, model.Money),
-				AddInParameter("@Attribute", SqlDbType.SmallInt, model.Attribute),
-				AddInParameter("@IsComment", SqlDbType.TinyInt, model.IsComment),
-				AddInParameter("@IsChecked", SqlDbType.TinyInt, model.IsChecked),
-				AddInParameter("@IsRecycle", SqlDbType.TinyInt, model.IsRecycle),
-				AddInParameter("@IsRedirect", SqlDbType.TinyInt, model.IsRedirect),
-				AddInParameter("@IsHtml", SqlDbType.TinyInt, model.IsHtml),
-				AddInParameter("@IsPaging", SqlDbType.TinyInt, model.IsPaging),
-				AddInParameter("@FilePath", SqlDbType.VarChar, model.FilePath),
-				AddInParameter("@SimilarArticle", SqlDbType.VarChar, model.SimilarArticle),
-				AddInParameter("@AddDate", SqlDbType.DateTime, model.AddDate),
-				AddInParameter("@PubDate", SqlDbType.DateTime, model.PubDate),
-				AddInParameter("@OrderID", SqlDbType.Int, model.OrderID),
-				AddInParameter("@ID", SqlDbType.Int, model.ID)};
+				AddInParameter("@ClassID", SqlDbType.Int, 4, model.ClassID),
+				AddInParameter("@ViceClassID", SqlDbType.Int, 4, model.ViceClassID),
+				AddInParameter("@Title", SqlDbType.NVarChar, 200, model.Title),
+				AddInParameter("@ShortTitle", SqlDbType.NVarChar, 200, model.ShortTitle),
+				AddInParameter("@TitleStyle", SqlDbType.VarChar, 100, model.TitleStyle),
+				AddInParameter("@TitleFlag", SqlDbType.TinyInt, 1, model.TitleFlag),
+				AddInParameter("@Tags", SqlDbType.NVarChar, 200, model.Tags),
+				AddInParameter("@ImgUrl", SqlDbType.VarChar, 255, model.ImgUrl),
+				AddInParameter("@Author", SqlDbType.NVarChar, 100, model.Author),
+				AddInParameter("@Editor", SqlDbType.NVarChar, 100, model.Editor),
+				AddInParameter("@PubLisher", SqlDbType.NVarChar, 100, model.PubLisher),
+				AddInParameter("@Source", SqlDbType.NVarChar, 200, model.Source),
+				AddInParameter("@Templet", SqlDbType.VarChar, 255, model.Templet),
+				AddInParameter("@Keywords", SqlDbType.NVarChar, 400, model.Keywords),
+				AddInParameter("@Description", SqlDbType.NVarChar, 1000, model.Description),
+				AddInParameter("@AContent", SqlDbType.NVarChar, 16, model.AContent),
+				AddInParameter("@Click", SqlDbType.Int, 4, model.Click),
+				AddInParameter("@Good", SqlDbType.Int, 4, model.Good),
+				AddInParameter("@Bad", SqlDbType.Int, 4, model.Bad),
+				AddInParameter("@Readaccess", SqlDbType.SmallInt, 2, model.Readaccess),
+				AddInParameter("@Money", SqlDbType.SmallInt, 2, model.Money),
+				AddInParameter("@Attribute", SqlDbType.SmallInt, 2, model.Attribute),
+				AddInParameter("@IsComment", SqlDbType.TinyInt, 1, model.IsComment),
+				AddInParameter("@IsChecked", SqlDbType.TinyInt, 1, model.IsChecked),
+				AddInParameter("@IsRecycle", SqlDbType.TinyInt, 1, model.IsRecycle),
+				AddInParameter("@IsRedirect", SqlDbType.TinyInt, 1, model.IsRedirect),
+				AddInParameter("@IsHtml", SqlDbType.TinyInt, 1, model.IsHtml),
+				AddInParameter("@IsPaging", SqlDbType.TinyInt, 1, model.IsPaging),
+				AddInParameter("@FilePath", SqlDbType.VarChar, 255, model.FilePath),
+				AddInParameter("@SimilarArticle", SqlDbType.VarChar, 200, model.SimilarArticle),
+				AddInParameter("@AddDate", SqlDbType.DateTime, 8, model.AddDate),
+				AddInParameter("@PubDate", SqlDbType.DateTime, 8, model.PubDate),
+				AddInParameter("@OrderID", SqlDbType.Int, 4, model.OrderID),
+				AddInParameter("@ID", SqlDbType.Int, 4, model.ID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -161,7 +161,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("DELETE FROM Arc_Article ");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ID", SqlDbType.Int, ID)};
+				AddInParameter("@ID", SqlDbType.Int, 4, model.ID)};
 
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
@@ -175,7 +175,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("SELECT COUNT(1) FROM Arc_Article");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ID", SqlDbType.Int, ID)};
+				AddInParameter("@ID", SqlDbType.Int, 4, model.ID)};
 
 			object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql.ToString(), cmdParms);
 			return dbHelper.GetInt(obj) > 0;
@@ -190,7 +190,7 @@ namespace DTCMS.SqlServerDAL
 			strSql.Append("SELECT ID,ClassID,ViceClassID,Title,ShortTitle,TitleStyle,TitleFlag,Tags,ImgUrl,Author,Editor,PubLisher,Source,Templet,Keywords,Description,AContent,Click,Good,Bad,Readaccess,Money,Attribute,IsComment,IsChecked,IsRecycle,IsRedirect,IsHtml,IsPaging,FilePath,SimilarArticle,AddDate,PubDate,OrderID FROM Arc_Article");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
-				AddInParameter("@ID", SqlDbType.Int, ID)};
+				AddInParameter("@ID", SqlDbType.Int, 4, model.ID)};
 
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), cmdParms))
 			{
