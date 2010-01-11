@@ -139,8 +139,8 @@ namespace DTCMS.Web.admin
 
                             #region 保存数据
                             AttachMent modAttachMent = new AttachMent();
-                            modAttachMent.AttachMentAttribute = attachmentAttribute;
-                            modAttachMent.AttachMentDisplayName = fileDisplayName;
+                            modAttachMent.Attribute = attachmentAttribute;
+                            modAttachMent.DisplayName = fileDisplayName;
                             modAttachMent.AttachMentPath = "/" + filepathshort.Replace("\\", "/") + returnImgName;
                             modAttachMent.AttachMentSize = (fileContentLen / 1024).ToString() + "K";
                             if (hasAbbrImage1.Trim().ToLower() == "true")

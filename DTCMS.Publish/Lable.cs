@@ -17,7 +17,7 @@ namespace DTCMS.Publish
         /// <param name="template">内容页模板</param>
         ///<param name="content">文章内容</param>
         ///<param name="tag">文章正文标签{#.content}</param>
-        protected virtual void ConvertPagingContent(string path, string template, string content, string tag)
+        public  virtual void ConvertPagingContent(string path, string template, string content, string tag)
         {
             string strPage = string.Empty;
             if (content.IndexOf("{#pagenext}") != -1)
@@ -28,7 +28,7 @@ namespace DTCMS.Publish
                 {
                     i++;
                     strPage = template.Replace(tag, str);
-                    strPage = strPage.Replace("{#page}", PageSeting.GetPageNumbers(i, strContent.Length, string.Format("{0}_{1}", path, 1), 10, "", ""));//分页标签
+                    strPage = strPage.Replace("{#page}", PageSeting.GetPageNumbers(i, strContent.Length, string.Format("{0}_{1}", path, i), 10, "", ""));//分页标签
                     tool.CreateHtml(content, path);
                 }
             }
@@ -46,32 +46,37 @@ namespace DTCMS.Publish
         /// <param name="template">列表模板</param>
         /// <param name="pageSize">每页显示条数</param>
         /// <param name="dt"></param>
-        protected virtual void ConvertPagingList(string path, string template, string loopitem, string loopitemrule, int pageSize, System.Data.DataTable dt) 
-        { }
+        protected virtual string ConvertPagingList(string path, string template, string loopitem, string loopitemrule, int pageSize, System.Data.DataTable dt) 
+        {
+            return "";
+        }
         
 
         /// <summary>
         /// 生成内容页
         /// </summary>
-        public virtual void CreatePageHtml(DataRow row) 
-        { 
+        public virtual string ConvertPageHtml(DataRow row) 
+        {
+            return "";
         }
 
         /// <summary>
         /// 生成列表页
         /// </summary>
         /// <param name="classID">类别编号</param>
-        public virtual void CreateListHtml(int classID)
-        { 
-        
+        public virtual string ConvertListHtml(int classID)
+        {
+            return "";
         }
 
         /// <summary>
         /// 生成封面页
         /// </summary>
         /// <param name="classID">类别编号</param>
-        public virtual void CreateCoverHtml(int classID)
-        { }
+        public virtual string ConvertCoverHtml(int classID)
+        {
+            return "";
+        }
 
         /// <summary>
         /// 替换循环列表通用方法
@@ -93,7 +98,9 @@ namespace DTCMS.Publish
         /// <param name="template">内容页模板</param>
         /// <param name="row">内容数据</param>
         /// <returns></returns>
-        public virtual void ReplayPageLable(string template, DataRow row)
-        { }
+        public virtual string ReplayPageLable(string template, DataRow row)
+        {
+            return "";
+        }
     }
 }

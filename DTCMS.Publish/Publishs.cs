@@ -23,10 +23,10 @@ namespace DTCMS.Publish
                          switch(Convert.ToInt32(row["Attribute"]))
                          {
                              case 1:
-                                 article.CreateCoverHtml(Convert.ToInt32(row["CID"]));
+                                 //article.CreateCoverHtml(Convert.ToInt32(row["CID"]));
                              break;
                              case 2:
-                                article.CreateListHtml(Convert.ToInt32(row["CID"]));
+                                //article.CreateListHtml(Convert.ToInt32(row["CID"]));
                              break;
                          }
                     }
@@ -38,9 +38,14 @@ namespace DTCMS.Publish
         {
             int totalCount = 0;
             DataTable dt = bllPublish.GetArticleByClassID(CID,"","",out totalCount);
-            
-            //lable = sf.InstallLable(0);
-            //lable.CreatePageHtml();
+            string template = string.Empty;
+            int i = 0;
+            foreach(DataRow row in dt.Rows )
+            {
+               template=article.ConvertPageHtml(row);
+               article.ConvertPagingContent(row["filepath"].ToString(),template,row["content"].ToString(),"{#article.content}");
+                
+            }
 
         }
        
