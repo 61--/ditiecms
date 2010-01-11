@@ -27,15 +27,15 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void Upload()
         {
-            int attachmentAttribute = DTCMS.Common.Utils.GetFormInt("hidden_attr"); //附件属性
-            string hasWaterMark = DTCMS.Common.Utils.GetFormString("chHasWaterMark");   //原图是否水印
-            string hasAbbrImage1 = DTCMS.Common.Utils.GetFormString("chHasAbbrImage1"); //是否生成缩略图
-            string hasWaterMark1 = DTCMS.Common.Utils.GetFormString("chHasWaterMark1");   //缩略图是否水印
-            int abbrImageWidth1 = DTCMS.Common.Utils.GetFormInt("abbrImageWidth1"); //缩略图宽
-            int abbrImageHeight1 = DTCMS.Common.Utils.GetFormInt("abbrImageHeight1");   //缩略图高
+            int attachmentAttribute = Utils.GetFormInt("hidden_attr"); //附件属性
+            string hasWaterMark = Utils.GetFormString("chHasWaterMark");   //原图是否水印
+            string hasAbbrImage1 = Utils.GetFormString("chHasAbbrImage1"); //是否生成缩略图
+            string hasWaterMark1 = Utils.GetFormString("chHasWaterMark1");   //缩略图是否水印
+            int abbrImageWidth1 = Utils.GetFormInt("abbrImageWidth1"); //缩略图宽
+            int abbrImageHeight1 = Utils.GetFormInt("abbrImageHeight1");   //缩略图高
             string filepathshort = sysConfig.Attachments.Path.Replace("\\\\", "\\") + "\\"
                 + DateTime.Now.ToString(sysConfig.Attachments.Directory == "" ? "yyyyMM" : sysConfig.Attachments.Directory) + "\\";
-            string filepath = DTCMS.Common.Utils.GetRootPath() + filepathshort; //附件存放路径
+            string filepath = Utils.GetRootPath() + filepathshort; //附件存放路径
 
             if (!Directory.Exists(filepath))
             {
@@ -139,13 +139,11 @@ namespace DTCMS.Web.admin
 
                             #region 保存数据
                             AttachMent modAttachMent = new AttachMent();
-<<<<<<< .mine                            modAttachMent.Attribute = (byte)attachmentAttribute;
-=======                            modAttachMent.Attribute = TypeConvert.ToByte(attachmentAttribute);
->>>>>>> .theirs                            modAttachMent.DisplayName = fileDisplayName;
+                            modAttachMent.Attribute = (byte)attachmentAttribute;
+                            modAttachMent.DisplayName = fileDisplayName;
                             modAttachMent.AttachMentPath = "/" + filepathshort.Replace("\\", "/") + returnImgName;
-<<<<<<< .mine                            modAttachMent.AttachMentSize = fileContentLen;
-=======                            modAttachMent.AttachMentSize = fileContentLen / 1024;
->>>>>>> .theirs                            if (hasAbbrImage1.Trim().ToLower() == "true")
+                            modAttachMent.AttachMentSize = fileContentLen;
+                            if (hasAbbrImage1.Trim().ToLower() == "true")
                             {
                                 modAttachMent.AbbrPhotoPath = "/" + filepathshort.Replace("\\", "/") + abbName;
                             }
