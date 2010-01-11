@@ -47,12 +47,15 @@
             classTree = new TableTree4J("classTree", "/inc/treetable/");
             classTree.toMenuMode();
             classTree.setMenuRoot("<a id='root' style=\"cursor:pointer;\" onclick=\"onClick_GetClass('-1','root[顶级栏目]','root')\">栏目</a>", -1, true, "MenuRoot");
-            var data = eval("data=" + json);
-            //参数: menuName,id,pid,booleanOpen,order,url,target,hrefTip,hrefStatusText,classStyle,icon,iconOpen
-            $.each(data, function(i, n) {
-            var classname = "<a id=\"a_" + i + "\" style=\"cursor:pointer;\" onclick=\"onClick_GetClass('" + n.cid + "','" + n.classname + "','a_" + i + "')\">" + n.classname + "</a>";
-                classTree.addMenuNode(classname, n.cid, n.parentid == 0 ? -1 : n.parentid);
-            });
+            
+            if (json != "") {
+                var data = eval("data=" + json);
+                //参数: menuName,id,pid,booleanOpen,order,url,target,hrefTip,hrefStatusText,classStyle,icon,iconOpen
+                $.each(data, function(i, n) {
+                    var classname = "<a id=\"a_" + i + "\" style=\"cursor:pointer;\" onclick=\"onClick_GetClass('" + n.cid + "','" + n.classname + "','a_" + i + "')\">" + n.classname + "</a>";
+                    classTree.addMenuNode(classname, n.cid, n.parentid == 0 ? -1 : n.parentid);
+                });
+            }
 
             classTree.printTableTreeToElement("classTreeDiv");
         }	
