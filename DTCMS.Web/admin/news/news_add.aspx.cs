@@ -156,7 +156,7 @@ namespace DTCMS.Web.admin
                 txt_ClassID.Value = model.ClassID.ToString();  //栏目ID
                 if (txt_ClassID.Value != "")
                 {
-                    txt_ClassName.Value = bllClass.GetClassName(TypeConvert.StrToInt(txt_ClassID.Value));
+                    txt_ClassName.Value = bllClass.GetClassName(TypeConvert.ToInt32(txt_ClassID.Value));
                 }
                 txt_Source.Value = model.Source;
                 txt_Author.Value = model.Author;
