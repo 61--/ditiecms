@@ -137,7 +137,7 @@ namespace DTCMS.SqlServerDAL
                 AddInParameter("@FieldShow",SqlDbType.NVarChar,FieldShow),
                 AddInParameter("@FieldOrder",SqlDbType.NVarChar,FieldOrder),
                 AddInParameter("@Where",SqlDbType.NVarChar,Where),
-                AddOutParameter("@PageCount",SqlDbType.NVarChar,PageCount),
+                AddOutParameter("@PageCount",SqlDbType.Int)
 
             };
 
