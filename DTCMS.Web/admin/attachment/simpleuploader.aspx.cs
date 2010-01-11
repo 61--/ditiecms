@@ -139,10 +139,10 @@ namespace DTCMS.Web.admin
 
                             #region 保存数据
                             AttachMent modAttachMent = new AttachMent();
-                            modAttachMent.Attribute = attachmentAttribute;
+                            modAttachMent.Attribute = TypeConvert.ToByte(attachmentAttribute);
                             modAttachMent.DisplayName = fileDisplayName;
                             modAttachMent.AttachMentPath = "/" + filepathshort.Replace("\\", "/") + returnImgName;
-                            modAttachMent.AttachMentSize = (fileContentLen / 1024).ToString() + "K";
+                            modAttachMent.AttachMentSize = fileContentLen / 1024;
                             if (hasAbbrImage1.Trim().ToLower() == "true")
                             {
                                 modAttachMent.AbbrPhotoPath = "/" + filepathshort.Replace("\\", "/") + abbName;
