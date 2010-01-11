@@ -24,7 +24,7 @@ namespace DTCMS.SqlServerDAL
 		{ }
 
 		/// <summary>
-		/// 增加一条数据
+        /// 添加一条栏目
 		/// </summary>
         /// <param name="model">栏目实体对象</param>
 		/// <returns>返回影响行数</returns>
@@ -70,9 +70,9 @@ namespace DTCMS.SqlServerDAL
 		}
 
 		/// <summary>
-		/// 更新一条数据
+        /// 更新一个栏目
 		/// </summary>
-		/// <param name="model">实体对象</param>
+        /// <param name="model">栏目实体</param>
 		/// <returns>返回影响行数</returns>
 		public int Update(Arc_Class model)
 		{
@@ -160,9 +160,9 @@ namespace DTCMS.SqlServerDAL
         }
 
 		/// <summary>
-		/// 删除一条数据
+		/// 删除一个栏目
 		/// </summary>
-		/// <param name="CID">编号ID</param>
+		/// <param name="CID">栏目ID</param>
 		/// <returns>返回影响行数</returns>
 		public int Delete(int CID)
 		{
@@ -175,15 +175,24 @@ namespace DTCMS.SqlServerDAL
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
 
-       
+        /// <summary>
+        /// 批量删除栏目
+        /// </summary>
+        /// <param name="ID">栏目ID，多个ID用,号隔开</param>
+        /// <returns>返回影响行数</returns>
+        public int Delete(string CID)
+        {
+            string strSql = string.Format("DELETE FROM {0}Arc_Class WHERE ID IN({1}) ", tablePrefix, CID);
+            return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString());
+        }
 
-		/// <summary>
-		/// 是否存在该记录
-		/// </summary>
-		/// <param name="CID">编号ID</param>
-		/// <param name="filedName">字段名称</param>
-		/// <param name="filedValue">字段值</param>
-		/// <returns>存在返回true，不存在返回false</returns>
+        /// <summary>
+        /// 是否存在该栏目记录
+        /// </summary>
+        /// <param name="CID">栏目ID</param>
+        /// <param name="filedName">字段名称</param>
+        /// <param name="filedValue">字段值</param>
+        /// <returns>存在返回true，不存在返回false</returns>
 		public bool Exists(int CID, string filedName, string filedValue)
 		{
 			StringBuilder strSql = new StringBuilder();
@@ -243,10 +252,10 @@ namespace DTCMS.SqlServerDAL
         }
 
         /// <summary>
-        /// 判断当前节点是否存在子节点
+        /// 判断当前栏目是否存在子栏目
         /// </summary>
-        /// <param name="ParentID"></param>
-        /// <returns></returns>
+        /// <param name="ParentID">父栏目ID</param>
+        /// <returns>存在返回true，不存在返回false</returns>
         public bool ExistsChildNode(int CID)
         {
             string strSql = string.Format("SELECT COUNT(1) FROM {0}Arc_Class WHERE ParentID=@ParentID", tablePrefix);
@@ -256,11 +265,11 @@ namespace DTCMS.SqlServerDAL
             return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, strSql, cmdParms)) > 0;
         }
 
-		/// <summary>
-		/// 得到一个对象实体
-		/// </summary>
-		/// <param name="CID">编号ID</param>
-		/// <returns>实体对象</returns>
+        /// <summary>
+        /// 得到一个栏目对象实体
+        /// </summary>
+        /// <param name="CID">栏目ID</param>
+        /// <returns>栏目实体</returns>
 		public Arc_Class GetModel(int CID)
 		{
 			StringBuilder strSql = new StringBuilder();
@@ -279,11 +288,11 @@ namespace DTCMS.SqlServerDAL
 			}
 		}
 
-		/// <summary>
-		/// 获取泛型数据列表
-		/// </summary>
-		/// <param name="count">返回记录总数</param>
-		/// <returns>对象泛型集合</returns>
+        /// <summary>
+        /// 获取泛型栏目列表
+        /// </summary>
+        /// <param name="count">返回记录数</param>
+        /// <returns>栏目泛型集合</returns>
 		public List<Arc_Class> GetList(out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
@@ -295,13 +304,13 @@ namespace DTCMS.SqlServerDAL
 			}
 		}
 
-		/// <summary>
-		/// 分页获取泛型数据列表
-		/// </summary>
-		/// <param name="pageSize">分页大小</param>
-		/// <param name="pageIndex">当前页</param>
-		/// <param name="count">返回记录数</param>
-		/// <returns>分页对象泛型集合</returns>
+        /// <summary>
+        /// 分页获取泛型栏目列表
+        /// </summary>
+        /// <param name="pageSize">分页大小</param>
+        /// <param name="pageIndex">当前页数</param>
+        /// <param name="count">返回记录总数</param>
+        /// <returns>分页栏目泛型集合</returns>
 		public List<Arc_Class> GetPageList(int pageSize, int pageIndex, out long count)
 		{
 			StringBuilder strSql = new StringBuilder();

@@ -37,7 +37,7 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-        /// 更新栏目
+        /// 更新一个栏目
         /// </summary>
         /// <param name="model">栏目实体对象</param>
         /// <returns>返回影响行数</returns>
@@ -47,7 +47,7 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-        /// 更新排序
+        /// 更新栏目排序
         /// </summary>
         /// <param name="cid">栏目ID</param>
         /// <param name="order">排序编号</param>
@@ -58,11 +58,21 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-		/// 删除一条数据
-		/// </summary>
-        /// <param name="CID">CID</param>
+        /// 删除一个栏目
+        /// </summary>
+        /// <param name="CID">栏目ID</param>
         /// <returns>返回影响行数</returns>
         public int Delete(int CID)
+        {
+            return dal.Delete(CID);
+        }
+
+        /// <summary>
+        /// 批量删除栏目
+        /// </summary>
+        /// <param name="ID">栏目ID，多个ID用,号隔开</param>
+        /// <returns>返回影响行数</returns>
+        public int Delete(string CID)
         {
             return dal.Delete(CID);
         }
@@ -80,10 +90,10 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-		/// 得到一个对象实体
-		/// </summary>
-        /// <param name="CID">CID</param>
-        /// <returns>实体对象</returns>
+        /// 得到一个栏目对象实体
+        /// </summary>
+        /// <param name="CID">栏目ID</param>
+        /// <returns>栏目实体</returns>
         public Arc_Class GetModel(int CID)
         {
             return dal.GetModel(CID);
@@ -125,7 +135,7 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-        /// 获取DataTable，并转换成Joson数据
+        /// 获取栏目DataTable，并转换成Joson数据
         /// </summary>
         /// <returns>Joson数据</returns>
         public string GetDataTableJoson()
