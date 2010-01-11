@@ -310,7 +310,6 @@
     <Compile Include="admin\template\templateFile_edit.aspx.designer.cs">
       <DependentUpon>templateFile_edit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="utils\WebTools.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\ajax\attachment_list.aspx" />
