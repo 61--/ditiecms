@@ -267,7 +267,7 @@ namespace DTCMS.Web.admin
 
     }
     /// <summary>
-    /// 附件属性
+    /// 附件类型
     /// </summary>
     public enum EAttachmentAttribute : byte
     {
