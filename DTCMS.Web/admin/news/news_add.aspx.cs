@@ -148,9 +148,9 @@ namespace DTCMS.Web.admin
 
             if (model != null)
             {
-                slt_TitleFlag.Value = model.TitleFlag.HasValue ? model.TitleFlag.ToString() : "0";
+                slt_TitleFlag.Value = model.TitleFlag.ToString();
                 txt_Title.Value = model.Title;
-                hide_Attribute.Value = model.Attribute;
+                hide_Attribute.Value = model.Attribute.ToString();
                 hide_TitleStyle.Value = model.TitleStyle;
                 txt_Tags.Value = model.Tags;
                 txt_ClassID.Value = model.ClassID.ToString();  //栏目ID
@@ -162,32 +162,22 @@ namespace DTCMS.Web.admin
                 txt_Author.Value = model.Author;
                 txt_Editor.Value = model.Editor;
                 txt_ImageUrl.Value = model.ImgUrl;
-                if (model.IsPaging.HasValue)   //是否分页
-                {
-                    rdo_Autopage.Checked = (model.IsPaging == 0);
-                }
-                txt_Content.Value = model.Content;
+                txt_Content.Value = model.AContent;
                 txt_ShortTitle.Value = model.ShortTitle.Trim();
                 txt_ViceClassID.Value = model.ViceClassID.ToString();
-                txt_OrderID.Value = model.OrderID.HasValue ? model.OrderID.Value.ToString() : "0";
+                txt_OrderID.Value = model.OrderID.ToString();
                 txt_Templet.Value = model.Templet;
                 txt_FilePath.Value = model.FilePath;
                 txt_PubDate.Value = model.PubDate.ToString();
                 slt_Readaccess.Value = model.Readaccess.ToString();
-                txt_Money.Value = model.Money.HasValue ? model.Money.Value.ToString() : "0";
+                txt_Money.Value = model.Money.ToString();
                 txt_SimilarArticle.Value = model.SimilarArticle;
                 txt_Keywords.Value = model.Keywords.Trim();
                 txt_Description.Value = model.Description;
-
-                if (model.IsHtml.HasValue)  //是否生成静态页
-                {
-                    chk_IsHtml.Checked = (model.IsHtml == 1);
-                }
-                if (model.IsComment.HasValue)   //是否评论
-                {
-                    chk_IsComment.Checked = (model.IsComment == 1);
-                }
-
+                //是否生成静态页
+                chk_IsHtml.Checked = (model.IsHtml == 1);
+                //是否允许评论
+                chk_IsComment.Checked = (model.IsComment == 1);
                 chk_IsChecked.Checked = (model.IsChecked == 1); //是否审核             
             }
         }
@@ -201,12 +191,12 @@ namespace DTCMS.Web.admin
             Arc_Article model = new Arc_Article();
 
             model.ID = NewID;
-            model.ClassID = int.Parse(txt_ClassID.Value.Trim() == "" ? "0" : txt_ClassID.Value.Trim());
-            model.ViceClassID = int.Parse(txt_ViceClassID.Value.Trim() == "" ? "-1" : txt_ViceClassID.Value.Trim());
+            model.ClassID = TypeConvert.ToInt32(txt_ClassID.Value.Trim());
+            model.ViceClassID = TypeConvert.ToInt32(txt_ViceClassID.Value.Trim(), -1);
             model.Title = txt_Title.Value.Trim();
             model.ShortTitle = txt_ShortTitle.Value.Trim();
             model.TitleStyle = hide_TitleStyle.Value.Trim();
-            model.TitleFlag = int.Parse(slt_TitleFlag.Value.Trim() == "" ? "0" : slt_TitleFlag.Value.Trim());
+            model.TitleFlag = TypeConvert.ToByte(slt_TitleFlag.Value);
             model.Tags = txt_Tags.Value.Trim();
             model.ImgUrl = txt_ImageUrl.Value.Trim();
             model.Author = txt_Author.Value.Trim();
@@ -216,19 +206,19 @@ namespace DTCMS.Web.admin
             model.Templet = txt_Templet.Value.Trim();
             model.Keywords = txt_Keywords.Value.Trim();
             model.Description = txt_Description.Value.Trim();
-            model.Content = txt_Content.Value.Trim();
+            model.AContent = txt_Content.Value.Trim();
             model.Click = 0;
             model.Good = 0;
             model.Bad = 0;
-            model.Readaccess = int.Parse(slt_Readaccess.Value.Trim() == "" ? "0" : slt_Readaccess.Value.Trim());
-            model.Money = int.Parse(txt_Money.Value.Trim() == "" ? "0" : txt_Money.Value.Trim());
-            model.Attribute = hide_Attribute.Value.Trim();  //文章属性
-            model.IsComment = chk_IsComment.Checked ? 1 : 0;
-            model.IsChecked = chk_IsChecked.Checked ? 1 : 0;
-            model.IsRecycle = 0;
-            model.IsRedirect = chk_JumpUrl.Checked ? 1 : 0;
-            model.IsHtml = chk_IsHtml.Checked ? 1 : 0;
-            model.IsPaging = rdo_Autopage.Checked ? 1 : 0;
+            model.Readaccess = TypeConvert.ToInt16(slt_Readaccess.Value.Trim());
+            model.Money = TypeConvert.ToInt16(txt_Money.Value.Trim());
+            model.Attribute = TypeConvert.ToInt16(hide_Attribute.Value.Trim());  //文章属性
+            model.IsComment = (byte)(chk_IsComment.Checked ? 1 : 0);
+            model.IsChecked = (byte)(chk_IsChecked.Checked ? 1 : 0);
+            model.IsRecycle = (byte)0;
+            model.IsRedirect = (byte)(chk_JumpUrl.Checked ? 1 : 0);
+            model.IsHtml = (byte)(chk_IsHtml.Checked ? 1 : 0);
+            model.IsPaging = (byte)(rdo_Autopage.Checked ? 1 : 0);
             model.FilePath = txt_FilePath.Value.Trim();
             model.SimilarArticle = txt_SimilarArticle.Value.Trim();
             model.AddDate = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
