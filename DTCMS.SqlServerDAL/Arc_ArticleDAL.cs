@@ -194,7 +194,7 @@ namespace DTCMS.SqlServerDAL
         /// <returns>返回影响行数</returns>
         public int Delete(string ID)
         {
-            string strSql = string.Format("DELETE FROM " + tablePrefix + "Arc_Article WHERE ID in({0}) ", ID);
+            string strSql = string.Format("DELETE FROM {0}Arc_Article WHERE ID in({1}) ", tablePrefix, ID);
             return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString());
         }
 
