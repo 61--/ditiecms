@@ -5,6 +5,7 @@ using System.Data;
 using System.Text.RegularExpressions;
 using DTCMS.BLL;
 using DTCMS.Pages;
+using DTCMS.Common;
 namespace DTCMS.Publish
 {
     public class ArticleLable:Lable
@@ -19,21 +20,22 @@ namespace DTCMS.Publish
         /// 生成内容页
         /// </summary>
         /// <param name="row">文章数据</param>
-        public override void CreatePageHtml(DataRow row)
+        public override string ConvertPageHtml(DataRow row)
         {
             int CID=Convert.ToInt32(row["CID"]);
             string template = tool.GetTemplate(row["template"].ToString());
             template = common.ConvertCommonLable(template);
             template = common.ConvertNavigLable(template, CID);
-            ReplayPageLable(template, row);
+            return  ReplayPageLable(template, row);
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="classID"></param>
-        public override void CreateListHtml(int classID)
+        public override string ConvertListHtml(int classID)
         {
             //其它替换
+
 
             string template = string.Empty;
             Regex regnew = new Regex(@"{loop:list(.*)}([\s\S]*?){/loop}", RegexOptions.Compiled);
@@ -42,6 +44,8 @@ namespace DTCMS.Publish
             {
                 int tlen = 0;
                 int clen = 0;
+
+
                 //解析标签
 
                 //构造sql语句
@@ -50,10 +54,12 @@ namespace DTCMS.Publish
                 int pageSize=10;
                 int totalRecord = dt.Rows.Count;
                 string path=string.Empty;
-                ConvertPagingList(path, template, match.Groups[2].Value, match.Groups[0].Value, pageSize, dt);
+               template= ConvertPagingList(path, template, match.Groups[2].Value, match.Groups[0].Value, pageSize, dt);
                 
                 dt.Dispose();
+                
             }
+            return template;
         }
 
         /// <summary>
@@ -65,7 +71,7 @@ namespace DTCMS.Publish
         /// <param name="loopitemrule">循环规则</param>
         /// <param name="pageSize">每页显示条数</param>
         /// <param name="dt">数据集合</param>
-        protected override void ConvertPagingList(string path, string template, string loopitem, string loopitemrule, int pageSize, System.Data.DataTable dt)
+        protected override string ConvertPagingList(string path, string template, string loopitem, string loopitemrule, int pageSize, System.Data.DataTable dt)
         {
 
             int totalPage = PageSeting.GetPageCount(dt.Rows.Count, pageSize);
@@ -84,11 +90,14 @@ namespace DTCMS.Publish
                 strList = strList.Replace("{#page}",PageSeting.GetPageNumbers(i,totalPage,string.Format("{0}_{1}",path,1),pageSize,"",""));//分页
                 strListItem.Length = 0;//清空stringbuilder 数据
                 //创建静态页
+                
             }
+            return strList;
         }
-        public override void CreateCoverHtml(int classID)
+        public override string  ConvertCoverHtml(int classID)
         {
-            
+            StringBuilder strHtml = new StringBuilder();
+            return "";
         }
 
         /// <summary>
@@ -104,10 +113,15 @@ namespace DTCMS.Publish
         {
             StringBuilder strHtml = new StringBuilder();
             string strReplace = string.Empty;
- 
-            strReplace = loopitem.Replace("[#article.title]", row["title"].ToString());
+
+
+
+            strReplace = loopitem.Replace("[#article.title]",tool.GetTitle( row["title"].ToString(),tlen,isMark));
             strReplace = strReplace.Replace("[#article.articleurl]", row["filepath"].ToString());
-            strReplace = strReplace.Replace("[#article.content]", row["content"].ToString());
+            if (strReplace.IndexOf("[#article.content]") != -1)
+            {
+                strReplace = strReplace.Replace("[#article.content]",tool.GetContent(row["content"].ToString(),clen,isMark));
+            }
             strReplace = strReplace.Replace("[#article.description]", row["description"].ToString());
             strReplace = strReplace.Replace("[#article.classname]", row["classname"].ToString());
             strReplace = strReplace.Replace("[#article.imgurl]", row["imgurl"].ToString());
@@ -128,7 +142,7 @@ namespace DTCMS.Publish
         /// <param name="template">模板</param>
         /// <param name="row">内容页数据</param>
         /// <returns></returns>
-        public override void ReplayPageLable(string template,DataRow row)
+        public override string ReplayPageLable(string template,DataRow row)
         {
             string strReplace=string.Empty;
             strReplace = template.Replace("{#article.title}", row["title"].ToString());
@@ -143,8 +157,8 @@ namespace DTCMS.Publish
             strReplace = strReplace.Replace("{#article.badnum}", "");
             strReplace = strReplace.Replace("{#article.goodper}", "");
             strReplace = strReplace.Replace("{#article.badper}", "");
-            string path=string.Empty;
-            ConvertPagingContent(path,strReplace,row["content"].ToString(),"{#article.content}");
+
+            return strReplace;
            
         }
     }

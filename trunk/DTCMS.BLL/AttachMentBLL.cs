@@ -11,6 +11,7 @@ using System.Text;
 using DTCMS.Entity;
 using DTCMS.IDAL;
 using DTCMS.DALFactory;
+using System.Data;
 
 namespace DTCMS.BLL
 {
@@ -51,6 +52,16 @@ namespace DTCMS.BLL
         public int Delete(int AID)
         {
             return dal.Delete(AID);
+        }
+
+        /// <summary>
+        /// 批量删除文章
+        /// </summary>
+        /// <param name="ID">文章ID，多个ID用,号隔开</param>
+        /// <returns>返回影响行数</returns>
+        public int Delete(string AID)
+        {
+            return dal.Delete( AID );
         }
 
         /// <summary>
@@ -101,6 +112,21 @@ namespace DTCMS.BLL
                 throw new Exception("页索引必须大于0。");
 
             return dal.GetPageList(pageSize, pageIndex, out count);
+        }
+
+        /// <summary>
+        /// 获取附件-图片
+        /// </summary>
+        /// <param name="pageCurrent">当前页</param>
+        /// <param name="pageSize">页大小</param>
+        /// <param name="where">查询条件</param>
+        /// <param name="pagecount">总页数</param>
+        /// <returns></returns>
+        public DataTable GetAttachmentList(int pageCurrent, int pageSize, string where, out int pagecount)
+        {
+            return dal.GetDataTable("DT_AttachMent", "AttachMentID", pageCurrent, pageSize
+                , "AttachMentDisplayName,AttachMentPath,AttachMentSize,AbbrPhotoPath,PubLisher,AddDate,PhotoDescription"
+                , "AddDate desc", where, out pagecount);
         }
 	}
 }

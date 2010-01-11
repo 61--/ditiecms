@@ -47,6 +47,14 @@ namespace DTCMS.IDAL
 		/// <returns>返回影响行数</returns>
 		int Delete(int AID);
 
+        /// <summary>
+        /// 批量删除文章
+        /// </summary>
+        /// <param name="ID">文章ID，多个ID用,号隔开</param>
+        /// <returns>返回影响行数</returns>
+        int Delete(string ID);
+
+
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>

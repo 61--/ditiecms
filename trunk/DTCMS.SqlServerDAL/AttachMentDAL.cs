@@ -112,6 +112,17 @@ namespace DTCMS.SqlServerDAL
 			return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
 		}
 
+        /// <summary>
+        /// 批量删除文章
+        /// </summary>
+        /// <param name="ID">文章ID，多个ID用,号隔开</param>
+        /// <returns>返回影响行数</returns>
+        public int Delete(string ID)
+        {
+            string strSql = string.Format("DELETE FROM " + tablePrefix + "AttachMent WHERE AID in({0}) ", ID);
+            return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString());
+        } 
+
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>

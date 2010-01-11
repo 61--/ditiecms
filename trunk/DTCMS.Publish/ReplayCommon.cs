@@ -93,7 +93,7 @@ namespace DTCMS.Publish
         /// <returns></returns>
         public string ConvertNavigLable(string template,int CID)
         {
-            Regex reg = new Regex(@"{#google.postion}");
+            Regex reg = new Regex(@"{#google.postion}",RegexOptions.Compiled);
             Match m = reg.Match(template);
             if (m.Success)
             {
@@ -115,6 +115,18 @@ namespace DTCMS.Publish
             }
             return template;
         }
+
+        ///// <summary>
+        ///// 替换栏目名称
+        ///// </summary>
+        ///// <param name="template">模板内容</param>
+        ///// <param name="CID">栏目编号</param>
+        ///// <param name="type"></param>
+        ///// <returns></returns>
+        //public string ConvertClassName(string template,int CID,int type)
+        //{
+        //    Regex reg = new Regex(@"{#class.classname}");
+        //}
 
     }
 }

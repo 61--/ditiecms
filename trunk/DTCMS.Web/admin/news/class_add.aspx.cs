@@ -149,7 +149,7 @@ namespace DTCMS.Web.admin
                 txt_ImgUrl.Value = model.ImgUrl;
                 txt_Keywords.Value = model.Keywords;
                 txt_CorssID.Value = model.CrossID;
-                txt_Content.Value = model.Content;
+                txt_Content.Value = model.ClassContent;
             }
         }
 
@@ -199,7 +199,7 @@ namespace DTCMS.Web.admin
             model.ImgUrl = txt_ImgUrl.Value.Trim();
             model.Keywords = txt_Keywords.Value.Trim();
             model.CrossID = txt_CorssID.Value.Trim();
-            model.Content = txt_Content.Value.Trim();
+            model.ClassContent = txt_Content.Value.Trim();
 
             return model;
         }
@@ -212,19 +212,19 @@ namespace DTCMS.Web.admin
         {
             if (rdo_List.Checked)
             {//列表
-                return (int)EClassAttribute.List;
+                return (Byte)EClassAttribute.List;
             }
             else if (rdo_Singl.Checked)
             {//单页面
-                return (int)EClassAttribute.Singl;
+                return (Byte)EClassAttribute.Singl;
             }
             else if (rdo_Link.Checked)
             {//链接
-                return (int)EClassAttribute.Link;
+                return (Byte)EClassAttribute.Link;
             }
             else//rdo_Index.Checked
             {//封面
-                return (int)EClassAttribute.Cover;
+                return (Byte)EClassAttribute.Cover;
             }
             
         }

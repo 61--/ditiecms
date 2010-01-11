@@ -4,10 +4,9 @@ using System.Text;
 using DTCMS.Common;
 namespace DTCMS.Publish
 {
-    public delegate void DelegateRoll(int total, int num);
     public class PublishTool
     {
-        public event DelegateRoll ResponeRoll;
+
 
         private int _total;
         private int _num;
@@ -77,15 +76,56 @@ namespace DTCMS.Publish
             {
                     
                     FileAccessHelper.WriteTextFile(htmlpath, content);
-                    if (ResponeRoll != null)
-                    {
-                        ResponeRoll(this._total,this._num);
-                    }
                     return true;
             }
             catch
             {
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// 标题长度处理
+        /// </summary>
+        /// <param name="title">标题</param>
+        /// <param name="tlen">要截的长度</param>
+        /// <param name="isMark">内容后面是否加标记 如...</param>
+        /// <returns></returns>
+        public string GetTitle(string title,int tlen,bool isMark)
+        {
+            if (tlen > 0)
+            {
+                string mark = string.Empty;
+                if (isMark)
+                    mark = "...";
+                return Utils.GetSubString(title, tlen, mark);
+            }
+            else
+            {
+                return title;
+            }
+            
+        }
+        /// <summary>
+        /// 内容长度处理
+        /// </summary>
+        /// <param name="content">内容</param>
+        /// <param name="clen">要截的长度</param>
+        /// <param name="isMark">内容后面是否加标记 如...</param>
+        /// <returns></returns>
+        public string GetContent(string content, int clen, bool isMark)
+        {
+            content = Utils.NoHTML(content);
+            if (clen > 0)
+            {
+                string mark = string.Empty;
+                if (isMark)
+                    mark = "...";
+                return Utils.GetSubString(content, clen, mark);
+            }
+            else
+            {
+                return content;
             }
         }
     }

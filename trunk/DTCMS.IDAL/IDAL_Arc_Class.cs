@@ -47,6 +47,7 @@ namespace DTCMS.IDAL
 		/// <returns>返回影响行数</returns>
 		int Delete(int CID);
 
+       
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
