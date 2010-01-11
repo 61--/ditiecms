@@ -16,7 +16,7 @@ namespace DTCMS.IDAL
 	/// <summary>
 	/// 接口层 IAttachMent
 	/// </summary>
-	public interface IDAL_AttachMent
+    public interface IDAL_AttachMent : IDAL_Base
 	{
 		/// <summary>
 		/// 增加一条数据

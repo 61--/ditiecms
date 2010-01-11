@@ -16,7 +16,7 @@ namespace DTCMS.IDAL
 	/// <summary>
 	/// 接口层 ISys_Dict
 	/// </summary>
-	public interface IDAL_Sys_Dict
+    public interface IDAL_Sys_Dict : IDAL_Base
 	{
 		/// <summary>
 		/// 增加一条数据

@@ -16,7 +16,7 @@ namespace DTCMS.IDAL
 	/// <summary>
 	/// 接口层 IArc_Soft
 	/// </summary>
-	public interface IDAL_Arc_Soft
+    public interface IDAL_Arc_Soft : IDAL_Base
 	{
 		/// <summary>
 		/// 增加一条数据

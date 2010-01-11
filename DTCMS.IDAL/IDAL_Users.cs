@@ -16,7 +16,7 @@ namespace DTCMS.IDAL
 	/// <summary>
 	/// 接口层 IUsers
 	/// </summary>
-	public interface IDAL_Users
+    public interface IDAL_Users : IDAL_Base
 	{
 		/// <summary>
 		/// 增加一条数据
