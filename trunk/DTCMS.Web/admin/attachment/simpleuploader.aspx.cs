@@ -27,7 +27,7 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void Upload()
         {
-            int attachmentAttribute = Utils.GetFormInt("hidden_attr"); //附件属性
+            byte attribute = (byte)Utils.GetFormInt("hidden_attr"); //附件属性
             string hasWaterMark = Utils.GetFormString("chHasWaterMark");   //原图是否水印
             string hasAbbrImage1 = Utils.GetFormString("chHasAbbrImage1"); //是否生成缩略图
             string hasWaterMark1 = Utils.GetFormString("chHasWaterMark1");   //缩略图是否水印
@@ -58,7 +58,7 @@ namespace DTCMS.Web.admin
                 if (fileName != "")
                 {
                     #region 验证附件格式是否正确
-                    if (!AttachmentFormat(fileName, attachmentAttribute))
+                    if (!AttachmentFormat(fileName, attribute))
                     {
                         if (errorMsg != string.Empty)
                         {
@@ -83,7 +83,7 @@ namespace DTCMS.Web.admin
                             #endregion 附件上传
 
                             #region 是否图片
-                            if (attachmentAttribute == (int)EAttachmentAttribute.Photo)
+                            if (attribute == (int)EAttachmentAttribute.Photo)
                             {
                                 if (hasAbbrImage1.Trim().ToLower() == "true")
                                 {
@@ -126,7 +126,7 @@ namespace DTCMS.Web.admin
 
                                 #region 原图水印
 
-                                if (attachmentAttribute == (int)EAttachmentAttribute.Photo)
+                                if (attribute == (int)EAttachmentAttribute.Photo)
                                 {
                                     if (hasWaterMark.Trim().ToLower() == "true")
                                     {
@@ -139,7 +139,7 @@ namespace DTCMS.Web.admin
 
                             #region 保存数据
                             AttachMent modAttachMent = new AttachMent();
-                            modAttachMent.Attribute = (byte)attachmentAttribute;
+                            modAttachMent.Attribute = attribute;
                             modAttachMent.DisplayName = fileDisplayName;
                             modAttachMent.AttachMentPath = "/" + filepathshort.Replace("\\", "/") + returnImgName;
                             modAttachMent.AttachMentSize = fileContentLen;
@@ -173,7 +173,7 @@ namespace DTCMS.Web.admin
                         errorMsg = "";
                     }
                 }
-                
+
                 if (errorMsg != "")
                 {
                     returnVal = 202;    //无效上传文件
@@ -186,7 +186,7 @@ namespace DTCMS.Web.admin
             }
             else
             {
-                returnImgPath = "/" + filepathshort.Replace("\\", "/")+ returnImgName;
+                returnImgPath = "/" + filepathshort.Replace("\\", "/") + returnImgName;
             }
 
             Response.Redirect("~/admin/attachment/emptyPage.html?returnVal=" + returnVal + "&errorMsg=" + Server.UrlEncode(errorMsg) + "&returnImgPath=" + Server.UrlEncode(returnImgPath));
@@ -198,19 +198,19 @@ namespace DTCMS.Web.admin
         /// <param name="fileName">附件后缀名</param>
         /// <param name="attachmentAtr">附件属性</param>
         /// <returns></returns>
-        private bool AttachmentFormat(string fileName, int attachmentAtr)
+        private bool AttachmentFormat(string fileName, byte attachmentAtr)
         {
             switch (attachmentAtr)
             {
-                case (int)EAttachmentAttribute.Photo:
+                case (byte)EAttachmentAttribute.Photo:
                     return AttachmentFormat(fileName, sysConfig.Attachments.ImageFormat);
-                case (int)EAttachmentAttribute.Video:
+                case (byte)EAttachmentAttribute.Video:
                     return AttachmentFormat(fileName, sysConfig.Attachments.VideoFormat);
-                case (int)EAttachmentAttribute.Audio:
+                case (byte)EAttachmentAttribute.Audio:
                     return AttachmentFormat(fileName, sysConfig.Attachments.AudioFormat);
-                case (int)EAttachmentAttribute.Flash:
+                case (byte)EAttachmentAttribute.Flash:
                     return AttachmentFormat(fileName, sysConfig.Attachments.FlashFormat);
-                case (int)EAttachmentAttribute.Attachment:
+                case (byte)EAttachmentAttribute.Attachment:
                     return AttachmentFormat(fileName, sysConfig.Attachments.AttachmentFormat);
                 default:
                     return false;
@@ -269,7 +269,7 @@ namespace DTCMS.Web.admin
     /// <summary>
     /// 附件属性
     /// </summary>
-    public enum EAttachmentAttribute
+    public enum EAttachmentAttribute : byte
     {
         /// <summary>
         /// 图片
