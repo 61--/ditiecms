@@ -166,7 +166,7 @@ namespace DTCMS.Web.admin
             model.Attribute = GetClassAttribute();
             model.ClassName = txt_ClassName.Value;
             model.ClassEName = txt_ClassEName.Value.Trim();
-            model.ClassType = Convert.ToInt32(slt_ClassType.Value == "" ? "0" : slt_ClassType.Value.Trim());
+            model.ClassType = Convert.ToByte(slt_ClassType.Value.Trim());
             model.ClassDomain = txt_ClassDomain.Value.Trim();
             model.ClassPath = txt_ClassPath.Value.Trim();
             model.IndexTemplet = txt_IndexTemplet.Value.Trim();
@@ -175,14 +175,14 @@ namespace DTCMS.Web.admin
             model.IndexRule = txt_IndexRule.Value.Trim();
             model.ListRule = txt_ListRule.Value.Trim();
             model.ArchiveRule = txt_ArchiveRule.Value.Trim();
-            model.ClassPage = Convert.ToInt32(txt_ClassPage.Value == "" ? "0" : txt_ClassPage.Value.Trim());
+            model.ClassPage = Convert.ToByte(txt_ClassPage.Value.Trim());
             model.Description = txt_Description.Value.Trim();
-            model.IsHidden = chk_ISHiden.Checked ? 1 : 0;
-            model.IsHtml = chk_ISHtml.Checked ? 1 : 0;
-            model.CheckLevel = Convert.ToInt32(slt_CheckLevel.Value == "" ? "0" : slt_CheckLevel.Value.Trim());
-            model.IsContribute = chk_ISContribute.Checked ? 1 : 0;
-            model.IsComment = chk_ISComment.Checked ? 1 : 0;
-            model.Readaccess = Convert.ToInt32(slt_Readaccess.Value == "" ? "0" : slt_Readaccess.Value.Trim());
+            model.IsHidden = (byte)(chk_ISHiden.Checked ? 1 : 0);
+            model.IsHtml = (byte)(chk_ISHtml.Checked ? 1 : 0);
+            model.CheckLevel = Convert.ToByte(slt_CheckLevel.Value.Trim());
+            model.IsContribute = (byte)(chk_ISContribute.Checked ? 1 : 0);
+            model.IsComment = (byte)(chk_ISComment.Checked ? 1 : 0);
+            model.Readaccess = Convert.ToInt32(slt_Readaccess.Value.Trim());
             model.SiteID = 1;//站点ID，默认1
             model.AddDate = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
@@ -208,23 +208,23 @@ namespace DTCMS.Web.admin
         /// 获取栏目属性
         /// </summary>
         /// <returns></returns>
-        private int GetClassAttribute()
+        private byte GetClassAttribute()
         {
             if (rdo_List.Checked)
             {//列表
-                return (Byte)EClassAttribute.List;
+                return (byte)EClassAttribute.List;
             }
             else if (rdo_Singl.Checked)
             {//单页面
-                return (Byte)EClassAttribute.Singl;
+                return (byte)EClassAttribute.Singl;
             }
             else if (rdo_Link.Checked)
             {//链接
-                return (Byte)EClassAttribute.Link;
+                return (byte)EClassAttribute.Link;
             }
             else//rdo_Index.Checked
             {//封面
-                return (Byte)EClassAttribute.Cover;
+                return (byte)EClassAttribute.Cover;
             }
             
         }
