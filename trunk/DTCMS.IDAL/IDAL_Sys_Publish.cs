@@ -6,7 +6,7 @@ using DTCMS.Entity;
 
 namespace DTCMS.IDAL
 {
-    public interface IDAL_Sys_Publish
+    public interface IDAL_Sys_Publish : IDAL_Base
     {
         
          /// <summary>

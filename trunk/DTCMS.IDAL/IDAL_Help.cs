@@ -16,7 +16,7 @@ namespace DTCMS.IDAL
 	/// <summary>
 	/// 接口层 IHelp
 	/// </summary>
-	public interface IDAL_Help
+    public interface IDAL_Help : IDAL_Base
 	{
 		/// <summary>
 		/// 增加一条数据

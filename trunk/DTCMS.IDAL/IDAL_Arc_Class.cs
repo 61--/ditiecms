@@ -16,7 +16,7 @@ namespace DTCMS.IDAL
 	/// <summary>
 	/// 接口层 IArc_Class
 	/// </summary>
-	public interface IDAL_Arc_Class
+    public interface IDAL_Arc_Class : IDAL_Base
 	{
 		/// <summary>
 		/// 增加一条数据
