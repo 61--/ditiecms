@@ -223,7 +223,7 @@ a.b5:hover
 	text-indent:10px;
 	text-align:left;
 }
-.table_data tbody td ,.table_data tbody th{
+.table_data tbody td ,.table_data thead th{
 	border-top: 1px solid #D3E0ED;
 	border-bottom: 1px solid #D3E0ED;
 	height: 26px;
