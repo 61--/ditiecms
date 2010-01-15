@@ -213,28 +213,22 @@ namespace DTCMS.SqlServerDAL
         /// <summary>
         /// 执行一条计算查询结果语句，返回查询结果（object）
         /// </summary>
-        /// <param name="filed"></param>
-        /// <param name="where"></param>
-        /// <returns></returns>
-        public object GetSingle(string filed,string where)
+        /// <param name="filed">要查询的字段</param>
+        /// <param name="where">查询条件</param>
+        /// <returns>Object对象</returns>
+        public object GetSingle(string filed, string where)
         {
             string strSql = string.Format("SELECT TOP 1 {0} FROM {1}Arc_Article WHERE 1=1 {2}", filed, tablePrefix, where);
 
             object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql);
-            if (obj != null)
-            {
-                return obj;
-            }
-            else
-            {
-                return null;
-            }
+            return obj;
         }
 
         /// <summary>
         /// 根据查询字段获取栏目列表
         /// </summary>
         /// <param name="fileds">要查询的字段，多个字段用,号隔开</param>
+        /// <param name="where">查询条件</param>
         /// <returns>DataTable数据集合</returns>
         public DataTable GetDataTable(string fileds, string where)
         {

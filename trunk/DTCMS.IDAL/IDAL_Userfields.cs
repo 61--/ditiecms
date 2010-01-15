@@ -63,6 +63,14 @@ namespace DTCMS.IDAL
 		/// <returns>实体对象</returns>
 		Userfields GetModel(int UID);
 
+        /// <summary>
+        /// 执行一条计算查询结果语句，返回查询结果（object）
+        /// </summary>
+        /// <param name="filed">要查询的字段</param>
+        /// <param name="where">查询条件</param>
+        /// <returns>Object对象</returns>
+        object GetSingle(string filed, string where);
+
 		/// <summary>
 		/// 根据查询字段获取列表
 		/// </summary>

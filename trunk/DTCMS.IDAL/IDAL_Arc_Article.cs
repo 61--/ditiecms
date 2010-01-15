@@ -70,13 +70,27 @@ namespace DTCMS.IDAL
         /// <returns>添加ArticleID：-1</returns>
         bool ExistsArticleName(int ArticleID, string Title);
         
-
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
 		/// <param name="ID">编号ID</param>
 		/// <returns>实体对象</returns>
 		Arc_Article GetModel(int ID);
+
+        /// <summary>
+        /// 执行一条计算查询结果语句，返回查询结果（object）
+        /// </summary>
+        /// <param name="filed">要查询的字段</param>
+        /// <param name="where">查询条件</param>
+        /// <returns>Object对象</returns>
+        object GetSingle(string filed, string where);
+
+        /// <summary>
+        /// 根据查询字段获取列表
+        /// </summary>
+        /// <param name="fileds">要查询的字段，多个字段用,号隔开</param>
+        /// <returns>DataTable数据集合</returns>
+        DataTable GetDataTable(string fileds, string where);
 
 		/// <summary>
 		/// 获取泛型数据列表

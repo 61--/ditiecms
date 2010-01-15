@@ -217,6 +217,20 @@ namespace DTCMS.SqlServerDAL
 		}
 
         /// <summary>
+        /// 执行一条计算查询结果语句，返回查询结果（object）
+        /// </summary>
+        /// <param name="filed">要查询的字段</param>
+        /// <param name="where">查询条件</param>
+        /// <returns>Object对象</returns>
+        public object GetSingle(string filed, string where)
+        {
+            string strSql = string.Format("SELECT TOP 1 {0} FROM {1}Userfields WHERE 1=1 {2}", filed, tablePrefix, where);
+
+            object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql);
+            return obj;
+        }
+
+        /// <summary>
         /// 根据查询字段获取列表
         /// </summary>
         /// <param name="fileds">要查询的字段，多个字段用,号隔开</param>
