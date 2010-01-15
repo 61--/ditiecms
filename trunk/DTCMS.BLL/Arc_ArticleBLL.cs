@@ -92,8 +92,9 @@ namespace DTCMS.BLL
         /// <summary>
         /// 判断文章是否已经存在
         /// </summary>
-        /// <param name="Title"></param>
-        /// <returns>添加ArticleID：-1</returns>
+        /// <param name="ArticleID">添加ArticleID：-1</param>
+        /// <param name="Title">文章标题</param>
+        /// <returns>true存在,false不存在</returns>
         public bool ExistsArticleName(int ArticleID, string Title)
         {
 
