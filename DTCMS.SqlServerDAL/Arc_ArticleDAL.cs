@@ -229,7 +229,7 @@ namespace DTCMS.SqlServerDAL
         /// <returns>true存在,false不存在</returns>
         public bool ExistAtricleToClass(int CID)
         {
-            string strSql = "SELECT count(1) FROM " + tablePrefix + "Arc_Article WHERE ClassID=@ClassID";
+            string strSql = "SELECT COUNT(1) FROM " + tablePrefix + "Arc_Article WHERE ClassID=@ClassID";
             SqlParameter[] cmdParms ={
                 AddInParameter("@ID", SqlDbType.Int, 4, CID)};
 
@@ -239,11 +239,12 @@ namespace DTCMS.SqlServerDAL
         /// <summary>
         /// 判断文章是否已经存在
         /// </summary>
-        /// <param name="Title"></param>
-        /// <returns>添加ArticleID：-1</returns>
+        /// <param name="ArticleID">添加ArticleID：-1</param>
+        /// <param name="Title">文章标题</param>
+        /// <returns>true存在,false不存在</returns>
         public bool ExistsArticleName(int ArticleID, string Title)
         {
-            string strSql = "SELECT count(ID) FROM " + tablePrefix + "Arc_Article where Title=@Title and ID<>@ID";
+            string strSql = "SELECT COUNT(1) FROM " + tablePrefix + "Arc_Article WHERE Title=@Title AND ID<>@ID";
             SqlParameter[] cmdParms ={
                 AddInParameter("@Title",SqlDbType.NVarChar,100,Title),
                 AddInParameter("@ID", SqlDbType.Int, 4, ArticleID)};
