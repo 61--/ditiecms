@@ -131,6 +131,41 @@ namespace DTCMS.SqlServerDAL
 			}
 		}
 
+        /// <summary>
+        /// 执行一条计算查询结果语句，返回查询结果（object）
+        /// </summary>
+        /// <param name="filed">要查询的字段</param>
+        /// <param name="where">查询条件</param>
+        /// <returns>Object对象</returns>
+        public object GetSingle(string filed, string where)
+        {
+            string strSql = string.Format("SELECT TOP 1 {0} FROM {1}Sys_Template WHERE 1=1 {2}", filed, tablePrefix, where);
+
+            object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql);
+            return obj;
+        }
+
+        /// <summary>
+        /// 根据查询字段获取列表
+        /// </summary>
+        /// <param name="fileds">要查询的字段，多个字段用,号隔开</param>
+        /// <param name="where">查询条件</param>
+        /// <returns>DataTable数据集合</returns>
+        public DataTable GetDataTable(string fileds, string where)
+        {
+            string strSql = string.Format("SELECT {0} FROM {1}Sys_Template WHERE 1=1 {2}", fileds, tablePrefix, where);
+
+            DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                return ds.Tables[0];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
