@@ -64,6 +64,10 @@
       <Project>{086A7F54-1A11-42E1-BE0D-33863EAEF4A3}</Project>
       <Name>DTCMS.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DTCMS.Config\DTCMS.Config.csproj">
+      <Project>{A4CC57ED-9E99-4FF5-95E9-A7BBB3C3FB43}</Project>
+      <Name>DTCMS.Config</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DTCMS.DBUtility\DTCMS.DBUtility.csproj">
       <Project>{B925723C-29AC-4BE0-9919-DF4C1780B1E8}</Project>
       <Name>DTCMS.DBUtility</Name>
