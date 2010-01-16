@@ -167,7 +167,14 @@
                             <input type="radio" id="rdo_yes" name="rdo_validate" value="1" onclick="rdo_LoginValidate(this)" runat="server" /><label for="rdo_yes">是</label>
                             <input type="radio" id="rdo_no"  name="rdo_validate" value="0" onclick="rdo_LoginValidate(this)" runat="server" /><label for="rdo_no">否</label>
                             <input type="hidden" id="hidden_LoginValidate" value="1" runat="server" />
-                                
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="main_bleft">
+                            表前缀:
+                        </td>
+                        <td class="main_bright">
+                            <input type="text" id="txtTablePrefix" class="textbox short" runat="server" />
                         </td>
                     </tr>
                 </table>

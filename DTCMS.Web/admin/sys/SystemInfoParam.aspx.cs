@@ -63,6 +63,7 @@ namespace DTCMS.Web.admin.sys
             {
                 rdo_no.Checked = true;
             }
+            txtTablePrefix.Value = sysConfig.SysInfoParams.TablePrefix.Trim();
         }
 
         private void SavePage()
@@ -91,6 +92,7 @@ namespace DTCMS.Web.admin.sys
             sysConfig.SysInfoParams.DefaultTemplet=txt_DefaultTemplet.Value.Trim();
             sysConfig.SysInfoParams.CheckLevel=slt_CheckLevel.Value.Trim();
             sysConfig.SysInfoParams.LoginValidate=hidden_LoginValidate.Value.Trim();
+            sysConfig.SysInfoParams.TablePrefix = txtTablePrefix.Value.Trim();
 
             GobalConfig.GetCobalInstance().SaveGobalConfig(sysConfig);
             Message.Dialog("系统配置保存成功", "-1", MessageIcon.Success, 0);
