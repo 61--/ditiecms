@@ -19,7 +19,7 @@ namespace DTCMS.Entity
 		{ }
 
 		#region Model
-		private int _iD;
+		private int _id;
 		private int _classID;
 		private int _viceClassID;
 		private string _title;
@@ -58,8 +58,8 @@ namespace DTCMS.Entity
 		/// </summary>
 		public int ID
 		{
-			set { _iD = value; }
-			get { return _iD; }
+			set { _id = value; }
+			get { return _id; }
 		}
 		/// <summary>
 		/// 栏目ID

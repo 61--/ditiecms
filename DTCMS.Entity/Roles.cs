@@ -11,7 +11,7 @@ using System;
 namespace DTCMS.Entity
 {
 	/// <summary>
-	/// 实体类 Roles
+	/// 用户角色实体类
 	/// </summary>
 	public class Roles
 	{
@@ -19,7 +19,7 @@ namespace DTCMS.Entity
 		{ }
 
 		#region Model
-		private int _iD;
+		private int _id;
 		private string _roleName;
 		private string _description;
 		private int _orderID;
@@ -28,8 +28,8 @@ namespace DTCMS.Entity
 		/// </summary>
 		public int ID
 		{
-			set { _iD = value; }
-			get { return _iD; }
+			set { _id = value; }
+			get { return _id; }
 		}
 		/// <summary>
 		/// 角色名称

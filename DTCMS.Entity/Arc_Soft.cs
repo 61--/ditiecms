@@ -19,14 +19,14 @@ namespace DTCMS.Entity
 		{ }
 
 		#region Model
-		private int _aID;
+		private int _aid;
 		/// <summary>
 		/// AID
 		/// </summary>
 		public int AID
 		{
-			set { _aID = value; }
-			get { return _aID; }
+			set { _aid = value; }
+			get { return _aid; }
 		}
 		#endregion
 	}

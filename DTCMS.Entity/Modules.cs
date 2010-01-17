@@ -11,7 +11,7 @@ using System;
 namespace DTCMS.Entity
 {
 	/// <summary>
-	/// 实体类 Modules
+	/// 系统模块实体类
 	/// </summary>
 	public class Modules
 	{
@@ -19,7 +19,7 @@ namespace DTCMS.Entity
 		{ }
 
 		#region Model
-		private int _iD;
+		private int _id;
 		private string _moduleID;
 		private string _parentID;
 		private string _name;
@@ -38,8 +38,8 @@ namespace DTCMS.Entity
 		/// </summary>
 		public int ID
 		{
-			set { _iD = value; }
-			get { return _iD; }
+			set { _id = value; }
+			get { return _id; }
 		}
 		/// <summary>
 		/// 模块ID

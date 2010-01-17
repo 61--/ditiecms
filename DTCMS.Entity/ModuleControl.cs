@@ -11,7 +11,7 @@ using System;
 namespace DTCMS.Entity
 {
 	/// <summary>
-	/// 实体类 ModuleControl
+	/// 模块操作方法权限实体类
 	/// </summary>
 	public class ModuleControl
 	{
@@ -19,7 +19,7 @@ namespace DTCMS.Entity
 		{ }
 
 		#region Model
-		private int _iD;
+		private int _id;
 		private string _controlName;
 		private int _moduleID;
 		private int _controlValue;
@@ -29,8 +29,8 @@ namespace DTCMS.Entity
 		/// </summary>
 		public int ID
 		{
-			set { _iD = value; }
-			get { return _iD; }
+			set { _id = value; }
+			get { return _id; }
 		}
 		/// <summary>
 		/// 操作名字

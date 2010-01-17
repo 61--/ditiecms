@@ -11,7 +11,7 @@ using System;
 namespace DTCMS.Entity
 {
 	/// <summary>
-	/// 实体类 Userfields
+	/// 用户扩展信息实体类
 	/// </summary>
 	public class Userfields
 	{
@@ -19,7 +19,7 @@ namespace DTCMS.Entity
 		{ }
 
 		#region Model
-		private int _uID;
+		private int _uid;
 		private string _realname;
 		private string _qQ;
 		private string _mSN;
@@ -37,8 +37,8 @@ namespace DTCMS.Entity
 		/// </summary>
 		public int UID
 		{
-			set { _uID = value; }
-			get { return _uID; }
+			set { _uid = value; }
+			get { return _uid; }
 		}
 		/// <summary>
 		/// 真实姓名
