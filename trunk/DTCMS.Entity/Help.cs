@@ -25,6 +25,7 @@ namespace DTCMS.Entity
 		private string _title;
 		private string _message;
 		private int _orderID;
+
 		/// <summary>
 		/// ID，自增列
 		/// </summary>

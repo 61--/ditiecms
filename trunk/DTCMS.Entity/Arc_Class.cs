@@ -49,6 +49,7 @@ namespace DTCMS.Entity
         private string _keywords;
         private string _crossID;
         private string _classContent;
+
         /// <summary>
         /// 栏目ID
         /// </summary>

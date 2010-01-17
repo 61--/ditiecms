@@ -33,6 +33,7 @@ namespace DTCMS.Entity
 		private byte _isSystem;
 		private byte _isEnable;
 		private int _orderID;
+
 		/// <summary>
 		/// ID
 		/// </summary>

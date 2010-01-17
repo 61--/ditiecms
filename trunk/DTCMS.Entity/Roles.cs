@@ -23,6 +23,7 @@ namespace DTCMS.Entity
 		private string _roleName;
 		private string _description;
 		private int _orderID;
+
 		/// <summary>
 		/// 角色ID
 		/// </summary>

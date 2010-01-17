@@ -26,6 +26,7 @@ namespace DTCMS.Entity
 		private DateTime _createDateTime;
 		private string _templateImg;
 		private string _author;
+
 		/// <summary>
 		/// 模板主键
 		/// </summary>

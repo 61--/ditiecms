@@ -32,6 +32,7 @@ namespace DTCMS.Entity
 		private string _signature;
 		private string _introduce;
 		private string _website;
+
 		/// <summary>
 		/// 用户ID，user表外键
 		/// </summary>

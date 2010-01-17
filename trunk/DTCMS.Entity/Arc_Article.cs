@@ -53,6 +53,7 @@ namespace DTCMS.Entity
 		private DateTime _addDate;
 		private DateTime _pubDate;
 		private int _orderID;
+
 		/// <summary>
 		/// 文章ID
 		/// </summary>

@@ -20,6 +20,7 @@ namespace DTCMS.Entity
 
 		#region Model
 		private int _aid;
+
 		/// <summary>
 		/// AID
 		/// </summary>
