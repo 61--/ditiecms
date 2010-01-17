@@ -16,11 +16,11 @@ namespace DTCMS.Web.admin
             ModulesBLL modulesBll = new ModulesBLL();
 
             int count = 0;
-            List<Modules> modulesList = modulesBll.GetTopNav(out count);
+            List<Modules> mlist = modulesBll.GetTopNav(out count);
 
             if (count > 0)
             {
-                rpt_Topnav.DataSource = modulesList;
+                rpt_Topnav.DataSource = mlist;
                 rpt_Topnav.DataBind();
             }
         }
