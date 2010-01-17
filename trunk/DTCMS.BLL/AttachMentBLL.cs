@@ -91,7 +91,7 @@ namespace DTCMS.BLL
 		/// </summary>
         /// <param name="count">返回记录数</param>
         /// <returns>对象泛型集合</returns>
-        public List<AttachMent> GetList(out long count)
+        public List<AttachMent> GetList(out int count)
         {
             return dal.GetList(out count);
         }
@@ -103,7 +103,7 @@ namespace DTCMS.BLL
         /// <param name="pageIndex">当前页</param>
         /// <param name="count">返回记录数</param>
         /// <returns>分页对象泛型集合</returns>
-        public List<AttachMent> GetPageList(int pageSize, int pageIndex, out long count)
+        public List<AttachMent> GetPageList(int pageSize, int pageIndex, out int count)
         {
             if (pageSize <= 0)
                 throw new Exception("每页数据条数必须大于0。");

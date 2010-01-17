@@ -218,7 +218,7 @@ namespace DTCMS.SqlServerDAL
         /// <returns>Object对象</returns>
         public object GetSingle(string filed, string where)
         {
-            string strSql = string.Format("SELECT TOP 1 {0} FROM {1}Arc_Article WHERE 1=1 {2}", filed, tablePrefix, where);
+            string strSql = string.Format("SELECT TOP 1 {0} FROM {1}Arc_Article {2}", filed, tablePrefix, where);
 
             object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql);
             return obj;
@@ -232,7 +232,11 @@ namespace DTCMS.SqlServerDAL
         /// <returns>DataTable数据集合</returns>
         public DataTable GetDataTable(string fileds, string where)
         {
+<<<<<<< .mine
+            string strSql = string.Format("SELECT {0} FROM {1}Arc_Article {2}", fileds, tablePrefix, where);
+=======
             string strSql = string.Format("SELECT {0} FROM {1}Arc_Class WHERE 1=1 {2}", fileds, tablePrefix, where);
+>>>>>>> .r816
 
             DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
             if (ds != null && ds.Tables.Count > 0)
@@ -287,7 +291,7 @@ namespace DTCMS.SqlServerDAL
         /// </summary>
         /// <param name="count">返回记录数</param>
         /// <returns>栏目泛型集合</returns>
-		public List<Arc_Class> GetList(out long count)
+		public List<Arc_Class> GetList(out int count)
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent FROM " + tablePrefix + "Arc_Class");
@@ -305,7 +309,7 @@ namespace DTCMS.SqlServerDAL
         /// <param name="pageIndex">当前页数</param>
         /// <param name="count">返回记录总数</param>
         /// <returns>分页栏目泛型集合</returns>
-		public List<Arc_Class> GetPageList(int pageSize, int pageIndex, out long count)
+		public List<Arc_Class> GetPageList(int pageSize, int pageIndex, out int count)
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent FROM " + tablePrefix + "Arc_Class");
@@ -364,7 +368,7 @@ namespace DTCMS.SqlServerDAL
 		/// <param name="dr">SqlDataReader对象</param>
 		/// <param name="count">返回记录数</param>
 		/// <returns>对象泛型集合</returns>
-		private List<Arc_Class> GetList(SqlDataReader dr, out long count)
+		private List<Arc_Class> GetList(SqlDataReader dr, out int count)
 		{
 			count = 0;
 			List<Arc_Class> lst = new List<Arc_Class>();
@@ -384,7 +388,7 @@ namespace DTCMS.SqlServerDAL
 		/// <param name="pageIndex">当前页数</param>
 		/// <param name="count">返回记录总数</param>
 		/// <returns>分页对象泛型集合</returns>
-		private List<Arc_Class> GetPageList(SqlDataReader dr, int pageSize, int pageIndex, out long count)
+		private List<Arc_Class> GetPageList(SqlDataReader dr, int pageSize, int pageIndex, out int count)
 		{
 			long first = GetFirstIndex(pageSize, pageIndex);
 			long last = GetLastIndex(pageSize, pageIndex);

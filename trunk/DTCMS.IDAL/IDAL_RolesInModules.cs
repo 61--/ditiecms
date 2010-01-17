@@ -83,6 +83,6 @@ namespace DTCMS.IDAL
 		/// </summary>
 		/// <param name="count">返回记录数</param>
 		/// <returns>对象泛型集合</returns>
-		List<RolesInModules> GetList(out long count);
+		List<RolesInModules> GetList(out int count);
 	}
 }

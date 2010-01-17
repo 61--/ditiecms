@@ -115,7 +115,7 @@ namespace DTCMS.BLL
         /// </summary>
         /// <param name="count">返回记录数</param>
         /// <returns>对象泛型集合</returns>
-        public List<RolesInModules> GetList(out long count)
+        public List<RolesInModules> GetList(out int count)
         {
             return dal.GetList(out count);
         }

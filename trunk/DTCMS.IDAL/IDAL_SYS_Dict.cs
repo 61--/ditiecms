@@ -83,7 +83,7 @@ namespace DTCMS.IDAL
 		/// </summary>
 		/// <param name="count">返回记录数</param>
 		/// <returns>对象泛型集合</returns>
-		List<Sys_Dict> GetList(out long count);
+		List<Sys_Dict> GetList(out int count);
 
 		/// <summary>
 		/// 分页获取泛型数据列表
@@ -92,6 +92,6 @@ namespace DTCMS.IDAL
 		/// <param name="pageIndex">当前页数</param>
 		/// <param name="count">返回记录总数</param>
 		/// <returns>分页对象泛型集合</returns>
-		List<Sys_Dict> GetPageList(int pageSize, int pageIndex, out long count);
+		List<Sys_Dict> GetPageList(int pageSize, int pageIndex, out int count);
 	}
 }

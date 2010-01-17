@@ -97,7 +97,7 @@ namespace DTCMS.IDAL
 		/// </summary>
 		/// <param name="count">返回记录数</param>
         /// <returns>栏目泛型集合</returns>
-		List<Arc_Class> GetList(out long count);
+		List<Arc_Class> GetList(out int count);
 
 		/// <summary>
         /// 分页获取泛型栏目列表
@@ -106,6 +106,6 @@ namespace DTCMS.IDAL
 		/// <param name="pageIndex">当前页数</param>
 		/// <param name="count">返回记录总数</param>
 		/// <returns>分页栏目泛型集合</returns>
-		List<Arc_Class> GetPageList(int pageSize, int pageIndex, out long count);
+		List<Arc_Class> GetPageList(int pageSize, int pageIndex, out int count);
 	}
 }
