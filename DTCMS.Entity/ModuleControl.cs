@@ -24,6 +24,7 @@ namespace DTCMS.Entity
 		private int _moduleID;
 		private int _controlValue;
 		private int _orderID;
+
 		/// <summary>
 		/// ID
 		/// </summary>

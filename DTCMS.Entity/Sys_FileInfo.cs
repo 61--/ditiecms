@@ -16,6 +16,7 @@ namespace DTCMS.Entity
         private string _filetitle;
         private bool _isdirectory;
         private string _filepath;
+
         /// <summary>
         /// 文件名称
         /// </summary>

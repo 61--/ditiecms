@@ -28,6 +28,7 @@ namespace DTCMS.Entity
 		private string _pubLisher;
 		private DateTime _addDate;
 		private string _photoDescription;
+
 		/// <summary>
 		/// 附件ID
 		/// </summary>

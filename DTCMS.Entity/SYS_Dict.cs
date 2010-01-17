@@ -25,6 +25,7 @@ namespace DTCMS.Entity
 		private string _url;
 		private string _email;
 		private int _click;
+
 		/// <summary>
 		/// ID
 		/// </summary>

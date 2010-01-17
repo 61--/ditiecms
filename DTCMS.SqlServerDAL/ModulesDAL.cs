@@ -159,7 +159,7 @@ namespace DTCMS.SqlServerDAL
 		public Modules GetModel(int ID)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,ModuleID,ParentID,Name,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable,OrderID FROM " + tablePrefix + "Modules");
+			strSql.Append("SELECT ID,ModuleID,ParentID,Name,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM " + tablePrefix + "Modules");
 			strSql.Append(" WHERE ID=@ID");
 			SqlParameter[] cmdParms = {
 				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
@@ -216,7 +216,7 @@ namespace DTCMS.SqlServerDAL
 		public List<Modules> GetList(out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,ModuleID,ParentID,Name,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable,OrderID FROM " + tablePrefix + "Modules");
+            strSql.Append("SELECT ID,ModuleID,ParentID,Name,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM " + tablePrefix + "Modules ORDER BY OrderID");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Modules> lst = GetList(dr, out count);
@@ -234,7 +234,7 @@ namespace DTCMS.SqlServerDAL
 		public List<Modules> GetPageList(int pageSize, int pageIndex, out long count)
 		{
 			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,ModuleID,ParentID,Name,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable,OrderID FROM " + tablePrefix + "Modules");
+            strSql.Append("SELECT ID,ModuleID,ParentID,Name,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM " + tablePrefix + "Modules ORDER BY OrderID");
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Modules> lst = GetPageList(dr, pageSize, pageIndex, out count);
@@ -264,7 +264,6 @@ namespace DTCMS.SqlServerDAL
 			model.IsQuickMenu = dbHelper.GetByte(dr["IsQuickMenu"]);
 			model.IsSystem = dbHelper.GetByte(dr["IsSystem"]);
 			model.IsEnable = dbHelper.GetByte(dr["IsEnable"]);
-			model.OrderID = dbHelper.GetInt(dr["OrderID"]);
 			return model;
 		}
 

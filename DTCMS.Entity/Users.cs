@@ -47,6 +47,7 @@ namespace DTCMS.Entity
 		private int _pMCount;
 		private byte _isVerify;
 		private byte _isLock;
+
 		/// <summary>
 		/// 用户UID编号
 		/// </summary>

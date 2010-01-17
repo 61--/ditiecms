@@ -194,24 +194,6 @@ namespace DTCMS.SqlServerDAL
 			}
 		}
 
-		/// <summary>
-		/// 分页获取泛型数据列表
-		/// </summary>
-		/// <param name="pageSize">分页大小</param>
-		/// <param name="pageIndex">当前页</param>
-		/// <param name="count">返回记录数</param>
-		/// <returns>分页对象泛型集合</returns>
-		public List<RolesInModules> GetPageList(int pageSize, int pageIndex, out long count)
-		{
-			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,RoleID,ModuleID,ControlValue FROM " + tablePrefix + "RolesInModules");
-			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
-			{
-				List<RolesInModules> lst = GetPageList(dr, pageSize, pageIndex, out count);
-				return lst;
-			}
-		}
-
 		#region 私有方法，通常情况下无需修改
 		/// <summary>
 		/// 由一行数据得到一个实体

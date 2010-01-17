@@ -23,6 +23,7 @@ namespace DTCMS.Entity
 		private int _roleID;
 		private string _moduleID;
 		private int _controlValue;
+
 		/// <summary>
 		/// ID
 		/// </summary>

@@ -43,6 +43,7 @@ namespace DTCMS.Entity
 		private int _maxAttachTotalSize;
 		private string _attachExtension;
 		private int _orderID;
+
 		/// <summary>
 		/// 用户组ID
 		/// </summary>
