@@ -216,7 +216,7 @@ namespace DTCMS.SqlServerDAL
         /// <returns>模块对象泛型集合</returns>
         public List<Modules> GetList(string where, out int count)
         {
-            string strSql = string.Format("SELECT ID,ModuleID,ParentID,Name,ModuleURL,Target,Description,IsEnable FROM {0}Modules {1} ORDER BY OrderID", tablePrefix, where);
+            string strSql = string.Format("SELECT ID,ModuleID,ParentID,Name,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM {0}Modules {1} ORDER BY OrderID", tablePrefix, where);
 
             using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql, null))
             {
