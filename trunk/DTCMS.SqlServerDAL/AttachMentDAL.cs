@@ -178,7 +178,15 @@ namespace DTCMS.SqlServerDAL
         /// <returns>Object对象</returns>
         public object GetSingle(string filed, string where)
         {
-            string strSql = string.Format("SELECT TOP 1 {0} FROM {1}AttachMent {2}", filed, tablePrefix, where);
+            string strSql = "";
+            if (where == "")
+            {
+                strSql = string.Format("SELECT TOP 1 {0} FROM {1}AttachMent", filed, tablePrefix);
+            }
+            else
+            {
+                strSql = string.Format("SELECT TOP 1 {0} FROM {1}AttachMent WHERE {2}", filed, tablePrefix, where);
+            }
 
             object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql);
             return obj;
@@ -191,7 +199,15 @@ namespace DTCMS.SqlServerDAL
 		/// <returns>DataTable数据集合</returns>
 		public DataTable GetDataTable(string fileds, string where)
 		{
-			string strSql = string.Format("SELECT {0} FROM {1}AttachMent {2}", fileds, tablePrefix, where);
+            string strSql = "";
+            if (where == "")
+            {
+                strSql = string.Format("SELECT {0} FROM {1}AttachMent", fileds, tablePrefix);
+            }
+            else
+            {
+                strSql = string.Format("SELECT {0} FROM {1}AttachMent WHERE {2}", fileds, tablePrefix, where);
+            }
 
 			DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
 			if (ds != null && ds.Tables.Count > 0)
@@ -211,8 +227,7 @@ namespace DTCMS.SqlServerDAL
 		/// <returns>对象泛型集合</returns>
 		public List<AttachMent> GetList(out int count)
 		{
-			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT AID,Attribute,DisplayName,AttachMentPath,AttachMentSize,AbbrPhotoPath,PubLisher,AddDate,PhotoDescription FROM " + tablePrefix + "AttachMent");
+			string strSql=string.Format("SELECT AID,Attribute,DisplayName,AttachMentPath,AttachMentSize,AbbrPhotoPath,PubLisher,AddDate,PhotoDescription FROM {0}AttachMent", tablePrefix);
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<AttachMent> lst = GetList(dr, out count);
@@ -228,9 +243,8 @@ namespace DTCMS.SqlServerDAL
 		/// <param name="count">返回记录数</param>
 		/// <returns>分页对象泛型集合</returns>
 		public List<AttachMent> GetPageList(int pageSize, int pageIndex, out int count)
-		{
-			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT AID,Attribute,DisplayName,AttachMentPath,AttachMentSize,AbbrPhotoPath,PubLisher,AddDate,PhotoDescription FROM " + tablePrefix + "AttachMent");
+		{		
+			string strSql=string.Format("SELECT AID,Attribute,DisplayName,AttachMentPath,AttachMentSize,AbbrPhotoPath,PubLisher,AddDate,PhotoDescription FROM {0}AttachMent",tablePrefix);
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<AttachMent> lst = GetPageList(dr, pageSize, pageIndex, out count);

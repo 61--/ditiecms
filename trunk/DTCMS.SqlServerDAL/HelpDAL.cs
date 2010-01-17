@@ -157,8 +157,16 @@ namespace DTCMS.SqlServerDAL
 		/// <returns>DataTable数据集合</returns>
 		public DataTable GetDataTable(string fileds, string where)
 		{
-			string strSql = string.Format("SELECT {0} FROM {1}Help {2}", fileds, tablePrefix, where);
-
+            string strSql = "";
+            if (where == "")
+            {
+                strSql = string.Format("SELECT {0} FROM {1}Help", fileds, tablePrefix);
+            }
+            else
+            {
+                strSql = string.Format("SELECT {0} FROM {1}Help WHERE {2}", fileds, tablePrefix, where);
+            }
+			
 			DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
 			if (ds != null && ds.Tables.Count > 0)
 			{
@@ -177,8 +185,7 @@ namespace DTCMS.SqlServerDAL
 		/// <returns>对象泛型集合</returns>
 		public List<Help> GetList(out int count)
 		{
-			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,HelpID,PID,Title,Message,OrderID FROM " + tablePrefix + "Help");
+            string strSql = string.Format("SELECT ID,HelpID,PID,Title,Message,OrderID FROM {0}Help", tablePrefix);
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Help> lst = GetList(dr, out count);
@@ -195,8 +202,7 @@ namespace DTCMS.SqlServerDAL
 		/// <returns>分页对象泛型集合</returns>
 		public List<Help> GetPageList(int pageSize, int pageIndex, out int count)
 		{
-			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT ID,HelpID,PID,Title,Message,OrderID FROM " + tablePrefix + "Help");
+            string strSql=string.Format("SELECT ID,HelpID,PID,Title,Message,OrderID FROM {0}Help", tablePrefix);
 			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
 			{
 				List<Help> lst = GetPageList(dr, pageSize, pageIndex, out count);

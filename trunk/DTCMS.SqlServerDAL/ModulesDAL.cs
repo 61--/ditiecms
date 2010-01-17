@@ -182,7 +182,15 @@ namespace DTCMS.SqlServerDAL
         /// <returns>Object对象</returns>
         public object GetSingle(string filed, string where)
         {
-            string strSql = string.Format("SELECT TOP 1 {0} FROM {1}Modules {2}", filed, tablePrefix, where);
+            string strSql = "";
+            if (where == "")
+            {
+                strSql = string.Format("SELECT TOP 1 {0} FROM {1}Modules", filed, tablePrefix);
+            }
+            else
+            {
+                strSql = string.Format("SELECT TOP 1 {0} FROM {1}Modules WHERE {2}", filed, tablePrefix, where);
+            }
 
             object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql);
             return obj;
@@ -195,7 +203,15 @@ namespace DTCMS.SqlServerDAL
         /// <returns>DataTable数据集合</returns>
         public DataTable GetDataTable(string fileds, string where)
         {
-            string strSql = string.Format("SELECT {0} FROM {1}Modules {2}", fileds, tablePrefix, where);
+            string strSql = "";
+            if (where == "")
+            {
+                strSql = string.Format("SELECT {0} FROM {1}Modules", fileds, tablePrefix);
+            }
+            else
+            {
+                strSql = string.Format("SELECT {0} FROM {1}Modules WHERE {2}", fileds, tablePrefix, where);
+            }
 
             DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
             if (ds != null && ds.Tables.Count > 0)
