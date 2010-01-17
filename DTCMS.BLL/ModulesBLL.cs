@@ -77,7 +77,7 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-        /// 根据查询条件获取模块泛型数据列表
+        /// 获取模块顶级栏目
         /// </summary>
         /// <param name="where">查询条件</param>
         /// <param name="count">返回记录总数</param>
@@ -85,6 +85,17 @@ namespace DTCMS.BLL
         public List<Modules> GetTopNav(out int count)
         {
             return dal.GetList("WHERE ParentID='M0' AND IsEnable=1", out count);
+        }
+
+        /// <summary>
+        /// 获取模块子栏目
+        /// </summary>
+        /// <param name="where">查询条件</param>
+        /// <param name="count">返回记录总数</param>
+        /// <returns>模块对象泛型集合</returns>
+        public List<Modules> GetSubNav(out int count)
+        {
+            return dal.GetList("WHERE ModuleDepth>1 AND IsEnable=1", out count);
         }
 
         /// <summary>

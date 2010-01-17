@@ -53,18 +53,18 @@
             }
         }
         var preID = "M0";
-        function openMenu(cid, url) {
-            $("#" + cid).attr("class","thisclass");
-            if (preID != "M0" && preID != cid)
+        function openMenu(mid, url) {
+            $("#" + mid).attr("class", "thisclass");
+            if (preID != "M0" && preID != mid)
                 $("#" + preID).attr("class","");
-            preID = cid;
+            preID = mid;
             if (url != "") {
                 $("#main_body").attr("src",url);
             }
             $.ajax({
                 url: "menu.aspx",
                 type: "GET",
-                data: "cid=" + cid,
+                data: "modulesID=" + mid,
                 beforeSend: function() {
                     $("#ajaxloading").show();
                 },
