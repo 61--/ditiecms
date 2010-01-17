@@ -27,8 +27,7 @@ namespace DTCMS.Entity
         private string _adminemail;
         private string _defaulttemplet;
         private string _checklevel;
-        private string _loginvalidate;
-        private string _tableprefix;        
+        private string _loginvalidate;      
         public string SiteName
         {
             set
@@ -280,17 +279,5 @@ namespace DTCMS.Entity
             }
 
         }
-        public string TablePrefix
-        {
-            set
-            {
-                this._tableprefix = value;
-            }
-            get
-            {
-                return this._tableprefix;
-            }
-        }
-
     }
 }
