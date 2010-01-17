@@ -169,14 +169,6 @@
                             <input type="hidden" id="hidden_LoginValidate" value="1" runat="server" />
                         </td>
                     </tr>
-                    <tr>
-                        <td class="main_bleft">
-                            表前缀:
-                        </td>
-                        <td class="main_bright">
-                            <input type="text" id="txtTablePrefix" class="textbox short" runat="server" />
-                        </td>
-                    </tr>
                 </table>
             </div>
             <!--操作按钮-->

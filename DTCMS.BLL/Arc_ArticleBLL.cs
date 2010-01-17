@@ -155,17 +155,16 @@ namespace DTCMS.BLL
         public DataTable GetDataTable(string FieldKey, int PageCurrent, int PageSize
             , string FieldShow, string FieldOrder, string Where, out int PageCount)
         {
-            return dal.GetDataTable("V_Arc_Article", FieldKey, PageCurrent, PageSize
+            return dal.GetDataTable(FieldKey, PageCurrent, PageSize
                 , FieldShow, FieldOrder, Where, out PageCount);
         }
 
         /// <summary>
-        /// 获取DataTable，并转换成Joson数据
-        /// </summary>
+        /// 获取DataTable，并转换成Joson数据        /// </summary>
         public string CreateArticleTableJoan()
         {
             int pagecount;
-            DataTable dt = GetDataTable("ID", 1, 20, "ID,Title,ClassName,AddDate,IsChecked", "ID DESC", null, out pagecount);
+            DataTable dt = GetDataTable("ID", 1, 20, "a.ID,a.Title,c.ClassName,a.AddDate,a.IsChecked", "a.ID DESC", null, out pagecount);
             if (dt != null)
             {
                 return Utils.DataTableToJson(dt).ToString();
