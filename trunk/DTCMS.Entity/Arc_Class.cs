@@ -19,7 +19,7 @@ namespace DTCMS.Entity
         { }
 
         #region Model
-        private int _cID;
+        private int _cid;
         private int _parentID;
         private byte _attribute;
         private string _className;
@@ -54,8 +54,8 @@ namespace DTCMS.Entity
         /// </summary>
         public int CID
         {
-            set { _cID = value; }
-            get { return _cID; }
+            set { _cid = value; }
+            get { return _cid; }
         }
         /// <summary>
         /// 栏目父ID，默认0为顶级栏目

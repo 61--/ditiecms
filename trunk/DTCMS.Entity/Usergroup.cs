@@ -11,7 +11,7 @@ using System;
 namespace DTCMS.Entity
 {
 	/// <summary>
-	/// 实体类 Usergroup
+	/// 用户组实体类
 	/// </summary>
 	public class Usergroup
 	{
@@ -19,7 +19,7 @@ namespace DTCMS.Entity
 		{ }
 
 		#region Model
-		private int _iD;
+		private int _id;
 		private byte _type;
 		private byte _isSystem;
 		private string _groupName;
@@ -48,8 +48,8 @@ namespace DTCMS.Entity
 		/// </summary>
 		public int ID
 		{
-			set { _iD = value; }
-			get { return _iD; }
+			set { _id = value; }
+			get { return _id; }
 		}
 		/// <summary>
 		/// 用户组类型，0系统组，1管理组，2用户组

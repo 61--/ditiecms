@@ -11,7 +11,7 @@ using System;
 namespace DTCMS.Entity
 {
 	/// <summary>
-	/// 实体类 Users
+	/// 用户信息实体类
 	/// </summary>
 	public class Users
 	{
@@ -19,7 +19,7 @@ namespace DTCMS.Entity
 		{ }
 
 		#region Model
-		private int _uID;
+		private int _uid;
 		private string _userName;
 		private string _nickName;
 		private string _password;
@@ -52,8 +52,8 @@ namespace DTCMS.Entity
 		/// </summary>
 		public int UID
 		{
-			set { _uID = value; }
-			get { return _uID; }
+			set { _uid = value; }
+			get { return _uid; }
 		}
 		/// <summary>
 		/// 用户名
@@ -72,7 +72,7 @@ namespace DTCMS.Entity
 			get { return _nickName; }
 		}
 		/// <summary>
-		/// Password
+		/// 用户密码
 		/// </summary>
 		public string Password
 		{
@@ -96,7 +96,7 @@ namespace DTCMS.Entity
 			get { return _secureAnswer; }
 		}
 		/// <summary>
-		/// 性别
+		/// 性别，1男、0女
 		/// </summary>
 		public byte Sex
 		{

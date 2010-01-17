@@ -19,7 +19,7 @@ namespace DTCMS.Entity
 		{ }
 
 		#region Model
-		private int _aID;
+		private int _aid;
 		private byte _attribute;
 		private string _displayName;
 		private string _attachMentPath;
@@ -33,8 +33,8 @@ namespace DTCMS.Entity
 		/// </summary>
 		public int AID
 		{
-			set { _aID = value; }
-			get { return _aID; }
+			set { _aid = value; }
+			get { return _aid; }
 		}
 		/// <summary>
 		/// 附件类型属性，1图片、2视频、3音频、4flash、5附件、6其它
