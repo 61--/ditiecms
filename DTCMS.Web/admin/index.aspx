@@ -52,11 +52,11 @@
                 $("#side").width($("#side").width() + n);
             }
         }
-        var preID = 0;
+        var preID = "M0";
         function openMenu(cid, url) {
-            $("#d" + cid).attr("class","thisclass");
-            if (preID > 0 && preID != cid)
-                $("#d" + preID).attr("class","");
+            $("#" + cid).attr("class","thisclass");
+            if (preID != "M0" && preID != cid)
+                $("#" + preID).attr("class","");
             preID = cid;
             if (url != "") {
                 $("#main_body").attr("src",url);
@@ -105,20 +105,11 @@
                 </div>
             </div>
             <div class="leftnav">
-<%--                <ul>
-                    <li class="navleft"></li>
-                    <li id="d1"><a href="javascript:openMenu(1,'news/Class_list.aspx')">频道管理</a></li>
-                    <li id="d2"><a href="javascript:openMenu(2,'news/News_list.aspx')">内容管理</a></li>
-                    <li id="d3"><a href="javascript:openMenu(3,'news/news_list.html')">生成管理</a></li>
-                    <li id="d4"><a href="javascript:openMenu(4,'main_index.aspx')">采集管理</a></li>
-                    <li id="d5"><a href="javascript:openMenu(5,'attachment/test.html')">多媒体</a></li>
-                    <li id="d6"><a href="javascript:openMenu(6,'main_index.aspx')">插件管理</a></li>
-                    <li id="d7"><a href="javascript:openMenu(7,'main_index.aspx')">系统管理</a></li>
-                    <li class="navright"></li>
-                </ul>--%>
                 <asp:Repeater ID="rpt_Topnav" runat="server">
-                    <HeaderTemplate><ul><li class="navleft"></li></HeaderTemplate>
-                    <ItemTemplate><li id=""><a href=""></a></li></ItemTemplate>
+                    <HeaderTemplate><ul><li class="navleft"></li>
+                    </HeaderTemplate>
+                    <ItemTemplate><li id="<%# Eval("ModuleID").ToString().Trim() %>"><a href="javascript:openMenu('<%# Eval("ModuleID").ToString().Trim() %>','<%# Eval("ModuleURL") %>')"><%# Eval("Name")%></a></li>
+                    </ItemTemplate>
                     <FooterTemplate><li class="navright"></li></ul></FooterTemplate>
                 </asp:Repeater>
             </div>

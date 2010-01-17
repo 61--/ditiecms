@@ -78,11 +78,19 @@ namespace DTCMS.IDAL
 		/// <returns>DataTable数据集合</returns>
 		DataTable GetDataTable(string fileds, string where);
 
+        /// <summary>
+        /// 根据查询条件获取模块泛型数据列表
+        /// </summary>
+        /// <param name="where">查询条件</param>
+        /// <param name="count">返回记录总数</param>
+        /// <returns>模块对象泛型集合</returns>
+        List<Modules> GetList(string where, out int count);
+
 		/// <summary>
 		/// 获取泛型数据列表
 		/// </summary>
 		/// <param name="count">返回记录数</param>
-		/// <returns>对象泛型集合</returns>
+        /// <returns>模块对象泛型集合</returns>
 		List<Modules> GetList(out int count);
 
 		/// <summary>
