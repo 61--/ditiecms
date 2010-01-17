@@ -208,6 +208,12 @@ namespace DTCMS.SqlServerDAL
             }
         }
 
+        /// <summary>
+        /// 根据查询条件获取模块泛型数据列表
+        /// </summary>
+        /// <param name="where">查询条件</param>
+        /// <param name="count">返回记录总数</param>
+        /// <returns>模块对象泛型集合</returns>
         public List<Modules> GetList(string where, out int count)
         {
             string strSql = string.Format("SELECT ID,ModuleID,ParentID,Name,ModuleURL,Target,Description,IsEnable FROM {0}Modules {1} ORDER BY OrderID", tablePrefix, where);
@@ -220,10 +226,10 @@ namespace DTCMS.SqlServerDAL
         }
 
         /// <summary>
-        /// 获取泛型数据列表
+        /// 获取模块泛型数据列表
         /// </summary>
         /// <param name="count">返回记录总数</param>
-        /// <returns>对象泛型集合</returns>
+        /// <returns>模块对象泛型集合</returns>
         public List<Modules> GetList(out int count)
         {
             string strSql = string.Format("SELECT ID,ModuleID,ParentID,Name,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM {0}Modules ORDER BY OrderID", tablePrefix);

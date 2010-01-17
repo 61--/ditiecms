@@ -232,7 +232,7 @@ namespace DTCMS.SqlServerDAL
         /// <returns>DataTable数据集合</returns>
         public DataTable GetDataTable(string fileds, string where)
         {
-            string strSql = string.Format("SELECT {0} FROM {1}Arc_Article {2}", fileds, tablePrefix, where);
+            string strSql = string.Format("SELECT {0} FROM {1}Arc_Class {2}", fileds, tablePrefix, where);
 
             DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
             if (ds != null && ds.Tables.Count > 0)
