@@ -105,7 +105,7 @@
                 </div>
             </div>
             <div class="leftnav">
-                <ul>
+<%--                <ul>
                     <li class="navleft"></li>
                     <li id="d1"><a href="javascript:openMenu(1,'news/Class_list.aspx')">频道管理</a></li>
                     <li id="d2"><a href="javascript:openMenu(2,'news/News_list.aspx')">内容管理</a></li>
@@ -115,7 +115,12 @@
                     <li id="d6"><a href="javascript:openMenu(6,'main_index.aspx')">插件管理</a></li>
                     <li id="d7"><a href="javascript:openMenu(7,'main_index.aspx')">系统管理</a></li>
                     <li class="navright"></li>
-                </ul>
+                </ul>--%>
+                <asp:Repeater ID="rpt_Topnav" runat="server">
+                    <HeaderTemplate><ul><li class="navleft"></li></HeaderTemplate>
+                    <ItemTemplate><li id=""><a href=""></a></li></ItemTemplate>
+                    <FooterTemplate><li class="navright"></li></ul></FooterTemplate>
+                </asp:Repeater>
             </div>
         </div>
     </div>

@@ -20,6 +20,7 @@ namespace DTCMS.BLL
 	public class ModulesBLL
 	{
 		private readonly IDAL_Modules dal = DataAccess.CreateFactoryDAL<IDAL_Modules>("ModulesDAL");
+
 		public ModulesBLL()
 		{ }
 
@@ -80,7 +81,7 @@ namespace DTCMS.BLL
 		/// </summary>
         /// <param name="count">返回记录数</param>
         /// <returns>对象泛型集合</returns>
-        public List<Modules> GetList(out long count)
+        public List<Modules> GetList(out int count)
         {
             return dal.GetList(out count);
         }
@@ -92,7 +93,7 @@ namespace DTCMS.BLL
         /// <param name="pageIndex">当前页</param>
         /// <param name="count">返回记录数</param>
         /// <returns>分页对象泛型集合</returns>
-        public List<Modules> GetPageList(int pageSize, int pageIndex, out long count)
+        public List<Modules> GetPageList(int pageSize, int pageIndex, out int count)
         {
             if (pageSize <= 0)
                 throw new Exception("每页数据条数必须大于0。");

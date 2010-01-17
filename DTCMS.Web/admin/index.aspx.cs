@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using DTCMS.Common;
+using DTCMS.Entity;
+using DTCMS.BLL;
 
 namespace DTCMS.Web.admin
 {
@@ -10,7 +13,7 @@ namespace DTCMS.Web.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ModulesBLL modulesBll = new ModulesBLL();
         }
     }
 }

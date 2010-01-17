@@ -152,7 +152,7 @@ namespace DTCMS.SqlServerDAL
         /// <returns>Object对象</returns>
         public object GetSingle(string filed, string where)
         {
-            string strSql = string.Format("SELECT TOP 1 {0} FROM {1}RolesInModules WHERE 1=1 {2}", filed, tablePrefix, where);
+            string strSql = string.Format("SELECT TOP 1 {0} FROM {1}RolesInModules {2}", filed, tablePrefix, where);
 
             object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql);
             return obj;
@@ -165,7 +165,7 @@ namespace DTCMS.SqlServerDAL
 		/// <returns>DataTable数据集合</returns>
 		public DataTable GetDataTable(string fileds, string where)
 		{
-			string strSql = string.Format("SELECT {0} FROM {1}RolesInModules WHERE 1=1 {2}", fileds, tablePrefix, where);
+			string strSql = string.Format("SELECT {0} FROM {1}RolesInModules {2}", fileds, tablePrefix, where);
 
 			DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
 			if (ds != null && ds.Tables.Count > 0)
@@ -183,7 +183,7 @@ namespace DTCMS.SqlServerDAL
 		/// </summary>
 		/// <param name="count">返回记录总数</param>
 		/// <returns>对象泛型集合</returns>
-		public List<RolesInModules> GetList(out long count)
+		public List<RolesInModules> GetList(out int count)
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("SELECT ID,RoleID,ModuleID,ControlValue FROM " + tablePrefix + "RolesInModules");
@@ -216,7 +216,7 @@ namespace DTCMS.SqlServerDAL
 		/// <param name="dr">SqlDataReader对象</param>
 		/// <param name="count">返回记录数</param>
 		/// <returns>对象泛型集合</returns>
-		private List<RolesInModules> GetList(SqlDataReader dr, out long count)
+		private List<RolesInModules> GetList(SqlDataReader dr, out int count)
 		{
 			count = 0;
 			List<RolesInModules> lst = new List<RolesInModules>();
@@ -236,7 +236,7 @@ namespace DTCMS.SqlServerDAL
 		/// <param name="pageIndex">当前页数</param>
 		/// <param name="count">返回记录总数</param>
 		/// <returns>分页对象泛型集合</returns>
-		private List<RolesInModules> GetPageList(SqlDataReader dr, int pageSize, int pageIndex, out long count)
+		private List<RolesInModules> GetPageList(SqlDataReader dr, int pageSize, int pageIndex, out int count)
 		{
 			long first = GetFirstIndex(pageSize, pageIndex);
 			long last = GetLastIndex(pageSize, pageIndex);

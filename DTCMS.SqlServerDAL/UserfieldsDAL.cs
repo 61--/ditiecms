@@ -180,7 +180,7 @@ namespace DTCMS.SqlServerDAL
         /// <returns>Object对象</returns>
         public object GetSingle(string filed, string where)
         {
-            string strSql = string.Format("SELECT TOP 1 {0} FROM {1}Userfields WHERE 1=1 {2}", filed, tablePrefix, where);
+            string strSql = string.Format("SELECT TOP 1 {0} FROM {1}Userfields {2}", filed, tablePrefix, where);
 
             object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql);
             return obj;
@@ -193,7 +193,7 @@ namespace DTCMS.SqlServerDAL
 		/// <returns>DataTable数据集合</returns>
 		public DataTable GetDataTable(string fileds, string where)
 		{
-			string strSql = string.Format("SELECT {0} FROM {1}Userfields WHERE 1=1 {2}", fileds, tablePrefix, where);
+			string strSql = string.Format("SELECT {0} FROM {1}Userfields {2}", fileds, tablePrefix, where);
 
 			DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
 			if (ds != null && ds.Tables.Count > 0)
@@ -211,7 +211,7 @@ namespace DTCMS.SqlServerDAL
 		/// </summary>
 		/// <param name="count">返回记录总数</param>
 		/// <returns>对象泛型集合</returns>
-		public List<Userfields> GetList(out long count)
+		public List<Userfields> GetList(out int count)
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("SELECT UID,Realname,QQ,MSN,Skype,Phone,Mobilephone,Location,Adress,IDcard,Signature,Introduce,Website FROM " + tablePrefix + "Userfields");
@@ -229,7 +229,7 @@ namespace DTCMS.SqlServerDAL
 		/// <param name="pageIndex">当前页</param>
 		/// <param name="count">返回记录数</param>
 		/// <returns>分页对象泛型集合</returns>
-		public List<Userfields> GetPageList(int pageSize, int pageIndex, out long count)
+		public List<Userfields> GetPageList(int pageSize, int pageIndex, out int count)
 		{
 			StringBuilder strSql = new StringBuilder();
 			strSql.Append("SELECT UID,Realname,QQ,MSN,Skype,Phone,Mobilephone,Location,Adress,IDcard,Signature,Introduce,Website FROM " + tablePrefix + "Userfields");
@@ -271,7 +271,7 @@ namespace DTCMS.SqlServerDAL
 		/// <param name="dr">SqlDataReader对象</param>
 		/// <param name="count">返回记录数</param>
 		/// <returns>对象泛型集合</returns>
-		private List<Userfields> GetList(SqlDataReader dr, out long count)
+		private List<Userfields> GetList(SqlDataReader dr, out int count)
 		{
 			count = 0;
 			List<Userfields> lst = new List<Userfields>();
@@ -291,7 +291,7 @@ namespace DTCMS.SqlServerDAL
 		/// <param name="pageIndex">当前页数</param>
 		/// <param name="count">返回记录总数</param>
 		/// <returns>分页对象泛型集合</returns>
-		private List<Userfields> GetPageList(SqlDataReader dr, int pageSize, int pageIndex, out long count)
+		private List<Userfields> GetPageList(SqlDataReader dr, int pageSize, int pageIndex, out int count)
 		{
 			long first = GetFirstIndex(pageSize, pageIndex);
 			long last = GetLastIndex(pageSize, pageIndex);
