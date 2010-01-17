@@ -11,29 +11,24 @@ namespace DTCMS.Web.admin.ajax
     public partial class dialog_list : System.Web.UI.Page
     {
         DialogConfigBLL bllDialogConfig = new DialogConfigBLL();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             string action = Common.Utils.GetQueryString("action").Trim();
+
             switch (action)
             {                
-                case "tagpage":
-                    Response.Write(GetTag());
-                    break;
-                case "authorpage":
-                    Response.Write(GetArticleAuthor());
-                    break;
-                case "sourcepage":
-                    Response.Write(GetArticleSource());
-                    break;
-                default:
-                    break;
+                case "tagpage":Response.Write(GetTagAsHtml());break;
+                case "authorpage": Response.Write(GetArticleAuthorAsHtml()); break;
+                case "sourcepage": Response.Write(GetArticleSourceAsHtml()); break;
+                default: Response.Write(""); break;
             }
         }
 
         /// <summary>
         /// 获取Tag列表页，前台显示
         /// </summary>
-        private string GetTag()
+        private string GetTagAsHtml()
         {
             return Get(bllDialogConfig.GetTag());
         }
@@ -41,7 +36,7 @@ namespace DTCMS.Web.admin.ajax
         /// <summary>
         /// 获取作者列表页，前台显示
         /// </summary>
-        private string GetArticleAuthor()
+        private string GetArticleAuthorAsHtml()
         {
             return Get(bllDialogConfig.GetArticleAuthor());
         }
@@ -49,7 +44,7 @@ namespace DTCMS.Web.admin.ajax
         /// <summary>
         /// 获取文章来源列表页，前台显示
         /// </summary>
-        private string GetArticleSource()
+        private string GetArticleSourceAsHtml()
         {
             return Get(bllDialogConfig.GetArticleSource());
         }

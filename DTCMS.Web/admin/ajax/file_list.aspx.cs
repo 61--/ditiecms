@@ -15,17 +15,16 @@ namespace DTCMS.Web.admin
         Sys_FileInfoBLL bllFile = new Sys_FileInfoBLL();
         protected void Page_Load(object sender, EventArgs e)
         {
-            string action = Common.Utils.GetQueryString("action");
-            string filePath = Common.Utils.GetQueryString("path");
+            string action = Common.Utils.GetQueryString("action").Trim();
+            string filePath = Common.Utils.GetQueryString("path").Trim();
             switch (action)
             { 
-                case "template":
-                    Response.Write(GetTemplateJson(filePath));
-                    break;
+                case "template":Response.Write(GetTemplateToJson(filePath));break;
+                default: Response.Write(""); break;
 
             }
         }
-        protected string GetTemplateJson(string filePath)
+        protected string GetTemplateToJson(string filePath)
         {
              return JavaScriptConvert.SerializeObject( bllFile.GetFileList(filePath));
         }

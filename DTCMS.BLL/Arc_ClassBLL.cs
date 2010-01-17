@@ -138,7 +138,7 @@ namespace DTCMS.BLL
         /// 获取栏目DataTable，并转换成Joson数据
         /// </summary>
         /// <returns>Joson数据</returns>
-        public string GetDataTableJoson()
+        public string GetClassListToJson()
         {
             DataTable dt = dal.GetDataTable("CID,ClassName,ClassType,AddDate,OrderID,ParentID","");
             if (dt != null)
@@ -152,7 +152,7 @@ namespace DTCMS.BLL
         /// 获取DataTable，并转换成Joson数据，前台调用
         /// </summary>
         /// <returns>Joson数据</returns>
-        public string GetDataTableJsonPage(string where)
+        public string GetDataTableToJsonAsHtml(string where)
         {
             DataTable dt = dal.GetDataTable("CID,ClassName,ParentID", where);
             if (dt != null)
