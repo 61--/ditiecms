@@ -15,17 +15,13 @@ namespace DTCMS.Web.admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string action = Common.Utils.GetQueryString("action");
+            string action = Common.Utils.GetQueryString("action").Trim();
+
             switch (action)
             {
-                case "load":
-                    Response.Write(CreateArticleTableJoan());
-                    break;
-                case "delete":
-                    Response.Write(Delete());
-                    break;
-                default:
-                    break;
+                case "load": Response.Write(CreateArticleTableToJoan()); break;
+                case "delete":Response.Write(DeleteNews());break;
+                default: Response.Write(""); break;
 
             }
         }
@@ -33,16 +29,16 @@ namespace DTCMS.Web.admin
         /// <summary>
         /// 创建文章表格
         /// </summary>
-        public string CreateArticleTableJoan()
+        public string CreateArticleTableToJoan()
         {
-            return bllArticle.CreateArticleTableJoan();
+            return bllArticle.CreateArticleTableToJoan();
         }
 
         /// <summary>
         /// 删除文章
         /// </summary>
         /// <returns></returns>
-        public string Delete()
+        public string DeleteNews()
         {
             try
             {

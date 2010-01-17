@@ -22,52 +22,42 @@ namespace DTCMS.Web.admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string action = Common.Utils.GetQueryString("action");
-            string classname=Common.Utils.GetQueryString("classname");
+            string action = Common.Utils.GetQueryString("action").Trim();
+            string classname = Common.Utils.GetQueryString("classname").Trim();
+
             switch (action)
             {
-                case "load":
-                    Response.Write(GetClassListJson());
-                    break;
-                case "listpage":
-                    Response.Write(GetDataTableJsonPage());
-                    break;
-                case "delete":
-                    Response.Write(Delete());
-                    break;
-                case "order":
-                    Response.Write(UpdateOrder().ToString());
-                    break;
-                case "ename":
-                    Response.Write(Common.Utils.GetChineseSpell(classname));
-                    break;
-                default:
-                    break;
+                case "load":Response.Write(GetClassListToJson());break;
+                case "listpage":Response.Write(GetDataTableToJsonAsHtml());break;
+                case "delete": Response.Write(DeleteClass()); break;
+                case "order": Response.Write(UpdateClassOrder()); break;
+                case "ename":Response.Write(Common.Utils.GetChineseSpell(classname));break;
+                default: Response.Write(""); break;
             }            
         }
         /// <summary>
         /// 获取栏目列表
         /// </summary>
         /// <returns>json对象</returns>
-        public string GetClassListJson()
+        public string GetClassListToJson()
         {
-            return bllClass.GetDataTableJoson();
+            return bllClass.GetClassListToJson();
         }
 
         /// <summary>
         /// 获取栏目列表
         /// </summary>
         /// <returns>json对象</returns>
-        public string GetDataTableJsonPage()
+        public string GetDataTableToJsonAsHtml()
         {
-            return bllClass.GetDataTableJsonPage("Attribute=" + (int)EClassAttribute.List);
+            return bllClass.GetDataTableToJsonAsHtml("Attribute=" + (int)EClassAttribute.List);
         }
 
         /// <summary>
         /// 删除栏目
         /// </summary>
         /// <returns>cid为空返回：-1，成功返回：1，失败返回：0，存在子栏目返回：2,存在文章返回，3</returns>
-        public string Delete()
+        public string DeleteClass()
         {
             try
             {
@@ -111,7 +101,7 @@ namespace DTCMS.Web.admin
         /// 更新栏目排序
         /// </summary>
         /// <returns>成功返回影响行数，异常返回-1，失败返回0</returns>
-        public int UpdateOrder()
+        public int UpdateClassOrder()
         {
             try
             {

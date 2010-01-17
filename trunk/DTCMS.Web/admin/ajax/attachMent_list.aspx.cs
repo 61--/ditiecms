@@ -19,9 +19,9 @@ namespace DTCMS.Web.admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string action=Common.Utils.GetQueryString("action");
+            string action = Common.Utils.GetQueryString("action").Trim();
             int type = Common.Utils.GetQueryInt("type");
-            string name = Common.Utils.GetQueryString("name");
+            string name = Common.Utils.GetQueryString("name").Trim();
             int page = Common.Utils.GetQueryInt("page");
 
             if (page == 0)
@@ -31,21 +31,18 @@ namespace DTCMS.Web.admin
 
             switch (action)
             {
-                case "upload":
-                    Response.Write(JsonAttachmentList());
-                    break;
+                case "upload": Response.Write(AttachmentListToJson());break;
                 case "search":
-                    if (type == 1)
+                    switch (type)
                     {
-                        Response.Write(HtmlImageList(page, name));
-                    }
-                    else
-                    {
-                        Response.Write(HtmlAttachmentList(page, type, name));
-                    }
-                break;
-                default:
-                break;
+                        case 1:
+                            Response.Write(ImageListToHtml(page, name));
+                            break;
+                        default: 
+                            Response.Write(AttachmentListToHtml(page, type, name));
+                            break;
+                    } break;
+                default: Response.Write(""); break;
             }
         }
 
@@ -55,7 +52,7 @@ namespace DTCMS.Web.admin
         /// <param name="page">第几页</param>
         /// <param name="attachMentDisplayName">附件名称</param>
         /// <returns></returns>
-        private string HtmlImageList(int pageCurrent, string attachMentDisplayName)
+        private string ImageListToHtml(int pageCurrent, string attachMentDisplayName)
         {
             int totalcount=0;
             int page = 10;
@@ -124,7 +121,7 @@ namespace DTCMS.Web.admin
             return sb.ToString();
         }
 
-        private string HtmlAttachmentList(int pageCurrent,int attachMentType,string attachMentDisplayName)
+        private string AttachmentListToHtml(int pageCurrent,int attachMentType,string attachMentDisplayName)
         {
             int idnum = 1;
             int totalcount = 0;
@@ -184,7 +181,7 @@ namespace DTCMS.Web.admin
             return sb.ToString();
         }
 
-        private string JsonAttachmentList()
+        private string AttachmentListToJson()
         {
             StringBuilder sbJson = new StringBuilder();
             SystemConfig sysConfig = GobalConfig.GetCobalInstance().LoadGoableConfig();

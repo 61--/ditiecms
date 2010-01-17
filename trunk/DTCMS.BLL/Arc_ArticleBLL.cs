@@ -161,7 +161,7 @@ namespace DTCMS.BLL
 
         /// <summary>
         /// 获取DataTable，并转换成Joson数据        /// </summary>
-        public string CreateArticleTableJoan()
+        public string CreateArticleTableToJoan()
         {
             int pagecount;
             DataTable dt = GetDataTable("ID", 1, 20, "a.ID,a.Title,c.ClassName,a.AddDate,a.IsChecked", "a.ID DESC", null, out pagecount);
