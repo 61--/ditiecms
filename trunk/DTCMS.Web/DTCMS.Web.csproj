@@ -197,6 +197,13 @@
     <Compile Include="admin\dialog\classpagelist.aspx.designer.cs">
       <DependentUpon>classpagelist.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\navmap.aspx.cs">
+      <DependentUpon>navmap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\navmap.aspx.designer.cs">
+      <DependentUpon>navmap.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\news\class_list.aspx.cs">
       <DependentUpon>class_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -353,6 +360,7 @@
     <Content Include="admin\js\public.js" />
     <Content Include="admin\dialog\authorlist.aspx" />
     <Content Include="admin\dialog\classpagelist.aspx" />
+    <Content Include="admin\navmap.aspx" />
     <Content Include="admin\news\class_list.html" />
     <Content Include="admin\dialog\taglist.aspx" />
     <Content Include="admin\sys\AttachMentSetting.aspx" />
