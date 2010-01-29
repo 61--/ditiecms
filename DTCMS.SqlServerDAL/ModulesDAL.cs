@@ -36,8 +36,8 @@ namespace DTCMS.SqlServerDAL
             strSql.Append(" VALUES (");
             strSql.Append("@ModuleID,@ParentID,@Name,@EName,@ModuleDepth,@ModuleURL,@Target,@Description,@CreateTime,@IsQuickMenu,@IsSystem,@IsEnable,@OrderID)");
             SqlParameter[] cmdParms = {
-				AddInParameter("@ModuleID", SqlDbType.Char, 8, model.ModuleID),
-				AddInParameter("@ParentID", SqlDbType.Char, 8, model.ParentID),
+				AddInParameter("@ModuleID", SqlDbType.VarChar, 8, model.ModuleID),
+				AddInParameter("@ParentID", SqlDbType.VarChar, 8, model.ParentID),
 				AddInParameter("@Name", SqlDbType.NVarChar, 50, model.Name),
 				AddInParameter("@EName", SqlDbType.VarChar, 50, model.EName),
 				AddInParameter("@ModuleDepth", SqlDbType.TinyInt, 1, model.ModuleDepth),
@@ -77,8 +77,8 @@ namespace DTCMS.SqlServerDAL
             strSql.Append("OrderID=@OrderID");
             strSql.Append(" WHERE ID=@ID");
             SqlParameter[] cmdParms = {
-				AddInParameter("@ModuleID", SqlDbType.Char, 8, model.ModuleID),
-				AddInParameter("@ParentID", SqlDbType.Char, 8, model.ParentID),
+				AddInParameter("@ModuleID", SqlDbType.VarChar, 8, model.ModuleID),
+				AddInParameter("@ParentID", SqlDbType.VarChar, 8, model.ParentID),
 				AddInParameter("@Name", SqlDbType.NVarChar, 50, model.Name),
 				AddInParameter("@EName", SqlDbType.VarChar, 50, model.EName),
 				AddInParameter("@ModuleDepth", SqlDbType.TinyInt, 1, model.ModuleDepth),
