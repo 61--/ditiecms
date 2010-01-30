@@ -11,7 +11,7 @@
 namespace DTCMS.Web.admin {
     
     
-    public partial class main_index {
+    public partial class controlpanel {
         
         /// <summary>
         /// form1 控件。
