@@ -12,7 +12,7 @@
     <script type="text/javascript" src="js/common.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            openMenu(0, '');
+            openMenu('M01', '');
             popTip('H0201002');
         });
         function popTip(msg, func, w, h) {
@@ -62,7 +62,7 @@
                 $("#main_body").attr("src",url);
             }
             $.ajax({
-                url: "menu.aspx",
+                url: "ajax/menu.aspx",
                 type: "GET",
                 data: "modulesID=" + mid,
                 beforeSend: function() {
@@ -96,9 +96,8 @@
                 <div class="welcome">
                     <a href="javascript:changeMenu(-10)">
                         <img src="images/blue/frame-l.gif" alt="减小左框架" /></a> <a href="javascript:changeMenu(0)">
-                            <img src="images/blue/frame_on.gif" alt="隐藏/显示左框架" /></a> <a href="javascript:changeMenu(10)"
-                                title="增大左框架">
-                                <img src="images/blue/frame-r.gif" alt="增大左框架" /></a>
+                        <img src="images/blue/frame_on.gif" alt="隐藏/显示左框架" /></a> <a href="javascript:changeMenu(10)" title="增大左框架">
+                        <img src="images/blue/frame-r.gif" alt="增大左框架" /></a>
                 </div>
                 <div class="sitelink">
                     <a href="javascript:openMenu(0,'','main_index.aspx',0)">管理主页</a> | <a href="#">注销登陆</a>
@@ -108,9 +107,10 @@
                 <asp:Repeater ID="rpt_Topnav" runat="server">
                     <HeaderTemplate><ul><li class="navleft"></li>
                     </HeaderTemplate>
-                    <ItemTemplate><li id="<%# Eval("ModuleID").ToString().Trim() %>"><a href="javascript:openMenu('<%# Eval("ModuleID").ToString().Trim() %>','<%# Eval("ModuleURL") %>')"><%# Eval("Name")%></a></li>
+                    <ItemTemplate><li id="<%# Eval("ModuleID").ToString().Trim() %>"><a href="javascript:void(0);" onclick="openMenu('<%# Eval("ModuleID").ToString().Trim() %>','<%# Eval("ModuleURL") %>')"><%# Eval("Name")%></a></li>
                     </ItemTemplate>
-                    <FooterTemplate><li class="navright"></li></ul></FooterTemplate>
+                    <FooterTemplate><li class="navright"></li>
+                </ul></FooterTemplate>
                 </asp:Repeater>
             </div>
         </div>

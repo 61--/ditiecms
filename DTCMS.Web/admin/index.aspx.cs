@@ -15,8 +15,8 @@ namespace DTCMS.Web.admin
         {
             ModulesBLL modulesBll = new ModulesBLL();
 
-            int count = 0;
-            List<Modules> mlist = modulesBll.GetTopNav(out count);
+            int count;
+            List<Modules> mlist = modulesBll.GetTopnav(out count);
 
             if (count > 0)
             {
