@@ -91,8 +91,7 @@
     <Content Include="admin\js\cn_utf8.js" />
     <Content Include="admin\js\left.js" />
     <Content Include="admin\menu.aspx" />
-    <Content Include="admin\main_index.aspx" />
-    <Content Include="admin\top_index.aspx" />
+    <Content Include="admin\controlpanel.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -197,13 +196,6 @@
     <Compile Include="admin\dialog\classpagelist.aspx.designer.cs">
       <DependentUpon>classpagelist.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\navmap.aspx.cs">
-      <DependentUpon>navmap.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\navmap.aspx.designer.cs">
-      <DependentUpon>navmap.aspx</DependentUpon>
-    </Compile>
     <Compile Include="admin\news\class_list.aspx.cs">
       <DependentUpon>class_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -225,12 +217,12 @@
     <Compile Include="admin\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\main_index.aspx.cs">
-      <DependentUpon>main_index.aspx</DependentUpon>
+    <Compile Include="admin\controlpanel.aspx.cs">
+      <DependentUpon>controlpanel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\main_index.aspx.designer.cs">
-      <DependentUpon>main_index.aspx</DependentUpon>
+    <Compile Include="admin\controlpanel.aspx.designer.cs">
+      <DependentUpon>controlpanel.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\news\class_add.aspx.cs">
       <DependentUpon>class_add.aspx</DependentUpon>
@@ -295,13 +287,6 @@
     <Compile Include="admin\Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\top_index.aspx.cs">
-      <DependentUpon>top_index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\top_index.aspx.designer.cs">
-      <DependentUpon>top_index.aspx</DependentUpon>
-    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -360,7 +345,6 @@
     <Content Include="admin\js\public.js" />
     <Content Include="admin\dialog\authorlist.aspx" />
     <Content Include="admin\dialog\classpagelist.aspx" />
-    <Content Include="admin\navmap.aspx" />
     <Content Include="admin\news\class_list.html" />
     <Content Include="admin\dialog\taglist.aspx" />
     <Content Include="admin\sys\AttachMentSetting.aspx" />
