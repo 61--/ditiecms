@@ -123,6 +123,13 @@
     <Compile Include="admin\ajax\file_list.aspx.designer.cs">
       <DependentUpon>file_list.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\ajax\menu.aspx.cs">
+      <DependentUpon>menu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ajax\menu.aspx.designer.cs">
+      <DependentUpon>menu.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\ajax\news_list.aspx.cs">
       <DependentUpon>news_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -308,6 +315,7 @@
     <Content Include="admin\ajax\class_list.aspx" />
     <Content Include="admin\ajax\dialog_list.aspx" />
     <Content Include="admin\ajax\file_list.aspx" />
+    <Content Include="admin\ajax\menu.aspx" />
     <Content Include="admin\ajax\news_list.aspx" />
     <Content Include="admin\ajax\template_list.aspx" />
     <Content Include="admin\css\dialog.css" />

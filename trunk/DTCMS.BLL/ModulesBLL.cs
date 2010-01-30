@@ -79,10 +79,9 @@ namespace DTCMS.BLL
         /// <summary>
         /// 获取模块顶级栏目
         /// </summary>
-        /// <param name="where">查询条件</param>
         /// <param name="count">返回记录总数</param>
         /// <returns>模块对象泛型集合</returns>
-        public List<Modules> GetTopNav(out int count)
+        public List<Modules> GetTopnav(out int count)
         {
             return dal.GetList("WHERE ParentID='M0' AND IsEnable=1", out count);
         }
@@ -90,12 +89,24 @@ namespace DTCMS.BLL
         /// <summary>
         /// 获取模块子栏目
         /// </summary>
-        /// <param name="where">查询条件</param>
         /// <param name="count">返回记录总数</param>
         /// <returns>模块对象泛型集合</returns>
-        public List<Modules> GetSubNav(out int count)
+        public List<Modules> GetSubnav(out int count)
         {
             return dal.GetList("WHERE ModuleDepth>1 AND IsEnable=1", out count);
+        }
+
+        /// <summary>
+        /// 根据父ID获取模块子栏目
+        /// </summary>
+        /// <param name="parentID">父模块ID</param>
+        /// <param name="moduleDepth">模块深度</param>
+        /// <param name="count">返回记录总数</param>
+        /// <returns>模块对象泛型集合</returns>
+        public List<Modules> GetSubnavByParentID(string parentID, int moduleDepth, out int count)
+        {
+            string strWhere = string.Format("WHERE ModuleDepth={0} AND IsEnable=1 AND parentID='{1}'", moduleDepth, parentID);
+            return dal.GetList(strWhere, out count);
         }
 
         /// <summary>
