@@ -77,12 +77,7 @@
         function showHide(item) {
             $("#" + item).slideToggle(200);
         }
-        function frameRedirect(url) {
-            $("#ajaxloading").show();
-            $("#main_body").attr("src",url);
-        }
     </script>
-
 </head>
 <body>
     <div class="top">
