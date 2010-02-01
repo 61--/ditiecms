@@ -33,7 +33,7 @@ namespace DTCMS.Web.admin
                     foreach (Modules m in mlist)
                     {
                         sb.Append("<div class=\"menu\">\r\n<dl>\r\n");
-                        sb.AppendFormat("<dt><a href=\"javascript:;\" onclick=\"showHide('{0}');\" target=\"_self\">{1}</a></dt>\r\n", m.ModuleID, m.Name);
+                        sb.AppendFormat("<dt><a href=\"javascript:toggleMenu('{0}');\" target=\"_self\">{1}</a></dt>\r\n", m.ModuleID, m.Name);
                         sb.AppendFormat("<dd id=\"{0}\" style=\"display:block;\">\r\n<ul>\r\n", m.ModuleID);
                         sb.Append(this.GetSubnav(m.ModuleID));
                         sb.Append("</ul>\r\n</dd>\r\n</dl>\r\n</div>\r\n");
@@ -42,7 +42,7 @@ namespace DTCMS.Web.admin
                 }
                 else
                 {
-                    Response.Write("没有指定的模块！");
+                    Response.Write("没有指定的模块或数据！");
                 }
             }
         }
