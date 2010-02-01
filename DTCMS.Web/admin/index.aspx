@@ -74,7 +74,7 @@
                 }
             });
         }
-        function showHide(item) {
+        function toggleMenu(item) {
             $("#" + item).slideToggle(200);
         }
     </script>
