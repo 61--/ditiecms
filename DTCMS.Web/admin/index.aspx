@@ -64,7 +64,7 @@
             $.ajax({
                 url: "ajax/menu.aspx",
                 type: "GET",
-                data: "modulesID=" + mid,
+                data: "modulesID=" + mid + "&ram=" + Math.random(),
                 beforeSend: function() {
                     $("#ajaxloading").show();
                 },
