@@ -209,5 +209,32 @@ namespace DTCMS.BLL
 
             return dal.GetPageList(pageSize, pageIndex, out count);
         }
+
+        /// <summary>
+        /// 获取模板路径
+        /// </summary>
+        /// <param name="cid">栏目主键</param>
+        /// <param name="tempType">模板类型（0封面，1列表，2详细页）</param>
+        /// <returns></returns>
+        public string GetTemplate(int cid,int tempType)
+        {
+            string filed = string.Empty;
+            switch (tempType)
+            { 
+                case 0:
+                    filed="IndexTemplet";
+                    break;
+                case 1:
+                    filed="ListTemplet";
+                    break;
+                case 2:
+                    filed="ArchiveTemplet";
+                    break;
+            }
+            if (filed == string.Empty)
+                return string.Empty;
+            else
+                return dal.GetSingle(filed,string.Format(" CID={0}",cid)) as string;
+        }
 	}
 }
