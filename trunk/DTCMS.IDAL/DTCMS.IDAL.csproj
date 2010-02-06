@@ -63,6 +63,10 @@
       <Project>{DF2F902E-45F7-4760-9214-981A56E202B9}</Project>
       <Name>DTCMS.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DTCMS.SqlProvider\DTCMS.SqlProvider.csproj">
+      <Project>{F94F9634-7E54-4B26-9AF2-C5E096131823}</Project>
+      <Name>DTCMS.SqlProvider</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

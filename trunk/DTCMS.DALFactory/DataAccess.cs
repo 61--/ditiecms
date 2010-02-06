@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Text;
+using DTCMS.IDAL;
 
 namespace DTCMS.DALFactory
 {
@@ -22,5 +24,22 @@ namespace DTCMS.DALFactory
             return (I)DependencyProvider.GetDALObject(className);
         }
 
+        /// <summary>
+        /// 2010-02-06 ÃÌº”£¨≤‚ ‘¥˙¬Î
+        /// </summary>
+        static string DbType = ConfigurationManager.AppSettings["DbType"];
+        public static IDAL_Modules CreateModulesDAL()
+        {
+            IDAL_Modules dal = null;
+
+            switch (DbType)
+            {
+                case "SqlServer":
+                    dal = new SqlServerDAL.ModulesDAL();
+                    break;
+            }
+
+            return dal;
+        }
     }
 }

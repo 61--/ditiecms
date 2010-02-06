@@ -378,6 +378,8 @@
     <Content Include="bin\DTCMS.IDAL.pdb" />
     <Content Include="bin\DTCMS.Pages.dll" />
     <Content Include="bin\DTCMS.Pages.pdb" />
+    <Content Include="bin\DTCMS.SqlProvider.dll" />
+    <Content Include="bin\DTCMS.SqlProvider.pdb" />
     <Content Include="bin\DTCMS.SqlServerDAL.dll" />
     <Content Include="bin\DTCMS.SqlServerDAL.pdb" />
     <Content Include="ckfinder\bin\CKFinder.dll" />
