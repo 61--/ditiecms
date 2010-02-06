@@ -10,6 +10,7 @@ using System.Data;
 using System.Collections;
 using System.Collections.Generic;
 using DTCMS.Entity;
+using DTCMS.SqlProvider;
 
 namespace DTCMS.IDAL
 {
@@ -84,7 +85,7 @@ namespace DTCMS.IDAL
         /// <param name="where">查询条件</param>
         /// <param name="count">返回记录总数</param>
         /// <returns>模块对象泛型集合</returns>
-        List<Modules> GetList(string where, out int count);
+        List<Modules> GetList(SqlLoading sl, out int count);
 
 		/// <summary>
 		/// 获取泛型数据列表
