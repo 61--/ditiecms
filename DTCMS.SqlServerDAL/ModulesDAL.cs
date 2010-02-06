@@ -12,6 +12,7 @@ using System.Text;
 using System.Collections.Generic;
 using DTCMS.Entity;
 using DTCMS.IDAL;
+using DTCMS.SqlProvider;
 
 namespace DTCMS.SqlServerDAL
 {
@@ -230,9 +231,9 @@ namespace DTCMS.SqlServerDAL
         /// <param name="where">查询条件</param>
         /// <param name="count">返回记录总数</param>
         /// <returns>模块对象泛型集合</returns>
-        public List<Modules> GetList(string where, out int count)
+        public List<Modules> GetList(SqlLoading sl, out int count)
         {
-            string strSql = string.Format("SELECT ID,ModuleID,ParentID,Name,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM {0}Modules {1} ORDER BY OrderID", tablePrefix, where);
+            string strSql = string.Format("SELECT ID,ModuleID,ParentID,Name,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM {0}Modules{1} ORDER BY OrderID", tablePrefix, sl.GetSqlWhereString());
 
             using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql, null))
             {

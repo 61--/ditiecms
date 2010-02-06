@@ -11,6 +11,7 @@ using System.Text;
 using DTCMS.Entity;
 using DTCMS.IDAL;
 using DTCMS.DALFactory;
+using DTCMS.SqlProvider;
 
 namespace DTCMS.BLL
 {
@@ -83,7 +84,11 @@ namespace DTCMS.BLL
         /// <returns>模块对象泛型集合</returns>
         public List<Modules> GetTopnav(out int count)
         {
-            return dal.GetList("WHERE ParentID='M0' AND IsEnable=1", out count);
+            SqlLoading sl = new SqlLoading();
+            sl.AddSqlWhere("ParentID", "'M0'");
+            sl.AddSqlWhere("IsEnable", 1, JoinSign.And);
+
+            return dal.GetList(sl, out count);
         }
 
         /// <summary>
@@ -93,7 +98,11 @@ namespace DTCMS.BLL
         /// <returns>模块对象泛型集合</returns>
         public List<Modules> GetSubnav(out int count)
         {
-            return dal.GetList("WHERE ModuleDepth>1 AND IsEnable=1", out count);
+            SqlLoading sl = new SqlLoading();
+            sl.AddSqlWhere("ModuleDepth", 1, OperateSign.GreatThan);
+            sl.AddSqlWhere("IsEnable", 1, JoinSign.And);
+
+            return dal.GetList(sl, out count);
         }
 
         /// <summary>
@@ -105,8 +114,12 @@ namespace DTCMS.BLL
         /// <returns>模块对象泛型集合</returns>
         public List<Modules> GetSubnavByParentID(string parentID, int moduleDepth, out int count)
         {
-            string strWhere = string.Format("WHERE ModuleDepth={0} AND IsEnable=1 AND parentID='{1}'", moduleDepth, parentID);
-            return dal.GetList(strWhere, out count);
+            SqlLoading sl = new SqlLoading();
+            sl.AddSqlWhere("ModuleDepth", moduleDepth);
+            sl.AddSqlWhere("IsEnable", 1, JoinSign.And);
+            sl.AddSqlWhere("parentID", string.Format("'{0}'", parentID), JoinSign.And);
+
+            return dal.GetList(sl, out count);
         }
 
         /// <summary>

@@ -82,6 +82,10 @@
       <Project>{781AE6C8-31B1-48C0-B1C6-04F5EDA522D9}</Project>
       <Name>DTCMS.IDAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DTCMS.SqlProvider\DTCMS.SqlProvider.csproj">
+      <Project>{F94F9634-7E54-4B26-9AF2-C5E096131823}</Project>
+      <Name>DTCMS.SqlProvider</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

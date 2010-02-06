@@ -5,17 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6681CBE6-A3EE-4607-A1B3-3A19947226A7}</ProjectGuid>
+    <ProjectGuid>{F94F9634-7E54-4B26-9AF2-C5E096131823}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DTCMS.DALFactory</RootNamespace>
-    <AssemblyName>DTCMS.DALFactory</AssemblyName>
+    <RootNamespace>DTCMS.SqlProvider</RootNamespace>
+    <AssemblyName>DTCMS.SqlProvider</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SccProjectName>Svn</SccProjectName>
-    <SccLocalPath>Svn</SccLocalPath>
-    <SccAuxPath>Svn</SccAuxPath>
-    <SccProvider>SubversionScc</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,29 +32,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccess.cs" />
-    <Compile Include="DependencyProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DTCMS.Common\DTCMS.Common.csproj">
-      <Project>{086A7F54-1A11-42E1-BE0D-33863EAEF4A3}</Project>
-      <Name>DTCMS.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DTCMS.IDAL\DTCMS.IDAL.csproj">
-      <Project>{781AE6C8-31B1-48C0-B1C6-04F5EDA522D9}</Project>
-      <Name>DTCMS.IDAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DTCMS.SqlServerDAL\DTCMS.SqlServerDAL.csproj">
-      <Project>{C7E7D0AF-4A77-4653-B335-F3CB0B4D128E}</Project>
-      <Name>DTCMS.SqlServerDAL</Name>
-    </ProjectReference>
+    <Compile Include="SqlLoading.cs" />
+    <Compile Include="SqlSortCondition.cs" />
+    <Compile Include="SqlSign.cs" />
+    <Compile Include="SqlWhereCondition.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
