@@ -17,7 +17,37 @@ namespace DTCMS.SqlProvider
     public class SqlSortCondition
     {
         private string fieldName;
-        private SortSign sign;
+        public static SqlSortCondition Default = new SqlSortCondition();
+
+        public SqlSortCondition() { }
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="fieldName">需要排序的列名</param>
+        /// <param name="sign">排序标识</param>
+        public SqlSortCondition(string fieldName, ESortSign sortSign)
+        {
+            this.fieldName = string.Format("Order by {0} {1}", fieldName, sortSign.ToString());
+        }        
+
+        /// <summary>
+        /// 添加排序
+        /// </summary>
+        /// <param name="filedName"></param>
+        /// <param name="sortSign"></param>
+        public void Append(string filedName, ESortSign sortSign)
+        {
+            if (filedName == string.Empty) return;
+
+            if (this.fieldName == string.Empty || this.fieldName==null)
+            {
+                this.fieldName = string.Format("Order by {0} {1}",filedName,sortSign.ToString());
+            }
+            else
+            {
+                this.fieldName += string.Format(", {0} {1}",filedName,sortSign.ToString());
+            }
+        }
 
         /// <summary>
         /// 需要排序的列名
@@ -26,23 +56,14 @@ namespace DTCMS.SqlProvider
         {
             get { return this.fieldName; }
         }
-        /// <summary>
-        /// 排序标识
-        /// </summary>
-        public SortSign SortSign
-        {
-            get { return this.sign; }
-        }
 
         /// <summary>
-        /// 构造
+        /// 返回排序字符串
         /// </summary>
-        /// <param name="fieldName">需要排序的列名</param>
-        /// <param name="sign">排序标识</param>
-        public SqlSortCondition(string fieldName, SortSign sign) 
+        /// <returns></returns>
+        public override string ToString()
         {
-            this.fieldName = fieldName;
-            this.sign = sign;
+            return this.fieldName;
         }
     }
 }

@@ -16,54 +16,77 @@ namespace DTCMS.SqlProvider
     /// </summary>
     public class SqlWhereCondition
     {
-        private string fieldName;
-        private object fieldValue;
-        private OperateSign operateSign;
-        private JoinSign joinSign;
+        private string where;
+        public static SqlWhereCondition Default = new SqlWhereCondition();
 
-        /// <summary>
-        /// 字段名称
-        /// </summary>
-        public string FieldName
-        {
-            get { return this.fieldName; }
-        }
-        /// <summary>
-        /// 字段值
-        /// </summary>
-        public object FieldValue
-        {
-            get { return this.fieldValue; }
-        }
-        /// <summary>
-        /// 操作符
-        /// </summary>
-        public OperateSign OperateSign
-        {
-            get { return this.operateSign; }
-        }
-        /// <summary>
-        /// 连接符
-        /// </summary>
-        public JoinSign JoinSign
-        {
-            get { return this.joinSign; }
-        }
-
+        public SqlWhereCondition(){}
         /// <summary>
         /// 构造组装对象
         /// </summary>
-        /// <param name="fieldName">列名称</param>
-        /// <param name="parameterName">参数名称</param>
-        /// <param name="parameterValue">参数值</param>
-        /// <param name="joinSign">操作符</param>
-        /// <param name="operateSign">连接符</param>
-        public SqlWhereCondition(string fieldName, object fieldValue, JoinSign joinSign, OperateSign operateSign)
+        /// <param name="fieldName">字段名</param>
+        /// <param name="fieldValue">字段值</param>
+        /// <param name="dbtype">字段类型，默认字符串</param>
+        /// <param name="operateSign">操作符</param>
+        public SqlWhereCondition(string fieldName,object fieldValue, DBType dbtype, string operateSign)
         {
-            this.fieldName = fieldName;
-            this.fieldValue = fieldValue;
-            this.operateSign = operateSign;
-            this.joinSign = joinSign;
+            switch (dbtype)
+            {
+                case DBType.NUMBER:
+                    where = string.Format(fieldName + operateSign, fieldValue);
+                    break;
+                default:
+                    where = string.Format(fieldName + operateSign, "'" + fieldValue + "'");
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// And
+        /// </summary>
+        public static SqlWhereCondition operator &(SqlWhereCondition s1, SqlWhereCondition s2)
+        {
+            if (s1.Where == string.Empty && s2.Where != string.Empty)
+            {
+                s1.Where = s2.Where;
+            }
+            else if (s1.Where != string.Empty && s2.Where != string.Empty)
+            {
+                s1.where = string.Format(" {0} AND {1}", s1.where,s2.where);
+            }
+
+            return s1;
+        }
+
+        /// <summary>
+        /// Or
+        /// </summary>
+        public static SqlWhereCondition operator |(SqlWhereCondition s1, SqlWhereCondition s2)
+        {
+            if (s1.Where == string.Empty && s2.Where != string.Empty)
+            {
+                s1.where = s2.where;
+            }
+            else if (s1.Where != string.Empty && s2.Where != string.Empty)
+            {
+                s1.where = string.Format(" {0} OR {1}",s1.where,s2.where);
+            }
+
+            return s1;
+        }
+
+        private string Where
+        {
+            set { this.where = value; }
+            get { return this.where; }
+        }
+
+       /// <summary>
+       /// 返回where语句
+       /// </summary>
+       /// <returns></returns>
+        public override string ToString()
+        {
+            return string.Format(" WHERE {0}", this.where);
         }
     }
 }

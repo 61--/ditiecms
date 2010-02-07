@@ -14,8 +14,8 @@ namespace DTCMS.SqlProvider
     #region 数据表达式标识
     /// <summary>
     /// 数据表达式标识
-    /// </summary>
-    public struct OperateSign
+    /// 
+    public class OperateSign
     {
         /// <summary>
         /// 等于 默认
@@ -60,42 +60,34 @@ namespace DTCMS.SqlProvider
     }
     #endregion
 
-    #region 条件连接标识
-    /// <summary>
-    /// 条件连接标识
-    /// </summary>
-    public struct JoinSign
-    {
-        /// <summary>
-        /// 无连接（默认）
-        /// </summary>
-        public static readonly string None = "";
-
-        /// <summary>
-        /// 用AND连接
-        /// </summary>
-        public static readonly string And = " AND ";
-        /// <summary>
-        /// 用OR连接
-        /// </summary>
-        public static readonly string Or = " OR ";
-    }
-    #endregion
-
     #region 数据排序标识
     /// <summary>
     /// 数据排序标识
     /// </summary>
-    public struct SortSign
+    public enum ESortSign
     {
         /// <summary>
         /// 倒排序
         /// </summary>
-        public static readonly string Desc = " DESC ";
+        DESC,
         /// <summary>
         /// 正排序
         /// </summary>
-        public static readonly string Asc = " ASC ";
+        ASC
+    }
+    #endregion
+
+    #region 数据类型
+    public enum DBType
+    {
+        /// <summary>
+        /// 字符串
+        /// </summary>
+        VARCHAR,
+        /// <summary>
+        /// 数字
+        /// </summary>
+        NUMBER
     }
     #endregion
 }
