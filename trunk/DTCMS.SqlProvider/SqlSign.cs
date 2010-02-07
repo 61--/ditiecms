@@ -46,6 +46,10 @@ namespace DTCMS.SqlProvider
         /// </summary>
         public static readonly string In = " IN({0})";
         /// <summary>
+        /// 不包含
+        /// </summary>
+        public static readonly string OntIn = " Not IN({0})";
+        /// <summary>
         /// 左匹配
         /// </summary>
         public static readonly string LeftLike = " LIKE '%{0}'";
