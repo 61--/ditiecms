@@ -27,12 +27,23 @@ namespace DTCMS.SqlProvider
         /// <param name="fieldValue">字段值</param>
         /// <param name="dbtype">字段类型，默认字符串</param>
         /// <param name="operateSign">操作符</param>
-        public SqlWhereCondition(string fieldName,object fieldValue, DBType dbtype, string operateSign)
+        public SqlWhereCondition(string fieldName,object fieldValue, EDBType dbtype, string operateSign)
         {
             switch (dbtype)
             {
-                case DBType.NUMBER:
+                case EDBType.NUMBER:
+                case EDBType.LIKE:
+                case EDBType.INNUMBER:
                     where = string.Format(fieldName + operateSign, fieldValue);
+                    break;
+                case EDBType.INVARCHAR:
+                    string[] values = fieldValue.ToString().Split(',');
+                    StringBuilder value = new StringBuilder();
+                    for (int i = 0, count = values.Length; i < count; i++)
+                    {
+                        value.Append("'" + values[i] + "',");
+                    }
+                    where = string.Format(fieldName + operateSign, value.Remove(value.Length - 1, 1).ToString());
                     break;
                 default:
                     where = string.Format(fieldName + operateSign, "'" + fieldValue + "'");

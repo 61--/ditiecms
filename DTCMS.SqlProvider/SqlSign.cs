@@ -44,19 +44,19 @@ namespace DTCMS.SqlProvider
         /// <summary>
         /// 包含
         /// </summary>
-        public static readonly string In = "IN ({0})";
+        public static readonly string In = " IN({0})";
         /// <summary>
         /// 左匹配
         /// </summary>
-        public static readonly string LeftLike = "LIKE '%{0}'";
+        public static readonly string LeftLike = " LIKE '%{0}'";
         /// <summary>
         /// 左匹配
         /// </summary>
-        public static readonly string RightLike = "LIKE '{0}%'";
+        public static readonly string RightLike = " LIKE '{0}%'";
         /// <summary>
         /// 左右匹配
         /// </summary>
-        public static readonly string Like = "LIKE '%{0}%'";
+        public static readonly string Like = " LIKE '%{0}%'";
     }
     #endregion
 
@@ -78,7 +78,7 @@ namespace DTCMS.SqlProvider
     #endregion
 
     #region 数据类型
-    public enum DBType
+    public enum EDBType
     {
         /// <summary>
         /// 字符串
@@ -87,7 +87,19 @@ namespace DTCMS.SqlProvider
         /// <summary>
         /// 数字
         /// </summary>
-        NUMBER
+        NUMBER,
+        /// <summary>
+        /// 包含字符串
+        /// </summary>
+        INVARCHAR,
+        /// <summary>
+        /// 包含数字
+        /// </summary>
+        INNUMBER,
+        /// <summary>
+        /// like
+        /// </summary>
+        LIKE
     }
     #endregion
 }
