@@ -101,7 +101,7 @@ namespace DTCMS.SqlProvider
         /// </summary>
         INNUMBER,
         /// <summary>
-        /// like
+        /// 匹配
         /// </summary>
         LIKE
     }
