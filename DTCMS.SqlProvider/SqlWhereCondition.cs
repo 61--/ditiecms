@@ -16,7 +16,7 @@ namespace DTCMS.SqlProvider
     /// </summary>
     public class SqlWhereCondition
     {
-        private string where="";
+        private string where = "";
 
         public SqlWhereCondition() { }
         /// <summary>
@@ -29,30 +29,30 @@ namespace DTCMS.SqlProvider
         /// <param name="operateSign">连接符</param>
         public SqlWhereCondition(string fieldName, object fieldValue, EDBType dbtype, string operateSign)
         {
-            if (fieldName != string.Empty && fieldName!=null)
+            if (fieldName != string.Empty && fieldName != null)
             {
                 switch (dbtype)
                 {
-                    case EDBType.NUMBER:                    
+                    case EDBType.NUMBER:
                     case EDBType.INNUMBER:
                     case EDBType.LIKE:
                         where = string.Format(fieldName + operateSign, fieldValue);
                         break;
                     case EDBType.INVARCHAR:
-                        string[] values=fieldValue.ToString().Split(',');
-                        StringBuilder  value = new StringBuilder();
+                        string[] values = fieldValue.ToString().Split(',');
+                        StringBuilder value = new StringBuilder();
                         for (int i = 0, count = values.Length; i < count; i++)
                         {
-                            value.Append("'"+values[i]+"',");
+                            value.Append("'" + values[i] + "',");
                         }
-                        where=string.Format(fieldName + operateSign, value.Remove(value.Length-1,1).ToString());
+                        where = string.Format(fieldName + operateSign, value.Remove(value.Length - 1, 1).ToString());
                         break;
                     case EDBType.DATETIME:
                     case EDBType.VARCHAR:
                     default:
                         where = string.Format(fieldName + operateSign, "'" + fieldValue + "'");
                         break;
-                }                
+                }
             }
         }
 
@@ -88,7 +88,7 @@ namespace DTCMS.SqlProvider
             }
 
             return s1;
-        }        
+        }
 
         public string Where
         {
@@ -98,7 +98,7 @@ namespace DTCMS.SqlProvider
 
         public override string ToString()
         {
-            return string.Format(" WHERE {0}",this.where);
+            return string.Format(" WHERE {0}", this.where);
         }
     }
 }
