@@ -85,7 +85,7 @@ namespace DTCMS.SqlProvider
         /// </summary>
         VARCHAR,
         /// <summary>
-        /// 日前
+        /// 日期
         /// </summary>
         DATETIME,
         /// <summary>
