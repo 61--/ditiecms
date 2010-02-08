@@ -29,25 +29,28 @@ namespace DTCMS.SqlProvider
         /// <param name="operateSign">操作符</param>
         public SqlWhereCondition(string fieldName,object fieldValue, EDBType dbtype, string operateSign)
         {
-            switch (dbtype)
+            if (fieldName != string.Empty && fieldName != null)
             {
-                case EDBType.NUMBER:
-                case EDBType.LIKE:
-                case EDBType.INNUMBER:
-                    where = string.Format(fieldName + operateSign, fieldValue);
-                    break;
-                case EDBType.INVARCHAR:
-                    string[] values = fieldValue.ToString().Split(',');
-                    StringBuilder value = new StringBuilder();
-                    for (int i = 0, count = values.Length; i < count; i++)
-                    {
-                        value.Append("'" + values[i] + "',");
-                    }
-                    where = string.Format(fieldName + operateSign, value.Remove(value.Length - 1, 1).ToString());
-                    break;
-                default:
-                    where = string.Format(fieldName + operateSign, "'" + fieldValue + "'");
-                    break;
+                switch (dbtype)
+                {
+                    case EDBType.NUMBER:
+                    case EDBType.LIKE:
+                    case EDBType.INNUMBER:
+                        where = string.Format(fieldName + operateSign, fieldValue);
+                        break;
+                    case EDBType.INVARCHAR:
+                        string[] values = fieldValue.ToString().Split(',');
+                        StringBuilder value = new StringBuilder();
+                        for (int i = 0, count = values.Length; i < count; i++)
+                        {
+                            value.Append("'" + values[i] + "',");
+                        }
+                        where = string.Format(fieldName + operateSign, value.Remove(value.Length - 1, 1).ToString());
+                        break;
+                    default:
+                        where = string.Format(fieldName + operateSign, "'" + fieldValue + "'");
+                        break;
+                }
             }
         }
 
