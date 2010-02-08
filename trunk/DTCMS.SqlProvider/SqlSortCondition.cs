@@ -27,7 +27,10 @@ namespace DTCMS.SqlProvider
         /// <param name="sign">排序标识</param>
         public SqlSortCondition(string fieldName, ESortSign sortSign)
         {
-            this.fieldName = string.Format("Order by {0} {1}", fieldName, sortSign.ToString());
+            if (fieldName != string.Empty && fieldName != null)
+            {
+                this.fieldName = string.Format("Order by {0} {1}", fieldName, sortSign.ToString());
+            }
         }        
 
         /// <summary>
@@ -37,7 +40,7 @@ namespace DTCMS.SqlProvider
         /// <param name="sortSign"></param>
         public void Append(string filedName, ESortSign sortSign)
         {
-            if (filedName == string.Empty) return;
+            if (filedName == string.Empty || filedName==null) throw new ArgumentNullException("需要排序的列名称不能为空!");;
 
             if (this.fieldName == string.Empty || this.fieldName==null)
             {
