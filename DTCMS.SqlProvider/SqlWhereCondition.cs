@@ -17,7 +17,6 @@ namespace DTCMS.SqlProvider
     public class SqlWhereCondition
     {
         private string where;
-        public static SqlWhereCondition Default = new SqlWhereCondition();
 
         public SqlWhereCondition(){}
         /// <summary>

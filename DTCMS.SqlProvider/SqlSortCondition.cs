@@ -17,7 +17,6 @@ namespace DTCMS.SqlProvider
     public class SqlSortCondition
     {
         private string fieldName;
-        public static SqlSortCondition Default = new SqlSortCondition();
 
         public SqlSortCondition() { }
         /// <summary>
