@@ -14,53 +14,97 @@ namespace DTCMS.SqlProvider
     #region 数据表达式标识
     /// <summary>
     /// 数据表达式标识
-    /// 
+    /// </summary>
     public class OperateSign
     {
         /// <summary>
         /// 等于 默认
         /// </summary>
-        public static readonly string Equal = "={0}";
+        public static OperateSign Equal = new OperateSign("={0}");
         /// <summary>
         /// 不等于
         /// </summary>
-        public static readonly string NotEqual = "<>{0}";
+        public static OperateSign NotEqual = new OperateSign("<>{0}");
         /// <summary>
         /// 大于等于
         /// </summary>
-        public static readonly string GreatThanEqual = ">={0}";
+        public static OperateSign GreatThanEqual = new OperateSign(">={0}");
         /// <summary>
         /// 大于
         /// </summary>
-        public static readonly string GreatThan = ">{0}";
+        public static OperateSign GreatThan = new OperateSign(">{0}");
         /// <summary>
         /// 小于等于
         /// </summary>
-        public static readonly string SmallThanEqual = "<={0}";
+        public static OperateSign SmallThanEqual = new OperateSign("<={0}");
         /// <summary>
         /// 小于
         /// </summary>
-        public static readonly string SmallThan = "<{0}";
+        public static OperateSign SmallThan = new OperateSign("<{0}");
         /// <summary>
         /// 包含
         /// </summary>
-        public static readonly string In = " IN({0})";
-        /// <summary>
-        /// 不包含
-        /// </summary>
-        public static readonly string NotIn = " NOT IN({0})";
+        public static OperateSign In = new OperateSign("IN ({0})");
         /// <summary>
         /// 左匹配
         /// </summary>
-        public static readonly string LeftLike = " LIKE '%{0}'";
+        public static OperateSign LeftLike = new OperateSign("LIKE '%{0}'");
         /// <summary>
         /// 左匹配
         /// </summary>
-        public static readonly string RightLike = " LIKE '{0}%'";
+        public static OperateSign RightLike = new OperateSign("LIKE '{0}%'");
         /// <summary>
-        /// 左右匹配
+        /// 左匹配
         /// </summary>
-        public static readonly string Like = " LIKE '%{0}%'";
+        public static OperateSign Like = new OperateSign("LIKE '%{0}%'");
+
+        private string sign;
+        private OperateSign(string sign)
+        {
+            this.sign = sign;
+        }
+        /// <summary>
+        /// 获得表达式值
+        /// </summary>
+        public string Sign
+        {
+            get { return this.sign; }
+        }
+    }
+    #endregion
+
+    #region 条件连接标识
+    /// <summary>
+    /// 条件连接标识
+    /// </summary>
+    public class JoinSign
+    {
+        /// <summary>
+        /// 无连接（默认）
+        /// </summary>
+        public static JoinSign None = new JoinSign("");
+
+        /// <summary>
+        /// 用AND连接
+        /// </summary>
+        public static JoinSign And = new JoinSign(" AND ");
+        /// <summary>
+        /// 用OR连接
+        /// </summary>
+        public static JoinSign Or = new JoinSign(" OR ");
+
+        private string sign;
+        private JoinSign(string sign)
+        {
+            this.sign = sign;
+        }
+        /// <summary>
+        /// 获得连接值
+        /// </summary>
+        public string Sign
+        {
+            get { return this.sign; }
+        }
     }
     #endregion
 
@@ -68,47 +112,29 @@ namespace DTCMS.SqlProvider
     /// <summary>
     /// 数据排序标识
     /// </summary>
-    public enum ESortSign
+    public class SortSign
     {
         /// <summary>
         /// 倒排序
         /// </summary>
-        DESC,
+        public static SortSign Desc = new SortSign(" DESC ");
         /// <summary>
         /// 正排序
         /// </summary>
-        ASC
-    }
-    #endregion
+        public static SortSign Asc = new SortSign(" ASC ");
 
-    #region 数据类型
-    public enum EDBType
-    {
+        private string sign;
+        private SortSign(string sign)
+        {
+            this.sign = sign;
+        }
         /// <summary>
-        /// 字符串
+        /// 排序字符串
         /// </summary>
-        VARCHAR,
-        /// <summary>
-        /// 日前
-        /// </summary>
-        DATETIME,
-        /// <summary>
-        /// 匹配
-        /// </summary>
-        LIKE,
-        /// <summary>
-        /// 数字
-        /// </summary>
-        NUMBER,        
-        /// <summary>
-        /// 包含字符串
-        /// </summary>
-        INVARCHAR,
-        /// <summary>
-        /// 包含数字
-        /// </summary>
-        INNUMBER
-        
+        public string Sign
+        {
+            get { return this.sign; }
+        }
     }
     #endregion
 }

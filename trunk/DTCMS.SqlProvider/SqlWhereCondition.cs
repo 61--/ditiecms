@@ -16,9 +16,40 @@ namespace DTCMS.SqlProvider
     /// </summary>
     public class SqlWhereCondition
     {
-        private string where = "";
+        private string fieldName;
+        private object fieldValue;
+        private OperateSign operateSign;
+        private JoinSign joinSign;
 
-        public SqlWhereCondition() {}
+        /// <summary>
+        /// 字段名称
+        /// </summary>
+        public string FieldName
+        {
+            get { return this.fieldName; }
+        }
+        /// <summary>
+        /// 字段值
+        /// </summary>
+        public object FieldValue
+        {
+            get { return this.fieldValue; }
+        }
+        /// <summary>
+        /// 操作符
+        /// </summary>
+        public OperateSign OperateSign
+        {
+            get { return this.operateSign; }
+        }
+        /// <summary>
+        /// 连接符
+        /// </summary>
+        public JoinSign JoinSign
+        {
+            get { return this.joinSign; }
+        }
+
         /// <summary>
         /// 构造组装对象
         /// </summary>
@@ -27,79 +58,12 @@ namespace DTCMS.SqlProvider
         /// <param name="parameterValue">参数值</param>
         /// <param name="joinSign">操作符</param>
         /// <param name="operateSign">连接符</param>
-        public SqlWhereCondition(string fieldName, object fieldValue, EDBType dbtype, string operateSign)
+        public SqlWhereCondition(string fieldName, object fieldValue, JoinSign joinSign, OperateSign operateSign)
         {
-            if (fieldName == string.Empty || fieldName == null) throw new ArgumentNullException("字段名不能为空!");
-            if (fieldValue == null) throw new ArgumentNullException("字段值不能为空!");
-
-            switch (dbtype)
-            {
-                case EDBType.NUMBER:
-                case EDBType.INNUMBER:
-                case EDBType.LIKE:
-                    where = string.Format(fieldName + operateSign, fieldValue.ToString());
-                    break;
-                case EDBType.INVARCHAR:
-                    string[] values = fieldValue.ToString().Split(',');
-                    StringBuilder value = new StringBuilder();
-                    for (int i = 0, count = values.Length; i < count; i++)
-                    {
-                        value.Append("'" + values[i] + "',");
-                    }
-                    where = string.Format(fieldName + operateSign, value.Remove(value.Length - 1, 1).ToString());
-                    break;
-                case EDBType.DATETIME:
-                case EDBType.VARCHAR:
-                default:
-                    where = string.Format(fieldName + operateSign, "'" + fieldValue + "'");
-                    break;
-            }
-
-        }
-
-        /// <summary>
-        /// And
-        /// </summary>
-        public static SqlWhereCondition operator &(SqlWhereCondition s1, SqlWhereCondition s2)
-        {
-            if (s1.where == string.Empty && s2.where != string.Empty)
-            {
-                s1.where = s2.where.ToLower();
-            }
-            else if (s1.where != string.Empty && s2.where != string.Empty)
-            {
-                s1.where = string.Format("{0} AND {1}", s1.where.ToLower(), s2.where.ToLower());
-            }
-
-            return s1;
-        }
-
-        /// <summary>
-        /// Or
-        /// </summary>
-        public static SqlWhereCondition operator |(SqlWhereCondition s1, SqlWhereCondition s2)
-        {
-            if (s1.where == string.Empty && s2.where != string.Empty)
-            {
-                s1.where = s2.where.ToLower();
-            }
-            else if (s1.where != string.Empty && s2.where != string.Empty)
-            {
-                s1.where = string.Format("{0} OR {1}", s1.where.ToLower(), s2.where.ToLower());
-            }
-
-            return s1;
-        }
-
-        public string Where
-        {
-            set { this.where = value; }
-            get { return string.Format(" WHERE {0}", this.where); }
-        }
-
-        public override string ToString()
-        {
-            return string.Format(" WHERE {0}", this.where);
+            this.fieldName = fieldName;
+            this.fieldValue = fieldValue;
+            this.operateSign = operateSign;
+            this.joinSign = joinSign;
         }
     }
 }
