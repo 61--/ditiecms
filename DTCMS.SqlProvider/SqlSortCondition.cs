@@ -16,48 +16,33 @@ namespace DTCMS.SqlProvider
     /// </summary>
     public class SqlSortCondition
     {
-        private string sort="";
+        private string fieldName;
+        private SortSign sign;
 
-        public SqlSortCondition() { }
+        /// <summary>
+        /// 需要排序的列名
+        /// </summary>
+        public string FieldName
+        {
+            get { return this.fieldName; }
+        }
+        /// <summary>
+        /// 排序标识
+        /// </summary>
+        public SortSign SortSign
+        {
+            get { return this.sign; }
+        }
+
         /// <summary>
         /// 构造
         /// </summary>
         /// <param name="fieldName">需要排序的列名</param>
         /// <param name="sign">排序标识</param>
-        public SqlSortCondition(string fieldName, ESortSign sortSign)
+        public SqlSortCondition(string fieldName, SortSign sign) 
         {
-            if (fieldName == string.Empty || fieldName == null) throw new ArgumentNullException("字段名不能为空!");
-            this.sort = string.Format("{0} {1}", fieldName, sortSign.ToString());
-        }
-
-        public static SqlSortCondition operator &(SqlSortCondition s1, SqlSortCondition s2)
-        {
-            if (s1.sort == string.Empty && s2.sort != string.Empty)
-            {
-                s1.sort = s2.sort.ToLower();
-            }
-            else if (s1.sort != string.Empty && s2.sort != string.Empty)
-            {
-                s1.sort = string.Format("{0},{1}", s1.sort.ToLower(), s2.sort.ToLower());
-            }
-            return s1;
-        }
-
-        /// <summary>
-        /// 需要排序的列名
-        /// </summary>
-        public string Sort
-        {
-            get { return string.Format(" ORDER BY {0}",this.sort);}
-        }
-
-        /// <summary>
-        /// 返回排序字符串
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            return string.Format(" ORDER BY {0}", this.sort); ;
+            this.fieldName = fieldName;
+            this.sign = sign;
         }
     }
 }
