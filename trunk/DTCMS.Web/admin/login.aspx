@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="DTCMS.Web.Admin.login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="DTCMS.Web.admin.login" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
@@ -7,24 +7,23 @@
     <title>DTCMS内容管理系统后台登陆</title>
     <link rel="stylesheet" type="text/css" href="css/login.css" />
     <script type="text/javascript" src="js/jquery-1.3.2-vsdoc2.js"></script>
+    <script type="text/javascript" src="../inc/dialog/dialog.js"></script>
+    <link href="../inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-    function $(elem){
-        return document.getElementById(elem);
+    function CheckLogin(){
+        if($("#txt_username").val()==""){
+            alert('用户名不能为空！');
+            return false;
+        }
+        if($("#txt_password").val()==""){
+            alert('用户密码不能为空！');
+            return false;
+        }
+        if($("#txt_checkcode").val()==""){
+            alert('验证码不能为空！');
+            return false;
+        } 
     }
-    //function CheckLogin(){
-    //    if($("username").value==""){
-    //        alert('用户名不能为空！');
-    //        return false;
-    //    }
-    //    if($("password").value==""){
-    //        alert('用户密码不能为空！');
-    //        return false;
-    //    }
-    //    if($("checkcode").value==""){
-    //        alert('验证码不能为空！');
-    //        return false;
-    //    } 
-    //}
     </script>
 </head>
 <body>
@@ -39,21 +38,21 @@
                     <dl>
                         <dt>用户名：</dt>
                         <dd>
-                            <input type="text" id="username" size="23" runat="server" onfocus="this.style.borderColor='#239fe3'"
+                            <input type="text" id="txt_username" size="23" runat="server" onfocus="this.style.borderColor='#239fe3'"
                                 onblur="this.style.borderColor='#dcdcdc'" />
                         </dd>
                     </dl>
                     <dl>
                         <dt>密 码：</dt>
                         <dd>
-                            <input type="password" id="password" size="23" runat="server" onfocus="this.style.borderColor='#239fe3'"
+                            <input type="password" id="txt_password" size="23" runat="server" onfocus="this.style.borderColor='#239fe3'"
                                 onblur="this.style.borderColor='#dcdcdc'" />
                         </dd>
                     </dl>
                     <dl>
                         <dt>验证码：</dt>
                         <dd>
-                            <input type="text" id="checkcode" runat="server" style="width: 60px;" onfocus="this.style.borderColor='#239fe3'"
+                            <input type="text" id="txt_checkcode" runat="server" style="width: 60px;" onfocus="this.style.borderColor='#239fe3'"
                                 onblur="this.style.borderColor='#dcdcdc'" />&nbsp;
                             <img src="../ValidateCode.ashx" alt="看不清楚验证码？单击图片换一个" onclick="src='../ValidateCode.ashx?r='+Math.random()"
                                 style="cursor: pointer" />

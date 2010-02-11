@@ -9,8 +9,24 @@ namespace DTCMS.Web.admin
     {
         protected override void OnInit(EventArgs e)
         {
+            //检查是否登陆
+            ValidateUser();
+
             base.OnInit(e);
         }
+
+        #region 后台登陆验证
+        /// <summary>
+        /// 后台登陆验证
+        /// </summary>
+        public void ValidateUser()
+        {
+            if (HttpContext.Current.Session["AdminUser"] == null)
+            {
+                JScript.ShowAndRedirects(this, "非法操作,请重新登录！", "/admin/login.aspx");
+            }
+        }
+        #endregion
 
         /// <summary>
         /// 重写系统异常类

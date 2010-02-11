@@ -24,5 +24,11 @@ namespace DTCMS.Web.admin
                 rpt_Topnav.DataBind();
             }
         }
+
+        protected void lbn_Logout_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("login.aspx?do=logout");
+        }
     }
 }
