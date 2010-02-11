@@ -1,15 +1,15 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="news_list.aspx.cs" Inherits="DTCMS.Web.admin.News_list" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="article_list.aspx.cs" Inherits="DTCMS.Web.admin.News_list" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>文章列表</title>
-    <link href="../css/blue_body.css" type="text/css" rel="StyleSheet" />
+    <link href="../../css/blue_body.css" type="text/css" rel="StyleSheet" />
     <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
+    <script type="text/javascript" src="../../js/jquery-1.3.2-vsdoc2.js"></script>
     <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
-    <script type="text/javascript" src="../js/common.js"></script>
-    <script type="text/javascript" src="../js/public.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../js/public.js"></script>
     <script type="text/javascript" src="/inc/treetable/TableTree4J.js"></script>
     <script type="text/javascript">
         $(function() {
@@ -64,7 +64,7 @@
             height: 28px;
             font-weight: bold;
             text-indent: 10px;
-            background: url(../images/blue/th_bg.gif) right bottom no-repeat;
+            background: url(../../images/blue/th_bg.gif) right bottom no-repeat;
         }
         .GridHead a{
             white-space: nowrap;
@@ -97,9 +97,9 @@
 		</div>
 		<div id="content">
 		    <div class="toolbar">
-                <a href="news_add.aspx" class="button b4"><img src="../images/ico/i_add.gif" alt="" />添加文章</a>
-                <a href="javascript:Dialog.alert('您没有权限编辑文章！');" class="button b4"><img src="../images/ico/i_edit.gif" alt="" />编辑文章</a>
-                <a href="javascript:DeleteData(-1,true);" class="button b4"><img src="../images/ico/i_allDelete.gif" alt="" />批量删除</a>
+                <a href="article_add.aspx" class="button b4"><img src="../../images/ico/i_add.gif" alt="" />添加文章</a>
+                <a href="javascript:Dialog.alert('您没有权限编辑文章！');" class="button b4"><img src="../../images/ico/i_edit.gif" alt="" />编辑文章</a>
+                <a href="javascript:DeleteData(-1,true);" class="button b4"><img src="../../images/ico/i_allDelete.gif" alt="" />批量删除</a>
             </div>
 			<div id="gridTreeDiv">
 			</div>

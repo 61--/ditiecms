@@ -80,6 +80,7 @@
     </script>
 </head>
 <body>
+<form id="form1" runat="server">
     <div class="top">
         <div class="topnav">
             <div id="ajaxloading">
@@ -95,7 +96,7 @@
                         <img src="images/blue/frame-r.gif" alt="增大左框架" /></a>
                 </div>
                 <div class="sitelink">
-                    <a href="javascript:openMenu(0,'','main_index.aspx',0)">管理主页</a> | <a href="#">注销登陆</a>
+                    <a href="javascript:openMenu(0,'','main_index.aspx',0)">管理主页</a> | <asp:LinkButton ID="lbn_Logout" OnClick="lbn_Logout_Click" runat="server">注销登陆</asp:LinkButton>
                 </div>
             </div>
             <div class="leftnav">
@@ -123,5 +124,6 @@
         All rights reserved. Powered by <a href="http://www.91aspx.com" target="_blank">DTCMS V1.0</a>
         <div style="display:none;"><script type="text/javascript" src="http://js.users.51.la/3439117.js"></script></div>
     </div>
+</form>
 </body>
 </html>

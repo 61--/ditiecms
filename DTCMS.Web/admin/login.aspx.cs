@@ -4,8 +4,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DTCMS.Common;
+using DTCMS.BLL;
+using DTCMS.Entity;
 
-namespace DTCMS.Web.Admin
+namespace DTCMS.Web.admin
 {
     public partial class login : System.Web.UI.Page
     {
@@ -16,8 +18,47 @@ namespace DTCMS.Web.Admin
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            //Message message = new Message();
-            Message.Dialog("提示信息", "消息内容", "-1", MessageIcon.Error, 0);
+            if (txt_username.Value.Length == 0)
+            {
+                Message.Dialog("提示信息", "用户名不能为空！", "-1", MessageIcon.Stop, 0);
+            }
+            else if (txt_password.Value.Length == 0)
+            {
+                Message.Dialog("提示信息", "用户密码不能为空！", "-1", MessageIcon.Stop, 0);
+            }
+            else if (txt_checkcode.Value.Length == 0)
+            {
+                Message.Dialog("提示信息", "验证码不能为空！", "-1", MessageIcon.Stop, 0);
+            }
+            else
+            {
+                if (txt_checkcode.Value.Trim() != "1234")
+                {
+                    Message.Dialog("提示信息", "验证码填写错误！", "-1", MessageIcon.Stop, 0);
+                }
+                else
+                {
+                    UsersBLL userBll = new UsersBLL();
+                    Users userInfo = userBll.CheckLogin(txt_username.Value.Trim(), txt_password.Value.Trim(), true);
+
+                    if (userInfo == null)
+                    {
+                        Message.Dialog("提示信息", "用户名或密码不正确！", "-1", MessageIcon.Stop, 0);
+                    }
+                    else
+                    {
+                        if (userInfo.IsLock == 1)
+                        {
+                            Message.Dialog("提示信息", "对不起，您的帐号被锁定，暂时不能登陆系统后台，请联系网站管理员！", "-1", MessageIcon.Stop, 0);
+                        }
+                        else
+                        {
+                            Session["AdminUser"] = userInfo;
+                            Message.Dialog("提示信息", "登陆成功，正在转向管理后台！", "index.aspx", MessageIcon.Success, 2);
+                        }
+                    }
+                }
+            }
         }
     }
 }

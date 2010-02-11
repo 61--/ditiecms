@@ -1,16 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="news_add.aspx.cs" Inherits="DTCMS.Web.admin.News_add" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="article_add.aspx.cs" Inherits="DTCMS.Web.admin.News_add" %>
 <%@ Register Assembly="FredCK.FCKeditorV2" Namespace="FredCK.FCKeditorV2" TagPrefix="FCKeditorV2" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>添加新闻</title>
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-    <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
+    <link href="../../css/blue_body.css" rel="stylesheet" type="text/css" />
     <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
+    <script type="text/javascript" src="../../js/jquery-1.3.2-vsdoc2.js"></script>
     <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
-    <script type="text/javascript" src="../js/public.js"></script>
-    <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="../../js/public.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">

@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7DBA0670-7419-4E7A-BCB7-92A8C7151733}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -144,7 +144,7 @@
     <Compile Include="admin\ajax\template_list.aspx.designer.cs">
       <DependentUpon>template_list.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\app_code\AdminPage.cs">
+    <Compile Include="App_code\AdminPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\dialog\newssourcelist.aspx.cs">
@@ -203,19 +203,19 @@
     <Compile Include="admin\dialog\classpagelist.aspx.designer.cs">
       <DependentUpon>classpagelist.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\news\class_list.aspx.cs">
+    <Compile Include="admin\site\class_list.aspx.cs">
       <DependentUpon>class_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\news\class_list.aspx.designer.cs">
+    <Compile Include="admin\site\class_list.aspx.designer.cs">
       <DependentUpon>class_list.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\news\news_list.aspx.cs">
-      <DependentUpon>news_list.aspx</DependentUpon>
+    <Compile Include="admin\content\news\article_list.aspx.cs">
+      <DependentUpon>article_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\news\news_list.aspx.designer.cs">
-      <DependentUpon>news_list.aspx</DependentUpon>
+    <Compile Include="admin\content\news\article_list.aspx.designer.cs">
+      <DependentUpon>article_list.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -231,19 +231,19 @@
     <Compile Include="admin\controlpanel.aspx.designer.cs">
       <DependentUpon>controlpanel.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\news\class_add.aspx.cs">
+    <Compile Include="admin\site\class_add.aspx.cs">
       <DependentUpon>class_add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\news\class_add.aspx.designer.cs">
+    <Compile Include="admin\site\class_add.aspx.designer.cs">
       <DependentUpon>class_add.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\news\news_add.aspx.cs">
-      <DependentUpon>news_add.aspx</DependentUpon>
+    <Compile Include="admin\content\news\article_add.aspx.cs">
+      <DependentUpon>article_add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\news\news_add.aspx.designer.cs">
-      <DependentUpon>news_add.aspx</DependentUpon>
+    <Compile Include="admin\content\news\article_add.aspx.designer.cs">
+      <DependentUpon>article_add.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\dialog\taglist.aspx.cs">
       <DependentUpon>taglist.aspx</DependentUpon>
@@ -353,7 +353,7 @@
     <Content Include="admin\js\public.js" />
     <Content Include="admin\dialog\authorlist.aspx" />
     <Content Include="admin\dialog\classpagelist.aspx" />
-    <Content Include="admin\news\class_list.html" />
+    <Content Include="admin\site\class_list.html" />
     <Content Include="admin\dialog\taglist.aspx" />
     <Content Include="admin\sys\AttachMentSetting.aspx" />
     <Content Include="admin\sys\SystemInfoParam.aspx" />
@@ -641,17 +641,17 @@
     <Content Include="admin\js\color.js" />
     <Content Include="admin\js\common.js" />
     <Content Include="inc\treetable\TableTree4J.js" />
-    <Content Include="admin\news\class_list.aspx" />
-    <Content Include="admin\news\news_list.aspx" />
-    <Content Include="admin\news\news_list.html" />
+    <Content Include="admin\site\class_list.aspx" />
+    <Content Include="admin\content\news\article_list.aspx" />
+    <Content Include="admin\content\news\news_list.html" />
     <Content Include="admin\images\login_input_bg.gif" />
     <Content Include="admin\images\login_input_hr.gif" />
     <Content Include="admin\images\login_submit.gif" />
     <Content Include="admin\images\login_toptitle.gif" />
     <Content Include="admin\images\logo_01.gif" />
     <Content Include="admin\login.aspx" />
-    <Content Include="admin\news\class_add.aspx" />
-    <Content Include="admin\news\news_add.aspx" />
+    <Content Include="admin\site\class_add.aspx" />
+    <Content Include="admin\content\news\article_add.aspx" />
     <Content Include="admin\Test.aspx" />
     <Content Include="bin\FredCK.FCKeditorV2.dll" />
     <Content Include="inc\dialog\dialog.css" />
@@ -968,6 +968,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="admin\log\" />
+    <Folder Include="admin\system\" />
     <Folder Include="css\" />
     <Folder Include="images\" />
     <Folder Include="js\" />
@@ -992,9 +993,6 @@
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/DTCMS_Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

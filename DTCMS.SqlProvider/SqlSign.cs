@@ -46,15 +46,7 @@ namespace DTCMS.SqlProvider
         /// </summary>
         public static OperateSign In = new OperateSign("IN ({0})");
         /// <summary>
-        /// 左匹配
-        /// </summary>
-        public static OperateSign LeftLike = new OperateSign("LIKE '%{0}'");
-        /// <summary>
-        /// 左匹配
-        /// </summary>
-        public static OperateSign RightLike = new OperateSign("LIKE '{0}%'");
-        /// <summary>
-        /// 左匹配
+        /// 匹配
         /// </summary>
         public static OperateSign Like = new OperateSign("LIKE '%{0}%'");
 

@@ -14,18 +14,18 @@ using DTCMS.DALFactory;
 
 namespace DTCMS.BLL
 {
-	/// <summary>
-	/// 业务逻辑类 Users
-	/// </summary>
-	public class UsersBLL
-	{
-		private readonly IDAL_Users dal = DataAccess.CreateFactoryDAL<IDAL_Users>("UsersDAL");
-		public UsersBLL()
-		{ }
+    /// <summary>
+    /// 业务逻辑类 Users
+    /// </summary>
+    public class UsersBLL
+    {
+        private readonly IDAL_Users dal = DataAccess.CreateFactoryDAL<IDAL_Users>("UsersDAL");
+        public UsersBLL()
+        { }
 
         /// <summary>
-		/// 增加一条数据
-		/// </summary>
+        /// 增加一条数据
+        /// </summary>
         /// <param name="model">实体对象</param>
         /// <returns>返回影响行数</returns>
         public int Add(Users model)
@@ -34,8 +34,8 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-		/// 更新一条数据
-		/// </summary>
+        /// 更新一条数据
+        /// </summary>
         /// <param name="model">实体对象</param>
         /// <returns>返回影响行数</returns>
         public int Update(Users model)
@@ -44,8 +44,8 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-		/// 删除一条数据
-		/// </summary>
+        /// 删除一条数据
+        /// </summary>
         /// <param name="UID">UID</param>
         /// <returns>返回影响行数</returns>
         public int Delete(int UID)
@@ -54,8 +54,8 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-		/// 判断某个字段值是否存在
-		/// </summary>
+        /// 判断某个字段值是否存在
+        /// </summary>
         /// <param name="UID">UID</param>
         /// <param name="filedName">字段名称</param>
         /// <param name="filedValue">字段值</param>
@@ -66,8 +66,24 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-		/// 得到一个对象实体
-		/// </summary>
+        /// 用户登录检测
+        /// </summary>
+        public Users CheckLogin(string userName, string pwd, bool isAdmin)
+        {
+            return dal.CheckLogin(userName, pwd, isAdmin);
+        }
+
+        /// <summary>
+        /// 更新用户登录时间
+        /// </summary>
+        public void UpdateLoginTime(int userID)
+        {
+            dal.UpdateLoginTime(userID);
+        }
+
+        /// <summary>
+        /// 得到一个用户对象实体
+        /// </summary>
         /// <param name="UID">UID</param>
         /// <returns>实体对象</returns>
         public Users GetModel(int UID)
@@ -76,8 +92,8 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-		/// 获得泛型数据列表
-		/// </summary>
+        /// 获得泛型数据列表
+        /// </summary>
         /// <param name="count">返回记录数</param>
         /// <returns>对象泛型集合</returns>
         public List<Users> GetList(out int count)
@@ -86,8 +102,8 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-		/// 分页获取泛型数据列表
-		/// </summary>
+        /// 分页获取泛型数据列表
+        /// </summary>
         /// <param name="pageSize">分页大小</param>
         /// <param name="pageIndex">当前页</param>
         /// <param name="count">返回记录数</param>
@@ -102,5 +118,5 @@ namespace DTCMS.BLL
 
             return dal.GetPageList(pageSize, pageIndex, out count);
         }
-	}
+    }
 }
