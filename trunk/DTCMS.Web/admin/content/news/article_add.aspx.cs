@@ -15,7 +15,7 @@ namespace DTCMS.Web.admin
 {
     public partial class News_add : AdminPage
     {
-        private Arc_ArticleBLL bllArticle = new Arc_ArticleBLL();
+        private Arc_ArticleBLL articleBll = new Arc_ArticleBLL();
         private Arc_ClassBLL bllClass = new Arc_ClassBLL();
         SectionConfigBLL bllSelectionConfig = new SectionConfigBLL();
 
@@ -63,7 +63,7 @@ namespace DTCMS.Web.admin
                 return;
             }
 
-            if (bllArticle.ExistsArticleName(NewID, modelArticle.Title))
+            if (articleBll.ExistsArticleName(NewID, modelArticle.Title))
             {//文章已经存在
                 Message.Dialog("操作失败！该文章已经存在。", "-1", MessageIcon.Error, 0);
                 return;
@@ -75,7 +75,7 @@ namespace DTCMS.Web.admin
 
                 try
                 {
-                    updateStart = bllArticle.Update(modelArticle);
+                    updateStart = articleBll.Update(modelArticle);
                 }
                 catch
                 {
@@ -112,7 +112,7 @@ namespace DTCMS.Web.admin
 
                 try
                 {
-                    updateStart = bllArticle.Add(modelArticle);
+                    updateStart = articleBll.Add(modelArticle);
                 }
                 catch
                 {
@@ -144,7 +144,7 @@ namespace DTCMS.Web.admin
                 return;
             }
 
-            Arc_Article model = bllArticle.GetModel(NewID);
+            Arc_Article model = articleBll.GetModel(NewID);
 
             if (model != null)
             {
@@ -178,7 +178,7 @@ namespace DTCMS.Web.admin
                 chk_IsHtml.Checked = (model.IsHtml == 1);
                 //是否允许评论
                 chk_IsComment.Checked = (model.IsComment == 1);
-                chk_IsChecked.Checked = (model.IsChecked == 1); //是否审核             
+                chk_IsVerify.Checked = (model.IsVerify == 1); //是否审核             
             }
         }
 
@@ -214,7 +214,7 @@ namespace DTCMS.Web.admin
             model.Money = TypeConvert.ToInt16(txt_Money.Value.Trim());
             model.Attribute = TypeConvert.ToInt16(hide_Attribute.Value.Trim());  //文章属性
             model.IsComment = (byte)(chk_IsComment.Checked ? 1 : 0);
-            model.IsChecked = (byte)(chk_IsChecked.Checked ? 1 : 0);
+            model.IsVerify = (byte)(chk_IsVerify.Checked ? 1 : 0);
             model.IsRecycle = (byte)0;
             model.IsRedirect = (byte)(chk_JumpUrl.Checked ? 1 : 0);
             model.IsHtml = (byte)(chk_IsHtml.Checked ? 1 : 0);

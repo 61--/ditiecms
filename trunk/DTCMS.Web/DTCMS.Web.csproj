@@ -130,6 +130,13 @@
     <Compile Include="admin\ajax\menu.aspx.designer.cs">
       <DependentUpon>menu.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\ajax\modules_ajax.aspx.cs">
+      <DependentUpon>modules_ajax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ajax\modules_ajax.aspx.designer.cs">
+      <DependentUpon>modules_ajax.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\ajax\news_list.aspx.cs">
       <DependentUpon>news_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -137,12 +144,61 @@
     <Compile Include="admin\ajax\news_list.aspx.designer.cs">
       <DependentUpon>news_list.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\ajax\permission_ajax.aspx.cs">
+      <DependentUpon>permission_ajax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ajax\permission_ajax.aspx.designer.cs">
+      <DependentUpon>permission_ajax.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\ajax\template_list.aspx.cs">
       <DependentUpon>template_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\ajax\template_list.aspx.designer.cs">
       <DependentUpon>template_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\ajax\user_ajax.aspx.cs">
+      <DependentUpon>user_ajax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ajax\user_ajax.aspx.designer.cs">
+      <DependentUpon>user_ajax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\user\permission_add.aspx.cs">
+      <DependentUpon>permission_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\user\permission_add.aspx.designer.cs">
+      <DependentUpon>permission_add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\user\permission_list.aspx.cs">
+      <DependentUpon>permission_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\user\permission_list.aspx.designer.cs">
+      <DependentUpon>permission_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\user\permission_setting.aspx.cs">
+      <DependentUpon>permission_setting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\user\permission_setting.aspx.designer.cs">
+      <DependentUpon>permission_setting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\user\user_add.aspx.cs">
+      <DependentUpon>user_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\user\user_add.aspx.designer.cs">
+      <DependentUpon>user_add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\user\user_list.aspx.cs">
+      <DependentUpon>user_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\user\user_list.aspx.designer.cs">
+      <DependentUpon>user_list.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_code\AdminPage.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -316,8 +372,11 @@
     <Content Include="admin\ajax\dialog_list.aspx" />
     <Content Include="admin\ajax\file_list.aspx" />
     <Content Include="admin\ajax\menu.aspx" />
+    <Content Include="admin\ajax\modules_ajax.aspx" />
     <Content Include="admin\ajax\news_list.aspx" />
+    <Content Include="admin\ajax\permission_ajax.aspx" />
     <Content Include="admin\ajax\template_list.aspx" />
+    <Content Include="admin\ajax\user_ajax.aspx" />
     <Content Include="admin\css\dialog.css" />
     <Content Include="admin\dialog\newssourcelist.aspx" />
     <Content Include="admin\images\blue\action.gif" />
@@ -360,6 +419,11 @@
     <Content Include="admin\template\templatefile_list.aspx" />
     <Content Include="admin\template\template_add.aspx" />
     <Content Include="admin\template\template_list.aspx" />
+    <Content Include="admin\user\permission_add.aspx" />
+    <Content Include="admin\user\permission_list.aspx" />
+    <Content Include="admin\user\permission_setting.aspx" />
+    <Content Include="admin\user\user_add.aspx" />
+    <Content Include="admin\user\user_list.aspx" />
     <Content Include="bin\DTCMS.BLL.dll" />
     <Content Include="bin\DTCMS.BLL.pdb" />
     <Content Include="bin\DTCMS.Common.dll" />
@@ -967,6 +1031,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="admin\createstatic\" />
     <Folder Include="admin\log\" />
     <Folder Include="admin\system\" />
     <Folder Include="css\" />

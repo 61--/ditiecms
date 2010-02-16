@@ -41,11 +41,25 @@ namespace DTCMS.IDAL
         int Update(int UID, string value);
 
         /// <summary>
-        /// 删除一条数据
+        /// 删除一条用户数据
         /// </summary>
         /// <param name="UID">编号ID</param>
         /// <returns>返回影响行数</returns>
         int Delete(int UID);
+
+        /// <summary>
+        /// 批量删除用户
+        /// </summary>
+        /// <param name="UID">用户ID，多个ID用,号隔开</param>
+        /// <returns>返回影响行数</returns>
+        int Delete(string UID);
+
+        /// <summary>
+        /// 批量审核用户
+        /// </summary>
+        /// <param name="UID">用户ID，多个ID用,号隔开</param>
+        /// <returns>返回影响行数</returns>
+        int VerifyUsers(string UID);
 
         /// <summary>
         /// 是否存在该记录
@@ -64,7 +78,7 @@ namespace DTCMS.IDAL
         /// <summary>
         /// 更新用户登录时间
         /// </summary>
-        void UpdateLoginTime(int userID);
+        void UpdateLoginInfo(int userID, string lastloginIP, DateTime lastloginTime);
 
         /// <summary>
         /// 得到一个对象实体
@@ -81,6 +95,11 @@ namespace DTCMS.IDAL
         /// <returns>Object对象</returns>
         object GetSingle(string filed, string where);
 
+        /// <summary>
+        /// 字符串缓存实现的通用分页存储过程
+        /// </summary>
+        DataTable GetPageList(string fieldKey, int pageCurrent, int pageSize
+            , string fieldShow, string fieldOrder, string where, out int pageCount);
 
         /// <summary>
         /// 根据查询字段获取列表

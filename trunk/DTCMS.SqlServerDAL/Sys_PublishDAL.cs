@@ -80,7 +80,7 @@ namespace DTCMS.SqlServerDAL
         {
             StringBuilder strSearch = new StringBuilder();
 
-            strSearch.Append(" a.ClassID=b.CID  AND  a.IsChecked=1 AND a.IsRecycle=0 AND a.IsHtml=1 ");
+            strSearch.Append(" a.ClassID=b.CID  AND  a.IsVerify=1 AND a.IsRecycle=0 AND a.IsHtml=1 ");
             strSearch.AppendFormat(" AND(  b.relation like'%.{0}.%' OR  b.CID={0} ) ", CID);
 
 
@@ -116,7 +116,7 @@ namespace DTCMS.SqlServerDAL
         public DataTable GetArticleByTime(DateTime startTime, DateTime endTime, out int totalCount)
         {
             StringBuilder strSearch = new StringBuilder();
-            strSearch.Append(" a.ClassID=b.CID AND IsChecked=1 AND IsRecycle=1 AND IsHtml=1 ");
+            strSearch.Append(" a.ClassID=b.CID AND IsVerify=1 AND IsRecycle=1 AND IsHtml=1 ");
             strSearch.AppendFormat(" AND AddDate Between '{0}' AND '{1}' ", startTime, endTime);
 
             StringBuilder strSql = new StringBuilder();
@@ -144,7 +144,7 @@ namespace DTCMS.SqlServerDAL
         public DataTable GetArticleByID(int minId, int maxId, out int totalCount)
         {
             StringBuilder strSearch = new StringBuilder();
-            strSearch.Append(" a.ClassID=b.CID AND IsChecked=1 AND IsRecycle=1 AND IsHtml=1 ");
+            strSearch.Append(" a.ClassID=b.CID AND IsVerify=1 AND IsRecycle=1 AND IsHtml=1 ");
             strSearch.AppendFormat(" AND a.[ID] Between {0} AND {1} ", minId, maxId);
 
             StringBuilder strSql = new StringBuilder();
@@ -173,7 +173,7 @@ namespace DTCMS.SqlServerDAL
         public DataTable GetTopArticleBySearch(int topnum, string orderBy, string orderWay, string search)
         {
             StringBuilder strSearch = new StringBuilder();
-            strSearch.Append(" a.ClassID=b.CID AND a.isChecked=1 AND a.IsRecycle=0 AND a.IsHtml=1 ");
+            strSearch.Append(" a.ClassID=b.CID AND a.IsVerify=1 AND a.IsRecycle=0 AND a.IsHtml=1 ");
             if (!string.IsNullOrEmpty(search))
                 strSearch.AppendFormat(" AND {0} ", search);
             StringBuilder strSql = new StringBuilder();

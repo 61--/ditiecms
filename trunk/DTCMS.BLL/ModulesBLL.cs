@@ -8,6 +8,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
+using DTCMS.Common;
 using DTCMS.Entity;
 using DTCMS.IDAL;
 using DTCMS.DALFactory;
@@ -148,6 +150,22 @@ namespace DTCMS.BLL
                 throw new Exception("页索引必须大于0。");
 
             return dal.GetPageList(pageSize, pageIndex, out count);
+        }
+
+        /// <summary>
+        /// 获取DataTable，并转换成Json格式数据
+        /// </summary>
+        public string GetModulesJsonData()
+        {
+            DataTable dt = dal.GetModulesByControl();
+            if (dt != null)
+            {
+                return Utils.DataTableToJson(dt).ToString();
+            }
+            else
+            {
+                return "";
+            }
         }
     }
 }

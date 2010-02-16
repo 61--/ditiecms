@@ -80,6 +80,11 @@ namespace DTCMS.IDAL
 		DataTable GetDataTable(string fileds, string where);
 
         /// <summary>
+        /// 通过ModuleControl获取模块
+        /// </summary>
+        DataTable GetModulesByControl();
+
+        /// <summary>
         /// 根据查询条件获取模块泛型数据列表
         /// </summary>
         /// <param name="where">查询条件</param>

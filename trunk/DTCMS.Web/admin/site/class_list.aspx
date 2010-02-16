@@ -17,7 +17,7 @@
         });
         function LoadData() {
             $.ajax({
-                url: "/admin/ajax/class_list.aspx",
+                url: "../ajax/class_list.aspx",
                 type: "GET",
                 data: "action=load&ran=" + Math.random(),
                 success: function(json) {
@@ -27,14 +27,13 @@
         }
         var gridTree;
         function showGridTree(json) {
-            gridTree = new TableTree4J("gridTree", "/Inc/treetable/",false,true);
-            gridTree.config.useLine = false;
+            gridTree = new TableTree4J("gridTree", false, true);
             gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
             
             var headerDataList = new Array("栏目名称", "所属类型", "创建时间", "排序","操作");
             var widthList = new Array("4%","32%", "20%", "20%", "10%","10%");
 
-            gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "展开/折叠", "header status text", "", "");
+            gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "", "", "");
             //设置列样式
             gridTree.gridHeaderColStyleArray = new Array("", "", "","","bleft");
             gridTree.gridDataCloStyleArray = new Array("", "", "", "", "");
@@ -42,48 +41,13 @@
             if (json != "") {
             var data = eval("data=" + json);
             $.each(data, function(i, n) {
-            var dataList = new Array("<a href='class_add.aspx?Id=" + n.cid + "'>" + n.classname + "</a>", n.classtype, n.adddate, "<input type=\"text\" onchange=\"updateSort(" + n.cid + ")\" id=\"order_" + n.cid + "\" class=\"class_order\" value=\"" + n.orderid + "\">", "<a href=\"class_add.aspx?Id=" + n.cid + "\">修改</a>&nbsp;&nbsp;<a href=\"javascript:deleteData(" + n.cid + ",false)\">删除</a>");
+            var dataList = new Array("<a href='class_add.aspx?Id=" + n.cid + "'>" + n.classname + "</a>", n.classtype, n.adddate, "<input type=\"text\" onchange=\"updateSort(" + n.cid + ")\" id=\"order_" + n.cid + "\" class=\"class_order\" value=\"" + n.orderid + "\">", "<a href=\"class_add.aspx?Id=" + n.cid + "\">编辑</a>&nbsp;&nbsp;<a href=\"javascript:deleteData(" + n.cid + ",false)\">删除</a>");
                 gridTree.addGirdNode(dataList, n.cid, n.parentid == 0 ? -1 : n.parentid, null, n.orderid, "");
                });
             }
             gridTree.printTableTreeToElement("gridTreeDiv");
         }
     </script>
-    <style type="text/css">
-        .GridView{
-            width: 100%;
-            font-size: 12px;
-            border: 1px #CAD9EA solid;
-            border-collapse: collapse;
-        }
-        .GridHead td{
-            line-height: 28px;
-            height: 28px;
-            font-weight: bold;
-            text-indent: 10px;
-            background: url(../images/blue/th_bg.gif) right bottom no-repeat;
-        }
-        .GridHead a{
-            white-space: nowrap;
-            text-decoration: none;
-        }
-        .GridHead .bleft{   
-        	background-position:left bottom;
-        }
-        .GridView td{
-            height: 26px;
-            text-indent: 10px;
-            border-top: 1px solid #D3E0ED;
-            border-bottom: 1px solid #D3E0ED;
-        }
-        .GridHighLightRow td{
-            background: #E0F0FD;
-        }
-        .class_order
-        {
-            width:60px;
-        }
-    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -95,9 +59,8 @@
             </div>
             <div class="toolbar">
                 <a href="class_add.aspx" class="button b4"><img src="../images/ico/i_add.gif" alt="" />新建栏目</a>
-                <a href="javascript:updateData();" class="button b4"><img src="../images/ico/i_edit.gif" alt="" />修改栏目</a>
+                <a href="javascript:editData();" class="button b4"><img src="../images/ico/i_edit.gif" alt="" />修改栏目</a>
                 <a href="javascript:deleteData(-1,true);" class="button b4"><img src="../images/ico/i_allDelete.gif" alt="" />批量删除</a>
-                <a href="javascript:;" onclick="showHelper('#color', '帮助主题', '请选择要删除的<a href=>数据</a>请选择要删除的数据请选择要删除的数据',30)" id="color">标题样式</a>
             </div>
             <div id="gridTreeDiv">
             </div>
@@ -105,16 +68,10 @@
     </form>
     <script type="text/javascript">
         //*cid:  栏目编号
-        function updateData() {
-            var input = $("input[name='items']");
-            var val = "";
-            $.each(input, function(i, n) {
-                if (n.checked) {
-                    val = n.value;                    
-                }
-            });
-            if (val != "") {
-                window.location.href = "Class_add.aspx?Id=" + val;
+        function editData() {
+            var cid=getSingleCheckID();
+            if (cid != "") {
+                window.location.href = "Class_add.aspx?Id=" + cid;
             } else {
                 Dialog.alert("请选择要修改的栏目!");
             }
@@ -123,23 +80,20 @@
         //flag:  是否批量删除，表示true:批量删除，false:单个删除
         function deleteData(cid, flag) {//删除栏目
             if (flag) {
-                var id = GetCheckId();
-                if (id == "") {
+                cid = getCheckId();
+                if (cid == "") {
                     Dialog.alert("请选择要删除的数据!");
                     return;
-                }
-                else {
-                    cid = id;
                 }
             }
             Dialog.confirm("确定要删除栏目吗？", function() {
                 $.ajax({
-                    url: "/admin/ajax/class_list.aspx",
+                    url: "../ajax/class_list.aspx",
                     type: "GET",
                     data: "action=delete&Id=" + cid + "&ran=" + Math.random(),
                     success: function(responseText) {//提示
                         if (responseText.toString().toUpperCase() == "TRUE") {
-                            showSuccess('栏目删除成功！')
+                            showSuccess('栏目删除成功！');
                             LoadData();
                         } else {
                             Dialog.alert(responseText);
@@ -156,7 +110,7 @@
         function updateSort(cid) {
             var curVal = $("#order_" + cid).val();
             $.ajax({
-                url: "/admin/ajax/class_list.aspx",
+                url: "../ajax/class_list.aspx",
                 type: "GET",
                 data: "action=order&Id=" + cid + "&orderId=" + curVal + "&ran=" + Math.random(),
                 success: function(responseText) {

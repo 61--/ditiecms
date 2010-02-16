@@ -297,7 +297,40 @@ a.b5:hover
 	background: #c1c1c1;
 	border: 1px #c1c1c1 solid;
 }
-
+/*数据列表样式*/
+.GridView{
+    width: 100%;
+    font-size: 12px;
+    border: 1px #CAD9EA solid;
+    border-collapse: collapse;
+}
+.GridHead td{
+    line-height: 28px;
+    height: 28px;
+    font-weight: bold;
+    text-indent: 10px;
+    background: url(../images/blue/th_bg.gif) right bottom no-repeat;
+}
+.GridHead a{
+    white-space: nowrap;
+    text-decoration: none;
+}
+.GridHead .bleft{   
+	background-position:left bottom;
+}
+.GridView td{
+    height: 26px;
+    text-indent: 10px;
+    border-top: 1px solid #D3E0ED;
+    border-bottom: 1px solid #D3E0ED;
+}
+.GridHighLightRow td{
+    background: #E0F0FD;
+}
+.class_order
+{
+    width:60px;
+}
 /*其他样式样式*/
 .select {
 	padding: 0 5px 0 0;
@@ -322,6 +355,7 @@ a.b5:hover
 	filter:Alpha(Opacity=80);
 	-moz-opacity:0.8;
 	height:30px;
+	overflow:hidden;
 }
 .popup_msg .popup_header{
 	display:none;
@@ -330,6 +364,8 @@ a.b5:hover
 {
 	text-align:center;
 	line-height:30px;
+	height:30px;
+	_padding-top:6px;
 }
 .popup_msg .popup_bottom
 {

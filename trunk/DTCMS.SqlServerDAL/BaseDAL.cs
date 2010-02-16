@@ -126,23 +126,23 @@ namespace DTCMS.SqlServerDAL
         /// <param name="Where">查询条件  </param>
         /// <param name="PageCount">总页数  </param>
         /// <returns></returns>
-        public DataTable GetDataTable(string tbname, string FieldKey, int PageCurrent, int PageSize, string FieldShow, string FieldOrder, string Where, out int PageCount)
+        public DataTable GetPageList(string tbname, string fieldKey, int pageCurrent, int pageSize, string fieldShow, string fieldOrder, string where, out int pageCount)
         {
-            PageCount = 0;
+            pageCount = 0;
             SqlParameter[] cmdParms = {
                 AddInParameter("@tbname",SqlDbType.NVarChar,tbname),
-                AddInParameter("@FieldKey",SqlDbType.NVarChar,FieldKey),
-                AddInParameter("@PageCurrent",SqlDbType.Int,PageCurrent),
-                AddInParameter("@PageSize",SqlDbType.Int,PageSize),
-                AddInParameter("@FieldShow",SqlDbType.NVarChar,FieldShow),
-                AddInParameter("@FieldOrder",SqlDbType.NVarChar,FieldOrder),
-                AddInParameter("@Where",SqlDbType.NVarChar,Where),
+                AddInParameter("@FieldKey",SqlDbType.NVarChar,fieldKey),
+                AddInParameter("@PageCurrent",SqlDbType.Int,pageCurrent),
+                AddInParameter("@PageSize",SqlDbType.Int,pageSize),
+                AddInParameter("@FieldShow",SqlDbType.NVarChar,fieldShow),
+                AddInParameter("@FieldOrder",SqlDbType.NVarChar,fieldOrder),
+                AddInParameter("@Where",SqlDbType.NVarChar,where),
                 AddOutParameter("@PageCount",SqlDbType.Int)
 
             };
 
             DataSet ds = dbHelper.ExecuteQuery(CommandType.StoredProcedure, "pagehelper", cmdParms);
-            PageCount = int.Parse(cmdParms[7].Value.ToString());
+            pageCount = int.Parse(cmdParms[7].Value.ToString());
 
             if (ds != null && ds.Tables.Count > 0)
             {

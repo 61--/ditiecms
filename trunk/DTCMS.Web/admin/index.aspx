@@ -12,7 +12,7 @@
     <script type="text/javascript" src="js/common.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            openMenu('M01', '');
+            openMenu('M01','controlpanel.aspx');
             popTip('H0201002');
         });
         function popTip(msg, func, w, h) {
@@ -87,7 +87,9 @@
                 正在加载数据,请稍候...</div>
             <div class="sitenav">
                 <div class="welcome">
-                    你好<span class="username"></span>
+                    <marquee scrollamount="5" scrolldelay="200" onmouseover="stop()" onmouseout="start()" style="width:350px;">
+                        您好<asp:Label ID="lbl_username" runat="server" CssClass="username"></asp:Label>，欢迎您登陆DTCMS网站内容管理系统后台管理中心！
+                    </marquee>
                 </div>
                 <div class="welcome">
                     <a href="javascript:changeMenu(-10)">
@@ -96,14 +98,14 @@
                         <img src="images/blue/frame-r.gif" alt="增大左框架" /></a>
                 </div>
                 <div class="sitelink">
-                    <a href="javascript:openMenu(0,'','main_index.aspx',0)">管理主页</a> | <asp:LinkButton ID="lbn_Logout" OnClick="lbn_Logout_Click" runat="server">注销登陆</asp:LinkButton>
+                    <a href="javascript:openMenu('M01','controlpanel.aspx')">管理主页</a> | <asp:LinkButton ID="lbn_Logout" OnClick="lbn_Logout_Click" runat="server">注销登陆</asp:LinkButton>
                 </div>
             </div>
             <div class="leftnav">
                 <asp:Repeater ID="rpt_Topnav" runat="server">
                     <HeaderTemplate><ul><li class="navleft"></li>
                     </HeaderTemplate>
-                    <ItemTemplate><li id="<%# Eval("ModuleID").ToString().Trim() %>"><a href="javascript:void(0);" onclick="openMenu('<%# Eval("ModuleID").ToString().Trim() %>','<%# Eval("ModuleURL") %>')"><%# Eval("Name")%></a></li>
+                    <ItemTemplate><li id="<%# Eval("ModuleID") %>"><a href="javascript:;" onclick="openMenu('<%# Eval("ModuleID") %>','<%# Eval("ModuleURL") %>')"><%# Eval("ModuleName")%></a></li>
                     </ItemTemplate>
                     <FooterTemplate><li class="navright"></li>
                 </ul></FooterTemplate>
@@ -122,7 +124,7 @@
     <div class="bottom">
         CopyRight &copy; 2009 <a href="http://www.91aspx.com" target="_blank">www.91aspx.com</a>
         All rights reserved. Powered by <a href="http://www.91aspx.com" target="_blank">DTCMS V1.0</a>
-        <div style="display:none;"><script type="text/javascript" src="http://js.users.51.la/3439117.js"></script></div>
+        <%--<div style="display:none;"><script type="text/javascript" src="http://js.users.51.la/3439117.js"></script></div>--%>
     </div>
 </form>
 </body>

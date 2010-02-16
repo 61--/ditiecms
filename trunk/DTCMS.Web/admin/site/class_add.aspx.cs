@@ -7,7 +7,6 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
 using DTCMS.Entity;
 using DTCMS.Entity.Enum;
 using DTCMS.BLL;
@@ -21,11 +20,11 @@ namespace DTCMS.Web.admin
         private Arc_ClassBLL bllClass = new Arc_ClassBLL();
         SectionConfigBLL bllSelectionConfig = new SectionConfigBLL();
 
-        private int CID=-1;  //栏目ID
+        private int CID = -1;  //栏目ID
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            CID = Common.Utils.GetQueryInt("Id");
+            CID = Utils.GetQueryInt("Id");
 
             if (!IsPostBack)
             {
@@ -34,7 +33,7 @@ namespace DTCMS.Web.admin
                 {
                     SetPageData();  //更新数据赋值
                 }
-            } 
+            }
         }
 
         /// <summary>
@@ -56,11 +55,11 @@ namespace DTCMS.Web.admin
             #region 数据验证
             if (modelClass.ClassName.Trim() == "")
             {
-                Message.Dialog("操作失败！栏目名称不能为空。", "-1", MessageIcon.Error, 0);
+                Message.Dialog("操作失败！栏目名称不能为空。", "-1", MessageIcon.Stop, 0);
             }
             if (bllClass.ExistsClassName(CID, modelClass.ClassName))
             {
-                Message.Dialog("操作失败！该栏目已经存在。", "-1", MessageIcon.Error, 0);
+                Message.Dialog("操作失败！该栏目已经存在。", "-1", MessageIcon.Stop, 0);
             }
 
             #endregion 数据验证
@@ -188,7 +187,7 @@ namespace DTCMS.Web.admin
 
             if (model.ParentID == 0)
             {
-                model.Relation = "."+model.ParentID.ToString()+".";
+                model.Relation = "." + model.ParentID.ToString() + ".";
             }
             else
             {
@@ -226,7 +225,7 @@ namespace DTCMS.Web.admin
             {//封面
                 return (byte)EClassAttribute.Cover;
             }
-            
+
         }
 
         /// <summary>
@@ -235,7 +234,7 @@ namespace DTCMS.Web.admin
         /// <param name="attribute"></param>
         private void SetClassAttribute(int attribute)
         {
-            rdo_List.Checked =false;
+            rdo_List.Checked = false;
             rdo_Singl.Checked = false;
             rdo_Link.Checked = false;
             rdo_Index.Checked = false;
@@ -265,7 +264,7 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void InitClassType()
         {
-            DataTable dtTypeList =bllSelectionConfig.GetSectionListClassType();
+            DataTable dtTypeList = bllSelectionConfig.GetSectionListClassType();
             if (dtTypeList != null && dtTypeList.Rows.Count > 0)
             {
                 slt_ClassType.DataSource = dtTypeList;
@@ -280,14 +279,14 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void InitReadaccess()
         {
-            DataTable dtReadaccess =bllSelectionConfig.GetSectionListReadaccess();
+            DataTable dtReadaccess = bllSelectionConfig.GetSectionListReadaccess();
             if (dtReadaccess != null && dtReadaccess.Rows.Count > 0)
             {
                 slt_Readaccess.DataSource = dtReadaccess;
                 slt_Readaccess.DataTextField = "value";
                 slt_Readaccess.DataValueField = "key";
                 slt_Readaccess.DataBind();
-            }            
+            }
         }
 
         /// <summary>
@@ -295,7 +294,7 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void InitCheckLevel()
         {
-            DataTable dtCheckLevel =bllSelectionConfig.GetSectionListCheckLevel();
+            DataTable dtCheckLevel = bllSelectionConfig.GetSectionListCheckLevel();
             if (dtCheckLevel != null && dtCheckLevel.Rows.Count > 0)
             {
                 slt_CheckLevel.DataSource = dtCheckLevel;

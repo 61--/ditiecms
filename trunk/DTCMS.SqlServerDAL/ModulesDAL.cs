@@ -33,13 +33,13 @@ namespace DTCMS.SqlServerDAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("INSERT INTO " + tablePrefix + "Modules(");
-            strSql.Append("ModuleID,ParentID,Name,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable,OrderID)");
+            strSql.Append("ModuleID,ParentID,ModuleName,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable,OrderID)");
             strSql.Append(" VALUES (");
-            strSql.Append("@ModuleID,@ParentID,@Name,@EName,@ModuleDepth,@ModuleURL,@Target,@Description,@CreateTime,@IsQuickMenu,@IsSystem,@IsEnable,@OrderID)");
+            strSql.Append("@ModuleID,@ParentID,@ModuleName,@EName,@ModuleDepth,@ModuleURL,@Target,@Description,@CreateTime,@IsQuickMenu,@IsSystem,@IsEnable,@OrderID)");
             SqlParameter[] cmdParms = {
 				AddInParameter("@ModuleID", SqlDbType.VarChar, 8, model.ModuleID),
 				AddInParameter("@ParentID", SqlDbType.VarChar, 8, model.ParentID),
-				AddInParameter("@Name", SqlDbType.NVarChar, 50, model.Name),
+				AddInParameter("@ModuleName", SqlDbType.NVarChar, 50, model.ModuleName),
 				AddInParameter("@EName", SqlDbType.VarChar, 50, model.EName),
 				AddInParameter("@ModuleDepth", SqlDbType.TinyInt, 1, model.ModuleDepth),
 				AddInParameter("@ModuleURL", SqlDbType.VarChar, 255, model.ModuleURL),
@@ -65,7 +65,7 @@ namespace DTCMS.SqlServerDAL
             strSql.Append("UPDATE " + tablePrefix + "Modules SET ");
             strSql.Append("ModuleID=@ModuleID,");
             strSql.Append("ParentID=@ParentID,");
-            strSql.Append("Name=@Name,");
+            strSql.Append("ModuleName=@ModuleName,");
             strSql.Append("EName=@EName,");
             strSql.Append("ModuleDepth=@ModuleDepth,");
             strSql.Append("ModuleURL=@ModuleURL,");
@@ -80,7 +80,7 @@ namespace DTCMS.SqlServerDAL
             SqlParameter[] cmdParms = {
 				AddInParameter("@ModuleID", SqlDbType.VarChar, 8, model.ModuleID),
 				AddInParameter("@ParentID", SqlDbType.VarChar, 8, model.ParentID),
-				AddInParameter("@Name", SqlDbType.NVarChar, 50, model.Name),
+				AddInParameter("@ModuleName", SqlDbType.NVarChar, 50, model.ModuleName),
 				AddInParameter("@EName", SqlDbType.VarChar, 50, model.EName),
 				AddInParameter("@ModuleDepth", SqlDbType.TinyInt, 1, model.ModuleDepth),
 				AddInParameter("@ModuleURL", SqlDbType.VarChar, 255, model.ModuleURL),
@@ -160,7 +160,7 @@ namespace DTCMS.SqlServerDAL
         public Modules GetModel(int ID)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("SELECT ID,ModuleID,ParentID,Name,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM " + tablePrefix + "Modules");
+            strSql.Append("SELECT ID,ModuleID,ParentID,ModuleName,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM " + tablePrefix + "Modules");
             strSql.Append(" WHERE ID=@ID");
             SqlParameter[] cmdParms = {
 				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
@@ -226,6 +226,24 @@ namespace DTCMS.SqlServerDAL
         }
 
         /// <summary>
+        /// 通过ModuleControl获取模块
+        /// </summary>
+        public DataTable GetModulesByControl()
+        {
+            string strSql = "SELECT M.ModuleID,ParentID,ModuleName,M.OrderID FROM dt_Modules M INNER JOIN DT_ModuleControl C ON M.ModuleID=C.ModuleID GROUP BY M.ModuleID,ParentID,ModuleName,ModuleDepth,M.OrderID";
+
+            DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                return ds.Tables[0];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
         /// 根据查询条件获取模块泛型数据列表
         /// </summary>
         /// <param name="where">查询条件</param>
@@ -233,7 +251,7 @@ namespace DTCMS.SqlServerDAL
         /// <returns>模块对象泛型集合</returns>
         public List<Modules> GetList(SqlLoading sl, out int count)
         {
-            string strSql = string.Format("SELECT ID,ModuleID,ParentID,Name,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM {0}Modules{1} ORDER BY OrderID", tablePrefix, sl.GetSqlWhereString());
+            string strSql = string.Format("SELECT ID,ModuleID,ParentID,ModuleName,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM {0}Modules{1} ORDER BY OrderID", tablePrefix, sl.GetSqlWhereString());
 
             using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql, null))
             {
@@ -249,7 +267,7 @@ namespace DTCMS.SqlServerDAL
         /// <returns>模块对象泛型集合</returns>
         public List<Modules> GetList(out int count)
         {
-            string strSql = string.Format("SELECT ID,ModuleID,ParentID,Name,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM {0}Modules ORDER BY OrderID", tablePrefix);
+            string strSql = string.Format("SELECT ID,ModuleID,ParentID,ModuleName,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM {0}Modules ORDER BY OrderID", tablePrefix);
             using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql, null))
             {
                 List<Modules> lst = GetList(dr, out count);
@@ -266,7 +284,7 @@ namespace DTCMS.SqlServerDAL
         /// <returns>分页对象泛型集合</returns>
         public List<Modules> GetPageList(int pageSize, int pageIndex, out int count)
         {
-            string strSql = string.Format("SELECT ID,ModuleID,ParentID,Name,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM {0}Modules ORDER BY OrderID", tablePrefix);
+            string strSql = string.Format("SELECT ID,ModuleID,ParentID,ModuleName,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM {0}Modules ORDER BY OrderID", tablePrefix);
             using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql, null))
             {
                 List<Modules> lst = GetPageList(dr, pageSize, pageIndex, out count);
@@ -286,7 +304,7 @@ namespace DTCMS.SqlServerDAL
             model.ID = dbHelper.GetInt(dr["ID"]);
             model.ModuleID = dbHelper.GetString(dr["ModuleID"]);
             model.ParentID = dbHelper.GetString(dr["ParentID"]);
-            model.Name = dbHelper.GetString(dr["Name"]);
+            model.ModuleName = dbHelper.GetString(dr["ModuleName"]);
             model.EName = dbHelper.GetString(dr["EName"]);
             model.ModuleDepth = dbHelper.GetByte(dr["ModuleDepth"]);
             model.ModuleURL = dbHelper.GetString(dr["ModuleURL"]);

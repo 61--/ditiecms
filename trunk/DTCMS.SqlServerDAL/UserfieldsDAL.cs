@@ -186,60 +186,6 @@ namespace DTCMS.SqlServerDAL
             return obj;
         }
 
-		/// <summary>
-		/// 根据查询字段获取列表
-		/// </summary>
-		/// <param name="fileds">要查询的字段，多个字段用,号隔开</param>
-		/// <returns>DataTable数据集合</returns>
-		public DataTable GetDataTable(string fileds, string where)
-		{
-			string strSql = string.Format("SELECT {0} FROM {1}Userfields {2}", fileds, tablePrefix, where);
-
-			DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
-			if (ds != null && ds.Tables.Count > 0)
-			{
-				return ds.Tables[0];
-			}
-			else
-			{
-				return null;
-			}
-		}
-
-		/// <summary>
-		/// 获取泛型数据列表
-		/// </summary>
-		/// <param name="count">返回记录总数</param>
-		/// <returns>对象泛型集合</returns>
-		public List<Userfields> GetList(out int count)
-		{
-			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT UID,Realname,QQ,MSN,Skype,Phone,Mobilephone,Location,Adress,IDcard,Signature,Introduce,Website FROM " + tablePrefix + "Userfields");
-			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
-			{
-				List<Userfields> lst = GetList(dr, out count);
-				return lst;
-			}
-		}
-
-		/// <summary>
-		/// 分页获取泛型数据列表
-		/// </summary>
-		/// <param name="pageSize">分页大小</param>
-		/// <param name="pageIndex">当前页</param>
-		/// <param name="count">返回记录数</param>
-		/// <returns>分页对象泛型集合</returns>
-		public List<Userfields> GetPageList(int pageSize, int pageIndex, out int count)
-		{
-			StringBuilder strSql = new StringBuilder();
-			strSql.Append("SELECT UID,Realname,QQ,MSN,Skype,Phone,Mobilephone,Location,Adress,IDcard,Signature,Introduce,Website FROM " + tablePrefix + "Userfields");
-			using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
-			{
-				List<Userfields> lst = GetPageList(dr, pageSize, pageIndex, out count);
-				return lst;
-			}
-		}
-
 		#region 私有方法，通常情况下无需修改
 		/// <summary>
 		/// 由一行数据得到一个实体
@@ -279,31 +225,6 @@ namespace DTCMS.SqlServerDAL
 			{
 				count++;
 				lst.Add(GetModel(dr));
-			}
-			return lst;
-		}
-
-		/// <summary>
-		/// 由SqlDataReader得到分页泛型数据列表
-		/// </summary>
-		/// <param name="dr">SqlDataReader对象</param>
-		/// <param name="pageSize">分页大小</param>
-		/// <param name="pageIndex">当前页数</param>
-		/// <param name="count">返回记录总数</param>
-		/// <returns>分页对象泛型集合</returns>
-		private List<Userfields> GetPageList(SqlDataReader dr, int pageSize, int pageIndex, out int count)
-		{
-			long first = GetFirstIndex(pageSize, pageIndex);
-			long last = GetLastIndex(pageSize, pageIndex);
-
-			count = 0;
-
-			List<Userfields> lst = new List<Userfields>();
-			while (dr.Read())
-			{
-				count++;
-				if (count >= first && count <= last)
-					lst.Add(GetModel(dr));
 			}
 			return lst;
 		}

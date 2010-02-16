@@ -154,7 +154,7 @@ namespace DTCMS.SqlServerDAL
         }
 
         /// <summary>
-        /// 删除一条数据
+        /// 删除一条用户数据
         /// </summary>
         /// <param name="UID">编号ID</param>
         /// <returns>返回影响行数</returns>
@@ -167,6 +167,28 @@ namespace DTCMS.SqlServerDAL
 				AddInParameter("@UID", SqlDbType.Int, 4, UID)};
 
             return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
+        }
+
+        /// <summary>
+        /// 批量删除用户
+        /// </summary>
+        /// <param name="UID">用户ID，多个ID用,号隔开</param>
+        /// <returns>返回影响行数</returns>
+        public int Delete(string UID)
+        {
+            string strSql = string.Format("DELETE FROM {0}Users WHERE UID IN({1})", tablePrefix, UID);
+            return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString());
+        }
+
+        /// <summary>
+        /// 批量审核用户
+        /// </summary>
+        /// <param name="UID">用户ID，多个ID用,号隔开</param>
+        /// <returns>返回影响行数</returns>
+        public int VerifyUsers(string UID)
+        {
+            string strSql = string.Format("UPDATE {0}Users SET IsVerify=ABS(IsVerify-1) WHERE UID IN({1})", tablePrefix, UID);
+            return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString());
         }
 
         /// <summary>
@@ -228,10 +250,22 @@ namespace DTCMS.SqlServerDAL
         }
 
         /// <summary>
-        /// 更新用户登录时间
+        /// 更新用户登录信息
         /// </summary>
-        public void UpdateLoginTime(int userID)
+        public void UpdateLoginInfo(int userID, string lastloginIP, DateTime lastloginTime)
         {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("UPDATE " + tablePrefix + "Users SET ");
+            strSql.Append("LastloginIP=@LastloginIP,");
+            strSql.Append("LastloginTime=@LastloginTime,");
+            strSql.Append("LoginCount=LoginCount+1");
+            strSql.Append(" WHERE UID=@UID");
+            SqlParameter[] cmdParms = {
+				AddInParameter("@LastloginIP", SqlDbType.Char, 15, lastloginIP),
+				AddInParameter("@LastloginTime", SqlDbType.DateTime, 8, lastloginTime),
+				AddInParameter("@UID", SqlDbType.Int, 4, userID)};
+
+            dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString(), cmdParms);
         }
 
         /// <summary>
@@ -269,6 +303,15 @@ namespace DTCMS.SqlServerDAL
 
             object obj = dbHelper.ExecuteScalar(CommandType.Text, strSql);
             return obj;
+        }
+
+        /// <summary>
+        /// 字符串缓存实现的通用分页存储过程
+        /// </summary>
+        public DataTable GetPageList(string fieldKey, int pageCurrent, int pageSize, string fieldShow, string fieldOrder, string where, out int pageCount)
+        {
+            string tableName = string.Format("{0}Users U LEFT JOIN {0}Roles R ON U.RoleID=R.ID", tablePrefix);
+            return GetPageList(tableName, fieldKey, pageCurrent, pageSize, fieldShow, fieldOrder, where, out pageCount);
         }
 
         /// <summary>

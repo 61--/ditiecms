@@ -14,15 +14,15 @@
     <script type="text/javascript">
         $(function() {
             showLoading();
-            LoadData();
+            loadData(1);
             hideMessage();
         });
 
-        function LoadData() {
+        function loadData(page) {
             $.ajax({
-                url: "/admin/ajax/news_list.aspx",
+                url: "../../ajax/news_list.aspx",
                 type: "GET",
-                data: "action=load&ran=" + Math.random(),
+                data: "action=load&page="+page+"&ran=" + Math.random(),
                 success: function(json) {
                     showGridTree(json);
                 }
@@ -30,14 +30,13 @@
         }
         var gridTree;
         function showGridTree(json) {
-            gridTree = new TableTree4J("gridTree", "/Inc/treetable/",true,true);
-            gridTree.config.useLine = false;
+            gridTree = new TableTree4J("gridTree", true, true);
             gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
 
             var headerDataList = new Array("文章标题", "所属栏目", "创建时间", "是否审核", "操作");
             var widthList = new Array("4%", "4%", "32%", "20%", "20%", "10%", "10%");
 
-            gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "展开/折叠", "header status text", "", "");
+            gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "", "", "");
             //设置列样式
             gridTree.gridHeaderColStyleArray = new Array("", "", "", "", "bleft");
             gridTree.gridDataCloStyleArray = new Array("", "", "", "", "");
@@ -45,64 +44,51 @@
             if (json != "") {
                 var data = eval("data=" + json);
                 $.each(data, function(i, n) {
-                var dataList = new Array("<a href=\"News_add.aspx?Id=" + n.id + "\">" + n.title + "</a>", n.classname, n.adddate, n.ischecked, "<a href=\"News_add.aspx?Id=" + n.id + "\">修改</a>&nbsp;&nbsp;<a href=\"javascript:DeleteData(" + n.id + ",false)\">删除</a>");
+                var dataList = new Array("<a href=\"article_add.aspx?Id=" + n.id + "\">" + n.title + "</a>", n.classname, n.adddate,
+                    n.isverify==1?"<a href=\"javascript:;\" onclick=\"verifyData(" + n.id + ",false,this)\">已审核</a>":"<a href=\"javascript:;\" onclick=\"verifyData(" + n.id + ",false,this)\" style=\"color:red\">未审核</a>",
+                    "<a href=\"article_add.aspx?Id=" + n.id + "\">修改</a>&nbsp;&nbsp;<a href=\"javascript:DeleteData(" + n.id + ",false)\">删除</a>");
                     gridTree.addGirdNode(dataList, n.id,-1,null, n.id, "");
                 });
             }
             gridTree.printTableTreeToElement("gridTreeDiv");
         }
     </script>
-    <style type="text/css">
-        .GridView{
-            width: 100%;
-            font-size: 12px;
-            border: 1px #CAD9EA solid;
-            border-collapse: collapse;
-        }
-        .GridHead td{
-            line-height: 28px;
-            height: 28px;
-            font-weight: bold;
-            text-indent: 10px;
-            background: url(../../images/blue/th_bg.gif) right bottom no-repeat;
-        }
-        .GridHead a{
-            white-space: nowrap;
-            text-decoration: none;
-        }
-        .GridHead .bleft{   
-        	background-position:left bottom;
-        }
-        .GridView td{
-            height: 26px;
-            text-indent: 10px;
-            border-top: 1px solid #D3E0ED;
-            border-bottom: 1px solid #D3E0ED;
-        }
-        .GridHighLightRow td{
-            background: #E0F0FD;
-        }
-        .class_order
-        {
-            width:60px;
-        }
-    </style>
 </head>
 <body>
     <form id="form1" runat="server"><div id="container">
 		<div id="tab_menu" class="tabs">
 			<ul>
-				<li class="tab_on"><a href="javascript:;" >后台首页</a></li>
+				<li class="tab_on"><a href="javascript:;" >文章管理</a></li>
 			</ul>
 		</div>
 		<div id="content">
 		    <div class="toolbar">
                 <a href="article_add.aspx" class="button b4"><img src="../../images/ico/i_add.gif" alt="" />添加文章</a>
                 <a href="javascript:Dialog.alert('您没有权限编辑文章！');" class="button b4"><img src="../../images/ico/i_edit.gif" alt="" />编辑文章</a>
+                <a href="javascript:verifyData(-1,true);" class="button b4"><img src="../../images/ico/i_verify.gif" alt="" />审核文章</a>
                 <a href="javascript:DeleteData(-1,true);" class="button b4"><img src="../../images/ico/i_allDelete.gif" alt="" />批量删除</a>
             </div>
 			<div id="gridTreeDiv">
 			</div>
+			<table>
+				<tr>
+					<td>
+					<div class="grayr">
+						<span class="disabled">&lt; </span>
+						<span class="current">1</span>
+						<a href="javascript:loadData(2)">2</a>
+						<a href="javascript:loadData(3)">3</a>
+						<a href="javascript:loadData(4)">4</a>
+						<a href="javascript:loadData(5)">5</a>
+						<a href="javascript:loadData(6)">6</a>
+						<a href="javascript:loadData(7)">7</a>...
+						<a href="javascript:loadData(199)">199</a>
+						<a href="javascript:loadData(200)">200</a>
+						<a href="javascript:loadData(2)"> 
+						&gt; </a></div>
+					</td>
+				</tr>
+			</table>
 		</div>
 	</div>
     </form>
@@ -111,39 +97,68 @@
         //flag:是否批量删除，true批量删除，false单个删除
         function DeleteData(aid, flag) {
             if (flag) {
-                var id = GetCheckId();
-                if (id == "") {
+                aid = getCheckId();
+                if (aid == "") {
                     Dialog.alert("请选择你要删除的数据!");
                     return;
                 }
-                else {
-                    aid = id;
-                }
             }
-
             Dialog.confirm("确定要删除文章吗？", function() {
                 $.ajax({
-                    url: "/admin/ajax/news_list.aspx",
+                    url: "../../ajax/news_list.aspx",
                     type: "GET",
                     data: "action=delete&Id=" + aid + "&ran=" + Math.random(),
                     success: function(responseText) {//提示
-                        if (responseText.toString().toUpperCase() == "TRUE") {
-                            LoadData();
-                            Dialog.alert("文章删除成功!");
+                        if (responseText>0) {
+                            showSuccess("成功删除"+responseText+"篇文章！");
+                            loadData(1);
                             return;
                         }
                         else {
-                            Dialog.alert(responseText);
+                            showError("删除文章失败！");
                             return;
                         }
                     },
                     error: function() {
-                        Dialog.alert("Ajax请求失败！");
+                        showError("删除文章失败！");
                         return;
                     }
                 });
             });
         }
+        //审核文章
+        function verifyData(aid, flag, elem) {
+            if (flag) {
+                aid = getCheckId();
+                if (aid == "") {
+                    Dialog.alert("请选择要审核的文章!");
+                    return;
+                }
+            }
+            $.ajax({
+                url: "../ajax/user_ajax.aspx",
+                type: "GET",
+                data: "action=verify&Id=" + aid + "&ran=" + Math.random(),
+                success: function(responseText) {
+                    if (responseText > 0) {
+                        if(flag){
+                            loadData(1);
+                            showSuccess("批量审核文章成功！");
+                        }else{
+                            elem.blur();
+                            if(elem.innerHTML=="未审核"){
+                                elem.innerHTML="已审核";
+                                elem.style.color="black";
+                            }else{
+                                elem.innerHTML="未审核";
+                                elem.style.color="red";
+                            }
+                        }
+                    }else {
+                        showError("审核文章失败！");
+                    }
+                }
+            });
     </script>
 </body>
 </html>

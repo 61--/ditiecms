@@ -8,24 +8,26 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
+using DTCMS.Common;
 using DTCMS.Entity;
 using DTCMS.IDAL;
 using DTCMS.DALFactory;
 
 namespace DTCMS.BLL
 {
-	/// <summary>
-	/// 业务逻辑类 Roles
-	/// </summary>
-	public class RolesBLL
-	{
-		private readonly IDAL_Roles dal = DataAccess.CreateFactoryDAL<IDAL_Roles>("RolesDAL");
-		public RolesBLL()
-		{ }
+    /// <summary>
+    /// 业务逻辑类 Roles
+    /// </summary>
+    public class RolesBLL
+    {
+        private readonly IDAL_Roles dal = DataAccess.CreateFactoryDAL<IDAL_Roles>("RolesDAL");
+        public RolesBLL()
+        { }
 
         /// <summary>
-		/// 增加一条数据
-		/// </summary>
+        /// 增加一条数据
+        /// </summary>
         /// <param name="model">实体对象</param>
         /// <returns>返回影响行数</returns>
         public int Add(Roles model)
@@ -34,8 +36,8 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-		/// 更新一条数据
-		/// </summary>
+        /// 更新一条数据
+        /// </summary>
         /// <param name="model">实体对象</param>
         /// <returns>返回影响行数</returns>
         public int Update(Roles model)
@@ -44,8 +46,8 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-		/// 删除一条数据
-		/// </summary>
+        /// 删除一条数据
+        /// </summary>
         /// <param name="ID">ID</param>
         /// <returns>返回影响行数</returns>
         public int Delete(int ID)
@@ -54,8 +56,18 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-		/// 判断某个字段值是否存在
-		/// </summary>
+        /// 批量删除角色
+        /// </summary>
+        /// <param name="UID">角色ID，多个ID用,号隔开</param>
+        /// <returns>返回影响行数</returns>
+        public int Delete(string UID)
+        {
+            return dal.Delete(UID);
+        }
+
+        /// <summary>
+        /// 判断某个字段值是否存在
+        /// </summary>
         /// <param name="ID">ID</param>
         /// <param name="filedName">字段名称</param>
         /// <param name="filedValue">字段值</param>
@@ -66,8 +78,8 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-		/// 得到一个对象实体
-		/// </summary>
+        /// 得到一个对象实体
+        /// </summary>
         /// <param name="ID">ID</param>
         /// <returns>实体对象</returns>
         public Roles GetModel(int ID)
@@ -76,8 +88,8 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-		/// 获得泛型数据列表
-		/// </summary>
+        /// 获得泛型数据列表
+        /// </summary>
         /// <param name="count">返回记录数</param>
         /// <returns>对象泛型集合</returns>
         public List<Roles> GetList(out int count)
@@ -86,21 +98,28 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-		/// 分页获取泛型数据列表
-		/// </summary>
-        /// <param name="pageSize">分页大小</param>
-        /// <param name="pageIndex">当前页</param>
-        /// <param name="count">返回记录数</param>
-        /// <returns>分页对象泛型集合</returns>
-        public List<Roles> GetPageList(int pageSize, int pageIndex, out int count)
+        /// 获取角色数据列表
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetList()
         {
-            if (pageSize <= 0)
-                throw new Exception("每页数据条数必须大于0。");
-
-            if (pageIndex <= 0)
-                throw new Exception("页索引必须大于0。");
-
-            return dal.GetPageList(pageSize, pageIndex, out count);
+            return dal.GetDataTable("ID,RoleName", "");
         }
-	}
+
+        /// <summary>
+        /// 获取DataTable，并转换成Json格式数据
+        /// </summary>
+        public string GetRolesJsonData()
+        {
+            DataTable dt = dal.GetDataTable("ID,RoleName,Description,AddDate", "");
+            if (dt != null)
+            {
+                return Utils.DataTableToJson(dt).ToString();
+            }
+            else
+            {
+                return "";
+            }
+        }
+    }
 }

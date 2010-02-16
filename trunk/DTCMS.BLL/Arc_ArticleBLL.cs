@@ -143,28 +143,28 @@ namespace DTCMS.BLL
         /// <summary>
         /// 字符串缓存实现的通用分页存储过程
         /// </summary>
-        /// <param name="tbname">要分页显示的表名，可以使用表联合  </param>
-        /// <param name="FieldKey">用于定位记录的主键(惟一键)字段,只能是单个字段  </param>
-        /// <param name="PageCurrent">要显示的页码  </param>
-        /// <param name="PageSize">每页的大小(记录数)  </param>
-        /// <param name="FieldShow">以逗号分隔的要显示的字段列表,如果不指定,则显示所有字段  </param>
-        /// <param name="FieldOrder">用于指定排序顺序  </param>
-        /// <param name="Where">查询条件  </param>
-        /// <param name="PageCount">总页数  </param>
+        /// <param name="fieldKey">用于定位记录的主键(惟一键)字段,只能是单个字段</param>
+        /// <param name="pageCurrent">要显示的页码</param>
+        /// <param name="pageSize">每页的大小(记录数)</param>
+        /// <param name="fieldShow">以逗号分隔的要显示的字段列表,如果不指定,则显示所有字段</param>
+        /// <param name="fieldOrder">用于指定排序顺序</param>
+        /// <param name="where">查询条件</param>
+        /// <param name="pageCount">总页数</param>
         /// <returns></returns>
-        public DataTable GetDataTable(string FieldKey, int PageCurrent, int PageSize
-            , string FieldShow, string FieldOrder, string Where, out int PageCount)
+        public DataTable GetPageList(string fieldKey, int pageCurrent, int pageSize
+            , string fieldShow, string fieldOrder, string where, out int pageCount)
         {
-            return dal.GetDataTable(FieldKey, PageCurrent, PageSize
-                , FieldShow, FieldOrder, Where, out PageCount);
+            return dal.GetPageList(fieldKey, pageCurrent, pageSize
+                , fieldShow, fieldOrder, where, out pageCount);
         }
 
         /// <summary>
-        /// 获取DataTable，并转换成Joson数据        /// </summary>
-        public string CreateArticleTableToJoan()
+        /// 获取DataTable，并转换成Json格式数据
+        /// </summary>
+        public string GetArticleJsonData(int currentPage)
         {
             int pagecount;
-            DataTable dt = GetDataTable("ID", 1, 20, "a.ID,a.Title,c.ClassName,a.AddDate,a.IsChecked", "a.ID DESC", null, out pagecount);
+            DataTable dt = GetPageList("ID", currentPage, 10, "A.ID,A.Title,C.ClassName,A.AddDate,A.IsVerify", "A.ID DESC", null, out pagecount);
             if (dt != null)
             {
                 return Utils.DataTableToJson(dt).ToString();
