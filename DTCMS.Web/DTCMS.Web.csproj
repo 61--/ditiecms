@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{7DBA0670-7419-4E7A-BCB7-92A8C7151733}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxPro.2, Version=9.2.17.1, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="CKFinder, Version=1.4.0.19284, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL" />
     <Reference Include="FredCK.FCKeditorV2, Version=2.2.2755.20620, Culture=neutral, PublicKeyToken=4f86767c9b519a06">
       <SpecificVersion>False</SpecificVersion>
@@ -95,6 +96,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\AjaxTest.aspx.cs">
+      <DependentUpon>AjaxTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\AjaxTest.aspx.designer.cs">
+      <DependentUpon>AjaxTest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\ajax\attachment_list.aspx.cs">
       <DependentUpon>attachment_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -367,6 +375,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\AjaxTest.aspx" />
     <Content Include="admin\ajax\attachment_list.aspx" />
     <Content Include="admin\ajax\class_list.aspx" />
     <Content Include="admin\ajax\dialog_list.aspx" />
@@ -1058,6 +1067,9 @@
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/DTCMS_Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
