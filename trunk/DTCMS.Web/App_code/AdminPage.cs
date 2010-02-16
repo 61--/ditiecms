@@ -10,7 +10,7 @@ namespace DTCMS.Web.admin
         protected override void OnInit(EventArgs e)
         {
             //检查是否登陆
-            ValidateUser();
+            //ValidateUser();
 
             base.OnInit(e);
         }
