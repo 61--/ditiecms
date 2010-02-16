@@ -19,6 +19,6 @@ namespace DTCMS.IDAL
         /// <param name="Where">查询条件  </param>
         /// <param name="PageCount">总页数  </param>
         /// <returns></returns>
-        DataTable GetDataTable(string tbname, string FieldKey, int PageCurrent, int PageSize, string FieldShow, string FieldOrder, string Where, out int PageCount);
+        DataTable GetPageList(string tbname, string fieldKey, int pageCurrent, int pageSize, string fieldShow, string fieldOrder, string where, out int pageCount);
     }
 }

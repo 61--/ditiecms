@@ -10,7 +10,7 @@ namespace DTCMS.Web.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            throw new Exception("错误");
+            //throw new Exception("错误");
         }
     }
 }

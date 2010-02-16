@@ -74,33 +74,5 @@ namespace DTCMS.BLL
         {
             return dal.GetModel(UID);
         }
-
-        /// <summary>
-		/// 获得泛型数据列表
-		/// </summary>
-        /// <param name="count">返回记录数</param>
-        /// <returns>对象泛型集合</returns>
-        public List<Userfields> GetList(out int count)
-        {
-            return dal.GetList(out count);
-        }
-
-        /// <summary>
-		/// 分页获取泛型数据列表
-		/// </summary>
-        /// <param name="pageSize">分页大小</param>
-        /// <param name="pageIndex">当前页</param>
-        /// <param name="count">返回记录数</param>
-        /// <returns>分页对象泛型集合</returns>
-        public List<Userfields> GetPageList(int pageSize, int pageIndex, out int count)
-        {
-            if (pageSize <= 0)
-                throw new Exception("每页数据条数必须大于0。");
-
-            if (pageIndex <= 0)
-                throw new Exception("页索引必须大于0。");
-
-            return dal.GetPageList(pageSize, pageIndex, out count);
-        }
 	}
 }

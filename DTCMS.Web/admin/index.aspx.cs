@@ -13,6 +13,12 @@ namespace DTCMS.Web.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["AdminUser"] != null)
+            {
+                Users adminUser = (Users)Session["AdminUser"];
+                lbl_username.Text = adminUser.UserName;
+            }
+
             ModulesBLL modulesBll = new ModulesBLL();
 
             int count;

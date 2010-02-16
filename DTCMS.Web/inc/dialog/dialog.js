@@ -573,6 +573,19 @@ Dialog.open = function(arg) {
     diag.show();
     return diag;
 };
+Dialog.open = function(title, onOkEvent, url, width, height) {
+    var diag = new Dialog();
+    diag.Title = title;
+    diag.Width = width || 400;
+    diag.Height = height || 200;
+    diag.URL = url;
+    diag.OKEvent = function() {
+        var win = diag.innerFrame.contentWindow;
+        onOkEvent(win);
+        diag.close();
+    };
+    diag.show();
+};
 if (isIE) {
     window.attachEvent("onload", Dialog.attachBehaviors);
 } else {
@@ -676,19 +689,4 @@ function dialogAttachmentUpload(url, cancelevent, width, height) {
     };
 
     diag.show();
-}
-
-function showDialog(title, onOkEvent, url, width, height) {
-    var dialog = new Dialog();
-
-    dialog.Title = title;
-    dialog.Width = (width || 400) >= 400 ? (width || 400) : 400;
-    dialog.Height = (height || 300) >= 300 ? (height || 300) : 300;
-    dialog.URL = url;
-    dialog.OKEvent = function() {
-        var win = dialog.innerFrame.contentWindow;
-        onOkEvent(win);
-        dialog.close();
-    };
-    dialog.show();
 }

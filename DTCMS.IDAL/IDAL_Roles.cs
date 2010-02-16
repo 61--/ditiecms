@@ -47,6 +47,13 @@ namespace DTCMS.IDAL
 		/// <returns>返回影响行数</returns>
 		int Delete(int ID);
 
+        /// <summary>
+        /// 批量删除角色
+        /// </summary>
+        /// <param name="UID">角色ID，多个ID用,号隔开</param>
+        /// <returns>返回影响行数</returns>
+        int Delete(string UID);
+
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
@@ -84,14 +91,5 @@ namespace DTCMS.IDAL
 		/// <param name="count">返回记录数</param>
 		/// <returns>对象泛型集合</returns>
 		List<Roles> GetList(out int count);
-
-		/// <summary>
-		/// 分页获取泛型数据列表
-		/// </summary>
-		/// <param name="pageSize">分页大小</param>
-		/// <param name="pageIndex">当前页数</param>
-		/// <param name="count">返回记录总数</param>
-		/// <returns>分页对象泛型集合</returns>
-		List<Roles> GetPageList(int pageSize, int pageIndex, out int count);
 	}
 }

@@ -22,7 +22,7 @@ namespace DTCMS.Entity
 		private int _id;
 		private string _moduleID;
 		private string _parentID;
-		private string _name;
+        private string _moduleName;
 		private string _eName;
 		private byte _moduleDepth;
 		private string _moduleURL;
@@ -61,10 +61,10 @@ namespace DTCMS.Entity
 		/// <summary>
 		/// 模块名称
 		/// </summary>
-		public string Name
+        public string ModuleName
 		{
-			set { _name = value; }
-			get { return _name; }
+			set { _moduleName = value; }
+			get { return _moduleName; }
 		}
 		/// <summary>
 		/// 模块英文名

@@ -8,6 +8,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
+using DTCMS.Common;
 using DTCMS.Entity;
 using DTCMS.IDAL;
 using DTCMS.DALFactory;
@@ -44,13 +46,33 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-        /// 删除一条数据
+        /// 删除一条用户数据
         /// </summary>
         /// <param name="UID">UID</param>
         /// <returns>返回影响行数</returns>
         public int Delete(int UID)
         {
             return dal.Delete(UID);
+        }
+
+        /// <summary>
+        /// 批量删除用户
+        /// </summary>
+        /// <param name="UID">用户ID，多个ID用,号隔开</param>
+        /// <returns>返回影响行数</returns>
+        public int Delete(string UID)
+        {
+            return dal.Delete(UID);
+        }
+
+        /// <summary>
+        /// 批量审核用户
+        /// </summary>
+        /// <param name="UID">用户ID，多个ID用,号隔开</param>
+        /// <returns>返回影响行数</returns>
+        public int VerifyUsers(string UID)
+        {
+            return dal.VerifyUsers(UID);
         }
 
         /// <summary>
@@ -74,11 +96,11 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-        /// 更新用户登录时间
+        /// 更新用户登录信息
         /// </summary>
-        public void UpdateLoginTime(int userID)
+        public void UpdateLoginInfo(int userID, string lastloginIP)
         {
-            dal.UpdateLoginTime(userID);
+            dal.UpdateLoginInfo(userID, lastloginIP, DateTime.Now);
         }
 
         /// <summary>
@@ -117,6 +139,41 @@ namespace DTCMS.BLL
                 throw new Exception("页索引必须大于0。");
 
             return dal.GetPageList(pageSize, pageIndex, out count);
+        }
+
+        /// <summary>
+        /// 字符串缓存实现的通用分页存储过程
+        /// </summary>
+        /// <param name="fieldKey">用于定位记录的主键(惟一键)字段,只能是单个字段</param>
+        /// <param name="pageCurrent">要显示的页码</param>
+        /// <param name="pageSize">每页的大小(记录数)</param>
+        /// <param name="fieldShow">以逗号分隔的要显示的字段列表,如果不指定,则显示所有字段</param>
+        /// <param name="fieldOrder">用于指定排序顺序</param>
+        /// <param name="where">查询条件</param>
+        /// <param name="pageCount">总页数</param>
+        /// <returns></returns>
+        public DataTable GetPageList(string fieldKey, int pageCurrent, int pageSize
+            , string fieldShow, string fieldOrder, string where, out int pageCount)
+        {
+            return dal.GetPageList(fieldKey, pageCurrent, pageSize
+                , fieldShow, fieldOrder, where, out pageCount);
+        }
+
+        /// <summary>
+        /// 获取DataTable，并转换成Json格式数据
+        /// </summary>
+        public string GetUserJsonData(int currentPage)
+        {
+            int pagecount;
+            DataTable dt = GetPageList("UID", currentPage, 10, "UID,UserName,Email,RoleName,RegisterIP,RegisterTime,IsVerify", "UID DESC", null, out pagecount);
+            if (dt != null)
+            {
+                return Utils.DataTableToJson(dt).ToString();
+            }
+            else
+            {
+                return "";
+            }
         }
     }
 }

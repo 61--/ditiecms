@@ -61,7 +61,7 @@
                             TAG标签<sup><a id="H0201001" href="javascript:;" onmouseover="javascript:showHelper('#H0201001', '帮助主题', '多个TAG标签用半角逗号隔开',30)" onmouseout="hideHelper()" title="查看帮助">[?]</a></sup>:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_Tags" class="textbox" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" onclick="add_tags();" />
+                            <input type="text" id="txt_Tags" class="textbox" runat="server" /><img src="../../images/blue/s.gif" class="select" alt="选取" onclick="add_tags();" />
                         </td>
                     </tr>
                     <tr>
@@ -70,8 +70,8 @@
                         </td>
                         <td class="main_bright split">
                             <input type="hidden" id="txt_ClassID" class="textbox short" runat="server" />
-                            <input type="text" id="txt_ClassName" class="textbox short" runat="server" disabled="disabled" /><img src="../images/blue/s.gif" class="select" alt="选择" onclick="add_Class();" />
-                            <span class="main_bleft">文章来源: </span><input type="text" id="txt_Source" class="textbox" style="width:120px;" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" onclick="add_source();" />
+                            <input type="text" id="txt_ClassName" class="textbox short" runat="server" disabled="disabled" /><img src="../../images/blue/s.gif" class="select" alt="选择" onclick="add_Class();" />
+                            <span class="main_bleft">文章来源: </span><input type="text" id="txt_Source" class="textbox" style="width:120px;" runat="server" /><img src="../../images/blue/s.gif" class="select" alt="选择" onclick="add_source();" />
                         </td>
                     </tr>
                     <tr>
@@ -79,7 +79,7 @@
                             文章作者:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_Author" class="textbox" style="width:120px;" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" onclick="add_author();" />
+                            <input type="text" id="txt_Author" class="textbox" style="width:120px;" runat="server" /><img src="../../images/blue/s.gif" class="select" alt="选取" onclick="add_author();" />
                             <span class="main_bleft">责任编辑: </span><input type="text" id="txt_Editor" class="textbox" style="width:120px;" runat="server" />
                         </td>
                     </tr>
@@ -88,7 +88,7 @@
                             文章缩略图:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ImageUrl" class="textbox" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选取" onclick="add_Image();" />
+                            <input type="text" id="txt_ImageUrl" class="textbox" runat="server" /><img src="../../images/blue/s.gif" class="select" alt="选取" onclick="add_Image();" />
                             <input type="checkbox" name="chk_IsRemoteUrl" id="chk_IsRemoteUrl" runat="server" /><label for="chk_IsRemoteUrl">远程图片</label>
                         </td>
                     </tr>
@@ -124,7 +124,7 @@
                             副栏目:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ViceClassID" class="textbox short" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" />
+                            <input type="text" id="txt_ViceClassID" class="textbox short" runat="server" /><img src="../../images/blue/s.gif" class="select" alt="选择" />
                             <span class="main_bleft">权重: </span><input type="text" id="txt_OrderID" class="textbox" style="width:120px;" runat="server" /> 权重越大，排序越前
                         </td>
                     </tr>
@@ -133,7 +133,7 @@
                             文章模版:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_Templet" class="textbox" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" />留空则按照栏目默认设置
+                            <input type="text" id="txt_Templet" class="textbox" runat="server" /><img src="../../images/blue/s.gif" class="select" alt="选择" />留空则按照栏目默认设置
                         </td>
                     </tr>
                     <tr>
@@ -166,7 +166,7 @@
                             相关文章:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_SimilarArticle" class="textbox long" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" /> 多个ID用逗号,隔开
+                            <input type="text" id="txt_SimilarArticle" class="textbox long" runat="server" /><img src="../../images/blue/s.gif" class="select" alt="选择" /> 多个ID用逗号,隔开
                         </td>
                     </tr>
                     <tr>
@@ -174,7 +174,7 @@
                             文章关键字:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_Keywords" class="textbox long" runat="server" /><img src="../images/blue/s.gif" class="select" alt="选择" /> 多个关键字用逗号,隔开
+                            <input type="text" id="txt_Keywords" class="textbox long" runat="server" /><img src="../../images/blue/s.gif" class="select" alt="选择" /> 多个关键字用逗号,隔开
                         </td>
                     </tr>
                     <tr>
@@ -192,7 +192,7 @@
                         <td class="main_bright">
                             <input type="checkbox" name="chk_IsHtml" id="chk_IsHtml" checked="true" runat="server" /><label for="chk_IsHtml">生成静态页(不选择动态访问)</label>
                             <input type="checkbox" name="chk_IsComment" id="chk_IsComment" checked="true" runat="server" /><label for="chk_IsComment">允许评论</label>
-                            <input type="checkbox" name="chk_IsChecked" id="chk_IsChecked" runat="server" /><label for="chk_IsChecked">已审核</label>
+                            <input type="checkbox" name="chk_IsVerify" id="chk_IsVerify" runat="server" /><label for="chk_IsVerify">已审核</label>
                         </td>
                     </tr>
                 </table>
@@ -224,7 +224,7 @@
             }
         }
         function add_Class() {   //栏目
-            showDialog("栏目列表", class_onOk, "/admin/dialog/classpagelist.aspx");
+            Dialog.open("栏目列表", class_onOk, "/admin/dialog/classpagelist.aspx");
         }
         function class_onOk(win) {
             var classJson = win.getClasses();
@@ -233,7 +233,7 @@
         }
         
         function add_tags() {
-            showDialog("关键字", tag_onOk, "/admin/dialog/taglist.aspx");    
+            Dialog.open("关键字", tag_onOk, "/admin/dialog/taglist.aspx");    
         }
         function tag_onOk(win) {
             var tagList = win.getTags();
@@ -241,7 +241,7 @@
         }
 
         function add_source() {
-            showDialog("文章来源", soutce_onOk, "/admin/dialog/newssourcelist.aspx");
+            Dialog.open("文章来源", soutce_onOk, "/admin/dialog/newssourcelist.aspx");
         }
         function soutce_onOk(win) {
             var sourceList = win.getnews();
@@ -249,7 +249,7 @@
         }
 
         function add_author() {
-            showDialog("作者", author_onOk, "/admin/dialog/authorlist.aspx");
+            Dialog.open("作者", author_onOk, "/admin/dialog/authorlist.aspx");
         }
         function author_onOk(win) {
             var authorList = win.getAuthors();

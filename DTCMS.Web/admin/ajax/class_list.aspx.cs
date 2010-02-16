@@ -18,7 +18,7 @@ namespace DTCMS.Web.admin
     public partial class class_list : AdminPage
     {
         private Arc_ClassBLL bllClass = new Arc_ClassBLL();     //栏目
-        private Arc_ArticleBLL bllArticle = new Arc_ArticleBLL();   //文章
+        private Arc_ArticleBLL articleBll = new Arc_ArticleBLL();   //文章
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -75,7 +75,7 @@ namespace DTCMS.Web.admin
                     {//存在子栏目
                         return "该栏目存在子栏目，请先删除子栏目！";
                     }
-                    if (bllArticle.ExistAtricleToClass(int.Parse(cid[i])))
+                    if (articleBll.ExistAtricleToClass(int.Parse(cid[i])))
                     {//存在文章
                         return "该栏目下存在文章，请先删除文章！";
                     }

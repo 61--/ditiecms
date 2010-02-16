@@ -117,7 +117,7 @@
         //flag:是否批量删除，true批量删除，false单个删除
         function DeleteFile(path) {
 //            if (flag) {
-//                var id = GetCheckId();
+//                var id = getCheckId();
 //                if (id == "") {
 //                    Dialog.alert("请选择你要删除的数据!");
 //                    return;

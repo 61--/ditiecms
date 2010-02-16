@@ -8,13 +8,9 @@
     <title>栏目添加</title>
     <link href="../css/blue_body.css" rel="stylesheet" type="text/css" />
     <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
-
     <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
-
     <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
-
     <script type="text/javascript" src="../js/common.js"></script>
-
 </head>
 <body>
     <form id="form1" runat="server">
@@ -269,7 +265,6 @@
         </div>
     </div>
     </form>
-
     <script type="text/javascript">
         function get_ClassEName() {
             var classname = $("#txt_ClassName");
@@ -288,7 +283,7 @@
             }
         }
         function add_parentClass() {   //栏目
-            showDialog("栏目列表", class_onOk, "/admin/dialog/classpagelist.aspx");
+            Dialog.open("栏目列表", class_onOk, "/admin/dialog/classpagelist.aspx");
         }
         function class_onOk(win) {
             var classJson = win.getClasses();

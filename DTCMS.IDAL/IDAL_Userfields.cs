@@ -70,28 +70,5 @@ namespace DTCMS.IDAL
         /// <param name="where">查询条件</param>
         /// <returns>Object对象</returns>
         object GetSingle(string filed, string where);
-
-		/// <summary>
-		/// 根据查询字段获取列表
-		/// </summary>
-		/// <param name="fileds">要查询的字段，多个字段用,号隔开</param>
-		/// <returns>DataTable数据集合</returns>
-		DataTable GetDataTable(string fileds, string where);
-
-		/// <summary>
-		/// 获取泛型数据列表
-		/// </summary>
-		/// <param name="count">返回记录数</param>
-		/// <returns>对象泛型集合</returns>
-		List<Userfields> GetList(out int count);
-
-		/// <summary>
-		/// 分页获取泛型数据列表
-		/// </summary>
-		/// <param name="pageSize">分页大小</param>
-		/// <param name="pageIndex">当前页数</param>
-		/// <param name="count">返回记录总数</param>
-		/// <returns>分页对象泛型集合</returns>
-		List<Userfields> GetPageList(int pageSize, int pageIndex, out int count);
 	}
 }

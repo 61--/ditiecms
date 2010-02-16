@@ -75,10 +75,17 @@ namespace DTCMS.Common
         {
             if (HttpContext.Current.Request.QueryString[queryName] != null)
             {
-                if (Regular.ValidateNum(HttpContext.Current.Request.QueryString[queryName].Trim()))
+                try
+                {
                     return int.Parse(HttpContext.Current.Request.QueryString[queryName].ToString().Trim());
-                else
+                }
+                catch
+                {
+
                     return -1;
+                }
+                    
+                
             }
             else
             {
@@ -107,10 +114,17 @@ namespace DTCMS.Common
         {
             if (HttpContext.Current.Request.Form[formName] != null)
             {
-                if (Regular.ValidateNum(HttpContext.Current.Request.Form[formName].Trim()))
+                try
+                {
                     return int.Parse(HttpContext.Current.Request.Form[formName].ToString().Trim());
-                else
+                }
+                catch
+                {
+
                     return -1;
+                }
+                    
+
             }
             else
             {
@@ -502,8 +516,8 @@ namespace DTCMS.Common
         /// <returns></returns>
         public static StringBuilder DataTableToJson(System.Data.DataTable dt)
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append("[\r\n");
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[\r\n");
 
             //数据表字段名和类型数组
             string[] dt_field = new string[dt.Columns.Count];
@@ -557,14 +571,14 @@ namespace DTCMS.Common
                     i++;
                 }
                 i = 0;
-                stringBuilder.Append(string.Format(formatStr, objectArray));
+                sb.Append(string.Format(formatStr, objectArray));
             }
-            if (stringBuilder.ToString().EndsWith(","))
-                stringBuilder.Remove(stringBuilder.Length - 1, 1);//去掉尾部","号
+            if (sb.ToString().EndsWith(","))
+                sb.Remove(sb.Length - 1, 1);//去掉尾部","号
 
             dt.Dispose();
 
-            return stringBuilder.Append("\r\n];");
+            return sb.Append("\r\n];");
         }
         #endregion
 

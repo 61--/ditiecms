@@ -33,7 +33,7 @@ namespace DTCMS.Web.admin
                     foreach (Modules m in mlist)
                     {
                         sb.Append("<div class=\"menu\">\r\n<dl>\r\n");
-                        sb.AppendFormat("<dt><a href=\"javascript:toggleMenu('{0}');\" hidefocus=\"true\">{1}</a></dt>\r\n", m.ModuleID, m.Name);
+                        sb.AppendFormat("<dt><a href=\"javascript:toggleMenu('{0}');\" hidefocus=\"true\">{1}</a></dt>\r\n", m.ModuleID, m.ModuleName);
                         sb.AppendFormat("<dd id=\"{0}\" style=\"display:block;\">\r\n<ul>\r\n", m.ModuleID);
                         sb.Append(this.GetSubnav(m.ModuleID));
                         sb.Append("</ul>\r\n</dd>\r\n</dl>\r\n</div>\r\n");
@@ -56,7 +56,7 @@ namespace DTCMS.Web.admin
                 StringBuilder sb = new StringBuilder();
                 foreach (Modules m in submlist)
                 {
-                    sb.AppendFormat("<li><a href=\"{0}\" alt=\"{1}\" target=\"{2}\">{3}</a></li>\r\n", m.ModuleURL, m.Description, m.Target, m.Name);
+                    sb.AppendFormat("<li><a href=\"{0}\" alt=\"{1}\" target=\"{2}\">{3}</a></li>\r\n", m.ModuleURL, m.Description, m.Target, m.ModuleName);
                 }
                 return sb.ToString();
             }

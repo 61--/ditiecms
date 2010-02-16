@@ -1,23 +1,20 @@
 /*--------------------------------------------------|
 | TableTree4j 1.1 Release                           |
-| IE Mozilla  Opera  FireFox  Netscape  Safari      |
-| www.xcode-studio.cn                               |
+| www.xcode-studio.cn    www.91aspx.com             |
 |---------------------------------------------------|
-| authod : Lanner.K       YuBiao Ke                 |
+| author: Lanner.K    YuBiao Ke                     |
 | Copyright (c) 2007-2008 xcode-studio              |
-| This script can be used freely as long as all     |
-| copyright messages are intact.                    |
 | Create Date: 2008.5.7                             |
-| Updated: 2008.5.17                                |
+| Updated: 2010.2.14 0:29                           |
+| Editor: Yuhuo Li    Panxing Lin                   |
 |--------------------------------------------------*/
-
 //TableTree4J Object
-function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
+function TableTree4J(objectName, sequence, checked) {
     //vars-------------------------------------------------------------------
-    var sequencenum = 0;    //序列
+    var sequencenum = 1;    //序列
     var widthList = 0;  //列百分比
 
-    this.tableTree4JDir = tableTree4JDir;
+    this.t4JDir = "/inc/treetable/";
     this.obj = objectName;
     this.treeNodes = [];
     this.htmlCode = "";
@@ -29,41 +26,40 @@ function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
     this.selectMenuNodeHrefId;
     this.map = new HashMap();
     this.sequence = sequence;    //序列
-    this.checked = checked;    //checkbox框
+    this.checked = checked;    //是否有checkbox框
 
     this.icon = {
-        root: this.tableTree4JDir + 'img/base.gif',
-        folder: this.tableTree4JDir + 'img/folder.gif',
-        folderOpen: this.tableTree4JDir + 'img/folderopen.gif',
-        node: this.tableTree4JDir + 'img/page.gif',
-        empty: this.tableTree4JDir + 'img/empty.gif',
-        line: this.tableTree4JDir + 'img/line.gif',
-        join: this.tableTree4JDir + 'img/join.gif',
-        joinBottom: this.tableTree4JDir + 'img/joinbottom.gif',
-        plus: this.tableTree4JDir + 'img/plus.gif',
-        plusBottom: this.tableTree4JDir + 'img/plusbottom.gif',
-        minus: this.tableTree4JDir + 'img/minus.gif',
-        minusBottom: this.tableTree4JDir + 'img/minusbottom.gif',
-        nlPlus: this.tableTree4JDir + 'img/nolines_plus.gif',
-        nlMinus: this.tableTree4JDir + 'img/nolines_minus.gif'
+        root: this.t4JDir + 'img/base.gif',
+        folder: this.t4JDir + 'img/folder.gif',
+        folderOpen: this.t4JDir + 'img/folderopen.gif',
+        node: this.t4JDir + 'img/page.gif',
+        empty: this.t4JDir + 'img/empty.gif',
+        line: this.t4JDir + 'img/line.gif',
+        join: this.t4JDir + 'img/join.gif',
+        joinBottom: this.t4JDir + 'img/joinbottom.gif',
+        plus: this.t4JDir + 'img/plus.gif',
+        plusBottom: this.t4JDir + 'img/plusbottom.gif',
+        minus: this.t4JDir + 'img/minus.gif',
+        minusBottom: this.t4JDir + 'img/minusbottom.gif',
+        nlPlus: this.t4JDir + 'img/nolines_plus.gif',
+        nlMinus: this.t4JDir + 'img/nolines_minus.gif'
     };
     this.config = {
-        treeMode: "GRID", //"MENU"
-        treeStyle: "GRIDTREESTYLE", //"MENUTREESTYLE"
+        treeMode: "Grid", //"MENU"
+        treeStyle: "GridTreeStyle", //"MENUTREESTYLE"
         dafultTarget: null,
-        rootNodeBtn: true,
+        rootNodeBtn: false,
         folderAutoUrl: false,
         nodeHrefSelectBg: false,
         hrefOnfouceLine: false,
         hrefIconOnfouceLine: false,
         showTipTitle: true,
-        showStatusText: true,
         inOrder: true, //不排序，firefox同级不排序
-        useCookies: false,
+        useCookies: true,
         cookieTime: 30 * 24 * 60 * 60 * 1000,
         useIcon: false,
-        useLine: true,
-        booleanInitOpenAll: false,
+        useLine: false,
+        booleanInitOpenAll: true,
         booleanHighLightRow: true,
         highLightRowClassName: "GridHighLightRow"
     }
@@ -103,18 +99,18 @@ function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
 
     //change tree to menu mode
     TableTree4J.prototype.toMenuMode = function() {
-        this.config.treeMode = "MENU";
-        this.config.treeStyle = "MENUTREESTYLE";
+        this.config.treeMode = "Menu";
+        this.config.treeStyle = "MenuTreeStyle";
         this.config.rootNodeBtn = false;
         this.config.folderAutoUrl = true;
         this.config.nodeHrefSelectBg = true;
         this.config.useIcon = true;
         this.config.booleanHighLightRow = false;
-        this.descTable("<table border=\"0\" id=\"" + this.obj + "Table\" width=\"100%\" cellpadding=\"0\" style=\"border-collapse: collapse\" >");
+        this.descTable("<table id=\"" + this.obj + "Table\" width=\"100%\" cellpadding=\"0\" style=\"border-collapse:collapse\" >");
     }
 
     //set menu tree root
-    TableTree4J.prototype.setMenuRoot = function(rootName, id, booleanOpen, classStyle, hrefTip, hrefStatusText, icon, iconOpen) {
+    TableTree4J.prototype.setMenuRoot = function(rootName, id, booleanOpen, classStyle, hrefTip, icon, iconOpen) {
         var menuRootStyle = classStyle; //||"MenuRoot";
         var menuRootIcon = icon || this.icon.root;
         var menuRootOpenIcon = iconOpen || this.icon.root;
@@ -134,7 +130,7 @@ function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
         }
 
         //dataList,id,pid,booleanOpen,order,url,target,classStyle,icon,iconOpen
-        var nod = new Node(new Array(rootName), id, "", menuRootbooleanOpen, "", null, null, menuRootStyle, menuRootIcon, menuRootOpenIcon, hrefTip, hrefStatusText);
+        var nod = new Node(new Array(rootName), id, "", menuRootbooleanOpen, "", null, null, menuRootStyle, menuRootIcon, menuRootOpenIcon, hrefTip);
         if (menuRootIcon == null || menuRootIcon == "") {
             nod.icon = this.icon.root;
         }
@@ -167,20 +163,19 @@ function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
 
 
     //add menu node
-    TableTree4J.prototype.addMenuNode = function(menuName, id, pid, booleanOpen, order, url, target, hrefTip, hrefStatusText, classStyle, icon, iconOpen) {
-        var nod = new Node(new Array(menuName), id, pid, booleanOpen, order, url, target, classStyle, icon, iconOpen, hrefTip, hrefStatusText);
+    TableTree4J.prototype.addMenuNode = function(menuName, id, pid, booleanOpen, order, url, target, hrefTip, classStyle, icon, iconOpen) {
+        var nod = new Node(new Array(menuName), id, pid, booleanOpen, order, url, target, classStyle, icon, iconOpen, hrefTip);
         this.addNode(nod);
     }
 
     //add grid node
-    TableTree4J.prototype.addGirdNode = function(dataList, id, pid, booleanOpen, order, url, target, hrefTip, hrefStatusText, classStyle, icon, iconOpen) {
-        var nod = new Node(dataList, id, pid, booleanOpen, order, url, target, classStyle, icon, iconOpen, hrefTip, hrefStatusText);
+    TableTree4J.prototype.addGirdNode = function(dataList, id, pid, booleanOpen, order, url, target, hrefTip, classStyle, icon, iconOpen) {
+        var nod = new Node(dataList, id, pid, booleanOpen, order, url, target, classStyle, icon, iconOpen, hrefTip);
         this.addNode(nod);
     }
 
     //set the tabletree list header
-    TableTree4J.prototype.setHeader = function(arrayHeader, id, headerWidthList, booleanOpen, classStyle, hrefTip, hrefStatusText, icon, iconOpen) {
-
+    TableTree4J.prototype.setHeader = function(arrayHeader, id, headerWidthList, booleanOpen, classStyle, hrefTip, icon, iconOpen) {
         var headerStyle = classStyle; //||"GridHead";
         var headerIcon = icon || this.icon.root;
         var headerOpenIcon = iconOpen || this.icon.root;
@@ -200,7 +195,7 @@ function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
         }
 
         //dataList,id,pid,booleanOpen,order,url,target,classStyle,icon,iconOpen
-        var nod = new Node(arrayHeader, id, "", headerbooleanOpen, "", null, null, headerStyle, headerIcon, headerOpenIcon, hrefTip, hrefStatusText);
+        var nod = new Node(arrayHeader, id, "", headerbooleanOpen, "", null, null, headerStyle, headerIcon, headerOpenIcon, hrefTip);
         if (headerIcon == null || headerIcon == "") {
             nod.icon = this.icon.root;
         }
@@ -236,18 +231,16 @@ function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
             }
         }
 
-
         if (node.target == null || node.target == "") {
             node.target = this.config.dafultTarget;
         }
-
     }
 
     //show the tabletree to an html element
     TableTree4J.prototype.printTableTreeToElement = function(elementId) {
         this.initNodes();
         var container = document.getElementById(elementId);
-        //alert(this.htmlCode);
+        //alert(this.tableDesc + this.htmlCode);
         container.innerHTML = this.tableDesc + this.htmlCode + "</table>";
     }
 
@@ -262,22 +255,20 @@ function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
 
     //init node img html code
     TableTree4J.prototype.codeNodeImgByPath = function(imgpath, nodeId) {
-        return "<img border=\"0\" id=\"" + this.obj + "ImgNod" + nodeId + "\" align=\"absmiddle\" src=\"" + imgpath + "\"/>";
+        return "<img id=\"" + this.obj + "ImgNod" + nodeId + "\" align=\"absmiddle\" src=\"" + imgpath + "\"/>";
     }
-
-
 
     //init a static img html code by img path
     TableTree4J.prototype.codeStaticImgByPath = function(imgpath) {
-        return "<img border=\"0\" align=\"absmiddle\" src=\"" + imgpath + "\"/>";
+        return "<img align=\"absmiddle\" src=\"" + imgpath + "\"/>";
     }
 
     //init a Dony img html code by img path
     TableTree4J.prototype.codeDonyImgByPath = function(imgpath, nodeId) {
         if (this.config.hrefIconOnfouceLine == false) {
-            return "<a style=\"border:none\" onfocus=\"this.blur()\" href=\"javascript:clickNode('" + nodeId + "'," + this.obj + ")\"><img id=\"" + this.obj + "Nodimg" + nodeId + "\" border=\"0\" align=\"absmiddle\" src=\"" + imgpath + "\"/></a>";
+            return "<a onfocus=\"this.blur()\" href=\"javascript:clickNode('" + nodeId + "'," + this.obj + ")\"><img id=\"" + this.obj + "Nodimg" + nodeId + "\" align=\"absmiddle\" src=\"" + imgpath + "\"/></a>";
         } else {
-            return "<a style=\"border:none\" href=\"javascript:clickNode('" + nodeId + "'," + this.obj + ")\"><img id=\"" + this.obj + "Nodimg" + nodeId + "\" border=\"0\" align=\"absmiddle\" src=\"" + imgpath + "\"/></a>";
+            return "<a href=\"javascript:clickNode('" + nodeId + "'," + this.obj + ")\"><img id=\"" + this.obj + "Nodimg" + nodeId + "\" align=\"absmiddle\" src=\"" + imgpath + "\"/></a>";
         }
     }
 
@@ -403,8 +394,9 @@ function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
     //find a node by id
     TableTree4J.prototype.findTreeNodeById = function(id) {
         var nods = this.treeNodes;
-        if (nods.length > 0) {
-            for (var i = 0; i < nods.length; i++) {
+        var length = nods.length;
+        if (length > 0) {
+            for (var i = 0; i < length; i++) {
                 if (nods[i].id == id) {
                     return nods[i];
                 }
@@ -417,15 +409,16 @@ function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
 
     //find a node by map id
     TableTree4J.prototype.findTreeNodeByMapId = function(id) {
-        return this.map.get("treNod" + id); ///////////////
+        return this.map.get("treNod" + id); 
     }
 
     //find childs by node
     TableTree4J.prototype.findChildsToPnode = function(pnode) {
         var nods = this.treeNodes;
         var childs = [];
-        if (nods.length > 0) {
-            for (var i = 0; i < nods.length; i++) {
+        var length = nods.length;
+        if (length > 0) {
+            for (var i = 0; i < length; i++) {
                 if (nods[i].pid == pnode.id) {
                     childs[childs.length] = nods[i];
                     nods[i].pNode = pnode;
@@ -448,15 +441,14 @@ function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
         return childs;
     }
 
-
-
     //flow the nodes
     TableTree4J.prototype.flowInitChildNodes = function(pnode) {
         //this.map.put("treNod"+pnode.id,pnode);
         var nods = pnode.childNodes;
         var nodsfirst = "";
-        if (nods.length > 0) {
-            for (var i = 0; i < nods.length; i++) {
+        var length = nods.length;
+        if (length > 0) {
+            for (var i = 0; i < length; i++) {
                 var childNodes = this.findChildsToPnode(nods[i]);
                 nods[i].htmlcode = this.dataChangeToHtmlCode(nods[i]);
                 var nodeimgs = this.codeNodeImg(nods[i]);
@@ -479,11 +471,11 @@ function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
 
                 nods[i].htmlcode = nodeimgs + nods[i].htmlcode;
 
+                if (this.checked) {
+                    nodsfirst += "<td><input type=\"checkbox\" name=\"items\" value=\"" + nods[i].id + "\" onclick=\"javascript:this.checked=!this.checked;\"  /></td>";
+                }
                 if (this.sequence) {
                     nodsfirst += "<td>" + sequencenum++ + "</td>";
-                }
-                if (this.checked) {
-                    nodsfirst += "<td ><input type=\"checkbox\" name=\"items\" value=\"" + nods[i].id + "\" onclick=\"javascript:this.checked=!this.checked;\"  /></td>";
                 }
                 nods[i].htmlcode = this.codeNodeTR(nods[i]) + nodsfirst + "<td class=\"" + this.config.treeStyle + "\">" + nods[i].htmlcode;
                 this.htmlCode = this.htmlCode + nods[i].htmlcode;
@@ -496,24 +488,12 @@ function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
 
     }
 
-
     //node data change to html code
     TableTree4J.prototype.dataChangeToHtmlCode = function(node) {
-
         var str = "";
         var tipTitleMark = "";
-        var hrefStatusTextMark = "";
         if (this.config.showTipTitle == true && node.hrefTip != null && node.hrefTip != "") {
             tipTitleMark = "title=\"" + node.hrefTip + "\"";
-        }
-        if (this.config.showStatusText == true && node.hrefStatusText != null && node.hrefStatusText != "") {
-            hrefStatusTextMark = " onmouseover=\"window.status='" + node.hrefStatusText + "';return true;\"  onmouseout=\"window.status=' ';return true;\" ";
-        }
-        if (this.config.showStatusText == true && (node.hrefStatusText == null || node.hrefStatusText == "")) {
-            hrefStatusTextMark = "";
-        }
-        if (this.config.showStatusText == false) {
-            hrefStatusTextMark = " onmouseover=\"window.status=' ';return true;\"  onmouseout=\"window.status=' ';return true;\" ";
         }
         if (node.booleanRoot == false) {
             var fouceClearMark = "";
@@ -527,20 +507,24 @@ function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
                     tg = "target=\"" + node.target + "\"";
                 }
                 if (this.config.nodeHrefSelectBg == true) {
-                    str = "<a " + fouceClearMark + " " + tipTitleMark + " " + hrefStatusTextMark + " id=\"" + this.obj + "MenuHref" + node.id + "\" onclick=\"" + this.obj + ".menuNodeHrefClick('" + this.obj + "MenuHref" + node.id + "')\" class=\"\" href=\"" + node.url + "\" " + tg + ">" + node.dataList[0] + "</a>";
+                    str = "<a " + fouceClearMark + " " + tipTitleMark + " id=\"" + this.obj + "MenuHref" + node.id + "\" onclick=\"" + this.obj + ".menuNodeHrefClick('" + this.obj + "MenuHref" + node.id + "')\" class=\"\" href=\"" + node.url + "\" " + tg + ">" + node.dataList[0] + "</a>";
                 } else {
-                    str = "<a " + fouceClearMark + " " + tipTitleMark + " " + hrefStatusTextMark + "  href=\"" + node.url + "\" " + tg + ">" + node.dataList[0] + "</a>";
+                    str = "<a " + fouceClearMark + " " + tipTitleMark + "  href=\"" + node.url + "\" " + tg + ">" + node.dataList[0] + "</a>";
                 }
             } else {
                 if (node.booleanLeaf == false && this.config.folderAutoUrl == true) {
-                    str = "<a " + fouceClearMark + "  " + tipTitleMark + " " + hrefStatusTextMark + "   href=\"javascript:clickNode('" + node.id + "'," + this.obj + ")\">" + node.dataList[0] + "</a>";
+                    str = "<a " + fouceClearMark + " " + tipTitleMark + " href=\"javascript:clickNode('" + node.id + "'," + this.obj + ")\">" + node.dataList[0] + "</a>";
                 }
                 if (this.config.folderAutoUrl == false || (this.config.folderAutoUrl == true && node.booleanLeaf == true)) {
                     str = node.dataList[0];
                 }
             }
-        } else {
-            str = "<a onfocus=\"this.blur()\"  " + tipTitleMark + " " + hrefStatusTextMark + "   href=\"javascript:clickNode('" + node.id + "'," + this.obj + ")\">" + node.dataList[0] + "</a>";
+        }else {
+            if(this.config.rootNodeBtn){
+                str = "<a onfocus=\"this.blur()\" " + tipTitleMark + " href=\"javascript:clickNode('" + node.id + "'," + this.obj + ")\">" + node.dataList[0] + "</a>";
+            }else{
+                str = node.dataList[0];
+            }
         }
 
         str = str + "</td>";
@@ -661,11 +645,11 @@ function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
         var rootNod = this.rootNode;
         var codes = this.codeNodeTR(rootNod);
         var nodestitle = "";
-        if (this.sequence) {
-            nodestitle = nodestitle + "<td width=\"" + this.headerWidthList[widthList++] + "\">ID</td>";
-        }
         if (this.checked) {
             nodestitle = nodestitle + "<td width=\"" + this.headerWidthList[widthList++] + "\"><input type=\"checkbox\" onclick=\"CheckSelAll(this)\" name=\"title\" /></td>";   //checkbox
+        }
+        if (this.sequence) {
+            nodestitle = nodestitle + "<td width=\"" + this.headerWidthList[widthList++] + "\">ID</td>";
         }
         codes = codes + nodestitle;
         if (this.headerWidthList != null && this.headerWidthList != "") {
@@ -713,15 +697,11 @@ function TableTree4J(objectName, tableTree4JDir, sequence, checked) {
             clearNoUseCookieMark(this);
         }
     }
-
-
-
-
 }
 
 
 //Data Value Object
-function Node(dataList, id, pid, booleanOpen, order, url, target, classStyle, icon, iconOpen, hrefTip, hrefStatusText) {
+function Node(dataList, id, pid, booleanOpen, order, url, target, classStyle, icon, iconOpen, hrefTip) {
 
     this.dataList = dataList;
     this.id = id || -1;
@@ -733,7 +713,6 @@ function Node(dataList, id, pid, booleanOpen, order, url, target, classStyle, ic
     this.classStyle = classStyle;
     this.url = url;
     this.target = target;
-    this.hrefStatusText = hrefStatusText;
     this.booleanOpen = booleanOpen; //||tree.config.booleanInitOpenAll;
     this.hrefTip = hrefTip;
     this.childNodes;
@@ -777,7 +756,6 @@ function HashMap() {
 
 //click a node even
 function clickNode(nodeid, tree) {
-
     var clickNode = tree.findTreeNodeByMapId(nodeid);
     if (clickNode.booleanLeaf == false) {
         var clickNodeImg;
@@ -868,26 +846,34 @@ function CheckSelAll(elem) {
 }
 
 /*** 获取选择ID*name=items ***/
-function GetCheckId() {
+function getCheckId() {
     var iValue = ""; //返回值
     var input = document.getElementsByName("items");
     if (input) {
-        var len = input.length;
-        for (var i = 0; i < len; i++) {
-            if (input[i]) {
-                if (input[i].checked) {
-                    if (iValue == "") {
-                        iValue = input[i].value;
-                    } else {
-                        iValue = iValue + "," + input[i].value;
-                    }
-                }
+        for (var i = 0, len = input.length; i < len; i++) {
+           if (input[i].checked) {
+               if (iValue == "") {
+                   iValue = input[i].value;
+               } else {
+                   iValue = iValue + "," + input[i].value;
+               }
+           }
+       }
+    }
+    return iValue;
+}
+function getSingleCheckID(){
+    var iValue = ""; //返回值
+    var input = document.getElementsByName("items");
+    if (input) {
+        for (var i = 0, len = input.length; i < len; i++) {
+            if (input[i].checked) {
+               iValue = input[i].value;
             }
         }
     }
     return iValue;
 }
-
 function clearNoUseCookieMark(tree) {
     var openids = getCookie(tree.obj + "openId");
     if (openids != null && openids != "") {

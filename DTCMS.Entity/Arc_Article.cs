@@ -43,7 +43,7 @@ namespace DTCMS.Entity
 		private Int16 _money;
 		private Int16 _attribute;
 		private byte _isComment;
-		private byte _isChecked;
+		private byte _isVerify;
 		private byte _isRecycle;
 		private byte _isRedirect;
 		private byte _isHtml;
@@ -249,10 +249,10 @@ namespace DTCMS.Entity
 		/// <summary>
 		/// 是否审核，0未审核，1审核
 		/// </summary>
-		public byte IsChecked
+		public byte IsVerify
 		{
-			set { _isChecked = value; }
-			get { return _isChecked; }
+			set { _isVerify = value; }
+			get { return _isVerify; }
 		}
 		/// <summary>
 		/// 是否放入回收站，0正常，1回收站
