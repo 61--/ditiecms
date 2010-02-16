@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="user_ajax.aspx.cs" Inherits="DTCMS.Web.admin.user_ajax" %>
