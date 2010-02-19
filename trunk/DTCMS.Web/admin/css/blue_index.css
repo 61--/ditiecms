@@ -11,7 +11,7 @@ html
     padding: 76px 0px 25px 0px;
     overflow: hidden;
 }
-html,body{
+html,body,form{
 	color:#333333;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:12px;
