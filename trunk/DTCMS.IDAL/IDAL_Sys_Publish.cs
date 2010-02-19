@@ -14,7 +14,7 @@ namespace DTCMS.IDAL
         /// </summary>
         /// <param name="totalCount">共多少条数据</param>
         /// <returns></returns>
-        DataTable GetClassByClassID(int CID, out int totalCount);
+        DataTable GetClassByClassID(int CID);
 
          /// <summary>
         /// 根据栏目编号获取栏目信息
@@ -29,10 +29,9 @@ namespace DTCMS.IDAL
         /// <param name="CID">类别编号</param>
         /// <param name="publishchild">是否发布其子栏目</param>
         /// <param name="orderBy">文章排序</param>
-        /// <param name="orderWay">排序方式 desc asc</param>
         /// <param name="totalCount">共有多少条</param>
         /// <returns></returns>
-        DataTable GetArticleByClassID(int CID, string orderBy, string orderWay, out int totalCount);
+        DataTable GetArticleByClassID(int CID, string orderBy);
 
         /// <summary>
         /// 按照日期发布文章
@@ -42,7 +41,7 @@ namespace DTCMS.IDAL
         /// <param name="orderBy">文章排序</param>
         /// <param name="totalCount">共有多少条</param>
         /// <returns></returns>
-        DataTable GetArticleByTime(DateTime startTime, DateTime endTime, out int totalCount);
+        DataTable GetArticleByTime(DateTime startTime, DateTime endTime);
 
         /// <summary>
         /// 根据文章编号范围发布 
@@ -51,17 +50,16 @@ namespace DTCMS.IDAL
         /// <param name="maxId">结束编号</param>
         /// <param name="totalCount">共有几条数据</param>
         /// <returns></returns>
-        DataTable GetArticleByID(int minId, int maxId, out int totalCount);
+        DataTable GetArticleByID(int minId, int maxId);
 
         /// <summary>
         /// 根据组合条件获取前多少条数据
         /// </summary>
         /// <param name="topnum">前多少条数据</param>
         /// <param name="orderBy">排序字段</param>
-        /// <param name="orderWay">排序方式 desc asc</param>
         /// <param name="search">组合条件</param>
         /// <returns></returns>
-        DataTable GetTopArticleBySearch(int topnum, string orderBy, string orderWay, string search);
+        DataTable GetTopArticleBySearch(int topnum, string orderBy, string search);
 
         /// <summary>
         /// 获取当前类别的父类别集合
