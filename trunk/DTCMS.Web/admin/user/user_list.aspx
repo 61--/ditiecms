@@ -61,8 +61,8 @@
                 $.each(data, function(i, n) {
                     var dataList = new Array(n.uid, "<a href='user_add.aspx?Id=" + n.uid + "'>" + n.username + "</a>",
                 n.email, n.rolename, n.registerip, n.registertime,
-                n.isverify == 1 ? "<a href=\"javascript:;\" onclick=\"verifyData(" + n.uid + ",false,this)\">已审核</a>" : "<a href=\"javascript:;\" onclick=\"verifyData(" + n.uid + ",false,this)\" style=\"color:red\">未审核</a>",
-                "<a href=\"user_add.aspx?Id=" + n.uid + "\">编辑</a>&nbsp;&nbsp;<a href=\"javascript:deleteData(" + n.uid + ",false)\">删除</a>");
+                n.isverify == 1 ? "<a href=\"javascript:;\" onclick=\"verifyData('" + n.uid + "',false,this)\">已审核</a>" : "<a href=\"javascript:;\" onclick=\"verifyData('" + n.uid + "',false,this)\" style=\"color:red\">未审核</a>",
+                "<a href=\"user_add.aspx?Id=" + n.uid + "\">编辑</a>&nbsp;&nbsp;<a href=\"javascript:deleteData('" + n.uid + "',false)\">删除</a>");
                     gridTree.addGirdNode(dataList, n.uid, -1, null, n.uid, "");
                 });
             }
@@ -91,7 +91,7 @@
                 var res = DTCMS.Web.admin.user_list.DeleteUsers(uid).value;
                 if (res > 0) {
                     loadData(1);
-                    showSuccess("成功删除" + res.value + "个用户！");
+                    showSuccess("成功删除" + res + "个用户！");
                     return;
                 }
                 else {

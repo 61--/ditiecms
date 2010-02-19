@@ -159,13 +159,6 @@
     <Compile Include="admin\ajax\template_list.aspx.designer.cs">
       <DependentUpon>template_list.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\ajax\user_ajax.aspx.cs">
-      <DependentUpon>user_ajax.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\ajax\user_ajax.aspx.designer.cs">
-      <DependentUpon>user_ajax.aspx</DependentUpon>
-    </Compile>
     <Compile Include="admin\user\permission_add.aspx.cs">
       <DependentUpon>permission_add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -377,7 +370,6 @@
     <Content Include="admin\ajax\news_list.aspx" />
     <Content Include="admin\ajax\permission_ajax.aspx" />
     <Content Include="admin\ajax\template_list.aspx" />
-    <Content Include="admin\ajax\user_ajax.aspx" />
     <Content Include="admin\css\dialog.css" />
     <Content Include="admin\dialog\newssourcelist.aspx" />
     <Content Include="admin\images\blue\action.gif" />

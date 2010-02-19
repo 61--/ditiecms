@@ -7,13 +7,14 @@ namespace DTCMS.Publish
 {
     public class Publishs
     {
-        Sys_PublishBLL bllPublish = new Sys_PublishBLL();
+        Sys_PublishBLL publishBll = new Sys_PublishBLL();
         //SimpleFactory sf = new SimpleFactory();
         ArticleLable article = new ArticleLable();
         public void PublishClass(int CID)
         {
             int totalCount = 0;
-            DataTable dt = bllPublish.GetClassByClassID(CID,out totalCount);
+            DataTable dt = new DataTable();
+                //= publishBll.GetClassByClassID(CID,out totalCount);
             if(dt!=null)
             {
                 foreach(DataRow row in dt.Rows)
@@ -37,7 +38,8 @@ namespace DTCMS.Publish
         public void PublishAriticleByClassID(int CID)
         {
             int totalCount = 0;
-            DataTable dt = bllPublish.GetArticleByClassID(CID,"","",out totalCount);
+            DataTable dt = new DataTable();
+                //= publishBll.GetArticleByClassID(CID,"","",out totalCount);
             string template = string.Empty;
             int i = 0;
             foreach(DataRow row in dt.Rows )
