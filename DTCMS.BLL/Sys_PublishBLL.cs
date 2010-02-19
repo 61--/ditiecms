@@ -18,9 +18,9 @@ namespace DTCMS.BLL
         /// </summary>
         /// <param name="totalCount">共多少条数据</param>
         /// <returns></returns>
-        public DataTable GetClassByClassID(int CID,out int totalCount)
+        public DataTable GetClassByClassID(int CID)
         {
-            return dalPublish.GetClassByClassID(CID,out totalCount);
+            return dalPublish.GetClassByClassID(CID);
         }
 
         /// <summary>
@@ -42,9 +42,9 @@ namespace DTCMS.BLL
         /// <param name="orderWay">排序方式 desc asc</param>
         /// <param name="totalCount">共有多少条</param>
         /// <returns></returns>
-        public DataTable GetArticleByClassID(int CID, string orderBy, string orderWay, out int totalCount)
+        public DataTable GetArticleByClassID(int CID, string orderBy)
         {
-            return dalPublish.GetArticleByClassID(CID, orderWay, orderWay,out totalCount);
+            return dalPublish.GetArticleByClassID(CID, orderBy);
         }
 
         /// <summary>
@@ -55,9 +55,9 @@ namespace DTCMS.BLL
         /// <param name="orderBy">文章排序</param>
         /// <param name="totalCount">共有多少条</param>
         /// <returns></returns>
-        public DataTable GetArticleByTime(DateTime startTime, DateTime endTime, out int totalCount)
+        public DataTable GetArticleByTime(DateTime startTime, DateTime endTime)
         {
-            return dalPublish.GetArticleByTime(startTime,endTime, out totalCount);
+            return dalPublish.GetArticleByTime(startTime,endTime);
         }
 
         /// <summary>
@@ -67,9 +67,9 @@ namespace DTCMS.BLL
         /// <param name="maxId">结束编号</param>
         /// <param name="totalCount">共有几条数据</param>
         /// <returns></returns>
-        public DataTable GetArticleByID(int minId, int maxId, out int totalCount)
+        public DataTable GetArticleByID(int minId, int maxId)
         {
-            return dalPublish.GetArticleByID(minId, maxId,out totalCount);
+            return dalPublish.GetArticleByID(minId, maxId);
         }
 
         /// <summary>
@@ -80,9 +80,9 @@ namespace DTCMS.BLL
         /// <param name="orderWay">排序方式 desc asc</param>
         /// <param name="search">组合条件</param>
         /// <returns></returns>
-        public DataTable GetTopArticleBySearch(int topnum, string orderBy, string orderWay, string search)
+        public DataTable GetTopArticleBySearch(int topnum, string orderBy, string search)
         {
-            return dalPublish.GetTopArticleBySearch(topnum,orderBy,orderWay,search);
+            return dalPublish.GetTopArticleBySearch(topnum,orderBy,search);
         }
         /// <summary>
         /// 获取导航集合 通过当前类别编号
