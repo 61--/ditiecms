@@ -10,74 +10,6 @@
     <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
     <script type="text/javascript" src="js/jquery-1.3.2-vsdoc2.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            openMenu('M01','controlpanel.aspx');
-            popTip('H0201002');
-        });
-        function popTip(msg, func, w, h) {
-            var width = w || 260,
-            height = h || 110;
-            var diag = new Dialog({
-                Width: width,
-                Height: height,
-                Modal: -1
-            });
-            diag.ID = "popTip";
-            diag.AutoClose = 30
-            diag.Drag = false;
-            diag.Top = "100%";
-            diag.Left = "100%";
-            diag.ShowButtonRow = true;
-            diag.Title = "系统消息";
-            diag.CancelEvent = function() {
-                diag.close();
-                if (func) func();
-            };
-            diag.InnerHtml = '<div style="padding:10px;">' + msg + '</div>';
-            diag.show();
-            diag.okButton.parentNode.style.textAlign = "right";
-            diag.okButton.value = "查 看";
-            diag.cancelButton.value = "关 闭";
-            diag.cancelButton.focus();
-        }
-        function changeMenu(n) {
-            if (n == 0) {
-                if ($("#side").width() == 0) {
-                    $("#side").width(176);
-                } else {
-                    $("#side").width(0);
-                }
-            } else {
-                $("#side").width($("#side").width() + n);
-            }
-        }
-        var preID = "M0";
-        function openMenu(mid, url) {
-            $("#" + mid).attr("class", "thisclass");
-            if (preID != "M0" && preID != mid)
-                $("#" + preID).attr("class","");
-            preID = mid;
-            if (url != "") {
-                $("#main_body").attr("src",url);
-            }
-            $.ajax({
-                url: "ajax/menu.aspx",
-                type: "GET",
-                data: "modulesID=" + mid + "&ram=" + Math.random(),
-                beforeSend: function() {
-                    $("#ajaxloading").show();
-                },
-                success: function(data) {
-                    $("#left_menu").html(data);
-                    $("#ajaxloading").fadeOut(500);
-                }
-            });
-        }
-        function toggleMenu(item) {
-            $("#" + item).slideToggle(200);
-        }
-    </script>
 </head>
 <body>
 <form id="form1" runat="server">
@@ -127,5 +59,72 @@
         <%--<div style="display:none;"><script type="text/javascript" src="http://js.users.51.la/3439117.js"></script></div>--%>
     </div>
 </form>
+<script type="text/javascript">
+    $(document).ready(function() {
+        openMenu('M01', 'controlpanel.aspx');
+        popTip('H0201002');
+    });
+    function popTip(msg, func, w, h) {
+        var width = w || 260,
+            height = h || 110;
+        var diag = new Dialog({
+            Width: width,
+            Height: height,
+            Modal: -1
+        });
+        diag.ID = "popTip";
+        diag.AutoClose = 30
+        diag.Drag = false;
+        diag.Top = "100%";
+        diag.Left = "100%";
+        diag.ShowButtonRow = true;
+        diag.Title = "系统消息";
+        diag.CancelEvent = function() {
+            diag.close();
+            if (func) func();
+        };
+        diag.InnerHtml = '<div style="padding:10px;">' + msg + '</div>';
+        diag.show();
+        diag.okButton.parentNode.style.textAlign = "right";
+        diag.okButton.value = "查 看";
+        diag.cancelButton.value = "关 闭";
+        diag.cancelButton.focus();
+    }
+    function changeMenu(n) {
+        if (n == 0) {
+            if ($("#side").width() == 0) {
+                $("#side").width(176);
+            } else {
+                $("#side").width(0);
+            }
+        } else {
+            $("#side").width($("#side").width() + n);
+        }
+    }
+    var preID = "M0";
+    function openMenu(mid, url) {
+        $("#" + mid).attr("class", "thisclass");
+        if (preID != "M0" && preID != mid)
+            $("#" + preID).attr("class", "");
+        preID = mid;
+        if (url != "") {
+            $("#main_body").attr("src", url);
+        }
+        DTCMS.Web.admin.index.GetLeftnav(mid, openMenu_callback);
+    }
+    function openMenu_callback(res) {
+        $("#left_menu").html(res.value);
+    }
+    function toggleMenu(item) {
+        $("#" + item).slideToggle(200);
+    }
+    AjaxPro.onLoading = function(b) {
+        if (b) {
+            $("#ajaxloading").show();
+        } else {
+            $("#ajaxloading").fadeOut(500);
+        }
+    }
+    </script>
 </body>
 </html>

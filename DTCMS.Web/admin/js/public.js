@@ -144,7 +144,7 @@
 
     showError = function(msg, elem, autoClose) {
         _showMessage('<img src="/admin/images/blue/error.gif" /> ' + msg, elem, autoClose || 1.5);
-        $("#_Popup_msg").css({ color: "#C00", background: "#FFEBE8", border: "1px #E89494 solid" });
+        $("#_Popup_msg").css({ color: "#C00", background: "#FFF0ED", border: "1px #E89494 solid" });
     }
 
     showLoading = function(msg, elem) {

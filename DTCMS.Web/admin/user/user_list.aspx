@@ -11,49 +11,6 @@
     <script type="text/javascript" src="../js/public.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
     <script type="text/javascript" src="/inc/treetable/TableTree4J.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            showLoading();
-            loadData(1);
-            hideMessage();
-        });
-        function loadData(page) {
-            $.ajax({
-                url: "../ajax/user_ajax.aspx",
-                type: "GET",
-                data: "action=load&page="+page+"&ran=" + Math.random(),
-                success: function(json) {
-                    showGridTree(json);
-                }
-            });
-        }
-        var gridTree;
-        function showGridTree(json) {
-            gridTree = new TableTree4J("gridTree", false, true);
-            gridTree.config.useLine = false;
-            gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
-            
-            var headerDataList = new Array("UID", "用户名", "邮箱", "用户角色", "注册IP", "注册时间", "是否审核", "操作");
-            var widthList = new Array("4%", "6%", "12%", "18%", "12%", "12%", "18%", "8%", "10%");
-
-            gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "", "", "");
-            //设置列样式
-            gridTree.gridHeaderColStyleArray = new Array("", "", "", "","", "","","bleft");
-            gridTree.gridDataCloStyleArray = new Array("", "", "", "", "", "", "","");
-
-            if (json != "") {
-            var data = eval("data=" + json);
-            $.each(data, function(i, n) {
-            var dataList = new Array(n.uid,"<a href='user_add.aspx?Id=" + n.uid + "'>" + n.username + "</a>",
-                n.email, n.rolename, n.registerip, n.registertime,
-                n.isverify==1?"<a href=\"javascript:;\" onclick=\"verifyData(" + n.uid + ",false,this)\">已审核</a>":"<a href=\"javascript:;\" onclick=\"verifyData(" + n.uid + ",false,this)\" style=\"color:red\">未审核</a>",
-                "<a href=\"user_add.aspx?Id=" + n.uid + "\">编辑</a>&nbsp;&nbsp;<a href=\"javascript:deleteData(" + n.uid + ",false)\">删除</a>");
-                gridTree.addGirdNode(dataList, n.uid, -1, null, n.uid, "");
-               });
-            }
-            gridTree.printTableTreeToElement("gridTreeDiv");
-        }
-    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -74,6 +31,44 @@
         </div>
     </form>
     <script type="text/javascript">
+        $(document).ready(function() {
+            showLoading();
+            loadData(1);
+            hideMessage();
+        });
+        //加载用户列表
+        function loadData(page) {
+            DTCMS.Web.admin.user_list.GetUserJsonData(page, loadData_callback);
+        }
+        function loadData_callback(res) {
+            showGridTree(res.value);
+        }
+        var gridTree;
+        function showGridTree(json) {
+            gridTree = new TableTree4J("gridTree", false, true);
+            gridTree.config.useLine = false;
+            gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
+
+            var headerDataList = new Array("UID", "用户名", "邮箱", "用户角色", "注册IP", "注册时间", "是否审核", "操作");
+            var widthList = new Array("4%", "6%", "12%", "18%", "12%", "12%", "18%", "8%", "10%");
+
+            gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "", "", "");
+            //设置列样式
+            gridTree.gridHeaderColStyleArray = new Array("", "", "", "", "", "", "", "bleft");
+            gridTree.gridDataCloStyleArray = new Array("", "", "", "", "", "", "", "");
+
+            if (json != "") {
+                var data = eval("data=" + json);
+                $.each(data, function(i, n) {
+                    var dataList = new Array(n.uid, "<a href='user_add.aspx?Id=" + n.uid + "'>" + n.username + "</a>",
+                n.email, n.rolename, n.registerip, n.registertime,
+                n.isverify == 1 ? "<a href=\"javascript:;\" onclick=\"verifyData(" + n.uid + ",false,this)\">已审核</a>" : "<a href=\"javascript:;\" onclick=\"verifyData(" + n.uid + ",false,this)\" style=\"color:red\">未审核</a>",
+                "<a href=\"user_add.aspx?Id=" + n.uid + "\">编辑</a>&nbsp;&nbsp;<a href=\"javascript:deleteData(" + n.uid + ",false)\">删除</a>");
+                    gridTree.addGirdNode(dataList, n.uid, -1, null, n.uid, "");
+                });
+            }
+            gridTree.printTableTreeToElement("gridTreeDiv");
+        }
         //*uid:  用户编号
         function editData() {
             var uid=getSingleCheckID();
@@ -94,26 +89,19 @@
                 }
             }
             Dialog.confirm("确定要删除用户吗？", function() {
-                $.ajax({
-                    url: "../ajax/user_ajax.aspx",
-                    type: "GET",
-                    data: "action=delete&Id=" + uid + "&ran=" + Math.random(),
-                    success: function(responseText) {//提示
-                        if (responseText>0) {
-                            showSuccess("成功删除"+responseText+"个用户！");
-                            loadData(1);
-                            return;
-                        }
-                        else {
-                            showError("删除用户失败！");
-                            return;
-                        }
-                    },
-                    error: function() {
-                        showError('用户删除失败！');
-                    }
-                });
+                DTCMS.Web.admin.user_list.DeleteUsers(uid, deleteData_callback);
             });
+        }
+        function deleteData_callback(res) {
+            if (res.value > 0) {
+                loadData(1);
+                showSuccess("成功删除" + res.value + "个用户！");
+                return;
+            }
+            else {
+                showError("删除用户失败！");
+                return;
+            }
         }
         //审核用户
         function verifyData(uid, flag, elem) {
@@ -124,31 +112,27 @@
                     return;
                 }
             }
-            $.ajax({
-                url: "../ajax/user_ajax.aspx",
-                type: "GET",
-                data: "action=verify&Id=" + uid + "&ran=" + Math.random(),
-                success: function(responseText) {
-                    if (responseText > 0) {
-                        if(flag){
-                            loadData(1);
-                            showSuccess("批量审核用户成功！");
-                        }else{
-                            elem.blur();
-                            if(elem.innerHTML=="未审核"){
-                                elem.innerHTML="已审核";
-                                elem.style.color="black";
-                            }else{
-                                elem.innerHTML="未审核";
-                                elem.style.color="red";
-                            }
-                        }
-                    }else {
-                        showError("审核用户失败！");
+            DTCMS.Web.admin.user_list.VerifyUsers(uid, verifyData_callback(elem));
+        }
+        function verifyData_callback(res,elem) {
+            if (res.value > 0) {
+                if (flag) {
+                    loadData(1);
+                    showSuccess("批量审核用户成功！");
+                } else {
+                    elem.blur();
+                    if (elem.innerHTML == "未审核") {
+                        elem.innerHTML = "已审核";
+                        elem.style.color = "black";
+                    } else {
+                        elem.innerHTML = "未审核";
+                        elem.style.color = "red";
                     }
                 }
-            });
-        }        
+            } else {
+                showError("审核用户失败！");
+            }
+        }     
 </script>
 </body>
 </html>
