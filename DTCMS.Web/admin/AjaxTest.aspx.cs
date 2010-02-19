@@ -10,7 +10,17 @@ namespace DTCMS.Web.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            long execTime = 0;
+
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+            sw.Start();
+
             AjaxPro.Utility.RegisterTypeForAjax(typeof(AjaxTest));
+
+            sw.Stop();
+            execTime = sw.ElapsedMilliseconds;
+
+            DTCMS.Common.JScript.ShowMessage(this, string.Format("用时{0}毫秒", execTime.ToString()));
         }
 
         [AjaxPro.AjaxMethod]
