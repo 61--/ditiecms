@@ -28,7 +28,7 @@ namespace DTCMS.SqlServerDAL
         /// <returns></returns>
         public Arc_Class GetClassByID(int CID)
         {
-            			StringBuilder strSql = new StringBuilder();
+            StringBuilder strSql = new StringBuilder();
 			strSql.Append("SELECT CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,ClassContent FROM Arc_Class");
 			strSql.Append(" WHERE CID=@CID");
 			SqlParameter[] cmdParms = {
@@ -68,39 +68,29 @@ namespace DTCMS.SqlServerDAL
 
 
         /// <summary>
-        /// 按照类别编号发布文章
+        /// 获取栏目列表文章
         /// </summary>
-        /// <param name="CID">类别编号</param>
+        /// <param name="CID">栏目编号</param>
         /// <param name="publishchild">是否发布其子栏目</param>
         /// <param name="orderBy">文章排序</param>
-        /// <param name="orderWay">排序方式 desc asc</param>
-        /// <param name="totalCount">共有多少条</param>
         /// <returns></returns>
-        public DataTable GetArticleByClassID(int CID, string orderBy, string orderWay, out int totalCount)
+        public DataTable GetArticleListByClassID(int CID, string orderBy)
         {
             StringBuilder strSearch = new StringBuilder();
-
             strSearch.Append(" a.ClassID=b.CID  AND  a.IsVerify=1 AND a.IsRecycle=0 AND a.IsHtml=1 ");
             strSearch.AppendFormat(" AND(  b.relation like'%.{0}.%' OR  b.CID={0} ) ", CID);
 
-
             StringBuilder strSql = new StringBuilder();
             strSql.Append(" SELECT ");
-            strSql.Append(" a.[ID],a.Title,a.ShortTitle,a.TitleStyle,a.TitleFlag,a.Tags,a.ImgUrl,a.Author,a.Source,a.Templet,a.Keywords,a.Description,a.Content,a.Click,a.Good,a.Bad,a.Readaccess,a.Money,a.IsComment,a.IsRedirect,a.FilePath,a.SimilarArticle,a.PubDate,b.CID,b.ClassName,b.ClassType");
+            strSql.Append(" a.[ID],a.Title,a.ImgUrl,a.Author,a.Source,a.Description,a.Content,a.Click,a.Good,a.Bad,a.IsRedirect,a.FilePath,a.PubDate,b.CID,b.ClassName,b.ClassType");
             strSql.Append(" FROM DT_Arc_Article as a,DT_Arc_Class as b  ");
             strSql.Append(" WHERE ");
             strSql.Append(strSearch.ToString());
 
-            if (string.IsNullOrEmpty(orderWay))
-                orderWay = "DESC";
             if (string.IsNullOrEmpty(orderBy))
-                strSql.AppendFormat(" ORDER BY a.[ID] {0} ", orderWay);
+                strSql.AppendFormat(" ORDER BY a.[ID] DESC ");
             else
-                strSql.AppendFormat("ORDER BY a.[{0}] {1} ", orderBy, orderWay);
-
-            string sqlCount = string.Format(" SELECT Count(a.ID) FROM DT_Arc_Article as a,DT_Arc_Class as b  WHERE {0}", strSearch.ToString());
-
-            totalCount = Convert.ToInt32(dbHelper.ExecuteScalar(CommandType.Text, sqlCount.ToString()));
+                strSql.AppendFormat(" ORDER BY {0} ", orderBy);
 
             return dbHelper.ExecuteQuery(CommandType.Text, strSql.ToString(), null).Tables[0];
         }
@@ -113,7 +103,7 @@ namespace DTCMS.SqlServerDAL
         /// <param name="orderBy">文章排序</param>
         /// <param name="totalCount">共有多少条</param>
         /// <returns></returns>
-        public DataTable GetArticleByTime(DateTime startTime, DateTime endTime, out int totalCount)
+        public DataTable GetArticleByTime(DateTime startTime, DateTime endTime)
         {
             StringBuilder strSearch = new StringBuilder();
             strSearch.Append(" a.ClassID=b.CID AND IsVerify=1 AND IsRecycle=1 AND IsHtml=1 ");
@@ -149,7 +139,7 @@ namespace DTCMS.SqlServerDAL
 
             StringBuilder strSql = new StringBuilder();
             strSql.Append(" SELECT ");
-            strSql.Append(" a.[ID],a.Title,a.ShortTitle,a.TitleStyle,a.TitleFlag,a.Tags,a.ImgUrl,a.Author,a.Source,a.Templet,a.Keywords,a.Description,a.Content,a.Click,a.Good,a.Bad,a.Readaccess,a.Money,a.IsComment,a.IsRedirect,a.FilePath,a.SimilarArticle,a.PubDate,b.ClassID,b.ClassName,b.ClassType");
+            strSql.Append(" a.[ID],a.Title,a.TitleFlag,a.ImgUrl,a.Author,a.Source,a.Templet,a.Keywords,a.Description,a.Content,a.Click,a.Good,a.Bad,a.Readaccess,a.Money,a.IsComment,a.IsRedirect,a.FilePath,a.SimilarArticle,a.PubDate,b.ClassID,b.ClassName,b.ClassType");
             strSql.Append(" FROM DT_Arc_Article as a,DT_Arc_Class as b  ");
             strSql.Append(" WHERE ");
             strSql.Append(strSearch.ToString());
@@ -178,7 +168,7 @@ namespace DTCMS.SqlServerDAL
                 strSearch.AppendFormat(" AND {0} ", search);
             StringBuilder strSql = new StringBuilder();
             strSql.AppendFormat(" SELECT TOP {0} ", topnum);
-            strSql.Append(" a.[ID],a.Title,a.ShortTitle,a.TitleStyle,a.TitleFlag,a.Tags,a.ImgUrl,a.Author,a.Source,a.Templet,a.Keywords,a.Description,a.Content,a.Click,a.Good,a.Bad,a.Readaccess,a.Money,a.IsComment,a.IsRedirect,a.FilePath,a.SimilarArticle,a.PubDate,b.CID,b.ClassName,b.ClassType,");
+            strSql.Append(" a.[ID],a.Title,a.TitleFlag,a.ImgUrl,a.Author,a.Source,a.Description,a.Content,a.Click,a.Good,a.Bad,a.IsRedirect,a.FilePath,a.PubDate,b.CID,b.ClassName,b.ClassType,");
             strSql.Append(" FROM DT_Arc_Article as a,DT_Arc_Class as b  ");
             strSql.Append(" WHERE ");
             strSql.Append(strSearch.ToString());
@@ -209,7 +199,7 @@ namespace DTCMS.SqlServerDAL
             {
                 if (reader.HasRows)
                 {
-                    model = GetModel(reader);
+                    model = DataReaderToModel<Arc_Class>(reader);
                 }
             }
             if (!string.IsNullOrEmpty(model.Relation))
@@ -218,21 +208,24 @@ namespace DTCMS.SqlServerDAL
                 if (model.ParentID > 0)
                 {
                     model.Relation = model.Relation.Replace(".0.", "");
-                    model.Relation = model.Relation.Trim().Substring(0, model.Relation.Trim().Length - 1);
-                    StringBuilder strSql = new StringBuilder();
-                    strSql.Append(" SELECT CID,ClassName,ClassDomain,ClassPath From DT_Arc_Class ");
-                    strSql.Append(" WHERE ");
-                    strSql.AppendFormat(" CID IN ({0}) ", model.Relation);
-                    strSql.Append(" ORDER BY LEN(Relation) ASC ");
-
-                    using (SqlDataReader readerList = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+                    if (model.Relation.IndexOf(".") != -1)
                     {
-                        while (readerList.Read())
-                        {
-                            list.Add(DataReaderToModel<Arc_Class>(readerList));
-                        }
-                    }
+                        model.Relation = model.Relation.Trim().Substring(0, model.Relation.Trim().Length - 1);
+                        StringBuilder strSql = new StringBuilder();
+                        strSql.Append(" SELECT CID,ClassName,ClassDomain,ClassPath From DT_Arc_Class ");
+                        strSql.Append(" WHERE ");
+                        strSql.AppendFormat(" CID IN ({0}) ", model.Relation);
+                        strSql.Append(" ORDER BY LEN(Relation) ASC ");
 
+                        using (SqlDataReader readerList = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+                        {
+                            while (readerList.Read())
+                            {
+                                list.Add(DataReaderToModel<Arc_Class>(readerList));
+                            }
+                        }
+
+                    }
                 }
                 else
                 {
@@ -243,58 +236,5 @@ namespace DTCMS.SqlServerDAL
             return null;
         }
 
-        #region -------- 私有方法，通常情况下无需修改 --------
-        /// <summary>
-        /// 由一行数据得到一个实体
-        /// </summary>
-        private Arc_Class GetModel(SqlDataReader dr)
-        {
-            Arc_Class model = new Arc_Class();
-            model.CID = dbHelper.GetInt(dr["CID"]);
-            model.ParentID = dbHelper.GetInt(dr["ParentID"]);
-            model.Attribute = dbHelper.GetByte(dr["Attribute"]);
-            model.ClassName = dbHelper.GetString(dr["ClassName"]);
-            model.ClassEName = dbHelper.GetString(dr["ClassEName"]);
-            model.ClassType = dbHelper.GetByte(dr["ClassType"]);
-            model.ClassDomain = dbHelper.GetString(dr["ClassDomain"]);
-            model.ClassPath = dbHelper.GetString(dr["ClassPath"]);
-            model.IndexTemplet = dbHelper.GetString(dr["IndexTemplet"]);
-            model.ListTemplet = dbHelper.GetString(dr["ListTemplet"]);
-            model.ArchiveTemplet = dbHelper.GetString(dr["ArchiveTemplet"]);
-            model.IndexRule = dbHelper.GetString(dr["IndexRule"]);
-            model.ListRule = dbHelper.GetString(dr["ListRule"]);
-            model.ArchiveRule = dbHelper.GetString(dr["ArchiveRule"]);
-            model.ClassPage = dbHelper.GetByte(dr["ClassPage"]);
-            model.Description = dbHelper.GetString(dr["Description"]);
-            model.IsHidden = dbHelper.GetByte(dr["IsHidden"]);
-            model.IsHtml = dbHelper.GetByte(dr["IsHtml"]);
-            model.CheckLevel = dbHelper.GetByte(dr["CheckLevel"]);
-            model.IsContribute = dbHelper.GetByte(dr["IsContribute"]);
-            model.IsComment = dbHelper.GetByte(dr["IsComment"]);
-            model.Readaccess = dbHelper.GetInt16(dr["Readaccess"]);
-            model.SiteID = dbHelper.GetByte(dr["SiteID"]);
-            model.AddDate = dbHelper.GetDateTime(dr["AddDate"]);
-            model.Relation = dbHelper.GetString(dr["Relation"]);
-            model.OrderID = dbHelper.GetInt16(dr["OrderID"]);
-            model.ImgUrl = dbHelper.GetString(dr["ImgUrl"]);
-            model.Keywords = dbHelper.GetString(dr["Keywords"]);
-            model.CrossID = dbHelper.GetString(dr["CrossID"]);
-            model.ClassContent = dbHelper.GetString(dr["ClassContent"]);
-            return model;
-        }
-
-        /// <summary>
-        /// 由SqlDataReader得到泛型数据列表
-        /// </summary>
-        private List<Arc_Class> GetList(SqlDataReader dr)
-        {
-            List<Arc_Class> lst = new List<Arc_Class>();
-            while (dr.Read())
-            {
-                lst.Add(GetModel(dr));
-            }
-            return lst;
-        }
-        #endregion
     }
 }
