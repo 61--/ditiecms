@@ -38,11 +38,10 @@
         });
         //加载用户列表
         function loadData(page) {
-            DTCMS.Web.admin.user_list.GetUserJsonData(page, loadData_callback);
+            var res = DTCMS.Web.admin.user_list.GetUserJsonData(page).value;
+            showGridTree(res);
         }
-        function loadData_callback(res) {
-            showGridTree(res.value);
-        }
+
         var gridTree;
         function showGridTree(json) {
             gridTree = new TableTree4J("gridTree", false, true);
@@ -89,19 +88,17 @@
                 }
             }
             Dialog.confirm("确定要删除用户吗？", function() {
-                DTCMS.Web.admin.user_list.DeleteUsers(uid, deleteData_callback);
+                var res = DTCMS.Web.admin.user_list.DeleteUsers(uid).value;
+                if (res > 0) {
+                    loadData(1);
+                    showSuccess("成功删除" + res.value + "个用户！");
+                    return;
+                }
+                else {
+                    showError("删除用户失败！");
+                    return;
+                }
             });
-        }
-        function deleteData_callback(res) {
-            if (res.value > 0) {
-                loadData(1);
-                showSuccess("成功删除" + res.value + "个用户！");
-                return;
-            }
-            else {
-                showError("删除用户失败！");
-                return;
-            }
         }
         //审核用户
         function verifyData(uid, flag, elem) {
@@ -112,10 +109,8 @@
                     return;
                 }
             }
-            DTCMS.Web.admin.user_list.VerifyUsers(uid, verifyData_callback(elem));
-        }
-        function verifyData_callback(res,elem) {
-            if (res.value > 0) {
+            var res = DTCMS.Web.admin.user_list.VerifyUsers(uid).value;
+            if (res > 0) {
                 if (flag) {
                     loadData(1);
                     showSuccess("批量审核用户成功！");
@@ -132,7 +127,7 @@
             } else {
                 showError("审核用户失败！");
             }
-        }     
+        }   
 </script>
 </body>
 </html>
