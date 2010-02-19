@@ -40,10 +40,6 @@ namespace DTCMS.Web.admin
         {
             try
             {
-                if (id == "")
-                {
-                    return -1;
-                }
                 return userBll.Delete(id);
             }
             catch
@@ -61,10 +57,6 @@ namespace DTCMS.Web.admin
         {
             try
             {
-                if (id == "")
-                {
-                    return -1;
-                }
                 return userBll.VerifyUsers(id);
             }
             catch
