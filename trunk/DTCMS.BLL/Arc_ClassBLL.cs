@@ -231,10 +231,22 @@ namespace DTCMS.BLL
                     filed="ArchiveTemplet";
                     break;
             }
+
             if (filed == string.Empty)
                 return string.Empty;
             else
                 return dal.GetSingle(filed,string.Format(" CID={0}",cid)) as string;
+        }
+
+        /// <summary>
+        /// 获取单个字段数据
+        /// </summary>
+        /// <param name="cid">栏目编号</param>
+        /// <param name="filed">要查询的栏目表字段</param>
+        /// <returns></returns>
+        public string GetSingle(string filed,int cid)
+        {
+            return dal.GetSingle(filed, string.Format(" CID={0}", cid)) as string;
         }
 	}
 }
