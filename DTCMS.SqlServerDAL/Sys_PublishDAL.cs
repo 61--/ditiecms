@@ -38,7 +38,7 @@ namespace DTCMS.SqlServerDAL
 			{
 				if (dr.Read())
 				{
-					return GetModel(dr);
+					return DataReaderToModel<Arc_Class>(dr);
 				}
 				return null;
             }
@@ -49,7 +49,7 @@ namespace DTCMS.SqlServerDAL
         /// </summary>
         /// <param name="totalCount">共多少条数据</param>
         /// <returns></returns>
-        public DataTable GetClassByClassID(int CID, out int totalCount)
+        public DataTable GetClassByClassID(int CID)
         {
             StringBuilder strSearch = new StringBuilder();
             strSearch.AppendFormat(" isHidden=0  AND(  relation like'%.{0}.%' OR CID={0} ) ", CID);
@@ -59,8 +59,6 @@ namespace DTCMS.SqlServerDAL
             strSql.Append("FROM DT_Arc_Class ");
             strSql.Append("WHERE ");
             strSql.Append(strSearch.ToString());
-            string sqlCount = string.Format(" SELECT COUNT(CID) FROM DT_Arc_Class WHERE {0} ", strSearch.ToString());
-            totalCount = Convert.ToInt32(dbHelper.ExecuteScalar(CommandType.Text, sqlCount, null));
             return dbHelper.ExecuteQuery(CommandType.Text, strSql.ToString(), null).Tables[0];
 
         }
@@ -74,7 +72,7 @@ namespace DTCMS.SqlServerDAL
         /// <param name="publishchild">是否发布其子栏目</param>
         /// <param name="orderBy">文章排序</param>
         /// <returns></returns>
-        public DataTable GetArticleListByClassID(int CID, string orderBy)
+        public DataTable GetArticleByClassID(int CID, string orderBy)
         {
             StringBuilder strSearch = new StringBuilder();
             strSearch.Append(" a.ClassID=b.CID  AND  a.IsVerify=1 AND a.IsRecycle=0 AND a.IsHtml=1 ");
@@ -117,10 +115,6 @@ namespace DTCMS.SqlServerDAL
             strSql.Append(strSearch.ToString());
             strSql.Append(" Order BY a.[ID] DESC");
 
-            string sqlCount = string.Format(" SELECT Count(a.ClassID) FROM DT_Arc_Article as a,DT_Arc_Class as b  WHERE {0}", strSearch.ToString());
-
-            totalCount = Convert.ToInt32(dbHelper.ExecuteScalar(CommandType.Text, sqlCount.ToString(), null));
-
             return dbHelper.ExecuteQuery(CommandType.Text, strSql.ToString(), null).Tables[0];
         }
 
@@ -131,7 +125,7 @@ namespace DTCMS.SqlServerDAL
         /// <param name="maxId">结束编号</param>
         /// <param name="totalCount">共有几条数据</param>
         /// <returns></returns>
-        public DataTable GetArticleByID(int minId, int maxId, out int totalCount)
+        public DataTable GetArticleByID(int minId, int maxId)
         {
             StringBuilder strSearch = new StringBuilder();
             strSearch.Append(" a.ClassID=b.CID AND IsVerify=1 AND IsRecycle=1 AND IsHtml=1 ");
@@ -145,10 +139,6 @@ namespace DTCMS.SqlServerDAL
             strSql.Append(strSearch.ToString());
             strSql.Append(" Order BY a.[ID] DESC");
 
-            string sqlCount = string.Format(" SELECT Count(a.ClassID) FROM DT_Arc_Article as a,DT_Arc_Class as b  WHERE {0}", strSearch.ToString());
-
-            totalCount = Convert.ToInt32(dbHelper.ExecuteScalar(CommandType.Text, sqlCount.ToString(), null));
-
             return dbHelper.ExecuteQuery(CommandType.Text, strSql.ToString(), null).Tables[0];
         }
 
@@ -160,7 +150,7 @@ namespace DTCMS.SqlServerDAL
         /// <param name="orderWay">排序方式 desc asc</param>
         /// <param name="search">组合条件</param>
         /// <returns></returns>
-        public DataTable GetTopArticleBySearch(int topnum, string orderBy, string orderWay, string search)
+        public DataTable GetTopArticleBySearch(int topnum, string orderBy, string search)
         {
             StringBuilder strSearch = new StringBuilder();
             strSearch.Append(" a.ClassID=b.CID AND a.IsVerify=1 AND a.IsRecycle=0 AND a.IsHtml=1 ");
@@ -173,12 +163,10 @@ namespace DTCMS.SqlServerDAL
             strSql.Append(" WHERE ");
             strSql.Append(strSearch.ToString());
 
-            if (string.IsNullOrEmpty(orderWay))
-                orderWay = "DESC";
             if (string.IsNullOrEmpty(orderBy))
-                strSql.AppendFormat("ORDER BY a.[ID] {0} ", orderWay);
+                strSql.AppendFormat(" ORDER BY a.[ID] DESC ");
             else
-                strSql.AppendFormat("ORDER BY a.[{0}] {1} ", orderBy, orderWay);
+                strSql.AppendFormat(" ORDER BY a.{0} ", orderBy);
 
             return dbHelper.ExecuteQuery(CommandType.Text, strSql.ToString(), null).Tables[0];
         }
