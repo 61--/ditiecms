@@ -30,8 +30,9 @@
         var gridTree;
         function showGridTree(json) {
             gridTree = new TableTree4J("gridTree", false, false);
-            gridTree.config.useIcon=true;
-            gridTree.config.useLine=true;
+            gridTree.config.useIcon = true;
+            gridTree.config.useLine = true;
+            gridTree.config.booleanHighLightRow = false;
             gridTree.tableDesc = "<table id=\"tab\" class=\"GridTree\">";
             
             var headerDataList = new Array("模块名称", "权限设置");
@@ -55,6 +56,9 @@
         html,body{
             height:100%;
         }
+        img{
+        	vertical-align:middle;
+        }
         .table1
         {
             width: 100%;
@@ -73,7 +77,6 @@
         }
         .GridTree td{
             vertical-align:middle;
-            height: 18px;
             text-indent: 10px;
         }
         .GridTreeHead td{
