@@ -22,6 +22,8 @@ namespace DTCMS.Web.admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            AjaxPro.Utility.RegisterTypeForAjax(typeof(permission_add));
+
             action = Utils.GetQueryString("action");
             Id = Utils.GetQueryInt("Id");
 
@@ -41,7 +43,7 @@ namespace DTCMS.Web.admin
         {
             Roles roleInfo = new Roles();
             roleInfo = roleBll.GetModel(Id);
-            if (roleInfo!=null)
+            if (roleInfo != null)
             {
                 txt_RoleID.Value = roleInfo.ID.ToString();
                 txt_RoleName.Value = roleInfo.RoleName;
@@ -49,5 +51,54 @@ namespace DTCMS.Web.admin
                 txt_OrderID.Value = roleInfo.OrderID.ToString();
             }
         }
+
+        #region Ajax 方法
+        /// <summary>
+        /// 添加用户角色
+        /// </summary>
+        /// <returns>成功返回1，失败返回-1</returns>
+        [AjaxPro.AjaxMethod]
+        public int AddRoles(int id, string roleName, string description, int orderID)
+        {
+            Roles roleInfo = new Roles();
+            roleInfo.ID = id;
+            roleInfo.RoleName = roleName;
+            roleInfo.Description = description;
+            roleInfo.AddDate = DateTime.Now;
+            roleInfo.OrderID = orderID;
+            try
+            {
+                return roleBll.Add(roleInfo);
+            }
+            catch
+            {
+
+                return -1;
+            }
+        }
+
+        /// <summary>
+        /// 编辑用户角色
+        /// </summary>
+        /// <returns>成功返回1，失败返回-1</returns>
+        [AjaxPro.AjaxMethod]
+        public int EditRoles(int id, string roleName, string description, int orderID)
+        {
+            Roles roleInfo = new Roles();
+            roleInfo.ID = id;
+            roleInfo.RoleName = roleName;
+            roleInfo.Description = description;
+            roleInfo.OrderID = orderID;
+            try
+            {
+                return roleBll.Update(roleInfo);
+            }
+            catch
+            {
+
+                return -1;
+            }
+        }
+        #endregion
     }
 }

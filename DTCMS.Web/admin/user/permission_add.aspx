@@ -11,35 +11,6 @@
     <style type="text/css">
         body{_overflow-y: auto;}
     </style>
-    <script type="text/javascript">
-        function getAddData(){
-            var id=$("#txt_RoleID").val();
-            var roleName=$("#txt_RoleName").val();
-            var description=$("#txt_Description").val();
-            var orderID=$("#txt_OrderID").val();
-            var action="<%=action %>";
-            $.ajax({
-                url: "../ajax/permission_ajax.aspx?action="+action,
-                type: "POST",
-                data: "Id=" + id + "&RoleName=" + roleName + "&Description=" + description + "&OrderID=" + orderID + "&ran=" + Math.random(),
-                success: function(responseText) {//提示
-                    if (responseText>0) {
-                        if(action=="add"){
-                            return 1;
-                        }else{
-                            return 2;
-                        }
-                    }else{
-                        if(action=="add"){
-                            return -1;
-                        }else{
-                            return -2;
-                        }
-                    }
-                }
-            });
-        }
-    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -80,5 +51,29 @@
         </table>
     </div>
     </form>
+    <script type="text/javascript">
+        function getAddData() {
+            var id = $("#txt_RoleID").val();
+            var roleName = $("#txt_RoleName").val();
+            var description = $("#txt_Description").val();
+            var orderID = $("#txt_OrderID").val();
+            var action = "<%=action %>";
+            if (action == "add") {
+                var res = DTCMS.Web.admin.permission_add.AddRoles(id, roleName, description, orderID).value;
+                if (res > 0) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            } else {
+                var res = DTCMS.Web.admin.permission_add.EditRoles(id, roleName, description, orderID).value;
+                if (res > 0) {
+                    return 2;
+                } else {
+                    return -2;
+                }
+            }
+        }
+    </script>
 </body>
 </html>
