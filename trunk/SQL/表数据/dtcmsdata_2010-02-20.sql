@@ -1,102 +1,12 @@
-if exists (select * from sysobjects where id = OBJECT_ID('[DT_Arc_Class]') and OBJECTPROPERTY(id, 'IsUserTable') = 1) 
-DROP TABLE [DT_Arc_Class]
-
-CREATE TABLE [DT_Arc_Class] (
-[CID] [int]  IDENTITY (1, 1)  NOT NULL,
-[ParentID] [int]  NOT NULL DEFAULT ((0)),
-[Attribute] [tinyint]  NOT NULL,
-[ClassName] [nvarchar]  (100) NOT NULL,
-[ClassEName] [varchar]  (50) NULL,
-[ClassType] [tinyint]  NOT NULL,
-[ClassDomain] [varchar]  (255) NULL,
-[ClassPath] [varchar]  (255) NULL,
-[IndexTemplet] [varchar]  (255) NULL,
-[ListTemplet] [varchar]  (255) NULL,
-[ArchiveTemplet] [varchar]  (255) NULL,
-[IndexRule] [varchar]  (255) NULL,
-[ListRule] [varchar]  (255) NULL,
-[ArchiveRule] [varchar]  (255) NULL,
-[ClassPage] [tinyint]  NULL,
-[Description] [nvarchar]  (500) NULL,
-[IsHidden] [tinyint]  NOT NULL,
-[IsHtml] [tinyint]  NOT NULL,
-[CheckLevel] [tinyint]  NOT NULL,
-[IsContribute] [tinyint]  NOT NULL,
-[IsComment] [tinyint]  NOT NULL,
-[Readaccess] [smallint]  NULL,
-[SiteID] [tinyint]  NULL,
-[AddDate] [datetime]  NOT NULL,
-[Relation] [varchar]  (100) NULL,
-[OrderID] [smallint]  NOT NULL,
-[ImgUrl] [varchar]  (255) NULL,
-[Keywords] [nvarchar]  (200) NULL,
-[CrossID] [varchar]  (200) NULL,
-[ClassContent] [ntext]  NULL)
-
-ALTER TABLE [DT_Arc_Class] WITH NOCHECK ADD  CONSTRAINT [PK_DT_Arc_Class] PRIMARY KEY  NONCLUSTERED ( [CID] )
 SET IDENTITY_INSERT [DT_Arc_Class] ON
-
 INSERT [DT_Arc_Class] ([CID],[ParentID],[Attribute],[ClassName],[ClassEName],[ClassType],[IsHidden],[IsHtml],[CheckLevel],[IsContribute],[IsComment],[Readaccess],[AddDate],[OrderID]) VALUES ( 9,0,1,'WEB技术','webjs',1,0,1,1,1,1,1,'2010-1-1 0:00:00',10)
 INSERT [DT_Arc_Class] ([CID],[ParentID],[Attribute],[ClassName],[ClassEName],[ClassType],[IsHidden],[IsHtml],[CheckLevel],[IsContribute],[IsComment],[Readaccess],[AddDate],[OrderID]) VALUES ( 10,9,1,'HTML基础','webjs',1,0,1,1,1,1,1,'2010-1-1 0:00:00',10)
 INSERT [DT_Arc_Class] ([CID],[ParentID],[Attribute],[ClassName],[ClassEName],[ClassType],[IsHidden],[IsHtml],[CheckLevel],[IsContribute],[IsComment],[Readaccess],[AddDate],[OrderID]) VALUES ( 11,9,1,'Javascript','webjs',1,0,1,1,1,1,1,'2010-1-1 0:00:00',30)
 INSERT [DT_Arc_Class] ([CID],[ParentID],[Attribute],[ClassName],[ClassEName],[ClassType],[IsHidden],[IsHtml],[CheckLevel],[IsContribute],[IsComment],[Readaccess],[AddDate],[OrderID]) VALUES ( 12,9,1,'DIV+CSS','webjs',1,0,1,1,1,1,1,'2010-1-1 0:00:00',50)
 INSERT [DT_Arc_Class] ([CID],[ParentID],[Attribute],[ClassName],[ClassEName],[ClassType],[IsHidden],[IsHtml],[CheckLevel],[IsContribute],[IsComment],[Readaccess],[AddDate],[OrderID]) VALUES ( 13,9,1,'AJAX技术','webjs',1,0,1,1,1,1,1,'2010-1-1 0:00:00',40)
-
 SET IDENTITY_INSERT [DT_Arc_Class] OFF
-if exists (select * from sysobjects where id = OBJECT_ID('[DT_Arc_Soft]') and OBJECTPROPERTY(id, 'IsUserTable') = 1) 
-DROP TABLE [DT_Arc_Soft]
 
-CREATE TABLE [DT_Arc_Soft] (
-[AID] [int]  NOT NULL)
-
-if exists (select * from sysobjects where id = OBJECT_ID('[DT_AttachMent]') and OBJECTPROPERTY(id, 'IsUserTable') = 1) 
-DROP TABLE [DT_AttachMent]
-
-CREATE TABLE [DT_AttachMent] (
-[AID] [int]  IDENTITY (1, 1)  NOT NULL,
-[Attribute] [tinyint]  NOT NULL,
-[DisplayName] [nvarchar]  (50) NULL,
-[AttachMentPath] [varchar]  (255) NULL,
-[AttachMentSize] [int]  NULL,
-[AbbrPhotoPath] [varchar]  (255) NULL,
-[PubLisher] [nvarchar]  (50) NULL,
-[AddDate] [datetime]  NULL,
-[PhotoDescription] [nvarchar]  (100) NULL)
-
-ALTER TABLE [DT_AttachMent] WITH NOCHECK ADD  CONSTRAINT [PK_DT_AttachMent] PRIMARY KEY  NONCLUSTERED ( [AID] )
-SET IDENTITY_INSERT [DT_AttachMent] ON
-
-
-SET IDENTITY_INSERT [DT_AttachMent] OFF
-if exists (select * from sysobjects where id = OBJECT_ID('[DT_Help]') and OBJECTPROPERTY(id, 'IsUserTable') = 1) 
-DROP TABLE [DT_Help]
-
-CREATE TABLE [DT_Help] (
-[ID] [int]  IDENTITY (1, 1)  NOT NULL,
-[HelpID] [char]  (8) NOT NULL,
-[PID] [char]  (8) NOT NULL,
-[Title] [nvarchar]  (100) NULL,
-[Message] [nvarchar]  (1000) NULL,
-[OrderID] [int]  NULL DEFAULT ((0)))
-
-ALTER TABLE [DT_Help] WITH NOCHECK ADD  CONSTRAINT [PK_DT_Help] PRIMARY KEY  NONCLUSTERED ( [ID] )
-SET IDENTITY_INSERT [DT_Help] ON
-
-
-SET IDENTITY_INSERT [DT_Help] OFF
-if exists (select * from sysobjects where id = OBJECT_ID('[DT_ModuleControl]') and OBJECTPROPERTY(id, 'IsUserTable') = 1) 
-DROP TABLE [DT_ModuleControl]
-
-CREATE TABLE [DT_ModuleControl] (
-[ID] [int]  IDENTITY (1, 1)  NOT NULL,
-[ControlName] [nvarchar]  (20) NOT NULL,
-[ModuleID] [varchar]  (8) NOT NULL,
-[ControlValue] [int]  NOT NULL,
-[OrderID] [int]  NULL DEFAULT ((0)))
-
-ALTER TABLE [DT_ModuleControl] WITH NOCHECK ADD  CONSTRAINT [PK_DT_ModuleControl] PRIMARY KEY  NONCLUSTERED ( [ID] )
 SET IDENTITY_INSERT [DT_ModuleControl] ON
-
 INSERT [DT_ModuleControl] ([ID],[ControlName],[ModuleID],[ControlValue],[OrderID]) VALUES ( 5,'查看','M02',1,0)
 INSERT [DT_ModuleControl] ([ID],[ControlName],[ModuleID],[ControlValue],[OrderID]) VALUES ( 6,'查看','M0201',1,0)
 INSERT [DT_ModuleControl] ([ID],[ControlName],[ModuleID],[ControlValue],[OrderID]) VALUES ( 7,'查看','M0202',1,0)
@@ -429,30 +339,9 @@ INSERT [DT_ModuleControl] ([ID],[ControlName],[ModuleID],[ControlValue],[OrderID
 INSERT [DT_ModuleControl] ([ID],[ControlName],[ModuleID],[ControlValue],[OrderID]) VALUES ( 362,'添加','M0803001',2,2)
 INSERT [DT_ModuleControl] ([ID],[ControlName],[ModuleID],[ControlValue],[OrderID]) VALUES ( 363,'编辑','M0803001',4,3)
 INSERT [DT_ModuleControl] ([ID],[ControlName],[ModuleID],[ControlValue],[OrderID]) VALUES ( 364,'删除','M0803001',8,4)
-
 SET IDENTITY_INSERT [DT_ModuleControl] OFF
-if exists (select * from sysobjects where id = OBJECT_ID('[DT_Modules]') and OBJECTPROPERTY(id, 'IsUserTable') = 1) 
-DROP TABLE [DT_Modules]
 
-CREATE TABLE [DT_Modules] (
-[ID] [int]  IDENTITY (1, 1)  NOT NULL,
-[ModuleID] [varchar]  (8) NOT NULL,
-[ParentID] [varchar]  (8) NOT NULL,
-[ModuleName] [nvarchar]  (50) NOT NULL,
-[EName] [varchar]  (50) NULL,
-[ModuleDepth] [tinyint]  NULL,
-[ModuleURL] [varchar]  (255) NULL,
-[Target] [varchar]  (20) NULL,
-[Description] [nvarchar]  (200) NULL,
-[CreateTime] [datetime]  NULL DEFAULT (getdate()),
-[IsQuickMenu] [tinyint]  NULL DEFAULT ((0)),
-[IsSystem] [tinyint]  NULL DEFAULT ((0)),
-[IsEnable] [tinyint]  NULL DEFAULT ((1)),
-[OrderID] [int]  NULL DEFAULT ((0)))
-
-ALTER TABLE [DT_Modules] WITH NOCHECK ADD  CONSTRAINT [PK_DT_Modules] PRIMARY KEY  NONCLUSTERED ( [ID] )
 SET IDENTITY_INSERT [DT_Modules] ON
-
 INSERT [DT_Modules] ([ID],[ModuleID],[ParentID],[ModuleName],[EName],[ModuleDepth],[ModuleURL],[Target],[Description],[CreateTime],[IsQuickMenu],[IsSystem],[IsEnable],[OrderID]) VALUES ( 1,'M01','M0','控制面板','ControlPanel',1,'controlpanel.aspx','main_body','附件管理','2010-1-17 17:07:08',1,1,1,1)
 INSERT [DT_Modules] ([ID],[ModuleID],[ParentID],[ModuleName],[EName],[ModuleDepth],[Target],[Description],[CreateTime],[IsQuickMenu],[IsSystem],[IsEnable],[OrderID]) VALUES ( 2,'M0101','M01','快捷导航','QuickMenu',2,'main_body','快捷导航','2010-1-17 17:19:35',0,1,1,1)
 INSERT [DT_Modules] ([ID],[ModuleID],[ParentID],[ModuleName],[EName],[ModuleDepth],[ModuleURL],[Target],[Description],[CreateTime],[IsQuickMenu],[IsSystem],[IsEnable],[OrderID]) VALUES ( 3,'M0102','M01','个人信息','PersonalInfo',2,'user/','main_body','个人信息','2010-1-17 17:20:33',0,1,1,1)
@@ -571,123 +460,19 @@ INSERT [DT_Modules] ([ID],[ModuleID],[ParentID],[ModuleName],[EName],[ModuleDept
 INSERT [DT_Modules] ([ID],[ModuleID],[ParentID],[ModuleName],[EName],[ModuleDepth],[ModuleURL],[Target],[Description],[CreateTime],[IsQuickMenu],[IsSystem],[IsEnable],[OrderID]) VALUES ( 116,'M0802005','M0802','自定义文档属性','CustomAttr',3,'data/customattr.aspx','main_body','自定义文档属性','2008-1-2 22:50:13',0,1,1,3)
 INSERT [DT_Modules] ([ID],[ModuleID],[ParentID],[ModuleName],[EName],[ModuleDepth],[ModuleURL],[Target],[Description],[CreateTime],[IsQuickMenu],[IsSystem],[IsEnable],[OrderID]) VALUES ( 117,'M0803','M08','数据字典维护','DataDicManage',2,'data/','main_body','基础数据','2009-12-30 23:02:24',0,1,1,3)
 INSERT [DT_Modules] ([ID],[ModuleID],[ParentID],[ModuleName],[EName],[ModuleDepth],[ModuleURL],[Target],[Description],[CreateTime],[IsQuickMenu],[IsSystem],[IsEnable],[OrderID]) VALUES ( 118,'M0803001','M0803','数据字典维护','DataBatch',3,'data/','main_body','批量数据维护','2008-1-2 23:24:30',0,1,1,3)
-
 SET IDENTITY_INSERT [DT_Modules] OFF
-if exists (select * from sysobjects where id = OBJECT_ID('[DT_Roles]') and OBJECTPROPERTY(id, 'IsUserTable') = 1) 
-DROP TABLE [DT_Roles]
 
-CREATE TABLE [DT_Roles] (
-[ID] [int]  NOT NULL,
-[RoleName] [nvarchar]  (50) NOT NULL,
-[Description] [nvarchar]  (200) NULL,
-[AddDate] [datetime]  NULL,
-[OrderID] [int]  NULL DEFAULT ((0)))
-
-ALTER TABLE [DT_Roles] WITH NOCHECK ADD  CONSTRAINT [PK_DT_Roles] PRIMARY KEY  NONCLUSTERED ( [ID] )
 INSERT [DT_Roles] ([ID],[RoleName],[Description],[AddDate],[OrderID]) VALUES ( 1,'超级管理员','具有系统所有权限(系统内置角色,不能被删除)','2010-2-14 15:08:19',1)
 INSERT [DT_Roles] ([ID],[RoleName],[Description],[AddDate],[OrderID]) VALUES ( 2,'系统管理员','具有系统所有权限','2010-2-14 15:08:19',2)
 INSERT [DT_Roles] ([ID],[RoleName],[Description],[AddDate],[OrderID]) VALUES ( 3,'信息发布员','具有文章发布删除审核等权限','2010-2-14 23:28:20',3)
 INSERT [DT_Roles] ([ID],[RoleName],[Description],[AddDate],[OrderID]) VALUES ( 4,'注册会员','没有后台管理权限','2010-2-14 23:27:09',4)
-if exists (select * from sysobjects where id = OBJECT_ID('[DT_RolesInModules]') and OBJECTPROPERTY(id, 'IsUserTable') = 1) 
-DROP TABLE [DT_RolesInModules]
 
-CREATE TABLE [DT_RolesInModules] (
-[ID] [int]  IDENTITY (1, 1)  NOT NULL,
-[RoleID] [int]  NOT NULL,
-[ModuleID] [char]  (8) NOT NULL,
-[ControlValue] [int]  NOT NULL)
-
-ALTER TABLE [DT_RolesInModules] WITH NOCHECK ADD  CONSTRAINT [PK_DT_RolesInModules] PRIMARY KEY  NONCLUSTERED ( [ID] )
 SET IDENTITY_INSERT [DT_RolesInModules] ON
-
 INSERT [DT_RolesInModules] ([ID],[RoleID],[ModuleID],[ControlValue]) VALUES ( 1,1,'M0101001',15)
 INSERT [DT_RolesInModules] ([ID],[RoleID],[ModuleID],[ControlValue]) VALUES ( 2,1,'M0101002',31)
-
 SET IDENTITY_INSERT [DT_RolesInModules] OFF
-if exists (select * from sysobjects where id = OBJECT_ID('[DT_Sys_Dict]') and OBJECTPROPERTY(id, 'IsUserTable') = 1) 
-DROP TABLE [DT_Sys_Dict]
 
-CREATE TABLE [DT_Sys_Dict] (
-[ID] [int]  IDENTITY (1, 1)  NOT NULL,
-[Type] [varchar]  (50) NULL,
-[Title] [nvarchar]  (50) NULL,
-[Url] [varchar]  (255) NULL,
-[Email] [varchar]  (50) NULL,
-[Click] [int]  NULL DEFAULT ((0)))
-
-ALTER TABLE [DT_Sys_Dict] WITH NOCHECK ADD  CONSTRAINT [PK_DT_Sys_Dict] PRIMARY KEY  NONCLUSTERED ( [ID] )
-SET IDENTITY_INSERT [DT_Sys_Dict] ON
-
-
-SET IDENTITY_INSERT [DT_Sys_Dict] OFF
-if exists (select * from sysobjects where id = OBJECT_ID('[DT_Sys_Template]') and OBJECTPROPERTY(id, 'IsUserTable') = 1) 
-DROP TABLE [DT_Sys_Template]
-
-CREATE TABLE [DT_Sys_Template] (
-[TemplateID] [int]  IDENTITY (1, 1)  NOT NULL,
-[TemplateName] [nvarchar]  (50) NOT NULL,
-[TemplateDirectory] [varchar]  (255) NOT NULL,
-[IsEnable] [tinyint]  NOT NULL,
-[CreateDateTime] [datetime]  NULL,
-[TemplateImg] [varchar]  (255) NULL,
-[Author] [nvarchar]  (50) NULL)
-
-ALTER TABLE [DT_Sys_Template] WITH NOCHECK ADD  CONSTRAINT [PK_DT_Sys_Template] PRIMARY KEY  NONCLUSTERED ( [TemplateID] )
-SET IDENTITY_INSERT [DT_Sys_Template] ON
-
-
-SET IDENTITY_INSERT [DT_Sys_Template] OFF
-if exists (select * from sysobjects where id = OBJECT_ID('[DT_Userfields]') and OBJECTPROPERTY(id, 'IsUserTable') = 1) 
-DROP TABLE [DT_Userfields]
-
-CREATE TABLE [DT_Userfields] (
-[UID] [int]  NOT NULL,
-[Realname] [nvarchar]  (50) NULL,
-[QQ] [varchar]  (50) NULL,
-[MSN] [varchar]  (50) NULL,
-[Skype] [varchar]  (50) NULL,
-[Phone] [char]  (16) NULL,
-[Mobilephone] [char]  (11) NULL,
-[Location] [nvarchar]  (50) NULL,
-[Adress] [nvarchar]  (200) NULL,
-[IDcard] [varchar]  (18) NULL,
-[Signature] [nvarchar]  (200) NULL,
-[Introduce] [nvarchar]  (500) NULL,
-[Website] [varchar]  (200) NULL)
-
-ALTER TABLE [DT_Userfields] WITH NOCHECK ADD  CONSTRAINT [PK_DT_Userfields] PRIMARY KEY  NONCLUSTERED ( [UID] )
-if exists (select * from sysobjects where id = OBJECT_ID('[DT_Usergroup]') and OBJECTPROPERTY(id, 'IsUserTable') = 1) 
-DROP TABLE [DT_Usergroup]
-
-CREATE TABLE [DT_Usergroup] (
-[ID] [int]  IDENTITY (1, 1)  NOT NULL,
-[Type] [tinyint]  NOT NULL DEFAULT ((0)),
-[IsSystem] [tinyint]  NULL DEFAULT ((0)),
-[GroupName] [nvarchar]  (50) NULL,
-[Description] [nvarchar]  (255) NULL,
-[CreditBegin] [int]  NULL DEFAULT ((0)),
-[CreditEnd] [int]  NULL DEFAULT ((0)),
-[stars] [tinyint]  NULL DEFAULT ((0)),
-[GroupAvatar] [varchar]  (255) NULL,
-[Readaccess] [int]  NULL DEFAULT ((0)),
-[AllowPost] [tinyint]  NULL DEFAULT ((0)),
-[AllowComment] [tinyint]  NULL DEFAULT ((0)),
-[AllowDownload] [tinyint]  NULL DEFAULT ((0)),
-[AllowAvatar] [tinyint]  NULL DEFAULT ((0)),
-[AllowSpace] [tinyint]  NULL DEFAULT ((0)),
-[AllowTransfer] [tinyint]  NULL DEFAULT ((0)),
-[AllowViewInfo] [tinyint]  NULL DEFAULT ((0)),
-[AllowNickname] [tinyint]  NULL DEFAULT ((0)),
-[MaxPMNum] [smallint]  NULL,
-[MaxSignSize] [smallint]  NULL,
-[MaxAttachSize] [int]  NULL,
-[MaxAttachTotalSize] [int]  NULL,
-[AttachExtension] [varchar]  (255) NULL,
-[OrderID] [int]  NULL)
-
-ALTER TABLE [DT_Usergroup] WITH NOCHECK ADD  CONSTRAINT [PK_DT_Usergroup] PRIMARY KEY  NONCLUSTERED ( [ID] )
 SET IDENTITY_INSERT [DT_Usergroup] ON
-
 INSERT [DT_Usergroup] ([ID],[Type],[IsSystem],[GroupName],[Description],[CreditBegin],[CreditEnd],[stars],[Readaccess],[AllowPost],[AllowComment],[AllowDownload],[AllowAvatar],[AllowSpace],[AllowTransfer],[AllowViewInfo],[AllowNickname],[MaxPMNum],[MaxSignSize],[MaxAttachSize],[MaxAttachTotalSize],[OrderID]) VALUES ( 1,0,1,'系统管理组','拥有系统最高权限',0,0,16,200,1,1,1,1,1,1,1,1,200,200,1024,10240,1)
 INSERT [DT_Usergroup] ([ID],[Type],[IsSystem],[GroupName],[Description],[CreditBegin],[CreditEnd],[stars],[Readaccess],[AllowPost],[AllowComment],[AllowDownload],[AllowAvatar],[AllowSpace],[AllowTransfer],[AllowViewInfo],[AllowNickname],[MaxPMNum],[MaxSignSize],[MaxAttachSize],[MaxAttachTotalSize],[OrderID]) VALUES ( 2,1,1,'管理组','具用所有管理权限，无系统配置权限',0,0,15,180,1,1,1,1,1,1,1,1,100,200,1024,10240,2)
 INSERT [DT_Usergroup] ([ID],[Type],[IsSystem],[GroupName],[Description],[CreditBegin],[CreditEnd],[stars],[Readaccess],[AllowPost],[AllowComment],[AllowDownload],[AllowAvatar],[AllowSpace],[AllowTransfer],[AllowViewInfo],[AllowNickname],[MaxPMNum],[MaxSignSize],[MaxAttachSize],[MaxAttachTotalSize],[OrderID]) VALUES ( 3,2,1,'等待验证会员','等待验证会员',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3)
@@ -696,45 +481,9 @@ INSERT [DT_Usergroup] ([ID],[Type],[IsSystem],[GroupName],[Description],[CreditB
 INSERT [DT_Usergroup] ([ID],[Type],[IsSystem],[GroupName],[Description],[CreditBegin],[CreditEnd],[stars],[Readaccess],[AllowPost],[AllowComment],[AllowDownload],[AllowAvatar],[AllowSpace],[AllowTransfer],[AllowViewInfo],[AllowNickname],[MaxPMNum],[MaxSignSize],[MaxAttachSize],[MaxAttachTotalSize],[OrderID]) VALUES ( 6,2,0,'中级会员','中级会员',300,1000,3,0,0,0,0,0,0,0,0,0,50,70,500,3000,6)
 INSERT [DT_Usergroup] ([ID],[Type],[IsSystem],[GroupName],[Description],[CreditBegin],[CreditEnd],[stars],[Readaccess],[AllowPost],[AllowComment],[AllowDownload],[AllowAvatar],[AllowSpace],[AllowTransfer],[AllowViewInfo],[AllowNickname],[MaxPMNum],[MaxSignSize],[MaxAttachSize],[MaxAttachTotalSize],[OrderID]) VALUES ( 7,2,0,'高级会员','高级会员',1000,2000,4,0,0,0,0,0,0,0,0,0,60,80,500,4000,7)
 INSERT [DT_Usergroup] ([ID],[Type],[IsSystem],[GroupName],[Description],[CreditBegin],[CreditEnd],[stars],[Readaccess],[AllowPost],[AllowComment],[AllowDownload],[AllowAvatar],[AllowSpace],[AllowTransfer],[AllowViewInfo],[AllowNickname],[MaxPMNum],[MaxSignSize],[MaxAttachSize],[MaxAttachTotalSize],[OrderID]) VALUES ( 8,2,0,'金牌会员','金牌会员',2000,999999999,5,1,1,1,1,1,1,1,1,1,70,90,500,5000,8)
-
 SET IDENTITY_INSERT [DT_Usergroup] OFF
-if exists (select * from sysobjects where id = OBJECT_ID('[DT_Users]') and OBJECTPROPERTY(id, 'IsUserTable') = 1) 
-DROP TABLE [DT_Users]
 
-CREATE TABLE [DT_Users] (
-[UID] [int]  IDENTITY (1, 1)  NOT NULL,
-[UserName] [varchar]  (50) NOT NULL,
-[NickName] [nvarchar]  (50) NULL,
-[Password] [varchar]  (64) NOT NULL,
-[SecureQuestion] [nvarchar]  (50) NULL,
-[SecureAnswer] [nvarchar]  (50) NULL,
-[Sex] [tinyint]  NULL DEFAULT ((1)),
-[Email] [varchar]  (50) NULL,
-[RoleID] [int]  NULL DEFAULT ((0)),
-[UsergroupID] [int]  NULL DEFAULT ((0)),
-[RegisterIP] [char]  (15) NULL,
-[RegisterTime] [datetime]  NULL DEFAULT (getdate()),
-[LastloginIP] [char]  (15) NULL,
-[LastloginTime] [datetime]  NULL DEFAULT (getdate()),
-[LoginCount] [int]  NULL DEFAULT ((0)),
-[PostCount] [int]  NULL DEFAULT ((0)),
-[OnlineTime] [int]  NULL DEFAULT ((0)),
-[Credits] [int]  NULL DEFAULT ((0)),
-[ExtCredits1] [decimal]  (18,0) NULL DEFAULT ((0)),
-[ExtCredits2] [decimal]  (18,0) NULL DEFAULT ((0)),
-[ExtCredits3] [decimal]  (18,0) NULL DEFAULT ((0)),
-[ExtCredits4] [decimal]  (18,0) NULL,
-[ExtCredits5] [decimal]  (18,0) NULL,
-[Avatar] [varchar]  (200) NULL,
-[Birthday] [smalldatetime]  NULL,
-[PMCount] [int]  NULL DEFAULT ((0)),
-[IsVerify] [tinyint]  NULL DEFAULT ((0)),
-[IsLock] [tinyint]  NULL DEFAULT ((0)))
-
-ALTER TABLE [DT_Users] WITH NOCHECK ADD  CONSTRAINT [PK_DT_Users] PRIMARY KEY  NONCLUSTERED ( [UID] )
 SET IDENTITY_INSERT [DT_Users] ON
-
 INSERT [DT_Users] ([UID],[UserName],[NickName],[Password],[Sex],[Email],[RoleID],[UsergroupID],[RegisterIP],[RegisterTime],[LastloginIP],[LastloginTime],[LoginCount],[PostCount],[OnlineTime],[Credits],[ExtCredits1],[ExtCredits2],[ExtCredits3],[PMCount],[IsVerify],[IsLock]) VALUES ( 1,'admin','admin','admin',1,'admin@91aspx.com',1,1,'192.168.1.1','2010-2-10 20:26:42','127.0.0.1','2010-2-16 16:37:34',127,0,0,0,0,0,0,0,1,0)
 INSERT [DT_Users] ([UID],[UserName],[NickName],[Password],[Sex],[Email],[RoleID],[UsergroupID],[RegisterIP],[RegisterTime],[LastloginIP],[LastloginTime],[LoginCount],[PostCount],[OnlineTime],[Credits],[ExtCredits1],[ExtCredits2],[ExtCredits3],[PMCount],[IsVerify],[IsLock]) VALUES ( 2,'admin','admin','admin',1,'admin888@91aspx.com',1,1,'192.168.1.1','2010-2-10 20:26:42','127.0.0.1','2010-2-12 20:20:15',29,0,0,0,0,0,0,0,1,0)
-
 SET IDENTITY_INSERT [DT_Users] OFF
