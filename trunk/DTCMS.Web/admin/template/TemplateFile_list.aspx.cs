@@ -7,7 +7,8 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
+using DTCMS.BLL;
+using DTCMS.Common;
 
 namespace DTCMS.Web.admin
 {
@@ -15,7 +16,18 @@ namespace DTCMS.Web.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Response.Write(DateTime.Now.ToString("lsll"));
+            AjaxPro.Utility.RegisterTypeForAjax(typeof(Template_list));
+        }
+
+        /// <summary>
+        /// 获取模版目录文件Json数据
+        /// </summary>
+        /// <param name="filePath">模版文件路径</param>
+        [AjaxPro.AjaxMethod]
+        public string GetTemplateJsonData(string filePath)
+        {
+            Sys_FileInfoBLL fileBll = new Sys_FileInfoBLL();
+            return AjaxPro.JavaScriptSerializer.Serialize(fileBll.GetFileList(filePath));
         }
     }
 }

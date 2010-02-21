@@ -18,14 +18,8 @@
         });
 
         function LoadData(path) {
-            $.ajax({
-                url: "/admin/ajax/File_list.aspx",
-                type: "GET",
-                data: "action=template&path="+path+"&ran=" + Math.random(),
-                success: function(json) {
-                    showGridTree(json);
-                }
-            });
+            var res = DTCMS.Web.admin.TemplateFile_list.GetTemplateJsonData(path).value;
+            showGridTree(json);
         }
         var gridTree;
         function showGridTree(json) {

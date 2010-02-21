@@ -11,47 +11,6 @@
     <script type="text/javascript" src="../js/public.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
     <script type="text/javascript" src="/inc/treetable/TableTree4J.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            showLoading();
-            LoadData();
-            hideMessage();
-        });
-        function LoadData() {
-            $.ajax({
-                url: "../ajax/modules_ajax.aspx",
-                type: "GET",
-                data: "action=load&ran=" + Math.random(),
-                success: function(json) {
-                    showGridTree(json);
-                }
-            });
-        }
-        var gridTree;
-        function showGridTree(json) {
-            gridTree = new TableTree4J("gridTree", false, false);
-            gridTree.config.useIcon = true;
-            gridTree.config.useLine = true;
-            gridTree.config.booleanHighLightRow = false;
-            gridTree.tableDesc = "<table id=\"tab\" class=\"GridTree\">";
-            
-            var headerDataList = new Array("模块名称", "权限设置");
-            var widthList = new Array("30%","70%");
-
-            gridTree.setHeader(headerDataList, -1, widthList, true, "GridTreeHead", "", "", "");
-            //设置列样式
-            gridTree.gridHeaderColStyleArray = new Array("", "bleft");
-            gridTree.gridDataCloStyleArray = new Array("", "");
-            if (json != "") {
-            var data = eval("data=" + json);
-            $.each(data, function(i, n) {
-            var dataList = new Array(n.modulename, n.moduleid);
-                gridTree.addGirdNode(dataList, n.moduleid, n.parentid == "M0" ? -1 : n.parentid, null, n.orderid, "");
-               });
-            }
-            gridTree.printTableTreeToElement("gridTreeDiv");
-        }
-    </script>
     <style type="text/css">
         html,body{
             height:100%;
@@ -130,5 +89,40 @@
         </table>
     </div>
     </form>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            showLoading();
+            LoadData();
+            hideMessage();
+        });
+        function LoadData() {
+            var res = DTCMS.Web.admin.permission_setting.GetModulesJsonData().value;
+            showGridTree(res);
+        }
+        var gridTree;
+        function showGridTree(json) {
+            gridTree = new TableTree4J("gridTree", false, false);
+            gridTree.config.useIcon = true;
+            gridTree.config.useLine = true;
+            gridTree.config.booleanHighLightRow = false;
+            gridTree.tableDesc = "<table id=\"tab\" class=\"GridTree\">";
+
+            var headerDataList = new Array("模块名称", "权限设置");
+            var widthList = new Array("30%", "70%");
+
+            gridTree.setHeader(headerDataList, -1, widthList, true, "GridTreeHead", "", "", "");
+            //设置列样式
+            gridTree.gridHeaderColStyleArray = new Array("", "bleft");
+            gridTree.gridDataCloStyleArray = new Array("", "");
+            if (json != "") {
+                var data = eval("data=" + json);
+                $.each(data, function(i, n) {
+                    var dataList = new Array(n.modulename, n.moduleid);
+                    gridTree.addGirdNode(dataList, n.moduleid, n.parentid == "M0" ? -1 : n.parentid, null, n.orderid, "");
+                });
+            }
+            gridTree.printTableTreeToElement("gridTreeDiv");
+        }
+    </script>
 </body>
 </html>
