@@ -50,7 +50,7 @@
         </div>
     </div>
     <div id="main" class="main">
-        <iframe id="main_body" name="main_body" width="100%" height="100%" onload="$('#ajaxloading').fadeOut(500);" frameborder="0" src="news/class_list.aspx">
+        <iframe id="main_body" name="main_body" width="100%" height="100%" onload="$('#ajaxloading').fadeOut(500);" frameborder="0" src="controlpanel.aspx">
         </iframe>
     </div>
     <div class="bottom">
