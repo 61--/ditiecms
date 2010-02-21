@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>角色列表</title>
     <link href="../css/blue_body.css" type="text/css" rel="StyleSheet" />
-    <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
+    <link href="../css/dialog.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
-    <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
+    <script type="text/javascript" src="../../inc/dialog/dialog.js"></script>
     <script type="text/javascript" src="../js/public.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
-    <script type="text/javascript" src="/inc/treetable/TableTree4J.js"></script>
+    <script type="text/javascript" src="../../inc/treetable/TableTree4J.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">

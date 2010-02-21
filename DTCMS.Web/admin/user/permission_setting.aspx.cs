@@ -15,6 +15,8 @@ namespace DTCMS.Web.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            AjaxPro.Utility.RegisterTypeForAjax(typeof(permission_setting));
+
             if (!IsPostBack)
             {
                 BindRolesList();
@@ -31,6 +33,16 @@ namespace DTCMS.Web.admin
 
             rpt_RolesList.DataSource = dt;
             rpt_RolesList.DataBind();
+        }
+
+        /// <summary>
+        /// 获取模块Json数据
+        /// </summary>
+        [AjaxPro.AjaxMethod]
+        public string GetModulesJsonData()
+        {
+            ModulesBLL moduleBll = new ModulesBLL();
+            return moduleBll.GetModulesJsonData();
         }
     }
 }

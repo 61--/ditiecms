@@ -59,20 +59,14 @@
          $(document).ready(function() {
             LoadData(1);
         });
-        function LoadData(page) {
-            $.ajax({
-                url: "../ajax/template_list.aspx",
-                type: "GET",
-                data: "action=load&ran=" + Math.random(),
-                success: function(responseText) {
-                    $("#data").innerHTML = responseText;
-                }
-            });
+        function LoadData() {
+            var res = DTCMS.Web.admin.Template_list.GetTemplateList().value;
+            $("#data").html(res);
         }
     </script>
 </head>
 <body>
-    
+    <form id="form1" runat="server">
         <div id="tab_menu" class="tabs">
 			<ul>
 				<li class="tab_on"><a href="javascript:;" >后台首页</a></li>
@@ -86,6 +80,6 @@
                 
            </div>
         </div>
-    
+    </form>
 </body>
 </html>

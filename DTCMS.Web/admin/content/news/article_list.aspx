@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="article_list.aspx.cs" Inherits="DTCMS.Web.admin.News_list" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="article_list.aspx.cs" Inherits="DTCMS.Web.admin.article_list" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -11,48 +11,6 @@
     <script type="text/javascript" src="../../js/common.js"></script>
     <script type="text/javascript" src="../../js/public.js"></script>
     <script type="text/javascript" src="/inc/treetable/TableTree4J.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            showLoading();
-            loadData(1);
-            hideMessage();
-        });
-
-        function loadData(page) {
-            $.ajax({
-                url: "../../ajax/news_list.aspx",
-                type: "GET",
-                data: "action=load&page="+page+"&ran=" + Math.random(),
-                success: function(json) {
-                    showGridTree(json);
-                }
-            });
-        }
-        var gridTree;
-        function showGridTree(json) {
-            gridTree = new TableTree4J("gridTree", true, true);
-            gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
-
-            var headerDataList = new Array("文章标题", "所属栏目", "创建时间", "是否审核", "操作");
-            var widthList = new Array("4%", "4%", "32%", "20%", "20%", "10%", "10%");
-
-            gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "", "", "");
-            //设置列样式
-            gridTree.gridHeaderColStyleArray = new Array("", "", "", "", "bleft");
-            gridTree.gridDataCloStyleArray = new Array("", "", "", "", "");
-
-            if (json != "") {
-                var data = eval("data=" + json);
-                $.each(data, function(i, n) {
-                var dataList = new Array("<a href=\"article_add.aspx?Id=" + n.id + "\">" + n.title + "</a>", n.classname, n.adddate,
-                    n.isverify==1?"<a href=\"javascript:;\" onclick=\"verifyData(" + n.id + ",false,this)\">已审核</a>":"<a href=\"javascript:;\" onclick=\"verifyData(" + n.id + ",false,this)\" style=\"color:red\">未审核</a>",
-                    "<a href=\"article_add.aspx?Id=" + n.id + "\">修改</a>&nbsp;&nbsp;<a href=\"javascript:DeleteData(" + n.id + ",false)\">删除</a>");
-                    gridTree.addGirdNode(dataList, n.id,-1,null, n.id, "");
-                });
-            }
-            gridTree.printTableTreeToElement("gridTreeDiv");
-        }
-    </script>
 </head>
 <body>
     <form id="form1" runat="server"><div id="container">
@@ -93,37 +51,70 @@
 	</div>
     </form>
     <script type="text/javascript">
+        $(function() {
+            showLoading();
+            loadData(1);
+            hideMessage();
+        });
+
+        function loadData(page) {
+            var res = DTCMS.Web.admin.article_list.GetArticleJsonData(page).value;
+            showGridTree(res);
+        }
+        var gridTree;
+        function showGridTree(json) {
+            gridTree = new TableTree4J("gridTree", true, true);
+            gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
+
+            var headerDataList = new Array("文章标题", "所属栏目", "创建时间", "是否审核", "操作");
+            var widthList = new Array("4%", "4%", "32%", "20%", "20%", "10%", "10%");
+
+            gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "", "", "");
+            //设置列样式
+            gridTree.gridHeaderColStyleArray = new Array("", "", "", "", "bleft");
+            gridTree.gridDataCloStyleArray = new Array("", "", "", "", "");
+
+            if (json != "") {
+                var data = eval("data=" + json);
+                $.each(data, function(i, n) {
+                var dataList = new Array("<a href=\"article_add.aspx?Id=" + n.id + "\">" + n.title + "</a>", n.classname, n.adddate,
+                    n.isverify==1?"<a href=\"javascript:;\" onclick=\"verifyData(" + n.id + ",false,this)\">已审核</a>":"<a href=\"javascript:;\" onclick=\"verifyData(" + n.id + ",false,this)\" style=\"color:red\">未审核</a>",
+                    "<a href=\"article_add.aspx?Id=" + n.id + "\">修改</a>&nbsp;&nbsp;<a href=\"javascript:DeleteData(" + n.id + ",false)\">删除</a>");
+                    gridTree.addGirdNode(dataList, n.id,-1,null, n.id, "");
+                });
+            }
+            gridTree.printTableTreeToElement("gridTreeDiv");
+        }
+        //编辑文章
+        function editData() {
+            var aid=getSingleCheckID();
+            if (aid != "") {
+                window.location.href = "article_add.aspx?Id=" + aid;
+            } else {
+                Dialog.alert("请选择要编辑的文章!");
+            }
+        }
         //aid:文章编号
         //flag:是否批量删除，true批量删除，false单个删除
         function DeleteData(aid, flag) {
             if (flag) {
                 aid = getCheckId();
                 if (aid == "") {
-                    Dialog.alert("请选择你要删除的数据!");
+                    Dialog.alert("请选择要删除的文章!");
                     return;
                 }
             }
             Dialog.confirm("确定要删除文章吗？", function() {
-                $.ajax({
-                    url: "../../ajax/news_list.aspx",
-                    type: "GET",
-                    data: "action=delete&Id=" + aid + "&ran=" + Math.random(),
-                    success: function(responseText) {//提示
-                        if (responseText>0) {
-                            showSuccess("成功删除"+responseText+"篇文章！");
-                            loadData(1);
-                            return;
-                        }
-                        else {
-                            showError("删除文章失败！");
-                            return;
-                        }
-                    },
-                    error: function() {
-                        showError("删除文章失败！");
-                        return;
-                    }
-                });
+                var res = DTCMS.Web.admin.article_list.DeleteArticle(aid).value;
+                if (res > 0) {
+                    loadData(1);
+                    showSuccess("成功删除" + res + "篇文章！");
+                    return;
+                }
+                else {
+                    showError("删除文章失败！");
+                    return;
+                }
             });
         }
         //审核文章
@@ -135,30 +126,25 @@
                     return;
                 }
             }
-            $.ajax({
-                url: "../ajax/user_ajax.aspx",
-                type: "GET",
-                data: "action=verify&Id=" + aid + "&ran=" + Math.random(),
-                success: function(responseText) {
-                    if (responseText > 0) {
-                        if(flag){
-                            loadData(1);
-                            showSuccess("批量审核文章成功！");
-                        }else{
-                            elem.blur();
-                            if(elem.innerHTML=="未审核"){
-                                elem.innerHTML="已审核";
-                                elem.style.color="black";
-                            }else{
-                                elem.innerHTML="未审核";
-                                elem.style.color="red";
-                            }
-                        }
-                    }else {
-                        showError("审核文章失败！");
+            var res = DTCMS.Web.admin.user_list.VerifyArticle(aid).value;
+            if (res > 0) {
+                if (flag) {
+                    loadData(1);
+                    showSuccess("批量审核用户文章！");
+                } else {
+                    elem.blur();
+                    if (elem.innerHTML == "未审核") {
+                        elem.innerHTML = "已审核";
+                        elem.style.color = "black";
+                    } else {
+                        elem.innerHTML = "未审核";
+                        elem.style.color = "red";
                     }
                 }
-            });
+            } else {
+                showError("审核用户文章！");
+            }
+        }
     </script>
 </body>
 </html>
