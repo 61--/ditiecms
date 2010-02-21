@@ -11,43 +11,6 @@
     <script type="text/javascript" src="../js/public.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
     <script type="text/javascript" src="/inc/treetable/TableTree4J.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            LoadData();
-        });
-        function LoadData() {
-            $.ajax({
-                url: "../ajax/class_list.aspx",
-                type: "GET",
-                data: "action=load&ran=" + Math.random(),
-                success: function(json) {
-                    showGridTree(json);
-                }
-            });
-        }
-        var gridTree;
-        function showGridTree(json) {
-            gridTree = new TableTree4J("gridTree", false, true);
-            gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
-            
-            var headerDataList = new Array("栏目名称", "所属类型", "创建时间", "排序","操作");
-            var widthList = new Array("4%","32%", "20%", "20%", "10%","10%");
-
-            gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "", "", "");
-            //设置列样式
-            gridTree.gridHeaderColStyleArray = new Array("", "", "","","bleft");
-            gridTree.gridDataCloStyleArray = new Array("", "", "", "", "");
-
-            if (json != "") {
-            var data = eval("data=" + json);
-            $.each(data, function(i, n) {
-            var dataList = new Array("<a href='class_add.aspx?Id=" + n.cid + "'>" + n.classname + "</a>", n.classtype, n.adddate, "<input type=\"text\" onchange=\"updateSort(" + n.cid + ")\" id=\"order_" + n.cid + "\" class=\"class_order\" value=\"" + n.orderid + "\">", "<a href=\"class_add.aspx?Id=" + n.cid + "\">编辑</a>&nbsp;&nbsp;<a href=\"javascript:deleteData(" + n.cid + ",false)\">删除</a>");
-                gridTree.addGirdNode(dataList, n.cid, n.parentid == 0 ? -1 : n.parentid, null, n.orderid, "");
-               });
-            }
-            gridTree.printTableTreeToElement("gridTreeDiv");
-        }
-    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -67,6 +30,37 @@
         </div>
     </form>
     <script type="text/javascript">
+        $(document).ready(function() {
+            showLoading();
+            LoadData();
+            hideMessage();
+        });
+        function LoadData() {
+            var res = DTCMS.Web.admin.Class_list.GetClassListToJson().value;
+            showGridTree(res);
+        }
+        var gridTree;
+        function showGridTree(json) {
+            gridTree = new TableTree4J("gridTree", false, true);
+            gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
+
+            var headerDataList = new Array("栏目名称", "所属类型", "创建时间", "排序", "操作");
+            var widthList = new Array("4%", "32%", "20%", "20%", "10%", "10%");
+
+            gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "", "", "");
+            //设置列样式
+            gridTree.gridHeaderColStyleArray = new Array("", "", "", "", "bleft");
+            gridTree.gridDataCloStyleArray = new Array("", "", "", "", "");
+
+            if (json != "") {
+                var data = eval("data=" + json);
+                $.each(data, function(i, n) {
+                    var dataList = new Array("<a href='class_add.aspx?Id=" + n.cid + "'>" + n.classname + "</a>", n.classtype, n.adddate, "<input type=\"text\" onchange=\"updateSort(" + n.cid + ")\" id=\"order_" + n.cid + "\" class=\"class_order\" value=\"" + n.orderid + "\">", "<a href=\"class_add.aspx?Id=" + n.cid + "\">编辑</a>&nbsp;&nbsp;<a href=\"javascript:deleteData(" + n.cid + ",false)\">删除</a>");
+                    gridTree.addGirdNode(dataList, n.cid, n.parentid == 0 ? -1 : n.parentid, null, n.orderid, "");
+                });
+            }
+            gridTree.printTableTreeToElement("gridTreeDiv");
+        }
         //*cid:  栏目编号
         function editData() {
             var cid=getSingleCheckID();
@@ -87,23 +81,14 @@
                 }
             }
             Dialog.confirm("确定要删除栏目吗？", function() {
-                $.ajax({
-                    url: "../ajax/class_list.aspx",
-                    type: "GET",
-                    data: "action=delete&Id=" + cid + "&ran=" + Math.random(),
-                    success: function(responseText) {//提示
-                        if (responseText.toString().toUpperCase() == "TRUE") {
-                            showSuccess('栏目删除成功！');
-                            LoadData();
-                        } else {
-                            Dialog.alert(responseText);
-                            return;
-                        }
-                    },
-                    error: function() {
-                        showError('栏目删除失败！')
-                    }
-                });
+                var res = DTCMS.Web.admin.Class_list.DeleteClass(cid.toString()).value;
+                if (res.toUpperCase() == "TRUE") {
+                    showSuccess('栏目删除成功！');
+                    LoadData();
+                } else {
+                    showError(res);
+                    return;
+                }
             });
         }
         //更新排序
