@@ -36,8 +36,14 @@
             hideMessage();
         });
         function LoadData() {
-            var res = DTCMS.Web.admin.Class_list.GetClassListToJson().value;
-            showGridTree(res);
+            var callback = function(res) {
+                if (res.error) {
+                    showError(res.error.Message);
+                    return;
+                }
+                showGridTree(res.value);
+            }
+            DTCMS.Web.admin.Class_list.GetClassListToJson(callback);
         }
         var gridTree;
         function showGridTree(json) {

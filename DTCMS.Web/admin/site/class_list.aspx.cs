@@ -13,6 +13,7 @@ namespace DTCMS.Web.admin
     public partial class Class_list : AdminPage
     {
         private Arc_ClassBLL classBll = new Arc_ClassBLL();
+        private Arc_ArticleBLL articleBll = new Arc_ArticleBLL();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,7 +39,6 @@ namespace DTCMS.Web.admin
             try
             {
                 string[] cid = id.Split(',');
-                Arc_ArticleBLL articleBll = new Arc_ArticleBLL();
 
                 for (int i = 0; i < cid.Length; i++)    //判断栏目是否存在子栏目或存在文章
                 {
