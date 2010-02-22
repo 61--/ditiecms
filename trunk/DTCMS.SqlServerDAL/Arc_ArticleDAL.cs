@@ -231,7 +231,7 @@ namespace DTCMS.SqlServerDAL
         {
             string strSql = "SELECT COUNT(1) FROM " + tablePrefix + "Arc_Article WHERE ClassID=@ClassID";
             SqlParameter[] cmdParms ={
-                AddInParameter("@ID", SqlDbType.Int, 4, CID)};
+                AddInParameter("@ClassID", SqlDbType.Int, 4, CID)};
 
             return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, strSql, cmdParms)) > 0;
         }
