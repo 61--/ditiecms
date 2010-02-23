@@ -34,6 +34,18 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
+        /// 根据父ID获取栏目列表
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+        public DataTable GetChildClassByParentId(int pid,string orderBy)
+        {
+            if (string.IsNullOrEmpty(orderBy))
+                orderBy = " CID DESC ";
+            return dalPublish.GetChildClassByParentId(pid, orderBy);
+        }
+
+        /// <summary>
         /// 按照类别编号发布文章
         /// </summary>
         /// <param name="CID">类别编号</param>
