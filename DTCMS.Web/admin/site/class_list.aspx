@@ -48,12 +48,12 @@
         var gridTree;
         function showGridTree(json) {
             gridTree = new TableTree4J("gridTree", false, true);
-            gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
+            gridTree.tableDesc = "<table id=\"tab\" class=\"table_data\">";
 
             var headerDataList = new Array("栏目名称", "所属类型", "创建时间", "排序", "操作");
             var widthList = new Array("4%", "32%", "20%", "20%", "10%", "10%");
 
-            gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "", "", "");
+            gridTree.setHeader(headerDataList, -1, widthList, true, "thead", "", "", "");
             //设置列样式
             gridTree.gridHeaderColStyleArray = new Array("", "", "", "", "bleft");
             gridTree.gridDataCloStyleArray = new Array("", "", "", "", "");

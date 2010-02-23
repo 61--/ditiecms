@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="article_list.aspx.cs" Inherits="DTCMS.Web.admin.article_list" %>
-<%@ Register TagPrefix="UC" TagName="DTGridView" Src="~/admin/Controls/DTGridView.ascx" %>
+<%@ Register TagPrefix="UC" TagName="DTGridView" Src="~/Controls/DTGridView.ascx" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -53,12 +53,12 @@
         var gridTree;
         function showGridTree(json) {
             gridTree = new TableTree4J("gridTree", true, true);
-            gridTree.tableDesc = "<table id=\"tab\" class=\"GridView\">";
+            gridTree.tableDesc = "<table id=\"tab\" class=\"table_data\">";
 
             var headerDataList = new Array("文章标题", "所属栏目", "创建时间", "是否审核", "操作");
             var widthList = new Array("4%", "4%", "32%", "20%", "20%", "10%", "10%");
 
-            gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "", "", "");
+            gridTree.setHeader(headerDataList, -1, widthList, true, "thead", "", "", "");
             //设置列样式
             gridTree.gridHeaderColStyleArray = new Array("", "", "", "", "bleft");
             gridTree.gridDataCloStyleArray = new Array("", "", "", "", "");

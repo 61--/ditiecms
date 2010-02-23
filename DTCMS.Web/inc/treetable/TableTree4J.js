@@ -61,7 +61,7 @@ function TableTree4J(objectName, sequence, checked) {
         useLine: false,
         booleanInitOpenAll: true,
         booleanHighLightRow: true,
-        highLightRowClassName: "GridHighLightRow"
+        highLightRowClassName: "highLightRow"
     }
 
     //…Ë÷√≈≈–Ú

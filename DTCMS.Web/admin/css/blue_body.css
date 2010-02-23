@@ -200,12 +200,11 @@ a.b5:hover
 	border-bottom: 1px #cad9ea dotted;
 }
 /*内容表格样式*/
-.table_data {
-	width: 100%;
-	font-size: 12px;
-	border:1px #CAD9EA solid;
-	text-align: center;
-	border-collapse: collapse; 
+/*.table_data {
+    width: 100%;
+    font-size: 12px;
+    border: 1px #CAD9EA solid;
+    border-collapse: collapse;
 }
 .table_data thead {
 }
@@ -224,9 +223,14 @@ a.b5:hover
 	text-align:left;
 }
 .table_data tbody td ,.table_data thead th{
-	border-top: 1px solid #D3E0ED;
-	border-bottom: 1px solid #D3E0ED;
-	height: 26px;
+    line-height: 28px;
+    height: 28px;
+    text-indent: 10px;
+}
+.table_data thead th
+{
+	font-weight: bold;
+    background: url(../images/blue/th_bg.gif) right bottom no-repeat;
 }
 .table_data tr.t1 td {
 	background-color: #FFF;
@@ -241,6 +245,40 @@ a.b5:hover
 	background: #fff;
 	line-height: 26px;
 	height: 26px;
+}*/
+/*数据列表样式*/
+.table_data{
+    width: 100%;
+    font-size: 12px;
+    border: 1px #CAD9EA solid;
+    border-collapse: collapse;
+}
+.table_data .thead td{
+    line-height: 28px;
+    height: 28px;
+    font-weight: bold;
+    text-indent: 10px;
+    background: url(../images/blue/th_bg.gif) right bottom no-repeat;
+}
+.table_data .thead a{
+    white-space: nowrap;
+    text-decoration: none;
+}
+.table_data .thead .bleft{   
+	background-position:left bottom;
+}
+.table_data td{
+    height: 26px;
+    text-indent: 10px;
+    border-top: 1px solid #D3E0ED;
+    border-bottom: 1px solid #D3E0ED;
+}
+.table_data .highLightRow td{
+    background: #E0F0FD;
+}
+.table_data .class_order
+{
+    width:60px;
 }
 #page {
 	text-align: center;
@@ -296,40 +334,6 @@ a.b5:hover
 	color: #797979;
 	background: #c1c1c1;
 	border: 1px #c1c1c1 solid;
-}
-/*数据列表样式*/
-.GridView{
-    width: 100%;
-    font-size: 12px;
-    border: 1px #CAD9EA solid;
-    border-collapse: collapse;
-}
-.GridHead td{
-    line-height: 28px;
-    height: 28px;
-    font-weight: bold;
-    text-indent: 10px;
-    background: url(../images/blue/th_bg.gif) right bottom no-repeat;
-}
-.GridHead a{
-    white-space: nowrap;
-    text-decoration: none;
-}
-.GridHead .bleft{   
-	background-position:left bottom;
-}
-.GridView td{
-    height: 26px;
-    text-indent: 10px;
-    border-top: 1px solid #D3E0ED;
-    border-bottom: 1px solid #D3E0ED;
-}
-.GridHighLightRow td{
-    background: #E0F0FD;
-}
-.class_order
-{
-    width:60px;
 }
 /*其他样式样式*/
 .select {
