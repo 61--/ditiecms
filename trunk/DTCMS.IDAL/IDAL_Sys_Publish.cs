@@ -16,6 +16,14 @@ namespace DTCMS.IDAL
         /// <returns></returns>
         DataTable GetClassByClassID(int CID);
 
+        /// <summary>
+        /// 根据父ID获取栏目列表
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <param name="orderBy"></param>
+        /// <returns></returns>
+         DataTable GetChildClassByParentId(int pid,string orderBy);
+
          /// <summary>
         /// 根据栏目编号获取栏目信息
         /// </summary>
