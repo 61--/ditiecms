@@ -14,7 +14,7 @@ namespace DTCMS.Web.admin
 {
     public partial class permission_list : AdminPage
     {
-        protected bool AddPermission = true;
+        protected bool AddPermission = false;
         protected bool EditPermission = true;
         protected bool DeletePermission = true;
         protected bool SettingPermission = true;
