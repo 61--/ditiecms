@@ -378,9 +378,9 @@ function TableTree4J(objectName, sequence, checked) {
         var changeClassMark = "";
         if (this.config.booleanHighLightRow == true && node.booleanRoot == false) {
             if (node.classStyle != null && node.classStyle != "") {
-                changeClassMark = " onclick=\"select(this)\" onmouseover=\"changeClassName(this,'" + this.config.highLightRowClassName + "')\" onmouseout=\"changeClassName(this,'" + node.classStyle + "')\"";
+                changeClassMark = " onmouseover=\"changeClassName(this,'" + this.config.highLightRowClassName + "')\" onmouseout=\"changeClassName(this,'" + node.classStyle + "')\"";
             } else {
-                changeClassMark = " onclick=\"select(this)\" onmouseover=\"changeClassName(this,'" + this.config.highLightRowClassName + "')\" onmouseout=\"changeClassName(this,'')\"";
+                changeClassMark = " onmouseover=\"changeClassName(this,'" + this.config.highLightRowClassName + "')\" onmouseout=\"changeClassName(this,'')\"";
             }
         }
 
@@ -472,7 +472,7 @@ function TableTree4J(objectName, sequence, checked) {
                 nods[i].htmlcode = nodeimgs + nods[i].htmlcode;
 
                 if (this.checked) {
-                    nodsfirst += "<td><input type=\"checkbox\" name=\"items\" value=\"" + nods[i].id + "\" onclick=\"javascript:this.checked=!this.checked;\"  /></td>";
+                    nodsfirst += "<td><input type=\"checkbox\" name=\"items\" value=\"" + nods[i].id + "\"  /></td>";
                 }
                 if (this.sequence) {
                     nodsfirst += "<td>" + sequencenum++ + "</td>";
