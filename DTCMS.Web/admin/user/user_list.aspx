@@ -38,10 +38,15 @@
         });
         //加载用户列表
         function loadData(page) {
-            var res = DTCMS.Web.admin.user_list.GetUserJsonData(page).value;
-            showGridTree(res);
+            var callback = function(res) {
+                if (res.error) {
+                    alert("请求错误，请刷新页面重试！\n" + res.error.Message);
+                    return;
+                }
+                showGridTree(res.value);
+            }
+            DTCMS.Web.admin.user_list.GetUserJsonData(page, callback);
         }
-
         var gridTree;
         function showGridTree(json) {
             gridTree = new TableTree4J("gridTree", false, true);
@@ -61,7 +66,7 @@
                 $.each(data, function(i, n) {
                     var dataList = new Array(n.uid, "<a href='user_add.aspx?Id=" + n.uid + "'>" + n.username + "</a>",
                 n.email, n.rolename, n.registerip, n.registertime,
-                n.isverify == 1 ? "<a href=\"javascript:;\" onclick=\"verifyData('" + n.uid + "',false,this)\">已审核</a>" : "<a href=\"javascript:;\" onclick=\"verifyData('" + n.uid + "',false,this)\" style=\"color:red\">未审核</a>",
+                n.isverify == 1 ? "<a href=\"javascript:;\" onclick=\"verifyData('" + n.uid + "',false,this)\" style=\"color:green\">已审核</a>" : "<a href=\"javascript:;\" onclick=\"verifyData('" + n.uid + "',false,this)\" style=\"color:red\">未审核</a>",
                 "<a href=\"user_add.aspx?Id=" + n.uid + "\">编辑</a>&nbsp;&nbsp;<a href=\"javascript:deleteData('" + n.uid + "',false)\">删除</a>");
                     gridTree.addGirdNode(dataList, n.uid, -1, null, n.uid, "");
                 });
@@ -88,16 +93,22 @@
                 }
             }
             Dialog.confirm("确定要删除用户吗？", function() {
-                var res = DTCMS.Web.admin.user_list.DeleteUsers(uid).value;
-                if (res > 0) {
-                    loadData(1);
-                    showSuccess("成功删除" + res + "个用户！");
-                    return;
+                var callback = function(res) {
+                    if (res.error) {
+                        alert("删除用户失败，请刷新本页面后重试！\n" + res.error.Message);
+                        return;
+                    }
+                    if (res.value > 0) {
+                        loadData(1);
+                        showSuccess("成功删除" + res.value + "个用户！");
+                        return;
+                    }
+                    else {
+                        showError("删除用户失败！");
+                        return;
+                    }
                 }
-                else {
-                    showError("删除用户失败！");
-                    return;
-                }
+                DTCMS.Web.admin.user_list.DeleteUsers(uid, callback);
             });
         }
         //审核用户
@@ -109,25 +120,31 @@
                     return;
                 }
             }
-            var res = DTCMS.Web.admin.user_list.VerifyUsers(uid).value;
-            if (res > 0) {
-                if (flag) {
-                    loadData(1);
-                    showSuccess("批量审核用户成功！");
-                } else {
-                    elem.blur();
-                    if (elem.innerHTML == "未审核") {
-                        elem.innerHTML = "已审核";
-                        elem.style.color = "black";
-                    } else {
-                        elem.innerHTML = "未审核";
-                        elem.style.color = "red";
-                    }
+            var callback = function(res) {
+                if (res.error) {
+                    alert("审核用户失败，请刷新本页面后重试！\n" + res.error.Message);
+                    return;
                 }
-            } else {
-                showError("审核用户失败！");
+                if (res.value > 0) {
+                    if (flag) {
+                        loadData(1);
+                        showSuccess("批量审核用户成功！");
+                    } else {
+                        elem.blur();
+                        if (elem.innerHTML == "未审核") {
+                            elem.innerHTML = "已审核";
+                            elem.style.color = "green";
+                        } else {
+                            elem.innerHTML = "未审核";
+                            elem.style.color = "red";
+                        }
+                    }
+                } else {
+                    showError("审核用户失败！");
+                }
             }
-        }   
-</script>
+            DTCMS.Web.admin.user_list.VerifyUsers(uid, callback);
+        }
+    </script>
 </body>
 </html>

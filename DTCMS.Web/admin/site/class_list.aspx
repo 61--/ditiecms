@@ -32,13 +32,13 @@
     <script type="text/javascript">
         $(document).ready(function() {
             showLoading();
-            LoadData();
+            loadData();
             hideMessage();
         });
-        function LoadData() {
+        function loadData() {
             var callback = function(res) {
                 if (res.error) {
-                    showError(res.error.Message);
+                    alert("请求错误，请刷新页面重试！\n" + res.error.Message);
                     return;
                 }
                 showGridTree(res.value);
@@ -87,14 +87,20 @@
                 }
             }
             Dialog.confirm("确定要删除栏目吗？", function() {
-                var res = DTCMS.Web.admin.Class_list.DeleteClass(cid.toString()).value;
-                if (res.toUpperCase() == "TRUE") {
-                    showSuccess('栏目删除成功！');
-                    LoadData();
-                } else {
-                    showError(res);
-                    return;
+                var callback = function(res) {
+                    if (res.error) {
+                        alert("删除栏目失败，请刷新本页面后重试！\n" + res.error.Message);
+                        return;
+                    }
+                    if (res.value.toUpperCase() == "TRUE") {
+                        showSuccess('栏目删除成功！');
+                        loadData();
+                    } else {
+                        showError(res.value);
+                        return;
+                    }
                 }
+                DTCMS.Web.admin.Class_list.DeleteClass(cid.toString(), callback);
             });
         }
         //更新排序
@@ -106,7 +112,7 @@
                 data: "action=order&Id=" + cid + "&orderId=" + curVal + "&ran=" + Math.random(),
                 success: function(responseText) {
                     if (responseText > 0) {
-                        LoadData();
+                        loadData();
                         showSuccess('栏目排序更新成功！')
                     } else if (responseText == -1) {
                         showError('栏目排序更新出错！')

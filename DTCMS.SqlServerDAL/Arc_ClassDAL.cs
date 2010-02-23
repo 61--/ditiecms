@@ -182,7 +182,7 @@ namespace DTCMS.SqlServerDAL
         /// <returns>返回影响行数</returns>
         public int Delete(string CID)
         {
-            string strSql = string.Format("DELETE FROM {0}Arc_Class WHERE ID IN({1}) ", tablePrefix, CID);
+            string strSql = string.Format("DELETE FROM {0}Arc_Class WHERE CID IN({1}) ", tablePrefix, CID);
             return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString());
         }
 

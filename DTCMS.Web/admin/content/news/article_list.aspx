@@ -58,8 +58,14 @@
         });
 
         function loadData(page) {
-            var res = DTCMS.Web.admin.article_list.GetArticleJsonData(page).value;
-            showGridTree(res);
+            var callback = function(res) {
+                if (res.error) {
+                    alert("请求错误，请刷新页面重试！\n" + res.error.Message);
+                    return;
+                }
+                showGridTree(res.value);
+            }
+            DTCMS.Web.admin.article_list.GetArticleJsonData(page, callback);
         }
         var gridTree;
         function showGridTree(json) {
