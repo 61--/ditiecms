@@ -43,6 +43,8 @@
             height: 28px;
             font-weight: bold;
             text-indent: 10px;
+            border-top: 1px solid #D3E0ED;
+            border-bottom: 1px solid #D3E0ED;
             background: url(../images/blue/th_bg.gif) right bottom no-repeat;
         }
         .GridTreeHead a{
@@ -51,12 +53,6 @@
         }
         .GridTreeHead .bleft{   
 	        background-position:left bottom;
-        }
-        .GridTreeHead td{
-            height: 26px;
-            text-indent: 10px;
-            border-top: 1px solid #D3E0ED;
-            border-bottom: 1px solid #D3E0ED;
         }
     </style>
 </head>

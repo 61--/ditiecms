@@ -397,6 +397,8 @@
     <Content Include="bin\DTCMS.DBUtility.pdb" />
     <Content Include="bin\DTCMS.Entity.dll" />
     <Content Include="bin\DTCMS.Entity.pdb" />
+    <Content Include="bin\DTCMS.GridView.dll" />
+    <Content Include="bin\DTCMS.GridView.pdb" />
     <Content Include="bin\DTCMS.IDAL.dll" />
     <Content Include="bin\DTCMS.IDAL.pdb" />
     <Content Include="bin\DTCMS.Pages.dll" />
@@ -510,7 +512,6 @@
     <Content Include="ckfinder\core\skins\silver\images\toolbar.expand.gif" />
     <Content Include="ckfinder\core\skins\silver\images\toolbar.separator.gif" />
     <Content Include="ckfinder\core\skins\silver\images\toolbar.start.gif" />
-    <Content Include="bin\Newtonsoft.Json.dll" />
     <Content Include="controls\DTGridView.ascx" />
     <Content Include="editor\fckeditor.js" />
     <Content Include="inc\codepress\codepress.css" />

@@ -240,7 +240,6 @@ function TableTree4J(objectName, sequence, checked) {
     TableTree4J.prototype.printTableTreeToElement = function(elementId) {
         this.initNodes();
         var container = document.getElementById(elementId);
-        //alert(this.tableDesc + this.htmlCode);
         container.innerHTML = this.tableDesc + this.htmlCode + "</table>";
     }
 
