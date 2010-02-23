@@ -11,7 +11,7 @@ using DTCMS.Entity;
 
 namespace DTCMS.Web.admin.sys
 {
-    public partial class AttachMentSetting : AdminPage
+    public partial class attchment_setting : AdminPage
     {        
         protected void Page_Load(object sender, EventArgs e)
         {

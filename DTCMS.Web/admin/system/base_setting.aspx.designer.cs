@@ -11,7 +11,7 @@
 namespace DTCMS.Web.admin.sys {
     
     
-    public partial class SystemInfoParam {
+    public partial class base_setting {
         
         /// <summary>
         /// form1 控件。

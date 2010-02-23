@@ -266,19 +266,19 @@
     <Compile Include="admin\dialog\taglist.aspx.designer.cs">
       <DependentUpon>taglist.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\sys\AttachMentSetting.aspx.cs">
-      <DependentUpon>AttachMentSetting.aspx</DependentUpon>
+    <Compile Include="admin\system\attchment_setting.aspx.cs">
+      <DependentUpon>attchment_setting.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\sys\AttachMentSetting.aspx.designer.cs">
-      <DependentUpon>AttachMentSetting.aspx</DependentUpon>
+    <Compile Include="admin\system\attchment_setting.aspx.designer.cs">
+      <DependentUpon>attchment_setting.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\sys\SystemInfoParam.aspx.cs">
-      <DependentUpon>SystemInfoParam.aspx</DependentUpon>
+    <Compile Include="admin\system\base_setting.aspx.cs">
+      <DependentUpon>base_setting.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin\sys\SystemInfoParam.aspx.designer.cs">
-      <DependentUpon>SystemInfoParam.aspx</DependentUpon>
+    <Compile Include="admin\system\base_setting.aspx.designer.cs">
+      <DependentUpon>base_setting.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\template\templatefile_list.aspx.cs">
       <DependentUpon>templatefile_list.aspx</DependentUpon>
@@ -373,8 +373,8 @@
     <Content Include="admin\dialog\classpagelist.aspx" />
     <Content Include="admin\site\class_list.html" />
     <Content Include="admin\dialog\taglist.aspx" />
-    <Content Include="admin\sys\AttachMentSetting.aspx" />
-    <Content Include="admin\sys\SystemInfoParam.aspx" />
+    <Content Include="admin\system\attchment_setting.aspx" />
+    <Content Include="admin\system\base_setting.aspx" />
     <Content Include="admin\template\templatefile_list.aspx" />
     <Content Include="admin\template\template_add.aspx" />
     <Content Include="admin\template\template_list.aspx" />
@@ -994,7 +994,6 @@
   <ItemGroup>
     <Folder Include="admin\createstatic\" />
     <Folder Include="admin\log\" />
-    <Folder Include="admin\system\" />
     <Folder Include="css\" />
     <Folder Include="images\" />
     <Folder Include="js\" />
