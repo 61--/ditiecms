@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="article_list.aspx.cs" Inherits="DTCMS.Web.admin.article_list" %>
+<%@ Register TagPrefix="UC" TagName="DTGridView" Src="~/admin/Controls/DTGridView.ascx" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -28,25 +29,7 @@
             </div>
 			<div id="gridTreeDiv">
 			</div>
-			<table>
-				<tr>
-					<td>
-					<div class="grayr">
-						<span class="disabled">&lt; </span>
-						<span class="current">1</span>
-						<a href="javascript:loadData(2)">2</a>
-						<a href="javascript:loadData(3)">3</a>
-						<a href="javascript:loadData(4)">4</a>
-						<a href="javascript:loadData(5)">5</a>
-						<a href="javascript:loadData(6)">6</a>
-						<a href="javascript:loadData(7)">7</a>...
-						<a href="javascript:loadData(199)">199</a>
-						<a href="javascript:loadData(200)">200</a>
-						<a href="javascript:loadData(2)"> 
-						&gt; </a></div>
-					</td>
-				</tr>
-			</table>
+            <UC:DTGridView ID="DTGridView" runat="server" />
 		</div>
 	</div>
     </form>
