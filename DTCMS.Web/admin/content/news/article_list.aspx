@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="article_list.aspx.cs" Inherits="DTCMS.Web.admin.article_list" %>
-<%@ Register TagPrefix="UC" TagName="DTGridView" Src="~/Controls/DTGridView.ascx" %>
+<%@ Register Assembly="DTCMS.Controls" Namespace="DTCMS.Controls" TagPrefix="DT" %>
+<%@ Register TagPrefix="UC" TagName="DTGridView" Src="~/controls/DTGridView.ascx" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -29,7 +31,13 @@
             </div>
 			<div id="gridTreeDiv">
 			</div>
-            <UC:DTGridView ID="DTGridView" runat="server" />
+            <%--<DT:GridView runat="server">
+                <Column Text="标题" Width="4%" IsOrder="True" />
+                <Item>
+                    <a href="article_add.aspx?Id=" + n.id>编辑</a>
+                </Item>
+            </DT:GridView>--%>
+            <UC:DTGridView runat="server"></UC:DTGridView>
 		</div>
 	</div>
     </form>
