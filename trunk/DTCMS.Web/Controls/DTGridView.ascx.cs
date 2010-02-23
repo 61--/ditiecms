@@ -4,7 +4,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace DTCMS.Web.admin.control
+namespace DTCMS.Web.controls
 {
     public partial class DTGridView : System.Web.UI.UserControl
     {

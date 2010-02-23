@@ -123,13 +123,6 @@
     <Compile Include="admin\ajax\dialog_list.aspx.designer.cs">
       <DependentUpon>dialog_list.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\Controls\DTGridView.ascx.cs">
-      <DependentUpon>DTGridView.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\Controls\DTGridView.ascx.designer.cs">
-      <DependentUpon>DTGridView.ascx</DependentUpon>
-    </Compile>
     <Compile Include="admin\user\permission_add.aspx.cs">
       <DependentUpon>permission_add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -315,6 +308,13 @@
     <Compile Include="admin\Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
+    <Compile Include="controls\DTGridView.ascx.cs">
+      <DependentUpon>DTGridView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\DTGridView.ascx.designer.cs">
+      <DependentUpon>DTGridView.ascx</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -336,7 +336,6 @@
     <Content Include="admin\ajax\attachment_list.aspx" />
     <Content Include="admin\ajax\class_list.aspx" />
     <Content Include="admin\ajax\dialog_list.aspx" />
-    <Content Include="admin\Controls\DTGridView.ascx" />
     <Content Include="admin\css\dialog.css" />
     <Content Include="admin\dialog\newssourcelist.aspx" />
     <Content Include="admin\images\blue\action.gif" />
@@ -512,6 +511,7 @@
     <Content Include="ckfinder\core\skins\silver\images\toolbar.separator.gif" />
     <Content Include="ckfinder\core\skins\silver\images\toolbar.start.gif" />
     <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="controls\DTGridView.ascx" />
     <Content Include="editor\fckeditor.js" />
     <Content Include="inc\codepress\codepress.css" />
     <Content Include="inc\codepress\codepress.html" />
