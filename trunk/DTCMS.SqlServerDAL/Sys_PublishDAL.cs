@@ -96,7 +96,7 @@ namespace DTCMS.SqlServerDAL
         {
             StringBuilder strSearch = new StringBuilder();
             strSearch.Append(" a.ClassID=b.CID  AND  a.IsVerify=1 AND a.IsRecycle=0 AND a.IsHtml=1 ");
-            strSearch.AppendFormat(" AND(  b.relation like'%.{0}.%' OR  b.CID={0} ) ", CID);
+            ``
 
             StringBuilder strSql = new StringBuilder();
             strSql.Append(" SELECT ");
