@@ -63,6 +63,26 @@ namespace DTCMS.SqlServerDAL
 
         }
 
+        /// <summary>
+        /// 根据父ID获取栏目列表
+        /// </summary>
+        /// <param name="pid">父id</param>
+        /// <param name="orderBy">排序</param>
+        /// <returns></returns>
+        public DataTable GetChildClassByParentId(int pid,string orderBy)
+        {
+            StringBuilder strSearch = new StringBuilder();
+            strSearch.AppendFormat(" isHidden=0  AND ParentID={0} ) ", pid);
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("SELECT ");
+            strSql.Append("CID,ParentID,Attribute,ClassName,ClassEName,ClassType,ClassDomain,ClassPath,IndexTemplet,ListTemplet,ArchiveTemplet,IndexRule,ListRule,ArchiveRule,ClassPage,Description,IsHidden,IsHtml,CheckLevel,IsContribute,IsComment,Readaccess,SiteID,AddDate,Relation,OrderID,ImgUrl,Keywords,CrossID,Content");
+            strSql.Append("FROM DT_Arc_Class ");
+            strSql.Append("WHERE ");
+            strSql.Append(strSearch.ToString());
+           
+            strSql.AppendFormat(" ORDER BY {0} ",orderBy);
+            return dbHelper.ExecuteQuery(CommandType.Text, strSql.ToString(), null).Tables[0];
+        }
 
 
         /// <summary>
