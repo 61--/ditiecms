@@ -96,8 +96,14 @@
             hideMessage();
         });
         function LoadData() {
-            var res = DTCMS.Web.admin.permission_setting.GetModulesJsonData().value;
-            showGridTree(res);
+            var callback = function(res) {
+                if (res.error) {
+                    alert("请求错误，请刷新页面重试！\n" + res.error.Message);
+                    return;
+                }
+                showGridTree(res.value);
+            }
+            DTCMS.Web.admin.permission_setting.GetModulesJsonData(callback);
         }
         var gridTree;
         function showGridTree(json) {

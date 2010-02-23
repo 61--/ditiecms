@@ -38,8 +38,14 @@
             hideMessage();
         });
         function loadData() {
-            var res = DTCMS.Web.admin.permission_list.GetRolesJsonData().value;
-            showGridTree(res);
+            var callback = function(res) {
+                if (res.error) {
+                    alert("请求错误，请刷新页面重试！\n" + res.error.Message);
+                    return;
+                }
+                showGridTree(res.value);
+            }
+            DTCMS.Web.admin.permission_list.GetRolesJsonData(callback);
         }
         var gridTree;
         function showGridTree(json) {
@@ -136,16 +142,20 @@
                 }
             }
             Dialog.confirm("删除角色将会影响到与之关联的用户不能正常使用后台功能，确定要删除吗？", function() {
-                var res = DTCMS.Web.admin.permission_list.DeleteRoles(rid).value;
-                if (res > 0) {
-                    showSuccess("成功删除" + res + "个角色！");
-                    loadData();
-                    return;
+                var callback=function(res){
+                    if (res.error) {
+                        alert("删除用户失败，请刷新本页面后重试！\n" + res.error.Message);
+                        return;
+                    }
+                    if (res.value > 0) {
+                        showSuccess("成功删除" + res.value + "个角色！");
+                        loadData();
+                    }
+                    else {
+                        showError("删除角色失败！");
+                    }
                 }
-                else {
-                    showError("删除角色失败！");
-                    return;
-                }
+                DTCMS.Web.admin.permission_list.DeleteRoles(rid,callback);
             });
         }
 </script>

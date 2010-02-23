@@ -529,7 +529,7 @@ Dialog.alert = function(msg, func, w, h) {
         if (func) func();
     };
     diag.InnerHtml = '<table height="100%" border="0" align="left" cellpadding="10" cellspacing="10">\
-		<tr><td align="center" width="70px"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'ico_alert.gif" style="padding-left:20px;width:34px;height:34px;"></td>\
+		<tr><td align="left" width="60px"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'ico_alert.gif" style="padding-left:20px;width:34px;height:34px;"></td>\
 			<td align="left" id="Message_' + this.ID + '" style="font-size:9pt">' + msg + '</td></tr>\
 	</table>';
     diag.show();
@@ -561,7 +561,7 @@ Dialog.confirm = function(msg, funcOK, funcCal, w, h) {
         }
     };
     diag.InnerHtml = '<table height="100%" border="0" align="left" cellpadding="10" cellspacing="10">\
-		<tr><td align="center" width="70px"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'ico_confirm.gif" style="padding-left:20px;width:34px;height:34px;"></td>\
+		<tr><td align="left" width="60px"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'ico_confirm.gif" style="padding-left:20px;width:34px;height:34px;"></td>\
 			<td align="left" id="Message_' + this.ID + '" style="font-size:9pt">' + msg + '</td></tr>\
 	</table>';
     diag.show();
