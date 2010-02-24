@@ -46,6 +46,7 @@
     <Compile Include="Arc_SoftDAL.cs" />
     <Compile Include="AttachMentDAL.cs" />
     <Compile Include="BaseDAL.cs" />
+    <Compile Include="DataBase_RunSqlDAL.cs" />
     <Compile Include="HelpDAL.cs" />
     <Compile Include="ModuleControlDAL.cs" />
     <Compile Include="ModulesDAL.cs" />
