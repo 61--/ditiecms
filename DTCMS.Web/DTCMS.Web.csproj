@@ -123,6 +123,13 @@
     <Compile Include="admin\ajax\dialog_list.aspx.designer.cs">
       <DependentUpon>dialog_list.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\system\database_runsql.aspx.cs">
+      <DependentUpon>database_runsql.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\system\database_runsql.aspx.designer.cs">
+      <DependentUpon>database_runsql.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\user\permission_add.aspx.cs">
       <DependentUpon>permission_add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -375,6 +382,7 @@
     <Content Include="admin\dialog\taglist.aspx" />
     <Content Include="admin\system\attchment_setting.aspx" />
     <Content Include="admin\system\base_setting.aspx" />
+    <Content Include="admin\system\database_runsql.aspx" />
     <Content Include="admin\template\templatefile_list.aspx" />
     <Content Include="admin\template\template_add.aspx" />
     <Content Include="admin\template\template_list.aspx" />

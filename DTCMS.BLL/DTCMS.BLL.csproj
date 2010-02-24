@@ -45,6 +45,7 @@
     <Compile Include="Arc_ClassBLL.cs" />
     <Compile Include="Arc_SoftBLL.cs" />
     <Compile Include="AttachMentBLL.cs" />
+    <Compile Include="DataBase_RunSqlBLL.cs" />
     <Compile Include="DialogConfigBLL.cs" />
     <Compile Include="HelpBLL.cs" />
     <Compile Include="ModuleControlBLL.cs" />

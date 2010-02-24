@@ -45,6 +45,7 @@
     <Compile Include="IDAL_Arc_Soft.cs" />
     <Compile Include="IDAL_AttachMent.cs" />
     <Compile Include="IDAL_Base.cs" />
+    <Compile Include="IDAL_DataBase_RunSql.cs" />
     <Compile Include="IDAL_Help.cs" />
     <Compile Include="IDAL_ModuleControl.cs" />
     <Compile Include="IDAL_Modules.cs" />

@@ -11,7 +11,7 @@ using DTCMS.Entity;
 
 namespace DTCMS.Web.admin.sys
 {
-    public partial class base_setting : System.Web.UI.Page
+    public partial class base_setting : AdminPage
     {
         SectionConfigBLL bllSelectionConfig = new SectionConfigBLL();
 
