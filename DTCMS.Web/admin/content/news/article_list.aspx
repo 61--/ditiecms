@@ -31,10 +31,8 @@
             </div>
 			<div id="gridTreeDiv">
 			</div>
-            <DT:DataGrid ID="dt_DataGrid" BindDataMethod="DTCMS.Web.admin.article_list.GetArticleJsonData" CssClass="table_data" runat="server">
-            
+            <DT:DataGrid ID="dt_DataGrid" BindAjaxMethod="DTCMS.Web.admin.article_list.GetArticleJsonData" runat="server">
             </DT:DataGrid>
-            <UC:DTGridView runat="server"></UC:DTGridView>
 		</div>
 	</div>
     </form>
