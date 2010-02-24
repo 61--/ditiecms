@@ -8,21 +8,28 @@ using System.Web.UI.WebControls;
 
 namespace DTCMS.Controls
 {
+    /// <summary>
+    /// DataGrid 控件
+    /// </summary>
+    [ToolboxData("<{0}:DataGrid runat=\"server\"></{0}:DataGrid>")]
     public class DataGrid : WebControl
     {
         #region DataGrid属性
 
-        private string _id = null;
-        private string _bindDataMethod = null;
+        private string _id;
+        private bool _isCheckBox;
+        private bool _isListIndex;
+        private string _bindAjaxMethod;
         private bool _isPage;
         private int _pageSize;
         private string _cssClass;
+        private HeaderItem _headerItem;
 
         /// <summary>
         /// 控件ID
         /// </summary>
         [Description("控件ID")]
-        [Browsable(true), DefaultValue((string) null)]
+        [DefaultValue((string) null)]
         public override string ID
         {
             get { return _id; }
@@ -30,21 +37,43 @@ namespace DTCMS.Controls
         }
 
         /// <summary>
+        /// 是否显示选择框
+        /// </summary>
+        [Description("是否显示选择框")]
+        [DefaultValue(true)]
+        public bool IsCheckBox
+        {
+            get { return _isCheckBox; }
+            set { _isCheckBox = value; }
+        }
+
+        /// <summary>
+        /// 是否显示数据列索引序号
+        /// </summary>
+        [Description("是否显示数据列索引序号")]
+        [DefaultValue(true)]
+        public bool IsListIndex
+        {
+            get { return _isListIndex; }
+            set { _isListIndex = value; }
+        }
+
+        /// <summary>
         /// 绑定数据客户端Ajax方法
         /// </summary>
-        [Description("绑定数据客户端Ajax方法")]
-        [Browsable(true), DefaultValue((string)null)]
-        public string BindDataMethod
+        [Description("客户端绑定数据Ajax方法")]
+        [DefaultValue((string)null)]
+        public string BindAjaxMethod
         {
-            get { return _bindDataMethod; }
-            set { _bindDataMethod = value; }
+            get { return _bindAjaxMethod; }
+            set { _bindAjaxMethod = value; }
         }
 
         /// <summary>
         /// 数据列是否分页
         /// </summary>
         [Description("数据列是否分页")]
-        [Browsable(true), DefaultValue(true)]
+        [DefaultValue(true)]
         public bool IsPage
         {
             get { return _isPage; }
@@ -55,7 +84,7 @@ namespace DTCMS.Controls
         /// 数据列分页大小
         /// </summary>
         [Description("数据列分页大小")]
-        [Browsable(true), DefaultValue(20)]
+        [DefaultValue(15)]
         public int PageSize
         {
             get { return _pageSize; }
@@ -66,11 +95,17 @@ namespace DTCMS.Controls
         /// 应用于该控件的CSS类名
         /// </summary>
         [Description("应用于该控件的CSS类名")]
-        [Browsable(true), DefaultValue((string)null)]
+        [DefaultValue("table_data")]
         public override string CssClass
         {
             get { return _cssClass; }
             set { _cssClass = value; }
+        }
+
+        public HeaderItem HeaderItem
+        {
+            get { return _headerItem; }
+            set { _headerItem = value; }
         }
         #endregion
 
@@ -81,6 +116,9 @@ namespace DTCMS.Controls
             output.WriteLine(IsPage);
             output.WriteLine(PageSize);
             output.WriteLine(CssClass);
+            output.WriteLine(IsCheckBox);
+            output.WriteLine(IsListIndex);
+            output.WriteLine(BindAjaxMethod);
             //base.Render(output);
         }
     }
