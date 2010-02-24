@@ -12,7 +12,8 @@ namespace DTCMS.Controls
     /// 表头列集合
     /// </summary>
     [TypeConverter(typeof(ExpandableObjectConverter))]
-    public class HeaderItemCollection
+    [PersistenceMode(PersistenceMode.InnerProperty)]
+    public class HeaderItem
     {
         private string _text;
         private string _align;
