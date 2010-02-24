@@ -8,13 +8,31 @@ using System.Web.UI.WebControls;
 
 namespace DTCMS.Controls
 {
-    public class HeaderItem
+    public class ColumnsItemCollection 
+    {
+        private HeaderItemCollection _headerItem;
+
+        [PersistenceMode(PersistenceMode.Attribute)]
+        public HeaderItemCollection HeaderItem
+        {
+            get
+            {
+                if (_headerItem == null)
+                {
+                    _headerItem = new HeaderItemCollection();
+                }
+                return _headerItem;
+            }
+        }
+    }
+
+    public class HeaderItemCollection
     {
         private string _title;
         private string _align;
         private string _width;
         private string _cssClass;
-        private bool _isOrder;
+        private bool _isSort;
 
         /// <summary>
         /// 表头文本
@@ -55,10 +73,10 @@ namespace DTCMS.Controls
         /// <summary>
         /// 单击表头是否排序
         /// </summary>
-        public bool IsOrder
+        public bool IsSort
         {
-            get { return _isOrder; }
-            set { _isOrder = value; }
+            get { return _isSort; }
+            set { _isSort = value; }
         }
     }
 }

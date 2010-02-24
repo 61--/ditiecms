@@ -33,6 +33,7 @@
 			</div>
             <DT:DataGrid ID="dt_DataGrid" BindAjaxMethod="DTCMS.Web.admin.article_list.GetArticleJsonData" runat="server">
             </DT:DataGrid>
+            
 		</div>
 	</div>
     </form>
