@@ -61,11 +61,11 @@ namespace DTCMS.Web.admin
 
             if (attachMentDisplayName != string.Empty)
             {
-                where = string.Format("AttachMentAttribute=1 and AttachMentDisplayName like '%{0}%'", attachMentDisplayName);
+                where = string.Format("Attribute=1 and DisplayName like '%{0}%'", attachMentDisplayName);
             }
             else
             {
-                where = "AttachMentAttribute=1";
+                where = "Attribute=1";
             }
 
             DataTable dtImageList = bllAttachment.GetAttachmentList(pageCurrent, page, where, out totalcount);
@@ -77,7 +77,7 @@ namespace DTCMS.Web.admin
                 foreach (DataRow dr in dtImageList.Rows)
                 {
                     string chk_Id = "chk_" + checkID;
-                    string displayName = dr["AttachMentDisplayName"].ToString().Split('.')[0];
+                    string displayName = dr["DisplayName"].ToString().Split('.')[0];
                     sb.Append("<li>");
                     sb.Append("<dl>");
                     sb.Append("<dt>");
@@ -131,11 +131,11 @@ namespace DTCMS.Web.admin
 
             if (attachMentDisplayName != string.Empty)
             {
-                where = string.Format("AttachMentAttribute={0} and AttachMentDisplayName like '%{1}%'",attachMentType,attachMentDisplayName);
+                where = string.Format("Attribute={0} and DisplayName like '%{1}%'",attachMentType,attachMentDisplayName);
             }
             else
             {
-                where = string.Format("AttachMentAttribute={0}",attachMentType);
+                where = string.Format("Attribute={0}",attachMentType);
             }
 
             DataTable dtAttachMentList = bllAttachment.GetAttachmentList(pageCurrent, page, where, out totalcount);
@@ -160,7 +160,7 @@ namespace DTCMS.Web.admin
                     sb.Append("<tr onclick='selectImage(\"" + chk_id + "\")'>");
                     sb.Append("<td>" + idnum + "</td>");
                     sb.Append("<td><input type=\"checkbox\" id=\"" + chk_id + "\" value=\"" + dr["AttachMentPath"] + "\" name=\"items\" onclick='selectImage(\"" + chk_id + "\")' /> </td>");
-                    sb.Append("<td>" + dr["AttachMentDisplayName"].ToString() + "</td>");
+                    sb.Append("<td>" + dr["DisplayName"].ToString() + "</td>");
                     sb.Append("<td>" + dr["AttachMentSize"].ToString() + "</td>");
                     sb.Append("<td>" + dr["PubLisher"] + "</td>");
                     sb.Append("<td>" + dr["AddDate"].ToString() + "</td>");
