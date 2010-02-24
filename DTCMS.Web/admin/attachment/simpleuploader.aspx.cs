@@ -182,11 +182,13 @@ namespace DTCMS.Web.admin
             string returnImgPath = "";
             if (hasAbbrImage1.Trim().ToLower() == "true")
             {
-                returnImgPath = "/" + filepathshort.Replace("\\", "/") + abbName;
+                if(abbName!=string.Empty && abbName!=null)
+                     returnImgPath = "/" + filepathshort.Replace("\\", "/") + abbName;
             }
             else
             {
-                returnImgPath = "/" + filepathshort.Replace("\\", "/") + returnImgName;
+                if (returnImgName != string.Empty && returnImgName != null)
+                     returnImgPath = "/" + filepathshort.Replace("\\", "/") + returnImgName;
             }
 
             Response.Redirect("~/admin/attachment/emptyPage.html?returnVal=" + returnVal + "&errorMsg=" + Server.UrlEncode(errorMsg) + "&returnImgPath=" + Server.UrlEncode(returnImgPath));

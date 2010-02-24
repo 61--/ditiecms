@@ -125,7 +125,7 @@ namespace DTCMS.BLL
         public DataTable GetAttachmentList(int pageCurrent, int pageSize, string where, out int pagecount)
         {
             return dal.GetPageList("DT_AttachMent", "AttachMentID", pageCurrent, pageSize
-                , "AttachMentDisplayName,AttachMentPath,AttachMentSize,AbbrPhotoPath,PubLisher,AddDate,PhotoDescription"
+                , "DisplayName,AttachMentPath,AttachMentSize,AbbrPhotoPath,PubLisher,AddDate,PhotoDescription"
                 , "AddDate desc", where, out pagecount);
         }
 	}

@@ -682,7 +682,9 @@ function dialogAttachmentUpload(url, cancelevent, width, height) {
     diag.CancelEvent = function() {
         try {
             var iResult = diag.innerFrame.contentWindow.frames["FrmUpload"].resultPath();
-            cancelevent(iResult);
+            if (iResult) {
+                cancelevent(iResult);
+            }
         } catch (err) {
         }
         diag.close();

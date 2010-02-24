@@ -81,7 +81,7 @@
 </head>
 <body>    
     <form enctype="multipart/form-data" id="form1" name="form1" target="formTarget" method="post"
-    action="SimpleUploader.aspx?type=image">
+    action="simpleuploader.aspx?type=image">
     <div id="container">
         <div id="upload">
             <div id="top" style="text-align: left; width: 100%;">
@@ -263,25 +263,39 @@
         
         function upload() {
             var files = $(":file");
+            
+            var validate = true;
             var flag = true;
+
             $.each(files, function(i, n) {
-                var ext = n.value.substring(n.value.lastIndexOf(".") + 1).toLowerCase();
-                if (ext != "" && !hasFormat(ext)) {
-                    Dialog.alert("附件上传不支持" + ext + "文件！请重新选择。");
-                    flag = false;
+                var val = n.value;
+                if (val != "" && val != null) {
+                    validate = false;
+
+                    var ext = val.substring(n.value.lastIndexOf(".") + 1).toLowerCase();
+                    if (ext != "" && !hasFormat(ext)) {
+                        Dialog.alert("附件类型不支持" + ext + "文件！请重新选择。");
+                        flag = false;
+                    }
                 }
+
             });
+            if (validate) {
+                Dialog.alert("请选择要上传的文件！");
+                return;
+            }
+                
             if (flag == false) return;
 
             document.getElementById("form1").submit();
         }
 
-        function onUploadCompleted(iResult, errorMsg, iResultPath) {            
+        function onUploadCompleted(iResult, errorMsg, iResultPath) {      
             switch (iResult.toString()) {
                 case "1":
                     try {
                         setResult(iResultPath);
-                        window.parent.parent.Dialog.close();
+                        window.parent.parent.Dialog.close();                        
                     } catch (ex) { }
                     break;
 
