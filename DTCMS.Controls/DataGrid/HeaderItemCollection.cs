@@ -12,7 +12,9 @@ namespace DTCMS.Controls
     {
         private HeaderItemCollection _headerItem;
 
-        [PersistenceMode(PersistenceMode.Attribute)]
+        [PersistenceMode(PersistenceMode.InnerProperty)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        [NotifyParentProperty(true)]
         public HeaderItemCollection HeaderItem
         {
             get

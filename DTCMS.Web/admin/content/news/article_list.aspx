@@ -32,6 +32,11 @@
 			<div id="gridTreeDiv">
 			</div>
             <DT:DataGrid ID="dt_DataGrid" BindAjaxMethod="DTCMS.Web.admin.article_list.GetArticleJsonData" runat="server">
+                <Colunms>
+                    <HeaderItem Text="ID" Width="10px"></HeaderItem>
+                    <HeaderItem Text="名称" Width="10px"></HeaderItem>
+                    <HeaderItem Text="排序" Width="10px"></HeaderItem>
+                </Colunms>
             </DT:DataGrid>
             
 		</div>
