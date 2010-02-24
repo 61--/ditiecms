@@ -22,14 +22,14 @@ namespace DTCMS.Controls
         private int _pageSize;
         private string _cssClass;
 
-        private ColumnsItemCollection _columns;
+        private Columns _columns;
         //private HeaderItemCollection _headerItem;
 
         /// <summary>
         /// 控件ID
         /// </summary>
+        [DefaultValue("")]
         [Description("控件ID")]
-        [DefaultValue((string)null)]
         public override string ID
         {
             get { return _id; }
@@ -39,8 +39,8 @@ namespace DTCMS.Controls
         /// <summary>
         /// 是否显示选择框
         /// </summary>
-        [Description("是否显示选择框")]
         [DefaultValue(true)]
+        [Description("是否显示选择框")]
         public bool IsCheckBox
         {
             get { return _isCheckBox; }
@@ -50,8 +50,8 @@ namespace DTCMS.Controls
         /// <summary>
         /// 是否显示数据列索引序号
         /// </summary>
-        [Description("是否显示数据列索引序号")]
         [DefaultValue(true)]
+        [Description("是否显示数据列索引序号")]
         public bool IsListIndex
         {
             get { return _isListIndex; }
@@ -61,8 +61,8 @@ namespace DTCMS.Controls
         /// <summary>
         /// 绑定数据客户端Ajax方法
         /// </summary>
+        [DefaultValue("")]
         [Description("客户端绑定数据Ajax方法")]
-        [DefaultValue((string)null)]
         public string BindAjaxMethod
         {
             get { return _bindAjaxMethod; }
@@ -72,8 +72,8 @@ namespace DTCMS.Controls
         /// <summary>
         /// 数据列是否分页
         /// </summary>
-        [Description("数据列是否分页")]
         [DefaultValue(true)]
+        [Description("数据列是否分页")]
         public bool IsPage
         {
             get { return _isPage; }
@@ -83,8 +83,8 @@ namespace DTCMS.Controls
         /// <summary>
         /// 数据列分页大小
         /// </summary>
-        [Description("数据列分页大小")]
         [DefaultValue(15)]
+        [Description("数据列分页大小")]
         public int PageSize
         {
             get { return _pageSize; }
@@ -94,8 +94,8 @@ namespace DTCMS.Controls
         /// <summary>
         /// 应用于该控件的CSS类名
         /// </summary>
-        [Description("应用于该控件的CSS类名")]
         [DefaultValue("table_data")]
+        [Description("应用于该控件的CSS类名")]
         public override string CssClass
         {
             get { return _cssClass; }
@@ -105,8 +105,11 @@ namespace DTCMS.Controls
         /// <summary>
         /// 创建 HeaderItem 控件容器
         /// </summary>
+        [NotifyParentProperty(true)] 
         [PersistenceMode(PersistenceMode.InnerProperty)]
-        public ColumnsItemCollection Colunms
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        [Description("要在控件中显示的一组列")]
+        public Columns Colunms
         {
             get { return _columns; }
             set { _columns = value; }

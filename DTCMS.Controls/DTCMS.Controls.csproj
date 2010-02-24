@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataGrid\Columns.cs" />
     <Compile Include="DataGrid\DataGrid.cs" />
     <Compile Include="DataGrid\HeaderItemCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

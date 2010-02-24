@@ -8,29 +8,13 @@ using System.Web.UI.WebControls;
 
 namespace DTCMS.Controls
 {
-    public class ColumnsItemCollection 
-    {
-        private HeaderItemCollection _headerItem;
-
-        [PersistenceMode(PersistenceMode.InnerProperty)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        [NotifyParentProperty(true)]
-        public HeaderItemCollection HeaderItem
-        {
-            get
-            {
-                if (_headerItem == null)
-                {
-                    _headerItem = new HeaderItemCollection();
-                }
-                return _headerItem;
-            }
-        }
-    }
-
+    /// <summary>
+    /// 表头列集合
+    /// </summary>
+    [TypeConverter(typeof(ExpandableObjectConverter))]
     public class HeaderItemCollection
     {
-        private string _title;
+        private string _text;
         private string _align;
         private string _width;
         private string _cssClass;
@@ -39,10 +23,10 @@ namespace DTCMS.Controls
         /// <summary>
         /// 表头文本
         /// </summary>
-        public string Title
+        public string Text
         {
-            get { return _title; }
-            set { _title = value; }
+            get { return _text; }
+            set { _text = value; }
         }
 
         /// <summary>
