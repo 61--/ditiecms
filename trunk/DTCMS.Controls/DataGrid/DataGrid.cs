@@ -8,6 +8,9 @@ using System.Web.UI.WebControls;
 
 namespace DTCMS.Controls
 {
+    /// <summary>
+    /// http://blog.csdn.net/ChengKing/archive/2009/01/01/3678774.aspx
+    /// </summary>
     [DefaultProperty("Text")]
     [ToolboxData("<{0}:DataGrid runat=server></{0}:DataGrid>")]
     public class DataGrid : WebControl
@@ -105,14 +108,20 @@ namespace DTCMS.Controls
         /// <summary>
         /// 创建 HeaderItem 控件容器
         /// </summary>
-        [NotifyParentProperty(true)] 
+        [NotifyParentProperty(true)]
         [PersistenceMode(PersistenceMode.InnerProperty)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         [Description("要在控件中显示的一组列")]
         public Columns Colunms
         {
-            get { return _columns; }
-            set { _columns = value; }
+            get
+            {
+                if (_columns == null)
+                {
+                    _columns = new Columns();
+                }
+                return _columns;
+            }
         }
 
         ///// <summary>

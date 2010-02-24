@@ -8,21 +8,44 @@ using System.Web.UI.WebControls;
 
 namespace DTCMS.Controls
 {
-    public class Columns
+    public class Columns : List<HeaderItem>
     {
-        private HeaderItemCollection _headerItem;
+        //private HeaderItemCollection _headerItem;
 
-        [PersistenceMode(PersistenceMode.InnerProperty)]
-        public HeaderItemCollection HeaderItem
+        //[PersistenceMode(PersistenceMode.InnerProperty)]
+        //public HeaderItemCollection HeaderItem
+        //{
+        //    get
+        //    {
+        //        if (_headerItem == null)
+        //        {
+        //            _headerItem = new HeaderItemCollection();
+        //        }
+        //        return _headerItem;
+        //    }
+        //}
+
+        public Columns() : base(){ }
+
+        public new int Count
         {
-            get
-            {
-                if (_headerItem == null)
-                {
-                    _headerItem = new HeaderItemCollection();
-                }
-                return _headerItem;
-            }
+            get { return base.Count; }
+        }
+
+        public new void Add(HeaderItem item)
+        {
+            base.Add(item);
+        }
+
+        public new void Clear()
+        {
+            base.Clear();
+        }
+
+        public new HeaderItem this[int index]
+        {
+            get { return base[index]; }
+            set { base[index] = value; }
         }
     }
 }
