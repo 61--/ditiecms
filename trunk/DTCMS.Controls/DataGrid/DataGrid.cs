@@ -22,8 +22,8 @@ namespace DTCMS.Controls
         private int _pageSize;
         private string _cssClass;
 
-        private ITemplate _columns;
-        private HeaderItemCollection _headerItem;
+        private ColumnsItemCollection _columns;
+        //private HeaderItemCollection _headerItem;
 
         /// <summary>
         /// 控件ID
@@ -106,7 +106,7 @@ namespace DTCMS.Controls
         /// 创建 HeaderItem 控件容器
         /// </summary>
         [PersistenceMode(PersistenceMode.InnerProperty)]
-        public virtual ITemplate Colunms
+        public ColumnsItemCollection Colunms
         {
             get { return _columns; }
             set { _columns = value; }

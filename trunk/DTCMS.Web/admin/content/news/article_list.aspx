@@ -33,9 +33,8 @@
 			</div>
             <DT:DataGrid ID="dt_DataGrid" BindAjaxMethod="DTCMS.Web.admin.article_list.GetArticleJsonData" runat="server">
                 <Colunms>
-                    <HeaderItem Text="ID" Width="10px"></HeaderItem>
-                    <HeaderItem Text="名称" Width="10px"></HeaderItem>
-                    <HeaderItem Text="排序" Width="10px"></HeaderItem>
+                    <HeaderItem Title="列1" Width="10%" CssClass="bleft" />
+                    <HeaderItem Title="列2" Width="20%" />
                 </Colunms>
             </DT:DataGrid>
             
