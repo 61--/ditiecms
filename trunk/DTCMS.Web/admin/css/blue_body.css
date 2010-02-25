@@ -261,6 +261,7 @@ a.b5:hover
     background: url(../images/blue/th_bg.gif) right bottom no-repeat;
 }
 .table_data .thead a{
+	display:block;
     white-space: nowrap;
     text-decoration: none;
 }
