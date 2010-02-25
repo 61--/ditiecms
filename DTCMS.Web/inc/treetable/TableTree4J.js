@@ -241,6 +241,7 @@ function TableTree4J(objectName, sequence, checked) {
         this.initNodes();
         var container = document.getElementById(elementId);
         container.innerHTML = this.tableDesc + this.htmlCode + "</table>";
+        alert(container.innerHTML);
     }
 
     //show tree when the html init
@@ -645,7 +646,7 @@ function TableTree4J(objectName, sequence, checked) {
         var codes = this.codeNodeTR(rootNod);
         var nodestitle = "";
         if (this.checked) {
-            nodestitle = nodestitle + "<td width=\"" + this.headerWidthList[widthList++] + "\"><input type=\"checkbox\" onclick=\"CheckSelAll(this)\" name=\"title\" /></td>";   //checkbox
+            nodestitle = nodestitle + "<td width=\"" + this.headerWidthList[widthList++] + "\"><input type=\"checkbox\" onclick=\"invertCheckBox(this)\" name=\"title\" /></td>";   //checkbox
         }
         if (this.sequence) {
             nodestitle = nodestitle + "<td width=\"" + this.headerWidthList[widthList++] + "\">ID</td>";
@@ -831,7 +832,7 @@ function select(object) {   //单击选择当前行
 }
 
 /*** 全选反选*name=items ***/
-function CheckSelAll(elem) {
+function invertCheckBox(elem) {
     var input = document.getElementsByName("items");
     var len = input.length;
     for (var i = 0; i < len; i++) {

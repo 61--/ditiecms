@@ -20,7 +20,7 @@ namespace DTCMS.Controls
         private bool _isSort;
 
         /// <summary>
-        /// 表头文本
+        /// 列名
         /// </summary>
         public string Text
         {

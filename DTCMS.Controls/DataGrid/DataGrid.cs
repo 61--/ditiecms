@@ -11,17 +11,16 @@ namespace DTCMS.Controls
 {
     /// <summary>
     /// DataGrid 服务器控件
-    /// http://blog.csdn.net/ChengKing/archive/2009/01/01/3678774.aspx
     /// </summary>
     [DefaultProperty("Text")]
     [ToolboxData("<{0}:DataGrid CssClass='table_data' runat='server'></{0}:DataGrid>")]
-    public class DataGrid : WebControl
+    public class DataGrid : WebControl, INamingContainer
     {
         #region DataGrid属性
 
         private string _id;
-        private bool _isCheckBox;
-        private bool _isListIndex;
+        private CheckBox _checkBox;
+        private RowsIndex _rowsIndex;
         private string _bindAjaxMethod;
         private bool _isPage;
         private int _pageSize;
@@ -39,30 +38,6 @@ namespace DTCMS.Controls
         {
             get { return _id; }
             set { _id = value; }
-        }
-
-        /// <summary>
-        /// 是否显示选择框
-        /// </summary>
-        [DefaultValue(true)]
-        [Category("Behavior")]
-        [Description("是否显示选择框")]
-        public bool IsCheckBox
-        {
-            get { return _isCheckBox; }
-            set { _isCheckBox = value; }
-        }
-
-        /// <summary>
-        /// 是否显示数据列索引序号
-        /// </summary>
-        [DefaultValue(true)]
-        [Category("Behavior")]
-        [Description("是否显示数据列索引序号")]
-        public bool IsListIndex
-        {
-            get { return _isListIndex; }
-            set { _isListIndex = value; }
         }
 
         /// <summary>
@@ -112,6 +87,46 @@ namespace DTCMS.Controls
             set { _cssClass = value; }
         }
 
+
+        /// <summary>
+        /// 是否显示选择框
+        /// </summary>
+        [DefaultValue(true)]
+        [Category("Behavior")]
+        [PersistenceMode(PersistenceMode.InnerProperty)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        [Description("显示选择框属性")]
+        public CheckBox CheckBox
+        {
+            get
+            {
+                if (_checkBox == null)
+                {
+                    _checkBox = new CheckBox();
+                }
+                return _checkBox;
+            }
+        }
+
+        /// <summary>
+        /// 是否显示数据列索引序号
+        /// </summary>
+        [DefaultValue(true)]
+        [Category("Behavior")]
+        [PersistenceMode(PersistenceMode.InnerProperty)]
+        [Description("显示数据列索引属性")]
+        public RowsIndex RowsIndex
+        {
+            get
+            {
+                if (_rowsIndex == null)
+                {
+                    _rowsIndex = new RowsIndex();
+                }
+                return _rowsIndex;
+            }
+        }
+
         /// <summary>
         /// 创建 HeaderItem 控件容器
         /// </summary>
@@ -131,16 +146,28 @@ namespace DTCMS.Controls
         }
         #endregion
 
-        protected override void RenderContents(HtmlTextWriter output)
+        protected override void Render(HtmlTextWriter output)
         {
-            output.WriteLine(string.Format("<table id=\"{0}\" class=\"{1}\">", ID, CssClass));
+            output.WriteLine(string.Format("<table id=\"{0}\" class=\"{1}\">", this.ID, this.CssClass));
+            output.WriteLine("<tr class=\"thead\">");
+
+            if (this.CheckBox.Visible)
+            {
+                output.WriteLine(string.Format("<td width=\"{0}\"><input type=\"checkbox\" onclick=\"invertCheckBox(this)\" name=\"title\" /></td>", this.CheckBox.Width));
+            }
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < Colunms.Count; i++)
+            {
+                if (this.Colunms[i].IsSort)
+                {
+                    sb.Append(string.Format("<td width=\"{0}\">{1}</td>", this.Colunms[i].Width, this.Colunms[i].Text));
+                }
+                sb.Append(string.Format("<td width=\"{0}\">{1}</td>", this.Colunms[i].Width, this.Colunms[i].Text));
+            }
+
+            output.WriteLine("</tr>");
             output.WriteLine("</table>");
-            output.WriteLine(IsPage);
-            output.WriteLine(PageSize);
-            output.WriteLine(CssClass);
-            output.WriteLine(IsCheckBox);
-            output.WriteLine(IsListIndex);
-            output.WriteLine(BindAjaxMethod);
         }
     }
 }
