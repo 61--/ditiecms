@@ -64,5 +64,22 @@ namespace DTCMS.SqlServerDAL
         {
             return dbHelper.ExecuteNonQuery(CommandType.Text,strSql);
         }
+
+        /// <summary>
+        /// 执行SQL语句
+        /// </summary>
+        public DataTable ExecuteSqlToDataTable(string strSql)
+        {
+            DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                return ds.Tables[0];
+            }
+            else
+            {
+                return null;
+            }
+
+        }
     }
 }

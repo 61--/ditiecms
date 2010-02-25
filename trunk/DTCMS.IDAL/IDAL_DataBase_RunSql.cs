@@ -29,6 +29,10 @@ namespace DTCMS.IDAL
         /// 执行SQL语句
         /// </summary>
         int ExecuteSql(string strSql);
+        /// <summary>
+        /// 执行SQL语句
+        /// </summary>
+        DataTable ExecuteSqlToDataTable(string strSql);
 		
     }
 }

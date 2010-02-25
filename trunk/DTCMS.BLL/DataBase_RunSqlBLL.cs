@@ -41,9 +41,15 @@ namespace DTCMS.BLL
         /// 执行SQL语句
         /// </summary>
         public int ExecuteSql(string strSql)
-        {           
-            //验证
+        {                   
             return dalDatabaseRunsql.ExecuteSql(strSql);
+        }
+        /// <summary>
+        /// 执行SQL语句
+        /// </summary>
+        public DataTable ExecuteSqlToDataTable(string strSql)
+        {            
+            return dalDatabaseRunsql.ExecuteSqlToDataTable(strSql);
         }
     }
 }

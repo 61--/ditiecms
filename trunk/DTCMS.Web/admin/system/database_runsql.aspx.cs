@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 using DTCMS.BLL;
 using System.Data;
 using System.Text;
+using DTCMS.Common;
 
 namespace DTCMS.Web.admin.system
 {
@@ -39,7 +40,7 @@ namespace DTCMS.Web.admin.system
         }
 
         [AjaxPro.AjaxMethod]
-        public string GetSysObjectDataTable(string tablename)
+        public string GetSysColumnDataTable(string tablename)
         {
             DataTable dtSysColumn = bllDatabaseRunSql.GetSysColumnsDataTable(tablename);
             if (dtSysColumn == null)
@@ -51,13 +52,78 @@ namespace DTCMS.Web.admin.system
                 for (int i = 0, count = dtSysColumn.Rows.Count; i < count; i++)
                 {
                     sbcolumns.Append("<li>");
-                    sbcolumns.Append(string.Format("<input type=\"checkbox\" id=\"chk_columns_{0}\" name=\"{1}\" /><label for=\"chk_columns_{0}\">{1}[{2}]</label>", i, dtSysColumn.Rows[i]["name"].ToString(), dtSysColumn.Rows[i]["value"].ToString()));
+                    if (dtSysColumn.Rows[i]["name"].ToString() == "*")
+                    {
+                        sbcolumns.Append(string.Format("<input type=\"checkbox\" id=\"chk_columns_{0}\" name=\"columns\" value=\"{1}\" onclick=\"selectColumnsAll(this);\" /><label for=\"chk_columns_{0}\">{1}[{2}]</label>", i, dtSysColumn.Rows[i]["name"].ToString(), dtSysColumn.Rows[i]["value"].ToString()));
+                    }
+                    else
+                    {
+                        sbcolumns.Append(string.Format("<input type=\"checkbox\" id=\"chk_columns_{0}\" name=\"columns\" value=\"{1}\" onclick=\"selectColumns();\" /><label for=\"chk_columns_{0}\">{1}[{2}]</label>", i, dtSysColumn.Rows[i]["name"].ToString(), dtSysColumn.Rows[i]["value"].ToString()));
+                    }
                     sbcolumns.Append("</li>");
                 }
                 sbcolumns.Append("</ul>");
                 return sbcolumns.ToString();
             }
             return "";
+        }
+
+        [AjaxPro.AjaxMethod]
+        public string Update(string strSql)
+        {
+            if (Regular.ValidateSQL(strSql))
+            {
+                return "【" + strSql + "】存在危险字符！请确认后在执行。";
+            }
+
+            try
+            {
+                int sum = bllDatabaseRunSql.ExecuteSql(strSql);
+                return "成功执行1个SQL语句!";
+            }
+            catch(Exception e)
+            {
+                return string.Format("<p>{0}  <span style=\"color:red;\">{1}</span></p><br/>运行SQL：{1}，无返回记录！", e.Message, strSql);
+            }
+        }
+
+        [AjaxPro.AjaxMethod]
+        public string Select(string strSql)
+        {
+            if (Regular.ValidateSQL(strSql))
+            {
+                return "【" + strSql + "】存在危险字符！请确认后在执行。";
+            }
+
+            try
+            {
+                DataTable dtSelect = bllDatabaseRunSql.ExecuteSqlToDataTable(strSql);
+
+                if (dtSelect != null && dtSelect.Rows != null && dtSelect.Rows.Count > 0)
+                {
+                    StringBuilder sbmsg = new StringBuilder();
+                    sbmsg.Append(string.Format("<div>运行{0}，共有{1}条记录，最大返回100条！<div><hr/>", strSql, dtSelect.Rows.Count));
+                    for (int i = 0, count = dtSelect.Rows.Count > 100 ? 100 : dtSelect.Rows.Count; i < count; i++)
+                    {
+                        for (int j = 0, sum = dtSelect.Columns.Count; j < sum; j++)
+                        {
+                            sbmsg.Append(dtSelect.Columns[j].ColumnName);
+                            sbmsg.Append("：");
+                            sbmsg.Append("<span style=\"color:red;\">");
+                            sbmsg.Append(dtSelect.Rows[i][j].ToString());
+                            sbmsg.Append("</span>");
+                            sbmsg.Append("</br>");
+                        }
+                        sbmsg.Append("<hr/>");
+                    }
+                    return sbmsg.ToString().TrimEnd(new char[]{'>','/','r','h','<'});
+                }
+                return "";
+            }
+            catch (Exception e)
+            {
+                return string.Format("<p>{0}  <span style=\"color:red;\">{1}</span></p><br/>运行SQL：{1}，无返回记录！", e.Message, strSql);
+            }
         }
         #endregion 
     }

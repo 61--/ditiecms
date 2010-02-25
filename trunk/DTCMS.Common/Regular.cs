@@ -74,5 +74,15 @@ namespace DTCMS.Common
             }
             return true;
         }
+
+        /// <summary>
+        /// 验证SQL条件是否安全，抛出异常：语句存在危险字符
+        /// </summary>
+        /// <param name="obj">where值</param>
+        /// <returns>安全返回false，危险字符返回true</returns>
+        public static bool ValidateSQL(string strSql)
+        {
+            return !Regex.IsMatch(strSql, @"[insert|delete|alter|create|drop|restore|backup]");
+        }
     }
 }
