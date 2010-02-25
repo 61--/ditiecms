@@ -114,7 +114,7 @@ namespace DTCMS.Controls
         [DefaultValue(true)]
         [Category("Behavior")]
         [PersistenceMode(PersistenceMode.InnerProperty)]
-        [Description("显示数据列索引属性")]
+        [Description("显示数据行索引属性")]
         public RowsIndex RowsIndex
         {
             get
@@ -148,26 +148,80 @@ namespace DTCMS.Controls
 
         protected override void Render(HtmlTextWriter output)
         {
-            output.WriteLine(string.Format("<table id=\"{0}\" class=\"{1}\">", this.ID, this.CssClass));
-            output.WriteLine("<tr class=\"thead\">");
+            //构造Table标签
+            output.AddAttribute(HtmlTextWriterAttribute.Id, this.ID);
+            if (this.CssClass != null)
+            {
+                output.AddAttribute(HtmlTextWriterAttribute.Class, this.CssClass);
+            }
+            output.RenderBeginTag(HtmlTextWriterTag.Table);
 
+            //构造Tr标签
+            output.AddAttribute(HtmlTextWriterAttribute.Class, "thead");
+            output.RenderBeginTag(HtmlTextWriterTag.Tr);
+
+            //是否显示CheckBox
             if (this.CheckBox.Visible)
             {
-                output.WriteLine(string.Format("<td width=\"{0}\"><input type=\"checkbox\" onclick=\"invertCheckBox(this)\" name=\"title\" /></td>", this.CheckBox.Width));
+                if (this.CheckBox.Width != null)
+                {
+                    output.AddAttribute(HtmlTextWriterAttribute.Width, this.CheckBox.Width);
+                }
+                output.RenderBeginTag(HtmlTextWriterTag.Td);
+
+                output.AddAttribute(HtmlTextWriterAttribute.Type, "checkbox");
+                output.AddAttribute(HtmlTextWriterAttribute.Onclick, "invertCheckBox(this)");
+                output.RenderBeginTag(HtmlTextWriterTag.Input);
+                output.RenderEndTag();
+                output.RenderEndTag();
+            }
+            //是否显示数据行索引
+            if (this.RowsIndex.Visible)
+            {
+                if (this.RowsIndex.Width != null)
+                {
+                    output.AddAttribute(HtmlTextWriterAttribute.Width, this.RowsIndex.Width);
+                }
+                output.RenderBeginTag(HtmlTextWriterTag.Td);
+                output.Write(this.RowsIndex.Text);
+                output.RenderEndTag();
             }
 
-            StringBuilder sb = new StringBuilder();
+            //构造表头集合
             for (int i = 0; i < Colunms.Count; i++)
             {
-                if (this.Colunms[i].IsSort)
+                if (this.Colunms[i].Width != null)
                 {
-                    sb.Append(string.Format("<td width=\"{0}\">{1}</td>", this.Colunms[i].Width, this.Colunms[i].Text));
+                    output.AddAttribute(HtmlTextWriterAttribute.Width, this.Colunms[i].Width);
                 }
-                sb.Append(string.Format("<td width=\"{0}\">{1}</td>", this.Colunms[i].Width, this.Colunms[i].Text));
+                if (this.Colunms[i].CssClass != null)
+                {
+                    output.AddAttribute(HtmlTextWriterAttribute.Class, this.Colunms[i].CssClass);
+                }
+                output.RenderBeginTag(HtmlTextWriterTag.Td);
+
+                //如果排序字段不为空，则添加客户端排序方法
+                if (this.Colunms[i].SortField != null)
+                {
+                    output.AddAttribute(HtmlTextWriterAttribute.Href, string.Format("javascript:sortRows('{0}');", this.Colunms[i].SortField));
+                    output.RenderBeginTag(HtmlTextWriterTag.A);
+                    output.Write(this.Colunms[i].Text);
+                    output.RenderEndTag();
+                }
+                else
+                {
+                    output.Write(this.Colunms[i].Text);
+                }
+                output.RenderEndTag();
             }
 
-            output.WriteLine("</tr>");
-            output.WriteLine("</table>");
+            //构造Tbody标签
+            output.AddAttribute(HtmlTextWriterAttribute.Id, "tbody");
+            output.RenderBeginTag(HtmlTextWriterTag.Tbody);
+            output.RenderEndTag();
+
+            output.RenderEndTag();
+            output.RenderEndTag();
         }
     }
 }

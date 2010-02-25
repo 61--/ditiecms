@@ -241,7 +241,7 @@ function TableTree4J(objectName, sequence, checked) {
         this.initNodes();
         var container = document.getElementById(elementId);
         container.innerHTML = this.tableDesc + this.htmlCode + "</table>";
-        alert(container.innerHTML);
+        //alert(container.innerHTML);
     }
 
     //show tree when the html init

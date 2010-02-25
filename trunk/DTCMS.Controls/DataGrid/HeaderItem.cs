@@ -17,7 +17,7 @@ namespace DTCMS.Controls
         private string _align;
         private string _width;
         private string _cssClass;
-        private bool _isSort;
+        private string _sortField;
 
         /// <summary>
         /// 列名
@@ -56,12 +56,12 @@ namespace DTCMS.Controls
         }
 
         /// <summary>
-        /// 单击表头是否排序
+        /// 单击表头排序字段
         /// </summary>
-        public bool IsSort
+        public string SortField
         {
-            get { return _isSort; }
-            set { _isSort = value; }
+            get { return _sortField; }
+            set { _sortField = value; }
         }
     }
 }
