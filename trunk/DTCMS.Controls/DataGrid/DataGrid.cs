@@ -129,16 +129,6 @@ namespace DTCMS.Controls
                 return _columns;
             }
         }
-
-        ///// <summary>
-        ///// 表头集合
-        ///// </summary>
-        //[PersistenceMode(PersistenceMode.Attribute)] 
-        //[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        //public HeaderItemCollection HeaderItem
-        //{
-        //    get { return _headerItem; }
-        //}
         #endregion
 
         protected override void RenderContents(HtmlTextWriter output)

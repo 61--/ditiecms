@@ -8,6 +8,9 @@ using System.Web.UI.WebControls;
 
 namespace DTCMS.Controls
 {
+    /// <summary>
+    /// HeaderItem 成员属性
+    /// </summary>
     public class HeaderItem
     {
         private string _text;
