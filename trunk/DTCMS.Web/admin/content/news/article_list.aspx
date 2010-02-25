@@ -32,6 +32,8 @@
 			<div id="gridTreeDiv">
 			</div>
             <DT:DataGrid ID="dt_DataGrid" BindAjaxMethod="DTCMS.Web.admin.article_list.GetArticleJsonData" runat="server">
+                <CheckBox Visible="true" Width="4%" />
+                <RowsIndex Text="ID" Visible="true" Width="4%" />
                 <Colunms>
                     <DT:HeaderItem Text="列1" IsSort="true" />
                     <DT:HeaderItem Text="列2" />
