@@ -12,7 +12,7 @@ namespace DTCMS.Controls
     /// http://blog.csdn.net/ChengKing/archive/2009/01/01/3678774.aspx
     /// </summary>
     [DefaultProperty("Text")]
-    [ToolboxData("<{0}:DataGrid runat=server></{0}:DataGrid>")]
+    [ToolboxData("<{0}:DataGrid CssClass='table_data' runat='server'></{0}:DataGrid>")]
     public class DataGrid : WebControl
     {
         #region DataGrid属性
@@ -25,7 +25,7 @@ namespace DTCMS.Controls
         private int _pageSize;
         private string _cssClass;
 
-        private Columns _columns;
+        private HeaderItemCollection _columns;
         //private HeaderItemCollection _headerItem;
 
         /// <summary>
@@ -43,6 +43,7 @@ namespace DTCMS.Controls
         /// 是否显示选择框
         /// </summary>
         [DefaultValue(true)]
+        [Category("Behavior")]
         [Description("是否显示选择框")]
         public bool IsCheckBox
         {
@@ -54,6 +55,7 @@ namespace DTCMS.Controls
         /// 是否显示数据列索引序号
         /// </summary>
         [DefaultValue(true)]
+        [Category("Behavior")]
         [Description("是否显示数据列索引序号")]
         public bool IsListIndex
         {
@@ -76,6 +78,7 @@ namespace DTCMS.Controls
         /// 数据列是否分页
         /// </summary>
         [DefaultValue(true)]
+        [Category("Behavior")]
         [Description("数据列是否分页")]
         public bool IsPage
         {
@@ -87,6 +90,7 @@ namespace DTCMS.Controls
         /// 数据列分页大小
         /// </summary>
         [DefaultValue(15)]
+        [Category("Behavior")]
         [Description("数据列分页大小")]
         public int PageSize
         {
@@ -97,7 +101,8 @@ namespace DTCMS.Controls
         /// <summary>
         /// 应用于该控件的CSS类名
         /// </summary>
-        [DefaultValue("table_data")]
+        [DefaultValue("")]
+        [Category("Behavior")]
         [Description("应用于该控件的CSS类名")]
         public override string CssClass
         {
@@ -108,17 +113,16 @@ namespace DTCMS.Controls
         /// <summary>
         /// 创建 HeaderItem 控件容器
         /// </summary>
-        [NotifyParentProperty(true)]
         [PersistenceMode(PersistenceMode.InnerProperty)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         [Description("要在控件中显示的一组列")]
-        public Columns Colunms
+        public HeaderItemCollection Colunms
         {
             get
             {
                 if (_columns == null)
                 {
-                    _columns = new Columns();
+                    _columns = new HeaderItemCollection();
                 }
                 return _columns;
             }

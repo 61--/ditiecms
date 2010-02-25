@@ -35,6 +35,11 @@
                 <Colunms>
                     <DT:HeaderItem Text="列1" IsSort="true" />
                     <DT:HeaderItem Text="列2" />
+                    <DT:HeaderItem IsSort="False" />
+                    <DT:HeaderItem IsSort="False" />
+                    <DT:HeaderItem IsSort="False" />
+                    <DT:HeaderItem IsSort="False" />
+                    <DT:HeaderItem IsSort="False" />
                 </Colunms>
             </DT:DataGrid>
 		</div>
