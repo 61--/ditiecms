@@ -12,42 +12,75 @@
     <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
 
     <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
-
+    <style type="text/css">
+    .h0{height:2px;}
+    .h6{ height:6px;}
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <div>
-            名称(M)：</div>
+        <div>名称(M)：</div><div class="h0"></div>
         <div>
             <select id="slt_sysobject" runat="server" style="width: 320px; background: #F7FAFC;"
-                onchange="getSysColumn(this.options[selectedIndex].value)">
+                onchange="getSysColumn(this.options[selectedIndex].value);">
             </select><br />
         </div>
-        <div style="height: 3px;">
+        <div class="h6"></div>
+        
+        <div>列(O)：</div><div class="h0"></div>
+        <div id="column_name" style="width: 493px; height: 142px; overflow: auto;">
         </div>
-        <div>
-            列(O)：</div>
-        <div id="column_name" style="border: solid 1px #000; width: 493px; height: 142px;
-            float: left; overflow: auto;">
-        </div>
-    </div>    
-    <div style="clear: both; height: 8px;">
+    </div> 
+    <div class="h6"></div>
+    
+    <div>返回信息(R)：</div><div class="h0"></div>
+    <div id="return_msg" style="width: 80%; height:142px; overflow: auto;">
     </div>
-    <div>
-        SQL语句：(L)</div>
+               
+    <div class="h6"></div>
+    <div>SQL语句：(L)</div><div class="h0"></div>
     <div>
         <textarea id="txts_sql" rows="6" cols="68" style="background: #F7FAFC;"></textarea></div>
     <div>
         <div style="height: 3px;">
         </div>
-        <button type="button" class="b1">
-            确定</button>
-        <button type="button" class="b1">
-            取消</button></div>
+        <button type="button" id="btn_select" class="b1" onclick="onclick_btn_select();">查询</button>
+        <button type="button" id="btn_update" class="b1" onclick="onclick_btn_update();">编辑</button>
+        <button type="button" id="btn_cancel" class="b1">取消</button></div>
     </form>
 
     <script type="text/javascript">
+        function selectColumns() {
+            var cols = $("input[name='columns']");
+            var select = "";
+            $.each(cols, function(i, n) {
+                if (n.checked == true) {
+                    select = select + "," + n.value;
+                }
+            });
+            if (select != "") {
+                select = select.substring(1, select.length);
+                $("#txts_sql").val("SELECT " + select + " FROM " + $("#slt_sysobject").val());
+            } else {
+                $("#txts_sql").val("");
+            }
+
+        }
+        function selectColumnsAll(obj) {
+            var cols = $("input[name='columns']");
+            $.each(cols, function(i, n) {
+                if (n.value != "*") {
+                    n.checked = "";
+                }
+            });
+            if (obj.checked == true) {
+                $("#txts_sql").val("SELECT * FROM " + $("#slt_sysobject").val());
+            } else {
+                $("#txts_sql").val("");
+            }
+        }
+        
         function getSysColumn(tablename) {
             var callback = function(res) {
                 if (res.error) {
@@ -56,10 +89,34 @@
                 }
                 showSysColumn(res.value);
             }
-            DTCMS.Web.admin.system.database_runsql.GetSysObjectDataTable(tablename, callback);
-        }
+            DTCMS.Web.admin.system.database_runsql.GetSysColumnDataTable(tablename, callback);
+        }        
         function showSysColumn(html) {
             $("#column_name").html(html);
+        }
+
+        function onclick_btn_update() {
+            var callback = function(res) {
+                if (res.error) {
+                    alert("请求错误，请刷新页面重试！\n" + res.error.Message);
+                    return;
+                }
+                showReturn_msg(res.value);
+            }
+            DTCMS.Web.admin.system.database_runsql.Update($("#txts_sql").val(), callback);
+        }
+        function onclick_btn_select() {
+            var callback = function(res) {
+                if (res.error) {
+                    alert("请求错误，请刷新页面重试！\n" + res.error.Message);
+                    return;
+                }
+                showReturn_msg(res.value);
+            }
+            DTCMS.Web.admin.system.database_runsql.Select($("#txts_sql").val(), callback);
+        }
+        function showReturn_msg(html) {
+            $("#return_msg").html(html);
         }
     </script>
 
