@@ -8,11 +8,6 @@ using System.Web.UI.WebControls;
 
 namespace DTCMS.Controls
 {
-    /// <summary>
-    /// 表头列集合
-    /// </summary>
-    [TypeConverter(typeof(ExpandableObjectConverter))]
-    [PersistenceMode(PersistenceMode.InnerProperty)]
     public class HeaderItem
     {
         private string _text;
