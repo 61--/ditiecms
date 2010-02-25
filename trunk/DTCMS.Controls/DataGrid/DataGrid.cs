@@ -6,9 +6,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+[assembly: TagPrefix("DTCMS.Controls", "DT")]
 namespace DTCMS.Controls
 {
     /// <summary>
+    /// DataGrid 服务器控件
     /// http://blog.csdn.net/ChengKing/archive/2009/01/01/3678774.aspx
     /// </summary>
     [DefaultProperty("Text")]

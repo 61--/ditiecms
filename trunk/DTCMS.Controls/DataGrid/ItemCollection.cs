@@ -8,6 +8,9 @@ using System.Web.UI.WebControls;
 
 namespace DTCMS.Controls
 {
+    /// <summary>
+    /// HeaderItem 成员集合
+    /// </summary>
     public class HeaderItemCollection : List<HeaderItem>
     {
         public HeaderItemCollection() : base() { }
