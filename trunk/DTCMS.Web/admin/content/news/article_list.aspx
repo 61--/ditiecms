@@ -30,7 +30,7 @@
                 <a href="javascript:DeleteData(-1,true);" class="button b4"><img src="../../images/ico/i_allDelete.gif" alt="" />批量删除</a>
             </div>
 			<div id="gridTreeDiv">
-			</div>
+			</div><br />
             <DT:DataGrid ID="dt_DataGrid" BindAjaxMethod="DTCMS.Web.admin.article_list.GetArticleJsonData" CssClass="table_data" runat="server">
                 <CheckBox Visible="true" Width="4%" />
                 <RowsIndex Visible="true" Width="4%" />
@@ -51,7 +51,6 @@
             loadData(1);
             hideMessage();
         });
-
         function loadData(page) {
             var callback = function(res) {
                 if (res.error) {
@@ -61,6 +60,18 @@
                 showGridTree(res.value);
             }
             DTCMS.Web.admin.article_list.GetArticleJsonData(page, callback);
+        }
+        function onSortClick(elem) {
+            alert(elem.id);
+        }
+        function onSortOver(elem) {
+            var sortNode = document.createElement("img");
+            sortNode.id = "sortType";
+            sortNode.src = "../../images/blue/i_sort.gif";
+            elem.appendChild(sortNode);
+        }
+        function onSortOut(elem) {
+            elem.removeChild(document.getElementById("sortType"));
         }
         var gridTree;
         function showGridTree(json) {

@@ -203,9 +203,17 @@ namespace DTCMS.Controls
                 //如果排序字段不为空，则添加客户端排序方法
                 if (this.Colunms[i].SortField != null)
                 {
-                    output.AddAttribute(HtmlTextWriterAttribute.Href, string.Format("javascript:sortRows('{0}');", this.Colunms[i].SortField));
+                    output.AddAttribute(HtmlTextWriterAttribute.Id, this.Colunms[i].SortField);
+                    output.AddAttribute(HtmlTextWriterAttribute.Href, "javascript:;");
+                    output.AddAttribute(HtmlTextWriterAttribute.Title, "点击排序列");
+                    output.AddAttribute(HtmlTextWriterAttribute.Onclick, "onSortClick(this);");
+                    output.AddAttribute("onmouseover", "onSortOver(this);");
+                    output.AddAttribute("onmouseout", "onSortOut(this);");
                     output.RenderBeginTag(HtmlTextWriterTag.A);
                     output.Write(this.Colunms[i].Text);
+                    output.AddAttribute(HtmlTextWriterAttribute.Id, "sortType");
+                    output.AddAttribute(HtmlTextWriterAttribute.Src, "../../images/blue/i_sort.gif");
+                    output.RenderBeginTag(HtmlTextWriterTag.Img);
                     output.RenderEndTag();
                 }
                 else
@@ -217,6 +225,7 @@ namespace DTCMS.Controls
 
             //构造Tbody标签
             output.AddAttribute(HtmlTextWriterAttribute.Id, "tbody");
+            output.Write("<tr><td>123</td></tr>");
             output.RenderBeginTag(HtmlTextWriterTag.Tbody);
             output.RenderEndTag();
 
