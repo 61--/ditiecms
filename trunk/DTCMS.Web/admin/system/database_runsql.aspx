@@ -34,6 +34,14 @@
         {
             margin: 10px 0 0 20px;
         }
+        #column_name
+        {
+            width: 100%; height: 136px; overflow: auto;
+        }
+        #return_msg
+        {
+            width: 100%; height: 142px; overflow: auto;
+        }
     </style>
 </head>
 <body>
@@ -63,13 +71,13 @@
         
         <div>列(O)：</div>
         <div class="h0"></div>
-        <div id="column_name" style="width: 100%; height: 136px; overflow: auto;">
+        <div id="column_name">
         </div>
         <div class="h6"></div>
         <div>返回信息(R)：</div>
         <div class="h0"></div>
         
-        <div id="return_msg" style="width: 100%; height: 142px; overflow: auto;">
+        <div id="return_msg">
         </div>
         <div class="h6"></div>
         <div>SQL语句：(L)</div>
