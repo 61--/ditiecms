@@ -76,7 +76,7 @@ namespace DTCMS.Web.admin.system
 
             if (Regular.ValidateSQL(strSql))
             {
-                return "【" + strSql + "】存在危险字符！请确认后在执行。";
+                return "<div style=\"color:red;\">【" + strSql + "】存在危险字符！请确认后在执行。<div>";
             }
 
             try
@@ -98,7 +98,7 @@ namespace DTCMS.Web.admin.system
 
             if (Regular.ValidateSQL(strSql))
             {
-                return "【" + strSql + "】存在危险字符！请确认后在执行。";
+                return "<div style=\"color:red;\">【" + strSql + "】存在危险字符！请确认后在执行。</div>";
             }
 
             try
@@ -122,14 +122,14 @@ namespace DTCMS.Web.admin.system
                             sbmsg.Append(dtSelect.Columns[j].ColumnName);
                             sbmsg.Append("</span>：");
                             sbmsg.Append(dtSelect.Rows[i][j].ToString());
-                            sbmsg.Append("</br>");
+                            sbmsg.Append("<br/>");
                         }
                     }
                     return sbmsg.ToString();
                 }
                 else
                 {
-                    return string.Format("<div>运行{0}，没有返回记录！<div>", strSql);
+                    return string.Format("<div style=\"color:red;\">运行{0}，没有返回记录！<div>", strSql);
                 }
             }
             catch (Exception e)

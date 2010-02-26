@@ -22,6 +22,14 @@
         {
             height: 15px;
         }
+        .hr1
+        {
+            float:left; border-bottom:solid 2px #52A2D4; font-size:15px; padding:20px 0 3px 0;
+        }
+        .hr2
+        {
+            clear:both; border-bottom:solid 1px #52A2D4; height:0px; margin-bottom:6px;
+        }
         #container
         {
             margin: 10px 0 0 20px;
@@ -31,48 +39,44 @@
 <body>
     <form id="form1" runat="server">
     <div id="container">
-        <div style="position: relative;">
-            <span style="font-weight:bold; color:#555;">运行SQL语句：</span> <span style="position: absolute; right: 0; top: 0;">
+        <div>
+            <div>
+            <span style="float:right;">
             <a href=" /admin/system/database_revert.aspx"><strong>数据库备份</strong> </a>
             <a href="/admin/system/database_backup.aspx"> | <strong>数据库恢复</strong></a></span>
-            <div style="clear: both;">
             </div>
+            
+            <div class="hr1">运行SQL语句：</div> 
+            <div class="hr2"></div>
+            
         </div>
         <div class="h0"></div>
         
-        <div>
-            名称(M)：</div>
-        <div class="h0">
-        </div>
+        <div>名称(M)：</div>
+        <div class="h0"></div>
         <div>
             <select id="slt_sysobject" runat="server" style="width: 320px; background: #F7FAFC;"
                 onchange="getSysColumn(this.options[selectedIndex].value);">
-            </select><br />
+            </select>
         </div>
-        <div class="h6">
+        <div class="h6"></div>
+        
+        <div>列(O)：</div>
+        <div class="h0"></div>
+        <div id="column_name" style="width: 100%; height: 136px; overflow: auto;">
         </div>
-        <div>
-            列(O)：</div>
-        <div class="h0">
-        </div>
-        <div id="column_name" style="width: 493px; height: 142px; overflow: auto;">
-        </div>
-        <div class="h6">
-        </div>
-        <div>
-            返回信息(R)：</div>
-        <div class="h0">
-        </div>
+        <div class="h6"></div>
+        <div>返回信息(R)：</div>
+        <div class="h0"></div>
+        
         <div id="return_msg" style="width: 100%; height: 142px; overflow: auto;">
         </div>
-        <div class="h6">
-        </div>
-        <div>
-            SQL语句：(L)</div>
+        <div class="h6"></div>
+        <div>SQL语句：(L)</div>
         <div class="h0">
         </div>
         <div>
-            <textarea id="txts_sql" rows="6" cols="" style="background: #F7FAFC; width: 90%;"></textarea></div>
+            <textarea id="txts_sql" rows="" cols="" style="background: #F7FAFC; height:136px; width: 90%;"></textarea></div>
         <div style="height: 6px;">
         </div>
         <div style="text-align: center;">
