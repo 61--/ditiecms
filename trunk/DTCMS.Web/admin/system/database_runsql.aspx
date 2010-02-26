@@ -12,48 +12,84 @@
     <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
 
     <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
+
     <style type="text/css">
-    .h0{height:2px;}
-    .h6{ height:6px;}
+        .h0
+        {
+            height: 6px;
+        }
+        .h6
+        {
+            height: 15px;
+        }
+        #container
+        {
+            margin: 10px 0 0 20px;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <div>名称(M)：</div><div class="h0"></div>
+    <div id="container">
+        <div style="position: relative;">
+            <span style="font-weight:bold; color:#555;">运行SQL语句：</span> <span style="position: absolute; right: 0; top: 0;">
+            <a href=" /admin/system/database_revert.aspx"><strong>数据库备份</strong> </a>
+            <a href="/admin/system/database_backup.aspx"> | <strong>数据库恢复</strong></a></span>
+            <div style="clear: both;">
+            </div>
+        </div>
+        <div class="h0"></div>
+        
+        <div>
+            名称(M)：</div>
+        <div class="h0">
+        </div>
         <div>
             <select id="slt_sysobject" runat="server" style="width: 320px; background: #F7FAFC;"
                 onchange="getSysColumn(this.options[selectedIndex].value);">
             </select><br />
         </div>
-        <div class="h6"></div>
-        
-        <div>列(O)：</div><div class="h0"></div>
+        <div class="h6">
+        </div>
+        <div>
+            列(O)：</div>
+        <div class="h0">
+        </div>
         <div id="column_name" style="width: 493px; height: 142px; overflow: auto;">
         </div>
-    </div> 
-    <div class="h6"></div>
-    
-    <div>返回信息(R)：</div><div class="h0"></div>
-    <div id="return_msg" style="width: 80%; height:142px; overflow: auto;">
-    </div>
-               
-    <div class="h6"></div>
-    <div>SQL语句：(L)</div><div class="h0"></div>
-    <div>
-        <textarea id="txts_sql" rows="6" cols="68" style="background: #F7FAFC;"></textarea></div>
-    <div>
-        <div style="height: 3px;">
+        <div class="h6">
         </div>
-        <button type="button" id="btn_select" class="b1" onclick="onclick_btn_select();">查询</button>
-        <button type="button" id="btn_update" class="b1" onclick="onclick_btn_update();">编辑</button>
-        <button type="button" id="btn_cancel" class="b1">取消</button></div>
+        <div>
+            返回信息(R)：</div>
+        <div class="h0">
+        </div>
+        <div id="return_msg" style="width: 100%; height: 142px; overflow: auto;">
+        </div>
+        <div class="h6">
+        </div>
+        <div>
+            SQL语句：(L)</div>
+        <div class="h0">
+        </div>
+        <div>
+            <textarea id="txts_sql" rows="6" cols="" style="background: #F7FAFC; width: 90%;"></textarea></div>
+        <div style="height: 6px;">
+        </div>
+        <div style="text-align: center;">
+            <button type="button" id="btn_select" class="b1" onclick="onclick_btn_select();">
+                查询</button>
+            <button type="button" id="btn_update" class="b1" onclick="onclick_btn_update();">
+                编辑</button>
+            <button type="button" id="btn_cancel" class="b1" onclick="history.back(-1);">
+                取消</button></div>
+    </div>
     </form>
 
     <script type="text/javascript">
         function selectColumns() {
             var cols = $("input[name='columns']");
             var select = "";
+            cols[0].checked = "";
             $.each(cols, function(i, n) {
                 if (n.checked == true) {
                     select = select + "," + n.value;
@@ -80,7 +116,7 @@
                 $("#txts_sql").val("");
             }
         }
-        
+
         function getSysColumn(tablename) {
             var callback = function(res) {
                 if (res.error) {
@@ -88,9 +124,10 @@
                     return;
                 }
                 showSysColumn(res.value);
+                $("#txts_sql").val("");
             }
             DTCMS.Web.admin.system.database_runsql.GetSysColumnDataTable(tablename, callback);
-        }        
+        }
         function showSysColumn(html) {
             $("#column_name").html(html);
         }
@@ -103,7 +140,12 @@
                 }
                 showReturn_msg(res.value);
             }
-            DTCMS.Web.admin.system.database_runsql.Update($("#txts_sql").val(), callback);
+            var txtsql = $("#txts_sql").val();
+            if (txtsql == "") {
+                alert("没有要执行的SQL语句！");
+                return;
+            }
+            DTCMS.Web.admin.system.database_runsql.Update(txtsql, callback);
         }
         function onclick_btn_select() {
             var callback = function(res) {
@@ -113,11 +155,19 @@
                 }
                 showReturn_msg(res.value);
             }
-            DTCMS.Web.admin.system.database_runsql.Select($("#txts_sql").val(), callback);
+            var txtsql = $("#txts_sql").val();
+            if (txtsql == "") {
+                alert("没有要执行的SQL语句！");
+                return;
+            }
+            DTCMS.Web.admin.system.database_runsql.Select(txtsql, callback);
         }
         function showReturn_msg(html) {
             $("#return_msg").html(html);
         }
+
+        var sysobject = document.getElementById("slt_sysobject");
+        getSysColumn(sysobject.options[0].value);
     </script>
 
 </body>
