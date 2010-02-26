@@ -258,12 +258,26 @@ a.b5:hover
     height: 28px;
     font-weight: bold;
     text-indent: 10px;
+    padding-right:3px;
     background: url(../images/blue/th_bg.gif) right bottom no-repeat;
 }
 .table_data .thead a{
 	display:block;
+	height:27px;
+	overflow:hidden;
     white-space: nowrap;
     text-decoration: none;
+    position:relative;
+}
+.table_data .thead a:hover
+{
+	border-bottom:1px solid #FF8800;
+}
+.table_data .thead a img
+{
+	top:0px;
+	right:5px;
+	position:absolute;
 }
 .table_data .thead .bleft{   
 	background-position:left bottom;

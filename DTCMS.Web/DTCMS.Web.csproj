@@ -352,7 +352,10 @@
     <Content Include="admin\images\blue\help_b2.gif" />
     <Content Include="admin\images\blue\help_t1.gif" />
     <Content Include="admin\images\blue\help_t2.gif" />
+    <Content Include="admin\images\blue\i_sort.gif" />
     <Content Include="admin\images\blue\ico_title.gif" />
+    <Content Include="admin\images\blue\i_sort_asc.gif" />
+    <Content Include="admin\images\blue\i_sort_desc.gif" />
     <Content Include="admin\images\blue\loading.gif" />
     <Content Include="admin\images\blue\success.gif" />
     <Content Include="admin\images\color.png" />
@@ -1022,7 +1025,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4473</DevelopmentServerPort>
+          <DevelopmentServerPort>5140</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/DTCMS_Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
