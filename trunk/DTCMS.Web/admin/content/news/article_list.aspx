@@ -32,10 +32,10 @@
 			<div id="gridTreeDiv">
 			</div><br />
             <DT:DataGrid ID="dt_DataGrid" BindAjaxMethod="DTCMS.Web.admin.article_list.GetArticleJsonData" CssClass="table_data" runat="server">
-                <CheckBox Visible="true" Width="4%" />
-                <RowsIndex Visible="true" Width="4%" />
+                <CheckBox Visible="true" Width="5%" />
+                <RowsIndex Visible="true" Width="5%" />
                 <Colunms>
-                    <DT:HeaderItem Text="文章标题" Width="32%" SortField="title" />
+                    <DT:HeaderItem Text="文章标题" Width="30%" SortField="title" />
                     <DT:HeaderItem Text="所属栏目" Width="20%" />
                     <DT:HeaderItem Text="创建时间" Width="20%" />
                     <DT:HeaderItem Text="是否审核" Width="10%" />
@@ -62,7 +62,7 @@
             DTCMS.Web.admin.article_list.GetArticleJsonData(page, callback);
         }
         function onSortClick(elem) {
-            alert(elem.id);
+            elem.blur()
         }
         function onSortOver(elem) {
             var sortNode = document.createElement("img");
