@@ -71,6 +71,9 @@ namespace DTCMS.Web.admin.system
         [AjaxPro.AjaxMethod]
         public string Update(string strSql)
         {
+            if (strSql == string.Empty|| strSql==null)
+                return "";
+
             if (Regular.ValidateSQL(strSql))
             {
                 return "【" + strSql + "】存在危险字符！请确认后在执行。";
@@ -90,6 +93,9 @@ namespace DTCMS.Web.admin.system
         [AjaxPro.AjaxMethod]
         public string Select(string strSql)
         {
+            if (strSql == string.Empty || strSql == null)
+                return "";
+
             if (Regular.ValidateSQL(strSql))
             {
                 return "【" + strSql + "】存在危险字符！请确认后在执行。";
@@ -102,23 +108,29 @@ namespace DTCMS.Web.admin.system
                 if (dtSelect != null && dtSelect.Rows != null && dtSelect.Rows.Count > 0)
                 {
                     StringBuilder sbmsg = new StringBuilder();
-                    sbmsg.Append(string.Format("<div>运行{0}，共有{1}条记录，最大返回100条！<div><hr/>", strSql, dtSelect.Rows.Count));
+                    sbmsg.Append(string.Format("<div>运行{0}，共有{1}条记录，最大返回100条！<div>", strSql, dtSelect.Rows.Count));
                     for (int i = 0, count = dtSelect.Rows.Count > 100 ? 100 : dtSelect.Rows.Count; i < count; i++)
                     {
+                        sbmsg.Append("<div style=\"margin-top:15px; font-size:16px;\">");
+                        sbmsg.Append("记录");
+                        sbmsg.Append(i + 1);
+                        sbmsg.Append("</div>");
+                        sbmsg.Append("<hr/>");
                         for (int j = 0, sum = dtSelect.Columns.Count; j < sum; j++)
                         {
-                            sbmsg.Append(dtSelect.Columns[j].ColumnName);
-                            sbmsg.Append("：");
                             sbmsg.Append("<span style=\"color:red;\">");
+                            sbmsg.Append(dtSelect.Columns[j].ColumnName);
+                            sbmsg.Append("</span>：");
                             sbmsg.Append(dtSelect.Rows[i][j].ToString());
-                            sbmsg.Append("</span>");
                             sbmsg.Append("</br>");
                         }
-                        sbmsg.Append("<hr/>");
                     }
-                    return sbmsg.ToString().TrimEnd(new char[]{'>','/','r','h','<'});
+                    return sbmsg.ToString();
                 }
-                return "";
+                else
+                {
+                    return string.Format("<div>运行{0}，没有返回记录！<div>", strSql);
+                }
             }
             catch (Exception e)
             {
