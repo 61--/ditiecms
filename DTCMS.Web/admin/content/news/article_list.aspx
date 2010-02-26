@@ -12,7 +12,7 @@
     <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
     <script type="text/javascript" src="../../js/common.js"></script>
     <script type="text/javascript" src="../../js/public.js"></script>
-    <script type="text/javascript" src="/inc/treetable/TableTree4J.js"></script>
+    <script type="text/javascript" src="../../js/datagrid.js"></script>
 </head>
 <body>
     <form id="form1" runat="server"><div id="container">
@@ -45,32 +45,23 @@
 	</div>
     </form>
     <script type="text/javascript">
-        $(function() {
-            showLoading();
-            loadData(1);
-            hideMessage();
-        });
-        function loadData(page) {
-            var callback = function(res) {
-                if (res.error) {
-                    alert("请求错误，请刷新页面重试！\n" + res.error.Message);
-                    return;
-                }
-                showGridTree(res.value);
-            }
-            DTCMS.Web.admin.article_list.GetArticleJsonData(page, callback);
-        }
         function onSortClick(elem) {
             elem.blur()
         }
-        function onSortOver(elem) {
-            var sortNode = document.createElement("img");
-            sortNode.id = "sortType";
-            sortNode.src = "../../images/blue/i_sort.gif";
-            elem.appendChild(sortNode);
-        }
-        function onSortOut(elem) {
-            elem.removeChild(document.getElementById("sortType"));
+        function showDataList(json) {
+            if (json != "") {
+                var data = eval("data=" + json);
+                $("#dataList").gridview(
+                    data,
+                    {
+                        fields: [
+	                        { fieldsId: 1, dataFormat: function(r) { return "<font color=red>" + r.id + "</font>" } },
+	                        { fieldsId: 6, dataFormat: function(r) { return "删除" }, listeners: { event: "click", fn: function(row) { alert("单元格事件，ID是：" + row.id) } }, id: "opt" }
+	                    ],
+                        listeners: { event: "click", fn: function(row) { alert("行事件，ID是：" + row.id) } }
+                    }
+	            );
+            }
         }
         var gridTree;
         function showGridTree(json) {
