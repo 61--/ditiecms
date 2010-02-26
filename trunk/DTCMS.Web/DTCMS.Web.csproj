@@ -371,6 +371,7 @@
     <Content Include="admin\images\loading_scoll.gif" />
     <Content Include="admin\js\iColorPicker.js" />
     <Content Include="admin\js\jquery-1.3.2-vsdoc2.js" />
+    <Content Include="admin\js\datagrid.js" />
     <Content Include="admin\js\public.js" />
     <Content Include="admin\dialog\authorlist.aspx" />
     <Content Include="admin\dialog\classpagelist.aspx" />

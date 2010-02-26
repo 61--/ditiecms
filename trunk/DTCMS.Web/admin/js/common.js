@@ -27,20 +27,6 @@ function selectAll(elem, cid) {
     }
 }
 
-/*** 全选反选*name=items ***/
-function CheckSelAll(elem) {
-    var input = document.getElementsByName("items");
-    var len = input.length;
-    for (var i = 0; i < len; i++) {
-        if (elem.checked) {
-            input[i].checked = true;
-        }
-        else {
-            input[i].checked = false;
-        }
-    }
-}
-
 /*** 获取鼠标坐标 ***/
 function mousePosition(ev) {
     if (!ev) ev = window.event;
@@ -67,11 +53,30 @@ function getElemCoords(elem) {
         left: l
     };
 }
-/*** IP Count ***/
-
-
-
-
+/*** Cookie ***/
+function getCookie(check_name) {
+    var a_all_cookies = document.cookie.split(';');
+    var a_temp_cookie = cookie_name = cookie_value = '';
+    var b_cookie_found = false;
+    for (i = 0; i < a_all_cookies.length; i++) {
+        a_temp_cookie = a_all_cookies[i].split('=');
+        cookie_name = a_temp_cookie[0].replace(/^\s+|\s+$/g, '');
+        if (cookie_name == check_name) {
+            b_cookie_found = true;
+            if (a_temp_cookie.length > 1) cookie_value = unescape(a_temp_cookie[1].replace(/^\s+|\s+$/g, ''));
+            return cookie_value;
+        }
+        a_temp_cookie = null;
+        cookie_name = '';
+    }
+    if (!b_cookie_found) return null;
+}
+function setCookie(sName, sValue) {
+    try {
+        var sCookie = sName + "=" + encodeURIComponent(sValue);
+        document.cookie = sCookie;
+    } catch (e) { }
+}
 
 
 

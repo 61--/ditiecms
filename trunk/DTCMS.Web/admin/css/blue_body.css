@@ -227,11 +227,22 @@ a.b5:hover
 {
 	border-bottom:1px solid #FF8800;
 }
-.table_data .thead a img
+.table_data .thead a span
 {
-	top:0px;
+	top:2px;
 	right:5px;
 	position:absolute;
+	width:12px;
+	height:12px;
+	background:url(../images/blue/i_sort.gif) 0px 0px no-repeat;
+}
+.table_data .thead a span.asc
+{
+	background-position:0px -12px;
+}
+.table_data .thead a span.desc
+{
+	background-position:0px -24px;
 }
 .table_data .thead .bleft{   
 	background-position:left bottom;

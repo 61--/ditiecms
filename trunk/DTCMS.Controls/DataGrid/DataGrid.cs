@@ -22,8 +22,8 @@ namespace DTCMS.Controls
         private CheckBox _checkBox;
         private RowsIndex _rowsIndex;
         private string _bindAjaxMethod;
-        private bool _isPage;
-        private int _pageSize;
+        private bool _isPage = true;
+        private int _pageSize = 15;
         private string _cssClass;
 
         private HeaderItemCollection _columns;
@@ -145,6 +145,7 @@ namespace DTCMS.Controls
         }
         #endregion
 
+        //重写Render方法
         protected override void Render(HtmlTextWriter output)
         {
             //构造Table标签
@@ -206,15 +207,12 @@ namespace DTCMS.Controls
                     output.AddAttribute(HtmlTextWriterAttribute.Href, "javascript:;");
                     output.AddAttribute(HtmlTextWriterAttribute.Title, "点击排序列");
                     output.AddAttribute(HtmlTextWriterAttribute.Onclick, "onSortClick(this);");
-                    output.AddAttribute("onmouseover", "onSortOver(this);");
-                    output.AddAttribute("onmouseout", "onSortOut(this);");
                     output.RenderBeginTag(HtmlTextWriterTag.A);
                     output.Write(this.Colunms[i].Text);
 
                     //生成排序图标
                     output.AddAttribute(HtmlTextWriterAttribute.Id, string.Format("{0}_SortType", this.Colunms[i].SortField));
-                    output.AddAttribute(HtmlTextWriterAttribute.Src, "../../images/blue/i_sort.gif");
-                    output.RenderBeginTag(HtmlTextWriterTag.Img);
+                    output.RenderBeginTag(HtmlTextWriterTag.Span);
                     output.RenderEndTag();
 
                     output.RenderEndTag();
@@ -228,12 +226,44 @@ namespace DTCMS.Controls
 
             //构造Tbody标签
             output.AddAttribute(HtmlTextWriterAttribute.Id, "dataList");
-            output.Write("<tr><td>123</td></tr>");
             output.RenderBeginTag(HtmlTextWriterTag.Tbody);
             output.RenderEndTag();
 
             output.RenderEndTag();
             output.RenderEndTag();
+
+            output.WriteLine();
+            output.WriteLine(BuildJavaScript());
+        }
+
+        /// <summary>
+        /// 创建Javascript脚本
+        /// </summary>
+        /// <returns></returns>
+        private string BuildJavaScript()
+        {
+            StringBuilder js = new StringBuilder();
+            js.Append("<script type=\"text/javascript\">\r\n");
+            js.Append("$(function(){showLoading();loadData();hideMessage();});\r\n");
+            if (this.IsPage)
+            {
+                js.Append("function loadData(page){");
+                js.Append("page=page||1;");
+            }
+            else
+            {
+                js.Append("function loadData(){");
+            }
+            js.Append("var callback=function(res){");
+            js.Append("if(res.error){");
+            js.Append("alert(\"请求错误，请刷新页面重试！\\n\"+res.error.Message);return;}");
+            js.Append("showDataList(res.value);};");
+            js.Append(this.BindAjaxMethod);
+            js.Append(this.IsPage ? "(page,callback);}" : "(callback);}");
+            js.Append("\r\n</script>");
+            
+
+            return js.ToString();
         }
     }
 }
