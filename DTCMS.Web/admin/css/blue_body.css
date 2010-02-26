@@ -199,53 +199,6 @@ a.b5:hover
 .split {
 	border-bottom: 1px #cad9ea dotted;
 }
-/*内容表格样式*/
-/*.table_data {
-    width: 100%;
-    font-size: 12px;
-    border: 1px #CAD9EA solid;
-    border-collapse: collapse;
-}
-.table_data thead {
-}
-.table_data thead th {
-	line-height: 28px;
-	height: 28px;
-	font-weight: bold;
-	background:url(../images/blue/th_bg.gif) right bottom no-repeat;
-}
-.table_data th.bleft
-{
-	background-position:left bottom;
-}
-.table_data tbody td.tleft{
-	text-indent:10px;
-	text-align:left;
-}
-.table_data tbody td ,.table_data thead th{
-    line-height: 28px;
-    height: 28px;
-    text-indent: 10px;
-}
-.table_data thead th
-{
-	font-weight: bold;
-    background: url(../images/blue/th_bg.gif) right bottom no-repeat;
-}
-.table_data tr.t1 td {
-	background-color: #FFF;
-}
-.table_data tr.t2 td {
-	background-color: #F6FBFE;
-}
-.table_data tr.t3 td {
-	background-color: #E0F0FD;
-}
-.table_data tfoot tr td {
-	background: #fff;
-	line-height: 26px;
-	height: 26px;
-}*/
 /*数据列表样式*/
 .table_data{
     width: 100%;
