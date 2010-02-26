@@ -94,7 +94,6 @@ namespace DTCMS.Controls
         [DefaultValue(true)]
         [Category("Behavior")]
         [PersistenceMode(PersistenceMode.InnerProperty)]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         [Description("显示选择框属性")]
         public CheckBox CheckBox
         {
@@ -211,9 +210,13 @@ namespace DTCMS.Controls
                     output.AddAttribute("onmouseout", "onSortOut(this);");
                     output.RenderBeginTag(HtmlTextWriterTag.A);
                     output.Write(this.Colunms[i].Text);
+                    
+                    //生成排序图标
                     output.AddAttribute(HtmlTextWriterAttribute.Id, "sortType");
                     output.AddAttribute(HtmlTextWriterAttribute.Src, "../../images/blue/i_sort.gif");
                     output.RenderBeginTag(HtmlTextWriterTag.Img);
+                    output.RenderEndTag();
+                    
                     output.RenderEndTag();
                 }
                 else
@@ -224,7 +227,7 @@ namespace DTCMS.Controls
             }
 
             //构造Tbody标签
-            output.AddAttribute(HtmlTextWriterAttribute.Id, "tbody");
+            output.AddAttribute(HtmlTextWriterAttribute.Id, "dataList");
             output.Write("<tr><td>123</td></tr>");
             output.RenderBeginTag(HtmlTextWriterTag.Tbody);
             output.RenderEndTag();
