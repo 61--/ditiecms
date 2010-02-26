@@ -210,13 +210,13 @@ namespace DTCMS.Controls
                     output.AddAttribute("onmouseout", "onSortOut(this);");
                     output.RenderBeginTag(HtmlTextWriterTag.A);
                     output.Write(this.Colunms[i].Text);
-                    
+
                     //生成排序图标
-                    output.AddAttribute(HtmlTextWriterAttribute.Id, "sortType");
+                    output.AddAttribute(HtmlTextWriterAttribute.Id, string.Format("{0}_SortType", this.Colunms[i].SortField));
                     output.AddAttribute(HtmlTextWriterAttribute.Src, "../../images/blue/i_sort.gif");
                     output.RenderBeginTag(HtmlTextWriterTag.Img);
                     output.RenderEndTag();
-                    
+
                     output.RenderEndTag();
                 }
                 else

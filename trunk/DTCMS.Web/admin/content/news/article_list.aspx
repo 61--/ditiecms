@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="article_list.aspx.cs" Inherits="DTCMS.Web.admin.article_list" %>
 <%@ Register TagPrefix="DT" Assembly="DTCMS.Controls" Namespace="DTCMS.Controls" %>
-<%@ Register TagPrefix="UC" TagName="DTGridView" Src="~/controls/DTGridView.ascx" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -29,19 +28,19 @@
                 <a href="javascript:verifyData(-1,true);" class="button b4"><img src="../../images/ico/i_verify.gif" alt="" />审核文章</a>
                 <a href="javascript:DeleteData(-1,true);" class="button b4"><img src="../../images/ico/i_allDelete.gif" alt="" />批量删除</a>
             </div>
-			<div id="gridTreeDiv">
-			</div><br />
             <DT:DataGrid ID="dt_DataGrid" BindAjaxMethod="DTCMS.Web.admin.article_list.GetArticleJsonData" CssClass="table_data" runat="server">
-                <CheckBox Visible="true" Width="5%" />
-                <RowsIndex Visible="true" Width="5%" />
+                <CheckBox Visible="true" Width="4%" />
+                <RowsIndex Visible="true" Width="6%" />
                 <Colunms>
-                    <DT:HeaderItem Text="文章标题" Width="30%" SortField="title" />
+                    <DT:HeaderItem Text="文章标题" Width="30%" SortField="Title" />
                     <DT:HeaderItem Text="所属栏目" Width="20%" />
-                    <DT:HeaderItem Text="创建时间" Width="20%" />
+                    <DT:HeaderItem Text="创建时间" Width="20%" SortField="CreateTime" />
                     <DT:HeaderItem Text="是否审核" Width="10%" />
                     <DT:HeaderItem Text="操作" Width="10%" CssClass="bleft" />
                 </Colunms>
-            </DT:DataGrid>
+            </DT:DataGrid><br />
+			<div id="gridTreeDiv">
+			</div>
 		</div>
 	</div>
     </form>
