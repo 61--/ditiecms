@@ -98,6 +98,15 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
+        /// 获取模板路径
+        /// </summary>
+        /// <returns></returns>
+        public string GetTemplatePath()
+        {
+           return  dal.GetSingle("TemplateDirectory", " IsEnable=1 ") as string;
+        }
+
+        /// <summary>
 		/// 分页获取泛型数据列表
 		/// </summary>
         /// <param name="pageSize">分页大小</param>
