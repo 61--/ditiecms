@@ -259,6 +259,7 @@ a.b5:hover
     font-weight: bold;
     text-indent: 10px;
     padding-right:3px;
+    word-break: keep-all;
     background: url(../images/blue/th_bg.gif) right bottom no-repeat;
 }
 .table_data .thead a{
