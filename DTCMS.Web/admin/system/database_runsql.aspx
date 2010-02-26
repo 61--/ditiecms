@@ -30,6 +30,10 @@
         {
             clear:both; border-bottom:solid 1px #52A2D4; height:0px; margin-bottom:6px;
         }
+        .bgcolor
+        {
+            background: #F7FAFC;
+        }
         #container
         {
             margin: 10px 0 0 20px;
@@ -41,6 +45,14 @@
         #return_msg
         {
             width: 100%; height: 142px; overflow: auto;
+        }
+        #slt_sysobject
+        {
+            width: 320px;
+        }
+        #txts_sql
+        {
+             height:136px; width: 90%;
         }
     </style>
 </head>
@@ -63,7 +75,7 @@
         <div>名称(M)：</div>
         <div class="h0"></div>
         <div>
-            <select id="slt_sysobject" runat="server" style="width: 320px; background: #F7FAFC;"
+            <select id="slt_sysobject" runat="server" class="bgcolor"
                 onchange="getSysColumn(this.options[selectedIndex].value);">
             </select>
         </div>
@@ -84,7 +96,7 @@
         <div class="h0">
         </div>
         <div>
-            <textarea id="txts_sql" rows="" cols="" style="background: #F7FAFC; height:136px; width: 90%;"></textarea></div>
+            <textarea id="txts_sql" rows="" cols="" class="bgcolor"></textarea></div>
         <div style="height: 6px;">
         </div>
         <div style="text-align: center;">
