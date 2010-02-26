@@ -315,13 +315,6 @@
     <Compile Include="admin\Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
-    <Compile Include="controls\DTGridView.ascx.cs">
-      <DependentUpon>DTGridView.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="controls\DTGridView.ascx.designer.cs">
-      <DependentUpon>DTGridView.ascx</DependentUpon>
-    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -523,7 +516,6 @@
     <Content Include="ckfinder\core\skins\silver\images\toolbar.expand.gif" />
     <Content Include="ckfinder\core\skins\silver\images\toolbar.separator.gif" />
     <Content Include="ckfinder\core\skins\silver\images\toolbar.start.gif" />
-    <Content Include="controls\DTGridView.ascx" />
     <Content Include="editor\fckeditor.js" />
     <Content Include="inc\codepress\codepress.css" />
     <Content Include="inc\codepress\codepress.html" />
@@ -1025,7 +1017,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>5140</DevelopmentServerPort>
+          <DevelopmentServerPort>2557</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/DTCMS_Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
