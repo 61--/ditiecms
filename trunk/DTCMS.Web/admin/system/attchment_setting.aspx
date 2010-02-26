@@ -54,13 +54,22 @@
             margin-top: 5px;
             width: 100%;
         }
+        .hr1
+        {
+            float:left; border-bottom:solid 2px #52A2D4; font-size:15px; padding:20px 0 3px 0;
+        }
+        .hr2
+        {
+            clear:both; border-bottom:solid 1px #52A2D4; height:0px;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div id="continer">
-        <fieldset>
-            <legend>基本设置</legend>
+        
+            <div class="hr1">基本设置：</div>
+            <div class="hr2"></div>
             <table cellpadding="10" cellspacing="0" class="a_table_form">
                 <tbody>
                     <tr>
@@ -103,9 +112,9 @@
                     </tr>
                 </tbody>
             </table>
-        </fieldset>
-        <fieldset>
-            <legend>水印设置</legend>
+        
+            <div class="hr1">水印设置：</div>
+            <div class="hr2"></div>
             <table cellpadding="10" cellspacing="0" class="a_table_form">
                 <tbody>
                     <tr>
@@ -228,9 +237,9 @@
                     </tr>
                 </tbody>
             </table>
-        </fieldset>
-        <fieldset>
-            <legend>上传格式设置</legend>
+            
+            <div class="hr1">上传格式设置：</div>
+            <div class="hr2"></div>
             <table cellpadding="10" cellspacing="0" class="a_table_form">
                 <tbody>
                     <tr>
@@ -271,7 +280,7 @@
                     </tr>
                 </tbody>
             </table>
-        </fieldset>
+            
         <div class="hr">
         </div>
         <div style="text-align: center;">
