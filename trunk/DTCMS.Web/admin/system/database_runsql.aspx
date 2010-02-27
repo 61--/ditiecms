@@ -92,7 +92,9 @@
         <div id="return_msg">
         </div>
         <div class="h6"></div>
-        <div>SQL语句：(L)</div>
+        <div>SQL语句：(L)
+        <p>说明:一次只能执行一条Sql语句,如果你对SQL不熟悉,请尽量不要使用.否则一旦出错,将是致命的.</p>
+        <p> 建议使用查询语句.如:select count(id) From Table,尽量不要使用delete,update等命令.</p></div>
         <div class="h0">
         </div>
         <div>
@@ -103,7 +105,7 @@
             <button type="button" id="btn_select" class="b1" onclick="onclick_btn_select();">
                 查询</button>
             <button type="button" id="btn_update" class="b1" onclick="onclick_btn_update();">
-                编辑</button>
+                执行</button>
             <button type="button" id="btn_cancel" class="b1" onclick="history.back(-1);">
                 取消</button></div>
     </div>
@@ -166,10 +168,12 @@
             }
             var txtsql = $("#txts_sql").val();
             if (txtsql == "") {
-                alert("没有要执行的SQL语句！");
+                showReturn_msg("<span style=\"color:red;\">请输入要执行的SQL语句！</span>");
                 return;
             }
-            DTCMS.Web.admin.system.database_runsql.Update(txtsql, callback);
+            if (window.confirm("确定执行SQL语句吗？\n如果执行不当将导致致命的错误。")) {
+                DTCMS.Web.admin.system.database_runsql.Update(txtsql, callback);
+            }
         }
         function onclick_btn_select() {
             var callback = function(res) {
@@ -181,7 +185,7 @@
             }
             var txtsql = $("#txts_sql").val();
             if (txtsql == "") {
-                alert("没有要执行的SQL语句！");
+                showReturn_msg("<span style=\"color:red;\">请输入要执行的SQL语句！</span>");
                 return;
             }
             DTCMS.Web.admin.system.database_runsql.Select(txtsql, callback);
