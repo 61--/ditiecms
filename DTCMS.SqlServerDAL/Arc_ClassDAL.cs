@@ -221,11 +221,11 @@ namespace DTCMS.SqlServerDAL
             string strSql = "";
             if (where == "")
             {
-                strSql = string.Format("SELECT TOP 1 {0} FROM {1}Arc_Article", filed, tablePrefix);
+                strSql = string.Format("SELECT TOP 1 {0} FROM {1}Arc_Class", filed, tablePrefix);
             }
             else
             {
-                strSql = string.Format("SELECT TOP 1 {0} FROM {1}Arc_Article WHERE {2}", filed, tablePrefix, where);
+                strSql = string.Format("SELECT TOP 1 {0} FROM {1}Arc_Class WHERE {2}", filed, tablePrefix, where);
             }
             
 

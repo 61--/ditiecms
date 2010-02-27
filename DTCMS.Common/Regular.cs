@@ -82,7 +82,7 @@ namespace DTCMS.Common
         /// <returns>安全返回false，危险字符返回true</returns>
         public static bool ValidateSQL(string strSql)
         {
-            return Regex.IsMatch(strSql, @"insert|delete|alter|create|drop|restore|backup");
+            return Regex.IsMatch(strSql, @"alter|create|drop|restore|backup");
         }
     }
 }
