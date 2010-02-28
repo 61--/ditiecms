@@ -199,7 +199,7 @@ namespace DTCMS.SqlServerDAL
 			if (filedName != "")
 			{
 				strSql.Append("SELECT COUNT(1) FROM " + tablePrefix + "Arc_Class");
-				strSql.Append(" WHERE CID<>{0} AND {1}={2}");
+				strSql.Append(" WHERE CID<>{0} AND {1}='{2}'");
 				return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, string.Format(strSql.ToString(), CID, filedName, filedValue))) > 0;
 			}
 			else
@@ -300,6 +300,26 @@ namespace DTCMS.SqlServerDAL
 			}
 		}
 
+        /// <summary>
+        /// 获取栏目下啦树列表
+        /// </summary>
+        /// <param name="parentID">父节点</param>
+        /// <param name="count">返回记录总素</param>
+        /// <returns></returns>
+        public List<Arc_Class> GetDropList(string parentID)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("SELECT CID,ClassName FROM " + tablePrefix + "Arc_Class WHERE ParentID=" + parentID);
+            using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql.ToString(), null))
+            {
+                List<Arc_Class> lst = new List<Arc_Class>();
+                while (dr.Read())
+                {
+                    lst.Add(DataReaderToModel<Arc_Class>(dr));
+                }
+                return lst;
+            }
+        }
         /// <summary>
         /// 获取泛型栏目列表
         /// </summary>

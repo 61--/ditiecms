@@ -5,6 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DTCMS.Common;
 using DTCMS.Config;
+using DTCMS.Controls.DropDownTree;
 
 namespace DTCMS.Web.admin
 {
@@ -14,11 +15,14 @@ namespace DTCMS.Web.admin
         {
             this.Label1.Text = "从缓存中获取xml方法：";
             this.Label2.Text = "从缓存中直接获取：";
+
+            ClassDropDownTree ct = new ClassDropDownTree();
+            DropDownTree dt = new DropDownTree(ct);
+            dt.BindToDropDownList(DropDownList1);
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
         }
 
         protected void Button2_Click(object sender, EventArgs e)

@@ -183,6 +183,16 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
+        /// 获取栏目下啦树列表
+        /// </summary>
+        /// <param name="parentID">父节点</param>
+        /// <param name="count">返回记录总素</param>
+        /// <returns></returns>
+        public List<Arc_Class> GetDropList(string parentID)
+        {
+            return dal.GetDropList(parentID);
+        }
+        /// <summary>
 		/// 获得泛型数据列表
 		/// </summary>
         /// <param name="count">返回记录数</param>

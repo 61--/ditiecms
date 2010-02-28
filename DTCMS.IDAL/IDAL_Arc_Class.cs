@@ -92,6 +92,13 @@ namespace DTCMS.IDAL
         /// <returns>栏目实体</returns>
 		Arc_Class GetModel(int CID);
 
+        /// <summary>
+        /// 获取栏目下啦树列表
+        /// </summary>
+        /// <param name="parentID">父节点</param>
+        /// <param name="count">返回记录总素</param>
+        /// <returns></returns>
+        List<Arc_Class> GetDropList(string parentID);
 		/// <summary>
 		/// 获取泛型栏目列表
 		/// </summary>
