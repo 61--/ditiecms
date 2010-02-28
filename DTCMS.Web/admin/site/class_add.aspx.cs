@@ -12,6 +12,7 @@ using DTCMS.Entity.Enum;
 using DTCMS.BLL;
 using DTCMS.Common;
 using DTCMS.Config;
+using DTCMS.Controls.DropDownTree;
 
 namespace DTCMS.Web.admin
 {
@@ -41,6 +42,7 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void InitPage()
         {
+            InitClass();
             InitClassType();
             InitReadaccess();
             InitCheckLevel();
@@ -122,8 +124,7 @@ namespace DTCMS.Web.admin
 
             if (model != null)
             {
-                hidden_ParentClassID.Value = model.ParentID.ToString();
-                txt_ParentClassName.Value = bllClass.GetClassName(model.ParentID);
+                slt_ParentClassName.SelectedIndex=slt_ParentClassName.Items.IndexOf(slt_ParentClassName.Items.FindByValue(model.CID.ToString()));
                 SetClassAttribute(model.Attribute);
                 txt_ClassName.Value = model.ClassName;
                 txt_ClassEName.Value = model.ClassEName;
@@ -161,7 +162,7 @@ namespace DTCMS.Web.admin
             Arc_Class model = new Arc_Class();
 
             model.CID = CID;
-            model.ParentID = Convert.ToInt32(hidden_ParentClassID.Value == "" ? "0" : hidden_ParentClassID.Value.Trim());
+            model.ParentID = Convert.ToInt32(slt_ParentClassName.Value);
             model.Attribute = GetClassAttribute();
             model.ClassName = txt_ClassName.Value;
             model.ClassEName = txt_ClassEName.Value.Trim();
@@ -259,6 +260,14 @@ namespace DTCMS.Web.admin
 
         #region 初始化页面数据
 
+        /// <summary>
+        /// 初始化栏目
+        /// </summary>
+        private void InitClass()
+        {
+            DataTable dtClass=bllClass.GetDropList("");
+            DropDownTree.BindToDropDownList(slt_ParentClassName, dtClass, "0");
+        }
         /// <summary>
         /// 初始化栏目类型
         /// </summary>
