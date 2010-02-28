@@ -49,8 +49,7 @@
         <asp:Button ID="Button3" runat="server" Text="Button" onclick="Button3_Click" />
         <asp:Button ID="Button4" runat="server" Text="Button" onclick="Button4_Click"/>
     </div>
-    <asp:DropDownList ID="DropDownList1" runat="server">
-    </asp:DropDownList>
+    <select id="DropDownList1" runat="server"></select>
 </form>
 </body>
 </html>

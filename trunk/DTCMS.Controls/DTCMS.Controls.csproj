@@ -49,9 +49,7 @@
     <Compile Include="DataGrid\HeaderItem.cs" />
     <Compile Include="DataGrid\ItemCollection.cs" />
     <Compile Include="DataGrid\RowsIndex.cs" />
-    <Compile Include="DropDownTree\ClassDropDownTree.cs" />
     <Compile Include="DropDownTree\DropDownTree.cs" />
-    <Compile Include="DropDownTree\IDropDownTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

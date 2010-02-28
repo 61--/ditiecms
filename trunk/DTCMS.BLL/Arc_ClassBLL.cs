@@ -188,9 +188,9 @@ namespace DTCMS.BLL
         /// <param name="parentID">父节点</param>
         /// <param name="count">返回记录总素</param>
         /// <returns></returns>
-        public List<Arc_Class> GetDropList(string parentID)
+        public DataTable GetDropList(string where)
         {
-            return dal.GetDropList(parentID);
+            return dal.GetDataTable("CID as ID,ClassName as NAME,ParentID", where);
         }
         /// <summary>
 		/// 获得泛型数据列表
