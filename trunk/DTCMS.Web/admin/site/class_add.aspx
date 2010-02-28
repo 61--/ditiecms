@@ -32,9 +32,7 @@
                             上级栏目:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_ParentClassName" class="textbox" runat="server" disabled="disabled" />
-                            <input id="hidden_ParentClassID" type="hidden" value="0" runat="server" />
-                            <img src="../images/blue/s.gif" class="select" alt="选择上级栏目" onclick="add_parentClass();" />
+                            <select id="slt_ParentClassName" runat="server" style="width: 300px; background: #F7FAFC;" ></select>                            
                         </td>
                     </tr>
                     <tr>
