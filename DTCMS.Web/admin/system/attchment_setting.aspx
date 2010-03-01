@@ -15,8 +15,7 @@
     <style type="text/css">
         #continer
         {
-            margin: 0 auto;
-            width: 90%;
+            margin:0 15px;
         }
         .hr
         {
@@ -30,21 +29,6 @@
             margin: 0 0 0 3px;
             height: 28px;
             line-height: 28px;
-        }
-        fieldset
-        {
-            border: #CCCCCC 1px solid;
-            padding-bottom: 20px;
-        }
-        legend
-        {
-            font-weight: bold;
-            line-height: 45px;
-            padding-left: 45px;
-            -moz-background-clip: border;
-            -moz-background-origin: padding;
-            -moz-background-size: auto auto;
-            background: transparent url(../images/ico/ico_Success_Small.gif) no-repeat scroll 6px 5px;
         }
         .a_table_form
         {
