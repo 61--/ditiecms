@@ -12,7 +12,7 @@ namespace DTCMS.Controls
     {
         private bool _visible;
         private string _width;
-        private string _text = "ID";
+        private string _headerText = "ID";
 
         /// <summary>
         /// 是否显示选择框
@@ -38,10 +38,10 @@ namespace DTCMS.Controls
         /// 列名
         /// </summary>
         [Description("列名")]
-        public string Text
+        public string HeaderText
         {
-            get { return _text; }
-            set { _text = value; }
+            get { return _headerText; }
+            set { _headerText = value; }
         }
     }
 }

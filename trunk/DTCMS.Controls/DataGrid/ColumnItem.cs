@@ -9,11 +9,11 @@ using System.Web.UI.WebControls;
 namespace DTCMS.Controls
 {
     /// <summary>
-    /// HeaderItem 成员属性
+    /// ColumnItem 成员属性
     /// </summary>
-    public class HeaderItem
+    public class ColumnItem
     {
-        private string _text;
+        private string _headerText;
         private string _align;
         private string _width;
         private string _cssClass;
@@ -22,10 +22,10 @@ namespace DTCMS.Controls
         /// <summary>
         /// 列名
         /// </summary>
-        public string Text
+        public string HeaderText
         {
-            get { return _text; }
-            set { _text = value; }
+            get { return _headerText; }
+            set { _headerText = value; }
         }
 
         /// <summary>

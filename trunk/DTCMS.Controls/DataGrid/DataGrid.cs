@@ -26,8 +26,8 @@ namespace DTCMS.Controls
         private int _pageSize = 15;
         private string _cssClass;
 
-        private HeaderItemCollection _columns;
-        //private HeaderItemCollection _headerItem;
+        private ColumnItemCollection _columns;
+        //private ColumnItemCollection _ColumnItem;
 
         /// <summary>
         /// 控件ID
@@ -127,18 +127,18 @@ namespace DTCMS.Controls
         }
 
         /// <summary>
-        /// 创建 HeaderItem 控件容器
+        /// 创建 ColumnItem 控件容器
         /// </summary>
         [PersistenceMode(PersistenceMode.InnerProperty)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         [Description("要在控件中显示的一组列")]
-        public HeaderItemCollection Colunms
+        public ColumnItemCollection Colunms
         {
             get
             {
                 if (_columns == null)
                 {
-                    _columns = new HeaderItemCollection();
+                    _columns = new ColumnItemCollection();
                 }
                 return _columns;
             }
@@ -183,7 +183,7 @@ namespace DTCMS.Controls
                     output.AddAttribute(HtmlTextWriterAttribute.Width, this.RowsIndex.Width);
                 }
                 output.RenderBeginTag(HtmlTextWriterTag.Td);
-                output.Write(this.RowsIndex.Text);
+                output.Write(this.RowsIndex.HeaderText);
                 output.RenderEndTag();
             }
 
@@ -208,7 +208,7 @@ namespace DTCMS.Controls
                     output.AddAttribute(HtmlTextWriterAttribute.Title, "点击排序列");
                     output.AddAttribute(HtmlTextWriterAttribute.Onclick, "onSortClick(this);");
                     output.RenderBeginTag(HtmlTextWriterTag.A);
-                    output.Write(this.Colunms[i].Text);
+                    output.Write(this.Colunms[i].HeaderText);
 
                     //生成排序图标
                     output.AddAttribute(HtmlTextWriterAttribute.Id, string.Format("{0}_SortType", this.Colunms[i].SortField));
@@ -219,7 +219,7 @@ namespace DTCMS.Controls
                 }
                 else
                 {
-                    output.Write(this.Colunms[i].Text);
+                    output.Write(this.Colunms[i].HeaderText);
                 }
                 output.RenderEndTag();
             }
