@@ -53,6 +53,13 @@ function getElemCoords(elem) {
         left: l
     };
 }
+/***去除符号***/
+function trimSign(opt) {
+    var replaceStr = opt[opt.selectedIndex].text;
+    var lastIndex = replaceStr.lastIndexOf("├");
+    alert(opt[opt.selectedIndex].text);
+    document.getElementById('slt_ParentClassName').text = replaceStr.substring(lastIndex + 1, replaceStr.length);
+}
 /*** Cookie ***/
 function getCookie(check_name) {
     var a_all_cookies = document.cookie.split(';');
