@@ -265,6 +265,7 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void InitClass()
         {
+            slt_ParentClassName.Items.Add(new ListItem("站点根目录", "0"));
             DataTable dtClass=bllClass.GetDropList("");
             DropDownTree.BindToDropDownList(slt_ParentClassName, dtClass, "0");
         }
