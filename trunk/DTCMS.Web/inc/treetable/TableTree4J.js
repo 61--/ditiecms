@@ -53,7 +53,7 @@ function TableTree4J(objectName, sequence, checked) {
         nodeHrefSelectBg: false,
         hrefOnfouceLine: false,
         hrefIconOnfouceLine: false,
-        showTipTitle: true,
+        showTipTitle: false,
         inOrder: true, //不排序，firefox同级不排序
         useCookies: true,
         cookieTime: 30 * 24 * 60 * 60 * 1000,

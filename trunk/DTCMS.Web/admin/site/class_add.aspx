@@ -32,7 +32,7 @@
                             上级栏目:
                         </td>
                         <td class="main_bright split">
-                            <select id="slt_ParentClassName" runat="server" style="width: 300px; background: #F7FAFC;" ></select>                            
+                            <select id="slt_ParentClassName" runat="server" style="width: 300px; background: #F7FAFC; font-family:宋体" ></select>                            
                         </td>
                     </tr>
                     <tr>

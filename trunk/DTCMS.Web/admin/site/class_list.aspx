@@ -48,6 +48,7 @@
         var gridTree;
         function showGridTree(json) {
             gridTree = new TableTree4J("gridTree", false, true);
+            gridTree.config.useLine = true;
             gridTree.tableDesc = "<table id=\"tab\" class=\"table_data\">";
 
             var headerDataList = new Array("栏目名称", "所属类型", "创建时间", "排序", "操作");

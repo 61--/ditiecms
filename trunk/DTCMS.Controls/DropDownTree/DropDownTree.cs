@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
-using System.Web.UI.WebControls;
 using System.Data;
+using System.Collections.Generic;
+using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 
 namespace DTCMS.Controls.DropDownTree
@@ -15,7 +15,7 @@ namespace DTCMS.Controls.DropDownTree
             string currentID = parentID;//根节点/父ID
             string currentSign = string.Empty;//当前节点符号;
             string parrentSign = string.Empty; //父节点符号;
-            bool hasChild = true;//是否有子
+            bool hasChild = true;//是否有子节点
             Queue<string> childKeyList = new Queue<string>();//存 有子节点的 节点ID
             Queue<string> childSignList = new Queue<string>();//对应节点ID的前缀符号
             ListItem listItem = null;
@@ -25,7 +25,7 @@ namespace DTCMS.Controls.DropDownTree
             {
                 while (hasChild)
                 {
-                    int lastOneCount = 1;
+                    int lastOneCount = 0;
                     DataRow[] dr = GetChildDataTable(dt, currentID);
                     if (dr != null)
                     {
@@ -33,6 +33,7 @@ namespace DTCMS.Controls.DropDownTree
                         {
                             foreach (DataRow row in dr)
                             {
+                                lastOneCount++;
                                 if (GetChildDataTable(dt, row["ID"].ToString()).Length > 0)
                                 {
                                     currentSign = GetPreFix(lastOneCount == dr.Length, true, parrentSign);
@@ -86,24 +87,15 @@ namespace DTCMS.Controls.DropDownTree
             string result = string.Empty;
             if (!string.IsNullOrEmpty(parentString))
             {
-                parentString = parentString.Remove(parentString.Length - 1).Replace("├", "│").Replace("└", "　");
-                result += parentString;
+                result += parentString.Replace("├", "│").Replace("└", "　");
             }
             if (isLast)
             {
-                result += "└";
+                return result += "└"; 
             }
             else
             {
                 result += "├";
-            }
-            if (hasChild)
-            {
-                result += "┬";
-            }
-            else
-            {
-                result += "─";
             }
             return result;
         }
