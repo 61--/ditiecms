@@ -30,13 +30,13 @@
             </div>
             <DT:DataGrid ID="dt_DataGrid" BindAjaxMethod="DTCMS.Web.admin.article_list.GetArticleJsonData" CssClass="table_data" runat="server">
                 <CheckBox Visible="true" Width="4%" />
-                <RowsIndex Visible="true" Width="6%" />
+                <RowsIndex HeaderText="编号ID" Visible="true" Width="6%" />
                 <Colunms>
-                    <DT:HeaderItem Text="文章标题" Width="30%" SortField="Title" />
-                    <DT:HeaderItem Text="所属栏目" Width="20%" />
-                    <DT:HeaderItem Text="创建时间" Width="20%" SortField="CreateTime" />
-                    <DT:HeaderItem Text="是否审核" Width="10%" />
-                    <DT:HeaderItem Text="操作" Width="10%" CssClass="bleft" />
+                    <DT:ColumnItem HeaderText="文章标题" Width="30%" SortField="Title" />
+                    <DT:ColumnItem HeaderText="所属栏目" Width="20%" />
+                    <DT:ColumnItem HeaderText="创建时间" Width="20%" SortField="CreateTime" />
+                    <DT:ColumnItem HeaderText="是否审核" Width="10%" />
+                    <DT:ColumnItem HeaderText="操作" Width="10%" CssClass="bleft" />
                 </Colunms>
             </DT:DataGrid><br />
 			<div id="gridTreeDiv">

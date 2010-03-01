@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="DataGrid\CheckBox.cs" />
     <Compile Include="DataGrid\DataGrid.cs" />
-    <Compile Include="DataGrid\HeaderItem.cs" />
+    <Compile Include="DataGrid\ColumnItem.cs" />
     <Compile Include="DataGrid\ItemCollection.cs" />
     <Compile Include="DataGrid\RowsIndex.cs" />
     <Compile Include="DropDownTree\DropDownTree.cs" />

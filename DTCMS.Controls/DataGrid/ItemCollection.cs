@@ -11,16 +11,16 @@ namespace DTCMS.Controls
     /// <summary>
     /// HeaderItem 成员集合
     /// </summary>
-    public class HeaderItemCollection : List<HeaderItem>
+    public class ColumnItemCollection : List<ColumnItem>
     {
-        public HeaderItemCollection() : base() { }
+        public ColumnItemCollection() : base() { }
 
         public new int Count
         {
             get { return base.Count; }
         }
 
-        public new void Add(HeaderItem item)
+        public new void Add(ColumnItem item)
         {
             base.Add(item);
         }
@@ -30,7 +30,7 @@ namespace DTCMS.Controls
             base.Clear();
         }
 
-        public new HeaderItem this[int index]
+        public new ColumnItem this[int index]
         {
             get { return base[index]; }
             set { base[index] = value; }
