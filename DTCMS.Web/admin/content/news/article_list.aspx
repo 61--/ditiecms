@@ -56,7 +56,7 @@
                     {
                         fields: [
                             { data: 'id' },
-	                        { dataFormat: function(r) { return '<a href="article_add.aspx?ID=' + r.id + '>' + r.title + '</a>'; } },
+	                        { dataFormat: function(r) { return '<a href="article_add.aspx?ID=' + r.id + '">' + r.title + '</a>'; } },
 	                        { data: 'classname' },
 	                        { data: 'adddate' },
 	                        { data: 'isverify', dataFormat: function(r) { return r.isverify==1?"已审核":"未审核"} },
