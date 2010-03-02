@@ -1,4 +1,11 @@
-﻿using System;
+﻿//------------------------------------------------------------------------------
+// 创建标识: Copyright (C) 2010 91aspx.com 版权所有
+// 创建描述: DTCMS V1.0 创建于 2010-03-01 17:30:10
+// 功能描述: 数据网格控件
+// 修改标识: 
+// 修改描述: 
+//------------------------------------------------------------------------------
+using System;
 using System.Text;
 using System.ComponentModel;
 using System.Web.UI;
@@ -100,7 +107,9 @@ namespace DTCMS.Controls
         }
         #endregion
 
-        //重写Render方法
+        /// <summary>
+        /// 重写Render方法
+        /// </summary>
         protected override void Render(HtmlTextWriter output)
         {
             //构造Table标签
@@ -226,7 +235,6 @@ namespace DTCMS.Controls
             js.Append(this.BindAjaxMethod);
             js.Append(this.IsPage ? "(page,callback);}" : "(callback);}");
             js.Append("\r\n</script>");
-
 
             return js.ToString();
         }
