@@ -17,8 +17,6 @@ namespace DTCMS.Controls
         #region DataGrid属性
 
         private string _id;
-        //private CheckBox _checkBox;
-        //private RowsIndex _rowsIndex;
         private string _bindAjaxMethod;
         private bool _isPage = true;
         private int _pageSize = 15;
@@ -82,45 +80,6 @@ namespace DTCMS.Controls
             get { return _cssClass; }
             set { _cssClass = value; }
         }
-
-
-        /// <summary>
-        /// 是否显示选择框
-        /// </summary>
-        //[DefaultValue(true)]
-        //[Category("Behavior")]
-        //[PersistenceMode(PersistenceMode.InnerProperty)]
-        //[Description("显示选择框属性")]
-        //public CheckBox CheckBox
-        //{
-        //    get
-        //    {
-        //        if (_checkBox == null)
-        //        {
-        //            _checkBox = new CheckBox();
-        //        }
-        //        return _checkBox;
-        //    }
-        //}
-
-        /// <summary>
-        /// 是否显示数据列索引序号
-        /// </summary>
-        //[DefaultValue(true)]
-        //[Category("Behavior")]
-        //[PersistenceMode(PersistenceMode.InnerProperty)]
-        //[Description("显示数据行索引属性")]
-        //public RowsIndex RowsIndex
-        //{
-        //    get
-        //    {
-        //        if (_rowsIndex == null)
-        //        {
-        //            _rowsIndex = new RowsIndex();
-        //        }
-        //        return _rowsIndex;
-        //    }
-        //}
 
         /// <summary>
         /// 创建 ColumnItem 控件容器
@@ -229,8 +188,6 @@ namespace DTCMS.Controls
                     }
                     output.RenderEndTag();
                 }
-
-
             }
             //构造Tbody标签
             output.AddAttribute(HtmlTextWriterAttribute.Id, "dataList");
@@ -243,56 +200,6 @@ namespace DTCMS.Controls
             output.WriteLine();
             output.WriteLine(BuildJavaScript());
         }
-
-        //构造表头集合
-        //for (int i = 0; i < Colunms.Count; i++)
-        //{
-        //    ColumnItem columnItem = (ColumnItem)this.Colunms[i];
-        //    if (columnItem.Width != null)
-        //    {
-        //        output.AddAttribute(HtmlTextWriterAttribute.Width, columnItem.Width);
-        //    }
-        //    if (columnItem.CssClass != null)
-        //    {
-        //        output.AddAttribute(HtmlTextWriterAttribute.Class, columnItem.CssClass);
-        //    }
-        //    output.RenderBeginTag(HtmlTextWriterTag.Td);
-
-        //    //如果排序字段不为空，则添加客户端排序方法
-        //    if (columnItem.IsSort)
-        //    {
-        //        output.AddAttribute(HtmlTextWriterAttribute.Id, columnItem.DataField);
-        //        output.AddAttribute(HtmlTextWriterAttribute.Href, "javascript:;");
-        //        output.AddAttribute(HtmlTextWriterAttribute.Title, "点击排序列");
-        //        output.AddAttribute(HtmlTextWriterAttribute.Onclick, "onSortClick(this);");
-        //        output.RenderBeginTag(HtmlTextWriterTag.A);
-        //        output.Write(columnItem.HeaderText);
-
-        //        //生成排序图标
-        //        output.AddAttribute(HtmlTextWriterAttribute.Id, string.Format("{0}_SortType", columnItem.DataField));
-        //        output.RenderBeginTag(HtmlTextWriterTag.Span);
-        //        output.RenderEndTag();
-
-        //        output.RenderEndTag();
-        //    }
-        //    else
-        //    {
-        //        output.Write(columnItem.HeaderText);
-        //    }
-        //    output.RenderEndTag();
-        //}
-
-        ////构造Tbody标签
-        //output.AddAttribute(HtmlTextWriterAttribute.Id, "dataList");
-        //output.RenderBeginTag(HtmlTextWriterTag.Tbody);
-        //output.RenderEndTag();
-
-        //output.RenderEndTag();
-        //output.RenderEndTag();
-
-        //output.WriteLine();
-        //output.WriteLine(BuildJavaScript());
-        //}
 
         /// <summary>
         /// 创建Javascript脚本
