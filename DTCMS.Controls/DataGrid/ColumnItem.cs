@@ -14,10 +14,11 @@ namespace DTCMS.Controls
     public class ColumnItem
     {
         private string _headerText;
+        private string _dataField;
         private string _align;
         private string _width;
         private string _cssClass;
-        private string _sortField;
+        private bool _isSort;
 
         /// <summary>
         /// 列名
@@ -26,6 +27,15 @@ namespace DTCMS.Controls
         {
             get { return _headerText; }
             set { _headerText = value; }
+        }
+
+        /// <summary>
+        /// 绑定字段
+        /// </summary>
+        public string DataField
+        {
+            get { return _dataField; }
+            set { _dataField = value; }
         }
 
         /// <summary>
@@ -56,12 +66,12 @@ namespace DTCMS.Controls
         }
 
         /// <summary>
-        /// 单击表头排序字段
+        /// 单击表头是否排序
         /// </summary>
-        public string SortField
+        public bool IsSort
         {
-            get { return _sortField; }
-            set { _sortField = value; }
+            get { return _isSort; }
+            set { _isSort = value; }
         }
     }
 }
