@@ -11,9 +11,9 @@ namespace DTCMS.Controls
     /// <summary>
     /// HeaderItem 成员集合
     /// </summary>
-    public class ColumnItemCollection : List<ColumnItem>
+    public class ColumnCollection : List<ColumnItem>
     {
-        public ColumnItemCollection() : base() { }
+        public ColumnCollection() : base() { }
 
         public new int Count
         {

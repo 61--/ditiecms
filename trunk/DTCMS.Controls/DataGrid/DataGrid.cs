@@ -26,7 +26,7 @@ namespace DTCMS.Controls
         private int _pageSize = 15;
         private string _cssClass;
 
-        private ColumnItemCollection _columns;
+        private ColumnCollection _columns;
         //private ColumnItemCollection _ColumnItem;
 
         /// <summary>
@@ -132,13 +132,13 @@ namespace DTCMS.Controls
         [PersistenceMode(PersistenceMode.InnerProperty)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         [Description("要在控件中显示的一组列")]
-        public ColumnItemCollection Colunms
+        public ColumnCollection Colunms
         {
             get
             {
                 if (_columns == null)
                 {
-                    _columns = new ColumnItemCollection();
+                    _columns = new ColumnCollection();
                 }
                 return _columns;
             }
@@ -201,9 +201,9 @@ namespace DTCMS.Controls
                 output.RenderBeginTag(HtmlTextWriterTag.Td);
 
                 //如果排序字段不为空，则添加客户端排序方法
-                if (this.Colunms[i].SortField != null)
+                if (this.Colunms[i].IsSort)
                 {
-                    output.AddAttribute(HtmlTextWriterAttribute.Id, this.Colunms[i].SortField);
+                    output.AddAttribute(HtmlTextWriterAttribute.Id, this.Colunms[i].DataField);
                     output.AddAttribute(HtmlTextWriterAttribute.Href, "javascript:;");
                     output.AddAttribute(HtmlTextWriterAttribute.Title, "点击排序列");
                     output.AddAttribute(HtmlTextWriterAttribute.Onclick, "onSortClick(this);");
@@ -211,7 +211,7 @@ namespace DTCMS.Controls
                     output.Write(this.Colunms[i].HeaderText);
 
                     //生成排序图标
-                    output.AddAttribute(HtmlTextWriterAttribute.Id, string.Format("{0}_SortType", this.Colunms[i].SortField));
+                    output.AddAttribute(HtmlTextWriterAttribute.Id, string.Format("{0}_SortType", this.Colunms[i].DataField));
                     output.RenderBeginTag(HtmlTextWriterTag.Span);
                     output.RenderEndTag();
 

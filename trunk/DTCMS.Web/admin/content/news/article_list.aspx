@@ -32,11 +32,11 @@
                 <CheckBox Visible="true" Width="4%" />
                 <RowsIndex HeaderText="编号ID" Visible="true" Width="6%" />
                 <Colunms>
-                    <DT:ColumnItem HeaderText="文章标题" Width="30%" SortField="Title" />
-                    <DT:ColumnItem HeaderText="所属栏目" Width="20%" />
-                    <DT:ColumnItem HeaderText="创建时间" Width="20%" SortField="CreateTime" />
-                    <DT:ColumnItem HeaderText="是否审核" Width="10%" />
-                    <DT:ColumnItem HeaderText="操作" Width="10%" CssClass="bleft" />
+                    <DT:ColumnItem HeaderText="文章标题" Width="30%" DataField="Title" IsSort="true" />
+                    <DT:ColumnItem HeaderText="所属栏目" Width="20%" DataField="Class" />
+                    <DT:ColumnItem HeaderText="创建时间" Width="20%" DataField="CreateTime" IsSort="true" />
+                    <DT:ColumnItem HeaderText="是否审核" Width="10%" DataField="IsChecked" />
+                    <DT:ColumnItem HeaderText="操作" Width="10%" DataField="ID" CssClass="bleft" />
                 </Colunms>
             </DT:DataGrid><br />
 			<div id="gridTreeDiv">
