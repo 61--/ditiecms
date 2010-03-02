@@ -29,9 +29,9 @@
                 <a href="javascript:DeleteData(-1,true);" class="button b4"><img src="../../images/ico/i_allDelete.gif" alt="" />批量删除</a>
             </div>
             <DT:DataGrid ID="dt_DataGrid" BindAjaxMethod="DTCMS.Web.admin.article_list.GetArticleJsonData" CssClass="table_data" runat="server">
-                <CheckBox Visible="true" Width="4%" />
-                <RowsIndex HeaderText="编号ID" Visible="true" Width="6%" />
                 <Colunms>
+                    <DT:CheckBox Visible="true" Width="4%" />
+                    <DT:RowsIndex HeaderText="文章ID" Visible="true" Width="6%" />
                     <DT:ColumnItem HeaderText="文章标题" Width="30%" DataField="Title" IsSort="true" />
                     <DT:ColumnItem HeaderText="所属栏目" Width="20%" DataField="Class" />
                     <DT:ColumnItem HeaderText="创建时间" Width="20%" DataField="CreateTime" IsSort="true" />
