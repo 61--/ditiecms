@@ -38,6 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Data" />
@@ -45,9 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataGrid\CheckBox.cs" />
+    <Compile Include="DataGrid\ColumnCollectionEditor.cs" />
     <Compile Include="DataGrid\DataGrid.cs" />
     <Compile Include="DataGrid\ColumnItem.cs" />
     <Compile Include="DataGrid\ColumnCollection.cs" />
+    <Compile Include="DataGrid\ItemBase.cs" />
     <Compile Include="DataGrid\RowsIndex.cs" />
     <Compile Include="DropDownTree\DropDownTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

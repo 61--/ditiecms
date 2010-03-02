@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace DTCMS.Controls
 {
     /// <summary>
     /// ColumnItem 成员属性
     /// </summary>
-    public class ColumnItem
+    [ToolboxItem(false)]
+    public class ColumnItem : ItemBase
     {
         private string _headerText;
         private string _dataField;
@@ -23,6 +20,8 @@ namespace DTCMS.Controls
         /// <summary>
         /// 列名
         /// </summary>
+        [NotifyParentProperty(true)]
+        [Description("列名")]
         public string HeaderText
         {
             get { return _headerText; }
@@ -32,6 +31,8 @@ namespace DTCMS.Controls
         /// <summary>
         /// 绑定字段
         /// </summary>
+        [NotifyParentProperty(true)]
+        [Description("绑定字段")]
         public string DataField
         {
             get { return _dataField; }
@@ -41,6 +42,8 @@ namespace DTCMS.Controls
         /// <summary>
         /// 对齐方式
         /// </summary>
+        [NotifyParentProperty(true)]
+        [Description("对齐方式")]
         public string Align
         {
             get { return _align; }
@@ -50,6 +53,8 @@ namespace DTCMS.Controls
         /// <summary>
         /// 列宽度
         /// </summary>
+        [NotifyParentProperty(true)]
+        [Description("列宽度")]
         public string Width
         {
             get { return _width; }
@@ -59,6 +64,8 @@ namespace DTCMS.Controls
         /// <summary>
         /// 表头的CSS类名
         /// </summary>
+        [NotifyParentProperty(true)]
+        [Description("表头的CSS类名")]
         public string CssClass
         {
             get { return _cssClass; }
@@ -68,6 +75,8 @@ namespace DTCMS.Controls
         /// <summary>
         /// 单击表头是否排序
         /// </summary>
+        [NotifyParentProperty(true)]
+        [Description("单击表头是否排序")]
         public bool IsSort
         {
             get { return _isSort; }

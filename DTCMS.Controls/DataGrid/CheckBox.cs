@@ -8,7 +8,9 @@ using System.Web.UI.WebControls;
 
 namespace DTCMS.Controls
 {
-    public class CheckBox
+    [ToolboxItem(false)]
+    [TypeConverter(typeof(ExpandableObjectConverter))]
+    public class CheckBox : ItemBase
     {
         private bool _visible;
         private string _width;
@@ -16,6 +18,7 @@ namespace DTCMS.Controls
         /// <summary>
         /// 是否显示选择框
         /// </summary>
+        [NotifyParentProperty(true)]
         [Description("是否显示选择框")]
         public bool Visible
         {
@@ -26,6 +29,7 @@ namespace DTCMS.Controls
         /// <summary>
         /// 列宽度
         /// </summary>
+        [NotifyParentProperty(true)]
         [Description("列宽度")]
         public string Width
         {

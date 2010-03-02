@@ -1,17 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
+using System.Drawing.Design;
 
 namespace DTCMS.Controls
 {
     /// <summary>
-    /// HeaderItem 成员集合
+    /// ColumnCollection 成员集合
     /// </summary>
-    public class ColumnCollection : List<ColumnItem>
+    [ToolboxItem(false)]
+    [ParseChildren(true)]
+    [Editor(typeof(ColumnCollectionEditor), typeof(UITypeEditor))]
+    public class ColumnCollection : Collection<ItemBase>
     {
         public ColumnCollection() : base() { }
 
@@ -20,9 +21,14 @@ namespace DTCMS.Controls
             get { return base.Count; }
         }
 
-        public new void Add(ColumnItem item)
+        public new void Add(ItemBase item)
         {
             base.Add(item);
+        }
+
+        public new void Remove(ItemBase item)
+        {
+            base.Remove(item);
         }
 
         public new void Clear()
@@ -30,7 +36,7 @@ namespace DTCMS.Controls
             base.Clear();
         }
 
-        public new ColumnItem this[int index]
+        public new ItemBase this[int index]
         {
             get { return base[index]; }
             set { base[index] = value; }
