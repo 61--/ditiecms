@@ -83,15 +83,15 @@ namespace DTCMS.Controls.DropDownTree
             string result = string.Empty;
             if (!string.IsNullOrEmpty(parentString))
             {
-                result += parentString.Replace("├", "｜").Replace("└", "　");
+                result += parentString.Replace("├", "│").Replace("└", "　");
             }
             if (isLast)
             {
-                return result += "└";
+                return result += "└ ";
             }
             else
             {
-                result += "├";
+                result += "├ ";
             }
             return result;
         }

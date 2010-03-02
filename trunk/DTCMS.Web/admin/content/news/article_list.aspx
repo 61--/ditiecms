@@ -31,11 +31,11 @@
             <DT:DataGrid ID="dt_DataGrid" BindAjaxMethod="DTCMS.Web.admin.article_list.GetArticleJsonData" CssClass="table_data" runat="server">
                 <Colunms>
                     <DT:CheckBox Visible="true" Width="4%" />
-                    <DT:RowsIndex HeaderText="文章ID" Visible="true" Width="6%" />
+                    <DT:RowsIndex HeaderText="文章ID" Visible="false" Width="6%" />
                     <DT:ColumnItem HeaderText="文章标题" Width="30%" DataField="Title" IsSort="true" />
-                    <DT:ColumnItem HeaderText="所属栏目" Width="20%" DataField="Class" />
-                    <DT:ColumnItem HeaderText="创建时间" Width="20%" DataField="CreateTime" IsSort="true" />
-                    <DT:ColumnItem HeaderText="是否审核" Width="10%" DataField="IsChecked" />
+                    <DT:ColumnItem HeaderText="所属栏目" Width="20%" DataField="ClassName" />
+                    <DT:ColumnItem HeaderText="创建时间" Width="20%" DataField="AddDate" IsSort="true" />
+                    <DT:ColumnItem HeaderText="是否审核" Width="10%" DataField="IsVerify" />
                     <DT:ColumnItem HeaderText="操作" Width="10%" DataField="ID" CssClass="bleft" />
                 </Colunms>
             </DT:DataGrid><br />
@@ -55,10 +55,14 @@
                     data,
                     {
                         fields: [
-	                        { fieldsId: 1, dataFormat: function(r) { return "<font color=red>" + r.id + "</font>" } },
-	                        { fieldsId: 6, dataFormat: function(r) { return "删除" }, listeners: { event: "click", fn: function(row) { alert("单元格事件，ID是：" + row.id) } }, id: "opt" }
-	                    ],
-                        listeners: { event: "click", fn: function(row) { alert("行事件，ID是：" + row.id) } }
+                            { data: 'id' },
+	                        { dataFormat: function(r) { return '<a href="article_add.aspx?ID=' + r.id + '>' + r.title + '</a>'; } },
+	                        { data: 'classname' },
+	                        { data: 'adddate' },
+	                        { data: 'isverify', dataFormat: function(r) { return r.isverify==1?"已审核":"未审核"} },
+	                        { data: 'id' }
+	                    ]/*,
+                        listeners: { event: "click", fn: function(row) { alert("行事件，ID是：" + row.id) } }*/
                     }
 	            );
             }
