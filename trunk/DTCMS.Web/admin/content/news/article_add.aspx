@@ -69,17 +69,16 @@
                             所属栏目:
                         </td>
                         <td class="main_bright split">
-                            <input type="hidden" id="txt_ClassID" class="textbox short" runat="server" />
-                            <input type="text" id="txt_ClassName" class="textbox short" runat="server" disabled="disabled" /><img src="../../images/blue/s.gif" class="select" alt="选择" onclick="add_Class();" />
-                            <span class="main_bleft">文章来源: </span><input type="text" id="txt_Source" class="textbox" style="width:120px;" runat="server" /><img src="../../images/blue/s.gif" class="select" alt="选择" onclick="add_source();" />
+                            <select id="slt_ClassName" runat="server" style="width: 180px; background: #F7FAFC; " ></select>
                         </td>
                     </tr>
                     <tr>
                         <td class="main_bleft split">
-                            文章作者:
+                            文章来源:
                         </td>
                         <td class="main_bright split">
-                            <input type="text" id="txt_Author" class="textbox" style="width:120px;" runat="server" /><img src="../../images/blue/s.gif" class="select" alt="选取" onclick="add_author();" />
+                            <input type="text" id="txt_Source" class="textbox" style="width:120px;" runat="server" /><img src="../../images/blue/s.gif" class="select" alt="选择" onclick="add_source();" />                            
+                            <span class="main_bleft">文章作者: </span><input type="text" id="txt_Author" class="textbox" style="width:120px;" runat="server" /><img src="../../images/blue/s.gif" class="select" alt="选取" onclick="add_author();" />
                             <span class="main_bleft">责任编辑: </span><input type="text" id="txt_Editor" class="textbox" style="width:120px;" runat="server" />
                         </td>
                     </tr>
@@ -222,16 +221,7 @@
             if (returnPath) {
                 $("#txt_ImageUrl").val(returnPath);
             }
-        }
-        function add_Class() {   //栏目
-            Dialog.open("栏目列表", class_onOk, "/admin/dialog/classpagelist.aspx");
-        }
-        function class_onOk(win) {
-            var classJson = win.getClasses();
-            $("#txt_ClassID").val(classJson.classid);
-            $("#txt_ClassName").val(classJson.classname);
-        }
-        
+        }        
         function add_tags() {
             Dialog.open("关键字", tag_onOk, "/admin/dialog/taglist.aspx");    
         }

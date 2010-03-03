@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 using DTCMS.BLL;
 using DTCMS.Entity;
 using DTCMS.Common;
+using DTCMS.Controls.DropDownTree;
 
 namespace DTCMS.Web.admin
 {
@@ -41,6 +42,7 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void InitPage()
         {
+            InitClass();
             InitReadaccess();
             InitTitleFlag();
         }
@@ -153,11 +155,7 @@ namespace DTCMS.Web.admin
                 hide_Attribute.Value = model.Attribute.ToString();
                 hide_TitleStyle.Value = model.TitleStyle;
                 txt_Tags.Value = model.Tags;
-                txt_ClassID.Value = model.ClassID.ToString();  //栏目ID
-                if (txt_ClassID.Value != "")
-                {
-                    txt_ClassName.Value = bllClass.GetClassName(TypeConvert.ToInt32(txt_ClassID.Value));
-                }
+                slt_ClassName.SelectedIndex = slt_ClassName.Items.IndexOf(slt_ClassName.Items.FindByValue(model.ClassID.ToString()));
                 txt_Source.Value = model.Source;
                 txt_Author.Value = model.Author;
                 txt_Editor.Value = model.Editor;
@@ -191,7 +189,7 @@ namespace DTCMS.Web.admin
             Arc_Article model = new Arc_Article();
 
             model.ID = NewID;
-            model.ClassID = TypeConvert.ToInt32(txt_ClassID.Value.Trim());
+            model.ClassID = TypeConvert.ToInt32(slt_ClassName.Value.Trim());
             model.ViceClassID = TypeConvert.ToInt32(txt_ViceClassID.Value.Trim(), -1);
             model.Title = txt_Title.Value.Trim();
             model.ShortTitle = txt_ShortTitle.Value.Trim();
@@ -229,6 +227,16 @@ namespace DTCMS.Web.admin
         }
 
          #region 初始化页面数据
+        /// <summary>
+        /// 初始化栏目
+        /// </summary>
+        private void InitClass()
+        {
+            slt_ClassName.Items.Add(new ListItem("站点顶级栏目", "0"));
+            DataTable dtClass = bllClass.GetDropList("");
+            DropDownTree.BindToDropDownList(slt_ClassName, dtClass, "0");
+        }
+
         /// <summary>
         /// 初始化阅读权限
         /// </summary>
