@@ -14,7 +14,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <div id="content">            
+        <div id="container">            
             <div>
                 <table cellpadding="10" cellspacing="0" class="table_form">
                     <tr>
@@ -173,8 +173,10 @@
             </div>
             <!--操作按钮-->
             <div style="margin:10px;text-align:center;">
-                <button id="btn_Submit" type="button" class="b1" runat="server" onserverclick="btn_Submit_Click">保存</button>
-                <button id="btn_Cancel" type="button" class="b1" onclick="history.back(-1);"> 取消</button>
+                <button id="btn_Submit" type="button" class="b2" runat="server" onserverclick="btn_Submit_Click">
+                    <img src="../images/ico/i_save.gif" />保存</button>
+                <button id="btn_Cancel" type="button" class="b2" onclick="history.back(-1);">
+                    <img src="../images/ico/i-cancel.gif" />取消</button>
             </div>
         </div>
     </div>

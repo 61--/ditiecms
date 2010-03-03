@@ -350,13 +350,16 @@
     <Content Include="admin\images\blue\loading.gif" />
     <Content Include="admin\images\blue\success.gif" />
     <Content Include="admin\images\color.png" />
+    <Content Include="admin\images\ico\i-cancel.gif" />
     <Content Include="admin\images\ico\ico_Success_Small.gif" />
+    <Content Include="admin\images\ico\i_help.gif" />
     <Content Include="admin\images\ico\i_p_copy.gif" />
     <Content Include="admin\images\ico\i_p_delete.gif" />
     <Content Include="admin\images\ico\i_p_edit.gif" />
     <Content Include="admin\images\ico\i_p_insert.gif" />
     <Content Include="admin\images\ico\i_p_shift.gif" />
     <Content Include="admin\images\ico\i_p_type.gif" />
+    <Content Include="admin\images\ico\i_save.gif" />
     <Content Include="admin\images\ico\i_small_delete.gif" />
     <Content Include="admin\images\ico\i_small_edit.gif" />
     <Content Include="admin\attachment\emptyPage.html" />
@@ -654,7 +657,6 @@
     <Content Include="admin\images\blue\s.gif" />
     <Content Include="admin\images\blue\th_bg.gif" />
     <Content Include="admin\images\ico\i_04.gif" />
-    <Content Include="admin\images\ico\i_06.gif" />
     <Content Include="admin\images\ico\i_add.gif" />
     <Content Include="admin\images\ico\i_allDelete.gif" />
     <Content Include="admin\images\ico\i_delete.gif" />
@@ -1016,7 +1018,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>6030</DevelopmentServerPort>
+          <DevelopmentServerPort>20781</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/DTCMS_Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

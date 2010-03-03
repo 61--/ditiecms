@@ -46,6 +46,7 @@ textarea {
 button
 {
 	margin-right:8px;
+	cursor:pointer;
 }
 button,.button {
 	border: 0px;
@@ -62,10 +63,8 @@ a.button
 	text-align:center;
 	display:inline-block;
 }
-.button img
+button img, .button img
 {
-	height:20px;
-	width:20px;
 	padding-right:2px;
 	_padding-top:1px;
 	vertical-align:middle;
