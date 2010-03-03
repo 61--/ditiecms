@@ -40,11 +40,11 @@
         }
         .hr1
         {
-            float:left; border-bottom:solid 2px #52A2D4; font-size:15px; padding:20px 0 3px 0;
+            float:left; border-bottom:solid 2px #ccc; font-size:15px; padding:20px 0 3px 0;
         }
         .hr2
         {
-            clear:both; border-bottom:solid 1px #52A2D4; height:0px;
+            clear:both; border-bottom:solid 1px #ccc; height:0px;
         }
     </style>
 </head>
