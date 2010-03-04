@@ -241,7 +241,7 @@ function TableTree4J(objectName, sequence, checked) {
         this.initNodes();
         var container = document.getElementById(elementId);
         container.innerHTML = this.tableDesc + this.htmlCode + "</table>";
-        //alert(container.innerHTML);
+        document.write(container.innerHTML);
     }
 
     //show tree when the html init
@@ -250,7 +250,6 @@ function TableTree4J(objectName, sequence, checked) {
         //alert(this.htmlCode);
         document.write(this.tableDesc + this.htmlCode + "</table>");
         document.close();
-
     }
 
     //init node img html code
