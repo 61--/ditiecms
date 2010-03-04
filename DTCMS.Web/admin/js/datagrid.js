@@ -47,6 +47,7 @@
             }
             $(tr).appendTo(tab);
         });
+        /*
         //end 格式化json数据
         if (_rowcount == -1) $("<tr><td colspan=\"" + _fieldslength.toString() + "\" class=\"NoRecordTip\">无记录</td></tr>").appendTo(tab);
         //tab.appendTo(this);
@@ -83,7 +84,7 @@
                     $.ajax(ajaxOpt);
                 }
             });
-        };
+        };*/
     };
 })(jQuery);
 

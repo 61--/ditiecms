@@ -48,9 +48,12 @@
         function onSortClick(elem) {
             elem.blur()
         }
-        function showDataList(json) {
+        function showDataList(data) {
             if (json != "") {
-                var data = eval("data=" + json);
+                var json = $.getJSON(data);
+                alert(data);
+                alert(json);
+                var st = new Date().getTime();
                 $("#dataList").gridview(
                     data,
                     {
@@ -65,6 +68,8 @@
                         listeners: { event: "click", fn: function(row) { alert("行事件，ID是：" + row.id) } }*/
                     }
 	            );
+                var st2 = new Date().getTime() - st;
+                alert(st2);
             }
         }
         var gridTree;
