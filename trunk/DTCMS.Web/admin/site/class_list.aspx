@@ -59,7 +59,7 @@
             gridTree.gridDataCloStyleArray = new Array("", "", "", "", "");
 
             if (json != "") {
-                var data = eval("data=" + json);
+                var data = eval("json=" + json);
                 var st = new Date().getTime();
                 $.each(data, function(i, n) {
                     var dataList = new Array("<a href='class_add.aspx?Id=" + n.cid + "'>" + n.classname + "</a>", n.classtype, n.adddate, "<input type=\"text\" onchange=\"updateSort(" + n.cid + ")\" id=\"order_" + n.cid + "\" class=\"class_order\" value=\"" + n.orderid + "\">", "<a href=\"class_add.aspx?Id=" + n.cid + "\">编辑</a>&nbsp;&nbsp;<a href=\"javascript:deleteData(" + n.cid + ",false)\">删除</a>");
