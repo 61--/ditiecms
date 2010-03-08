@@ -50,22 +50,21 @@
         }
         function showDataList(data) {
             if (json != "") {
-                var json = eval("data="+data);
+                var json = eval("data=" + data);
                 var st = new Date().getTime();
-                $("#dataList").gridview(
-                    data,
-                    {
-                        fields: [
-                            { data: 'id' },
-	                        { dataFormat: function(r) { return '<a href="article_add.aspx?ID=' + r.id + '">' + r.title + '</a>'; } },
-	                        { data: 'classname' },
-	                        { data: 'adddate' },
-	                        { data: 'isverify', dataFormat: function(r) { return r.isverify==1?"已审核":"未审核"} },
-	                        { data: 'id' }
+                var option = {
+                    jsondata: json,
+                    fields: [
+                            { name: 'id', dataType:'checkbox' },
+	                        { name: 'id', dataFormat: function(r) { return '<a href="article_add.aspx?ID=' + r.id + '">' + r.title + '</a>'; } },
+	                        { name: 'classname' },
+	                        { name: 'adddate' },
+	                        { name: 'isverify', dataFormat: function(r) { return r.isverify == 1 ? "已审核" : "未审核" } },
+	                        { name: 'id' }
 	                    ]/*,
-                        listeners: { event: "click", fn: function(row) { alert("行事件，ID是：" + row.id) } }*/
-                    }
-	            );
+                    listeners: { event: "click", fn: function(row) { alert("行事件，ID是：" + row.id) } }*/
+                };
+                $("#dataList").gridview(option);
                 var st2 = new Date().getTime() - st;
                 alert(st2);
             }

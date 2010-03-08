@@ -84,7 +84,60 @@ function setCookie(sName, sValue) {
         document.cookie = sCookie;
     } catch (e) { }
 }
+function changeClassName(objectChange, classN) {
+    objectChange.className = classN;
+}
 
+function select(object) {   //单击选择当前行
+    var input = object.getElementsByTagName("input");
+    if (input && input[0]) {
+        input[0].checked = !input[0].checked;
+    }
+}
+
+/*** 全选反选*name=items ***/
+function invertCheckBox(elem) {
+    var input = document.getElementsByName("items");
+    var len = input.length;
+    for (var i = 0; i < len; i++) {
+        if (elem.checked) {
+            input[i].checked = true;
+        }
+        else {
+            input[i].checked = false;
+        }
+    }
+}
+
+/*** 获取选择ID*name=items ***/
+function getCheckId() {
+    var iValue = ""; //返回值
+    var input = document.getElementsByName("items");
+    if (input) {
+        for (var i = 0, len = input.length; i < len; i++) {
+            if (input[i].checked) {
+                if (iValue == "") {
+                    iValue = input[i].value;
+                } else {
+                    iValue = iValue + "," + input[i].value;
+                }
+            }
+        }
+    }
+    return iValue;
+}
+function getSingleCheckID() {
+    var iValue = ""; //返回值
+    var input = document.getElementsByName("items");
+    if (input) {
+        for (var i = 0, len = input.length; i < len; i++) {
+            if (input[i].checked) {
+                iValue = input[i].value;
+            }
+        }
+    }
+    return iValue;
+}
 
 
 
