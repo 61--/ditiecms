@@ -4,31 +4,37 @@
 *最后更新：2009年9月16日14:20:35  alpha3
 */
 (function($) {
-    $.fn.gridview = function(data, opt, pager) {
-        var s = $.extend({}, {
-            row: "row",
+    $.fn.gridview = function(p) {
+        p = $.extend({
+            jsondata: null,
             fields: null,
-            listeners: null
-        },
-		opt || null);
+            listeners: null,
+            usepager: true,
+            pagesize: 15
+        }, p);
 
         //this.empty();
-
         var tab = $("#dataList");
         var tbhtml = [];
 
         //格式化json数据
-        $.each(data, function(i, n) {
-        tbhtml.push("<tr onmouseover=\"changeClassName(this,'highLightRow')\" onmouseout=\"changeClassName(this,'')\">");
-            $.each(opt.fields, function(x, m) {
+        $.each(p.jsondata, function(i, n) {
+            tbhtml.push("<tr onmouseover=\"changeClassName(this,'highLightRow')\" onmouseout=\"changeClassName(this,'')\">");
+            /*if (p.showcheckbox) {
+            tbhtml.push("<td><input type=\"checkbox\" name=\"items\" value=\"\" /></td>");
+            }
+            if (p.showrowsindex) {
+            tbhtml.push("<td>", i + 1, "</td>");
+            }*/
+            $.each(p.fields, function(x, m) {
                 tbhtml.push("<td>");
-                tbhtml.push(m.dataFormat == null ? n[m.data] : m.dataFormat(n));
+                tbhtml.push(m.dataFormat == null ? n[m.name] : m.dataFormat(n));
                 tbhtml.push("</td>");
             });
             tbhtml.push("</tr>");
 
-            if (s.listeners != null) {
-                _listen = s.listeners;
+            if (p.listeners != null) {
+                _listen = p.listeners;
                 $("tr").bind("" + _listen.event + "", function(event) {
                     _listen.fn(n);
                     event.preventDefault();
