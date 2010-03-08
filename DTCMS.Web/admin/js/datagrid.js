@@ -15,38 +15,29 @@
         //this.empty();
 
         var tab = $("#dataList");
-        var _strText = "";
-        var _rowcount = -1;
-        var td = _listen = null;
+        var tbhtml = [];
 
         //格式化json数据
         $.each(data, function(i, n) {
-            tr = $("<tr></tr>");
-            _rowcount = i;
+        tbhtml.push("<tr onmouseover=\"changeClassName(this,'highLightRow')\" onmouseout=\"changeClassName(this,'')\">");
             $.each(opt.fields, function(x, m) {
-                _strText = (m.dataFormat == null ? n[m.data] : m.dataFormat(n));
-                td = $("<td>" + _strText + "</td>").appendTo(tr);
-                if (m.listeners != null) {
-                    //绑定并传值row:n
-                    td.bind("" + m.listeners.event + "", function(event) {
-                        m.listeners.fn(n);
-                        //阻止默认行为和起泡
-                        event.preventDefault();
-                        event.stopPropagation();
-                    });
-                }
+                tbhtml.push("<td>");
+                tbhtml.push(m.dataFormat == null ? n[m.data] : m.dataFormat(n));
+                tbhtml.push("</td>");
             });
+            tbhtml.push("</tr>");
 
             if (s.listeners != null) {
                 _listen = s.listeners;
-                tr.bind("" + _listen.event + "", function(event) {
+                $("tr").bind("" + _listen.event + "", function(event) {
                     _listen.fn(n);
                     event.preventDefault();
                     event.stopPropagation();
                 });
             }
-            $(tr).appendTo(tab);
         });
+        tab.html(tbhtml.join(""));
+        alert(tab.html())
         /*
         //end 格式化json数据
         if (_rowcount == -1) $("<tr><td colspan=\"" + _fieldslength.toString() + "\" class=\"NoRecordTip\">无记录</td></tr>").appendTo(tab);
@@ -55,35 +46,35 @@
         pager = $.extend({ display: false, pagesize: 5, pageNav: 8, curPage: parseInt(_curpage) - 1 }, pager);
         var tis = this; //传递指向dom的this，否则this会指向ajax
         if (pager.display) {
-            $("<div class=\"pagination\"></div>").appendTo(tis).pagination(parseInt(_totalcount), {
-                num_edge_entries: 2,
-                num_display_entries: pager.pageNav,
-                items_per_page: pager.pagesize,
-                current_page: pager.curPage,
-                callback: function(page_id, jq) {
-                    var o = pager.objAjax;
-                    var ajaxdata = (typeof (o.data) == "undefined" ? "" : o.data);
-                    //如果url中没有pagenum参数
-                    ajaxdata = ((ajaxdata).indexOf("pagenum") <= 0 ? ajaxdata + "&pagenum=1" : ajaxdata).toString();
-                    //替换url中的pagenum=
-                    ajaxdata = ajaxdata.replace(/\bpagenum=\d*\b/g, "pagenum=" + (parseInt(page_id) + 1).toString());
-                    var ajaxOpt = {
-                        url: o.url
-                              , type: o.type
-                              , success: function(x) { tis.gridview(x, opt, $.extend(pager, { curPage: page_id })); }
-                              , global: o.global
-                              , contentType: o.contentType
-                              , processData: o.processData
-                              , async: o.async
-                              , dataType: o.dataType
-                              , data: ajaxdata
-                              , error: o.error
-                              , timeout: o.timeout
-                              , cache: o.cache
-                    };
-                    $.ajax(ajaxOpt);
-                }
-            });
+        $("<div class=\"pagination\"></div>").appendTo(tis).pagination(parseInt(_totalcount), {
+        num_edge_entries: 2,
+        num_display_entries: pager.pageNav,
+        items_per_page: pager.pagesize,
+        current_page: pager.curPage,
+        callback: function(page_id, jq) {
+        var o = pager.objAjax;
+        var ajaxdata = (typeof (o.data) == "undefined" ? "" : o.data);
+        //如果url中没有pagenum参数
+        ajaxdata = ((ajaxdata).indexOf("pagenum") <= 0 ? ajaxdata + "&pagenum=1" : ajaxdata).toString();
+        //替换url中的pagenum=
+        ajaxdata = ajaxdata.replace(/\bpagenum=\d*\b/g, "pagenum=" + (parseInt(page_id) + 1).toString());
+        var ajaxOpt = {
+        url: o.url
+        , type: o.type
+        , success: function(x) { tis.gridview(x, opt, $.extend(pager, { curPage: page_id })); }
+        , global: o.global
+        , contentType: o.contentType
+        , processData: o.processData
+        , async: o.async
+        , dataType: o.dataType
+        , data: ajaxdata
+        , error: o.error
+        , timeout: o.timeout
+        , cache: o.cache
+        };
+        $.ajax(ajaxOpt);
+        }
+        });
         };*/
     };
 })(jQuery);

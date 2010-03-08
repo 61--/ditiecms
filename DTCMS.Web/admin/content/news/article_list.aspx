@@ -50,9 +50,7 @@
         }
         function showDataList(data) {
             if (json != "") {
-                var json = $.getJSON(data);
-                alert(data);
-                alert(json);
+                var json = eval("data="+data);
                 var st = new Date().getTime();
                 $("#dataList").gridview(
                     data,
