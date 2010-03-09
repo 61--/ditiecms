@@ -8,7 +8,7 @@
         p = $.extend({
             jsondata: null,
             fields: null,
-            listeners: null,
+            rowhandler: null,
             usepager: true,
             pagesize: 15
         }, p);
@@ -19,31 +19,39 @@
 
         //格式化json数据
         $.each(p.jsondata, function(i, n) {
-            tbhtml.push("<tr onmouseover=\"changeClassName(this,'highLightRow')\" onmouseout=\"changeClassName(this,'')\">");
-            /*if (p.showcheckbox) {
-            tbhtml.push("<td><input type=\"checkbox\" name=\"items\" value=\"\" /></td>");
+            tbhtml.push('<tr onmouseover="changeClassName(this,\'highLightRow\')" onmouseout="changeClassName(this,\'\')"');
+            if (p.rowhandler != null) {
+                _rowhandler = p.rowhandler;
+                tbhtml.push(' ',_rowhandler.event, '="', _rowhandler.fn, '"');
             }
-            if (p.showrowsindex) {
-            tbhtml.push("<td>", i + 1, "</td>");
-            }*/
+            tbhtml.push('>');
+            if (p.checkbox.visible) {
+                tbhtml.push('<td><input type="checkbox" name="items" value="', n[p.checkbox.id], '" /></td>');
+            }
+            if (p.rowsindex.visible) {
+                if (p.rowsindex.id == null) {
+                    tbhtml.push('<td>', i + 1, '</td>');
+                } else {
+                    tbhtml.push('<td>', n[p.rowsindex.id], '</td>');
+                }
+            }
             $.each(p.fields, function(x, m) {
-                tbhtml.push("<td>");
+                tbhtml.push('<td>');
                 tbhtml.push(m.dataFormat == null ? n[m.name] : m.dataFormat(n));
-                tbhtml.push("</td>");
+                tbhtml.push('</td>');
             });
-            tbhtml.push("</tr>");
-
-            if (p.listeners != null) {
-                _listen = p.listeners;
-                $("tr").bind("" + _listen.event + "", function(event) {
-                    _listen.fn(n);
-                    event.preventDefault();
-                    event.stopPropagation();
+            tbhtml.push('</tr>');
+            if (p.rowhandler != null) {
+                _rowhandler = p.rowhandler;
+                $(this).bind("" + _rowhandler.event + "", function(e) {
+                    _rowhandler.fn();
+                    e.preventDefault();
+                    e.stopPropagation();
                 });
             }
         });
-        tab.html(tbhtml.join(""));
-        alert(tab.html())
+        tab.html(tbhtml.join(''));
+        //alert(tab.html())
         /*
         //end 格式化json数据
         if (_rowcount == -1) $("<tr><td colspan=\"" + _fieldslength.toString() + "\" class=\"NoRecordTip\">无记录</td></tr>").appendTo(tab);
