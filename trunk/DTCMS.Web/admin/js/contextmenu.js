@@ -103,7 +103,7 @@ option: {width:Number, items:Array, onShow:Function, rule:JSON}
         //菜单项失去焦点
         var outItem = function(e) {
             //如果菜单项不可用
-            if (this.disable )
+            if (this.disable)
                 return false;
             if (!this.group) {
                 //菜单项
