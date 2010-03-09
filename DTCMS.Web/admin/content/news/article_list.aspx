@@ -13,6 +13,7 @@
     <script type="text/javascript" src="../../js/common.js"></script>
     <script type="text/javascript" src="../../js/public.js"></script>
     <script type="text/javascript" src="../../js/datagrid.js"></script>
+    <script type="text/javascript" src="../../js/contextmenu.js"></script>
 </head>
 <body>
     <form id="form1" runat="server"><div id="container">
@@ -31,7 +32,7 @@
             <DT:DataGrid ID="dt_DataGrid" BindAjaxMethod="DTCMS.Web.admin.article_list.GetArticleJsonData" CssClass="table_data" runat="server">
                 <Colunms>
                     <DT:CheckBox Visible="true" Width="4%" />
-                    <DT:RowsIndex HeaderText="文章ID" Visible="false" Width="6%" />
+                    <DT:RowsIndex HeaderText="文章ID" Visible="true" Width="6%" />
                     <DT:ColumnItem HeaderText="文章标题" Width="30%" DataField="Title" IsSort="true" />
                     <DT:ColumnItem HeaderText="所属栏目" Width="20%" DataField="ClassName" />
                     <DT:ColumnItem HeaderText="创建时间" Width="20%" DataField="AddDate" IsSort="true" />
@@ -54,20 +55,53 @@
                 var st = new Date().getTime();
                 var option = {
                     jsondata: json,
+                    checkbox: { visible: true, id: 'id' },
+                    rowsindex: { visible: true, id: 'id' },
                     fields: [
-                            { name: 'id', dataType:'checkbox' },
 	                        { name: 'id', dataFormat: function(r) { return '<a href="article_add.aspx?ID=' + r.id + '">' + r.title + '</a>'; } },
 	                        { name: 'classname' },
 	                        { name: 'adddate' },
 	                        { name: 'isverify', dataFormat: function(r) { return r.isverify == 1 ? "已审核" : "未审核" } },
 	                        { name: 'id' }
-	                    ]/*,
-                    listeners: { event: "click", fn: function(row) { alert("行事件，ID是：" + row.id) } }*/
+	                    ],
+	                rowhandler: { event: "onmousedown", fn: "contextmenu(this)" }
                 };
                 $("#dataList").gridview(option);
                 var st2 = new Date().getTime() - st;
                 alert(st2);
             }
+        }
+        function contextmenu(row) {
+            var menu = { width: 150, items: [
+                     { text: "查看", icon: "../../images/ico/i_view.png", alias: "contextmenu-edit", action: contextMenuItem_click },
+                     { text: "编辑", icon: "../../images/ico/i_edit.png", alias: "contextmenu-view", action: contextMenuItem_click },
+                     { text: "删除", icon: "../../images/ico/i_delete.png", alias: "contextmenu-delete", action: contextMenuItem_click },
+                     { text: "刷新", disable: true,icon: "../../images/ico/i_refresh.png", alias: "contextmenu-reflash", action: contextMenuItem_click }
+                ]
+            };
+            function contextMenuItem_click() {
+                /*var id = $(target).attr("id").substr(3);
+                var cmd = this.data.alias;
+                var ch = $.browser.msie ? target.ch : target.getAttribute("ch");
+                var cell = ch.split("_FG$SP_");
+                if (cmd == "contextmenu-edit") {
+                    alert("编辑，产品编号=" + id);
+                }
+                else if (cmd == "contextmenu-view") {
+                    alert("编辑，产品编号=" + id);
+                }
+                else if (cmd == "contextmenu-delete") {
+                    var name = cell[1];
+                    if (confirm("你确认要删除商品 [" + name + "] 吗？")) {
+                        alert("删除，产品编号=" + id);
+                    }
+                }
+                else {
+                    $("#productlist").flexReload();
+                }*/
+                alert('123');
+            }
+            $(row).contextmenu(menu);
         }
         var gridTree;
         function showGridTree(json) {

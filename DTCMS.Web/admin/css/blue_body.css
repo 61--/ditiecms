@@ -415,3 +415,57 @@ a.b5:hover
 	height:9px;
 	background:url(../images/blue/help_b2.gif) left top no-repeat;
 }
+/*------右键菜单------*/
+.m-mpanel {
+	background: url(../images/blue/menu_bg.gif) left repeat-y #F7F8FD;
+	border: 1px solid #718BB7;
+	padding: 2px 0;
+	position: absolute;
+	z-index: 9999;
+	left:0px;
+	top:0px;
+}
+.m-split {
+	height: 6px;
+	background: url(../images/blue/m_splitLine.gif) center repeat-x;
+	font-size: 0px;
+	margin: 0 2px;
+}
+.m-item, .m-idisable
+{
+    padding: 4px 2px;
+    margin: 0 2px 0 3px;
+    cursor: normal;
+    line-height:100%;
+}
+.m-idisable
+{
+    color:#808080;
+}
+.m-ibody, .m-arrow {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.m-arrow {
+	background: url(../images/blue/m_arrow.gif) right  no-repeat;	
+}
+.m-idisable .m-arrow
+{
+    background:none;
+}
+.m-item img, .m-ifocus img, .m-idisable img {
+	margin-right: 8px;
+	width:16px;
+	height:16px;
+}
+.m-ifocus {
+	background: url(../images/blue/m_item.gif) repeat-x bottom;
+	border: 1px solid #AACCF6;
+	padding: 3px 1px ;
+    margin: 0 2px 0 3px;
+    cursor: normal;
+    line-height:100%;
+}
+.m-idisable img {
+	filter:Alpha(Opacity=50);
+}
