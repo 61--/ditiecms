@@ -358,6 +358,7 @@
     <Content Include="admin\images\ico\i-cancel.gif" />
     <Content Include="admin\images\ico\ico_Success_Small.gif" />
     <Content Include="admin\images\ico\i_help.gif" />
+    <Content Include="admin\images\ico\i_none.png" />
     <Content Include="admin\images\ico\i_p_copy.gif" />
     <Content Include="admin\images\ico\i_p_delete.gif" />
     <Content Include="admin\images\ico\i_p_edit.gif" />
