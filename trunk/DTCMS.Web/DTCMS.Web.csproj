@@ -351,7 +351,6 @@
     <Content Include="admin\images\blue\menu_bg.gif" />
     <Content Include="admin\images\blue\m_arrow.gif" />
     <Content Include="admin\images\blue\m_item.gif" />
-    <Content Include="admin\images\blue\m_splitLine.gif" />
     <Content Include="admin\images\blue\success.gif" />
     <Content Include="admin\images\color.png" />
     <Content Include="admin\images\ico\i_edit.png" />

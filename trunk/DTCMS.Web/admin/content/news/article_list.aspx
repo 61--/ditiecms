@@ -73,12 +73,12 @@
         }
         function contextmenu(row) {
             var menu = { items: [
-                { text: "查看", icon: "../../images/ico/i_view.png", alias: "contextmenu-edit", action: contextMenuItem_click },
+                { text: "预览", icon: "../../images/ico/i_view.png", alias: "contextmenu-edit", action: contextMenuItem_click },
                 { text: "编辑", icon: "../../images/ico/i_edit.png", alias: "contextmenu-view", action: contextMenuItem_click },
-                { text: "删除", icon: "../../images/ico/i_delete.png", alias: "contextmenu-delete", action: contextMenuItem_click },
+                { text: "删除", disable: true,icon: "../../images/ico/i_delete.png", alias: "contextmenu-delete", action: contextMenuItem_click },
                 { type: "splitLine" },
-                { text: "发布", icon: "../../images/ico/i_none.png", alias: "contextmenu-create", action: contextMenuItem_click },
-                { text: "置顶", disable: true,icon: "../../images/ico/i_none.png", alias: "contextmenu-create", action: contextMenuItem_click },
+                { text: "发布", alias: "contextmenu-create", action: contextMenuItem_click },
+                { text: "置顶", icon: "../../images/ico/i_none.png", alias: "contextmenu-create", action: contextMenuItem_click },
                 { type: "splitLine" },
                 { text: "刷新", icon: "../../images/ico/i_refresh.png", alias: "contextmenu-reflash", action: contextMenuItem_click }
                 ]
@@ -103,7 +103,7 @@
                 else {
                     $("#productlist").flexReload();
                 }*/
-                alert('123');
+                //alert('123');
             }
             $(row).contextmenu(menu);
         }
