@@ -10,7 +10,7 @@ option: {width:Number, items:Array, onShow:Function, rule:JSON}
 (function($) {
     function returnfalse() { return false; };
     $.fn.contextmenu = function(option) {
-        option = $.extend({ alias: "cmroot", width: 150 }, option);
+        option = $.extend({ alias: "cmroot", width: 120 }, option);
         var ruleName = null, target = null,
 	    groups = {}, mitems = {}, actions = {}, showGroups = [],
         itemTpl = "<div class='m-$[type]' unselectable=on><nobr unselectable=on><img src='$[icon]' align='absmiddle'/><span unselectable=on>$[text]</span></nobr></div>";
