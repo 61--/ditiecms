@@ -21,8 +21,7 @@
         $.each(p.jsondata, function(i, n) {
             tbhtml.push('<tr onmouseover="changeClassName(this,\'highLightRow\')" onmouseout="changeClassName(this,\'\')"');
             if (p.rowhandler != null) {
-                _rowhandler = p.rowhandler;
-                tbhtml.push(' ',_rowhandler.event, '="', _rowhandler.fn, '"');
+                tbhtml.push(' onmousedown="', p.rowhandler, '"');
             }
             tbhtml.push('>');
             if (p.checkbox.visible) {

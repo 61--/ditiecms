@@ -43,6 +43,7 @@
 			<div id="gridTreeDiv">
 			</div>
 		</div>
+		
 	</div>
     </form>
     <script type="text/javascript">
@@ -64,14 +65,14 @@
 	                        { name: 'isverify', dataFormat: function(r) { return r.isverify == 1 ? "已审核" : "未审核" } },
 	                        { name: 'id' }
 	                    ],
-	                rowhandler: { event: "onmousedown", fn: "contextmenu(this)" }
+	                rowhandler: "contextMenu(this)"
                 };
                 $("#dataList").gridview(option);
                 var st2 = new Date().getTime() - st;
                 alert(st2);
             }
         }
-        function contextmenu(row) {
+        function contextMenu(row) {
             var menu = { items: [
                 { text: "预览", icon: "view", alias: "contextmenu-edit", action: contextMenuItem_click },
                 { text: "编辑", icon: "edit", alias: "contextmenu-view", action: contextMenuItem_click },
@@ -83,29 +84,29 @@
                 { text: "刷新", icon: "refresh", alias: "contextmenu-reflash", action: contextMenuItem_click }
                 ]
             };
-            function contextMenuItem_click() {
-                /*var id = $(target).attr("id").substr(3);
-                var cmd = this.data.alias;
-                var ch = $.browser.msie ? target.ch : target.getAttribute("ch");
-                var cell = ch.split("_FG$SP_");
-                if (cmd == "contextmenu-edit") {
-                    alert("编辑，产品编号=" + id);
-                }
-                else if (cmd == "contextmenu-view") {
-                    alert("编辑，产品编号=" + id);
-                }
-                else if (cmd == "contextmenu-delete") {
-                    var name = cell[1];
-                    if (confirm("你确认要删除商品 [" + name + "] 吗？")) {
-                        alert("删除，产品编号=" + id);
-                    }
-                }
-                else {
-                    $("#productlist").flexReload();
-                }*/
-                //alert('123');
-            }
             $(row).contextmenu(menu);
+        }
+        function contextMenuItem_click() {
+            /*var id = $(target).attr("id").substr(3);
+            var cmd = this.data.alias;
+            var ch = $.browser.msie ? target.ch : target.getAttribute("ch");
+            var cell = ch.split("_FG$SP_");
+            if (cmd == "contextmenu-edit") {
+            alert("编辑，产品编号=" + id);
+            }
+            else if (cmd == "contextmenu-view") {
+            alert("编辑，产品编号=" + id);
+            }
+            else if (cmd == "contextmenu-delete") {
+            var name = cell[1];
+            if (confirm("你确认要删除商品 [" + name + "] 吗？")) {
+            alert("删除，产品编号=" + id);
+            }
+            }
+            else {
+            $("#productlist").flexReload();
+            }*/
+            //alert('123');
         }
         var gridTree;
         function showGridTree(json) {
