@@ -72,7 +72,7 @@
             }
         }
         function contextmenu(row) {
-            var menu = { width: 150, items: [
+            var menu = { items: [
                 { text: "查看", icon: "../../images/ico/i_view.png", alias: "contextmenu-edit", action: contextMenuItem_click },
                 { text: "编辑", icon: "../../images/ico/i_edit.png", alias: "contextmenu-view", action: contextMenuItem_click },
                 { text: "删除", icon: "../../images/ico/i_delete.png", alias: "contextmenu-delete", action: contextMenuItem_click },
