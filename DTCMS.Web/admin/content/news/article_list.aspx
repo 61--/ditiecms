@@ -73,14 +73,14 @@
         }
         function contextmenu(row) {
             var menu = { items: [
-                { text: "预览", icon: "../../images/ico/i_view.png", alias: "contextmenu-edit", action: contextMenuItem_click },
-                { text: "编辑", icon: "../../images/ico/i_edit.png", alias: "contextmenu-view", action: contextMenuItem_click },
-                { text: "删除", disable: true,icon: "../../images/ico/i_delete.png", alias: "contextmenu-delete", action: contextMenuItem_click },
+                { text: "预览", icon: "view", alias: "contextmenu-edit", action: contextMenuItem_click },
+                { text: "编辑", icon: "edit", alias: "contextmenu-view", action: contextMenuItem_click },
+                { text: "删除", disable: true,icon: "delete", alias: "contextmenu-delete", action: contextMenuItem_click },
                 { type: "splitLine" },
                 { text: "发布", alias: "contextmenu-create", action: contextMenuItem_click },
-                { text: "置顶", icon: "../../images/ico/i_none.png", alias: "contextmenu-create", action: contextMenuItem_click },
+                { text: "置顶", alias: "contextmenu-create", action: contextMenuItem_click },
                 { type: "splitLine" },
-                { text: "刷新", icon: "../../images/ico/i_refresh.png", alias: "contextmenu-reflash", action: contextMenuItem_click }
+                { text: "刷新", icon: "refresh", alias: "contextmenu-reflash", action: contextMenuItem_click }
                 ]
             };
             function contextMenuItem_click() {

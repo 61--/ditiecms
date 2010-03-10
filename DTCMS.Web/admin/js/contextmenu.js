@@ -13,7 +13,7 @@ option: {width:Number, items:Array, onShow:Function, rule:JSON}
         option = $.extend({ alias: "cmroot", width: 120 }, option);
         var ruleName = null, target = null,
 	    groups = {}, mitems = {}, actions = {}, showGroups = [],
-        itemTpl = "<div class='m-$[type]' unselectable=on><a href='javascript:;' unselectable='on'><span class='icon $[icon]'></span><span class='text'>$[text]</span></a></div>";
+        itemTpl = "<div class='m-$[type]' unselectable=on><a href='javascript:;'><span class='icon $[icon]'></span><span class='text'>$[text]</span></a></div>";
         var gTemplet = $("<div/>").addClass("m-mpanel").css("display", "none");
         var iTemplet = $("<div/>").addClass("m-item");
         var sTemplet = $("<div/>").addClass("m-split");
@@ -38,7 +38,6 @@ option: {width:Number, items:Array, onShow:Function, rule:JSON}
             T.innerHTML = itemTpl.replace(/\$\[([^\]]+)\]/g, function() {
                 return obj[arguments[1]];
             });
-            //alert(T.outerHTML)
             if (obj.disable) {
                 T.disable = obj.disable;
                 T.className = "m-idisable";
