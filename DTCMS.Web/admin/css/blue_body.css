@@ -426,25 +426,46 @@ a.b5:hover
 	top:0px;
 }
 .m-split {
-	height: 6px;
-	background: url(../images/blue/m_splitLine.gif) center repeat-x;
-	font-size: 0px;
-	margin: 0 2px;
+	background-color:#DBD3CB;
+	height:1px;
+	display:block;
+	overflow:hidden;
+	margin:1px;
 }
-.m-item, .m-idisable
+.m-item a, .m-idisable
 {
     padding: 4px 2px;
-    margin: 0 2px 0 3px;
+    margin: 0 2px;
     cursor: normal;
-    line-height:100%;
+    line-height:16px;
+    height:16px;
+    display:block;
+    cursor: default;
 }
-.m-idisable
+.m-idisable a
 {
-    color:#808080;
+    color:#BCBECB;
+    cursor: default;
+}
+.m-item a:hover {
+	background: url(../images/blue/m_item.gif) repeat-x bottom;
+	border: 1px solid #AACCF6;
+	height:16px;
+	padding: 3px 1px;
 }
 .m-ibody, .m-arrow {
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+.m-ibody .icon
+{
+	width:16px;
+	height:16px;
+	display:inline-block;
+}
+.m-ibody .text
+{
+	margin-left:10px;
 }
 .m-arrow {
 	background: url(../images/blue/m_arrow.gif) right  no-repeat;	
@@ -458,14 +479,8 @@ a.b5:hover
 	width:16px;
 	height:16px;
 }
-.m-ifocus {
-	background: url(../images/blue/m_item.gif) repeat-x bottom;
-	border: 1px solid #AACCF6;
-	padding: 3px 1px ;
-    margin: 0 2px 0 3px;
-    cursor: normal;
-    line-height:100%;
-}
 .m-idisable img {
 	filter:Alpha(Opacity=50);
+	-moz-opacity:0.5;
+	opacity: 0.5;
 }
