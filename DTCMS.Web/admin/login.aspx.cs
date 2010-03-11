@@ -18,15 +18,15 @@ namespace DTCMS.Web.admin
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txt_username.Value.Length == 0)
+            if (txt_username.Value.Trim().Length == 0)
             {
                 Message.Dialog("提示信息", "用户名不能为空！", "-1", MessageIcon.Stop, 0);
             }
-            else if (txt_password.Value.Length == 0)
+            else if (txt_password.Value.Trim().Length == 0)
             {
                 Message.Dialog("提示信息", "用户密码不能为空！", "-1", MessageIcon.Stop, 0);
             }
-            else if (txt_checkcode.Value.Length == 0)
+            else if (txt_checkcode.Value.Trim().Length == 0)
             {
                 Message.Dialog("提示信息", "验证码不能为空！", "-1", MessageIcon.Stop, 0);
             }
