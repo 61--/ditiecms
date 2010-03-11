@@ -13,10 +13,10 @@ option: {width:Number, items:Array, onShow:Function, rule:JSON}
         option = $.extend({ alias: "cmroot", width: 120 }, option);
         var ruleName = null, target = null,
 	    groups = {}, mitems = {}, actions = {}, showGroups = [],
-        itemTpl = "<div class='m-$[type]' unselectable=on><a href='javascript:;'><span class='icon $[icon]'></span><span class='text'>$[text]</span></a></div>";
-        var gTemplet = $("<div/>").addClass("m-mpanel").css("display", "none");
-        var iTemplet = $("<div/>").addClass("m-item");
-        var sTemplet = $("<div/>").addClass("m-split");
+        itemTpl = "<a class='m-$[type]' href='javascript:;'><span class='icon $[icon]'></span><span class='text'>$[text]</span></a>";
+        var gTemplet = $("<div class='m-panel' oncontextmenu='return false;' unselectable='on' style='display:none'><div>")
+        var iTemplet = $("<div class='m-item'></div>");
+        var sTemplet = $("<div class='m-split'></div>");
         //创建菜单组
         var buildGroup = function(obj) {
             groups[obj.alias] = this;
@@ -26,7 +26,7 @@ option: {width:Number, items:Array, onShow:Function, rule:JSON}
                 this.disable = obj.disable;
                 this.className = "m-idisable";
             }
-            $(this).width(obj.width).click(returnfalse).mousedown(returnfalse).appendTo($("body"));
+            $(this).width(obj.width).mousedown(returnfalse).appendTo($("body"));
             obj = null;
             return this;
         };
@@ -52,7 +52,7 @@ option: {width:Number, items:Array, onShow:Function, rule:JSON}
         var addItems = function(gidx, items) {
             var tmp = null;
             for (var i = 0; i < items.length; i++) {
-                if (items[i].type == "splitLine") {
+                if (items[i].type == "split") {
                     //菜单分隔线
                     tmp = sTemplet.clone()[0];
                 } else {
@@ -63,6 +63,7 @@ option: {width:Number, items:Array, onShow:Function, rule:JSON}
                         arguments.callee(items[i].alias, items[i].items);
                         items[i].type = "arrow";
                         tmp = buildItem.apply(iTemplet.clone()[0], [items[i]]);
+                        $(tmp).hover(overItem);
                     } else {
                         //菜单项
                         items[i].type = "ibody";
@@ -76,13 +77,30 @@ option: {width:Number, items:Array, onShow:Function, rule:JSON}
                             }
                             return false;
                         });
-
+                        $(tmp).hover(outItem);
                     } //Endif
                 } //Endif
                 groups[gidx].appendChild(tmp);
                 tmp = items[i] = items[i].items = null;
             } //Endfor
             gidx = items = null;
+        };
+        var overItem = function(e) {
+            //如果菜单项不可用
+            if (this.disable)
+                return false;
+            //如果是菜单组
+            if (this.group) {
+                var pos = $(this).offset();
+                var width = $(this).outerWidth();
+                showMenuGroup.apply(groups[this.idx], [pos, width-3]);
+            }
+            //this.className = "m-ifocus";
+            return false;
+        };
+        //菜单项失去焦点
+        var outItem = function(e) {
+            hideMenuPane.call(groups[this.gidx]);
         };
         //在指定位置显示指定的菜单组
         var showMenuGroup = function(pos, width) {

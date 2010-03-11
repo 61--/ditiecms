@@ -76,11 +76,22 @@
             var menu = { items: [
                 { text: "预览", icon: "view", alias: "contextmenu-edit", action: contextMenuItem_click },
                 { text: "编辑", icon: "edit", alias: "contextmenu-view", action: contextMenuItem_click },
-                { text: "删除", disable: true,icon: "delete", alias: "contextmenu-delete", action: contextMenuItem_click },
-                { type: "splitLine" },
+                { text: "删除", disable: true, icon: "delete", alias: "contextmenu-delete", action: contextMenuItem_click },
+                { type: "split" },
                 { text: "发布", alias: "contextmenu-create", action: contextMenuItem_click },
-                { text: "置顶", alias: "contextmenu-create", action: contextMenuItem_click },
-                { type: "splitLine" },
+                { text: "置顶", icon: "edit", alias: "contextmenu-create", width: 120, type: "group",
+                    items: [
+	                            { text: "组三集合", icon: "view", alias: "2-2", type: "group",disable: true, width: 120, items: [
+		                            { text: "组3一项", alias: "3-1" },
+		                            { text: "组3二项", alias: "3-2" }
+	                            ]
+	                            },
+	                            { text: "组1一项", icon: "view", alias: "2-1" },
+	                            { text: "组1二项", alias: "2-3" },
+	                            { text: "组1三项", alias: "2-4", action: contextMenuItem_click }
+                            ]
+                },
+                { type: "split" },
                 { text: "刷新", icon: "refresh", alias: "contextmenu-reflash", action: contextMenuItem_click }
                 ]
             };
@@ -106,7 +117,7 @@
             else {
             $("#productlist").flexReload();
             }*/
-            //alert('123');
+            alert('123');
         }
         var gridTree;
         function showGridTree(json) {
