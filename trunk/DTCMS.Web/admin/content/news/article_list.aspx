@@ -81,7 +81,7 @@
                 { text: "发布", alias: "contextmenu-create", action: contextMenuItem_click },
                 { text: "置顶", icon: "edit", alias: "contextmenu-create", width: 120, type: "group",
                     items: [
-	                            { text: "组三集合", icon: "view", alias: "2-2", type: "group",disable: true, width: 120, items: [
+	                            { text: "组三集合", icon: "view", alias: "2-2", type: "group", width: 120, items: [
 		                            { text: "组3一项", alias: "3-1" },
 		                            { text: "组3二项", alias: "3-2" }
 	                            ]

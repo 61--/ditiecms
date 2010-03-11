@@ -12,7 +12,7 @@
     <script src="js/jquery-1.3.2-vsdoc2.js" type="text/javascript"></script>
 
     <script src="/admin/js/Public.js" type="text/javascript"></script>
-
+    <script type="text/javascript" src="js/contextmenu.js"></script>
     <script type="text/javascript">
         $('#test');
     </script>
@@ -51,58 +51,40 @@
     </div>
     <select id="DropDownList1" runat="server">
     </select>
-    <div class="m-item" gidx="cmroot" idx="contextmenu-edit" jquery1268318243265="15">
-        <a class="m-ibody" href="javascript:;"><span class="icon view"></span><span class="text">
-            预览</span></a></div>
-    <div class="m-item" gidx="cmroot" idx="contextmenu-view" jquery1268318243265="19">
-        <a class="m-ibody" href="javascript:;"><span class="icon edit"></span><span class="text">
-            编辑</span></a></div>
-    <div class="m-idisable" gidx="cmroot" idx="contextmenu-delete" disable="true" jquery1268318243265="23">
-        <a class="m-ibody" href="javascript:;"><span class="icon delete"></span><span class="text">
-            删除</span></a></div>
-    <div class="m-split">
-    </div>
-    <div class="m-item" gidx="cmroot" idx="contextmenu-create" jquery1268318243265="27">
-        <a class="m-ibody" href="javascript:;"><span class="icon "></span><span class="text">
-            发布</span></a></div>
-    <div class="m-item" gidx="cmroot" idx="contextmenu-create" group="true" jquery1268318243265="57">
-        <a class="m-arrow" href="javascript:;"><span class="icon edit"></span><span class="text">
-            置顶</span></a></div>
-    <div class="m-split">
-    </div>
-    <div class="m-item" gidx="cmroot" idx="contextmenu-reflash" jquery1268318243265="61">
-        <a class="m-ibody" href="javascript:;"><span class="icon refresh"></span><span class="text">
-            刷新</span></a></div>
-    </DIV>
-    <div style="width: 120px; display: none; top: 319px; left: 609px" id="contextmenu-create"
-        oncontextmenu="return false;" class="m-panel" gidx="contextmenu-create" unselectable="on"
-        jquery1268318243265="31">
-        <div>
-        </div>
-        <div class="m-item" gidx="contextmenu-create" idx="2-2" group="true" jquery1268318243265="41">
-            <a class="m-arrow" href="javascript:;"><span class="icon view"></span><span class="text">
-                组三集合</span></a></div>
-        <div class="m-item" gidx="contextmenu-create" idx="2-1" jquery1268318243265="45">
-            <a class="m-ibody" href="javascript:;"><span class="icon view"></span><span class="text">
-                组1一项</span></a></div>
-        <div class="m-item" gidx="contextmenu-create" idx="2-3" jquery1268318243265="49">
-            <a class="m-ibody" href="javascript:;"><span class="icon "></span><span class="text">
-                组1二项</span></a></div>
-        <div class="m-item" gidx="contextmenu-create" idx="2-4" jquery1268318243265="53">
-            <a class="m-ibody" href="javascript:;"><span class="icon "></span><span class="text">
-                组1三项</span></a></div>
-    </div>
-    <div style="width: 120px; display: none; top: 322px; left: 730px" id="2-2" oncontextmenu="return false;"
-        class="m-panel" gidx="2-2" unselectable="on" jquery1268318243265="32">
-        <div>
-        </div>
-        <div class="m-item" gidx="2-2" idx="3-1" jquery1268318243265="33">
-            <a class="m-ibody" href="javascript:;"><span class="icon "></span><span class="text">
-                组3一项</span></a></div>
-        <div class="m-item" gidx="2-2" idx="3-2" jquery1268318243265="37">
-            <a class="m-ibody" href="javascript:;"><span class="icon "></span><span class="text">
-                组3二项</span></a></div>
-    </div>
+    
+    <script type="text/javascript">
+        $().ready(function() {
+            var st = new Date().getTime();
+            var menu = { items: [
+                { text: "预览", icon: "view", alias: "contextmenu-edit", action: contextMenuItem_click },
+                { text: "编辑", icon: "edit", alias: "contextmenu-view", action: contextMenuItem_click },
+                { text: "删除", disable: true, icon: "delete", alias: "contextmenu-delete", action: contextMenuItem_click },
+                { type: "split" },
+                { text: "发布", alias: "contextmenu-create", action: contextMenuItem_click },
+                { text: "置顶", icon: "edit", alias: "contextmenu-create", width: 120, type: "group",
+                    items: [
+	                            { text: "组三集合", icon: "view", alias: "2-2", type: "group", width: 120, items: [
+		                            { text: "组3一项", alias: "3-1" },
+		                            { text: "组3二项", alias: "3-2" }
+	                            ]
+	                            },
+	                            { text: "组1一项", icon: "view", alias: "2-1" },
+	                            { text: "组1二项", alias: "2-3" },
+	                            { text: "组1三项", alias: "2-4", action: contextMenuItem_click }
+                            ]
+                },
+                { type: "split" },
+                { text: "刷新", icon: "refresh", alias: "contextmenu-reflash", action: contextMenuItem_click }
+                ]
+            };
+            $('body').contextmenu(menu);
+            var st2 = new Date().getTime() - st;
+            alert(st2);
+        });
+        function contextMenuItem_click() {
+            alert('123');
+        }
+    </script>
     </form>
 </body>
 </html>
