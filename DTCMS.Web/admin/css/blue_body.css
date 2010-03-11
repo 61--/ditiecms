@@ -450,7 +450,7 @@ a.b5:hover
     cursor: default;
 }
 .m-item a:hover {
-	background: url(../images/blue/m_item.gif) repeat-x bottom;
+	background: url(../images/blue/m_item.gif) repeat-x center;
 	border: 1px solid #AACCF6;
 	height:16px;
 	padding: 3px 1px;
