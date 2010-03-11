@@ -418,7 +418,7 @@ a.b5:hover
 	background:url(../images/blue/help_b2.gif) left top no-repeat;
 }
 /*------右键菜单------*/
-.m-mpanel {
+.m-panel {
 	background: url(../images/blue/menu_bg.gif) left repeat-y #F7F8FD;
 	border: 1px solid #718BB7;
 	padding: 2px 0;
@@ -434,7 +434,7 @@ a.b5:hover
 	overflow:hidden;
 	margin:1px;
 }
-.m-item a, .m-idisable
+.m-item a, .m-idisable a
 {
     padding: 4px 2px;
     margin: 0 2px;
@@ -443,6 +443,7 @@ a.b5:hover
     height:16px;
     display:block;
     cursor: default;
+    font-family: "微软雅黑" , "宋体" ,Verdana;
 }
 .m-idisable a
 {
@@ -450,56 +451,65 @@ a.b5:hover
     cursor: default;
 }
 .m-item a:hover {
-	background: url(../images/blue/m_item.gif) repeat-x center;
+	background: url(../images/blue/m_item.gif);
 	border: 1px solid #AACCF6;
 	height:16px;
 	padding: 3px 1px;
+}
+.m-item a.m-ibody:hover
+{
+	background-position:left center;
+}
+.m-item a.m-arrow:hover
+{
+	background-position:right center;
 }
 .m-ibody, .m-arrow {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-.m-ibody .icon
+.m-ibody .icon, .m-arrow .icon
 {
 	width:16px;
 	height:16px;
 	display:block;
 	float:left;
 }
-.m-ibody .text
+.m-ibody .text, .m-arrow .text
 {
 	margin-left:10px;
 	float:left;
 }
-.m-arrow {
-	background: url(../images/blue/m_arrow.gif) right  no-repeat;	
+.m-arrow
+{
+	background: url(../images/blue/m_arrow.gif) right 7px no-repeat;
 }
 .m-idisable .m-arrow
 {
-    background:none;
+    background: url(../images/blue/m_arrow.gif) right -15px no-repeat;
 }
 .m-idisable .icon{
-	filter:Alpha(Opacity=50);
-	-moz-opacity:0.5;
-	opacity: 0.5;
+	filter:Alpha(Opacity=40);
+	-moz-opacity:0.4;
+	opacity: 0.4;
 }
-.m-ibody .view
+.m-panel .view
 {
 	background: url(../images/ico/i_view.png);
 }
-.m-ibody .add
+.m-panel .add
 {
 	background: url(../images/ico/i_add.png);
 }
-.m-ibody .edit
+.m-panel .edit
 {
 	background: url(../images/ico/i_edit.png);
 }
-.m-ibody .delete
+.m-panel .delete
 {
 	background: url(../images/ico/i_delete.png);
 }
-.m-ibody .refresh
+.m-panel .refresh
 {
 	background: url(../images/ico/i_refresh.png);
 }
