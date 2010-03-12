@@ -69,7 +69,7 @@
                 };
                 $("#dataList").gridview(option);
                 var st2 = new Date().getTime() - st;
-                alert(st2);
+                //alert(st2);
             }
         }
         function contextMenu(row) {

@@ -205,9 +205,10 @@ a.b5:hover
     border: 1px #CAD9EA solid;
     border-collapse: collapse;
 }
-.table_data .thead th{
+.table_data .thead th, .table_data .thead td{
     line-height: 28px;
     height: 28px;
+    text-align:left;
     font-weight: bold;
     text-indent: 10px;
     padding-right:3px;
@@ -516,7 +517,6 @@ a.b5:hover
 {
 	color:#000;
 	height:30px;
-	line-height:30px;
 	vertical-align:middle;
 	text-indent:0px;
 	background: url(../images/blue/pagebar_bg.gif);
@@ -524,11 +524,15 @@ a.b5:hover
 .pagebar .pGroup
 {
     float: left;
-    margin: 0px 6px;
+    height:18px;
+    line-height:18px;
+    margin: 1px 8px;
 }
 .pagebar .pGroup select
 {
-    width:50px;
+    width:45px;
+    height:18px;
+	font-size:12px;
 }
 .pagebar .separator
 {
@@ -536,7 +540,7 @@ a.b5:hover
     height: 14px;
     border-left: 1px solid #ACA899;
     border-right: 1px solid #FFF;
-    margin-top:9px;
+    margin-top:3px;
 }
 .pagebar input
 {
@@ -546,18 +550,13 @@ a.b5:hover
 	text-align:center;
 	border:1px solid #BBC;
 }
-.pagebar select
-{
-	height:18px;
-	font-size:12px;
-}
 .pagebar a
 {
 	width:16px;
 	height:16px;
-	margin-top:7px;
 	display:block;
 	float:left;
+	margin-top:1px;
 	background: url(../images/blue/pButton.gif);
 }
 .pagebar a:active
