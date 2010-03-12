@@ -93,7 +93,7 @@ option: {width:Number, items:Array, onShow:Function, rule:JSON}
             if (this.group) {
                 var pos = $(this).offset();
                 var width = $(this).outerWidth();
-                showMenuGroup.apply(groups[this.idx], [pos, width-3]);
+                showMenuGroup.apply(groups[this.idx], [pos, width]);
             }
             //this.className = "m-ifocus";
             return false;
@@ -108,7 +108,7 @@ option: {width:Number, items:Array, onShow:Function, rule:JSON}
             var bheight = document.documentElement.clientHeight;
             var mwidth = $(this).outerWidth();
             var mheight = $(this).outerHeight();
-            pos.left = (pos.left + width + mwidth > bwidth) ? (pos.left - mwidth < 0 ? 0 : pos.left - mwidth) : pos.left + width;
+            pos.left = (pos.left + width + mwidth > bwidth) ? (pos.left - mwidth < 0 ? 0 : pos.left - mwidth + 3) : pos.left + width - 3;
             pos.top = (pos.top + mheight > bheight) ? (pos.top - mheight + (width > 0 ? 25 : 0) < 0 ? 0 : pos.top - mheight + (width > 0 ? 25 : 0)) : pos.top;
             $(this).css(pos).show();
             showGroups.push(this.gidx);
