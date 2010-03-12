@@ -29,7 +29,7 @@
                 <a href="javascript:verifyData(-1,true);" class="button b4"><img src="../../images/ico/i_verify.gif" alt="" />审核文章</a>
                 <a href="javascript:DeleteData(-1,true);" class="button b4"><img src="../../images/ico/i_allDelete.gif" alt="" />批量删除</a>
             </div>
-            <DT:DataGrid ID="dt_DataGrid" BindAjaxMethod="DTCMS.Web.admin.article_list.GetArticleJsonData" CssClass="table_data" runat="server">
+            <DT:DataGrid ID="dt_DataGrid" BindAjaxMethod="DTCMS.Web.admin.article_list.GetArticleJsonData" IsPage="true" CssClass="table_data" runat="server">
                 <Colunms>
                     <DT:CheckBox Visible="true" Width="4%" />
                     <DT:RowsIndex HeaderText="文章ID" Visible="true" Width="6%" />
@@ -41,9 +41,9 @@
                 </Colunms>
             </DT:DataGrid><br />
 			<div id="gridTreeDiv">
+			
 			</div>
 		</div>
-		
 	</div>
     </form>
     <script type="text/javascript">

@@ -339,6 +339,7 @@
     <Content Include="admin\css\dialog.css" />
     <Content Include="admin\dialog\newssourcelist.aspx" />
     <Content Include="admin\images\blue\action.gif" />
+    <Content Include="admin\images\blue\pagebar_bg.gif" />
     <Content Include="admin\images\blue\button.jpg" />
     <Content Include="admin\images\blue\error.gif" />
     <Content Include="admin\images\blue\help_b1.gif" />
@@ -351,6 +352,7 @@
     <Content Include="admin\images\blue\menu_bg.gif" />
     <Content Include="admin\images\blue\m_arrow.gif" />
     <Content Include="admin\images\blue\m_item.gif" />
+    <Content Include="admin\images\blue\pButton.gif" />
     <Content Include="admin\images\blue\success.gif" />
     <Content Include="admin\images\color.png" />
     <Content Include="admin\images\ico\i_edit.png" />
