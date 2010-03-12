@@ -120,10 +120,12 @@ namespace DTCMS.Controls
             }
             output.RenderBeginTag(HtmlTextWriterTag.Table);
 
-            //构造Tr标签
+            //构造Thead标签
+            output.RenderBeginTag(HtmlTextWriterTag.Thead);
             output.AddAttribute(HtmlTextWriterAttribute.Class, "thead");
             output.RenderBeginTag(HtmlTextWriterTag.Tr);
 
+            int colSpan = Colunms.Count;
             for (int i = 0; i < Colunms.Count; i++)
             {
                 if (Colunms[i].GetType() == typeof(CheckBox))
@@ -136,13 +138,17 @@ namespace DTCMS.Controls
                         {
                             output.AddAttribute(HtmlTextWriterAttribute.Width, checkBox.Width);
                         }
-                        output.RenderBeginTag(HtmlTextWriterTag.Td);
+                        output.RenderBeginTag(HtmlTextWriterTag.Th);
 
                         output.AddAttribute(HtmlTextWriterAttribute.Type, "checkbox");
                         output.AddAttribute(HtmlTextWriterAttribute.Onclick, "invertCheckBox(this)");
                         output.RenderBeginTag(HtmlTextWriterTag.Input);
                         output.RenderEndTag();
                         output.RenderEndTag();
+                    }
+                    else
+                    {
+                        colSpan--;
                     }
                 }
                 else if (Colunms[i].GetType() == typeof(RowsIndex))
@@ -155,9 +161,13 @@ namespace DTCMS.Controls
                         {
                             output.AddAttribute(HtmlTextWriterAttribute.Width, rowsIndex.Width);
                         }
-                        output.RenderBeginTag(HtmlTextWriterTag.Td);
+                        output.RenderBeginTag(HtmlTextWriterTag.Th);
                         output.Write(rowsIndex.HeaderText);
                         output.RenderEndTag();
+                    }
+                    else
+                    {
+                        colSpan--;
                     }
                 }
                 else
@@ -172,7 +182,7 @@ namespace DTCMS.Controls
                     {
                         output.AddAttribute(HtmlTextWriterAttribute.Class, columnItem.CssClass);
                     }
-                    output.RenderBeginTag(HtmlTextWriterTag.Td);
+                    output.RenderBeginTag(HtmlTextWriterTag.Th);
 
                     //如果排序字段不为空，则添加客户端排序方法
                     if (columnItem.IsSort)
@@ -198,12 +208,90 @@ namespace DTCMS.Controls
                     output.RenderEndTag();
                 }
             }
+            output.RenderEndTag();
+            output.RenderEndTag();
+
             //构造Tbody标签
             output.AddAttribute(HtmlTextWriterAttribute.Id, "dataList");
             output.RenderBeginTag(HtmlTextWriterTag.Tbody);
+            output.RenderBeginTag(HtmlTextWriterTag.Tr);
+            output.AddAttribute(HtmlTextWriterAttribute.Colspan, colSpan.ToString());
+            output.RenderBeginTag(HtmlTextWriterTag.Td);
+            output.RenderEndTag();
+            output.RenderEndTag();
             output.RenderEndTag();
 
-            output.RenderEndTag();
+            #region 构造列表分页ToolBar
+            if (this.IsPage)
+            {
+                //构造Tfoot标签
+                output.AddAttribute(HtmlTextWriterAttribute.Class, "pagebar");
+                output.RenderBeginTag(HtmlTextWriterTag.Tfoot);
+                output.RenderBeginTag(HtmlTextWriterTag.Tr);
+                output.AddAttribute(HtmlTextWriterAttribute.Colspan, colSpan.ToString());
+                output.RenderBeginTag(HtmlTextWriterTag.Td);
+
+                //构造PageBar开始
+                output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
+                output.RenderBeginTag(HtmlTextWriterTag.Div);
+                output.Write("<select title=\"每页显示条数\"><option value=\"5\">5</option><option value=\"10\">10</option><option value=\"15\">15</option><option value=\"20\">20</option><option value=\"25\">25</option><option value=\"40\">40</option></select>\r\n");
+                output.RenderEndTag();
+
+                output.Write("<div class=\"separator\"></div>\r\n");
+
+                output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
+                output.RenderBeginTag(HtmlTextWriterTag.Div);
+                output.AddAttribute(HtmlTextWriterAttribute.Id, "pFirst");
+                output.AddAttribute(HtmlTextWriterAttribute.Href, "javascript:;");
+                output.AddAttribute(HtmlTextWriterAttribute.Title, "转到第一页");
+                output.RenderBeginTag(HtmlTextWriterTag.A);
+                output.RenderEndTag();
+                output.AddAttribute(HtmlTextWriterAttribute.Id, "pPrev");
+                output.AddAttribute(HtmlTextWriterAttribute.Href, "javascript:;");
+                output.AddAttribute(HtmlTextWriterAttribute.Title, "转到上一页");
+                output.RenderBeginTag(HtmlTextWriterTag.A);
+                output.RenderEndTag();
+                output.RenderEndTag();
+
+                output.Write("<div class=\"separator\"></div>\r\n");
+
+                output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
+                output.RenderBeginTag(HtmlTextWriterTag.Div);
+                output.Write("第 <input value=\"1\" id=\"curPage\" /> 页 / 共<span id=\"totalPage\"></span>页");
+                output.RenderEndTag();
+
+                output.Write("<div class=\"separator\"></div>\r\n");
+
+                output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
+                output.RenderBeginTag(HtmlTextWriterTag.Div);
+                output.AddAttribute(HtmlTextWriterAttribute.Id, "pNext");
+                output.AddAttribute(HtmlTextWriterAttribute.Href, "javascript:;");
+                output.AddAttribute(HtmlTextWriterAttribute.Title, "转到下一页");
+                output.RenderBeginTag(HtmlTextWriterTag.A);
+                output.RenderEndTag();
+                output.AddAttribute(HtmlTextWriterAttribute.Id, "pLast");
+                output.AddAttribute(HtmlTextWriterAttribute.Href, "javascript:;");
+                output.AddAttribute(HtmlTextWriterAttribute.Title, "转到最后一页");
+                output.RenderBeginTag(HtmlTextWriterTag.A);
+                output.RenderEndTag();
+                output.RenderEndTag();
+
+                output.Write("<div class=\"separator\"></div>\r\n");
+
+                output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
+                output.RenderBeginTag(HtmlTextWriterTag.Div);
+                output.AddAttribute(HtmlTextWriterAttribute.Id, "pPageStat");
+                output.RenderBeginTag(HtmlTextWriterTag.Span);
+                output.RenderEndTag();
+                output.RenderEndTag();
+                //构造PageBar结束
+
+                output.RenderEndTag();
+                output.RenderEndTag();
+                output.RenderEndTag();
+            }
+            #endregion
+
             output.RenderEndTag();
 
             output.WriteLine();
