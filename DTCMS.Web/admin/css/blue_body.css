@@ -478,13 +478,13 @@ a.b5:hover
 	margin-left:10px;
 	float:left;
 }
-.m-ibody .m-arrow
-{
-	background: url(../images/blue/m_arrow.gif) right 7px no-repeat;
-}
-.m-idisable .m-arrow
-{
-    background: url(../images/blue/m_arrow.gif) right -15px no-repeat;
+.m-item .m-arrow
+{ 
+    background: url(../images/blue/m_arrow.gif) right 7px no-repeat; 
+} 
+.m-idisable .m-arrow 
+{ 
+    background: url(../images/blue/m_arrow.gif) right -15px no-repeat; 
 }
 .m-idisable .icon{
 	filter:Alpha(Opacity=40);
