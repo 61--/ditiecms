@@ -14,7 +14,7 @@ option: {width:Number, items:Array, onShow:Function, rule:JSON}
         var ruleName = null, target = null,
 	    groups = {}, mitems = {}, actions = {}, showGroups = [],
         itemTpl = "<a class='m-$[type]' href='javascript:;'><span class='icon $[icon]'></span><span class='text'>$[text]</span></a>";
-        var gTemplet = $("<div class='m-panel' oncontextmenu='return false;' unselectable='on' style='display:none'><div>")
+        var gTemplet = $("<div class='m-panel' unselectable='on' style='display:none'><div>");
         var iTemplet = $("<div class='m-item'></div>");
         var sTemplet = $("<div class='m-split'></div>");
         //创建菜单组
@@ -63,7 +63,7 @@ option: {width:Number, items:Array, onShow:Function, rule:JSON}
                         arguments.callee(items[i].alias, items[i].items);
                         items[i].type = "arrow";
                         tmp = buildItem.apply(iTemplet.clone()[0], [items[i]]);
-                        $(tmp).hover(overItem);
+                        $(tmp).bind("contextmenu", returnfalse).hover(overItem);
                     } else {
                         //菜单项
                         items[i].type = "ibody";
@@ -77,7 +77,7 @@ option: {width:Number, items:Array, onShow:Function, rule:JSON}
                             }
                             return false;
                         });
-                        $(tmp).hover(outItem);
+                        $(tmp).bind("contextmenu", returnfalse).hover(outItem);
                     } //Endif
                 } //Endif
                 groups[gidx].appendChild(tmp);
@@ -172,7 +172,6 @@ option: {width:Number, items:Array, onShow:Function, rule:JSON}
             applyRule(option.rule);
         }
         gTemplet = iTemplet = sTemplet = itemTpl = buildGroup = buildItem = null;
-        //CollectGarbage();
         return me;
     }
 })(jQuery);
