@@ -1,7 +1,7 @@
-/*
-*´Ë²å¼şÓÃÓÚ½«xml¸ñÊ½»¯³ÉhtmlÖĞµÄtable£¬²¢¿É¼ÓÈëĞĞ»òÁĞµÄÊÂ¼ş£¬Ê¹ÓÃÁË·şÎñÆ÷¶Ë·ÖÒ³£¨·ÖÒ³·½Ê½Ğè×Ô¶¨Òå£©
-*×÷Õß£ºwyongzhi  http://wyz.67ge.com
-*×îºó¸üĞÂ£º2009Äê9ÔÂ16ÈÕ14:20:35  alpha3
+ï»¿/*
+*æ­¤æ’ä»¶ç”¨äºå°†xmlæ ¼å¼åŒ–æˆhtmlä¸­çš„tableï¼Œå¹¶å¯åŠ å…¥è¡Œæˆ–åˆ—çš„äº‹ä»¶ï¼Œä½¿ç”¨äº†æœåŠ¡å™¨ç«¯åˆ†é¡µï¼ˆåˆ†é¡µæ–¹å¼éœ€è‡ªå®šä¹‰ï¼‰
+*ä½œè€…ï¼šwyongzhi  http://wyz.67ge.com
+*æœ€åæ›´æ–°ï¼š2009å¹´9æœˆ16æ—¥14:20:35  alpha3
 */
 (function($) {
     $.fn.gridview = function(p) {
@@ -10,54 +10,66 @@
             fields: null,
             rowhandler: null,
             usepager: true,
-            pagesize: 15
+            pagesize: 10,
+            totalrecord: 120
         }, p);
 
-        //this.empty();
-        var tab = $("#dataList");
-        var tbhtml = [];
+        //ç”Ÿæˆåˆ†é¡µä»£ç 
+        var _totalRecord = p.totalrecord;
+        var _startRecord=1;
+        var _endRecord=10;
+        $("#totalPage").html(Math.ceil(_totalRecord / p.pagesize));
+        $("#pPageStat").html("æ˜¾ç¤ºç¬¬" + _startRecord + "æ¡&nbsp;-&nbsp;ç¬¬" + _endRecord + "æ¡è®°å½•ï¼Œå…±" + _totalRecord + "æ¡è®°å½•");
 
-        //¸ñÊ½»¯jsonÊı¾İ
-        $.each(p.jsondata, function(i, n) {
-            tbhtml.push('<tr onmouseover="changeClassName(this,\'highLightRow\')" onmouseout="changeClassName(this,\'\')"');
-            if (p.rowhandler != null) {
-                tbhtml.push(' onmousedown="', p.rowhandler, '"');
-            }
-            tbhtml.push('>');
-            if (p.checkbox.visible) {
-                tbhtml.push('<td><input type="checkbox" name="items" value="', n[p.checkbox.id], '" /></td>');
-            }
-            if (p.rowsindex.visible) {
-                if (p.rowsindex.id == null) {
-                    tbhtml.push('<td>', i + 1, '</td>');
-                } else {
-                    tbhtml.push('<td>', n[p.rowsindex.id], '</td>');
+        //ç”Ÿæˆæ•°æ®åˆ—è¡¨
+        var tab = $("#dataList");
+        if (_totalRecord > 0) {
+            var tbhtml = [];
+            //æ ¼å¼åŒ–jsonæ•°æ®
+            $.each(p.jsondata, function(i, n) {
+                tbhtml.push('<tr onmouseover="changeClassName(this,\'highLightRow\')" onmouseout="changeClassName(this,\'\')"');
+                if (p.rowhandler != null) {
+                    tbhtml.push(' onmousedown="', p.rowhandler, '"');
                 }
-            }
-            $.each(p.fields, function(x, m) {
-                tbhtml.push('<td>');
-                tbhtml.push(m.dataFormat == null ? n[m.name] : m.dataFormat(n));
-                tbhtml.push('</td>');
-            });
-            tbhtml.push('</tr>');
-            if (p.rowhandler != null) {
-                _rowhandler = p.rowhandler;
-                $(this).bind("" + _rowhandler.event + "", function(e) {
-                    _rowhandler.fn();
-                    e.preventDefault();
-                    e.stopPropagation();
+                tbhtml.push('>');
+                if (p.checkbox.visible) {
+                    tbhtml.push('<td><input type="checkbox" name="items" value="', n[p.checkbox.id], '" /></td>');
+                }
+                if (p.rowsindex.visible) {
+                    if (p.rowsindex.id == null) {
+                        tbhtml.push('<td>', i + 1, '</td>');
+                    } else {
+                        tbhtml.push('<td>', n[p.rowsindex.id], '</td>');
+                    }
+                }
+                $.each(p.fields, function(x, m) {
+                    tbhtml.push('<td>');
+                    tbhtml.push(m.dataFormat == null ? n[m.name] : m.dataFormat(n));
+                    tbhtml.push('</td>');
                 });
-            }
-        });
-        tab.html(tbhtml.join(''));
-        //alert(tab.html())
+                tbhtml.push('</tr>');
+                if (p.rowhandler != null) {
+                    _rowhandler = p.rowhandler;
+                    $(this).bind("" + _rowhandler.event + "", function(e) {
+                        _rowhandler.fn();
+                        e.preventDefault();
+                        e.stopPropagation();
+                    });
+                }
+            });
+            tab.html(tbhtml.join(''));
+            //alert(tab.html())
+        } else {
+            $("#dataList tr td").html("<p class='nodata'>æ²¡æœ‰è¦åŠ è½½çš„æ•°æ®ï¼</p>");
+        }
+
         /*
-        //end ¸ñÊ½»¯jsonÊı¾İ
-        if (_rowcount == -1) $("<tr><td colspan=\"" + _fieldslength.toString() + "\" class=\"NoRecordTip\">ÎŞ¼ÇÂ¼</td></tr>").appendTo(tab);
+        //end æ ¼å¼åŒ–jsonæ•°æ®
+        if (_rowcount == -1) $("<tr><td colspan=\"" + _fieldslength.toString() + "\" class=\"NoRecordTip\">æ— è®°å½•</td></tr>").appendTo(tab);
         //tab.appendTo(this);
         //this.prepend(fieldsmenu);
         pager = $.extend({ display: false, pagesize: 5, pageNav: 8, curPage: parseInt(_curpage) - 1 }, pager);
-        var tis = this; //´«µİÖ¸ÏòdomµÄthis£¬·ñÔòthis»áÖ¸Ïòajax
+        var tis = this; //ä¼ é€’æŒ‡å‘domçš„thisï¼Œå¦åˆ™thisä¼šæŒ‡å‘ajax
         if (pager.display) {
         $("<div class=\"pagination\"></div>").appendTo(tis).pagination(parseInt(_totalcount), {
         num_edge_entries: 2,
@@ -67,9 +79,9 @@
         callback: function(page_id, jq) {
         var o = pager.objAjax;
         var ajaxdata = (typeof (o.data) == "undefined" ? "" : o.data);
-        //Èç¹ûurlÖĞÃ»ÓĞpagenum²ÎÊı
+        //å¦‚æœurlä¸­æ²¡æœ‰pagenumå‚æ•°
         ajaxdata = ((ajaxdata).indexOf("pagenum") <= 0 ? ajaxdata + "&pagenum=1" : ajaxdata).toString();
-        //Ìæ»»urlÖĞµÄpagenum=
+        //æ›¿æ¢urlä¸­çš„pagenum=
         ajaxdata = ajaxdata.replace(/\bpagenum=\d*\b/g, "pagenum=" + (parseInt(page_id) + 1).toString());
         var ajaxOpt = {
         url: o.url
