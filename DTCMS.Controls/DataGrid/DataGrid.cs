@@ -216,6 +216,7 @@ namespace DTCMS.Controls
             output.RenderBeginTag(HtmlTextWriterTag.Tbody);
             output.RenderBeginTag(HtmlTextWriterTag.Tr);
             output.AddAttribute(HtmlTextWriterAttribute.Colspan, colSpan.ToString());
+            output.AddAttribute(HtmlTextWriterAttribute.Style, "height:270px");
             output.RenderBeginTag(HtmlTextWriterTag.Td);
             output.RenderEndTag();
             output.RenderEndTag();
@@ -225,19 +226,24 @@ namespace DTCMS.Controls
             if (this.IsPage)
             {
                 //构造Tfoot标签
-                output.AddAttribute(HtmlTextWriterAttribute.Class, "pagebar");
+                output.AddAttribute(HtmlTextWriterAttribute.Class, "tfoot");
                 output.RenderBeginTag(HtmlTextWriterTag.Tfoot);
                 output.RenderBeginTag(HtmlTextWriterTag.Tr);
                 output.AddAttribute(HtmlTextWriterAttribute.Colspan, colSpan.ToString());
                 output.RenderBeginTag(HtmlTextWriterTag.Td);
 
                 //构造PageBar开始
+                output.AddAttribute(HtmlTextWriterAttribute.Class, "pagebar");
+                output.RenderBeginTag(HtmlTextWriterTag.Div);
                 output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
                 output.RenderBeginTag(HtmlTextWriterTag.Div);
-                output.Write("<select title=\"每页显示条数\"><option value=\"5\">5</option><option value=\"10\">10</option><option value=\"15\">15</option><option value=\"20\">20</option><option value=\"25\">25</option><option value=\"40\">40</option></select>\r\n");
+                output.AddAttribute(HtmlTextWriterAttribute.Id, "pPageStat");
+                output.RenderBeginTag(HtmlTextWriterTag.Span);
+                output.Write("正在加载数据，请稍候...");
+                output.RenderEndTag();
                 output.RenderEndTag();
 
-                output.Write("<div class=\"separator\"></div>\r\n");
+                output.Write("<p class=\"separator\"></p>\r\n");
 
                 output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
                 output.RenderBeginTag(HtmlTextWriterTag.Div);
@@ -248,25 +254,25 @@ namespace DTCMS.Controls
                 output.RenderEndTag();
                 output.AddAttribute(HtmlTextWriterAttribute.Id, "pPrev");
                 output.AddAttribute(HtmlTextWriterAttribute.Href, "javascript:;");
-                output.AddAttribute(HtmlTextWriterAttribute.Title, "转到上一页");
+                output.AddAttribute(HtmlTextWriterAttribute.Title, "转到上一页（键盘：←）");
                 output.RenderBeginTag(HtmlTextWriterTag.A);
                 output.RenderEndTag();
                 output.RenderEndTag();
 
-                output.Write("<div class=\"separator\"></div>\r\n");
+                output.Write("<p class=\"separator\"></p>\r\n");
 
                 output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
                 output.RenderBeginTag(HtmlTextWriterTag.Div);
-                output.Write("第 <input value=\"1\" id=\"curPage\" /> 页 / 共<span id=\"totalPage\"></span>页");
+                output.Write("第 <input value=\"1\" id=\"curPage\" /> 页 / 共<span id=\"totalPage\">0</span>页");
                 output.RenderEndTag();
 
-                output.Write("<div class=\"separator\"></div>\r\n");
+                output.Write("<p class=\"separator\"></p>\r\n");
 
                 output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
                 output.RenderBeginTag(HtmlTextWriterTag.Div);
                 output.AddAttribute(HtmlTextWriterAttribute.Id, "pNext");
                 output.AddAttribute(HtmlTextWriterAttribute.Href, "javascript:;");
-                output.AddAttribute(HtmlTextWriterAttribute.Title, "转到下一页");
+                output.AddAttribute(HtmlTextWriterAttribute.Title, "转到下一页（键盘：→）");
                 output.RenderBeginTag(HtmlTextWriterTag.A);
                 output.RenderEndTag();
                 output.AddAttribute(HtmlTextWriterAttribute.Id, "pLast");
@@ -276,12 +282,11 @@ namespace DTCMS.Controls
                 output.RenderEndTag();
                 output.RenderEndTag();
 
-                output.Write("<div class=\"separator\"></div>\r\n");
+                output.Write("<p class=\"separator\"></p>\r\n");
 
                 output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
                 output.RenderBeginTag(HtmlTextWriterTag.Div);
-                output.AddAttribute(HtmlTextWriterAttribute.Id, "pPageStat");
-                output.RenderBeginTag(HtmlTextWriterTag.Span);
+                output.Write("<select title=\"每页显示条数\"><option value=\"5\">5</option><option value=\"10\">10</option><option value=\"15\">15</option><option value=\"20\">20</option><option value=\"25\">25</option><option value=\"40\">40</option></select>\r\n");
                 output.RenderEndTag();
                 output.RenderEndTag();
                 //构造PageBar结束
@@ -306,7 +311,7 @@ namespace DTCMS.Controls
         {
             StringBuilder js = new StringBuilder();
             js.Append("<script type=\"text/javascript\">\r\n");
-            js.Append("$(function(){showLoading();loadData();hideMessage();});\r\n");
+            js.Append("$(function(){showLoading('正在加载数据，请稍候...','#dataList');loadData();hideMessage();});\r\n");
             if (this.IsPage)
             {
                 js.Append("function loadData(page){");
