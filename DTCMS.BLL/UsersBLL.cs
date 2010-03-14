@@ -168,7 +168,7 @@ namespace DTCMS.BLL
             DataTable dt = GetPageList("UID", currentPage, 10, "UID,UserName,Email,RoleName,RegisterIP,RegisterTime,IsVerify", "UID DESC", null, out pagecount);
             if (dt != null)
             {
-                return Utils.DataTableToJson(dt).ToString();
+                return Utils.DataTableToJson(dt, pagecount).ToString();
             }
             else
             {

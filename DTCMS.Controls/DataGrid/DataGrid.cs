@@ -191,6 +191,7 @@ namespace DTCMS.Controls
                         output.AddAttribute(HtmlTextWriterAttribute.Href, "javascript:;");
                         output.AddAttribute(HtmlTextWriterAttribute.Title, "点击排序列");
                         output.AddAttribute(HtmlTextWriterAttribute.Onclick, "onSortClick(this);");
+                        output.AddAttribute("hidefocus", "true");
                         output.RenderBeginTag(HtmlTextWriterTag.A);
                         output.Write(columnItem.HeaderText);
 
@@ -235,59 +236,39 @@ namespace DTCMS.Controls
                 //构造PageBar开始
                 output.AddAttribute(HtmlTextWriterAttribute.Class, "pagebar");
                 output.RenderBeginTag(HtmlTextWriterTag.Div);
+
                 output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
                 output.RenderBeginTag(HtmlTextWriterTag.Div);
+                output.WriteLine("<a id=\"pFirst\" class=\"pFirst_dis\" hidefocus=\"true\" href=\"javascript:;\" onclick=\"goPage(this)\" title=\"首页\"></a>");
+                output.WriteLine("<a id=\"pPrev\" class=\"pPrev_dis\" hidefocus=\"true\" href=\"javascript:;\" onclick=\"goPage(this)\" title=\"上一页（键盘：←）\"></a>");
+                output.RenderEndTag();
+
+                output.WriteLine("<p class=\"separator\"></p>");
+
+                output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
+                output.RenderBeginTag(HtmlTextWriterTag.Div);
+                output.WriteLine("第 <input value=\"1\" id=\"curPage\" /> 页 / 共<span id=\"totalPage\">0</span>页");
+                output.RenderEndTag();
+
+                output.WriteLine("<p class=\"separator\"></p>");
+
+                output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
+                output.RenderBeginTag(HtmlTextWriterTag.Div);
+                output.WriteLine("<a id=\"pNext\" class=\"pNext\" hidefocus=\"true\" href=\"javascript:;\" onclick=\"goPage(this)\" title=\"下一页（键盘：→）\"></a>");
+                output.WriteLine("<a id=\"pLast\" class=\"pLast\" hidefocus=\"true\" href=\"javascript:;\" onclick=\"goPage(this)\" title=\"末页\"></a>");
+                output.RenderEndTag();
+
+                output.WriteLine("<p class=\"separator\"></p>");
+
+                output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
+                output.RenderBeginTag(HtmlTextWriterTag.Div);
+                output.WriteLine("每页显示条数：<select title=\"每页显示条数\"><option value=\"5\">5</option><option value=\"10\">10</option><option value=\"15\">15</option><option value=\"20\">20</option><option value=\"25\">25</option><option value=\"40\">40</option></select>\r\n");
+                output.RenderEndTag();
+                output.RenderEndTag();
+
                 output.AddAttribute(HtmlTextWriterAttribute.Id, "pPageStat");
                 output.RenderBeginTag(HtmlTextWriterTag.Span);
-                output.Write("正在加载数据，请稍候...");
-                output.RenderEndTag();
-                output.RenderEndTag();
-
-                output.Write("<p class=\"separator\"></p>\r\n");
-
-                output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
-                output.RenderBeginTag(HtmlTextWriterTag.Div);
-                output.AddAttribute(HtmlTextWriterAttribute.Id, "pFirst");
-                output.AddAttribute(HtmlTextWriterAttribute.Href, "javascript:;");
-                output.AddAttribute(HtmlTextWriterAttribute.Title, "转到第一页");
-                output.RenderBeginTag(HtmlTextWriterTag.A);
-                output.RenderEndTag();
-                output.AddAttribute(HtmlTextWriterAttribute.Id, "pPrev");
-                output.AddAttribute(HtmlTextWriterAttribute.Href, "javascript:;");
-                output.AddAttribute(HtmlTextWriterAttribute.Title, "转到上一页（键盘：←）");
-                output.RenderBeginTag(HtmlTextWriterTag.A);
-                output.RenderEndTag();
-                output.RenderEndTag();
-
-                output.Write("<p class=\"separator\"></p>\r\n");
-
-                output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
-                output.RenderBeginTag(HtmlTextWriterTag.Div);
-                output.Write("第 <input value=\"1\" id=\"curPage\" /> 页 / 共<span id=\"totalPage\">0</span>页");
-                output.RenderEndTag();
-
-                output.Write("<p class=\"separator\"></p>\r\n");
-
-                output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
-                output.RenderBeginTag(HtmlTextWriterTag.Div);
-                output.AddAttribute(HtmlTextWriterAttribute.Id, "pNext");
-                output.AddAttribute(HtmlTextWriterAttribute.Href, "javascript:;");
-                output.AddAttribute(HtmlTextWriterAttribute.Title, "转到下一页（键盘：→）");
-                output.RenderBeginTag(HtmlTextWriterTag.A);
-                output.RenderEndTag();
-                output.AddAttribute(HtmlTextWriterAttribute.Id, "pLast");
-                output.AddAttribute(HtmlTextWriterAttribute.Href, "javascript:;");
-                output.AddAttribute(HtmlTextWriterAttribute.Title, "转到最后一页");
-                output.RenderBeginTag(HtmlTextWriterTag.A);
-                output.RenderEndTag();
-                output.RenderEndTag();
-
-                output.Write("<p class=\"separator\"></p>\r\n");
-
-                output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
-                output.RenderBeginTag(HtmlTextWriterTag.Div);
-                output.Write("<select title=\"每页显示条数\"><option value=\"5\">5</option><option value=\"10\">10</option><option value=\"15\">15</option><option value=\"20\">20</option><option value=\"25\">25</option><option value=\"40\">40</option></select>\r\n");
-                output.RenderEndTag();
+                //output.Write("正在加载数据，请稍候...");
                 output.RenderEndTag();
                 //构造PageBar结束
 

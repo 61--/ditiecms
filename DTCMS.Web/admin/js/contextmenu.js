@@ -13,7 +13,7 @@ option: {width:Number, items:Array, onShow:Function, rule:JSON}
         option = $.extend({ alias: "cmroot", width: 120 }, option);
         var ruleName = null, target = null,
 	    groups = {}, mitems = {}, actions = {}, showGroups = [],
-        itemTpl = "<a class='m-$[type]' href='javascript:;'><span class='icon $[icon]'></span><span class='text'>$[text]</span></a>";
+        itemTpl = "<a class='m-$[type]' href='javascript:;' hidefocus='true'><span class='icon $[icon]'></span><span class='text'>$[text]</span></a>";
         var gTemplet = $("<div class='m-panel' unselectable='on' style='display:none'><div>");
         var iTemplet = $("<div class='m-item'></div>");
         var sTemplet = $("<div class='m-split'></div>");

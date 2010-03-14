@@ -16,15 +16,15 @@ using DTCMS.DALFactory;
 
 namespace DTCMS.BLL
 {
-	/// <summary>
-	/// 业务逻辑类 Arc_Class
-	/// </summary>
-	public class Arc_ClassBLL
-	{
-		private readonly IDAL_Arc_Class dal = DataAccess.CreateFactoryDAL<IDAL_Arc_Class>("Arc_ClassDAL");
+    /// <summary>
+    /// 业务逻辑类 Arc_Class
+    /// </summary>
+    public class Arc_ClassBLL
+    {
+        private readonly IDAL_Arc_Class dal = DataAccess.CreateFactoryDAL<IDAL_Arc_Class>("Arc_ClassDAL");
 
-		public Arc_ClassBLL()
-		{ }
+        public Arc_ClassBLL()
+        { }
 
         /// <summary>
         /// 添加栏目
@@ -78,8 +78,8 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-		/// 判断某个字段值是否存在
-		/// </summary>
+        /// 判断某个字段值是否存在
+        /// </summary>
         /// <param name="CID">CID</param>
         /// <param name="filedName">字段名称</param>
         /// <param name="filedValue">字段值</param>
@@ -131,7 +131,7 @@ namespace DTCMS.BLL
         /// <returns>栏目名称</returns>
         public string GetClassName(int CID)
         {
-             return dal.GetSingle("ClassName", "Cid=" + CID) as string;
+            return dal.GetSingle("ClassName", "Cid=" + CID) as string;
         }
 
         /// <summary>
@@ -140,10 +140,10 @@ namespace DTCMS.BLL
         /// <returns>Joson数据</returns>
         public string GetClassListToJson()
         {
-            DataTable dt = dal.GetDataTable("CID,ClassName,ClassType,AddDate,OrderID,ParentID","");
+            DataTable dt = dal.GetDataTable("CID,ClassName,ClassType,AddDate,OrderID,ParentID", "");
             if (dt != null)
             {
-                return Utils.DataTableToJson(dt).ToString();
+                return Utils.DataTableToJson(dt, dt.Rows.Count).ToString();
             }
             return "";
         }
@@ -157,7 +157,7 @@ namespace DTCMS.BLL
             DataTable dt = dal.GetDataTable("CID,ClassName,ParentID", where);
             if (dt != null)
             {
-                return Utils.DataTableToJson(dt).ToString();
+                return Utils.DataTableToJson(dt, dt.Rows.Count).ToString();
             }
             return "";
         }
@@ -179,7 +179,7 @@ namespace DTCMS.BLL
         /// <returns></returns>
         public bool ExistsClassName(int CID, string ClassName)
         {
-            return dal.Exists(CID,"ClassName",ClassName);
+            return dal.Exists(CID, "ClassName", ClassName);
         }
 
         /// <summary>
@@ -193,8 +193,8 @@ namespace DTCMS.BLL
             return dal.GetDataTable("CID as ID,ClassName as NAME,ParentID", where);
         }
         /// <summary>
-		/// 获得泛型数据列表
-		/// </summary>
+        /// 获得泛型数据列表
+        /// </summary>
         /// <param name="count">返回记录数</param>
         /// <returns>对象泛型集合</returns>
         public List<Arc_Class> GetList(out int count)
@@ -203,8 +203,8 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-		/// 分页获取泛型数据列表
-		/// </summary>
+        /// 分页获取泛型数据列表
+        /// </summary>
         /// <param name="pageSize">分页大小</param>
         /// <param name="pageIndex">当前页</param>
         /// <param name="count">返回记录数</param>
@@ -226,26 +226,26 @@ namespace DTCMS.BLL
         /// <param name="cid">栏目主键</param>
         /// <param name="tempType">模板类型（0封面，1列表，2详细页）</param>
         /// <returns></returns>
-        public string GetTemplate(int cid,int tempType)
+        public string GetTemplate(int cid, int tempType)
         {
             string filed = string.Empty;
             switch (tempType)
-            { 
+            {
                 case 0:
-                    filed="IndexTemplet";
+                    filed = "IndexTemplet";
                     break;
                 case 1:
-                    filed="ListTemplet";
+                    filed = "ListTemplet";
                     break;
                 case 2:
-                    filed="ArchiveTemplet";
+                    filed = "ArchiveTemplet";
                     break;
             }
 
             if (filed == string.Empty)
                 return string.Empty;
             else
-                return dal.GetSingle(filed,string.Format(" CID={0}",cid)) as string;
+                return dal.GetSingle(filed, string.Format(" CID={0}", cid)) as string;
         }
 
         /// <summary>
@@ -254,9 +254,9 @@ namespace DTCMS.BLL
         /// <param name="cid">栏目编号</param>
         /// <param name="filed">要查询的栏目表字段</param>
         /// <returns></returns>
-        public string GetSingle(string filed,int cid)
+        public string GetSingle(string filed, int cid)
         {
             return dal.GetSingle(filed, string.Format(" CID={0}", cid)) as string;
         }
-	}
+    }
 }

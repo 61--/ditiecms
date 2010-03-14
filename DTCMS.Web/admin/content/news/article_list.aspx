@@ -47,15 +47,50 @@
 	</div>
     </form>
     <script type="text/javascript">
+        var curPage = 1;
+        var totalRecord;
+        var pageSize = 10;
+        var totalPage;
+
+        function goPage(obj) {
+            switch (obj.id) {
+                case "pFirst":
+                    if (curPage == 1) {
+                        return;
+                    } else {
+                        curPage = 1; break;
+                    }
+                case "pNext": curPage++; break;
+                case "pPrev": curPage--; break;
+                case "pLast":
+                    if (curPage == totalPage) {
+                        return;
+                    } else {
+                        curPage = totalPage; break;
+                    }
+            }
+            if (curPage > totalPage) {
+                curPage = totalPage;
+                return;
+            }
+            if (curPage < 1) {
+                curPage = 1;
+                return;
+            }
+            showLoading('正在加载数据，请稍候...', '#dataList');
+            loadData(curPage);
+            hideMessage();
+        }
+        
         function onSortClick(elem) {
-            elem.blur()
         }
         function showDataList(data) {
             if (json != "") {
                 var json = eval("data=" + data);
-                var st = new Date().getTime();
+                totalRecord = json.totalRecord;
+                totalPage = Math.ceil(totalRecord / pageSize);
                 var option = {
-                    jsondata: json,
+                    jsondata: json.dataTable,
                     checkbox: { visible: true, id: 'id' },
                     rowsindex: { visible: true, id: 'id' },
                     fields: [
@@ -65,11 +100,12 @@
 	                        { name: 'isverify', dataFormat: function(r) { return r.isverify == 1 ? "已审核" : "未审核" } },
 	                        { name: 'id' }
 	                    ],
-	                rowhandler: "contextMenu(this)"
+                    rowhandler: "contextMenu(this)",
+                    curpage: curPage,
+                    pagesize: pageSize,
+                    totalrecord: totalRecord
                 };
                 $("#dataList").gridview(option);
-                var st2 = new Date().getTime() - st;
-                //alert(st2);
             }
         }
         function contextMenu(row) {
