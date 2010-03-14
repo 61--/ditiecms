@@ -514,10 +514,12 @@ namespace DTCMS.Common
         /// <param name="dt">要转换的数据表</param>
         /// <param name="dispose">数据表转换结束后是否dispose掉</param>
         /// <returns></returns>
-        public static StringBuilder DataTableToJson(System.Data.DataTable dt)
+        public static StringBuilder DataTableToJson(System.Data.DataTable dt, int totalRecord)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("[\r\n");
+            sb.Append("{totalRecord:");
+            sb.Append(totalRecord);
+            sb.Append(",dataTable:[\r\n");
 
             //数据表字段名和类型数组
             string[] dt_field = new string[dt.Columns.Count];
@@ -578,7 +580,7 @@ namespace DTCMS.Common
 
             dt.Dispose();
 
-            return sb.Append("\r\n];");
+            return sb.Append("\r\n]}");
         }
         #endregion
 

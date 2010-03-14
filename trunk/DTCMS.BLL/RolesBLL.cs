@@ -114,7 +114,7 @@ namespace DTCMS.BLL
             DataTable dt = dal.GetDataTable("ID,RoleName,Description,AddDate", "");
             if (dt != null)
             {
-                return Utils.DataTableToJson(dt).ToString();
+                return Utils.DataTableToJson(dt,dt.Rows.Count).ToString();
             }
             else
             {

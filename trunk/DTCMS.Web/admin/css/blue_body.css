@@ -222,6 +222,7 @@ a.b5:hover
     white-space: nowrap;
     text-decoration: none;
     position:relative;
+    outline: none; 
 }
 .table_data .thead a:hover
 {
@@ -469,6 +470,7 @@ a.b5:hover
 {
 	color:#000;
 	height:30px;
+	overflow:hidden;
 	text-indent:0px;
 	background: url(../images/blue/pagebar_bg.gif);
 }
@@ -476,7 +478,7 @@ a.b5:hover
 {
 	float:right;
 }
-.pagebar .pGroup
+#pPageStat,.pagebar .pGroup
 {
     float: left;
     height:18px;
@@ -487,7 +489,7 @@ a.b5:hover
 {
     width:45px;
     height:18px;
-	font-size:12px;
+    font-size:12px;
 }
 .pagebar .separator
 {
@@ -512,28 +514,51 @@ a.b5:hover
 	display:block;
 	float:left;
 	margin-top:1px;
+	outline:none;
 	background: url(../images/blue/pButton.gif);
 }
 .pagebar a:active
 {
-	position:relative;
+	/*position:relative;
 	left:1px;
-	top:1px;
+	top:1px;*/
 }
-a#pFirst
+a.pFirst
 {
 }
-a#pLast
+a.pFirst_dis
 {
-	margin-left:5px;
+	cursor:default;
+	background-position:0px -16px;
+}
+a.pLast
+{
+	margin-left:8px;
 	background-position:48px 0px;
 }
-a#pPrev
+a.pLast_dis
 {
-	margin-left:5px;
+	cursor:default;
+	margin-left:8px;
+	background-position:48px -16px;
+}
+a.pPrev
+{
+	margin-left:8px;
 	background-position:32px 0px;
 }
-a#pNext
+a.pPrev_dis
+{
+	cursor:default;
+	margin-left:8px;
+	background-position:32px -16px;
+}
+a.pNext
 {
 	background-position:16px 0px;
+}
+a.pNext_dis
+{
+	cursor:default;
+	background-position:16px -16px;
 }
