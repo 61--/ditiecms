@@ -234,10 +234,10 @@ namespace DTCMS.Controls
                     output.RenderEndTag();
 
                     //生成FieldColumn
-                    fieldsColumn.AppendFormat("{{name:'{0}',", columnItem.DataField.ToLower());
+                    fieldsColumn.AppendFormat("{{name:'{0}'", columnItem.DataField.ToLower());
                     if (columnItem.DataFormat != null)
                     {
-                        fieldsColumn.AppendFormat("dataFormat:{0}", columnItem.DataFormat);
+                        fieldsColumn.AppendFormat(",dataFormat:{0}", columnItem.DataFormat);
                     }
                     fieldsColumn.Append("},");
                 }
@@ -343,7 +343,7 @@ namespace DTCMS.Controls
             //js.Append("<script type=\"text/javascript\">\r\n");
             if (this.IsPage)
             {
-                js.Append(string.Format("var curPage=1;var pageSize={0};var totalPage;\r\n", PageSize));
+                js.Append(string.Format("var curPage=1;var pageSize={0};var totalPage;", PageSize));
             }
             js.Append("var totalRecord;var sortValue;\r\n");
             js.Append("$(function(){loadDataLoading();});\r\n");
