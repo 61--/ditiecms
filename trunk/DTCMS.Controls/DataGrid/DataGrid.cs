@@ -340,7 +340,6 @@ namespace DTCMS.Controls
         private string BuildJavaScript()
         {
             StringBuilder js = new StringBuilder();
-            //js.Append("<script type=\"text/javascript\">\r\n");
             if (this.IsPage)
             {
                 js.Append(string.Format("var curPage=1;var pageSize={0};var totalPage;", PageSize));
@@ -353,8 +352,7 @@ namespace DTCMS.Controls
             js.Append("if(res.error){alert(\"请求错误，请刷新页面重试！\\n\"+res.error.Message);return;}");
             js.Append("showDataList(res.value);};");
             js.Append(this.BindAjaxMethod);
-            js.Append(this.IsPage ? "(curPage,pageSize,sortValue,callback);}" : "(sortValue,callback);}");
-            //js.Append("\r\n</script>");
+            js.Append(this.IsPage ? "(curPage,pageSize,sortValue,callback);}" : "(sortValue,callback);}\r\n");
             js.Append("function goPage(obj){switch(obj.id){\r\n");
             js.Append("case 'pFirst':if(curPage==1){return}else{curPage=1;break}case 'pNext':curPage++;break;case 'pPrev':curPage--;break;case 'pLast':if(curPage==totalPage){return}else{curPage=totalPage;break}}\r\n");
             js.Append("if(curPage>totalPage){curPage=totalPage;return}if(curPage<1){curPage=1;return}loadDataLoading()}\r\n");
