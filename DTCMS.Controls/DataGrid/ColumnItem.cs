@@ -91,8 +91,8 @@ namespace DTCMS.Controls
         [Description("格式化字段")]
         public string DataFormat
         {
-            get { return _dataField; }
-            set { _dataField = value; }
+            get { return _dataFormat; }
+            set { _dataFormat = value; }
         }
     }
 }
