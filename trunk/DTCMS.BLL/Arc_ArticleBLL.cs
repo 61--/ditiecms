@@ -161,10 +161,14 @@ namespace DTCMS.BLL
         /// <summary>
         /// 获取DataTable，并转换成Json格式数据
         /// </summary>
-        public string GetArticleJsonData(int currentPage)
+        public string GetArticleJsonData(int curPage, int pageSize, string sortValue)
         {
             int pagecount;
-            DataTable dt = GetPageList("ID", currentPage, 10, "A.ID,A.Title,C.ClassName,A.AddDate,A.IsVerify", "A.ID DESC", null, out pagecount);
+            if (sortValue == null || sortValue == string.Empty)
+            {
+                sortValue = "A.ID DESC";
+            }
+            DataTable dt = GetPageList("ID", curPage, pageSize, "A.ID,A.Title,C.ClassName,A.AddDate,A.IsVerify", sortValue, null, out pagecount);
             if (dt != null)
             {
                 return Utils.DataTableToJson(dt, pagecount).ToString();

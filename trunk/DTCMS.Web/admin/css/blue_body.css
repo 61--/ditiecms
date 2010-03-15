@@ -235,13 +235,17 @@ a.b5:hover
 	position:absolute;
 	width:12px;
 	height:12px;
-	background:url(../images/blue/i_sort.gif) 0px 0px no-repeat;
+	background:url(../images/blue/i_sort.gif) no-repeat;
 }
-.table_data .thead a span.asc
+.table_data .thead a.nosort span
+{
+	background-position:0px 0px;
+}
+.table_data .thead a.asc span
 {
 	background-position:0px -12px;
 }
-.table_data .thead a span.desc
+.table_data .thead a.desc span
 {
 	background-position:0px -24px;
 }
