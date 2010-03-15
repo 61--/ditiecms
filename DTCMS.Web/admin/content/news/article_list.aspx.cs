@@ -23,9 +23,9 @@ namespace DTCMS.Web.admin
         /// 获取文章Json数据
         /// </summary>
         [AjaxPro.AjaxMethod]
-        public string GetArticleJsonData(int currentPage)
+        public string GetArticleJsonData(int curPage, int pageSize, string sortValue)
         {
-            return articleBll.GetArticleJsonData(currentPage);
+            return articleBll.GetArticleJsonData(curPage, pageSize, sortValue);
         }
 
         /// <summary>

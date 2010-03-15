@@ -28,6 +28,7 @@ namespace DTCMS.Controls
         private bool _isPage = true;
         private int _pageSize = 15;
         private string _cssClass;
+        private string _rowHandler;
         private ColumnCollection _columns;
 
         /// <summary>
@@ -89,6 +90,18 @@ namespace DTCMS.Controls
         }
 
         /// <summary>
+        /// 数据列表行事件
+        /// </summary>
+        [DefaultValue("")]
+        [Category("Behavior")]
+        [Description("数据列表行事件")]
+        public string RowHandler
+        {
+            get { return _rowHandler; }
+            set { _rowHandler = value; }
+        }
+
+        /// <summary>
         /// 创建 ColumnItem 控件容器
         /// </summary>
         [PersistenceMode(PersistenceMode.InnerProperty)]
@@ -125,6 +138,10 @@ namespace DTCMS.Controls
             output.AddAttribute(HtmlTextWriterAttribute.Class, "thead");
             output.RenderBeginTag(HtmlTextWriterTag.Tr);
 
+            StringBuilder sortJs = new StringBuilder();
+            string sysColumn = string.Empty;
+            StringBuilder fieldsColumn = new StringBuilder();
+
             int colSpan = Colunms.Count;
             for (int i = 0; i < Colunms.Count; i++)
             {
@@ -145,6 +162,8 @@ namespace DTCMS.Controls
                         output.RenderBeginTag(HtmlTextWriterTag.Input);
                         output.RenderEndTag();
                         output.RenderEndTag();
+
+                        sysColumn += string.Format("checkbox:{{visible:true,id:'{0}'}},", checkBox.DataField);
                     }
                     else
                     {
@@ -164,6 +183,8 @@ namespace DTCMS.Controls
                         output.RenderBeginTag(HtmlTextWriterTag.Th);
                         output.Write(rowsIndex.HeaderText);
                         output.RenderEndTag();
+
+                        sysColumn += string.Format("rowsindex:{{visible:true,id:'{0}'}},", rowsIndex.DataField);
                     }
                     else
                     {
@@ -185,12 +206,13 @@ namespace DTCMS.Controls
                     output.RenderBeginTag(HtmlTextWriterTag.Th);
 
                     //如果排序字段不为空，则添加客户端排序方法
-                    if (columnItem.IsSort)
+                    if (columnItem.SortField != null)
                     {
                         output.AddAttribute(HtmlTextWriterAttribute.Id, columnItem.DataField);
                         output.AddAttribute(HtmlTextWriterAttribute.Href, "javascript:;");
                         output.AddAttribute(HtmlTextWriterAttribute.Title, "点击排序列");
                         output.AddAttribute(HtmlTextWriterAttribute.Onclick, "onSortClick(this);");
+                        output.AddAttribute(HtmlTextWriterAttribute.Class, "nosort");
                         output.AddAttribute("hidefocus", "true");
                         output.RenderBeginTag(HtmlTextWriterTag.A);
                         output.Write(columnItem.HeaderText);
@@ -201,12 +223,23 @@ namespace DTCMS.Controls
                         output.RenderEndTag();
 
                         output.RenderEndTag();
+
+                        //生成排序JS
+                        sortJs.AppendFormat("if(document.getElementById('{0}').className!='nosort'){{sortValue+=',{1} '+document.getElementById('{0}').className;count++;}}", columnItem.DataField, columnItem.SortField);
                     }
                     else
                     {
                         output.Write(columnItem.HeaderText);
                     }
                     output.RenderEndTag();
+
+                    //生成FieldColumn
+                    fieldsColumn.AppendFormat("{{name:'{0}',", columnItem.DataField.ToLower());
+                    if (columnItem.DataFormat != null)
+                    {
+                        fieldsColumn.AppendFormat("dataFormat:{0}", columnItem.DataFormat);
+                    }
+                    fieldsColumn.Append("},");
                 }
             }
             output.RenderEndTag();
@@ -262,7 +295,7 @@ namespace DTCMS.Controls
 
                 output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
                 output.RenderBeginTag(HtmlTextWriterTag.Div);
-                output.WriteLine("每页显示条数：<select title=\"每页显示条数\"><option value=\"5\">5</option><option value=\"10\">10</option><option value=\"15\">15</option><option value=\"20\">20</option><option value=\"25\">25</option><option value=\"40\">40</option></select>\r\n");
+                output.WriteLine("每页显示条数：<select onchange=\"setPageSize(this)\" title=\"每页显示条数\"><option value=\"5\">5</option><option value=\"10\">10</option><option value=\"15\" selected=\"selected\">15</option><option value=\"20\">20</option><option value=\"25\">25</option><option value=\"40\">40</option></select>\r\n");
                 output.RenderEndTag();
                 output.RenderEndTag();
 
@@ -281,7 +314,23 @@ namespace DTCMS.Controls
             output.RenderEndTag();
 
             output.WriteLine();
+            output.WriteLine("<script type=\"text/javascript\">");
+            output.WriteLine("function onSortClick(obj){");
+            output.Write("if(obj.className=='nosort'){obj.className='desc';}");
+            output.Write("else if(obj.className=='desc'){obj.className='asc';}");
+            output.Write("else{obj.className='nosort';}\r\n");
+            output.Write("var count=0;sortValue='';");
+            output.Write(sortJs.ToString());
+            output.WriteLine("if(count>0){sortValue='ORDER BY '+sortValue.substring(1,sortValue.length);}loadDataLoading();}");
+            output.Write("function showDataList(data){");
+            output.Write("if(json!=''){var json=eval('data='+data);totalRecord=json.totalRecord;totalPage=Math.ceil(totalRecord/pageSize);");
+            output.Write("var option={jsondata:json.dataTable,");
+            output.Write(sysColumn);
+            output.Write(string.Format("fields:[{0}],", fieldsColumn.ToString().TrimEnd(',')));
+            output.Write(string.Format("rowhandler:'{0}',", this.RowHandler));
+            output.WriteLine("curpage:curPage,pagesize:pageSize,totalrecord:totalRecord};$('#dataList').gridview(option);}}");
             output.WriteLine(BuildJavaScript());
+            output.WriteLine("</script>");
         }
 
         /// <summary>
@@ -291,24 +340,25 @@ namespace DTCMS.Controls
         private string BuildJavaScript()
         {
             StringBuilder js = new StringBuilder();
-            js.Append("<script type=\"text/javascript\">\r\n");
-            js.Append("$(function(){showLoading('正在加载数据，请稍候...','#dataList');loadData();hideMessage();});\r\n");
+            //js.Append("<script type=\"text/javascript\">\r\n");
             if (this.IsPage)
             {
-                js.Append("function loadData(page){");
-                js.Append("page=page||1;");
+                js.Append(string.Format("var curPage=1;var pageSize={0};var totalPage;\r\n", PageSize));
             }
-            else
-            {
-                js.Append("function loadData(){");
-            }
+            js.Append("var totalRecord;var sortValue;\r\n");
+            js.Append("$(function(){loadDataLoading();});\r\n");
+            js.Append("function loadDataLoading(){showLoading('正在加载数据，请稍候...','#dataList');loadData();hideMessage();}\r\n");
+            js.Append("function loadData(){");
             js.Append("var callback=function(res){");
-            js.Append("if(res.error){");
-            js.Append("alert(\"请求错误，请刷新页面重试！\\n\"+res.error.Message);return;}");
+            js.Append("if(res.error){alert(\"请求错误，请刷新页面重试！\\n\"+res.error.Message);return;}");
             js.Append("showDataList(res.value);};");
             js.Append(this.BindAjaxMethod);
-            js.Append(this.IsPage ? "(page,callback);}" : "(callback);}");
-            js.Append("\r\n</script>");
+            js.Append(this.IsPage ? "(curPage,pageSize,sortValue,callback);}" : "(sortValue,callback);}");
+            //js.Append("\r\n</script>");
+            js.Append("function goPage(obj){switch(obj.id){\r\n");
+            js.Append("case 'pFirst':if(curPage==1){return}else{curPage=1;break}case 'pNext':curPage++;break;case 'pPrev':curPage--;break;case 'pLast':if(curPage==totalPage){return}else{curPage=totalPage;break}}\r\n");
+            js.Append("if(curPage>totalPage){curPage=totalPage;return}if(curPage<1){curPage=1;return}loadDataLoading()}\r\n");
+            js.Append("function setPageSize(opt){pageSize=opt[opt.selectedIndex].text;loadDataLoading();}");
 
             return js.ToString();
         }

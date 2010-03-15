@@ -12,8 +12,20 @@ namespace DTCMS.Controls
     [TypeConverter(typeof(ExpandableObjectConverter))]
     public class CheckBox : ItemBase
     {
+        private string _dataField;
         private bool _visible;
         private string _width;
+
+        /// <summary>
+        /// 绑定字段
+        /// </summary>
+        [NotifyParentProperty(true)]
+        [Description("绑定字段")]
+        public string DataField
+        {
+            get { return _dataField; }
+            set { _dataField = value; }
+        }
 
         /// <summary>
         /// 是否显示选择框
