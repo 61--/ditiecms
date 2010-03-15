@@ -240,7 +240,7 @@ namespace DTCMS.Controls
                 output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
                 output.RenderBeginTag(HtmlTextWriterTag.Div);
                 output.WriteLine("<a id=\"pFirst\" class=\"pFirst_dis\" hidefocus=\"true\" href=\"javascript:;\" onclick=\"goPage(this)\" title=\"首页\"></a>");
-                output.WriteLine("<a id=\"pPrev\" class=\"pPrev_dis\" hidefocus=\"true\" href=\"javascript:;\" onclick=\"goPage(this)\" title=\"上一页（键盘：←）\"></a>");
+                output.WriteLine("<a id=\"pPrev\" class=\"pPrev_dis\" hidefocus=\"true\" href=\"javascript:;\" onclick=\"goPage(this)\" onmouseover=\"statusMsg('帮助小贴士，用键盘左右键可以快速翻页');return document.returnValue;\" onmouseout=\"window.status='';\" title=\"上一页\"></a>");
                 output.RenderEndTag();
 
                 output.WriteLine("<p class=\"separator\"></p>");
@@ -254,7 +254,7 @@ namespace DTCMS.Controls
 
                 output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
                 output.RenderBeginTag(HtmlTextWriterTag.Div);
-                output.WriteLine("<a id=\"pNext\" class=\"pNext\" hidefocus=\"true\" href=\"javascript:;\" onclick=\"goPage(this)\" title=\"下一页（键盘：→）\"></a>");
+                output.WriteLine("<a id=\"pNext\" class=\"pNext\" hidefocus=\"true\" href=\"javascript:;\" onclick=\"goPage(this)\" onmouseover=\"statusMsg('帮助小贴士，用键盘左右键可以快速翻页');return document.returnValue;\" onmouseout=\"window.status='';\" title=\"下一页\"></a>");
                 output.WriteLine("<a id=\"pLast\" class=\"pLast\" hidefocus=\"true\" href=\"javascript:;\" onclick=\"goPage(this)\" title=\"末页\"></a>");
                 output.RenderEndTag();
 

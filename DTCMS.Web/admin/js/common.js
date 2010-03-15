@@ -138,8 +138,11 @@ function getSingleCheckID() {
     }
     return iValue;
 }
-
-
+/*** 显示状态栏信息 ***/
+function statusMsg(msgStr) {
+    window.status = msgStr;
+    document.returnValue = true;
+}
 
 
 
