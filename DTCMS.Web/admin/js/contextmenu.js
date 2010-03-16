@@ -1,12 +1,10 @@
-﻿/// <reference path="../intellisense/jquery-1.2.6-vsdoc-cn.js" />
-/* --------------------------------------------------	
-参数说明
-option: {width:Number, items:Array, onShow:Function, rule:JSON}
-成员语法(三种形式)	-- para.items
--> {text:String, icon:String, type:String, alias:String, width:Number, items:Array}		--	菜单组
--> {text:String, icon:String, type:String, alias:String, action:Function }				--	菜单项
--> {type:String}																		--	菜单分隔线
---------------------------------------------------*/
+﻿//-------------------------------------------------
+// jQuery ContextMenu Plugin
+// Version 1.1
+// Author Xuanye's blog (http://www.cnblogs.com/xuanye/archive/2009/10/29/xuanye_jquery_contextmenu.html)
+// Edit by LinPanxing (http://www.91aspx.com/)
+// LastUpdate 2010-03-11
+//-------------------------------------------------
 (function($) {
     function returnfalse() { return false; };
     $.fn.contextmenu = function(option) {

@@ -1,11 +1,12 @@
-﻿/**
-* zDialog 2.0
-* 王朝辉
-* QQ：4845587 E-mail:wzh@wangzhaohui.com
-* 最后修正：2009-12-4
-**/
+﻿//-------------------------------------------------
+// JavaScript Dialog Plugin
+// Version 2.0
+// Author WangZhaohui E-mail:wzh@wangzhaohui.com
+// Edit LinPanxing (http://www.91aspx.com/)
+// LastUpdate 2009-12-4
+//-------------------------------------------------
 var IMAGESPATH = '/inc/dialog/images/'; //图片路径配置
-/*************************公用方法和属性****************************/
+/***公用方法和属性***/
 var isIE = navigator.userAgent.indexOf('MSIE') != -1;
 var isIE6 = navigator.userAgent.indexOf('MSIE 6.0') != -1;
 var isIE8 = !!window.XDomainRequest && !!document.documentMode;
@@ -81,7 +82,7 @@ var fadeEffect = function(element, start, end, speed, callback) {//透明度渐�
     }, 20);
 }
 
-/*************************弹出框类实现****************************/
+/***弹出框类实现***/
 var topWin = $topWindow();
 var topDoc = topWin.document;
 var Dialog = function() {

@@ -46,62 +46,39 @@
     </form>
     <script type="text/javascript">
         var sortValue = '';
+        var sort = [{ sortField: 'Title', sortType: 'nosort', order: 0 }, { sortField: 'AddDate', sortType: 'nosort', order: 0}];
         function onSortClick(obj) {
-            if (obj.className == 'nosort') {
-                obj.className = 'desc';
-            } else if (obj.className == 'desc') {
-                obj.className = 'asc';
+            if (sort[obj.id].sortType == 'nosort') {
+                sort[obj.id].sortType = 'desc';
+            } else if (sort[obj.id].sortType == 'desc') {
+                sort[obj.id].sortType = 'asc';
             } else {
-                obj.className = 'nosort';
+                sort[obj.id].sortType = 'nosort';
             }
             sortValue = '';
             var count = 0;
-            if (document.getElementById('Title').className != 'nosort') {
-                sortValue += ',Title ' + document.getElementById('Title').className;
-                count++;
-            }
-            if (document.getElementById('AddDate').className != 'nosort') {
-                sortValue += ',A.AddDate ' + document.getElementById('AddDate').className;
-                count++;
-            }
-            if (count > 0) {
-                sortValue = 'ORDER BY ' + sortValue.substring(1, sortValue.length);
-            }
-            loadDataLoading();
-        }
-
-//        function showDataList(data) {
-//            if (json != "") {
-//                var json = eval("data=" + data);
-//                totalRecord = json.totalRecord;
-//                totalPage = Math.ceil(totalRecord / pageSize);
-//                var option = {
-//                    jsondata: json.dataTable,
-//                    checkbox: { visible: true, id: 'id' },
-//                    rowsindex: { visible: true, id: 'id' },
-//                    fields: [
-//	                        { name: 'id', dataFormat: function(r) { return '<a href="article_add.aspx?ID=' + r.id + '">' + r.title + '</a>'; } },
-//	                        { name: 'classname' },
-//	                        { name: 'adddate' },
-//	                        { name: 'isverify', dataFormat: function(r) { return r.isverify == 1 ? "已审核" : "未审核" } },
-//	                        { name: 'id' }
-//	                    ],
-//                    rowhandler: "contextMenu(this)",
-//                    curpage: curPage,
-//                    pagesize: pageSize,
-//                    totalrecord: totalRecord
-//                };
-//                $("#dataList").gridview(option);
+            alert(sort[obj.id].sortType)
+//            if (document.getElementById('Title').className != 'nosort') {
+//                sortValue += ',Title ' + document.getElementById('Title').className;
+//                count++;
 //            }
-//        }
+//            if (document.getElementById('AddDate').className != 'nosort') {
+//                sortValue += ',A.AddDate ' + document.getElementById('AddDate').className;
+//                count++;
+//            }
+//            if (count > 0) {
+//                sortValue = 'ORDER BY ' + sortValue.substring(1, sortValue.length);
+//            }
+//            loadDataLoading();
+        }
         function contextMenu(row) {
             var menu = { items: [
-                { text: "预览", icon: "view", alias: "contextmenu-edit", action: contextMenuItem_click },
-                { text: "编辑", icon: "edit", alias: "contextmenu-view", action: contextMenuItem_click },
-                { text: "删除", disable: true, icon: "delete", alias: "contextmenu-delete", action: contextMenuItem_click },
+                { text: "预览", icon: "view", alias: "edit", action: contextMenuItem_click },
+                { text: "编辑", icon: "edit", alias: "view", action: contextMenuItem_click },
+                { text: "删除", disable: true, icon: "delete", alias: "delete", action: contextMenuItem_click },
                 { type: "split" },
-                { text: "发布", alias: "contextmenu-create", action: contextMenuItem_click },
-                { text: "置顶", icon: "edit", alias: "contextmenu-create", width: 120, type: "group",
+                { text: "发布", alias: "create", action: contextMenuItem_click },
+                { text: "置顶", icon: "edit", alias: "create", width: 120, type: "group",
                     items: [
 	                            { text: "组三集合", icon: "view", alias: "2-2", type: "group", width: 120, items: [
 		                            { text: "组3一项", alias: "3-1" },
@@ -114,7 +91,7 @@
                             ]
                 },
                 { type: "split" },
-                { text: "刷新", icon: "refresh", alias: "contextmenu-reflash", action: contextMenuItem_click }
+                { text: "刷新", icon: "refresh", alias: "reflash", action: contextMenuItem_click }
                 ]
             };
             $(row).contextmenu(menu);
@@ -163,7 +140,7 @@
             Dialog.confirm("确定要删除文章吗？", function() {
                 var res = DTCMS.Web.admin.article_list.DeleteArticle(aid).value;
                 if (res > 0) {
-                    loadData(1);
+                    loadData();
                     showSuccess("成功删除" + res + "篇文章！");
                     return;
                 }
@@ -185,8 +162,8 @@
             var res = DTCMS.Web.admin.user_list.VerifyArticle(aid).value;
             if (res > 0) {
                 if (flag) {
-                    loadData(1);
-                    showSuccess("批量审核用户文章！");
+                    loadData();
+                    showSuccess("批量审核文章成功！");
                 } else {
                     elem.blur();
                     if (elem.innerHTML == "未审核") {
@@ -198,7 +175,7 @@
                     }
                 }
             } else {
-                showError("审核用户文章！");
+                showError("审核文章失败！");
             }
         }
     </script>
