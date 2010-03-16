@@ -321,7 +321,7 @@ namespace DTCMS.Controls
             output.Write("else{obj.className='nosort';}\r\n");
             output.Write("var count=0;sortValue='';");
             output.Write(sortJs.ToString());
-            output.WriteLine("if(count>0){sortValue='ORDER BY '+sortValue.substring(1,sortValue.length);}loadDataLoading();}");
+            output.WriteLine("if(count>0){sortValue=sortValue.substring(1,sortValue.length);}loadDataLoading();}");
             output.Write("function showDataList(data){");
             output.Write("if(json!=''){var json=eval('data='+data);totalRecord=json.totalRecord;totalPage=Math.ceil(totalRecord/pageSize);");
             output.Write("var option={jsondata:json.dataTable,");
