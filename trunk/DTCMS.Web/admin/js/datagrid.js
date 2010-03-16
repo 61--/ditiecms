@@ -1,8 +1,9 @@
-﻿/*
-*此插件用于将xml格式化成html中的table，并可加入行或列的事件，使用了服务器端分页（分页方式需自定义）
-*作者：wyongzhi  http://wyz.67ge.com
-*最后更新：2009年9月16日14:20:35  alpha3
-*/
+﻿//-------------------------------------------------
+// jQuery DataGrid Plugin
+// Version 1.0
+// Author LinPanxing (http://www.91aspx.com/)
+// LastUpdate 2009-12-4
+//-------------------------------------------------
 (function($) {
     $.fn.gridview = function(p) {
         p = $.extend({
@@ -52,7 +53,6 @@
                 }
             });
             tab.html(tbhtml.join(''));
-            //alert(tab.html())
         } else {
             $("#dataList tr td").html("<p class='nodata'>没有要加载的数据！</p>");
         }

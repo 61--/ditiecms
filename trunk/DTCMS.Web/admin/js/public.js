@@ -1,8 +1,9 @@
-﻿// jQuery Dialogs Plugin
+﻿//-------------------------------------------------
+// jQuery Dialogs Plugin
 // Version 1.1
-// Cory S.N. LaViska (http://abeautifulsite.net/)
+// Author S.N. LaViska (http://abeautifulsite.net/)
 // Edit by LinPanxing (http://www.91aspx.com/)
-//
+//-------------------------------------------------
 (function($) {
     $.popup = {
         ID: null,
