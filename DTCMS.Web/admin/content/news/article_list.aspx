@@ -29,20 +29,17 @@
                 <a href="javascript:verifyData(-1,true);" class="button b4"><img src="../../images/ico/i_verify.gif" alt="" />审核文章</a>
                 <a href="javascript:DeleteData(-1,true);" class="button b4"><img src="../../images/ico/i_allDelete.gif" alt="" />批量删除</a>
             </div>
-            <DT:DataGrid ID="dt_DataGrid" BindAjaxMethod="DTCMS.Web.admin.article_list.GetArticleJsonData" IsPage="true" CssClass="table_data" runat="server">
+            <DT:DataGrid ID="dt_DataGrid" BindAjaxMethod="DTCMS.Web.admin.article_list.GetArticleJsonData" IsPage="true" RowHandler="contextMenu(this)" CssClass="table_data" runat="server">
                 <Colunms>
                     <DT:CheckBox Visible="true" Width="4%" />
-                    <DT:RowsIndex HeaderText="文章ID" Visible="true" Width="6%" />
+                    <DT:RowsIndex HeaderText="文章ID" DataField="ID" Visible="true" Width="6%" />
                     <DT:ColumnItem HeaderText="文章标题" Width="30%" DataField="Title" SortField="Title" />
                     <DT:ColumnItem HeaderText="所属栏目" Width="20%" DataField="ClassName" />
                     <DT:ColumnItem HeaderText="创建时间" Width="20%" DataField="AddDate" SortField="A.AddDate" />
                     <DT:ColumnItem HeaderText="是否审核" Width="10%" DataField="IsVerify" />
                     <DT:ColumnItem HeaderText="操作" Width="10%" DataField="ID" CssClass="bleft" />
                 </Colunms>
-            </DT:DataGrid><br />
-			<div id="gridTreeDiv">
-			
-			</div>
+            </DT:DataGrid>
 		</div>
 	</div>
     </form>
@@ -84,30 +81,30 @@
 //            loadDataLoading();
 //        }
 
-//        var sortValue = '';
-//        function onSortClick(obj) {
-//            if (obj.className == 'nosort') {
-//                obj.className = 'desc';
-//            } else if (obj.className == 'desc') {
-//                obj.className = 'asc';
-//            } else {
-//                obj.className = 'nosort';
-//            }
-//            sortValue = '';
-//            var count = 0;
-//            if (document.getElementById('Title').className != 'nosort') {
-//                sortValue += ',Title ' + document.getElementById('Title').className;
-//                count++;
-//            }
-//            if (document.getElementById('AddDate').className != 'nosort') {
-//                sortValue += ',A.AddDate ' + document.getElementById('AddDate').className;
-//                count++;
-//            }
-//            if (count > 0) {
-//                sortValue = 'ORDER BY ' + sortValue.substring(1, sortValue.length);
-//            }
-//            loadDataLoading();
-//        }
+        var sortValue = '';
+        function onSortClick(obj) {
+            if (obj.className == 'nosort') {
+                obj.className = 'desc';
+            } else if (obj.className == 'desc') {
+                obj.className = 'asc';
+            } else {
+                obj.className = 'nosort';
+            }
+            sortValue = '';
+            var count = 0;
+            if (document.getElementById('Title').className != 'nosort') {
+                sortValue += ',Title ' + document.getElementById('Title').className;
+                count++;
+            }
+            if (document.getElementById('AddDate').className != 'nosort') {
+                sortValue += ',A.AddDate ' + document.getElementById('AddDate').className;
+                count++;
+            }
+            if (count > 0) {
+                sortValue = 'ORDER BY ' + sortValue.substring(1, sortValue.length);
+            }
+            loadDataLoading();
+        }
 //        function showDataList(data) {
 //            if (json != "") {
 //                var json = eval("data=" + data);
@@ -177,32 +174,8 @@
             else {
             $("#productlist").flexReload();
             }*/
-            alert('123');
+            loadDataLoading();
         }
-//        var gridTree;
-//        function showGridTree(json) {
-//            gridTree = new TableTree4J("gridTree", true, true);
-//            gridTree.tableDesc = "<table id=\"tab\" class=\"table_data\">";
-
-//            var headerDataList = new Array("文章标题", "所属栏目", "创建时间", "是否审核", "操作");
-//            var widthList = new Array("4%", "4%", "32%", "20%", "20%", "10%", "10%");
-
-//            gridTree.setHeader(headerDataList, -1, widthList, true, "thead", "", "", "");
-//            //设置列样式
-//            gridTree.gridHeaderColStyleArray = new Array("", "", "", "", "bleft");
-//            gridTree.gridDataCloStyleArray = new Array("", "", "", "", "");
-
-//            if (json != "") {
-//                var data = eval("data=" + json);
-//                $.each(data, function(i, n) {
-//                var dataList = new Array("<a href=\"article_add.aspx?Id=" + n.id + "\">" + n.title + "</a>", n.classname, n.adddate,
-//                    n.isverify==1?"<a href=\"javascript:;\" onclick=\"verifyData(" + n.id + ",false,this)\">已审核</a>":"<a href=\"javascript:;\" onclick=\"verifyData(" + n.id + ",false,this)\" style=\"color:red\">未审核</a>",
-//                    "<a href=\"article_add.aspx?Id=" + n.id + "\">修改</a>&nbsp;&nbsp;<a href=\"javascript:DeleteData(" + n.id + ",false)\">删除</a>");
-//                    gridTree.addGirdNode(dataList, n.id,-1,null, n.id, "");
-//                });
-//            }
-//            gridTree.printTableTreeToElement("gridTreeDiv");
-//        }
         //编辑文章
         function editData() {
             var aid=getSingleCheckID();

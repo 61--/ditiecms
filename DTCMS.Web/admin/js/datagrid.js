@@ -10,9 +10,8 @@
             fields: null,
             rowhandler: null,
             usepager: true,
-            pagesize: 10,
-            curpage: 1,
-            totalrecord: 120
+            pagesize: 15,
+            curpage: 1
         }, p);
 
         //生成数据列表

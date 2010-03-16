@@ -139,8 +139,8 @@ namespace DTCMS.Controls
             output.RenderBeginTag(HtmlTextWriterTag.Tr);
 
             StringBuilder sortJs = new StringBuilder();
-            string sysColumn = string.Empty;
             StringBuilder fieldsColumn = new StringBuilder();
+            string sysColumn = string.Empty;
 
             int colSpan = Colunms.Count;
             for (int i = 0; i < Colunms.Count; i++)
@@ -163,7 +163,14 @@ namespace DTCMS.Controls
                         output.RenderEndTag();
                         output.RenderEndTag();
 
-                        sysColumn += string.Format("checkbox:{{visible:true,id:'{0}'}},", checkBox.DataField);
+                        if (checkBox.DataField == null)
+                        {
+                            sysColumn += "checkbox:{visible:true},";
+                        }
+                        else
+                        {
+                            sysColumn += string.Format("checkbox:{{visible:true,id:'{0}'}},", checkBox.DataField.ToLower());
+                        }
                     }
                     else
                     {
@@ -184,7 +191,14 @@ namespace DTCMS.Controls
                         output.Write(rowsIndex.HeaderText);
                         output.RenderEndTag();
 
-                        sysColumn += string.Format("rowsindex:{{visible:true,id:'{0}'}},", rowsIndex.DataField);
+                        if (rowsIndex.DataField == null)
+                        {
+                            sysColumn += "rowsindex:{visible:true},";
+                        }
+                        else
+                        {
+                            sysColumn += string.Format("rowsindex:{{visible:true,id:'{0}'}},", rowsIndex.DataField.ToLower());
+                        }
                     }
                     else
                     {
@@ -315,7 +329,7 @@ namespace DTCMS.Controls
 
             output.WriteLine();
             output.WriteLine("<script type=\"text/javascript\">");
-            output.WriteLine("function onSortClick(obj){");
+            output.Write("function onSortClick(obj){");
             output.Write("if(obj.className=='nosort'){obj.className='desc';}");
             output.Write("else if(obj.className=='desc'){obj.className='asc';}");
             output.Write("else{obj.className='nosort';}\r\n");
@@ -352,11 +366,11 @@ namespace DTCMS.Controls
             js.Append("if(res.error){alert(\"请求错误，请刷新页面重试！\\n\"+res.error.Message);return;}");
             js.Append("showDataList(res.value);};");
             js.Append(this.BindAjaxMethod);
-            js.Append(this.IsPage ? "(curPage,pageSize,sortValue,callback);}" : "(sortValue,callback);}\r\n");
-            js.Append("function goPage(obj){switch(obj.id){\r\n");
-            js.Append("case 'pFirst':if(curPage==1){return}else{curPage=1;break}case 'pNext':curPage++;break;case 'pPrev':curPage--;break;case 'pLast':if(curPage==totalPage){return}else{curPage=totalPage;break}}\r\n");
-            js.Append("if(curPage>totalPage){curPage=totalPage;return}if(curPage<1){curPage=1;return}loadDataLoading()}\r\n");
-            js.Append("function setPageSize(opt){pageSize=opt[opt.selectedIndex].text;loadDataLoading();}");
+            js.Append(this.IsPage ? "(curPage,pageSize,sortValue,callback);}\r\n" : "(sortValue,callback);}\r\n");
+            js.Append("function goPage(obj){switch(obj.id){");
+            js.Append("case 'pFirst':if(curPage==1){return;}else{curPage=1;break;}case 'pNext':curPage++;break;case 'pPrev':curPage--;break;case 'pLast':if(curPage==totalPage){return;}else{curPage=totalPage;break;}}");
+            js.Append("if(curPage>totalPage){curPage=totalPage;return}if(curPage<1){curPage=1;return}loadDataLoading()}");
+            js.Append("function setPageSize(opt){pageSize=opt[opt.selectedIndex].text;totalPage=Math.ceil(totalRecord/pageSize);if(curPage>totalPage)curPage=totalPage;loadDataLoading();}");
 
             return js.ToString();
         }
