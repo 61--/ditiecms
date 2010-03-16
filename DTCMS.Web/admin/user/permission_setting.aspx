@@ -117,7 +117,7 @@
             gridTree.gridHeaderColStyleArray = new Array("", "bleft");
             gridTree.gridDataCloStyleArray = new Array("", "");
             if (json != "") {
-                var data = eval("data=" + json);
+                var data = eval("data=" + json).dataTable;
                 $.each(data, function(i, n) {
                     var dataList = new Array(n.modulename, n.moduleid);
                     gridTree.addGirdNode(dataList, n.moduleid, n.parentid == "M0" ? -1 : n.parentid, null, n.orderid, "");

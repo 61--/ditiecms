@@ -40,47 +40,11 @@
                     <DT:ColumnItem HeaderText="操作" Width="10%" DataField="ID" CssClass="bleft" />
                 </Colunms>
             </DT:DataGrid>
+            <input id="Texthidden" type="text" style="visibility:hidden;" />
 		</div>
 	</div>
     </form>
     <script type="text/javascript">
-//        var curPage = 1;
-//        var totalRecord;
-//        var pageSize = 10;
-//        var totalPage;
-
-//        function goPage(obj) {
-//            switch (obj.id) {
-//                case "pFirst":
-//                    if (curPage == 1) {
-//                        return;
-//                    } else {
-//                        curPage = 1; break;
-//                    }
-//                case "pNext": curPage++; break;
-//                case "pPrev": curPage--; break;
-//                case "pLast":
-//                    if (curPage == totalPage) {
-//                        return;
-//                    } else {
-//                        curPage = totalPage; break;
-//                    }
-//            }
-//            if (curPage > totalPage) {
-//                curPage = totalPage;
-//                return;
-//            }
-//            if (curPage < 1) {
-//                curPage = 1;
-//                return;
-//            }
-//            loadDataLoading();
-//        }
-//        function setPageSize(opt) {
-//            pageSize = opt[opt.selectedIndex].text;
-//            loadDataLoading();
-//        }
-
         var sortValue = '';
         function onSortClick(obj) {
             if (obj.className == 'nosort') {
@@ -105,9 +69,7 @@
             }
             loadDataLoading();
         }
-        function checkNum(num) {
-            if (!((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || event.keyCode == 46 || event.keyCode==8)) event.returnValue = false;
-        }
+
 //        function showDataList(data) {
 //            if (json != "") {
 //                var json = eval("data=" + data);
