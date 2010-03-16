@@ -105,6 +105,9 @@
             }
             loadDataLoading();
         }
+        function checkNum(num) {
+            if (!((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) || event.keyCode == 46 || event.keyCode==8)) event.returnValue = false;
+        }
 //        function showDataList(data) {
 //            if (json != "") {
 //                var json = eval("data=" + data);
