@@ -294,7 +294,7 @@ namespace DTCMS.Controls
 
                 output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
                 output.RenderBeginTag(HtmlTextWriterTag.Div);
-                output.WriteLine("第 <input value=\"1\" id=\"curPage\" /> 页 / 共<span id=\"totalPage\">0</span>页");
+                output.WriteLine("第 <input value=\"1\" id=\"curPage\" onKeyUp=\"this.value=this.value.replace(/\\D/g,'');\" onchange=\"jumpPage(this.value);\" /> 页 / 共<span id=\"totalPage\">0</span>页");
                 output.RenderEndTag();
 
                 output.WriteLine("<p class=\"separator\"></p>");
