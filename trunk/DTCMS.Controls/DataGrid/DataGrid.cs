@@ -294,7 +294,7 @@ namespace DTCMS.Controls
 
                 output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
                 output.RenderBeginTag(HtmlTextWriterTag.Div);
-                output.WriteLine("第 <input value=\"1\" id=\"curPage\" onKeyUp=\"this.value=this.value.replace(/\\D/g,'');\" onchange=\"jumpPage(this.value);\" /> 页 / 共<span id=\"totalPage\">0</span>页");
+                output.WriteLine("第 <input value=\"1\" id=\"curPage\" type=\"text\" onkeydown=\"jumpPage(this.value,event);\" title=\"输入页码后按回车跳转\" /> 页 / 共<span id=\"totalPage\">0</span>页");
                 output.RenderEndTag();
 
                 output.WriteLine("<p class=\"separator\"></p>");
@@ -329,19 +329,17 @@ namespace DTCMS.Controls
 
             output.WriteLine();
             output.WriteLine("<script type=\"text/javascript\">");
-            output.Write("function onSortClick(obj){");
-            output.Write("if(obj.className=='nosort'){obj.className='desc';}");
-            output.Write("else if(obj.className=='desc'){obj.className='asc';}");
-            output.Write("else{obj.className='nosort';}\r\n");
+            output.Write("function onSortClick(obj){if(obj.className=='nosort'){obj.className='desc';}else if(obj.className=='desc'){obj.className='asc';}else{obj.className='nosort';}\r\n");
             output.Write("var count=0;sortValue='';");
             output.Write(sortJs.ToString());
             output.WriteLine("if(count>0){sortValue=sortValue.substring(1,sortValue.length);}loadDataLoading();}");
-            output.Write("function showDataList(data){");
-            output.Write("if(json!=''){var json=eval('data='+data);totalRecord=json.totalRecord;totalPage=Math.ceil(totalRecord/pageSize);");
-            output.Write("var option={jsondata:json.dataTable,");
+            output.Write("function showDataList(data){if(data!=''){var json=eval('data='+data);totalRecord=json.totalRecord;totalPage=Math.ceil(totalRecord/pageSize);var option={jsondata:json.dataTable,");
             output.Write(sysColumn);
             output.Write(string.Format("fields:[{0}],", fieldsColumn.ToString().TrimEnd(',')));
-            output.Write(string.Format("rowhandler:'{0}',", this.RowHandler));
+            if (this.RowHandler != null)
+            {
+                output.Write(string.Format("rowhandler:'{0}',", this.RowHandler));
+            }
             output.WriteLine("curpage:curPage,pagesize:pageSize,totalrecord:totalRecord};$('#dataList').gridview(option);}}");
             output.WriteLine(BuildJavaScript());
             output.WriteLine("</script>");
@@ -361,17 +359,22 @@ namespace DTCMS.Controls
             js.Append("var totalRecord;var sortValue;\r\n");
             js.Append("$(function(){loadDataLoading();});\r\n");
             js.Append("function loadDataLoading(){showLoading('正在加载数据，请稍候...','#dataList');loadData();hideMessage();}\r\n");
-            js.Append("function loadData(){");
-            js.Append("var callback=function(res){");
-            js.Append("if(res.error){alert(\"请求错误，请刷新页面重试！\\n\"+res.error.Message);return;}");
-            js.Append("showDataList(res.value);};");
+            js.Append("function loadData(){var callback=function(res){if(res.error){alert(\"请求错误，请刷新页面重试！\\n\"+res.error.Message);return;}showDataList(res.value);};");
             js.Append(this.BindAjaxMethod);
-            js.Append(this.IsPage ? "(curPage,pageSize,sortValue,callback);}\r\n" : "(sortValue,callback);}\r\n");
-            js.Append("function goPage(obj){switch(obj.id){");
-            js.Append("case 'pFirst':if(curPage==1){return;}else{curPage=1;break;}case 'pNext':curPage++;break;case 'pPrev':curPage--;break;case 'pLast':if(curPage==totalPage){return;}else{curPage=totalPage;break;}}");
-            js.Append("if(curPage>totalPage){curPage=totalPage;return}if(curPage<1){curPage=1;return}loadDataLoading()}");
-            js.Append("function setPageSize(opt){pageSize=opt[opt.selectedIndex].text;totalPage=Math.ceil(totalRecord/pageSize);if(curPage>totalPage)curPage=totalPage;loadDataLoading();}");
-
+            if (this.IsPage)
+            {
+                js.Append("(curPage,pageSize,sortValue,callback);}\r\n");
+                js.Append("function goPage(obj){switch(obj.id){");
+                js.Append("case 'pFirst':if(curPage==1){return;}else{curPage=1;break;}case 'pNext':curPage++;break;case 'pPrev':curPage--;break;case 'pLast':if(curPage==totalPage){return;}else{curPage=totalPage;break;}}");
+                js.Append("if(curPage>totalPage){curPage=totalPage;return}if(curPage<1){curPage=1;return}loadDataLoading()}");
+                js.Append("function setPageSize(opt){pageSize=opt[opt.selectedIndex].text;totalPage=Math.ceil(totalRecord/pageSize);if(curPage>totalPage)curPage=totalPage;loadDataLoading();}\r\n");
+                js.Append("function jumpPage(val,e){e=e||event;val=parseInt(val);if(e.keyCode==13&&val>0&&val<=totalPage&&val!=curPage){curPage=val;loadDataLoading();}}\r\n");
+                js.Append("document.onkeydown=function(e){e=e||event;if(e.keyCode==37){curPage--;}else if(e.keyCode==39){curPage++;}else{return;}if(curPage>totalPage){curPage=totalPage;return;}if(curPage<1){curPage=1;return;}loadDataLoading();}");
+            }
+            else
+            {
+                js.Append("(sortValue,callback);}");
+            }
             return js.ToString();
         }
     }
