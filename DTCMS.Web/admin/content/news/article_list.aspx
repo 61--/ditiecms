@@ -33,8 +33,8 @@
                 <Colunms>
                     <DT:CheckBox Visible="true" Width="4%" />
                     <DT:RowsIndex HeaderText="文章ID" DataField="ID" Visible="true" Width="6%" />
-                    <DT:ColumnItem HeaderText="文章标题" Width="30%" DataField="Title" SortField="Title" />
-                    <DT:ColumnItem HeaderText="所属栏目" Width="20%" DataField="ClassName" />
+                    <DT:ColumnItem HeaderText="文章标题" Width="35%" DataField="Title" SortField="Title" />
+                    <DT:ColumnItem HeaderText="所属栏目" Width="15%" DataField="ClassName" />
                     <DT:ColumnItem HeaderText="创建时间" Width="20%" DataField="AddDate" SortField="A.AddDate" />
                     <DT:ColumnItem HeaderText="是否审核" Width="10%" DataField="IsVerify" />
                     <DT:ColumnItem HeaderText="操作" Width="10%" DataField="ID" CssClass="bleft" />
@@ -45,32 +45,6 @@
 	</div>
     </form>
     <script type="text/javascript">
-        var sortValue = '';
-        var sort = [{ sortField: 'Title', sortType: 'nosort', order: 0 }, { sortField: 'AddDate', sortType: 'nosort', order: 0}];
-        function onSortClick(obj) {
-            if (sort[obj.id].sortType == 'nosort') {
-                sort[obj.id].sortType = 'desc';
-            } else if (sort[obj.id].sortType == 'desc') {
-                sort[obj.id].sortType = 'asc';
-            } else {
-                sort[obj.id].sortType = 'nosort';
-            }
-            sortValue = '';
-            var count = 0;
-            alert(sort[obj.id].sortType)
-//            if (document.getElementById('Title').className != 'nosort') {
-//                sortValue += ',Title ' + document.getElementById('Title').className;
-//                count++;
-//            }
-//            if (document.getElementById('AddDate').className != 'nosort') {
-//                sortValue += ',A.AddDate ' + document.getElementById('AddDate').className;
-//                count++;
-//            }
-//            if (count > 0) {
-//                sortValue = 'ORDER BY ' + sortValue.substring(1, sortValue.length);
-//            }
-//            loadDataLoading();
-        }
         function contextMenu(row) {
             var menu = { items: [
                 { text: "预览", icon: "view", alias: "edit", action: contextMenuItem_click },
@@ -116,7 +90,7 @@
             else {
             $("#productlist").flexReload();
             }*/
-            loadDataLoading();
+            loadData();
         }
         //编辑文章
         function editData() {

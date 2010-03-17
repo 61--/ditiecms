@@ -8,6 +8,7 @@ body {
 	height: 100%;
 	color: #333;
 	_overflow-y: scroll;
+	_position:relative;
 }
 img {
 	border: 0px;
@@ -520,12 +521,6 @@ a.b5:hover
 	margin-top:1px;
 	outline:none;
 	background: url(../images/blue/pButton.gif);
-}
-.pagebar a:active
-{
-	/*position:relative;
-	left:1px;
-	top:1px;*/
 }
 a.pFirst
 {
