@@ -2,7 +2,7 @@
 // jQuery DataGrid Plugin
 // Version 1.0
 // Author LinPanxing (http://www.91aspx.com/)
-// LastUpdate 2009-12-4
+// LastUpdate 2009-3-16
 //-------------------------------------------------
 (function($) {
     $.fn.gridview = function(p) {
