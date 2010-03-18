@@ -33,11 +33,11 @@
                 <Colunms>
                     <DT:CheckBox Visible="true" Width="4%" />
                     <DT:RowsIndex HeaderText="文章ID" DataField="ID" Visible="true" Width="6%" />
-                    <DT:ColumnItem HeaderText="文章标题" Width="35%" DataField="Title" SortField="Title" />
+                    <DT:ColumnItem HeaderText="文章标题" Width="35%" DataField="Title" DataFormat="formatTitle" SortField="Title" />
                     <DT:ColumnItem HeaderText="所属栏目" Width="15%" DataField="ClassName" />
                     <DT:ColumnItem HeaderText="创建时间" Width="20%" DataField="AddDate" SortField="A.AddDate" />
-                    <DT:ColumnItem HeaderText="是否审核" Width="10%" DataField="IsVerify" />
-                    <DT:ColumnItem HeaderText="操作" Width="10%" DataField="ID" CssClass="bleft" />
+                    <DT:ColumnItem HeaderText="是否审核" Width="10%" DataField="IsVerify" DataFormat="formatIsVerify" />
+                    <DT:ColumnItem HeaderText="操作" Width="10%" DataField="ID" DataFormat="formatOperate" CssClass="bleft" />
                 </Colunms>
             </DT:DataGrid>
             <input id="Texthidden" type="text" style="visibility:hidden;" />
@@ -45,6 +45,15 @@
 	</div>
     </form>
     <script type="text/javascript">
+        function formatTitle(r) {
+            return "<a href='article_add.aspx?ID=" + r.id + "'>" + r.title + "</a>";
+        }
+        function formatIsVerify(r) {
+            return r.isverify == 1 ? "<a href='javascript:;' onclick='verifyData(" + r.id + ",false,this)'>已审核</a>" : "<a href='javascript:;' onclick='verifyData(" + r.id + ",false,this)' style='color:red'>未审核</a>";
+        }
+        function formatOperate(r) {
+            return "<a href='article_add.aspx?Id=" + r.id + "'>编辑</a>&nbsp;&nbsp;<a href='javascript:DeleteData(" + r.id + ",false)'>删除</a>";
+        }
         function contextMenu(row) {
             var menu = { items: [
                 { text: "预览", icon: "view", alias: "edit", action: contextMenuItem_click },
