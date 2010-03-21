@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>   
     <script type="text/javascript" src="/inc/treetable/TableTree4J.js"></script>
-    <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
     <style type="text/css">
         *{ padding:0; margin:0;}
         #continer{ width:380px; margin:0 auto; padding:10px 0 0 8px; text-align:left;}

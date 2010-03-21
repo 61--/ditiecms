@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="css/blue_body.css" rel="stylesheet" type="text/css" />
 
-    <script src="js/jquery-1.3.2-vsdoc2.js" type="text/javascript"></script>
+    <script src="js/jquery.min.js" type="text/javascript"></script>
 
     <script src="/admin/js/Public.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/contextmenu.js"></script>

@@ -44,11 +44,11 @@ namespace DTCMS.SqlProvider
         /// <summary>
         /// 包含
         /// </summary>
-        public static OperateSign In = new OperateSign("IN ({0})");
+        public static OperateSign In = new OperateSign(" IN ({0})");
         /// <summary>
         /// 匹配
         /// </summary>
-        public static OperateSign Like = new OperateSign("LIKE '%{0}%'");
+        public static OperateSign Like = new OperateSign(" LIKE '%{0}%'");
 
         private string sign;
         private OperateSign(string sign)

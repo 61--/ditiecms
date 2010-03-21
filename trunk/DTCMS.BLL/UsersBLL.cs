@@ -162,17 +162,21 @@ namespace DTCMS.BLL
         /// <summary>
         /// 获取DataTable，并转换成Json格式数据
         /// </summary>
-        public string GetUserJsonData(int currentPage)
+        public string GetUserJsonData(int curPage, int pageSize, string sortValue)
         {
             int pagecount;
-            DataTable dt = GetPageList("UID", currentPage, 10, "UID,UserName,Email,RoleName,RegisterIP,RegisterTime,IsVerify", "UID DESC", null, out pagecount);
+            if (sortValue == null || sortValue.Length == 0)
+            {
+                sortValue = "UID DESC";
+            }
+            DataTable dt = GetPageList("UID", curPage, pageSize, "UID,UserName,Email,RoleName,RegisterIP,RegisterTime,IsVerify", sortValue, null, out pagecount);
             if (dt != null)
             {
                 return Utils.DataTableToJson(dt, pagecount).ToString();
             }
             else
             {
-                return "";
+                return "{totalRecord:0,dataTable:[]}";
             }
         }
     }

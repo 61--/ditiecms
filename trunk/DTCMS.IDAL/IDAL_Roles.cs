@@ -21,75 +21,51 @@ namespace DTCMS.IDAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		/// <param name="model">实体对象</param>
-		/// <returns>返回影响行数</returns>
 		int Add(Roles model);
 
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		/// <param name="model">实体对象</param>
-		/// <returns>返回影响行数</returns>
 		int Update(Roles model);
 
 		/// <summary>
 		/// 根据ID和值更新一条数据
 		/// </summary>
-		/// <param name="ID">编号ID</param>
-		/// <param name="value">更新值（filedName=filedValue）</param>
-		/// <returns>返回影响行数</returns>
 		int Update(int ID, string value);
 
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		/// <param name="ID">编号ID</param>
-		/// <returns>返回影响行数</returns>
 		int Delete(int ID);
 
         /// <summary>
         /// 批量删除角色
         /// </summary>
-        /// <param name="UID">角色ID，多个ID用,号隔开</param>
-        /// <returns>返回影响行数</returns>
         int Delete(string UID);
 
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
-		/// <param name="ID">编号ID</param>
-		/// <param name="filedName">字段名称</param>
-		/// <param name="filedValue">字段值</param>
-		/// <returns>存在返回true，不存在返回false</returns>
 		bool Exists(int ID, string filedName, string filedValue);
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		/// <param name="ID">编号ID</param>
-		/// <returns>实体对象</returns>
 		Roles GetModel(int ID);
 
         /// <summary>
         /// 执行一条计算查询结果语句，返回查询结果（object）
         /// </summary>
-        /// <param name="filed">要查询的字段</param>
-        /// <param name="where">查询条件</param>
-        /// <returns>Object对象</returns>
         object GetSingle(string filed, string where);
 
 		/// <summary>
 		/// 根据查询字段获取列表
 		/// </summary>
-		/// <param name="fileds">要查询的字段，多个字段用,号隔开</param>
-		/// <returns>DataTable数据集合</returns>
-		DataTable GetDataTable(string fileds, string where);
+        DataTable GetDataTable(string fileds, string where, string sortValue);
 
 		/// <summary>
 		/// 获取泛型数据列表
 		/// </summary>
-		/// <param name="count">返回记录数</param>
-		/// <returns>对象泛型集合</returns>
 		List<Roles> GetList(out int count);
 	}
 }
