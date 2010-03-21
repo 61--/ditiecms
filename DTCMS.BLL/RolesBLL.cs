@@ -103,22 +103,26 @@ namespace DTCMS.BLL
         /// <returns></returns>
         public DataTable GetList()
         {
-            return dal.GetDataTable("ID,RoleName", "");
+            return dal.GetDataTable("ID,RoleName", "", "");
         }
 
         /// <summary>
         /// 获取DataTable，并转换成Json格式数据
         /// </summary>
-        public string GetRolesJsonData()
+        public string GetRolesJsonData(string sortValue)
         {
-            DataTable dt = dal.GetDataTable("ID,RoleName,Description,AddDate", "");
+            if (sortValue == null || sortValue.Length == 0)
+            {
+                sortValue = "OrderID";
+            }
+            DataTable dt = dal.GetDataTable("ID,RoleName,Description,AddDate", "", sortValue);
             if (dt != null)
             {
-                return Utils.DataTableToJson(dt,dt.Rows.Count).ToString();
+                return Utils.DataTableToJson(dt, dt.Rows.Count).ToString();
             }
             else
             {
-                return "";
+                return "{totalRecord:0,dataTable:[]}";
             }
         }
     }

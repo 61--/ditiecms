@@ -18,7 +18,7 @@ namespace DTCMS.Controls
 
         protected override Type[] CreateNewItemTypes()
         {
-            return new Type[] { typeof(CheckBox), typeof(RowsIndex), typeof(ColumnItem) };
+            return new Type[] { typeof(CheckBox), typeof(RowNumber), typeof(ColumnItem) };
         }
 
         protected override object CreateInstance(Type itemType)
@@ -27,9 +27,9 @@ namespace DTCMS.Controls
             {
                 return new CheckBox();
             }
-            if (itemType == typeof(RowsIndex))
+            if (itemType == typeof(RowNumber))
             {
-                return new RowsIndex();
+                return new RowNumber();
             }
             if (itemType == typeof(ColumnItem))
             {

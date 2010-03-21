@@ -1,17 +1,17 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="permission_list.aspx.cs" Inherits="DTCMS.Web.admin.permission_list" %>
-
+<%@ Register TagPrefix="DT" Assembly="DTCMS.Controls" Namespace="DTCMS.Controls" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>角色列表</title>
     <link href="../css/blue_body.css" type="text/css" rel="StyleSheet" />
-    <link href="../css/dialog.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../../inc/dialog/dialog.js"></script>
-    <script type="text/javascript" src="../js/public.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
-    <script type="text/javascript" src="../../inc/treetable/TableTree4J.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
+    <script type="text/javascript" src="../js/datagrid.js"></script>
+    <script type="text/javascript" src="../js/contextmenu.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -24,75 +24,72 @@
             <div class="toolbar">
                 <a <%= AddPermission?"href='javascript:addData();'":"disabled='disabled'" %> class="button b4"><img src="../images/ico/i_add.gif" alt="" />添加角色</a>
                 <a <%= EditPermission?"href='javascript:editData();'":"disabled='disabled'" %> class="button b4"><img src="../images/ico/i_edit.gif" alt="" />编辑角色</a>
-                <a <%= SettingPermission?"href='javascript:settingData();'":"disabled='disabled'" %> class="button b4"><img src="../images/ico/i_verify.gif" alt="" />配置权限</a>
-                <a <%= DeletePermission?"href='javascript:deleteData(-1,true);'":"disabled='disabled'" %> class="button b4"><img src="../images/ico/i_allDelete.gif" alt="" />批量删除</a>
+                <a <%= SettingPermission?"href='javascript:settingData();'":"disabled='disabled'" %> class="button b4"><img src="../images/ico/i_setting.gif" alt="" />配置权限</a>
+                <a <%= DeletePermission?"href='javascript:deleteData();'":"disabled='disabled'" %> class="button b4"><img src="../images/ico/i_allDelete.gif" alt="" />批量删除</a>
             </div>
-            <div id="gridTreeDiv">
-            </div>
+            <DT:DataGrid ID="dt_DataGrid" PrimaryKey="ID" BindAjaxMethod="DTCMS.Web.admin.permission_list.GetRolesJsonData" 
+                RowHandler="contextMenu(this)" IsPage="false" CssClass="table_data" runat="server">
+                <Colunms>
+                    <DT:CheckBox Visible="true" Width="4%" />
+                    <DT:RowNumber HeaderText="ID" Increase="false" SortField="ID" Visible="true" Width="6%" />
+                    <DT:ColumnItem HeaderText="角色名称" Width="15%" DataField="RoleName" />
+                    <DT:ColumnItem HeaderText="角色描述" Width="30%" DataField="Description" />
+                    <DT:ColumnItem HeaderText="创建时间" Width="15%" DataField="AddDate" SortField="AddDate" />
+                    <DT:ColumnItem HeaderText="系统角色" Width="10%" DataField="ID" DataFormat="formatIsSystem" />
+                    <DT:ColumnItem HeaderText="操作" Width="20%" DataField="ID" DataFormat="formatOperate" CssClass="bleft" />
+                </Colunms>
+            </DT:DataGrid>
         </div>
     </form>
     <script type="text/javascript">
-        $(document).ready(function() {
-            showLoading();
-            loadData();
-            hideMessage();
-        });
-        function loadData() {
-            var callback = function(res) {
-                if (res.error) {
-                    alert("请求错误，请刷新页面重试！\n" + res.error.Message);
-                    return;
-                }
-                showGridTree(res.value);
-            }
-            DTCMS.Web.admin.permission_list.GetRolesJsonData(callback);
-        }
-        var gridTree;
-        function showGridTree(json) {
-            gridTree = new TableTree4J("gridTree", false, true);
-            gridTree.config.useLine = false;
-            gridTree.tableDesc = '<table id="tab" class="GridView">';
-
-            var headerDataList = new Array("ID", "角色名称", "角色描述", "创建时间", "系统角色", "操作");
-            var widthList = new Array("4%", "6%", "15%", "30%", "15%", "10%", "20%");
-
-            gridTree.setHeader(headerDataList, -1, widthList, true, "GridHead", "", "", "");
-            //设置列样式
-            gridTree.gridHeaderColStyleArray = new Array("", "", "", "", "", "bleft");
-            gridTree.gridDataCloStyleArray = new Array("", "", "", "", "", "");
-
-            if (json != "") {
-                var data = eval("data=" + json);
-                $.each(data, function(i, n) {
-                    var dataList = new Array(n.id, n.rolename,
-                n.description, n.adddate, n.id == 1 ? "是" : "否", getOperateLink(n.id));
-                    gridTree.addGirdNode(dataList, n.id, -1, null, n.id, "");
-                });
-            }
-            gridTree.printTableTreeToElement("gridTreeDiv");
-        }
         //操作权限
         var EditPermission = <%= EditPermission.ToString().ToLower() %>;
         var DeletePermission = <%= DeletePermission.ToString().ToLower() %>;
         var SettingPermission = <%= SettingPermission.ToString().ToLower() %>;
-        function getOperateLink(id) {
+        function formatIsSystem(r){
+            return r.id == 1 ? '是' : '否';
+        }
+        function formatOperate(r){
             var operateLink = '';
             if (SettingPermission) {
-                operateLink += '<a href="permission_setting.aspx?Id=' + id + '">配置</a>&nbsp;&nbsp;';
+                operateLink += '<a href="permission_setting.aspx?Id=' + r.id + '">配置</a>&nbsp;&nbsp;';
             } else {
                 operateLink += '<a disabled="disabled">配置</a>&nbsp;&nbsp;';
             }
             if (EditPermission) {
-                operateLink += '<a href="javascript:editData(' + id + ')">编辑</a>&nbsp;&nbsp;';
+                operateLink += '<a href="javascript:editData(' + r.id + ')">编辑</a>&nbsp;&nbsp;';
             } else {
                 operateLink += '<a disabled="disabled">编辑</a>&nbsp;&nbsp;';
             }
-            if (DeletePermission && id != 1) {
-                operateLink += '<a href="javascript:deleteData(\'' + id + '\',false)">删除</a>';
+            if (DeletePermission && r.id != 1) {
+                operateLink += '<a href="javascript:deleteData(\'' + r.id + '\',false)">删除</a>';
             } else {
                 operateLink += '<a disabled="disabled">删除</a>';
             }
             return operateLink;
+        }
+        function contextMenu(row) {
+            var menu = { items: [
+                { text: "预览", icon: "view", alias: "view", action: menuItem_click },
+                { text: "编辑", icon: "edit", alias: "edit", action: menuItem_click },
+                { text: "删除", icon: "delete", alias: "delete", action: menuItem_click },
+                { type: "split" },
+                { text: "发布", alias: "create", action: menuItem_click },
+                { text: "置顶", alias: "create"},
+                { type: "split" },
+                { text: "刷新", icon: "refresh", alias: "refresh", action: menuItem_click }
+                ]};
+            $(row).contextmenu(menu);
+        }
+        function menuItem_click(target) {
+            var aid = target.id;
+            var cmd = this.data.alias;
+            switch (cmd) {
+                case "view": window.location.href = "article.aspx?Id=" + aid; break;
+                case "edit": editData(aid); break;
+                case "delete": deleteData(aid); break;
+                case "refresh": loadData(true); break;
+            }
         }
         //添加角色
         function addData(){
@@ -123,28 +120,24 @@
         }
         //配置权限
         function settingData(){
-            rid = getSingleCheckID
-            ();
+            rid = getSingleCheckID();
             if (rid == "") {
-                Dialog.alert("请选择要配置的权限数据!");
+                Dialog.alert("请选择要配置的角色!");
             }else{
                 window.location="permission_setting.aspx?Id=" + rid;
             }
         }
-        //id:角色编号
-        //flag:是否批量删除，表示true:批量删除，false:单个删除
-        function deleteData(rid, flag) {//删除角色
-            if (flag) {
-                rid = getCheckId();
-                if (rid == "") {
-                    Dialog.alert("请选择要删除的数据!");
-                    return;
-                }
+        //删除角色
+        function deleteData(rid) {
+            rid = rid|| getCheckId();
+            if (rid == "") {
+                Dialog.alert("请选择要删除的数据!");
+                return;
             }
             Dialog.confirm("删除角色将会影响到与之关联的用户不能正常使用后台功能，确定要删除吗？", function() {
                 var callback=function(res){
                     if (res.error) {
-                        alert("删除用户失败，请刷新本页面后重试！\n" + res.error.Message);
+                        alert("删除角色失败，请刷新本页面后重试！\n" + res.error.Message);
                         return;
                     }
                     if (res.value > 0) {

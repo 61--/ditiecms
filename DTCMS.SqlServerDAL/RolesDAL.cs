@@ -184,16 +184,16 @@ namespace DTCMS.SqlServerDAL
         /// </summary>
         /// <param name="fileds">要查询的字段，多个字段用,号隔开</param>
         /// <returns>DataTable数据集合</returns>
-        public DataTable GetDataTable(string fileds, string where)
+        public DataTable GetDataTable(string fileds, string where, string sortValue)
         {
-            string strSql = "";
-            if (where == "")
+            string strSql = string.Format("SELECT {0} FROM {1}Roles", fileds, tablePrefix);
+            if (where.Length > 0)
             {
-                strSql = string.Format("SELECT {0} FROM {1}Roles ORDER BY OrderID", fileds, tablePrefix);
+                strSql += string.Format(" WHERE {0}", where);
             }
-            else
+            if (sortValue.Length > 0)
             {
-                strSql = string.Format("SELECT {0} FROM {1}Roles WHERE {2} ORDER BY OrderID", fileds, tablePrefix, where);
+                strSql += string.Format(" ORDER BY {0}", sortValue);
             }
 
             DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);

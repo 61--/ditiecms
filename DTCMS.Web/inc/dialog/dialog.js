@@ -5,7 +5,7 @@
 // Edit LinPanxing (http://www.91aspx.com/)
 // LastUpdate 2009-12-4
 //-------------------------------------------------
-var IMAGESPATH = '/inc/dialog/images/'; //图片路径配置
+var IMAGESPATH = '/dtcms/inc/dialog/images/'; //图片路径配置
 /***公用方法和属性***/
 var isIE = navigator.userAgent.indexOf('MSIE') != -1;
 var isIE6 = navigator.userAgent.indexOf('MSIE 6.0') != -1;
@@ -104,7 +104,7 @@ var Dialog = function() {
     this.TipTitle = "";
     this.Tip = "";
     this.ShowTipRow = false;
-    this.Modal = 40;
+    this.Modal = 20;
     this.Drag = true;
     this.AutoClose = null;
     this.ShowCloseButton = true;
@@ -219,33 +219,33 @@ Dialog.prototype.create = function() {
     if (DialogDivWidth > bd.clientWidth) this.Width = Math.round(bd.clientWidth - 26);
     if (DialogDivHeight > bd.clientHeight) this.Height = Math.round(bd.clientHeight - 46 - (this.ShowButtonRow ? 40 : 0) - (this.ShowTipRow ? 50 : 0));
 
-    var html = '\
-    <table class="' + this.Skin + '" id="_Dialog_' + this.ID + '" style="width:' + (this.Width + 26) + 'px;">\
-      <tr class="dialog_header" align="right" id="_Draghandle_' + this.ID + '" style="' + (this.Drag ? "cursor: move;" : "") + '"><td class="h_l"></td>\
-        <td class="h_c"><h2 id="_Title_' + this.ID + '">' + this.Title + '</h2>\
-        <a href="javascript:;" onclick="Dialog.getInstance(\'' + this.ID + '\').cancelButton.onclick.apply(Dialog.getInstance(\'' + this.ID + '\').cancelButton,[]);" style="' + (this.ShowCloseButton ? "" : "display:none;") + '" class="close"></a></td>\
-        <td class="h_r"><a id="_forTab_' + this.ID + '" href="#;"></a></td></tr>\
-      <tr class="dialog_content"><td class="c_l"></td>\
-        <td class="c_c">\
-          <div class="tipRow" id="_TipRow_' + this.ID + '" style="' + (this.ShowTipRow ? "" : "display:none") + '">\
-            <div id="_TipTitle_' + this.ID + '">' + this.TipTitle + '</div>\
-            <div id="_Tip_' + this.ID + '">' + this.Tip + '</div></div>\
-          <div id="_Container_' + this.ID + '" style="width: ' + this.Width + 'px; height: ' + this.Height + 'px;">\
-            <div style="position: absolute; height: 100%; width: 100%; display: none; background-color:#fff; opacity: 0.5;" id="_Covering_' + this.ID + '">&nbsp;</div>\
-	' + (function(obj) {
-	    if (obj.InnerHtml) return obj.InnerHtml;
-	    if (obj.URL) return '<iframe width="100%" height="100%" frameborder="0" allowtransparency="true" id="_DialogFrame_' + obj.ID + '" src="' + obj.displacePath() + '"></iframe>';
-	    return "";
-	})(this) + '\
-          </div>\
-          <div class="buttonRow" id="_ButtonRow_' + this.ID + '" style="' + (this.ShowButtonRow ? "" : "display:none") + '">\
-            <div id="_DialogButtons_' + this.ID + '">\
-                <input type="button" class="button" value="确 定" id="_ButtonOK_' + this.ID + '"/>\
-                <input type="button" class="button" value="取 消" onclick="Dialog.getInstance(\'' + this.ID + '\').close();" id="_ButtonCancel_' + this.ID + '"/>\
-            </div></div>\
-        </td><td class="c_r"></td></tr>\
-      <tr class="dialog_bottom"><td class="b_l"></td><td class="b_c"></td><td class="b_r"><a onfocus=\'$id("_forTab_' + this.ID + '").focus();\' href="#;"></a></td></tr>\
-    </table>';
+    var html = [];
+    html.push('<table class="', this.Skin, '" id="_Dialog_', this.ID, '" style="width:', this.Width + 26, 'px;">');
+    html.push('<tr class="dialog_header" align="right" id="_Draghandle_', this.ID, '" style="', this.Drag ? "cursor: move;" : "", '"><td class="h_l"></td>');
+    html.push('<td class="h_c"><h2 id="_Title_', this.ID, '">', this.Title, '</h2>');
+    html.push('<a href="javascript:;" onclick="Dialog.getInstance(\'', this.ID, '\').cancelButton.onclick.apply(Dialog.getInstance(\'', this.ID, '\').cancelButton,[]);" style="', this.ShowCloseButton ? '' : 'display:none;', '" class="close"></a></td>');
+    html.push('<td class="h_r"><a id="_forTab_', this.ID, '" href="#;"></a></td></tr>');
+    html.push('<tr class="dialog_content"><td class="c_l"></td>');
+    html.push('<td class="c_c">');
+    html.push('<div class="tipRow" id="_TipRow_', this.ID, '" style="', this.ShowTipRow ? "" : "display:none", '">');
+    html.push('<div id="_TipTitle_', this.ID, '">', this.TipTitle, '</div>');
+    html.push('<div id="_Tip_', this.ID, '">', this.Tip, '</div></div>');
+    html.push('<div id="_Container_', this.ID, '" style="width: ', this.Width, 'px; height: ', this.Height, 'px;">');
+    html.push('<div style="position:absolute;height:100%;width:100%;display:none;background-color:#fff;opacity:0.5;" id="_Covering_', this.ID, '">&nbsp;</div>');
+    html.push((function(obj) {
+        if (obj.InnerHtml) return obj.InnerHtml;
+        if (obj.URL) return '<iframe width="100%" height="100%" frameborder="0" allowtransparency="true" id="_DialogFrame_' + obj.ID + '" src="' + obj.displacePath() + '"></iframe>';
+        return "";
+    })(this));
+    html.push('</div>');
+    html.push('<div class="buttonRow" id="_ButtonRow_', this.ID, '" style="', this.ShowButtonRow ? "" : "display:none", '">');
+    html.push('<div id="_DialogButtons_', this.ID, '">');
+    html.push('<input type="button" class="button" value="确 定" id="_ButtonOK_', this.ID, '"/> ');
+    html.push('<input type="button" class="button" value="取 消" onclick="Dialog.getInstance(\'', this.ID, '\').close();" id="_ButtonCancel_', this.ID, '"/>');
+    html.push('</div></div>');
+    html.push('</td><td class="c_r"></td></tr>');
+    html.push('<tr class="dialog_bottom"><td class="b_l"></td><td class="b_c"></td><td class="b_r"><a onfocus=\'$id("_forTab_', this.ID, '").focus();\' href="#;"></a></td></tr>');
+    html.push('</table>');
     var div = topWin.$id("_DialogDiv_" + this.ID);
     if (!div) {
         div = topDoc.createElement("div");
@@ -255,7 +255,7 @@ Dialog.prototype.create = function() {
     div.style.position = "absolute";
     div.style.left = "-9999px";
     div.style.top = "-9999px";
-    div.innerHTML = html;
+    div.innerHTML = html.join('');
     if (this.InvokeElementId) {
         var element = $id(this.InvokeElementId);
         element.style.position = "";

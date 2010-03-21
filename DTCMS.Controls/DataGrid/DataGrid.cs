@@ -24,6 +24,7 @@ namespace DTCMS.Controls
         #region DataGrid属性
 
         private string _id;
+        private string _primaryKey;
         private string _bindAjaxMethod;
         private bool _isPage = true;
         private int _pageSize = 15;
@@ -40,6 +41,17 @@ namespace DTCMS.Controls
         {
             get { return _id; }
             set { _id = value; }
+        }
+
+        /// <summary>
+        /// 主键
+        /// </summary>
+        [DefaultValue("")]
+        [Description("主键")]
+        public string PrimaryKey
+        {
+            get { return _primaryKey; }
+            set { _primaryKey = value; }
         }
 
         /// <summary>
@@ -139,7 +151,9 @@ namespace DTCMS.Controls
             output.RenderBeginTag(HtmlTextWriterTag.Tr);
 
             StringBuilder fieldsColumn = new StringBuilder();
-            string sysColumn = string.Empty;
+            bool increase = true;
+            bool isCheckBox = true;
+            bool isRowNumber = true;
 
             int colSpan = Colunms.Count;
             for (int i = 0; i < Colunms.Count; i++)
@@ -161,47 +175,53 @@ namespace DTCMS.Controls
                         output.RenderBeginTag(HtmlTextWriterTag.Input);
                         output.RenderEndTag();
                         output.RenderEndTag();
-
-                        if (checkBox.DataField == null)
-                        {
-                            sysColumn += "checkbox:{visible:true},";
-                        }
-                        else
-                        {
-                            sysColumn += string.Format("checkbox:{{visible:true,id:'{0}'}},", checkBox.DataField.ToLower());
-                        }
                     }
                     else
                     {
                         colSpan--;
+                        isCheckBox = false;
                     }
                 }
-                else if (Colunms[i].GetType() == typeof(RowsIndex))
+                else if (Colunms[i].GetType() == typeof(RowNumber))
                 {
-                    RowsIndex rowsIndex = (RowsIndex)this.Colunms[i];
+                    RowNumber rowNumber = (RowNumber)this.Colunms[i];
                     //是否显示数据行索引
-                    if (rowsIndex.Visible)
+                    if (rowNumber.Visible)
                     {
-                        if (rowsIndex.Width != null)
+                        if (rowNumber.Width != null)
                         {
-                            output.AddAttribute(HtmlTextWriterAttribute.Width, rowsIndex.Width);
+                            output.AddAttribute(HtmlTextWriterAttribute.Width, rowNumber.Width);
                         }
                         output.RenderBeginTag(HtmlTextWriterTag.Th);
-                        output.Write(rowsIndex.HeaderText);
-                        output.RenderEndTag();
-
-                        if (rowsIndex.DataField == null)
+                        if (rowNumber.SortField != null)
                         {
-                            sysColumn += "rowsindex:{visible:true},";
+                            output.AddAttribute(HtmlTextWriterAttribute.Id, rowNumber.SortField);
+                            output.AddAttribute(HtmlTextWriterAttribute.Href, "javascript:;");
+                            output.AddAttribute(HtmlTextWriterAttribute.Title, "点击排序");
+                            output.AddAttribute(HtmlTextWriterAttribute.Onclick, "onSortClick(this);");
+                            output.AddAttribute(HtmlTextWriterAttribute.Class, "nosort");
+                            output.AddAttribute("hidefocus", "true");
+                            output.RenderBeginTag(HtmlTextWriterTag.A);
+                            output.AddAttribute(HtmlTextWriterAttribute.Class, "sorttype");
+                            output.RenderBeginTag(HtmlTextWriterTag.Span);
+                            output.RenderEndTag();
+                            output.Write(rowNumber.HeaderText);
+
+                            output.RenderEndTag();
                         }
                         else
                         {
-                            sysColumn += string.Format("rowsindex:{{visible:true,id:'{0}'}},", rowsIndex.DataField.ToLower());
+                            output.Write(rowNumber.HeaderText);
                         }
+                        output.RenderEndTag();
+
+                        //是否显示自增序列，否则显示主键序列
+                        increase = rowNumber.Increase;
                     }
                     else
                     {
                         colSpan--;
+                        isRowNumber = false;
                     }
                 }
                 else
@@ -216,6 +236,10 @@ namespace DTCMS.Controls
                     {
                         output.AddAttribute(HtmlTextWriterAttribute.Class, columnItem.CssClass);
                     }
+                    if (columnItem.Align != null)
+                    {
+                        output.AddAttribute(HtmlTextWriterAttribute.Style, string.Format("text-align:{0}", columnItem.Align));
+                    }
                     output.RenderBeginTag(HtmlTextWriterTag.Th);
 
                     //如果排序字段不为空，则添加客户端排序方法
@@ -228,12 +252,10 @@ namespace DTCMS.Controls
                         output.AddAttribute(HtmlTextWriterAttribute.Class, "nosort");
                         output.AddAttribute("hidefocus", "true");
                         output.RenderBeginTag(HtmlTextWriterTag.A);
-                        output.Write(columnItem.HeaderText);
-
-                        //生成排序图标
-                        output.AddAttribute(HtmlTextWriterAttribute.Id, string.Format("{0}_SortType", columnItem.SortField));
+                        output.AddAttribute(HtmlTextWriterAttribute.Class, "sorttype");
                         output.RenderBeginTag(HtmlTextWriterTag.Span);
                         output.RenderEndTag();
+                        output.Write(columnItem.HeaderText);
 
                         output.RenderEndTag();
                     }
@@ -248,6 +270,10 @@ namespace DTCMS.Controls
                     if (columnItem.DataFormat != null)
                     {
                         fieldsColumn.AppendFormat(",dataFormat:{0}", columnItem.DataFormat);
+                    }
+                    if (columnItem.Align != null)
+                    {
+                        fieldsColumn.AppendFormat(",align:'{0}'", columnItem.Align);
                     }
                     fieldsColumn.Append("},");
                 }
@@ -267,15 +293,14 @@ namespace DTCMS.Controls
             output.RenderEndTag();
 
             #region 构造列表分页ToolBar
+            //构造Tfoot标签
+            output.AddAttribute(HtmlTextWriterAttribute.Class, "tfoot");
+            output.RenderBeginTag(HtmlTextWriterTag.Tfoot);
+            output.RenderBeginTag(HtmlTextWriterTag.Tr);
+            output.AddAttribute(HtmlTextWriterAttribute.Colspan, colSpan.ToString());
+            output.RenderBeginTag(HtmlTextWriterTag.Td);
             if (this.IsPage)
             {
-                //构造Tfoot标签
-                output.AddAttribute(HtmlTextWriterAttribute.Class, "tfoot");
-                output.RenderBeginTag(HtmlTextWriterTag.Tfoot);
-                output.RenderBeginTag(HtmlTextWriterTag.Tr);
-                output.AddAttribute(HtmlTextWriterAttribute.Colspan, colSpan.ToString());
-                output.RenderBeginTag(HtmlTextWriterTag.Td);
-
                 //构造PageBar开始
                 output.AddAttribute(HtmlTextWriterAttribute.Class, "pagebar");
                 output.RenderBeginTag(HtmlTextWriterTag.Div);
@@ -283,7 +308,7 @@ namespace DTCMS.Controls
                 output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
                 output.RenderBeginTag(HtmlTextWriterTag.Div);
                 output.WriteLine("<a id=\"pFirst\" class=\"pFirst_dis\" hidefocus=\"true\" href=\"javascript:;\" onclick=\"goPage(this)\" title=\"首页\"></a>");
-                output.WriteLine("<a id=\"pPrev\" class=\"pPrev_dis\" hidefocus=\"true\" href=\"javascript:;\" onclick=\"goPage(this)\" onmouseover=\"statusMsg('帮助小贴士，用键盘左右键可以快速翻页');return document.returnValue;\" onmouseout=\"window.status='';\" title=\"上一页\"></a>");
+                output.WriteLine("<a id=\"pPrev\" class=\"pPrev_dis\" hidefocus=\"true\" href=\"javascript:;\" onclick=\"goPage(this)\" title=\"上一页\"></a>");
                 output.RenderEndTag();
 
                 output.WriteLine("<p class=\"separator\"></p>");
@@ -297,7 +322,7 @@ namespace DTCMS.Controls
 
                 output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
                 output.RenderBeginTag(HtmlTextWriterTag.Div);
-                output.WriteLine("<a id=\"pNext\" class=\"pNext\" hidefocus=\"true\" href=\"javascript:;\" onclick=\"goPage(this)\" onmouseover=\"statusMsg('帮助小贴士，用键盘左右键可以快速翻页');return document.returnValue;\" onmouseout=\"window.status='';\" title=\"下一页\"></a>");
+                output.WriteLine("<a id=\"pNext\" class=\"pNext\" hidefocus=\"true\" href=\"javascript:;\" onclick=\"goPage(this)\" title=\"下一页\"></a>");
                 output.WriteLine("<a id=\"pLast\" class=\"pLast\" hidefocus=\"true\" href=\"javascript:;\" onclick=\"goPage(this)\" title=\"末页\"></a>");
                 output.RenderEndTag();
 
@@ -308,32 +333,41 @@ namespace DTCMS.Controls
                 output.WriteLine("每页显示条数：<select onchange=\"setPageSize(this)\" title=\"每页显示条数\"><option value=\"5\">5</option><option value=\"10\">10</option><option value=\"15\" selected=\"selected\">15</option><option value=\"20\">20</option><option value=\"25\">25</option><option value=\"40\">40</option></select>\r\n");
                 output.RenderEndTag();
                 output.RenderEndTag();
-
-                output.AddAttribute(HtmlTextWriterAttribute.Id, "pPageStat");
-                output.RenderBeginTag(HtmlTextWriterTag.Span);
-                //output.Write("正在加载数据，请稍候...");
-                output.RenderEndTag();
-                //构造PageBar结束
-
-                output.RenderEndTag();
-                output.RenderEndTag();
-                output.RenderEndTag();
             }
+
+            output.AddAttribute(HtmlTextWriterAttribute.Id, "pPageStat");
+            output.RenderBeginTag(HtmlTextWriterTag.Span);
+            //output.Write("正在加载数据，请稍候...");
+            output.RenderEndTag();
+            //构造PageBar结束
+
+            output.RenderEndTag();
+            output.RenderEndTag();
+            output.RenderEndTag();
             #endregion
 
             output.RenderEndTag();
 
             output.WriteLine();
             output.WriteLine("<script type=\"text/javascript\">");
-            output.WriteLine("function onSortClick(obj){if(obj.className=='nosort'){sortValue=obj.id+' DESC';obj.className='desc';}else if(obj.className=='desc'){sortValue=obj.id +' ASC';obj.className='asc';}else{sortValue='';obj.className='nosort';}if(s!=null&&s!=obj){s.className='nosort';}s =obj;loadData(true);}");
-            output.Write("function showDataList(data){if(data!=''){var json=eval('data='+data);totalRecord=json.totalRecord;totalPage=Math.ceil(totalRecord/pageSize);var option={jsondata:json.dataTable,");
-            output.Write(sysColumn);
+            output.WriteLine("function onSortClick(obj){if(obj.className=='nosort'){sortValue=obj.id+' DESC';obj.className='desc';}else if(obj.className=='desc'){sortValue=obj.id+' ASC';obj.className='asc';}else{sortValue='';obj.className='nosort';}if(s!=null&&s!=obj){s.className='nosort';}s=obj;loadData(true);}");
+            output.Write("function showDataList(data){if(data!=''){var json=eval('data='+data);totalRecord=json.totalRecord;");
+            if (this.IsPage)
+            {
+                output.Write("totalPage=Math.ceil(totalRecord/pageSize);");
+            }
+            output.Write(string.Format("var option={{jsondata:json.dataTable,primarykey:'{0}',checkbox:{{visible:{1}}},rownumber:{{visible:{2},increase:{3}}},usepager:{4},colspan:{5},",
+                this.PrimaryKey.ToLower(), isCheckBox.ToString().ToLower(), isRowNumber.ToString().ToLower(), increase.ToString().ToLower(), this.IsPage.ToString().ToLower(), colSpan));
             output.Write(string.Format("fields:[{0}],", fieldsColumn.ToString().TrimEnd(',')));
             if (this.RowHandler != null)
             {
                 output.Write(string.Format("rowhandler:'{0}',", this.RowHandler));
             }
-            output.WriteLine("curpage:curPage,pagesize:pageSize,totalrecord:totalRecord};$('#dataList').gridview(option);}}");
+            if (this.IsPage)
+            {
+                output.Write("curpage:curPage,");
+            }
+            output.WriteLine("totalrecord:totalRecord};$('#dataList').gridview(option);}}");
             output.WriteLine(BuildJavaScript());
             output.WriteLine("</script>");
         }
@@ -341,7 +375,6 @@ namespace DTCMS.Controls
         /// <summary>
         /// 创建Javascript脚本
         /// </summary>
-        /// <returns></returns>
         private string BuildJavaScript()
         {
             StringBuilder js = new StringBuilder();
@@ -349,13 +382,13 @@ namespace DTCMS.Controls
             {
                 js.Append(string.Format("var curPage=1;var pageSize={0};var totalPage;", PageSize));
             }
-            js.Append("var totalRecord;var s;var sortValue;var isLoading=true;\r\n");
+            js.Append("var totalRecord;var s;var sortValue;var isLoading=false;\r\n");
             js.Append("$(function(){loadData(true);});\r\n");
             js.Append("function loadData(show){isLoading=show||false;var callback=function(res){if(res.error){alert(\"请求错误，请刷新页面重试！\\n\"+res.error.Message);return;}showDataList(res.value);};");
             js.Append(this.BindAjaxMethod);
             if (this.IsPage)
             {
-                js.Append("(curPage,pageSize,sortValue,callback);}\r\n");
+                js.Append("(curPage,pageSize,sortValue,callback);isLoading=false;}\r\n");
                 js.Append("function goPage(obj){switch(obj.id){");
                 js.Append("case 'pFirst':if(curPage==1){return;}else{curPage=1;break;}case 'pNext':curPage++;break;case 'pPrev':curPage--;break;case 'pLast':if(curPage==totalPage){return;}else{curPage=totalPage;break;}}");
                 js.Append("if(curPage>totalPage){curPage=totalPage;return;}if(curPage<1){curPage=1;return;}loadData(true);}");
@@ -365,9 +398,9 @@ namespace DTCMS.Controls
             }
             else
             {
-                js.Append("(sortValue,callback);}\r\n");
+                js.Append("(sortValue,callback);isLoading=false;}\r\n");
             }
-            js.Append("AjaxPro.onTimeout=function(){alert('获取数据超时，请刷新本页面重试！');}\r\n");
+            js.Append("AjaxPro.onTimeout=function(){alert('请求超时，请刷新本页面重试！');}\r\n");
             js.Append("AjaxPro.onLoading=function(b){if(isLoading){if(b){showLoading('正在加载数据，请稍候...', '#dataList');}else{hideMessage();}}}");
             return js.ToString();
         }

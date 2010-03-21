@@ -139,18 +139,18 @@
     }
 
     showSuccess = function(msg, elem, autoClose) {
-        _showMessage('<img src="/admin/images/blue/success.gif" /> ' + msg, elem, autoClose || 1.5);
+        _showMessage('<img src="../images/blue/success.gif" /> ' + msg, elem, autoClose || 1.5);
         $("#_Popup_msg").css({ color: "#000", background: "#FCFFF0", border: "1px #98D87D solid" });
     }
 
     showError = function(msg, elem, autoClose) {
-        _showMessage('<img src="/admin/images/blue/error.gif" /> ' + msg, elem, autoClose || 1.5);
+        _showMessage('<img src="../images/blue/error.gif" /> ' + msg, elem, autoClose || 1.5);
         $("#_Popup_msg").css({ color: "#C00", background: "#FFF0ED", border: "1px #E89494 solid" });
     }
 
     showLoading = function(msg, elem) {
         var loadingMsg = msg || '正在加载数据，请稍候...';
-        _showMessage('<img src="/admin/images/blue/loading.gif" /> ' + loadingMsg, elem, 0);
+        _showMessage('<img src="../images/blue/loading.gif" /> ' + loadingMsg, elem, 0);
         $("#_Popup_msg").css({ color: "#000", background: "#FCFBE0", border: "1px #684E02 solid" });
     }
 

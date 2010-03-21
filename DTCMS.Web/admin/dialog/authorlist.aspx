@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>作者</title>
-    <script type="text/javascript" src="../js/jquery-1.3.2-vsdoc2.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
     <link href="../css/dialog.css" type="text/css" rel="Stylesheet" />
     <script type="text/javascript">
         $(document).ready(function() {

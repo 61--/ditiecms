@@ -26,9 +26,9 @@ namespace DTCMS.Web.admin
         /// 获取用户Json数据
         /// </summary>
         [AjaxPro.AjaxMethod]
-        public string GetUserJsonData(int currentPage)
+        public string GetUserJsonData(int curPage, int pageSize, string sortValue)
         {
-            return userBll.GetUserJsonData(currentPage);
+            return userBll.GetUserJsonData(curPage, pageSize, sortValue);
         }
 
         /// <summary>

@@ -29,9 +29,9 @@ namespace DTCMS.Web.admin
         /// 获取角色Json数据
         /// </summary>
         [AjaxPro.AjaxMethod]
-        public string GetRolesJsonData()
+        public string GetRolesJsonData(string sortValue)
         {
-            return roleBll.GetRolesJsonData();
+            return roleBll.GetRolesJsonData(sortValue);
         }
 
         /// <summary>
@@ -41,11 +41,19 @@ namespace DTCMS.Web.admin
         [AjaxPro.AjaxMethod]
         public int DeleteRoles(string id)
         {
+            if (id == "1")
+            {
+                return -1;
+            }
             try
             {
-                if (id == "")
+                if (id.IndexOf("1,") > 0)
                 {
-                    return -1;
+                    id = id.Replace("1,", "");
+                }
+                else if (id.IndexOf(",1") > 0)
+                {
+                    id = id.Replace(",1", "");
                 }
                 return roleBll.Delete(id);
             }

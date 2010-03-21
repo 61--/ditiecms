@@ -26,19 +26,21 @@
                 if (p.rowhandler != null) {
                     tbhtml.push(' onmousedown="', p.rowhandler, '"');
                 }
-                tbhtml.push('>');
+                tbhtml.push(' id="', n[p.primarykey], '">');
                 if (p.checkbox.visible) {
-                    tbhtml.push('<td><input type="checkbox" name="items" value="', n[p.checkbox.id], '" /></td>');
+                    tbhtml.push('<td><input type="checkbox" name="items" value="', n[p.primarykey], '" /></td>');
                 }
-                if (p.rowsindex.visible) {
-                    if (p.rowsindex.id == null) {
+                if (p.rownumber.visible) {
+                    if (p.rownumber.increase) {
                         tbhtml.push('<td>', i + 1, '</td>');
-                    } else {
-                        tbhtml.push('<td>', n[p.rowsindex.id], '</td>');
+                    }
+                    else {
+                        tbhtml.push('<td>', n[p.primarykey], '</td>');
                     }
                 }
                 $.each(p.fields, function(x, m) {
-                    tbhtml.push('<td>');
+                    tbhtml.push('<td');
+                    tbhtml.push(m.align == null ? '>' : ' align="' + m.align + '">');
                     tbhtml.push(m.dataFormat == null ? n[m.name] : m.dataFormat(n));
                     tbhtml.push('</td>');
                 });
@@ -54,7 +56,7 @@
             });
             tab.html(tbhtml.join(''));
         } else {
-            $("#dataList tr td").html("<p class='nodata'>没有要加载的数据！</p>");
+            $("#dataList").html("<tr><td colspan=" + p.colspan + " style='height:" + p.pagesize * 27 + "px' class='nodata'>没有要加载的数据！</td></tr>");
         }
 
         //生成分页按钮
@@ -87,9 +89,16 @@
                     $("#pLast").attr("class", "pLast");
                 }
             } else {
+                $("#pPageStat").html("");
                 $("#curPage").val(0);
                 $("#pNext").attr("class", "pNext_dis");
                 $("#pLast").attr("class", "pLast_dis");
+            }
+        } else {
+            if (totalRecord > 0) {
+                $("#pPageStat").html("显示第1条&nbsp;-&nbsp;第" + totalRecord + "条记录，共" + totalRecord + "条记录");
+            } else {
+                $("#pPageStat").html("");
             }
         }
     };

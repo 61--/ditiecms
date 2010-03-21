@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>DTCMS内容管理系统后台登陆</title>
     <link rel="stylesheet" type="text/css" href="css/login.css" />
-    <script type="text/javascript" src="js/jquery-1.3.2-vsdoc2.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="../inc/dialog/dialog.js"></script>
     <link href="../inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">

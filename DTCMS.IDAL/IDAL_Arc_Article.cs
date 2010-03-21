@@ -21,68 +21,52 @@ namespace DTCMS.IDAL
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		/// <param name="model">实体对象</param>
-		/// <returns>返回影响行数</returns>
 		int Add(Arc_Article model);
 
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		/// <param name="model">实体对象</param>
-		/// <returns>返回影响行数</returns>
 		int Update(Arc_Article model);
 
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		/// <param name="ID">编号ID</param>
-		/// <returns>返回影响行数</returns>
 		int Delete(int ID);
 
         /// <summary>
         /// 批量删除文章
         /// </summary>
-        /// <param name="ID">文章ID，多个ID用,号隔开</param>
-        /// <returns>返回影响行数</returns>
         int Delete(string ID);
+
+        /// <summary>
+        /// 批量审核文章
+        /// </summary>
+        int VerifyArticle(string ID);
 
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
-		/// <param name="ID">编号ID</param>
-		/// <param name="filedName">字段名称</param>
-		/// <param name="filedValue">字段值</param>
-		/// <returns>存在返回true，不存在返回false</returns>
 		bool Exists(int ID, string filedName, string filedValue);
 
         /// <summary>
         /// 根据栏目ID判断此栏目是否存在文章
         /// </summary>
-        /// <param name="CID">栏目编号</param>
-        /// <returns>true存在,false不存在</returns>
         bool ExistAtricleToClass(int CID);
        
 
         /// <summary>
         /// 判断文章是否已经存在
         /// </summary>
-        /// <param name="Title"></param>
-        /// <returns>添加ArticleID：-1</returns>
         bool ExistsArticleName(int ArticleID, string Title);
         
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		/// <param name="ID">编号ID</param>
-		/// <returns>实体对象</returns>
 		Arc_Article GetModel(int ID);
 
         /// <summary>
         /// 执行一条计算查询结果语句，返回查询结果（object）
         /// </summary>
-        /// <param name="filed">要查询的字段</param>
-        /// <param name="where">查询条件</param>
-        /// <returns>Object对象</returns>
         object GetSingle(string filed, string where);
 
         /// <summary>
@@ -94,24 +78,16 @@ namespace DTCMS.IDAL
         /// <summary>
         /// 根据查询字段获取列表
         /// </summary>
-        /// <param name="fileds">要查询的字段，多个字段用,号隔开</param>
-        /// <returns>DataTable数据集合</returns>
         DataTable GetDataTable(string fileds, string where);
 
 		/// <summary>
 		/// 获取泛型数据列表
 		/// </summary>
-		/// <param name="count">返回记录数</param>
-		/// <returns>对象泛型集合</returns>
 		List<Arc_Article> GetList(out int count);
 
 		/// <summary>
 		/// 分页获取泛型数据列表
 		/// </summary>
-		/// <param name="pageSize">分页大小</param>
-		/// <param name="pageIndex">当前页数</param>
-		/// <param name="count">返回记录总数</param>
-		/// <returns>分页对象泛型集合</returns>
 		List<Arc_Article> GetPageList(int pageSize, int pageIndex, out int count);
         
 	}

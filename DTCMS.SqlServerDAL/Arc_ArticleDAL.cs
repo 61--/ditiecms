@@ -199,6 +199,17 @@ namespace DTCMS.SqlServerDAL
         }
 
         /// <summary>
+        /// 批量审核文章
+        /// </summary>
+        /// <param name="UID">文章ID，多个ID用,号隔开</param>
+        /// <returns>返回影响行数</returns>
+        public int VerifyArticle(string UID)
+        {
+            string strSql = string.Format("UPDATE {0}Arc_Article SET IsVerify=ABS(IsVerify-1) WHERE ID IN({1})", tablePrefix, UID);
+            return dbHelper.ExecuteNonQuery(CommandType.Text, strSql.ToString());
+        }
+
+        /// <summary>
         /// 是否存在该记录
         /// </summary>
         /// <param name="ID">编号ID</param>

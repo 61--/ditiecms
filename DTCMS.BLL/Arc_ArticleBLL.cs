@@ -67,6 +67,16 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
+        /// 批量审核文章
+        /// </summary>
+        /// <param name="UID">文章ID，多个ID用,号隔开</param>
+        /// <returns>返回影响行数</returns>
+        public int VerifyArticle(string ID)
+        {
+            return dal.VerifyArticle(ID);
+        }
+
+        /// <summary>
         /// 判断某个字段值是否存在
         /// </summary>
         /// <param name="ID">ID</param>
@@ -164,7 +174,7 @@ namespace DTCMS.BLL
         public string GetArticleJsonData(int curPage, int pageSize, string sortValue)
         {
             int pagecount;
-            if (sortValue == null || sortValue == string.Empty)
+            if (sortValue == null || sortValue.Length == 0)
             {
                 sortValue = "A.ID DESC";
             }
@@ -175,7 +185,7 @@ namespace DTCMS.BLL
             }
             else
             {
-                return "";
+                return "{totalRecord:0,dataTable:[]}";
             }
         }
     }
