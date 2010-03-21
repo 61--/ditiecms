@@ -391,7 +391,6 @@
     <Content Include="admin\images\ico\m_setting.gif" />
     <Content Include="admin\images\ico\m_verify.gif" />
     <Content Include="admin\images\ico\m_view.gif" />
-    <Content Include="admin\images\ico\m_view.png" />
     <Content Include="admin\images\treeItemBgCur.gif" />
     <Content Include="admin\images\loading_scoll.gif" />
     <Content Include="admin\index.aspx" />
