@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("DTCMS.SqlProvider")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("PC123.ORG")]
+[assembly: AssemblyCompany("WWW.91ASPX.COM")]
 [assembly: AssemblyProduct("DTCMS.SqlProvider")]
-[assembly: AssemblyCopyright("Copyright © PC123.ORG 2010")]
+[assembly: AssemblyCopyright("Copyright © WWW.91ASPX.COM 2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
