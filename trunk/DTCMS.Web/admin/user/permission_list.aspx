@@ -134,6 +134,11 @@
                 Dialog.alert("请选择要删除的数据!");
                 return;
             }
+            var pattern=new RegExp("^1,|,1,|,1$");
+            if(rid=="1"||pattern.test(rid)){
+                Dialog.alert("您不能删除系统内置角色!");
+                return;
+            }
             Dialog.confirm("删除角色将会影响到与之关联的用户不能正常使用后台功能，确定要删除吗？", function() {
                 var callback=function(res){
                     if (res.error) {
