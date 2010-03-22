@@ -365,7 +365,7 @@ namespace DTCMS.Controls
             }
             if (this.IsPage)
             {
-                output.Write("curpage:curPage,");
+                output.Write("curpage:curPage,pagesize:pageSize,");
             }
             output.WriteLine("totalrecord:totalRecord};$('#dataList').gridview(option);}}");
             output.WriteLine(BuildJavaScript());
@@ -388,10 +388,10 @@ namespace DTCMS.Controls
             js.Append(this.BindAjaxMethod);
             if (this.IsPage)
             {
-                js.Append("(curPage,pageSize,sortValue,callback);isLoading=false;}\r\n");
+                js.Append("(curPage,pageSize,sortValue,callback);}\r\n");
                 js.Append("function goPage(obj){switch(obj.id){");
                 js.Append("case 'pFirst':if(curPage==1){return;}else{curPage=1;break;}case 'pNext':curPage++;break;case 'pPrev':curPage--;break;case 'pLast':if(curPage==totalPage){return;}else{curPage=totalPage;break;}}");
-                js.Append("if(curPage>totalPage){curPage=totalPage;return;}if(curPage<1){curPage=1;return;}loadData(true);}");
+                js.Append("if(curPage>totalPage){curPage=totalPage;return;}if(curPage<1){curPage=1;return;}loadData(true);}\r\n");
                 js.Append("function setPageSize(opt){pageSize=opt[opt.selectedIndex].text;totalPage=Math.ceil(totalRecord/pageSize);if(curPage>totalPage)curPage=totalPage;loadData(true);}\r\n");
                 js.Append("function jumpPage(val,e){e=e||event;val=parseInt(val);if(e.keyCode==13&&val>0&&val<=totalPage&&val!=curPage){curPage=val;loadData(true);}}\r\n");
                 js.Append("document.onkeydown=function(e){e=e||event;if(e.keyCode==37){curPage--;}else if(e.keyCode==39){curPage++;}else{return;}if(curPage>totalPage){curPage=totalPage;return;}if(curPage<1){curPage=1;return;}loadData(true);}\r\n");
@@ -401,7 +401,7 @@ namespace DTCMS.Controls
                 js.Append("(sortValue,callback);isLoading=false;}\r\n");
             }
             js.Append("AjaxPro.onTimeout=function(){alert('请求超时，请刷新本页面重试！');}\r\n");
-            js.Append("AjaxPro.onLoading=function(b){if(isLoading){if(b){showLoading('正在加载数据，请稍候...', '#dataList');}else{hideMessage();}}}");
+            js.Append("AjaxPro.onLoading=function(b){if(isLoading){if(b){showLoading('正在加载数据，请稍候...', '#dataList');}else{hideMessage();isLoading=false;}}}");
             return js.ToString();
         }
     }
