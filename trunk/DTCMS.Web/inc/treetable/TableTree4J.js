@@ -9,12 +9,12 @@
 | Editor: Yuhuo Li    Panxing Lin                   |
 |--------------------------------------------------*/
 //TableTree4J Object
-function TableTree4J(objectName, sequence, checked) {
+function TableTree4J(objectName, sequence, checked, t4JDir) {
     //vars-------------------------------------------------------------------
     var sequencenum = 1;    //序列
     var widthList = 0;  //列百分比
 
-    this.t4JDir = "/inc/treetable/";
+    this.t4JDir = t4JDir || "../../inc/treetable/";
     this.obj = objectName;
     this.treeNodes = [];
     this.htmlCode = "";

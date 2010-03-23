@@ -414,6 +414,7 @@
     <Content Include="admin\user\permission_setting.aspx" />
     <Content Include="admin\user\user_add.aspx" />
     <Content Include="admin\user\user_list.aspx" />
+    <Content Include="ajaxpro\请勿删除本目录 .txt" />
     <Content Include="bin\DTCMS.BLL.dll" />
     <Content Include="bin\DTCMS.BLL.pdb" />
     <Content Include="bin\DTCMS.Common.dll" />
