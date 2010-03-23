@@ -13,20 +13,6 @@ function selectTab(showContent, selfObj) {
     document.getElementById(showContent).style.display = "block";
     selfObj.blur();
 }
-/*** 全选反选 ***/
-function selectAll(elem, cid) {
-    var input = document.getElementById(cid).getElementsByTagName('input');
-    var len = input.length;
-    for (var i = 0; i < len; i++) {
-        if ((input[i].type == "checkbox") && elem.checked) {
-            input[i].checked = true;
-        }
-        else {
-            input[i].checked = false;
-        }
-    }
-}
-
 /*** 获取鼠标坐标 ***/
 function mousePosition(ev) {
     if (!ev) ev = window.event;
@@ -138,12 +124,6 @@ function getSingleCheckID() {
     }
     return iValue;
 }
-/*** 显示状态栏信息 ***/
-function statusMsg(msgStr) {
-    window.status = msgStr;
-    document.returnValue = true;
-}
-
 
 
 

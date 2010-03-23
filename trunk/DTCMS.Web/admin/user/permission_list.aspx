@@ -74,8 +74,7 @@
                 { text: "编辑", icon: "edit", alias: "edit", action: menuItem_click },
                 { text: "删除", icon: "delete", alias: "delete", action: menuItem_click },
                 { type: "split" },
-                { text: "发布", alias: "create", action: menuItem_click },
-                { text: "置顶", alias: "create"},
+                { text: "配置", icon: "setting", alias:"setting", action: menuItem_click },
                 { type: "split" },
                 { text: "刷新", icon: "refresh", alias: "refresh", action: menuItem_click }
                 ]};
@@ -85,9 +84,10 @@
             var aid = target.id;
             var cmd = this.data.alias;
             switch (cmd) {
-                case "view": window.location.href = "article.aspx?Id=" + aid; break;
+                case "view": window.location.href = "article.aspx?ID=" + aid; break;
                 case "edit": editData(aid); break;
                 case "delete": deleteData(aid); break;
+                case "setting":settingData(aid);break;
                 case "refresh": loadData(true); break;
             }
         }
@@ -119,28 +119,27 @@
             }
         }
         //配置权限
-        function settingData(){
-            rid = getSingleCheckID();
+        function settingData(rid){
+            rid = rid || getSingleCheckID();
             if (rid == "") {
                 Dialog.alert("请选择要配置的角色!");
             }else{
-                window.location="permission_setting.aspx?Id=" + rid;
+                window.location="permission_setting.aspx?ID=" + rid;
             }
         }
         //删除角色
         function deleteData(rid) {
-            rid = rid|| getCheckId();
+            rid = rid || getCheckId();
             if (rid == "") {
                 Dialog.alert("请选择要删除的数据!");
                 return;
             }
-            var pattern=new RegExp("^1,|,1,|,1$");
-            if(rid=="1"||pattern.test(rid)){
+            if (rid == "1" || rid.indexOf(",1") > -1 || rid.indexOf(",1,") > -1 || rid.indexOf("1,") > -1) {
                 Dialog.alert("您不能删除系统内置角色!");
                 return;
             }
             Dialog.confirm("删除角色将会影响到与之关联的用户不能正常使用后台功能，确定要删除吗？", function() {
-                var callback=function(res){
+                var callback = function(res) {
                     if (res.error) {
                         alert("删除角色失败，请刷新本页面后重试！\n" + res.error.Message);
                         return;
@@ -153,7 +152,7 @@
                         showError("删除角色失败！");
                     }
                 }
-                DTCMS.Web.admin.permission_list.DeleteRoles(rid,callback);
+                DTCMS.Web.admin.permission_list.DeleteRoles(rid, callback);
             });
         }
 </script>

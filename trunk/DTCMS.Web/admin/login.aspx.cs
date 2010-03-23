@@ -60,7 +60,7 @@ namespace DTCMS.Web.admin
                             Session["AdminUser"] = userInfo;
                             //更新用户登陆信息
                             userBll.UpdateLoginInfo(userInfo.UID, Request.UserHostAddress);
-                            Message.Dialog("提示信息", "登陆成功，正在转向管理后台！", "index.aspx", MessageIcon.Success, 2);
+                            Message.Dialog("提示信息", "登陆成功，正在转向管理后台！", "main_index.aspx", MessageIcon.Success, 2);
                         }
                     }
                 }

@@ -10,13 +10,13 @@ using DTCMS.BLL;
 
 namespace DTCMS.Web.admin
 {
-    public partial class main : AdminPage
+    public partial class main_index : AdminPage
     {
         private ModulesBLL modulesBll = new ModulesBLL();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            AjaxPro.Utility.RegisterTypeForAjax(typeof(main));
+            AjaxPro.Utility.RegisterTypeForAjax(typeof(main_index));
 
             if (Session["AdminUser"] != null)
             {

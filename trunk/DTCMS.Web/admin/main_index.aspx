@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="main.aspx.cs" Inherits="DTCMS.Web.admin.main" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" EnableViewState="false" CodeBehind="main_index.aspx.cs" Inherits="DTCMS.Web.admin.main_index" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -110,7 +110,7 @@
         if (url != "") {
             $("#main_body").attr("src", url);
         }
-        DTCMS.Web.admin.main.GetLeftnav(mid, openMenu_callback);
+        DTCMS.Web.admin.main_index.GetLeftnav(mid, openMenu_callback);
     }
     function openMenu_callback(res) {
         $("#left_menu").html(res.value);

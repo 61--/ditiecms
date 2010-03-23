@@ -5,12 +5,11 @@
 <head runat="server">
     <title>权限配置</title>
     <link href="../css/blue_body.css" type="text/css" rel="StyleSheet" />
-    <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
+    <script type="text/javascript" src="../../inc/dialog/dialog.js"></script>
     <script type="text/javascript" src="../js/public.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
-    <script type="text/javascript" src="/inc/treetable/TableTree4J.js"></script>
+    <script type="text/javascript" src="../../inc/treetable/TableTree4J.js"></script>
     <style type="text/css">
         html,body{
             height:100%;
@@ -104,6 +103,7 @@
         var gridTree;
         function showGridTree(json) {
             gridTree = new TableTree4J("gridTree", false, false);
+            gridTree.t4JDir = "../../inc/treetable/";
             gridTree.config.useIcon = true;
             gridTree.config.useLine = true;
             gridTree.config.booleanHighLightRow = false;
