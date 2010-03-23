@@ -47,14 +47,6 @@ namespace DTCMS.Web.admin
             }
             try
             {
-                if (id.IndexOf("1,") > 0)
-                {
-                    id = id.Replace("1,", "");
-                }
-                else if (id.IndexOf(",1") > 0)
-                {
-                    id = id.Replace(",1", "");
-                }
                 return roleBll.Delete(id);
             }
             catch
