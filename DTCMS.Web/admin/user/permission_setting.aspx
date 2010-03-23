@@ -103,7 +103,6 @@
         var gridTree;
         function showGridTree(json) {
             gridTree = new TableTree4J("gridTree", false, false);
-            gridTree.t4JDir = "../../inc/treetable/";
             gridTree.config.useIcon = true;
             gridTree.config.useLine = true;
             gridTree.config.booleanHighLightRow = false;
