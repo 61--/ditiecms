@@ -160,7 +160,7 @@ namespace DTCMS.SqlServerDAL
         public Modules GetModel(int ID)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("SELECT ID,ModuleID,ParentID,ModuleName,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM " + tablePrefix + "Modules");
+            strSql.Append("SELECT ID,ModuleID,ParentID,ModuleName,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable,OrderID FROM " + tablePrefix + "Modules");
             strSql.Append(" WHERE ID=@ID");
             SqlParameter[] cmdParms = {
 				AddInParameter("@ID", SqlDbType.Int, 4, ID)};
@@ -251,7 +251,7 @@ namespace DTCMS.SqlServerDAL
         /// <returns>模块对象泛型集合</returns>
         public List<Modules> GetList(SqlLoading sl, out int count)
         {
-            string strSql = string.Format("SELECT ID,ModuleID,ParentID,ModuleName,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM {0}Modules{1} ORDER BY OrderID", tablePrefix, sl.GetSqlWhereString());
+            string strSql = string.Format("SELECT ID,ModuleID,ParentID,ModuleName,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable,OrderID FROM {0}Modules{1} ORDER BY OrderID", tablePrefix, sl.GetSqlWhereString());
 
             using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql, null))
             {
@@ -267,7 +267,7 @@ namespace DTCMS.SqlServerDAL
         /// <returns>模块对象泛型集合</returns>
         public List<Modules> GetList(out int count)
         {
-            string strSql = string.Format("SELECT ID,ModuleID,ParentID,ModuleName,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable FROM {0}Modules ORDER BY OrderID", tablePrefix);
+            string strSql = string.Format("SELECT ID,ModuleID,ParentID,ModuleName,EName,ModuleDepth,ModuleURL,Target,Description,CreateTime,IsQuickMenu,IsSystem,IsEnable,OrderID FROM {0}Modules ORDER BY OrderID", tablePrefix);
             using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, strSql, null))
             {
                 List<Modules> lst = GetList(dr, out count);
@@ -314,6 +314,7 @@ namespace DTCMS.SqlServerDAL
             model.IsQuickMenu = dbHelper.GetByte(dr["IsQuickMenu"]);
             model.IsSystem = dbHelper.GetByte(dr["IsSystem"]);
             model.IsEnable = dbHelper.GetByte(dr["IsEnable"]);
+            model.OrderID = dbHelper.GetInt(dr["OrderID"]);
             return model;
         }
 

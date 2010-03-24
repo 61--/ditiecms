@@ -54,7 +54,8 @@ namespace DTCMS.Web.admin
                 StringBuilder sb = new StringBuilder();
                 foreach (Modules m in submlist)
                 {
-                    sb.AppendFormat("<li><a href=\"{0}\" alt=\"{1}\" target=\"{2}\">{3}</a></li>\r\n", m.ModuleURL, m.Description, m.Target, m.ModuleName);
+                    //sb.AppendFormat("<li><a href=\"{0}\" alt=\"{1}\" target=\"{2}\">{3}</a></li>\r\n", m.ModuleURL, m.Description, m.Target, m.ModuleName);
+                    sb.AppendFormat("<li><a href=\"{0}\" alt=\"{1}\" target=\"{2}\" ondblclick='javascript:editMenu({4})'>{3}</a></li>\r\n", m.ModuleURL, m.Description, m.Target, m.ModuleName, m.ID);
                 }
                 return sb.ToString();
             }

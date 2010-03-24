@@ -10,6 +10,7 @@
     <script type="text/javascript" src="../inc/dialog/dialog.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/public.js"></script>
 </head>
 <body>
 <form id="form1" runat="server">
@@ -123,6 +124,23 @@
             $("#ajaxloading").show();
         } else {
             $("#ajaxloading").fadeOut(500);
+        }
+    }
+
+    //临时方法——修改模块
+    function editMenu(id) {
+        Dialog.open("编辑模块", addPermission_onOk, "ajaxtest.aspx?action=edit&id="+id,450,350);
+    }
+    function addPermission_onOk(win) {
+        var ret = win.getAddData();
+        if (ret == 1) {
+            showSuccess("添加模块成功！");
+        } else if (ret == 2) {
+            showSuccess("编辑模块成功！");
+        } else if (ret == -1) {
+            showError("添加模块失败！");
+        } else if (ret == -2) {
+            showError("编辑模块失败！");
         }
     }
     </script>
