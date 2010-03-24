@@ -5,12 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>栏目列表</title>
     <link href="../css/blue_body.css" type="text/css" rel="StyleSheet" />
-    <link href="/inc/dialog/dialog.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="/inc/dialog/dialog.js"></script>
+    <script type="text/javascript" src="../../inc/dialog/dialog.js"></script>
     <script type="text/javascript" src="../js/public.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
-    <script type="text/javascript" src="/inc/treetable/TableTree4J.js"></script>
+    <script type="text/javascript" src="../../inc/treetable/TableTree4J.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -60,15 +59,12 @@
 
             if (json != "") {
                 var data = eval("json=" + json).dataTable;
-                var st = new Date().getTime();
                 $.each(data, function(i, n) {
                     var dataList = new Array("<a href='class_add.aspx?Id=" + n.cid + "'>" + n.classname + "</a>", n.classtype, n.adddate, "<input type=\"text\" onchange=\"updateSort(" + n.cid + ")\" id=\"order_" + n.cid + "\" class=\"class_order\" value=\"" + n.orderid + "\">", "<a href=\"class_add.aspx?Id=" + n.cid + "\">编辑</a>&nbsp;&nbsp;<a href=\"javascript:deleteData(" + n.cid + ",false)\">删除</a>");
                     gridTree.addGirdNode(dataList, n.cid, n.parentid == 0 ? -1 : n.parentid, null, n.orderid, "");
                 });
             }
             gridTree.printTableTreeToElement("gridTreeDiv");
-            var st2 = new Date().getTime() - st;
-            alert(st2);
         }
         //*cid:  栏目编号
         function editData() {
