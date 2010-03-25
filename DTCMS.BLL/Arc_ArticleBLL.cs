@@ -178,7 +178,7 @@ namespace DTCMS.BLL
             {
                 sortValue = "A.ID DESC";
             }
-            DataTable dt = GetPageList("ID", curPage, pageSize, "A.ID,A.Title,C.ClassName,A.AddDate,A.IsVerify", sortValue, null, out pagecount);
+            DataTable dt = GetPageList("ID", curPage, pageSize, "A.ID,A.Title,C.ClassName,CONVERT(VARCHAR,A.AddDate,120) AddDate,A.IsVerify", sortValue, null, out pagecount);
             if (dt != null)
             {
                 return Utils.DataTableToJson(dt, pagecount).ToString();

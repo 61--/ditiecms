@@ -45,7 +45,7 @@ img{
     float: left;
     margin-right: 0 !important;
     margin-right: -3px;
-    border-right:1px #4294D0 solid;
+    border-right:1px #BCCEE8 solid;
     background:#F8FBFE;
 }
 .main
@@ -57,12 +57,16 @@ img{
 .bottom
 {
     position: relative;
-    height:25px;
+    height:24px;
     text-align:center;
     font-size:11px;
     line-height:25px;
-    background:#DBEBFA;
+    background:#EDF4FF;
+    border-top:1px #BCCEE8 solid;
     clear: both;
+}
+.bottom a{
+    color:#333;
 }
 /*---- Ajax Loading --------------*/
 #ajaxloading
