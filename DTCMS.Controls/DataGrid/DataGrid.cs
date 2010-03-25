@@ -330,7 +330,7 @@ namespace DTCMS.Controls
 
                 output.AddAttribute(HtmlTextWriterAttribute.Class, "pGroup");
                 output.RenderBeginTag(HtmlTextWriterTag.Div);
-                output.WriteLine("每页显示条数：<select onchange=\"setPageSize(this)\" title=\"每页显示条数\"><option value=\"5\">5</option><option value=\"10\">10</option><option value=\"15\" selected=\"selected\">15</option><option value=\"20\">20</option><option value=\"25\">25</option><option value=\"40\">40</option></select>\r\n");
+                output.WriteLine("每页显示条数：<select onchange=\"setPageSize(this)\" title=\"每页显示条数\"><option value=\"5\">5</option><option value=\"10\">10</option><option value=\"15\" selected=\"selected\">15</option><option value=\"20\">20</option><option value=\"30\">30</option><option value=\"50\">50</option></select>\r\n");
                 output.RenderEndTag();
                 output.RenderEndTag();
             }

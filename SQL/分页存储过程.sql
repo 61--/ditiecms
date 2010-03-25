@@ -1,4 +1,4 @@
--- 字符串缓存实现的通用分页存储过程(转自邹建)  
+-- 字符串缓存实现的通用分页存储过程
 CREATE PROC [dbo].[UP_GetRecordByPage]  
 @tbname     nvarchar(1000)='',               --要分页显示的表名，可以使用表联合  
 @FieldKey   nvarchar(1000)='',               --用于定位记录的主键(惟一键)字段,只能是单个字段  

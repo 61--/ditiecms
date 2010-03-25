@@ -77,7 +77,7 @@ namespace DTCMS.Web.admin
                 foreach (Modules m in mlist)
                 {
                     sb.Append("<div class=\"menu\">\r\n<dl>\r\n");
-                    sb.AppendFormat("<dt><a href=\"javascript:toggleMenu('{0}');\" hidefocus=\"true\">{1}</a></dt>\r\n", m.ModuleID, m.ModuleName);
+                    sb.AppendFormat("<dt><a href=\"javascript:toggleMenu('{0}');\" ondblclick='javascript:editMenu({2})' hidefocus=\"true\">{1}</a></dt>\r\n", m.ModuleID, m.ModuleName, m.ID);
                     sb.AppendFormat("<dd id=\"{0}\" style=\"display:block;\">\r\n<ul>\r\n", m.ModuleID);
                     sb.Append(this.GetSubnav(m.ModuleID));
                     sb.Append("</ul>\r\n</dd>\r\n</dl>\r\n</div>\r\n");
