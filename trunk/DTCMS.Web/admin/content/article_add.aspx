@@ -137,7 +137,7 @@
                     </tr>
                     <tr>
                         <td class="main_bleft split">
-                            保存路劲:
+                            保存路径:
                         </td>
                         <td class="main_bright split">
                             <input type="text" id="txt_FilePath" class="textbox" runat="server" /> 留空则按照栏目默认设置
