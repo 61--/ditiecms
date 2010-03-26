@@ -140,7 +140,7 @@
 
     showSuccess = function(msg, elem, autoClose) {
         _showMessage('<img src="../images/blue/success.gif" /> ' + msg, elem, autoClose || 1.5);
-        $("#_Popup_msg").css({ color: "#000", background: "#FCFFF0", border: "1px #98D87D solid" });
+        $("#_Popup_msg").css({ color: "#000", background: "#FCFFF0", border: "1px #80D145 solid" });
     }
 
     showError = function(msg, elem, autoClose) {

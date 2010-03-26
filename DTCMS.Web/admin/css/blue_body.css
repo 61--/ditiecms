@@ -2,13 +2,14 @@
 	padding: 0px;
 	margin: 0px;
 }
+html {
+  overflow-y:scroll;
+} 
 body {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	height: 100%;
 	color: #333;
-	_overflow-y: scroll;
-	_position:relative;
 }
 img {
 	border: 0px;
@@ -137,10 +138,9 @@ a.b5:hover
 	width: 420px;
 }
 #container {
-	width:96%;
 	margin-top: 10px;
-	margin-left:auto;
-	margin-right:auto;
+	padding-left:10px;
+	padding-right:10px;
 	overflow: hidden;
 }
 .tabs {
@@ -312,8 +312,6 @@ a.b5:hover
 .popup_msg
 {
 	vertical-align:middle;
-	filter:Alpha(Opacity=80);
-	-moz-opacity:0.8;
 	height:30px;
 	overflow:hidden;
 }
