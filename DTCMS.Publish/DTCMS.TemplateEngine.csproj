@@ -3,13 +3,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{48F7AAEE-C701-426A-990E-CB95EA6C5D29}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DTCMS.Publish</RootNamespace>
-    <AssemblyName>DTCMS.Publish</AssemblyName>
+    <RootNamespace>DTCMS.TemplateEngine</RootNamespace>
+    <AssemblyName>DTCMS.TemplateEngine</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -36,12 +36,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArticleLable.cs" />
-    <Compile Include="Lable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Publishs.cs" />
-    <Compile Include="PublishTool.cs" />
-    <Compile Include="ReplayCommon.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTCMS.BLL\DTCMS.BLL.csproj">
