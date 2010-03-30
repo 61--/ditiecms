@@ -33,56 +33,54 @@ namespace Ader.TemplateEngine.Parser.AST
 
 	public class Tag : Element
 	{
-		string name;
-		List<TagAttribute> attribs;
-		List<Element> innerElements;
-		TagClose closeTag;
-		bool isClosed;	// set to true if tag ends with />
+        private string _Name;
+        private List<TagAttribute> _Attribs;
+        private List<Element> _InnerElements;
+        private TagClose _CloseTag;
+        private bool _IsClosed;	// set to true if tag ends with />
 
-		public Tag(int line, int col, string name)
-			:base(line, col)
-		{
-			this.name = name;
-			this.attribs = new List<TagAttribute>();
-			this.innerElements = new List<Element>();
-		}
+        public Tag(int line, int col, string name)
+            : base(line, col)
+        {
+            _Name = name;
+            _Attribs = new List<TagAttribute>();
+            _InnerElements = new List<Element>();
+        }
 
 		public List<TagAttribute> Attributes
 		{
-			get { return this.attribs; }
+            get { return this._Attribs; }
 		}
 
-		public Expression AttributeValue(string name)
-		{
-			foreach (TagAttribute attrib in attribs)
-				if (string.Compare(attrib.Name, name, true) == 0)
-					return attrib.Expression;
+        public Expression AttributeValue(string name)
+        {
+            foreach (TagAttribute attrib in _Attribs)
+                if (string.Compare(attrib.Name, name, true) == 0)
+                    return attrib.Expression;
 
-			return null;
-		}
+            return null;
+        }
 
-		public List<Element> InnerElements
-		{
-			get { return this.innerElements; }
-		}
+        public List<Element> InnerElements
+        {
+            get { return _InnerElements; }
+        }
 
-		public string Name
-		{
-			get { return this.name; }
-		}
+        public string Name
+        {
+            get { return _Name; }
+        }
 
-		public TagClose CloseTag
-		{
-			get { return this.closeTag; }
-			set { this.closeTag = value; }
-		}
+        public TagClose CloseTag
+        {
+            get { return _CloseTag; }
+            set { _CloseTag = value; }
+        }
 
-		public bool IsClosed
-		{
-			get { return this.isClosed; }
-			set { this.isClosed = value; }
-		}
-
-
+        public bool IsClosed
+        {
+            get { return _IsClosed; }
+            set { _IsClosed = value; }
+        }
 	}
 }

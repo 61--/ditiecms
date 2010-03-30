@@ -29,33 +29,33 @@ using System.Text;
 
 namespace Ader.TemplateEngine.Parser.AST
 {
-	public class MethodCall : Expression
-	{
-		string name;
-		Expression obj;
-		Expression[] args;
+    public class MethodCall : Expression
+    {
+        private string _Name;
+        private Expression _Obj;
+        private Expression[] _Args;
 
-		public MethodCall(int line, int col, Expression obj, string name, Expression[] args)
-			:base(line, col)
-		{
-			this.name = name;
-			this.args = args;
-			this.obj = obj;
-		}
+        public MethodCall(int line, int col, Expression obj, string name, Expression[] args)
+            : base(line, col)
+        {
+            _Name = name;
+            _Args = args;
+            _Obj = obj;
+        }
 
-		public Expression CallObject
-		{
-			get { return this.obj; }
-		}
+        public Expression CallObject
+        {
+            get { return _Obj; }
+        }
 
-		public Expression[] Args
-		{
-			get { return this.args; }
-		}
+        public Expression[] Args
+        {
+            get { return _Args; }
+        }
 
-		public string Name
-		{
-			get { return this.name; }
-		}
-	}
+        public string Name
+        {
+            get { return _Name; }
+        }
+    }
 }

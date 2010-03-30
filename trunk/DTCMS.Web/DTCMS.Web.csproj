@@ -35,7 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxPro.2, Version=9.2.17.1, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="CKFinder, Version=1.4.0.19284, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL" />
+    <Reference Include="CKFinder, Version=1.4.0.19284, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\CKFinder.dll</HintPath>
+    </Reference>
     <Reference Include="FredCK.FCKeditorV2, Version=2.2.2755.20620, Culture=neutral, PublicKeyToken=4f86767c9b519a06">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\FredCK.FCKeditorV2.dll</HintPath>
@@ -122,6 +125,20 @@
     </Compile>
     <Compile Include="admin\ajax\dialog_list.aspx.designer.cs">
       <DependentUpon>dialog_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\createstatic\createarchive.aspx.cs">
+      <DependentUpon>createarchive.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\createstatic\createarchive.aspx.designer.cs">
+      <DependentUpon>createarchive.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\createstatic\createhome.aspx.cs">
+      <DependentUpon>createhome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\createstatic\createhome.aspx.designer.cs">
+      <DependentUpon>createhome.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
@@ -343,6 +360,8 @@
     <Content Include="admin\ajax\attachment_list.aspx" />
     <Content Include="admin\ajax\class_list.aspx" />
     <Content Include="admin\ajax\dialog_list.aspx" />
+    <Content Include="admin\createstatic\createarchive.aspx" />
+    <Content Include="admin\createstatic\createhome.aspx" />
     <Content Include="admin\css\dialog.css" />
     <Content Include="admin\dialog\newssourcelist.aspx" />
     <Content Include="admin\images\blue\action.gif" />
@@ -415,8 +434,6 @@
     <Content Include="admin\user\user_add.aspx" />
     <Content Include="admin\user\user_list.aspx" />
     <Content Include="ajaxpro\请勿删除本目录 .txt" />
-    <Content Include="bin\BLL.dll" />
-    <Content Include="bin\BLL.pdb" />
     <Content Include="bin\DTCMS.BLL.dll" />
     <Content Include="bin\DTCMS.BLL.pdb" />
     <Content Include="bin\DTCMS.Common.dll" />
@@ -439,6 +456,8 @@
     <Content Include="bin\DTCMS.SqlProvider.pdb" />
     <Content Include="bin\DTCMS.SqlServerDAL.dll" />
     <Content Include="bin\DTCMS.SqlServerDAL.pdb" />
+    <Content Include="bin\TemplateEngine.dll" />
+    <Content Include="bin\TemplateEngine.pdb" />
     <Content Include="ckfinder\bin\CKFinder.dll" />
     <Content Include="ckfinder\ckfinder.html" />
     <Content Include="ckfinder\ckfinder.js" />
@@ -969,8 +988,10 @@
     <Content Include="editor\fcktemplates.xml" />
     <Content Include="admin\template\templateFile_edit.aspx" />
     <Content Include="index.aspx" />
+    <Content Include="template\default\arc_article.html" />
     <Content Include="template\default\index.html" />
-    <Content Include="template\default\news.htm" />
+    <Content Include="template\default\_Public_Footer.html" />
+    <Content Include="template\default\_Public_Header.html" />
     <Content Include="ValidateCode.ashx" />
     <None Include="admin\images\blue\admin_tlogo.psd" />
     <None Include="ckfinder\userfiles\.htaccess" />
@@ -1019,9 +1040,12 @@
       <Project>{C7E7D0AF-4A77-4653-B335-F3CB0B4D128E}</Project>
       <Name>DTCMS.SqlServerDAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DTCMS.TemplateEngine\DTCMS.TemplateEngine.csproj">
+      <Project>{8EDEE1BC-1BD8-45E2-88D0-8108218E766F}</Project>
+      <Name>DTCMS.TemplateEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="admin\createstatic\" />
     <Folder Include="admin\log\" />
     <Folder Include="css\" />
     <Folder Include="images\" />

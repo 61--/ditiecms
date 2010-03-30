@@ -31,31 +31,31 @@ namespace Ader.TemplateEngine
 {
 	public class TemplateRuntimeException : Exception
 	{
-		int line;
-		int col;
+        private int _Line;
+        private int _Col;
 
 		public TemplateRuntimeException(string msg, int line, int col)
 			:base(msg)
 		{
-			this.line = line;
-			this.col = col;
+			this._Line = line;
+			this._Col = col;
 		}
 
 		public TemplateRuntimeException(string msg, Exception innerException, int line, int col)
 			:base(msg, innerException)
 		{
-			this.line = line;
-			this.col = col;
+			this._Line = line;
+			this._Col = col;
 		}
 
 		public int Col
 		{
-			get { return this.col; }
+			get { return this._Col; }
 		}
 
 		public int Line
 		{
-			get { return this.line; }
+			get { return this._Line; }
 		}
 	}
 }

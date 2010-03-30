@@ -31,17 +31,17 @@ namespace Ader.TemplateEngine.Parser.AST
 {
 	public class IntLiteral : Expression
 	{
-		int value;
+        private int _Value;
 
 		public IntLiteral(int line, int col, int value)
 			:base(line, col)
 		{
-			this.value = value;
+            this._Value = value;
 		}
 
 		public int Value
 		{
-			get { return this.value; }
+            get { return this._Value; }
 		}
 	}
 }

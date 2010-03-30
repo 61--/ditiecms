@@ -34,28 +34,27 @@ namespace Ader.TemplateEngine
 {
 	public class Template
 	{
-		string name;
-		List<Element> elements;
-		Template parent;
-
-		Dictionary<string, Template> templates;
+        private string _Name;
+        private List<Element> _Elements;
+        private Template _Parent;
+        private Dictionary<string, Template> _Templates;
 
 		public Template(string name, List<Element> elements)
 		{
-			this.name = name;
-			this.elements = elements;
-			this.parent = null;
+            _Name = name;
+            _Elements = elements;
+            _Parent = null;
 
-			InitTemplates();
+            _InitTemplates();
 		}
 
 		public Template(string name, List<Element> elements, Template parent)
 		{
-			this.name = name;
-			this.elements = elements;
-			this.parent = parent;
+            _Name = name;
+            _Elements = elements;
+            _Parent = parent;
 
-			InitTemplates();
+            _InitTemplates();
 		}
 
 		/// <summary>
@@ -95,29 +94,29 @@ namespace Ader.TemplateEngine
 		/// go thru all tags and see if they are template tags and add
 		/// them to this.templates collection
 		/// </summary>
-		private void InitTemplates()
+		private void _InitTemplates()
 		{
-			this.templates = new Dictionary<string, Template>(StringComparer.InvariantCultureIgnoreCase);
+            _Templates = new Dictionary<string, Template>(StringComparer.InvariantCultureIgnoreCase);
 
-			foreach (Element elem in elements)
-			{
-				if (elem is Tag)
-				{
-					Tag tag = (Tag)elem;
-					if (string.Compare(tag.Name, "template", true) == 0)
-					{
-						Expression ename = tag.AttributeValue("name");
-						string tname;
-						if (ename is StringLiteral)
-							tname = ((StringLiteral)ename).Content;
-						else
-							tname = "?";
+            foreach (Element elem in _Elements)
+            {
+                if (elem is Tag)
+                {
+                    Tag tag = (Tag)elem;
+                    if (string.Compare(tag.Name, "template", true) == 0)
+                    {
+                        Expression ename = tag.AttributeValue("name");
+                        string tname;
+                        if (ename is StringLiteral)
+                            tname = ((StringLiteral)ename).Content;
+                        else
+                            tname = "?";
 
-						Template template = new Template(tname, tag.InnerElements, this);
-						templates[tname] = template;
-					}
-				}
-			}
+                        Template template = new Template(tname, tag.InnerElements, this);
+                        _Templates[tname] = template;
+                    }
+                }
+            }
 		}
 
 		/// <summary>
@@ -125,7 +124,7 @@ namespace Ader.TemplateEngine
 		/// </summary>
 		public List<Element> Elements
 		{
-			get { return this.elements; }
+            get { return this._Elements; }
 		}
 
 		/// <summary>
@@ -133,7 +132,7 @@ namespace Ader.TemplateEngine
 		/// </summary>
 		public string Name
 		{
-			get { return this.name; }
+            get { return this._Name; }
 		}
 
 		/// <summary>
@@ -141,7 +140,7 @@ namespace Ader.TemplateEngine
 		/// </summary>
 		public bool HasParent
 		{
-			get { return parent != null; }
+            get { return _Parent != null; }
 		}
 
 		/// <summary>
@@ -150,7 +149,7 @@ namespace Ader.TemplateEngine
 		/// <value></value>
 		public Ader.TemplateEngine.Template Parent
 		{
-			get { return this.parent; }
+            get { return this._Parent; }
 		}
 
 		/// <summary>
@@ -162,12 +161,12 @@ namespace Ader.TemplateEngine
 		/// <returns></returns>
 		public virtual Template FindTemplate(string name)
 		{
-			if (templates.ContainsKey(name))
-				return templates[name];
-			else if (parent != null)
-				return parent.FindTemplate(name);
-			else
-				return null;
+            if (_Templates.ContainsKey(name))
+                return _Templates[name];
+            else if (_Parent != null)
+                return _Parent.FindTemplate(name);
+            else
+                return null;
 		}
 
 		/// <summary>
@@ -175,7 +174,7 @@ namespace Ader.TemplateEngine
 		/// </summary>
 		public System.Collections.Generic.Dictionary<string, Ader.TemplateEngine.Template> Templates
 		{
-			get { return this.templates; }
+            get { return this._Templates; }
 		}
 	}
 }

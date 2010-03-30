@@ -761,8 +761,8 @@ namespace Ader.TemplateEngine
 				}
 				else if (exp is IntLiteral)
 					return ((IntLiteral)exp).Value;
-				else if (exp is DoubleLiteral)
-					return ((DoubleLiteral)exp).Value;
+                //else if (exp is DoubleLiteral)
+                //    return ((DoubleLiteral)exp).Value;
 				else if (exp is FCall)
 				{
 					FCall fcall = (FCall)exp;

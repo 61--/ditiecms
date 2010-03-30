@@ -77,39 +77,40 @@ namespace Ader.TemplateEngine.Parser
 
 	public class Token
 	{
-		int line;
-		int col;
-		string data;
-		TokenKind tokenKind;
+		private int _Line;
+		private int _Col;
+		private string _Data;
+		private TokenKind _TokenKind;
 
 		public Token(TokenKind kind, string data, int line, int col)
 		{
-			this.tokenKind = kind;
-			this.line = line;
-			this.col = col;
-			this.data = data;
+			_TokenKind = kind;
+			_Line = line;
+			_Col = col;
+			_Data = data;
 		}
 
 		public int Col
 		{
-			get { return this.col; }
+			get { return _Col; }
 		}
 
 		public string Data
 		{
-			get { return this.data; }
-			set { this.data = value; }
+			get { return _Data; }
+			set { _Data = value; }
 		}
 
 		public int Line
 		{
-			get { return this.line; }
+			get { return _Line; }
 		}
 
 		public TokenKind TokenKind
 		{
-			get { return this.tokenKind; }
-			set { this.tokenKind = value; }
+			get { return _TokenKind; }
+			set { _TokenKind = value; }
 		}
+
 	}
 }

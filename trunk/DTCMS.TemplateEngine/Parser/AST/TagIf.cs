@@ -33,24 +33,24 @@ namespace Ader.TemplateEngine.Parser.AST
 
 	public class TagIf : Tag
 	{
-		Tag falseBranch;
-		Expression test;
+        private Tag _FalseBranch;
+        private Expression _Test;
 
 		public TagIf(int line, int col, Expression test)
 			:base(line, col, "if")
 		{
-			this.test = test;
+            this._Test = test;
 		}
 
 		public Tag FalseBranch
 		{
-			get { return this.falseBranch; }
-			set { this.falseBranch = value; }
+            get { return this._FalseBranch; }
+            set { this._FalseBranch = value; }
 		}
 
 		public Expression Test
 		{
-			get { return test; }
+            get { return _Test; }
 		}
 	}
 }

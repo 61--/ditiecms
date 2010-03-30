@@ -31,24 +31,24 @@ namespace Ader.TemplateEngine.Parser.AST
 {
 	public class FCall : Expression
 	{
-		string name;
-		Expression[] args;
+		private string _Name;
+		private Expression[] _Args;
 
 		public FCall(int line, int col, string name, Expression[] args)
-			:base(line, col)
+			: base(line, col)
 		{
-			this.name = name;
-			this.args = args;
+			_Name = name;
+			_Args = args;
 		}
 
 		public Expression[] Args
 		{
-			get { return this.args; }
+			get { return _Args; }
 		}
 
 		public string Name
 		{
-			get { return this.name; }
+			get { return _Name; }
 		}
 	}
 }

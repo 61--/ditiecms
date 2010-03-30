@@ -17,6 +17,8 @@ namespace DTCMS.Web.admin
             this.Label1.Text = "从缓存中获取xml方法：";
             this.Label2.Text = "从缓存中直接获取：";
 
+            Response.Write(DateTime.Now.ToString("yyyy/MM/dd mm:ss"));
+
             BLL.Arc_ClassBLL b=new DTCMS.BLL.Arc_ClassBLL ();
             DataTable dt=b.GetDropList("");
             DropDownTree.BindToDropDownList(DropDownList1,dt,"0");
