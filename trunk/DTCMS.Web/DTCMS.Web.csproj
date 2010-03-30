@@ -415,6 +415,8 @@
     <Content Include="admin\user\user_add.aspx" />
     <Content Include="admin\user\user_list.aspx" />
     <Content Include="ajaxpro\请勿删除本目录 .txt" />
+    <Content Include="bin\BLL.dll" />
+    <Content Include="bin\BLL.pdb" />
     <Content Include="bin\DTCMS.BLL.dll" />
     <Content Include="bin\DTCMS.BLL.pdb" />
     <Content Include="bin\DTCMS.Common.dll" />
@@ -429,8 +431,6 @@
     <Content Include="bin\DTCMS.DBUtility.pdb" />
     <Content Include="bin\DTCMS.Entity.dll" />
     <Content Include="bin\DTCMS.Entity.pdb" />
-    <Content Include="bin\DTCMS.GridView.dll" />
-    <Content Include="bin\DTCMS.GridView.pdb" />
     <Content Include="bin\DTCMS.IDAL.dll" />
     <Content Include="bin\DTCMS.IDAL.pdb" />
     <Content Include="bin\DTCMS.Pages.dll" />
