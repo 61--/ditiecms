@@ -28,25 +28,25 @@ using System.Text;
 
 namespace Ader.TemplateEngine.Parser.AST
 {
-	public class Element
-	{
-		int line;
-		int col;
+    public class Element
+    {
+        private int _Line;
+        private int _Col;
 
-		public Element(int line, int col)
-		{
-			this.line = line;
-			this.col = col;
-		}
+        public Element(int line, int col)
+        {
+            _Line = line;
+            _Col = col;
+        }
 
-		public int Col
-		{
-			get { return this.col; }
-		}
+        public int Col
+        {
+            get { return _Col; }
+        }
 
-		public int Line
-		{
-			get { return this.line; }
-		}
-	}
+        public int Line
+        {
+            get { return _Line; }
+        }
+    }
 }

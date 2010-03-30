@@ -32,9 +32,8 @@ namespace Ader.TemplateEngine
 {
 	public static class Util
 	{
-		static object syncObject = new object();
-
-		static Regex regExVarName;
+		private static object _SyncObject = new object();
+		private static Regex _RegExVarName;
 
 		public static bool ToBool(object obj)
 		{
@@ -63,23 +62,23 @@ namespace Ader.TemplateEngine
 		{
 			get
 			{
-				if ((regExVarName == null))
+				if ((_RegExVarName == null))
 				{
-					System.Threading.Monitor.Enter(syncObject);
-					if (regExVarName == null)
+					System.Threading.Monitor.Enter(_SyncObject);
+					if (_RegExVarName == null)
 					{
 						try
 						{
-							regExVarName = new Regex("^[a-zA-Z_][a-zA-Z0-9_]*$", RegexOptions.Compiled);
+							_RegExVarName = new Regex("^[a-zA-Z_][a-zA-Z0-9_]*$", RegexOptions.Compiled);
 						}
 						finally
 						{
-							System.Threading.Monitor.Exit(syncObject);
+							System.Threading.Monitor.Exit(_SyncObject);
 						}
 					}
 				}
 
-				return regExVarName;
+				return _RegExVarName;
 			}
 		}
 	}

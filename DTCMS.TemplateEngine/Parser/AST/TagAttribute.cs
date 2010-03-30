@@ -31,23 +31,23 @@ namespace Ader.TemplateEngine.Parser.AST
 {
 	public class TagAttribute
 	{
-		string name;
-		Expression expression;
+        private string _Name;
+        private Expression _Expression;
 
 		public TagAttribute(string name, Expression expression)
 		{
-			this.name = name;
-			this.expression = expression;
+            this._Name = name;
+            this._Expression = expression;
 		}
 
 		public Expression Expression
 		{
-			get { return this.expression; }
+            get { return this._Expression; }
 		}
 
 		public string Name
 		{
-			get { return this.name; }
+            get { return this._Name; }
 		}
 	}
 }

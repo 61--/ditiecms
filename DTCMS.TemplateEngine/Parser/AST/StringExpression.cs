@@ -31,35 +31,35 @@ namespace Ader.TemplateEngine.Parser.AST
 {
 	public class StringExpression : Expression
 	{
-		List<Expression> exps;
+        private List<Expression> _Exps;
 
 		public StringExpression(int line, int col)
 			:base(line, col)
 		{
-			exps = new List<Expression>();
+            _Exps = new List<Expression>();
 		}
 
 		public int ExpCount
 		{
-			get { return exps.Count; }
+            get { return _Exps.Count; }
 		}
 
 		public void Add(Expression exp)
 		{
-			exps.Add(exp);
+            _Exps.Add(exp);
 		}
 
 		public Expression this[int index]
 		{
-			get { return exps[index]; }
+            get { return _Exps[index]; }
 		}
 
 		public IEnumerable<Expression> Expressions
 		{
 			get
 			{
-				for (int i = 0; i < exps.Count; i++)
-					yield return exps[i];
+                for (int i = 0; i < _Exps.Count; i++)
+                    yield return _Exps[i];
 			}
 		}
 	}

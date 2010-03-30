@@ -31,24 +31,24 @@ namespace Ader.TemplateEngine.Parser.AST
 {
 	public class ArrayAccess : Expression
 	{
-		Expression exp;
-		Expression index;
+        private Expression _Exp;
+        private Expression _Index;
 
 		public ArrayAccess(int line, int col, Expression exp, Expression index)
 			:base(line, col)
 		{
-			this.exp = exp;
-			this.index = index;
+            this._Exp = exp;
+            this._Index = index;
 		}
 
 		public Expression Exp
 		{
-			get { return this.exp; }
+            get { return this._Exp; }
 		}
 
 		public Expression Index
 		{
-			get { return this.index; }
+            get { return this._Index; }
 		}
 
 	}

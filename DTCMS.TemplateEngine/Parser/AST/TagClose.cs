@@ -31,17 +31,17 @@ namespace Ader.TemplateEngine.Parser.AST
 {
 	public class TagClose : Element
 	{
-		string name;
+        private string _Name;
 
 		public TagClose(int line, int col, string name)
 			:base(line, col)
 		{
-			this.name = name;
+            this._Name = name;
 		}
 
 		public string Name
 		{
-			get { return this.name; }
+            get { return this._Name; }
 		}
 	}
 }

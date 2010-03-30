@@ -9,7 +9,7 @@ namespace Ader.TemplateEngine
 	/// </summary>
 	class StaticTypeReference
 	{
-		readonly Type type;
+        private readonly Type type;
 
 		public StaticTypeReference(Type type)
 		{

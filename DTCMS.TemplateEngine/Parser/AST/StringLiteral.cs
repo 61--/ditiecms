@@ -31,17 +31,17 @@ namespace Ader.TemplateEngine.Parser.AST
 {
 	public class StringLiteral : Expression
 	{
-		string content;
+        private string _Content;
 
 		public StringLiteral(int line, int col, string content)
 			:base(line, col)
 		{
-			this.content = content;
+            this._Content = content;
 		}
 
 		public string Content
 		{
-			get { return this.content; }
+            get { return this._Content; }
 		}
 	}
 }

@@ -31,8 +31,8 @@ namespace Ader.TemplateEngine
 {
 	public class VariableScope
 	{
-		VariableScope parent;
-		Dictionary<string, object> values;
+        private VariableScope _Parent;
+        private Dictionary<string, object> _Values;
 
 		public VariableScope()
 			:this(null)
@@ -41,8 +41,8 @@ namespace Ader.TemplateEngine
 
 		public VariableScope(VariableScope parent)
 		{
-			this.parent = parent;
-			this.values = new Dictionary<string, object>(StringComparer.InvariantCultureIgnoreCase);
+			this._Parent = parent;
+			this._Values = new Dictionary<string, object>(StringComparer.InvariantCultureIgnoreCase);
 		}
 
 		/// <summary>
@@ -50,7 +50,7 @@ namespace Ader.TemplateEngine
 		/// </summary>
 		public void Clear()
 		{
-			values.Clear();
+			_Values.Clear();
 		}
 
 		/// <summary>
@@ -58,7 +58,7 @@ namespace Ader.TemplateEngine
 		/// </summary>
 		public VariableScope Parent
 		{
-			get { return parent; }
+			get { return _Parent; }
 		}
 
 		/// <summary>
@@ -67,10 +67,10 @@ namespace Ader.TemplateEngine
 		/// </summary>
 		public bool IsDefined(string name)
 		{
-			if (values.ContainsKey(name))
+			if (_Values.ContainsKey(name))
 				return true;
-			else if (parent != null)
-				return parent.IsDefined(name);
+			else if (_Parent != null)
+				return _Parent.IsDefined(name);
 			else
 				return false;
 		}
@@ -83,17 +83,17 @@ namespace Ader.TemplateEngine
 		public object this[string name]
 		{
 			get {
-				if (!values.ContainsKey(name))
+				if (!_Values.ContainsKey(name))
 				{
-					if (parent != null)
-						return parent[name];
+					if (_Parent != null)
+						return _Parent[name];
 					else
 						return null;
 				}
 				else
-					return values[name];
+					return _Values[name];
 			}
-			set { values[name] = value; }
+			set { _Values[name] = value; }
 		}
 	}
 }

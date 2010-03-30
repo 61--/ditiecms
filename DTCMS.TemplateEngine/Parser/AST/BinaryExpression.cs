@@ -31,33 +31,31 @@ namespace Ader.TemplateEngine.Parser.AST
 {
     public class BinaryExpression : Expression
     {
-        Expression lhs;
-        Expression rhs;
+        private Expression _Lhs;
+        private Expression _Rhs;
+        private TokenKind _op;
 
-        TokenKind op;
+		public BinaryExpression(int line, int col, Expression lhs, TokenKind op, Expression rhs)
+			: base(line, col)
+		{
+			_Lhs = lhs;
+			_Rhs = rhs;
+			_op = op;
+		}
 
-        public BinaryExpression(int line, int col, Expression lhs, TokenKind op, Expression rhs)
-            : base(line, col)
-        {
-            this.lhs = lhs;
-            this.rhs = rhs;
-            this.op = op;
-        }
+		public Expression Lhs
+		{
+			get { return _Lhs; }
+		}
 
-        public Expression Lhs
-        {
-            get { return this.lhs; }
-        }
+		public Expression Rhs
+		{
+			get { return _Rhs; }
+		}
 
-        public Expression Rhs
-        {
-            get { return this.rhs; }
-        }
-
-        public TokenKind Operator
-        {
-            get { return this.op; }
-        }
-
+		public TokenKind Operator
+		{
+			get { return _op; }
+		}
     }
 }

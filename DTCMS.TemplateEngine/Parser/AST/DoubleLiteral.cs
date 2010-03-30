@@ -29,6 +29,7 @@ using System.Text;
 
 namespace Ader.TemplateEngine.Parser.AST
 {
+    /*
 	public class DoubleLiteral : Expression
 	{
 		double value;
@@ -43,5 +44,5 @@ namespace Ader.TemplateEngine.Parser.AST
 		{
 			get { return this.value; }
 		}
-	}
+	}*/
 }

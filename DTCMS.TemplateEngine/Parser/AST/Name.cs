@@ -31,17 +31,17 @@ namespace Ader.TemplateEngine.Parser.AST
 {
 	public class Name : Expression
 	{
-		string id;
+		private string _id;
 
 		public Name(int line, int col, string id)
 			:base(line, col)
 		{
-			this.id = id;
+			this._id = id;
 		}
 
 		public string Id
 		{
-			get { return this.id; }
+			get { return this._id; }
 		}
 	}
 }

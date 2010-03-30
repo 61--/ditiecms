@@ -29,27 +29,26 @@ using System.Text;
 
 namespace Ader.TemplateEngine.Parser.AST
 {
-	public class FieldAccess : Expression
-	{
-		Expression exp;
-		string field;
+    public class FieldAccess : Expression
+    {
+        private Expression _Exp;
+        private string _Field;
 
-		public FieldAccess(int line, int col, Expression exp, string field)
-			:base(line, col)
-		{
-			this.exp = exp;
-			this.field = field;
-		}
+        public FieldAccess(int line, int col, Expression exp, string field)
+            : base(line, col)
+        {
+            _Exp = exp;
+            _Field = field;
+        }
 
-		public Expression Exp
-		{
-			get { return this.exp; }
-		}
+        public Expression Exp
+        {
+            get { return _Exp; }
+        }
 
-		public string Field
-		{
-			get { return this.field; }
-		}
-
-	}
+        public string Field
+        {
+            get { return _Field; }
+        }
+    }
 }

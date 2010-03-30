@@ -31,17 +31,17 @@ namespace Ader.TemplateEngine.Parser.AST
 {
 	public class Text : Element
 	{
-		string data;
+        private string _Data;
 
 		public Text(int line, int col, string data)
 			:base(line, col)
 		{
-			this.data = data;
+            this._Data = data;
 		}
 
 		public string Data
 		{
-			get { return this.data; }
+            get { return this._Data; }
 		}
 	}
 }
