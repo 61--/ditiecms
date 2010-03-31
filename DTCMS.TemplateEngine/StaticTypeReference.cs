@@ -2,6 +2,7 @@ using System;
 
 namespace Ader.TemplateEngine
 {
+    /*
 	/// <summary>
 	/// StaticTypeReference is used by TemplateManager to hold references to types.
 	/// When invoking methods, or accessing properties of this object, it will actually
@@ -20,5 +21,5 @@ namespace Ader.TemplateEngine
 		{
 			get { return type; }
 		}
-	}
+	}*/
 }

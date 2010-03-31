@@ -20,14 +20,14 @@ namespace DTCMS.Web.admin.createstatic
         {
             string output = "";
 
-            Template _Public_Header = Template.FromFile("_Public_Header", this.Server.MapPath("~/template/default/_Public_Header.html"));
-            Template _Public_Footer = Template.FromFile("_Public_Footer", this.Server.MapPath("~/template/default/_Public_Footer.html"));
+            //Template _Public_Header = Template.FromFile("_Public_Header", this.Server.MapPath("~/template/default/_Public_Header.html"));
+            //Template _Public_Footer = Template.FromFile("_Public_Footer", this.Server.MapPath("~/template/default/_Public_Footer.html"));
 
 
             TemplateManager tm = TemplateManager.FromFile(this.Server.MapPath("~/template/default/index.html"));
 
-            tm.AddTemplate(_Public_Header);
-            tm.AddTemplate(_Public_Footer);
+            //tm.AddTemplate(_Public_Header);
+            //tm.AddTemplate(_Public_Footer);
 
             Arc_Article articleInfo = new Arc_Article();
             articleInfo = articleBll.GetModel(69);
