@@ -456,6 +456,8 @@
     <Content Include="bin\DTCMS.SqlProvider.pdb" />
     <Content Include="bin\DTCMS.SqlServerDAL.dll" />
     <Content Include="bin\DTCMS.SqlServerDAL.pdb" />
+    <Content Include="bin\DTCMS.TemplateEngine.dll" />
+    <Content Include="bin\DTCMS.TemplateEngine.pdb" />
     <Content Include="bin\TemplateEngine.dll" />
     <Content Include="bin\TemplateEngine.pdb" />
     <Content Include="ckfinder\bin\CKFinder.dll" />
@@ -1041,7 +1043,7 @@
       <Name>DTCMS.SqlServerDAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTCMS.TemplateEngine\DTCMS.TemplateEngine.csproj">
-      <Project>{8EDEE1BC-1BD8-45E2-88D0-8108218E766F}</Project>
+      <Project>{FFE421FA-C56D-466D-BCBE-5C451F2C82BC}</Project>
       <Name>DTCMS.TemplateEngine</Name>
     </ProjectReference>
   </ItemGroup>

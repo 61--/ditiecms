@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>网站首页</title>
+</head>
+<body>
+<div id="Book">
+	[$format(article.id,"C")]<br />
+	[$toupper(article.title)]<br />
+	Time:[$format(article.adddate,"yyyy\/MM\/dd mm:ss")]<br />
+	
+	{dt:arclist classid='5' row='10' titlelen='30' infolen='50' imgwidth='300' imgheight='200' type='commend' orderby='click' keyword=''}
+	[$article.title]
+	{/dt:arclist}
+</div>
+</body>
+</html>
