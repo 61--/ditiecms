@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Data;
 using DTCMS.BLL;
+using DTCMS.Entity;
 
 namespace DTCMS.TemplateEngine
 {
@@ -22,11 +23,10 @@ namespace DTCMS.TemplateEngine
         /// 构造函数
         /// </summary>
         /// <param name="ownerTemplate"></param>
-        public ArcListTag(Template ownerTemplate)
+        internal ArcListTag(Template ownerTemplate)
             : base(ownerTemplate)
         {
         }
-
 
         #region 重写Tag的方法
         /// <summary>
@@ -61,7 +61,8 @@ namespace DTCMS.TemplateEngine
         /// </summary>
         public VariableIdentity Item
         {
-             get; protected set; 
+            get;
+            protected set;
         }
 
         /// <summary>
@@ -78,22 +79,6 @@ namespace DTCMS.TemplateEngine
         public Attribute Row
         {
             get { return this.Attributes["Row"]; }
-        }
-
-        /// <summary>
-        /// 文档标题长度
-        /// </summary>
-        public Attribute TitleLen
-        {
-            get { return this.Attributes["TitleLen"]; }
-        }
-
-        /// <summary>
-        /// 文档描述字段长度
-        /// </summary>
-        public Attribute DesLen
-        {
-            get { return this.Attributes["DesLen"]; }
         }
 
         /// <summary>
@@ -160,6 +145,9 @@ namespace DTCMS.TemplateEngine
         {
             switch (name)
             {
+                case "item":
+                    this.Item = ParserHelper.CreateVariableIdentity(this.OwnerTemplate, item.Text);
+                    break;
                 case "output":
                     this.Output = Utility.ConverToBoolean(item.Text);
                     break;
@@ -213,10 +201,10 @@ namespace DTCMS.TemplateEngine
         /// <param name="writer"></param>
         protected override void RenderTagData(System.IO.TextWriter writer)
         {
-            DataTable dt = this.GetServerData();
-            if (this.Item != null) this.Item.Value = dt;
+            List<Arc_Article> arc = this.GetServerData();
+            if (this.Item != null) this.Item.Value = arc[0];
 
-            if (this.Output && dt != null) writer.Write(dt);
+            if (this.Output && arc != null) writer.Write(arc[0]);
             base.RenderTagData(writer);
         }
         #endregion
@@ -226,16 +214,16 @@ namespace DTCMS.TemplateEngine
         /// 获取数据
         /// </summary>
         /// <returns></returns>
-        private DataTable GetServerData()
+        private List<Arc_Article> GetServerData()
         {
             //ServerDataType type = (ServerDataType)Utility.ConvertTo(this.Type.GetTextValue(), typeof(ServerDataType));
             Arc_ArticleBLL articleBll = new Arc_ArticleBLL();
             int pagecount;
 
-            DataTable dt = articleBll.GetPageList("ID", 1, 10, "A.ID,A.Title,C.ClassName,CONVERT(VARCHAR,A.AddDate,120) AddDate,A.IsVerify", "", null, out pagecount);
-            return dt;
+            List<Arc_Article> arc = articleBll.GetPageList(10, 1, out pagecount);
+            return arc;
         }
-        
+
         #endregion
     }
 }

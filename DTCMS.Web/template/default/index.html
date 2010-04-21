@@ -5,13 +5,10 @@
 </head>
 <body>
 <div id="Book">
-	[$format(article.id,"C")]<br />
-	[$toupper(article.title)]<br />
-	Time:[$format(article.adddate,"yyyy\/MM\/dd mm:ss")]<br />
-	
-	{dt:arclist classid='5' row='10' titlelen='30' infolen='50' imgwidth='300' imgheight='200' type='commend' orderby='click' keyword=''}
-	[$article.title]
-	{/dt:arclist}
+	<vt:arclist item="arc" row="10">
+	<a href="{$:arc.id}.html">{$:arc.title}</a>
+	</vt:arclist>
+	<vt:server type="time" var="time">{$:time}</vt:server>
 </div>
 </body>
 </html>
