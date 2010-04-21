@@ -91,9 +91,6 @@
     <Compile Include="VariableIdentity.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="docs\readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\DTCMS.BLL\DTCMS.BLL.csproj">
       <Project>{DDDF40F6-5CBE-4CD3-9890-4648C8CEBB04}</Project>
       <Name>DTCMS.BLL</Name>
@@ -105,6 +102,10 @@
     <ProjectReference Include="..\DTCMS.Config\DTCMS.Config.csproj">
       <Project>{A4CC57ED-9E99-4FF5-95E9-A7BBB3C3FB43}</Project>
       <Name>DTCMS.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTCMS.Entity\DTCMS.Entity.csproj">
+      <Project>{DF2F902E-45F7-4760-9214-981A56E202B9}</Project>
+      <Name>DTCMS.Entity</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
