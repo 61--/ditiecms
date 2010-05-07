@@ -60,6 +60,8 @@
     <Compile Include="Sys_FileInfo.cs" />
     <Compile Include="Modules.cs" />
     <Compile Include="Sys_Template.cs" />
+    <Compile Include="TemplateEngine\ArcClass.cs" />
+    <Compile Include="TemplateEngine\ArcList.cs" />
     <Compile Include="Userfields.cs" />
     <Compile Include="Usergroup.cs" />
     <Compile Include="Users.cs" />

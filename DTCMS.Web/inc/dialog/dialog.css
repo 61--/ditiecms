@@ -18,65 +18,79 @@
 }
 .dialog_blue .button {
 	border: 0px;
-	height: 20px;
+	height: 22px;
 	letter-spacing: 2px;
-	color: #0099DD;
+	color: #FFF;
 	overflow:hidden;
-	width:63px;	
+	width:64px;	
 	cursor:pointer;
-	background: url(images/Button.gif) no-repeat;
+	background: url(images/button.gif) left bottom no-repeat;
 }
 .dialog_blue .dialog_header
 {
 	width:100%;
 	height:33px;
 }
+.dialog_blue .dialog_header .h_l,
+.dialog_blue .dialog_header .h_c,
+.dialog_blue .dialog_header .h_r,
+.dialog_blue .dialog_bottom .b_l,
+.dialog_blue .dialog_bottom .b_c,
+.dialog_blue .dialog_bottom .b_r
+{
+	background:url(images/dialog_ul.png);
+	_background:url(images/dialog_ul.gif);
+}
+
 .dialog_blue .dialog_header .h_l
 {
 	width:13px;
-	background:url(images/dialog_hl.png) no-repeat !important;
-	_background:url(images/dialog_hl.gif) no-repeat;
+	background-repeat:no-repeat;
+	background-position:0 0;
 }
 .dialog_blue .dialog_header .h_c
 {
-	background:url(images/dialog_hc.png) repeat-x !important;
-	_background:url(images/dialog_hc.gif) repeat-x;
+	background-repeat:repeat-x;
+	background-position:0 -48px;
 }
 .dialog_blue .dialog_header .h_r{
 	width:13px;
-	background:url(images/dialog_hr.png) no-repeat !important;
-	_background:url(images/dialog_hr.gif) no-repeat;
+	background-repeat:no-repeat;
+	background-position:right 0;
 }
 .dialog_blue .dialog_header h2{
-	color:#FFF;
+	color:#333;
 	font-size:12px;
-	padding-top:12px;
-	text-indent:22px;
+	padding-top:6px;
+	text-indent:2px;
 	float:left;
-	background:url(images/icon_dialog.gif) 5px 12px no-repeat;
 }
 .dialog_blue a.close{
-	width:28px;
-	height:17px;
+	width:16px;
+	height:16px;
 	display:block;
-	margin:5px 0px 0px 0px;
-	background:url(images/dialog_close.gif) no-repeat;
+	margin:4px 0px 0px 0px;
+	background:url(images/dialog_close.png) no-repeat;
 }
 .dialog_blue a.close:hover{
-	background:url(images/dialog_close_h.gif) no-repeat;	
+	background:url(images/dialog_close.png) left bottom no-repeat;	
+}
+.dialog_blue .dialog_content .c_l,
+.dialog_blue .dialog_content .c_r
+{
+	background:url(images/dialog_lr.png) repeat-y;
+	_background:url(images/dialog_lr.gif) repeat-y;
 }
 .dialog_blue .dialog_content .c_l{
 	width:13px;
-	background:url(images/dialog_ml.png) no-repeat !important;
-	_background:url(images/dialog_ml.gif) repeat-y;
+	background-position:0 0;
 }
 .dialog_blue .dialog_content .c_c{
 	background:#FFF;
 }
 .dialog_blue .dialog_content .c_r{
 	width:13px;
-	background:url(images/dialog_mr.png) no-repeat !important;
-	_background:url(images/dialog_mr.gif) repeat-y;
+	background-position:right 0;
 }
 .dialog_blue .icon{
 	width:100px;
@@ -102,7 +116,7 @@
 }
 .dialog_blue .dialog_content .buttonRow{
 	text-align:center;
-	padding:8px;
+	padding:5px 8px;
 	background:#F6F6F6;
 	border-top:1px #DADEE5 solid;
 }
@@ -116,17 +130,17 @@
 }
 .dialog_blue .dialog_bottom .b_l{
 	width:13px;
-	background:url(images/dialog_bl.png) no-repeat !important;
-	_background:url(images/dialog_bl.gif) no-repeat;
+	background-repeat:no-repeat;
+	background-position:0 -33px;
 }
 .dialog_blue .dialog_bottom .b_c{
-	background:url(images/dialog_bc.png) repeat-x !important;
-	_background:url(images/dialog_bc.gif) repeat-x;
+	background-repeat:repeat-x;
+	background-position:0 -81px;
 }
 .dialog_blue .dialog_bottom .b_r{
 	width:13px;
-	background:url(images/dialog_br.png) no-repeat !important;
-	_background:url(images/dialog_br.gif) no-repeat;
+	background-repeat:no-repeat;
+	background-position:right -33px;
 }
 .Success{
 	background:url(images/ico_Success.gif) 16px 16px no-repeat;

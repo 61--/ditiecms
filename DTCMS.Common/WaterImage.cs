@@ -1,11 +1,16 @@
-﻿using System;
+﻿//------------------------------------------------------------------------------
+// 创建标识: Copyright (C) 2010 91aspx.com 版权所有
+// 创建描述: DTCMS V1.0 创建于 2009-12-12 23:59:18
+// 功能描述: 
+// 修改标识:
+// 修改描述: 
+//------------------------------------------------------------------------------
+using System;
 using System.Data;
 using System.Configuration;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.IO;
-
-
 
 namespace DTCMS.Common
 {

@@ -3,19 +3,20 @@
 // 创建描述: DTCMS V1.0 创建于 2010-04-04 02:33:15
 // 功能描述: 
 // 修改标识: 
-// 修改描述: 
+// 修改描述: LinPanxing 修改于 2010-04-21 21:33:13
 //------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Data;
-using DTCMS.BLL;
-using DTCMS.Entity;
+using DTCMS.Common;
+using DTCMS.BLL.TemplateEngine;
+using DTCMS.Entity.TemplateEngine;
 
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// 数据列表标签,.如: &lt;vt:arclist item="archive" type="all" /&gt;
+    /// 数据列表标签,.如: &lt;vt:arclist var="archive" type="article" /&gt;
     /// </summary>
     public class ArcListTag : Tag
     {
@@ -48,7 +49,12 @@ namespace DTCMS.TemplateEngine
 
         #region 属性定义
         /// <summary>
-        /// 文档类型.
+        /// 存储表达式结果的变量
+        /// </summary>
+        public VariableIdentity Variable { get; protected set; }
+
+        /// <summary>
+        /// 文档模型，如1文章类型、2软件类型
         /// </summary>
         /// <remarks></remarks>
         public Attribute Type
@@ -57,12 +63,11 @@ namespace DTCMS.TemplateEngine
         }
 
         /// <summary>
-        /// 数据项
+        /// 自定义标题标签，如1[原创]、2[转载]、3[投稿]
         /// </summary>
-        public VariableIdentity Item
+        public Attribute TitleFlag
         {
-            get;
-            protected set;
+            get { return this.Attributes["TitleFlag"]; }
         }
 
         /// <summary>
@@ -71,6 +76,11 @@ namespace DTCMS.TemplateEngine
         public Attribute ClassID
         {
             get { return this.Attributes["ClassID"]; }
+        }
+
+        public Attribute SubClass
+        {
+            get { return this.Attributes["SubClass"]; }
         }
 
         /// <summary>
@@ -106,14 +116,6 @@ namespace DTCMS.TemplateEngine
         }
 
         /// <summary>
-        /// 文档模型
-        /// </summary>
-        public Attribute ModelID
-        {
-            get { return this.Attributes["ModelID"]; }
-        }
-
-        /// <summary>
         /// 限定条数，如limit="10-20"，设置了本属性以后，Row属性将失效
         /// </summary>
         public Attribute Limit
@@ -145,8 +147,8 @@ namespace DTCMS.TemplateEngine
         {
             switch (name)
             {
-                case "item":
-                    this.Item = ParserHelper.CreateVariableIdentity(this.OwnerTemplate, item.Text);
+                case "var":
+                    this.Variable = ParserHelper.CreateVariableIdentity(this.OwnerTemplate, item.Text);
                     break;
                 case "output":
                     this.Output = Utility.ConverToBoolean(item.Text);
@@ -168,7 +170,9 @@ namespace DTCMS.TemplateEngine
         /// <returns>如果需要继续处理EndTag则返回true.否则请返回false</returns>
         internal override bool ProcessBeginTag(Template ownerTemplate, Tag container, Stack<Tag> tagStack, string text, ref Match match, bool isClosedTag)
         {
-            if (this.Item == null && !this.Output) throw new ParserException(string.Format("{0}标签中如果未定义Output属性为true则必须定义item属性", this.TagName));
+            if (this.Variable == null && !this.Output)
+                this.Variable = ParserHelper.CreateVariableIdentity(this.OwnerTemplate, "archive");
+            //throw new ParserException(string.Format("{0}标签中如果未定义Output属性为true则必须定义var属性", this.TagName));
             //if (this.Type != ServerDataType.Random 
             //    && this.Type != ServerDataType.Time
             //    && this.Type != ServerDataType.Request
@@ -189,6 +193,7 @@ namespace DTCMS.TemplateEngine
         {
             ArcListTag tag = new ArcListTag(ownerTemplate);
             this.CopyTo(tag);
+            tag.Variable = this.Variable == null ? null : this.Variable.Clone(ownerTemplate);
             tag.Output = this.Output;
             return tag;
         }
@@ -201,11 +206,18 @@ namespace DTCMS.TemplateEngine
         /// <param name="writer"></param>
         protected override void RenderTagData(System.IO.TextWriter writer)
         {
-            List<Arc_Article> arc = this.GetServerData();
-            if (this.Item != null) this.Item.Value = arc[0];
-
-            if (this.Output && arc != null) writer.Write(arc[0]);
-            base.RenderTagData(writer);
+            List<ArcList> arcList = this.GetArcList();
+            if (arcList.Count > 0)
+            {
+                foreach (ArcList arcItem in arcList)
+                {
+                    if (this.Variable != null)
+                        this.Variable.Value = arcItem;
+                    if (this.Output)
+                        writer.Write("<li><a href=\"" + arcItem.ID + "\">" + arcItem.Title + "</a></li>\r\n");
+                    base.RenderTagData(writer);
+                }
+            }
         }
         #endregion
 
@@ -214,16 +226,128 @@ namespace DTCMS.TemplateEngine
         /// 获取数据
         /// </summary>
         /// <returns></returns>
-        private List<Arc_Article> GetServerData()
+        private List<ArcList> GetArcList()
         {
-            //ServerDataType type = (ServerDataType)Utility.ConvertTo(this.Type.GetTextValue(), typeof(ServerDataType));
-            Arc_ArticleBLL articleBll = new Arc_ArticleBLL();
-            int pagecount;
+            //构造Limit语句
+            int firstRecort = 1;
+            int lastRecort = 1;
+            if (this.Limit != null)
+            {
+                string[] temp = this.Limit.Text.Split(',');
+                try
+                {
+                    int f = TypeConvert.ToInt32(temp[0]);
+                    int l = TypeConvert.ToInt32(temp[1]);
+                    if (f > l)
+                    {
+                        f = l;
+                    }
+                    if (f > 0)
+                    {
+                        firstRecort = f;
+                        lastRecort = l;
+                    }
+                }
+                catch
+                {
+                    throw new ParserException("Limit属性必须由\"10,20\"这样的格式组成；并且结束条数必须大于开始条数，中间用半角逗号隔开。");
+                }
 
-            List<Arc_Article> arc = articleBll.GetPageList(10, 1, out pagecount);
-            return arc;
+            }
+            else
+            {
+                if (this.Row != null)
+                {
+                    lastRecort = TypeConvert.ToInt32(this.Row.Text);
+                }
+            }
+
+            //构造Type，如1文章类型、2软件类型
+            string type = this.Type == null ? "1" : this.Type.Text;
+
+            //构造WHERE语句
+            string strWhere = string.Empty;
+            if (this.TitleFlag != null)
+            {
+                strWhere += string.Format(" AND TitleFlag={0}", this.TitleFlag.Text);
+            }
+            if (this.ClassID != null)
+            {
+                if (this.SubClass == null ? true : TypeConvert.ToBool(this.SubClass.Text, true))
+                {
+                    //如果包含子栏目
+                    string[] scList = this.ClassID.Text.Split(',');
+                    if (scList.Length > 1)
+                    {
+                        string scSql = string.Format(" AND ClassID IN(SELECT CID FROM {{0}}Arc_Class WHERE Relation LIKE '%.{0}.%'", scList[0]);
+                        for (int i = 1; i < scList.Length; i++)
+                        {
+                            scSql += string.Format(" OR Relation LIKE '%.{0}.%'", scList[i]);
+                        }
+                        scSql += ")";
+                        strWhere += scSql;
+                    }
+                    else
+                    {
+                        strWhere = string.Format(" AND ClassID IN(SELECT CID FROM {{0}}Arc_Class WHERE Relation LIKE '%.{0}.%')", scList[0]);
+                    }
+                }
+                else
+                {
+                    strWhere += string.Format(" AND ClassID IN({0})", this.ClassID.Text);
+                }
+            }
+            if (this.KeyWord != null)
+            {
+                string[] kwList = this.KeyWord.Text.Split(',');
+                if (kwList.Length > 1)
+                {
+                    string kwSql = string.Format(" AND(A.KeyWords LIKE '%{0}%'", kwList[0]);
+                    for (int i = 1; i < kwList.Length; i++)
+                    {
+                        kwSql += string.Format(" OR A.KeyWords LIKE '%{0}%'", kwList[i]);
+                    }
+                    kwSql += ")";
+                    strWhere += kwSql;
+                }
+                else
+                {
+                    strWhere += string.Format(" AND A.KeyWords LIKE '%{0}%'", kwList[0]);
+                }
+            }
+            if (this.InDay != null)
+            {
+                double inDay;
+                bool rv = double.TryParse(this.InDay.Text, out inDay);
+                if (rv && inDay > 0)
+                {
+                    strWhere += string.Format(" AND PubDate>'{0}'", DateTime.Now.AddDays(-inDay).ToShortDateString());
+                }
+            }
+
+            //构造ORDER BY语句
+            string strOrder = string.Empty;
+            if (this.OrderBy != null)
+            {
+                strOrder = string.Format(" ORDER BY {0}", this.OrderBy.Text);
+                if (this.OrderType != null)
+                {
+                    if (String.Compare(this.OrderType.Text, "ASC", StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        strOrder += " ASC";
+                    }
+                    else
+                    {
+                        strOrder += " DESC";
+                    }
+                }
+            }
+
+            ArcListBLL arcListBll = new ArcListBLL();
+
+            List<ArcList> arcList = arcListBll.GetArcList(firstRecort, lastRecort, type, strWhere, strOrder);
+            return arcList;
         }
-
         #endregion
     }
 }

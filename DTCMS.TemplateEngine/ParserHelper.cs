@@ -22,11 +22,12 @@ namespace DTCMS.TemplateEngine
         /// <summary>
         /// 注释标签的起始标记
         /// </summary>
-        public const string CommentTagStart = "<!--vt[";
+        //public const string CommentTagStart = "<!--vt[";
         /// <summary>
         /// 注释标签的结束标记
         /// </summary>
-        public const string CommentTagEnd = "]-->";
+        //public const string CommentTagEnd = "]-->";
+
         /// <summary>
         /// 读取某个偏移位置的字符.如果超出则返回特殊字符"\0x0"
         /// </summary>
@@ -93,16 +94,16 @@ namespace DTCMS.TemplateEngine
         /// <param name="text"></param>
         /// <param name="offset"></param>
         /// <returns></returns>
-        internal static bool IsCommentTagStart(string text, int offset)
-        {
-            return (ReadChar(text, offset) == '<' && 
-                ReadChar(text, offset + 1) == '!' && 
-                ReadChar(text, offset + 2) == '-' &&
-                ReadChar(text, offset + 3) == '-' &&
-                IsChars(ReadChar(text, offset + 4), 'v', 'V') &&
-                IsChars(ReadChar(text, offset + 5), 't', 'T') && 
-                ReadChar(text, offset + 6) == '[');
-        }
+        //internal static bool IsCommentTagStart(string text, int offset)
+        //{
+        //    return (ReadChar(text, offset) == '<' && 
+        //        ReadChar(text, offset + 1) == '!' && 
+        //        ReadChar(text, offset + 2) == '-' &&
+        //        ReadChar(text, offset + 3) == '-' &&
+        //        IsChars(ReadChar(text, offset + 4), 'v', 'V') &&
+        //        IsChars(ReadChar(text, offset + 5), 't', 'T') && 
+        //        ReadChar(text, offset + 6) == '[');
+        //}
         #endregion
 
         /// <summary>
@@ -173,6 +174,7 @@ namespace DTCMS.TemplateEngine
             Variable variable = Utility.GetVariableOrAddNew(ownerTemplate, name);
             return variable;
         }
+
         /// <summary>
         /// 从文本(如#.name或name)中构建变量标识对象
         /// </summary>

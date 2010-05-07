@@ -285,7 +285,7 @@ namespace DTCMS.TemplateEngine
                 Encoding charset = this.Charset == null ? this.OwnerTemplate.Charset : Utility.GetEncodingFromCharset(this.Charset.GetTextValue(), this.OwnerTemplate.Charset);
 
                 if (removeHtml) text = Utility.RemoveHtmlCode(text);
-                if (length > 0) text = Utility.CutString(text, length, charset, appendText);
+                if (length > 0) text = Utility.CutString(text, length, appendText);
                 if (textEncode)
                 {
                     text = Utility.TextEncode(text);

@@ -516,12 +516,12 @@ Dialog.close = function(id) {
     }
 };
 Dialog.alert = function(msg, func, w, h) {
-    var w = w || 300,
-        h = h || 110;
+    var w = w || 320,
+        h = h || 100;
     var diag = new Dialog({
         Width: w,
         Height: h,
-        Modal: 10
+        Modal: 0
     });
     diag.ShowButtonRow = true;
     diag.Title = "DTCMS提示信息";
@@ -530,22 +530,22 @@ Dialog.alert = function(msg, func, w, h) {
         if (func) func();
     };
     diag.InnerHtml = '<table height="100%" border="0" align="left" cellpadding="10" cellspacing="10">\
-		<tr><td align="left" width="60px"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'ico_alert.gif" style="padding-left:20px;width:34px;height:34px;"></td>\
+		<tr><td align="left" width="60px"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'ico_alert.gif" style="padding-left:20px;width:38px;height:38px;"></td>\
 			<td align="left" id="Message_' + this.ID + '" style="font-size:9pt">' + msg + '</td></tr>\
 	</table>';
     diag.show();
-    diag.okButton.parentNode.style.textAlign = "center";
+    diag.okButton.parentNode.style.textAlign = "right";
     diag.okButton.style.display = "none";
     diag.cancelButton.value = "确 定";
     diag.cancelButton.focus();
 };
 Dialog.confirm = function(msg, funcOK, funcCal, w, h) {
-    var w = w || 300,
-        h = h || 110;
+    var w = w || 320,
+        h = h || 100;
     var diag = new Dialog({
         Width: w,
         Height: h,
-        Modal: 10
+        Modal: 0
     });
     diag.ShowButtonRow = true;
     diag.Title = "DTCMS提示信息";
@@ -562,11 +562,11 @@ Dialog.confirm = function(msg, funcOK, funcCal, w, h) {
         }
     };
     diag.InnerHtml = '<table height="100%" border="0" align="left" cellpadding="10" cellspacing="10">\
-		<tr><td align="left" width="60px"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'ico_confirm.gif" style="padding-left:20px;width:34px;height:34px;"></td>\
+		<tr><td align="left" width="60px"><img id="Icon_' + this.ID + '" src="' + IMAGESPATH + 'ico_confirm.gif" style="padding-left:20px;width:38px;height:38px;"></td>\
 			<td align="left" id="Message_' + this.ID + '" style="font-size:9pt">' + msg + '</td></tr>\
 	</table>';
     diag.show();
-    diag.okButton.parentNode.style.textAlign = "center";
+    diag.okButton.parentNode.style.textAlign = "right";
     diag.okButton.focus();
 };
 Dialog.open = function(arg) {

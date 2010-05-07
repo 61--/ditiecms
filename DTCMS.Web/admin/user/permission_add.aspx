@@ -9,7 +9,7 @@
     <script type="text/javascript" src="../js/public.js"></script>
     <script type="text/javascript" src="../js/common.js"></script>
     <style type="text/css">
-        body{_overflow-y: auto;}
+        html,body{overflow-y: auto;}
     </style>
 </head>
 <body>

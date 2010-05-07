@@ -4,10 +4,16 @@
     <title>网站首页</title>
 </head>
 <body>
-<div id="Book">
-	<vt:arclist item="arc" row="10">
-	<a href="{$:arc.id}.html">{$:arc.title}</a>
-	</vt:arclist>
+<div id="list">
+	<vt:class var="class" row="10">
+	    <a href="{$:class.id}.html">{$:class.className}</a>
+	    <ul>
+	    <vt:arclist var="arc" row="10">
+	        <li><a href="{$:arc.id}.html">{$:arc.title}</a> - {$:arc.pubdate format="yyyy/MM/dd mm:ss"}</li>
+	    </vt:arclist>
+	    </ul>
+	</vt:class>
+    
 	<vt:server type="time" var="time">{$:time}</vt:server>
 </div>
 </body>
