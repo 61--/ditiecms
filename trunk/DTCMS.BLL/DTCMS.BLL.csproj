@@ -58,6 +58,7 @@
     <Compile Include="Sys_FileInfoBLL.cs" />
     <Compile Include="Sys_PublishBLL.cs" />
     <Compile Include="Sys_TemplateBLL.cs" />
+    <Compile Include="TemplateEngine\ArcListBLL.cs" />
     <Compile Include="UserfieldsBLL.cs" />
     <Compile Include="UsergroupBLL.cs" />
     <Compile Include="UsersBLL.cs" />

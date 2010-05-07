@@ -301,7 +301,7 @@ namespace DTCMS.TemplateEngine
         /// <param name="charset">采用的编码</param>
         /// <param name="appendText">附加字符</param>
         /// <returns></returns>
-        internal static string CutString(string value, int maxLength, Encoding charset, string appendText)
+        internal static string CutString(string value, int maxLength, string appendText)
         {
             StringBuilder buffer = new StringBuilder(maxLength);
             int length = 0;
@@ -309,7 +309,7 @@ namespace DTCMS.TemplateEngine
             while (index < value.Length)
             {
                 char c = value[index];
-                length += charset.GetByteCount(new char[] { c });
+                length += System.Text.Encoding.GetEncoding("GB2312").GetByteCount(new char[] { c });
                 if (length <= maxLength)
                 {
                     buffer.Append(c);
@@ -322,6 +322,15 @@ namespace DTCMS.TemplateEngine
             }
             if (index < value.Length && !string.IsNullOrEmpty(appendText)) buffer.Append(appendText);
             return buffer.ToString();
+            //if (value.Length > maxLength)
+            //{
+            //    value = value.Substring(0, maxLength);
+            //    if (appendText.Length > 0)
+            //    {
+            //        value += appendText;
+            //    }
+            //}
+            //return value;
         }
 
         /// <summary>
@@ -977,7 +986,7 @@ namespace DTCMS.TemplateEngine
         /// <param name="providerName"></param>
         internal static DbProviderFactory CreateDbProviderFactory(string providerName)
         {
-            if(string.IsNullOrEmpty(providerName)) return null;
+            if (string.IsNullOrEmpty(providerName)) return null;
 
             //从缓存读取
             DbProviderFactory factory;

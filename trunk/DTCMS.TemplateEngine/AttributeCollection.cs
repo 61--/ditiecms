@@ -68,7 +68,6 @@ namespace DTCMS.TemplateEngine
                         {
                             return enumer.Current;
                         }
-
                         i++;
                     }                    
                 }
@@ -203,7 +202,7 @@ namespace DTCMS.TemplateEngine
                 this.Item = item;
             }
             /// <summary>
-            /// 添加添加的项目
+            /// 添加的项目
             /// </summary>
             public Attribute Item { get; private set; }
         }

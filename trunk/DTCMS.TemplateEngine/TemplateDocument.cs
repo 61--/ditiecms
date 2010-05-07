@@ -20,7 +20,6 @@ namespace DTCMS.TemplateEngine
     /// </summary>
     public class TemplateDocument : Template
     {
-
         #region 构造函数
         /// <summary>
         /// 
@@ -257,18 +256,18 @@ namespace DTCMS.TemplateEngine
                         //非匹配的结束标签.则模板有错
                         throw new ParserException("无效的结束标签");
                     }
-                    else if (ParserHelper.IsCommentTagStart(text, offset))
-                    {
-                        //构建文本节点
-                        ParserHelper.CreateTextNode(ownerTemplate, container, text, charOffset, offset - charOffset);
+                    //else if (ParserHelper.IsCommentTagStart(text, offset))
+                    //{
+                    //    //构建文本节点
+                    //    ParserHelper.CreateTextNode(ownerTemplate, container, text, charOffset, offset - charOffset);
 
-                        //找到注释的起始标记"<!--vt[",则直接查找结束标记"]-->"
-                        offset = text.IndexOf(ParserHelper.CommentTagEnd, offset + ParserHelper.CommentTagStart.Length);
-                        if (offset == -1) throw new ParserException("无法找到注释的结束标记");
-                        offset += ParserHelper.CommentTagEnd.Length;
-                        charOffset = offset;
-                        continue;
-                    }
+                    //    //找到注释的起始标记"<!--vt[",则直接查找结束标记"]-->"
+                    //    offset = text.IndexOf(ParserHelper.CommentTagEnd, offset + ParserHelper.CommentTagStart.Length);
+                    //    if (offset == -1) throw new ParserException("无法找到注释的结束标记");
+                    //    offset += ParserHelper.CommentTagEnd.Length;
+                    //    charOffset = offset;
+                    //    continue;
+                    //}
                     //处理偏移位置
                     if (match != null && match.Success)
                     {

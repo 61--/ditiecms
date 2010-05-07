@@ -103,7 +103,7 @@ namespace DTCMS.Entity
 			get { return _titleStyle; }
 		}
 		/// <summary>
-		/// 标题标签，如原创、转载
+        /// 标题标签，如1[原创]、2[转载]、3[投稿]
 		/// </summary>
 		public byte TitleFlag
 		{

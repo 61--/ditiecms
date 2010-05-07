@@ -70,6 +70,8 @@ namespace DTCMS.TemplateEngine
                         }
                     case "arclist":
                         return new ArcListTag(ownerTemplate);
+                    case "class":
+                        return new ArcClassTag(ownerTemplate);
                 }
             }
             return null;

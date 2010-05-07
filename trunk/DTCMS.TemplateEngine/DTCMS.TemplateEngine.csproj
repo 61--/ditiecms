@@ -43,7 +43,8 @@
     <Compile Include="Attribute.cs" />
     <Compile Include="AttributeCollection.cs" />
     <Compile Include="ConstantExpression.cs" />
-    <Compile Include="DataReaderTag.cs" />
+    <Compile Include="Tags\ArcClassTag.cs" />
+    <Compile Include="Tags\DataReaderTag.cs" />
     <Compile Include="Element.cs" />
     <Compile Include="ElementCollection.cs" />
     <Compile Include="Tags\ArcListTag.cs" />

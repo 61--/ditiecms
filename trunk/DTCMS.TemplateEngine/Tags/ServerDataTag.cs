@@ -17,68 +17,6 @@ using System.Configuration;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// 服务器数据类型
-    /// </summary>
-    public enum ServerDataType
-    {
-        /// <summary>
-        /// 未知
-        /// </summary>
-        Unknown,
-        /// <summary>
-        /// 服务器当前时间
-        /// </summary>
-        Time,
-        /// <summary>
-        /// 0~1之间的随机数
-        /// </summary>
-        Random,
-        /// <summary>
-        /// 服务器当前上下文的HttpApplicationState对象.如果模板引擎不在Web程序上使用则无效
-        /// </summary>
-        Application,
-        /// <summary>
-        /// 服务器当前上下文的HttpSessionState对象.如果模板引擎不在Web程序上使用则无效
-        /// </summary>
-        Session,
-        /// <summary>
-        /// 服务器当前上下文的缓存对象
-        /// </summary>
-        Cache,
-        /// <summary>
-        /// 服务器当前上下文的Request.QueryString数据集合.如果模板引擎不在Web程序上使用则无效
-        /// </summary>
-        QueryString,
-        /// <summary>
-        /// 服务器当前上下文的Request.Form数据集合.如果模板引擎不在Web程序上使用则无效
-        /// </summary>
-        Form,
-        /// <summary>
-        /// 服务器当前上下文的Request.Cookie数据集合.如果模板引擎不在Web程序上使用则无效
-        /// </summary>
-        Cookie,
-        /// <summary>
-        /// 服务器当前上下文的Request.ServerVariables数据集合.如果模板引擎不在Web程序上使用则无效
-        /// </summary>
-        ServerVariables,
-        /// <summary>
-        /// 服务器当前上下文的Request.Params数据集合.如果模板引擎不在Web程序上使用则无效
-        /// </summary>
-        RequestParams,
-        /// <summary>
-        /// 服务器当前上下文的HttpRequest对象.如果模板引擎不在Web程序上使用则无效
-        /// </summary>
-        Request,
-        /// <summary>
-        /// 服务器系统平台
-        /// </summary>
-        Environment,
-        /// <summary>
-        /// 获取当前应用程序的AppSettings配置节点参数
-        /// </summary>
-        AppSetting
-    }
-    /// <summary>
     /// 服务器数据标签,.如: &lt;vt:server var="request" type="request" /&gt;
     /// </summary>
     public class ServerDataTag : Tag
@@ -462,5 +400,68 @@ namespace DTCMS.TemplateEngine
             return value;
         }
         #endregion
+    }
+
+    /// <summary>
+    /// 服务器数据类型
+    /// </summary>
+    public enum ServerDataType
+    {
+        /// <summary>
+        /// 未知
+        /// </summary>
+        Unknown,
+        /// <summary>
+        /// 服务器当前时间
+        /// </summary>
+        Time,
+        /// <summary>
+        /// 0~1之间的随机数
+        /// </summary>
+        Random,
+        /// <summary>
+        /// 服务器当前上下文的HttpApplicationState对象.如果模板引擎不在Web程序上使用则无效
+        /// </summary>
+        Application,
+        /// <summary>
+        /// 服务器当前上下文的HttpSessionState对象.如果模板引擎不在Web程序上使用则无效
+        /// </summary>
+        Session,
+        /// <summary>
+        /// 服务器当前上下文的缓存对象
+        /// </summary>
+        Cache,
+        /// <summary>
+        /// 服务器当前上下文的Request.QueryString数据集合.如果模板引擎不在Web程序上使用则无效
+        /// </summary>
+        QueryString,
+        /// <summary>
+        /// 服务器当前上下文的Request.Form数据集合.如果模板引擎不在Web程序上使用则无效
+        /// </summary>
+        Form,
+        /// <summary>
+        /// 服务器当前上下文的Request.Cookie数据集合.如果模板引擎不在Web程序上使用则无效
+        /// </summary>
+        Cookie,
+        /// <summary>
+        /// 服务器当前上下文的Request.ServerVariables数据集合.如果模板引擎不在Web程序上使用则无效
+        /// </summary>
+        ServerVariables,
+        /// <summary>
+        /// 服务器当前上下文的Request.Params数据集合.如果模板引擎不在Web程序上使用则无效
+        /// </summary>
+        RequestParams,
+        /// <summary>
+        /// 服务器当前上下文的HttpRequest对象.如果模板引擎不在Web程序上使用则无效
+        /// </summary>
+        Request,
+        /// <summary>
+        /// 服务器系统平台
+        /// </summary>
+        Environment,
+        /// <summary>
+        /// 获取当前应用程序的AppSettings配置节点参数
+        /// </summary>
+        AppSetting
     }
 }

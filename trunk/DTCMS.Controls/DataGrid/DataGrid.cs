@@ -3,7 +3,7 @@
 // 创建描述: DTCMS V1.0 创建于 2010-03-01 17:30:10
 // 功能描述: DataGrid Control
 // 修改标识: 
-// 修改描述: 
+// 修改描述: LinPanxing 修改于 2010-04-17 11:19:25
 //------------------------------------------------------------------------------
 using System;
 using System.Text;
@@ -383,7 +383,7 @@ namespace DTCMS.Controls
                 js.Append(string.Format("var curPage=1;var pageSize={0};var totalPage;", PageSize));
             }
             js.Append("var totalRecord;var s;var sortValue;var isLoading=false;\r\n");
-            js.Append("$(function(){loadData(true);});\r\n");
+            js.Append("$(document).ready(function(){loadData(true);});\r\n");
             js.Append("function loadData(show){isLoading=show||false;var callback=function(res){if(res.error){alert(\"请求错误，请刷新页面重试！\\n\"+res.error.Message);return;}showDataList(res.value);};");
             js.Append(this.BindAjaxMethod);
             if (this.IsPage)
@@ -398,7 +398,7 @@ namespace DTCMS.Controls
             }
             else
             {
-                js.Append("(sortValue,callback);isLoading=false;}\r\n");
+                js.Append("(sortValue,callback);}\r\n");
             }
             js.Append("AjaxPro.onTimeout=function(){alert('请求超时，请刷新本页面重试！');}\r\n");
             js.Append("AjaxPro.onLoading=function(b){if(isLoading){if(b){showLoading('正在加载数据，请稍候...', '#dataList');}else{hideMessage();isLoading=false;}}}");
