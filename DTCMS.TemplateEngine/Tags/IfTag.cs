@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// If条件标签,如: &lt;vt:if var="member.age" value="20" compare="&lt;="&gt;..&lt;vt:elseif value="30"&gt;..&lt;/vt:if&gt;
+    /// If条件标签,如: &lt;dt:if var="member.age" value="20" compare="&lt;="&gt;..&lt;dt:elseif value="30"&gt;..&lt;/dt:if&gt;
     /// </summary>
     public class IfTag : IfConditionTag
     {

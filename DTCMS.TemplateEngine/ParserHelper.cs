@@ -22,7 +22,7 @@ namespace DTCMS.TemplateEngine
         /// <summary>
         /// 注释标签的起始标记
         /// </summary>
-        //public const string CommentTagStart = "<!--vt[";
+        //public const string CommentTagStart = "<!--dt[";
         /// <summary>
         /// 注释标签的结束标记
         /// </summary>
@@ -58,7 +58,7 @@ namespace DTCMS.TemplateEngine
         /// <returns></returns>
         internal static bool IsVariableTagStart(string text, int offset)
         {
-            return (ReadChar(text, offset) == '{' && ReadChar(text, offset + 1) == '$' && ReadChar(text, offset + 2) == ':');
+            return (ReadChar(text, offset) == '{' && ReadChar(text, offset + 1) == '$');
         }
         /// <summary>
         /// 判断是否是某种标签的开始
@@ -69,7 +69,7 @@ namespace DTCMS.TemplateEngine
         internal static bool IsTagStart(string text, int offset)
         {
             return (ReadChar(text, offset) == '<' &&
-                IsChars(ReadChar(text, offset + 1), 'v', 'V') &&
+                IsChars(ReadChar(text, offset + 1), 'd', 'D') &&
                 IsChars(ReadChar(text, offset + 2), 't', 'T') && 
                 ReadChar(text, offset + 3) == ':');
         }
@@ -83,13 +83,13 @@ namespace DTCMS.TemplateEngine
         {
             return (ReadChar(text, offset) == '<' && 
                 ReadChar(text, offset + 1) == '/' &&
-                IsChars(ReadChar(text, offset + 2), 'v', 'V') &&
+                IsChars(ReadChar(text, offset + 2), 'd', 'D') &&
                 IsChars(ReadChar(text, offset + 3), 't', 'T') && 
                 ReadChar(text, offset + 4) == ':');
         }
 
         /// <summary>
-        /// 判断是否是注解标签的开始.注解标签的定义: &lt;!--vt[.....]--&gt;
+        /// 判断是否是注解标签的开始.注解标签的定义: &lt;!--dt[.....]--&gt;
         /// </summary>
         /// <param name="text"></param>
         /// <param name="offset"></param>
@@ -100,7 +100,7 @@ namespace DTCMS.TemplateEngine
         //        ReadChar(text, offset + 1) == '!' && 
         //        ReadChar(text, offset + 2) == '-' &&
         //        ReadChar(text, offset + 3) == '-' &&
-        //        IsChars(ReadChar(text, offset + 4), 'v', 'V') &&
+        //        IsChars(ReadChar(text, offset + 4), 'd', 'D') &&
         //        IsChars(ReadChar(text, offset + 5), 't', 'T') && 
         //        ReadChar(text, offset + 6) == '[');
         //}

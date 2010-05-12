@@ -16,7 +16,7 @@ using DTCMS.Entity.TemplateEngine;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// 数据列表标签,.如: &lt;vt:arclist var="archive" type="article" /&gt;
+    /// 数据列表标签,.如: &lt;dt:arclist var="archive" type="article" /&gt;
     /// </summary>
     public class ArcListTag : Tag
     {
@@ -78,6 +78,9 @@ namespace DTCMS.TemplateEngine
             get { return this.Attributes["ClassID"]; }
         }
 
+        /// <summary>
+        /// 是否包含子栏目
+        /// </summary>
         public Attribute SubClass
         {
             get { return this.Attributes["SubClass"]; }
@@ -271,12 +274,13 @@ namespace DTCMS.TemplateEngine
             {
                 strWhere += string.Format(" AND TitleFlag={0}", this.TitleFlag.Text);
             }
-            if (this.ClassID != null)
+            if (this.ClassID != null && this.ClassID.Value.GetValue() != null)
             {
                 if (this.SubClass == null ? true : TypeConvert.ToBool(this.SubClass.Text, true))
                 {
                     //如果包含子栏目
-                    string[] scList = this.ClassID.Text.Split(',');
+                    //string[] scList = this.ClassID.Text.Split(',');
+                    string[] scList = this.ClassID.Value.GetValue().ToString().Split(',');
                     if (scList.Length > 1)
                     {
                         string scSql = string.Format(" AND ClassID IN(SELECT CID FROM {{0}}Arc_Class WHERE Relation LIKE '%.{0}.%'", scList[0]);

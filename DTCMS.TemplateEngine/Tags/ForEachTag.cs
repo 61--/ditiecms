@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// ForEach标签.如:&lt;vt:foreach from="collection" item="variable"  index="i"&gt;...&lt;/vt:foreach&gt;
+    /// ForEach标签.如:&lt;dt:foreach from="collection" item="variable"  index="i"&gt;...&lt;/dt:foreach&gt;
     /// </summary>
     public class ForEachTag : Tag
     {

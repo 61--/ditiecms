@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// 类型导入标签, 如:&lt;vt:import var="math" type="System.Math" /&gt;
+    /// 类型导入标签, 如:&lt;dt:import var="math" type="System.Math" /&gt;
     /// </summary>
     public class ImportTag : Tag
     {

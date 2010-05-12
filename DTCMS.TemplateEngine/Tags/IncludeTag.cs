@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// 文件包含标签.如: &lt;vt:include file="include.html" charset="utf-8" /&gt;
+    /// 文件包含标签.如: &lt;dt:include file="include.html" charset="utf-8" /&gt;
     /// </summary>
     public class IncludeTag : Tag
     {

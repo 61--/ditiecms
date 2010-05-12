@@ -16,7 +16,7 @@ using DTCMS.Entity.TemplateEngine;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// 栏目标签,.如: &lt;vt:class var="class" type="all" /&gt;
+    /// 栏目标签,.如: &lt;dt:class var="class" type="all" /&gt;
     /// </summary>
     public class ArcClassTag : Tag
     {

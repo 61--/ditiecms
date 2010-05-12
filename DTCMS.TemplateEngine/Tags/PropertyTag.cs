@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// 属性或字段获取标签.如: &lt;vt:property var="time" field="Now" type="System.DateTime" /&gt;
+    /// 属性或字段获取标签.如: &lt;dt:property var="time" field="Now" type="System.DateTime" /&gt;
     /// </summary>
     public class PropertyTag : Tag
     {

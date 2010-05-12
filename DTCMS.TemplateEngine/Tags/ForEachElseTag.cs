@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// ForEachElse标签.如:&lt;vt:foreachelse&gt;...&lt;/vt:foreach&gt;
+    /// ForEachElse标签.如:&lt;dt:foreachelse&gt;...&lt;/dt:foreach&gt;
     /// </summary>
     public class ForEachElseTag : Tag
     {
