@@ -14,7 +14,7 @@ using System.Reflection;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// 函数调用标签.如: &lt;vt:function var="MaxAge" method="Max" type="System.Math" args="$user1.age" args="$user2.age" /&gt;
+    /// 函数调用标签.如: &lt;dt:function var="MaxAge" method="Max" type="System.Math" args="$user1.age" args="$user2.age" /&gt;
     /// </summary>
     public class FunctionTag : Tag
     {

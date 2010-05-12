@@ -261,7 +261,7 @@ namespace DTCMS.TemplateEngine
                     //    //构建文本节点
                     //    ParserHelper.CreateTextNode(ownerTemplate, container, text, charOffset, offset - charOffset);
 
-                    //    //找到注释的起始标记"<!--vt[",则直接查找结束标记"]-->"
+                    //    //找到注释的起始标记"<!--dt[",则直接查找结束标记"]-->"
                     //    offset = text.IndexOf(ParserHelper.CommentTagEnd, offset + ParserHelper.CommentTagStart.Length);
                     //    if (offset == -1) throw new ParserException("无法找到注释的结束标记");
                     //    offset += ParserHelper.CommentTagEnd.Length;

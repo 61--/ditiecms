@@ -16,7 +16,7 @@ using System.Data;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// DataReader标签.如:&lt;vt:datareader var="members" connection="sitedb"  commandtext="select * from [member]"&gt;...&lt;/vt:foreach&gt;
+    /// DataReader标签.如:&lt;dt:datareader var="members" connection="sitedb"  commandtext="select * from [member]"&gt;...&lt;/dt:foreach&gt;
     /// </summary>
     public class DataReaderTag : Tag
     {

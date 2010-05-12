@@ -141,6 +141,13 @@
     <Compile Include="admin\createstatic\createhome.aspx.designer.cs">
       <DependentUpon>createhome.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\createstatic\createlist.aspx.cs">
+      <DependentUpon>createlist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\createstatic\createlist.aspx.designer.cs">
+      <DependentUpon>createlist.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -363,6 +370,7 @@
     <Content Include="admin\ajax\dialog_list.aspx" />
     <Content Include="admin\createstatic\createarchive.aspx" />
     <Content Include="admin\createstatic\createhome.aspx" />
+    <Content Include="admin\createstatic\createlist.aspx" />
     <Content Include="admin\css\dialog.css" />
     <Content Include="admin\dialog\newssourcelist.aspx" />
     <Content Include="admin\images\blue\action.gif" />
@@ -459,8 +467,6 @@
     <Content Include="bin\DTCMS.SqlServerDAL.pdb" />
     <Content Include="bin\DTCMS.TemplateEngine.dll" />
     <Content Include="bin\DTCMS.TemplateEngine.pdb" />
-    <Content Include="bin\TemplateEngine.dll" />
-    <Content Include="bin\TemplateEngine.pdb" />
     <Content Include="ckfinder\bin\CKFinder.dll" />
     <Content Include="ckfinder\ckfinder.html" />
     <Content Include="ckfinder\ckfinder.js" />
@@ -1147,6 +1153,7 @@
     <Content Include="admin\template\templateFile_edit.aspx" />
     <Content Include="index.aspx" />
     <Content Include="template\default\arc_article.html" />
+    <Content Include="template\default\article_list.html" />
     <Content Include="template\default\index.html" />
     <Content Include="template\default\_Public_Footer.html" />
     <Content Include="template\default\_Public_Header.html" />

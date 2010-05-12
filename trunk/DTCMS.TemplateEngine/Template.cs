@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// 模板块标签.如: &lt;vt:template id="member"&gt;.......&lt;/vt:template&gt; 或自闭合的模板:&lt;vt:template id="member" file="member.html" /&gt;
+    /// 模板块标签.如: &lt;dt:template id="member"&gt;.......&lt;/dt:template&gt; 或自闭合的模板:&lt;dt:template id="member" file="member.html" /&gt;
     /// </summary>
     public class Template : Tag
     {

@@ -17,7 +17,7 @@ using System.Configuration;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// 服务器数据标签,.如: &lt;vt:server var="request" type="request" /&gt;
+    /// 服务器数据标签,.如: &lt;dt:server var="request" type="request" /&gt;
     /// </summary>
     public class ServerDataTag : Tag
     {

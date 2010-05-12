@@ -17,12 +17,12 @@ namespace DTCMS.TemplateEngine
     internal static class ParserRegex
     {
         /// <summary>
-        /// 标签的正则表达.如标签: &lt;vt:for from="1" to="100" index="i"&gt;
+        /// 标签的正则表达.如标签: &lt;dt:for from="1" to="100" index="i"&gt;
         /// </summary>
         internal static readonly Regex TagRegex;
 
         /// <summary>
-        /// 结束标签的正则表达式.如标签: &lt;/vt:for&gt;
+        /// 结束标签的正则表达式.如标签: &lt;/dt:for&gt;
         /// </summary>
         internal static readonly Regex EndTagRegex;
 
@@ -50,13 +50,13 @@ namespace DTCMS.TemplateEngine
         /// </summary>
         static ParserRegex()
         {
-            TagRegex = new Regex(@"\G<vt\:\s*(?<tagname>[\-\w]+)(\s+(?<attrname>[\-\w]+)(\s*=\s*""(?<attrval>[^""]*)""|\s*=\s*'(?<attrval>[^']*)'|\s*=\s*(?<attrval>[^\s=>]*)|(?<attrval>\s*?)))*\s*(?<closed>/)?>", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+            TagRegex = new Regex(@"\G<dt\:\s*(?<tagname>[\-\w]+)(\s+(?<attrname>[\-\w]+)(\s*=\s*""(?<attrval>[^""]*)""|\s*=\s*'(?<attrval>[^']*)'|\s*=\s*(?<attrval>[^\s=>]*)|(?<attrval>\s*?)))*\s*(?<closed>/)?>", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
-            EndTagRegex = new Regex(@"\G</vt\:\s*(?<tagname>[\-\w]+)(\s+(?<attrname>[\-\w]+)(\s*=\s*""(?<attrval>[^""]*)""|\s*=\s*'(?<attrval>[^']*)'|\s*=\s*(?<attrval>[^\s=>]*)|(?<attrval>\s*?)))*\s*>", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+            EndTagRegex = new Regex(@"\G</dt\:\s*(?<tagname>[\-\w]+)(\s+(?<attrname>[\-\w]+)(\s*=\s*""(?<attrval>[^""]*)""|\s*=\s*'(?<attrval>[^']*)'|\s*=\s*(?<attrval>[^\s=>]*)|(?<attrval>\s*?)))*\s*>", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
             string varExp = @"(?:#(?<prefix>#|[\-\w]*)\.)?(?<name>(?!\d)\w+)(?:\.(?<field>\d+|(?!\d)\w+)(?<method>(?:\( *\))?))*";
 
-            VarTagRegex = new Regex(@"\G{\$\:\s*" + varExp + @"(\s+(?<attrname>[\-\w]+)(\s*=\s*""(?<attrval>[^""]*)""|\s*=\s*'(?<attrval>[^']*)'|\s*=\s*(?<attrval>[^\s=}]*)|(?<attrval>\s*?)))*\s*}", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+            VarTagRegex = new Regex(@"\G{\$\s*" + varExp + @"(\s+(?<attrname>[\-\w]+)(\s*=\s*""(?<attrval>[^""]*)""|\s*=\s*'(?<attrval>[^']*)'|\s*=\s*(?<attrval>[^\s=}]*)|(?<attrval>\s*?)))*\s*}", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
             VarExpRegex = new Regex(@"^\s*" + varExp + @"\s*$", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 

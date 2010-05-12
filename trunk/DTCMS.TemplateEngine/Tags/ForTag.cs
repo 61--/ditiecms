@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// For标签.如:&lt;vt:for from="1" to="100" step="1" index="i"&gt;...&lt;/vt:for&gt;
+    /// For标签.如:&lt;dt:for from="1" to="100" step="1" index="i"&gt;...&lt;/dt:for&gt;
     /// </summary>
     public class ForTag : Tag
     {

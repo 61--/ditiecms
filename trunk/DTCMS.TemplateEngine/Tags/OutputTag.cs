@@ -15,7 +15,7 @@ using System.Diagnostics;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// 数据输出标签,可输出某个标签的数据,或直接输出文件数据.如: &lt;vt:output tagid="list" /&gt; 或 &lt;vt:output file="output.html" charset="utf-8" /&gt;
+    /// 数据输出标签,可输出某个标签的数据,或直接输出文件数据.如: &lt;dt:output tagid="list" /&gt; 或 &lt;dt:output file="output.html" charset="utf-8" /&gt;
     /// </summary>
     public class OutputTag : Tag
     {

@@ -18,7 +18,7 @@ namespace DTCMS.TemplateEngine
     public enum TagOpenMode
     {
         /// <summary>
-        /// 简单的.不支持&lt;vt:datareader&gt;等标签
+        /// 简单的.不支持&lt;dt:datareader&gt;等标签
         /// </summary>
         Simple,
         /// <summary>
@@ -119,7 +119,7 @@ namespace DTCMS.TemplateEngine
         /// <summary>
         /// 兼容模式
         /// </summary>
-        /// <remarks>如果采用兼容模式.则&lt;vt:foreach&gt;标签的from属性与&lt;vt:expression&gt;标签的args属性等可以不以$字符开头定义变量表达式</remarks>
+        /// <remarks>如果采用兼容模式.则&lt;dt:foreach&gt;标签的from属性与&lt;dt:expression&gt;标签的args属性等可以不以$字符开头定义变量表达式</remarks>
         public bool CompatibleMode { get; private set; }
     }
 }

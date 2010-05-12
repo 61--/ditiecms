@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// Else标签..只适用于if标签内.如&lt;vt:if var="member.age" value="20" compare="&lt;="&gt;..&lt;vt:else&gt;..&lt;/vt:if&gt;
+    /// Else标签..只适用于if标签内.如&lt;dt:if var="member.age" value="20" compare="&lt;="&gt;..&lt;dt:else&gt;..&lt;/dt:if&gt;
     /// </summary>
     public class ElseTag : IfConditionTag
     {
