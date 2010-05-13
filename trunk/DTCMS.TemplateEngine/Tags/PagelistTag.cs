@@ -18,13 +18,13 @@ namespace DTCMS.TemplateEngine
     /// <summary>
     /// 栏目标签,.如: &lt;dt:pagelist var="list" /&gt;
     /// </summary>
-    public class PagelistTag : Tag
+    public class PageListTag : Tag
     {
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="ownerTemplate"></param>
-        internal PagelistTag(Template ownerTemplate) : base(ownerTemplate){ }
+        internal PageListTag(Template ownerTemplate) : base(ownerTemplate) { }
 
         #region 重写Tag的方法
         /// <summary>
@@ -126,7 +126,7 @@ namespace DTCMS.TemplateEngine
         /// <returns></returns>
         internal override Element Clone(Template ownerTemplate)
         {
-            ArcClassTag tag = new ArcClassTag(ownerTemplate);
+            PageListTag tag = new PageListTag(ownerTemplate);
             this.CopyTo(tag);
             tag.Variable = this.Variable == null ? null : this.Variable.Clone(ownerTemplate);
             tag.Output = this.Output;
@@ -141,15 +141,15 @@ namespace DTCMS.TemplateEngine
         /// <param name="writer"></param>
         protected override void RenderTagData(System.IO.TextWriter writer)
         {
-            List<ArcClass> classList = this.GetClassList();
+            List<ArcList> classList = this.GetPageList();
             if (classList.Count > 0)
             {
-                foreach (ArcClass classItem in classList)
+                foreach (ArcList arcItem in classList)
                 {
                     if (this.Variable != null)
-                        this.Variable.Value = classItem;
+                        this.Variable.Value = arcItem;
                     if (this.Output)
-                        writer.Write("<li><a href=\"" + classItem.ID + "\">" + classItem.ClassPath + "</a></li>\r\n");
+                        writer.Write("<li><a href=\"" + arcItem.ID + "\">" + arcItem.Title + "</a></li>\r\n");
                     base.RenderTagData(writer);
                 }
             }
@@ -161,14 +161,16 @@ namespace DTCMS.TemplateEngine
         /// 获取数据
         /// </summary>
         /// <returns></returns>
-        private List<ArcClass> GetClassList()
+        private List<ArcList> GetPageList()
         {
             //获取分页条数
-            int pagesize = TypeConvert.ToInt32(this.Size.Text);
+            int pageSize = TypeConvert.ToInt32(this.Size.Text);
+            int pageIndex = 1;
+            int classID = 10;
 
-            ArcListBLL classBll = new ArcListBLL();
+            ArcListBLL arcBll = new ArcListBLL();
 
-            List<ArcClass> classList = classBll.GetArcPageList(pagesize,currpage);
+            List<ArcList> classList = arcBll.GetPageList(classID, pageSize, pageIndex);
             return classList;
         }
         #endregion
