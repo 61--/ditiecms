@@ -274,8 +274,8 @@ namespace DTCMS.SqlServerDAL
 		/// <returns>分页对象泛型集合</returns>
 		private List<ModuleControl> GetPageList(SqlDataReader dr, int pageSize, int pageIndex, out int count)
 		{
-			long first = GetFirstIndex(pageSize, pageIndex);
-			long last = GetLastIndex(pageSize, pageIndex);
+			int first = GetFirstIndex(pageSize, pageIndex);
+			int last = GetLastIndex(pageSize, pageIndex);
 
 			count = 0;
 

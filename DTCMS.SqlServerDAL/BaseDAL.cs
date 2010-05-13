@@ -98,7 +98,7 @@ namespace DTCMS.SqlServerDAL
         /// <param name="pageSize">页大小</param>
         /// <param name="pageIndex">页索引</param>
         /// <returns>分页数据的第一个索引</returns>
-        protected static long GetFirstIndex(int pageSize, int pageIndex)
+        protected static int GetFirstIndex(int pageSize, int pageIndex)
         {
             return pageSize * (pageIndex - 1) + 1;
         }
@@ -109,7 +109,7 @@ namespace DTCMS.SqlServerDAL
         /// <param name="pageSize">页大小</param>
         /// <param name="pageIndex">页索引</param>
         /// <returns>分页数据的最后一个索引</returns>
-        protected static long GetLastIndex(int pageSize, int pageIndex)
+        protected static int GetLastIndex(int pageSize, int pageIndex)
         {
             return pageSize * pageIndex;
         }

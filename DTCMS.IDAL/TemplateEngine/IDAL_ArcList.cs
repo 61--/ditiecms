@@ -3,7 +3,7 @@
 // 创建描述: DTCMS V1.0 创建于 2010-04-16 20:55:41
 // 功能描述: 
 // 修改标识:
-// 修改描述: 
+// 修改描述: LinPanxing 修改于 2010-05-13 22:10:43
 //------------------------------------------------------------------------------
 using System;
 using System.Data;
@@ -27,5 +27,10 @@ namespace DTCMS.IDAL.TemplateEngine
         /// 获取栏目列表
         /// </summary>
         List<ArcClass> GetArcClass(int row, string strWhere);
+
+        /// <summary>
+        /// 获取分页列表
+        /// </summary>
+        List<ArcList> GetPageList(int classID, string classType, int pageSize, int pageIndex);
     }
 }
