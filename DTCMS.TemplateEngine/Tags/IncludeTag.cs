@@ -1,10 +1,9 @@
-ï»¿/* ***********************************************
+/* ***********************************************
  * Author		:  kingthy
  * Email		:  kingthy@gmail.com
  * Description	:  IncludeTag
  *
  * ***********************************************/
-
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +12,7 @@ using System.Text.RegularExpressions;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// æ–‡ä»¶åŒ…å«æ ‡ç­¾.å¦‚: &lt;dt:include file="include.html" charset="utf-8" /&gt;
+    /// ÎÄ¼ş°üº¬±êÇ©.Èç: &lt;dt:include file="include.html" charset="utf-8" /&gt;
     /// </summary>
     public class IncludeTag : Tag
     {
@@ -26,9 +25,9 @@ namespace DTCMS.TemplateEngine
         {
             this.Charset = ownerTemplate.Charset;
         }
-        #region é‡å†™Tagçš„æ–¹æ³•
+        #region ÖØĞ´TagµÄ·½·¨
         /// <summary>
-        /// è¿”å›æ ‡ç­¾çš„åç§°
+        /// ·µ»Ø±êÇ©µÄÃû³Æ
         /// </summary>
         public override string TagName
         {
@@ -36,7 +35,7 @@ namespace DTCMS.TemplateEngine
         }
 
         /// <summary>
-        /// è¿”å›æ­¤æ ‡ç­¾æ˜¯å¦æ˜¯å•ä¸€æ ‡ç­¾.å³æ˜¯ä¸éœ€è¦é…å¯¹çš„ç»“æŸæ ‡ç­¾
+        /// ·µ»Ø´Ë±êÇ©ÊÇ·ñÊÇµ¥Ò»±êÇ©.¼´ÊÇ²»ĞèÒªÅä¶ÔµÄ½áÊø±êÇ©
         /// </summary>
         internal override bool IsSingleTag
         {
@@ -44,20 +43,20 @@ namespace DTCMS.TemplateEngine
         }
         #endregion
 
-        #region å±æ€§å®šä¹‰
+        #region ÊôĞÔ¶¨Òå
         /// <summary>
-        /// å¼•ç”¨çš„æ–‡ä»¶
+        /// ÒıÓÃµÄÎÄ¼ş
         /// </summary>
         public string File { get; private set; }
         /// <summary>
-        /// æ–‡ä»¶ç¼–ç 
+        /// ÎÄ¼ş±àÂë
         /// </summary>
         public Encoding Charset { get; private set; }
         #endregion
 
-        #region æ·»åŠ æ ‡ç­¾å±æ€§æ—¶çš„è§¦å‘å‡½æ•°.ç”¨äºè®¾ç½®è‡ªèº«çš„æŸäº›å±æ€§å€¼
+        #region Ìí¼Ó±êÇ©ÊôĞÔÊ±µÄ´¥·¢º¯Êı.ÓÃÓÚÉèÖÃ×ÔÉíµÄÄ³Ğ©ÊôĞÔÖµ
         /// <summary>
-        /// æ·»åŠ æ ‡ç­¾å±æ€§æ—¶çš„è§¦å‘å‡½æ•°.ç”¨äºè®¾ç½®è‡ªèº«çš„æŸäº›å±æ€§å€¼
+        /// Ìí¼Ó±êÇ©ÊôĞÔÊ±µÄ´¥·¢º¯Êı.ÓÃÓÚÉèÖÃ×ÔÉíµÄÄ³Ğ©ÊôĞÔÖµ
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
@@ -75,32 +74,32 @@ namespace DTCMS.TemplateEngine
         }
         #endregion
 
-        #region å¼€å§‹è§£ææ ‡ç­¾æ•°æ®
+        #region ¿ªÊ¼½âÎö±êÇ©Êı¾İ
         /// <summary>
-        /// å¼€å§‹è§£ææ ‡ç­¾æ•°æ®
+        /// ¿ªÊ¼½âÎö±êÇ©Êı¾İ
         /// </summary>
-        /// <param name="ownerTemplate">å®¿ä¸»æ¨¡æ¿</param>
-        /// <param name="container">æ ‡ç­¾çš„å®¹å™¨</param>
-        /// <param name="tagStack">æ ‡ç­¾å †æ ˆ</param>
+        /// <param name="ownerTemplate">ËŞÖ÷Ä£°å</param>
+        /// <param name="container">±êÇ©µÄÈİÆ÷</param>
+        /// <param name="tagStack">±êÇ©¶ÑÕ»</param>
         /// <param name="text"></param>
         /// <param name="match"></param>
-        /// <param name="isClosedTag">æ˜¯å¦é—­åˆæ ‡ç­¾</param>
-        /// <returns>å¦‚æœéœ€è¦ç»§ç»­å¤„ç†EndTagåˆ™è¿”å›true.å¦åˆ™è¯·è¿”å›false</returns>
+        /// <param name="isClosedTag">ÊÇ·ñ±ÕºÏ±êÇ©</param>
+        /// <returns>Èç¹ûĞèÒª¼ÌĞø´¦ÀíEndTagÔò·µ»Øtrue.·ñÔòÇë·µ»Øfalse</returns>
         internal override bool ProcessBeginTag(Template ownerTemplate, Tag container, Stack<Tag> tagStack, string text, ref Match match, bool isClosedTag)
         {
             container.AppendChild(this);
 
             if (!string.IsNullOrEmpty(this.File))
             {
-                //ä¿®æ­£æ–‡ä»¶åœ°å€
+                //ĞŞÕıÎÄ¼şµØÖ·
                 this.File = Utility.ResolveFilePath(this.Parent, this.File);
 
                 if (System.IO.File.Exists(this.File))
                 {
-                    //å¢åŠ åˆ°ä¾èµ–æ–‡ä»¶åˆ—è¡¨
+                    //Ôö¼Óµ½ÒÀÀµÎÄ¼şÁĞ±í
                     this.OwnerTemplate.AddFileDependency(this.File);
 
-                    //è§£ææ•°æ®
+                    //½âÎöÊı¾İ
                     new TemplateDocument(ownerTemplate, this, System.IO.File.ReadAllText(this.File, this.Charset), ownerTemplate.OwnerDocument.DocumentConfig);
                 }
             }
@@ -108,9 +107,9 @@ namespace DTCMS.TemplateEngine
         }
         #endregion
 
-        #region å…‹éš†å½“å‰å…ƒç´ åˆ°æ–°çš„å®¿ä¸»æ¨¡æ¿
+        #region ¿ËÂ¡µ±Ç°ÔªËØµ½ĞÂµÄËŞÖ÷Ä£°å
         /// <summary>
-        /// å…‹éš†å½“å‰å…ƒç´ åˆ°æ–°çš„å®¿ä¸»æ¨¡æ¿
+        /// ¿ËÂ¡µ±Ç°ÔªËØµ½ĞÂµÄËŞÖ÷Ä£°å
         /// </summary>
         /// <param name="ownerTemplate"></param>
         /// <returns></returns>

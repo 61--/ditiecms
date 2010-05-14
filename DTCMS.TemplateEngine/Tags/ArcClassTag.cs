@@ -34,7 +34,7 @@ namespace DTCMS.TemplateEngine
         /// </summary>
         public override string TagName
         {
-            get { return "class"; }
+            get { return "channel"; }
         }
 
         /// <summary>
@@ -72,9 +72,9 @@ namespace DTCMS.TemplateEngine
         /// <summary>
         /// 栏目ID
         /// </summary>
-        public Attribute ClassID
+        public Attribute ChannelID
         {
-            get { return this.Attributes["ClassID"]; }
+            get { return this.Attributes["ChannelID"]; }
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace DTCMS.TemplateEngine
         internal override bool ProcessBeginTag(Template ownerTemplate, Tag container, Stack<Tag> tagStack, string text, ref Match match, bool isClosedTag)
         {
             if (this.Variable == null && !this.Output)
-                this.Variable = ParserHelper.CreateVariableIdentity(this.OwnerTemplate, "class");
+                this.Variable = ParserHelper.CreateVariableIdentity(this.OwnerTemplate, "c");
             //throw new ParserException(string.Format("{0}标签中如果未定义Output属性为true则必须定义var属性", this.TagName));
             //if (this.Type != ServerDataType.Random 
             //    && this.Type != ServerDataType.Time
@@ -163,12 +163,12 @@ namespace DTCMS.TemplateEngine
             List<ArcClass> classList = this.GetClassList();
             if (classList.Count > 0)
             {
-                foreach (ArcClass classItem in classList)
+                foreach (ArcClass classInfo in classList)
                 {
                     if (this.Variable != null)
-                        this.Variable.Value = classItem;
+                        this.Variable.Value = classInfo;
                     if (this.Output)
-                        writer.Write("<li><a href=\"" + classItem.ID + "\">" + classItem.ClassPath + "</a></li>\r\n");
+                        writer.Write("<li><a href=\"" + classInfo.ID + "\">" + classInfo.Path + "</a></li>\r\n");
                     base.RenderTagData(writer);
                 }
             }
@@ -191,9 +191,9 @@ namespace DTCMS.TemplateEngine
             //构造WHERE语句
             string strWhere = string.Empty;
 
-            if (this.ClassID != null)
+            if (this.ChannelID != null)
             {
-                string[] scList = this.ClassID.Text.Split(',');
+                string[] scList = this.ChannelID.Text.Split(',');
                 if (scList.Length > 1)
                 {
                     string scSql = string.Format(" AND CID IN(", scList[0]);
