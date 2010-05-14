@@ -73,17 +73,17 @@ namespace DTCMS.TemplateEngine
         /// <summary>
         /// 栏目ID
         /// </summary>
-        public Attribute ClassID
+        public Attribute ChannelID
         {
-            get { return this.Attributes["ClassID"]; }
+            get { return this.Attributes["ChannelID"]; }
         }
 
         /// <summary>
         /// 是否包含子栏目
         /// </summary>
-        public Attribute SubClass
+        public Attribute SubChannel
         {
-            get { return this.Attributes["SubClass"]; }
+            get { return this.Attributes["SubChannel"]; }
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace DTCMS.TemplateEngine
         internal override bool ProcessBeginTag(Template ownerTemplate, Tag container, Stack<Tag> tagStack, string text, ref Match match, bool isClosedTag)
         {
             if (this.Variable == null && !this.Output)
-                this.Variable = ParserHelper.CreateVariableIdentity(this.OwnerTemplate, "archive");
+                this.Variable = ParserHelper.CreateVariableIdentity(this.OwnerTemplate, "a");
             //throw new ParserException(string.Format("{0}标签中如果未定义Output属性为true则必须定义var属性", this.TagName));
             //if (this.Type != ServerDataType.Random 
             //    && this.Type != ServerDataType.Time
@@ -212,12 +212,12 @@ namespace DTCMS.TemplateEngine
             List<ArcList> arcList = this.GetArcList();
             if (arcList.Count > 0)
             {
-                foreach (ArcList arcItem in arcList)
+                foreach (ArcList arcInfo in arcList)
                 {
                     if (this.Variable != null)
-                        this.Variable.Value = arcItem;
+                        this.Variable.Value = arcInfo;
                     if (this.Output)
-                        writer.Write("<li><a href=\"" + arcItem.ID + "\">" + arcItem.Title + "</a></li>\r\n");
+                        writer.Write("<li><a href=\"" + arcInfo.ID + "\">" + arcInfo.Title + "</a></li>\r\n");
                     base.RenderTagData(writer);
                 }
             }
@@ -274,13 +274,13 @@ namespace DTCMS.TemplateEngine
             {
                 strWhere += string.Format(" AND TitleFlag={0}", this.TitleFlag.Text);
             }
-            if (this.ClassID != null && this.ClassID.Value.GetValue() != null)
+            if (this.ChannelID != null && this.ChannelID.Value.GetValue() != null)
             {
-                if (this.SubClass == null ? true : TypeConvert.ToBool(this.SubClass.Text, true))
+                if (this.SubChannel == null ? true : TypeConvert.ToBool(this.SubChannel.Text, true))
                 {
                     //如果包含子栏目
                     //string[] scList = this.ClassID.Text.Split(',');
-                    string[] scList = this.ClassID.Value.GetValue().ToString().Split(',');
+                    string[] scList = this.ChannelID.Value.GetValue().ToString().Split(',');
                     if (scList.Length > 1)
                     {
                         string scSql = string.Format(" AND ClassID IN(SELECT CID FROM {{0}}Arc_Class WHERE Relation LIKE '%.{0}.%'", scList[0]);
@@ -298,7 +298,7 @@ namespace DTCMS.TemplateEngine
                 }
                 else
                 {
-                    strWhere += string.Format(" AND ClassID IN({0})", this.ClassID.Text);
+                    strWhere += string.Format(" AND ClassID IN({0})", this.ChannelID.Text);
                 }
             }
             if (this.KeyWord != null)

@@ -5,14 +5,14 @@
 </head>
 <body>
 <div id="list">
-	<dt:class var="class" row="10">
-	    <a href="{$class.id}.html">{$class.className}</a>
+	<dt:channel var="c" row="10">
+	    <a href="{$c.id}.html">{$c.name}</a>
 	    <ul>
 	    <dt:arclist var="arc" classid="$class.id" row="10">
 	        <li><a href="{$arc.id}.html">{$arc.title}</a> - {$arc.pubdate format="yyyy/MM/dd mm:ss"}</li>
 	    </dt:arclist>
 	    </ul>
-	</dt:class>
+	</dt:channel>
     
 	<dt:server type="time" var="time">{$time}</dt:server>
 </div>

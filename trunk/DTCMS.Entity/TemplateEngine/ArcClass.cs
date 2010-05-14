@@ -20,12 +20,12 @@ namespace DTCMS.Entity.TemplateEngine
         { }
 
         private int _id;
-        private string _className;
-        private string _classEName;
-        private byte _classType;
-        private string _classDomain;
-        private string _classPath;
-        private string _classURL;
+        private string _name;
+        private string _eName;
+        private byte _type;
+        private string _domain;
+        private string _path;
+        private string _URL;
         private string _description;
         private byte _siteID;
         private string _imgUrl;
@@ -42,50 +42,50 @@ namespace DTCMS.Entity.TemplateEngine
         /// <summary>
         /// 栏目名称
         /// </summary>
-        public string ClassName
+        public string Name
         {
-            set { _className = value; }
-            get { return _className; }
+            set { _name = value; }
+            get { return _name; }
         }
         /// <summary>
         /// 栏目英文名称
         /// </summary>
-        public string ClassEName
+        public string EName
         {
-            set { _classEName = value; }
-            get { return _classEName; }
+            set { _eName = value; }
+            get { return _eName; }
         }
         /// <summary>
         /// 栏目类型
         /// </summary>
-        public byte ClassType
+        public byte Type
         {
-            set { _classType = value; }
-            get { return _classType; }
+            set { _type = value; }
+            get { return _type; }
         }
         /// <summary>
         /// 栏目二级域名
         /// </summary>
-        public string ClassDomain
+        public string Domain
         {
-            set { _classDomain = value; }
-            get { return _classDomain; }
+            set { _domain = value; }
+            get { return _domain; }
         }
         /// <summary>
         /// 栏目目录，{#CmsPath}/Archive/
         /// </summary>
-        public string ClassPath
+        public string Path
         {
-            set { _classPath = value; }
-            get { return _classPath; }
+            set { _path = value; }
+            get { return _path; }
         }
         /// <summary>
         /// 栏目地址
         /// </summary>
-        public string ClassURL
+        public string URL
         {
-            set { _classURL = value; }
-            get { return _classURL; }
+            set { _URL = value; }
+            get { return _URL; }
         }
         /// <summary>
         /// 栏目描述

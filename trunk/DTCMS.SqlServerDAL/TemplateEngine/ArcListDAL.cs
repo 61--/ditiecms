@@ -138,10 +138,10 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
                         ArcClass model = new ArcClass();
                         model.ID = dbHelper.GetInt(dr["CID"]);
                         model.SiteID = dbHelper.GetByte(dr["SiteID"]);
-                        model.ClassName = dbHelper.GetString(dr["ClassName"]);
-                        model.ClassEName = dbHelper.GetString(dr["ClassEName"]);
-                        model.ClassDomain = dbHelper.GetString(dr["ClassDomain"]);
-                        model.ClassPath = dbHelper.GetString(dr["ClassPath"]);
+                        model.Name = dbHelper.GetString(dr["ClassName"]);
+                        model.EName = dbHelper.GetString(dr["ClassEName"]);
+                        model.Domain = dbHelper.GetString(dr["ClassDomain"]);
+                        model.Path = dbHelper.GetString(dr["ClassPath"]);
                         model.ImgUrl = dbHelper.GetString(dr["ImgURL"]);
                         model.Keywords = dbHelper.GetString(dr["Keywords"]);
                         model.Description = dbHelper.GetString(dr["Description"]);

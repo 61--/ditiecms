@@ -45,10 +45,21 @@ namespace DTCMS.TemplateEngine
         #endregion
 
         #region 属性定义
+        private int _channelID = 10;
+
         /// <summary>
         /// 存储表达式结果的变量
         /// </summary>
         public VariableIdentity Variable { get; protected set; }
+
+        /// <summary>
+        /// 栏目ID
+        /// </summary>
+        public int ChannelID
+        {
+            get { return _channelID; }
+            set { _channelID = value; }
+        }
 
         /// <summary>
         /// 获取栏目层级，level=top顶级栏目，self同级栏目，sub下级栏目
@@ -106,7 +117,7 @@ namespace DTCMS.TemplateEngine
         internal override bool ProcessBeginTag(Template ownerTemplate, Tag container, Stack<Tag> tagStack, string text, ref Match match, bool isClosedTag)
         {
             if (this.Variable == null && !this.Output)
-                this.Variable = ParserHelper.CreateVariableIdentity(this.OwnerTemplate, "class");
+                this.Variable = ParserHelper.CreateVariableIdentity(this.OwnerTemplate, "p");
             //throw new ParserException(string.Format("{0}标签中如果未定义Output属性为true则必须定义var属性", this.TagName));
             //if (this.Type != ServerDataType.Random 
             //    && this.Type != ServerDataType.Time
@@ -166,11 +177,10 @@ namespace DTCMS.TemplateEngine
             //获取分页条数
             int pageSize = TypeConvert.ToInt32(this.Size.Text);
             int pageIndex = 1;
-            int classID = 10;
 
             ArcListBLL arcBll = new ArcListBLL();
 
-            List<ArcList> classList = arcBll.GetPageList(classID, pageSize, pageIndex);
+            List<ArcList> classList = arcBll.GetPageList(ChannelID, pageSize, pageIndex);
             return classList;
         }
         #endregion
