@@ -6,10 +6,11 @@
 <body>
 <div id="list">
 	    <ul>
-	    <dt:pagelist size="10">
+	    <dt:pagelist channelID="10" size="10">
 	        <li><a href="{$p.id}.html">{$p.title}</a> - {$p.pubdate format="yyyy/MM/dd mm:ss"}</li>
 	    </dt:pagelist>
 	    </ul>
+	    <dt:pagelink />
     
 	<dt:server type="time" var="time">{$time}</dt:server>
 </div>

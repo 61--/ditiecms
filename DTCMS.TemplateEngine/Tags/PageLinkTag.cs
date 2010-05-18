@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // 创建标识: Copyright (C) 2010 91aspx.com 版权所有
-// 创建描述: DTCMS V1.0 创建于 2010-05-12 00:00:57
+// 创建描述: DTCMS V1.0 创建于 2010-05-17 23:18:24
 // 功能描述: 
 // 修改标识:
 // 修改描述: 
@@ -16,15 +16,15 @@ using DTCMS.Entity.TemplateEngine;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// 栏目分页标签,.如: &lt;dt:pagelist var="list" /&gt;
+    /// 栏目分页链接标签,.如: &lt;dt:pagelink item="index pre pageno next end" /&gt;
     /// </summary>
-    public class PageListTag : Tag
+    public class PageLinkTag : Tag
     {
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="ownerTemplate"></param>
-        internal PageListTag(Template ownerTemplate) : base(ownerTemplate) { }
+        internal PageLinkTag(Template ownerTemplate) : base(ownerTemplate) { }
 
         #region 重写Tag的方法
         /// <summary>
@@ -32,7 +32,7 @@ namespace DTCMS.TemplateEngine
         /// </summary>
         public override string TagName
         {
-            get { return "pagelist"; }
+            get { return "pagelink"; }
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace DTCMS.TemplateEngine
         /// </summary>
         internal override bool IsSingleTag
         {
-            get { return false; }
+            get { return true; }
         }
         #endregion
 
@@ -51,44 +51,11 @@ namespace DTCMS.TemplateEngine
         public VariableIdentity Variable { get; protected set; }
 
         /// <summary>
-        /// 分页大小
+        /// 分页选项
         /// </summary>
-        public Attribute Size
+        public Attribute Item
         {
-            get { return this.Attributes["Size"]; }
-        }
-
-        /// <summary>
-        /// 栏目ID
-        /// </summary>
-        public Attribute ChannelID
-        {
-            get { return this.Attributes["ChannelID"]; }
-        }
-
-        /// <summary>
-        /// 是否输出此标签的结果值
-        /// </summary>
-        public bool Output { get; protected set; }
-        #endregion
-
-        #region 添加标签属性时的触发函数.用于设置自身的某些属性值
-        /// <summary>
-        /// 添加标签属性时的触发函数.用于设置自身的某些属性值
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="item"></param>
-        protected override void OnAddingAttribute(string name, Attribute item)
-        {
-            switch (name)
-            {
-                case "var":
-                    this.Variable = ParserHelper.CreateVariableIdentity(this.OwnerTemplate, item.Text);
-                    break;
-                case "output":
-                    this.Output = Utility.ConverToBoolean(item.Text);
-                    break;
-            }
+            get { return this.Attributes["item"]; }
         }
         #endregion
 
@@ -103,19 +70,19 @@ namespace DTCMS.TemplateEngine
         /// <param name="match"></param>
         /// <param name="isClosedTag">是否闭合标签</param>
         /// <returns>如果需要继续处理EndTag则返回true.否则请返回false</returns>
-        internal override bool ProcessBeginTag(Template ownerTemplate, Tag container, Stack<Tag> tagStack, string text, ref Match match, bool isClosedTag)
-        {
-            if (this.Variable == null && !this.Output)
-                this.Variable = ParserHelper.CreateVariableIdentity(this.OwnerTemplate, "p");
-            //throw new ParserException(string.Format("{0}标签中如果未定义Output属性为true则必须定义var属性", this.TagName));
-            //if (this.Type != ServerDataType.Random 
-            //    && this.Type != ServerDataType.Time
-            //    && this.Type != ServerDataType.Request
-            //    && this.Type != ServerDataType.Environment
-            //    && this.Item == null) throw new ParserException(string.Format("当{0}标签type=\"{1}\"时必须设置item属性值", this.TagName, this.Type));
+        //internal override bool ProcessBeginTag(Template ownerTemplate, Tag container, Stack<Tag> tagStack, string text, ref Match match, bool isClosedTag)
+        //{
+        //    if (this.Variable == null && !this.Output)
+        //        this.Variable = ParserHelper.CreateVariableIdentity(this.OwnerTemplate, "p");
+        //    //throw new ParserException(string.Format("{0}标签中如果未定义Output属性为true则必须定义var属性", this.TagName));
+        //    //if (this.Type != ServerDataType.Random 
+        //    //    && this.Type != ServerDataType.Time
+        //    //    && this.Type != ServerDataType.Request
+        //    //    && this.Type != ServerDataType.Environment
+        //    //    && this.Item == null) throw new ParserException(string.Format("当{0}标签type=\"{1}\"时必须设置item属性值", this.TagName, this.Type));
 
-            return base.ProcessBeginTag(ownerTemplate, container, tagStack, text, ref match, isClosedTag);
-        }
+        //    return base.ProcessBeginTag(ownerTemplate, container, tagStack, text, ref match, isClosedTag);
+        //}
         #endregion
 
         #region 克隆当前元素到新的宿主模板
@@ -128,8 +95,6 @@ namespace DTCMS.TemplateEngine
         {
             PageListTag tag = new PageListTag(ownerTemplate);
             this.CopyTo(tag);
-            tag.Variable = this.Variable == null ? null : this.Variable.Clone(ownerTemplate);
-            tag.Output = this.Output;
             return tag;
         }
         #endregion
@@ -148,9 +113,8 @@ namespace DTCMS.TemplateEngine
                 {
                     if (this.Variable != null)
                         this.Variable.Value = arcItem;
-                    if (this.Output)
                         writer.Write("<li><a href=\"" + arcItem.ID + "\">" + arcItem.Title + "</a></li>\r\n");
-                    base.RenderTagData(writer);
+                    //base.RenderTagData(writer);
                 }
             }
         }
@@ -163,15 +127,7 @@ namespace DTCMS.TemplateEngine
         /// <returns></returns>
         private List<ArcList> GetPageList()
         {
-            //获取分页条数
-            int channelID = TypeConvert.ToInt32(this.ChannelID.Text);
-            int pageSize = TypeConvert.ToInt32(this.Size.Text);
-            int pageIndex = 1;
-
-            ArcListBLL arcBll = new ArcListBLL();
-
-            List<ArcList> classList = arcBll.GetPageList(channelID, pageSize, pageIndex);
-            return classList;
+            return null;
         }
         #endregion
     }
