@@ -19,6 +19,17 @@ namespace DTCMS.Web.admin.createstatic
             this.Document.Render(this.Response.Output);
         }
 
+        private void InitContext()
+        {
+            //this.Context = context;
+            //this.Application = context.Application;
+            //this.Request = context.Request;
+            //this.Response = context.Response;
+            //this.Server = context.Server;
+            //this.Session = context.Session;
+            this.Document.Variables.SetValue("CurrentChannelID", 10);
+        }
+
         #region 当前页面的测试类型
         /// <summary>
         /// 测试类型
