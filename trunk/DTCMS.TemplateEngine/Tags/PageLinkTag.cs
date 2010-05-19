@@ -93,7 +93,7 @@ namespace DTCMS.TemplateEngine
         /// <returns></returns>
         internal override Element Clone(Template ownerTemplate)
         {
-            PageListTag tag = new PageListTag(ownerTemplate);
+            PageLinkTag tag = new PageLinkTag(ownerTemplate);
             this.CopyTo(tag);
             return tag;
         }
@@ -107,16 +107,16 @@ namespace DTCMS.TemplateEngine
         protected override void RenderTagData(System.IO.TextWriter writer)
         {
             List<ArcList> classList = this.GetPageList();
-            if (classList.Count > 0)
-            {
-                foreach (ArcList arcItem in classList)
-                {
-                    if (this.Variable != null)
-                        this.Variable.Value = arcItem;
-                        writer.Write("<li><a href=\"" + arcItem.ID + "\">" + arcItem.Title + "</a></li>\r\n");
-                    //base.RenderTagData(writer);
-                }
-            }
+            //if (classList.Count > 0)
+            //{
+            //    foreach (ArcList arcItem in classList)
+            //    {
+            //        if (this.Variable != null)
+            //            this.Variable.Value = arcItem;
+            //            writer.Write("<li><a href=\"" + arcItem.ID + "\">" + arcItem.Title + "</a></li>\r\n");
+            //        //base.RenderTagData(writer);
+            //    }
+            //}
         }
         #endregion
 

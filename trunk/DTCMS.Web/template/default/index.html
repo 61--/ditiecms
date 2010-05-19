@@ -8,7 +8,7 @@
 	<dt:channel var="c" row="10">
 	    <a href="{$c.id}.html">{$c.name}</a>
 	    <ul>
-	    <dt:arclist var="arc" classid="$class.id" row="10">
+	    <dt:arclist var="arc" channelID="$c.id" row="10">
 	        <li><a href="{$arc.id}.html">{$arc.title}</a> - {$arc.pubdate format="yyyy/MM/dd mm:ss"}</li>
 	    </dt:arclist>
 	    </ul>
