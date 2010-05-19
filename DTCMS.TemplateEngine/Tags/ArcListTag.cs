@@ -279,8 +279,8 @@ namespace DTCMS.TemplateEngine
                 if (this.SubChannel == null ? true : TypeConvert.ToBool(this.SubChannel.Text, true))
                 {
                     //如果包含子栏目
-                    //string[] scList = this.ClassID.Text.Split(',');
-                    string[] scList = this.ChannelID.Value.GetValue().ToString().Split(',');
+                    //string[] scList = this.ChannelID.Value.GetValue().ToString().Split(',');
+                    string[] scList = this.ChannelID.GetTextValue().Split(',');
                     if (scList.Length > 1)
                     {
                         string scSql = string.Format(" AND ClassID IN(SELECT CID FROM {{0}}Arc_Class WHERE Relation LIKE '%.{0}.%'", scList[0]);

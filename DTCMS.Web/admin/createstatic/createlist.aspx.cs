@@ -27,7 +27,8 @@ namespace DTCMS.Web.admin.createstatic
             //this.Response = context.Response;
             //this.Server = context.Server;
             //this.Session = context.Session;
-            this.Document.Variables.SetValue("CurrentChannelID", 10);
+            Tag tag = this.Document.CurrentRenderingTag;
+            var attr = tag.Attributes["ChannelID"];
         }
 
         #region 当前页面的测试类型
