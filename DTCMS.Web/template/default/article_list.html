@@ -6,12 +6,11 @@
 <body>
 <div id="list">
 	    <ul>
-	    <dt:pagelist channelID="10" size="10">
+	    <dt:pagelist PageSize="10">
 	        <li><a href="{$p.id}.html">{$p.title}</a> - {$p.pubdate format="yyyy/MM/dd mm:ss"}</li>
 	    </dt:pagelist>
 	    </ul>
-	    <dt:pagelink />
-    
+        {$pagelist item='index pre pageno next end'}
 	<dt:server type="time" var="time">{$time}</dt:server>
 </div>
 </body>

@@ -3,7 +3,7 @@
 // 创建描述: DTCMS V1.0 创建于 2010-04-15 22:54:33
 // 功能描述: 
 // 修改标识: 
-// 修改描述: LinPanxing 修改于 2010-05-04 23:45:08
+// 修改描述: LinPanxing 修改于 2010-05-23 23:51:04
 //------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
@@ -90,6 +90,16 @@ namespace DTCMS.BLL.TemplateEngine
                 strWhere += " AND ClassType=" + classType;
             }
             return dal.GetArcClass(row, strWhere);
+        }
+
+        /// <summary>
+        /// 获取指定栏目下的文档总数（不包含未审核和回收站中的文档）
+        /// </summary>
+        /// <param name="classID">栏目ID</param>
+        /// <returns>文档总数</returns>
+        public int GetArcCount(int classID)
+        {
+            return dal.GetArcCount(classID);
         }
     }
 }

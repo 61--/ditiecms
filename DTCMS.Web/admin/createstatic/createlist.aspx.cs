@@ -3,6 +3,8 @@ using System.Web;
 using System.Text;
 using System.IO;
 using System.Web.SessionState;
+using DTCMS.Common;
+using DTCMS.BLL;
 using DTCMS.TemplateEngine;
 
 namespace DTCMS.Web.admin.createstatic
@@ -17,18 +19,6 @@ namespace DTCMS.Web.admin.createstatic
             this.LoadCurrentTemplate();
             this.InitPageTemplate();
             this.Document.Render(this.Response.Output);
-        }
-
-        private void InitContext()
-        {
-            //this.Context = context;
-            //this.Application = context.Application;
-            //this.Request = context.Request;
-            //this.Response = context.Response;
-            //this.Server = context.Server;
-            //this.Session = context.Session;
-            Tag tag = this.Document.CurrentRenderingTag;
-            var attr = tag.Attributes["ChannelID"];
         }
 
         #region 当前页面的测试类型
@@ -96,6 +86,43 @@ namespace DTCMS.Web.admin.createstatic
         /// <summary>
         /// 初始化当前页面模板数据
         /// </summary>
-        protected void InitPageTemplate() { }
+        protected void InitPageTemplate()
+        {
+            //获取要生成的栏目ID
+            int channelID = Utils.GetQueryInt("channelid");
+            if (channelID < 0)
+            {
+                Message.Dialog("生成错误，生成静态页的栏目ID为空！", "-1", MessageIcon.Warning);
+            }
+            else
+            {
+                CacheAccess.SaveToCache("ChannelID", channelID);
+            }
+
+            //获取栏目类型
+            int classType = Utils.GetQueryInt("classtype");
+            if (classType < 0)
+            {
+
+            }
+
+            //获取生成栏目当前页数
+            int pageIndex = Utils.GetQueryInt("pageindex");
+            if (pageIndex < 0)
+            {
+                Message.Dialog("生成错误，生成静态页的当前页数为空！", "-1", MessageIcon.Warning);
+            }
+            else
+            {
+                CacheAccess.SaveToCache("PageIndex", pageIndex);
+            }
+
+            //获取记录总数
+            int totalRecord = Utils.GetQueryInt("totalrecord");
+            if (totalRecord < 0)
+            {
+
+            }
+        }
     }
 }

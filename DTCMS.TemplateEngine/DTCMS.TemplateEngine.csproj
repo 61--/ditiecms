@@ -70,7 +70,6 @@
     <Compile Include="ParserException.cs" />
     <Compile Include="ParserHelper.cs" />
     <Compile Include="ParserRegex.cs" />
-    <Compile Include="Tags\PageLinkTag.cs" />
     <Compile Include="Tags\PageListTag.cs" />
     <Compile Include="Tags\PropertyTag.cs" />
     <Compile Include="Tags\OutputTag.cs" />

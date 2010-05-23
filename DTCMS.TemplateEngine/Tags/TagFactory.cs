@@ -74,8 +74,6 @@ namespace DTCMS.TemplateEngine
                         return new ArcClassTag(ownerTemplate);
                     case "pagelist":
                         return new PageListTag(ownerTemplate);
-                    case "pagelink":
-                        return new PageLinkTag(ownerTemplate);
                 }
             }
             return null;
