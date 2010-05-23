@@ -53,17 +53,25 @@ namespace DTCMS.TemplateEngine
         /// <summary>
         /// 分页大小
         /// </summary>
-        public Attribute Size
+        public Attribute PageSize
         {
-            get { return this.Attributes["Size"]; }
+            get { return this.Attributes["PageSize"]; }
         }
 
         /// <summary>
         /// 栏目ID
         /// </summary>
-        public Attribute ChannelID
+        public int ChannelID
         {
-            get { return this.Attributes["ChannelID"]; }
+            get { return TypeConvert.ToInt32(CacheAccess.GetFromCache("ChannelID")); }
+        }
+
+        /// <summary>
+        /// 当前页码
+        /// </summary>
+        public int PageIndex
+        {
+            get { return TypeConvert.ToInt32(CacheAccess.GetFromCache("PageIndex")); }
         }
 
         /// <summary>
@@ -164,13 +172,11 @@ namespace DTCMS.TemplateEngine
         private List<ArcList> GetPageList()
         {
             //获取分页条数
-            int channelID = TypeConvert.ToInt32(this.ChannelID.Text);
-            int pageSize = TypeConvert.ToInt32(this.Size.Text);
-            int pageIndex = 1;
+            int pageSize = TypeConvert.ToInt32(this.PageSize.Text);
 
             ArcListBLL arcBll = new ArcListBLL();
 
-            List<ArcList> classList = arcBll.GetPageList(channelID, pageSize, pageIndex);
+            List<ArcList> classList = arcBll.GetPageList(ChannelID, pageSize, PageIndex);
             return classList;
         }
         #endregion

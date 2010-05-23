@@ -32,5 +32,10 @@ namespace DTCMS.IDAL.TemplateEngine
         /// 获取分页列表
         /// </summary>
         List<ArcList> GetPageList(int classID, string classType, int pageSize, int pageIndex);
+
+        ///<summary>
+        /// 获取指定栏目下的文档总数（不包含未审核和回收站中的文档）
+        /// </summary>
+        int GetArcCount(int classID);
     }
 }
