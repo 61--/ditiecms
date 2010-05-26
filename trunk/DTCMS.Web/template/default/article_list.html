@@ -10,7 +10,7 @@
 	        <li><a href="{$p.id}.html">{$p.title}</a> - {$p.pubdate format="yyyy/MM/dd mm:ss"}</li>
 	    </dt:pagelist>
 	    </ul>
-        {$pagelist item='index pre pageno next end'}
+        {$pagelist item='first pre pageno next last'}
 	<dt:server type="time" var="time">{$time}</dt:server>
 </div>
 </body>
