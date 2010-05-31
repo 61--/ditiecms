@@ -156,9 +156,13 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
         ///<summary>
         /// 获取指定栏目下的文档总数（不包含未审核和回收站中的文档）
         /// </summary>
-        public int GetArcCount(int classID)
+        public int GetArcCount(int classID, string classType)
         {
-            string strSql = "SELECT COUNT(*) FROM {0}{1} WHERE IsHidden=0";
+            string strSql = "SELECT COUNT(*) FROM {0}{1} WHERE AND ClassID=@ClassID IsRecycle=0 AND IsVerify=1";
+            SqlParameter[] cmdParms ={
+                 AddInParameter("@ClassID",SqlDbType.Int,4,classID)};
+
+            return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, string.Format(strSql, tablePrefix, classType), null));
         }
     }
 }
