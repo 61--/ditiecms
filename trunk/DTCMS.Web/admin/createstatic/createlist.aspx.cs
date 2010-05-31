@@ -5,6 +5,7 @@ using System.IO;
 using System.Web.SessionState;
 using DTCMS.Common;
 using DTCMS.BLL;
+using DTCMS.BLL.TemplateEngine;
 using DTCMS.TemplateEngine;
 
 namespace DTCMS.Web.admin.createstatic
@@ -89,7 +90,7 @@ namespace DTCMS.Web.admin.createstatic
         protected void InitPageTemplate()
         {
             //获取要生成的栏目ID
-            int channelID = Utils.GetQueryInt("channelid");
+            int channelID = Utils.GetQueryInt("channelID");
             if (channelID < 0)
             {
                 Message.Dialog("生成错误，生成静态页的栏目ID为空！", "-1", MessageIcon.Warning);
@@ -100,8 +101,8 @@ namespace DTCMS.Web.admin.createstatic
             }
 
             //获取栏目类型
-            int classType = Utils.GetQueryInt("classtype");
-            if (classType < 0)
+            string classType = Utils.GetQueryString("classtype");
+            if (classType.Length == 0)
             {
 
             }
@@ -121,7 +122,8 @@ namespace DTCMS.Web.admin.createstatic
             int totalRecord = Utils.GetQueryInt("totalrecord");
             if (totalRecord < 0)
             {
-
+                ArcListBLL arclistBll = new ArcListBLL();
+                arclistBll.GetArcCount(channelID, classType);
             }
         }
     }

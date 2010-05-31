@@ -97,9 +97,33 @@ namespace DTCMS.BLL.TemplateEngine
         /// </summary>
         /// <param name="classID">栏目ID</param>
         /// <returns>文档总数</returns>
-        public int GetArcCount(int classID)
+        public int GetArcCount(int classID, string classType)
         {
-            return dal.GetArcCount(classID);
+            switch (classType)
+            {
+                case "1":
+                case "article":
+                    classType = "Arc_Article";
+                    break;
+                case "2":
+                case "soft":
+                    classType = "Arc_Soft";
+                    break;
+                default:
+                    classType = "Arc_Article";
+                    break;
+            }
+            return dal.GetArcCount(classID, classType);
+        }
+
+        /// <summary>
+        /// 获取指定栏目的类型
+        /// </summary>
+        /// <param name="classID">栏目ID</param>
+        /// <returns>栏目类型</returns>
+        public string GetClassType(int classID)
+        {
+            return dal.GetClassType(classID);
         }
     }
 }
