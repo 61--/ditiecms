@@ -158,11 +158,23 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
         /// </summary>
         public int GetArcCount(int classID, string classType)
         {
-            string strSql = "SELECT COUNT(*) FROM {0}{1} WHERE AND ClassID=@ClassID IsRecycle=0 AND IsVerify=1";
+            string strSql = "SELECT COUNT(*) FROM {0}{1} WHERE ClassID=@ClassID AND IsRecycle=0 AND IsVerify=1";
             SqlParameter[] cmdParms ={
                  AddInParameter("@ClassID",SqlDbType.Int,4,classID)};
 
-            return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, string.Format(strSql, tablePrefix, classType), null));
+            return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, string.Format(strSql, tablePrefix, classType), cmdParms));
+        }
+
+        /// <summary>
+        /// 获取指定栏目的类型
+        /// </summary>
+        public int GetClassType(int classID)
+        {
+            string strSql = "SELECT ClassType FROM {0}Arc_Class WHERE CID=@ClassID";
+            SqlParameter[] cmdParms ={
+                 AddInParameter("@ClassID",SqlDbType.Int,4,classID)};
+
+            return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, string.Format(strSql, tablePrefix), cmdParms));
         }
     }
 }

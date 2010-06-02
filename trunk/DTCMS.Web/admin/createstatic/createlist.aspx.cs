@@ -104,7 +104,8 @@ namespace DTCMS.Web.admin.createstatic
             string classType = Utils.GetQueryString("classtype");
             if (classType.Length == 0)
             {
-
+                ArcListBLL arclistBll = new ArcListBLL();
+                classType = arclistBll.GetClassType(channelID);
             }
 
             //获取生成栏目当前页数
@@ -123,8 +124,11 @@ namespace DTCMS.Web.admin.createstatic
             if (totalRecord < 0)
             {
                 ArcListBLL arclistBll = new ArcListBLL();
-                arclistBll.GetArcCount(channelID, classType);
+                totalRecord = arclistBll.GetArcCount(channelID, classType);
             }
+
+            this.Document.Variables.SetValue("list", this.Document.Variables.Contains("this"));
+            
         }
     }
 }

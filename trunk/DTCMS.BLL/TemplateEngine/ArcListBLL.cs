@@ -123,7 +123,16 @@ namespace DTCMS.BLL.TemplateEngine
         /// <returns>栏目类型</returns>
         public string GetClassType(int classID)
         {
-            return dal.GetClassType(classID);
+            int classType = dal.GetClassType(classID);
+            switch (classType)
+            {
+                case 1:
+                    return "Arc_Article";
+                case 2:
+                    return "Arc_Soft";
+                default:
+                    return "Arc_Article";
+            }
         }
     }
 }
