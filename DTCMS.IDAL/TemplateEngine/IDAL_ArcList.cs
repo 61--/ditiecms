@@ -37,5 +37,10 @@ namespace DTCMS.IDAL.TemplateEngine
         /// 获取指定栏目下的文档总数（不包含未审核和回收站中的文档）
         /// </summary>
         int GetArcCount(int classID, string classType);
+
+        /// <summary>
+        /// 获取指定栏目的类型
+        /// </summary>
+        int GetClassType(int classID);
     }
 }
