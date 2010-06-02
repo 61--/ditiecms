@@ -127,7 +127,7 @@ namespace DTCMS.Web.admin.createstatic
                 totalRecord = arclistBll.GetArcCount(channelID, classType);
             }
 
-            this.Document.Variables.SetValue("list", this.Document.Variables.Contains("this"));
+            this.Document.Variables.SetValue("list", totalRecord);
             
         }
     }

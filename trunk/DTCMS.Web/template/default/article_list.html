@@ -10,7 +10,8 @@
 	        <li><a href="{$p.id}.html">{$p.title}</a> - {$p.pubdate format="yyyy/MM/dd mm:ss"}</li>
 	    </dt:pagelist>
 	    </ul>
-        {$list item='info,index,end,pre,next,pageno,option'}
+        共{$list}页/{$list.totalrecord}条数据
+        {$list.first}{$list.pre}{$list.pageno}{$list.next}{$list.last} {$list.option}
 	<dt:server type="time" var="time">{$time}</dt:server>
 </div>
 </body>

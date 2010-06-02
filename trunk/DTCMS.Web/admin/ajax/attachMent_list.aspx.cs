@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Collections;
 using System.Data;
 using System.Text;
 using DTCMS.BLL;
-using System.Collections;
 using DTCMS.Config;
 using DTCMS.Entity;
+using DTCMS.Common;
 
 namespace DTCMS.Web.admin
 {
@@ -111,10 +112,10 @@ namespace DTCMS.Web.admin
                 sb.Append("</ul>");
                 sb.Append("</div>");
 
-                int pagecount = DTCMS.Pages.PageSeting.GetPageCount(totalcount, page);
+                int pagecount = PageSeting.GetPageCount(totalcount, page);
                 sb.Append("<div style=\"position:absolute;right:0;bottom:-3px;z-index:-1 \">");
                 sb.Append("<div class=\"grayr\" style=\"height:30px;line-height:30px;\">");
-                sb.Append(DTCMS.Pages.PageSeting.GetAjaxPage(pageCurrent, pagecount, "LoadData", page));
+                sb.Append(PageSeting.GetAjaxPage(pageCurrent, pagecount, "LoadData", page));
                 sb.Append("</div>");
                 sb.Append("</div>");
             }
@@ -171,10 +172,10 @@ namespace DTCMS.Web.admin
                 sb.Append("</table>");
                 sb.Append("</div>");
 
-                int pagecount = DTCMS.Pages.PageSeting.GetPageCount(totalcount, page);
+                int pagecount = PageSeting.GetPageCount(totalcount, page);
                 sb.Append("<div style=\"position:absolute;right:0px;bottom:-3px;z-index:-1; \">");
                 sb.Append("<div class=\"grayr\" style=\"height:30px;line-height:30px;\">");
-                sb.Append(DTCMS.Pages.PageSeting.GetAjaxPage(pageCurrent, pagecount, "LoadData", page));
+                sb.Append(PageSeting.GetAjaxPage(pageCurrent, pagecount, "LoadData", page));
                 sb.Append("</div>");
                 sb.Append("</div>");
             }            
