@@ -1197,10 +1197,6 @@
       <Project>{781AE6C8-31B1-48C0-B1C6-04F5EDA522D9}</Project>
       <Name>DTCMS.IDAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DTCMS.Pages\DTCMS.Pages.csproj">
-      <Project>{619F3C0B-AD24-4F16-83D9-DDFB120425DE}</Project>
-      <Name>DTCMS.Pages</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DTCMS.SqlServerDAL\DTCMS.SqlServerDAL.csproj">
       <Project>{C7E7D0AF-4A77-4653-B335-F3CB0B4D128E}</Project>
       <Name>DTCMS.SqlServerDAL</Name>

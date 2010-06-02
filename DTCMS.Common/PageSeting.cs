@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//------------------------------------------------------------------------------
+// 创建标识: Copyright (C) 2010 91aspx.com 版权所有
+// 创建描述: DTCMS V1.0 创建于 2010-06-02 11:10:08
+// 功能描述: 
+// 修改标识:
+// 修改描述: 
+//------------------------------------------------------------------------------
+using System;
 using System.Text;
 
-namespace DTCMS.Pages
+namespace DTCMS.Common
 {
-    public  class PageSeting
+    public class PageSeting
     {
-       
+
         /// <summary>
         /// 算共有几页
         /// </summary>
@@ -18,7 +24,7 @@ namespace DTCMS.Pages
             int totalCount = 0;
             if (recordTotalCount % pageSize == 0)
             {
-                totalCount= recordTotalCount / pageSize;
+                totalCount = recordTotalCount / pageSize;
             }
             else
             {
@@ -42,8 +48,8 @@ namespace DTCMS.Pages
             int startPage = 1;
             int endPage = 1;
 
-            string t1 = "<a href=\"###\" onclick=\"" + string.Format("{0}({1})",callback,(curPage-1)<1?1:(curPage-1));
-            string t2 = "<a href=\"###\" onclick=\"" + string.Format("{0}({1})", callback,(curPage+1)>countPage?curPage:(curPage+1));
+            string t1 = "<a href=\"javascript:;\" onclick=\"" + string.Format("{0}({1})", callback, (curPage - 1) < 1 ? 1 : (curPage - 1));
+            string t2 = "<a href=\"javascript:;\" onclick=\"" + string.Format("{0}({1})", callback, (curPage + 1) > countPage ? curPage : (curPage + 1));
 
             t1 += "\">&laquo;</a>";
             t2 += "\">&raquo;</a>";
@@ -86,15 +92,15 @@ namespace DTCMS.Pages
             StringBuilder s = new StringBuilder("");
 
             s.Append(t1);
-            if (curPage-(extendPage/2) > 2)
+            if (curPage - (extendPage / 2) > 2)
             {
 
-                s.Append("<a href=\"###\" onclick=\"");
+                s.Append("<a href=\"javascript:;\" onclick=\"");
                 s.Append(string.Format("{0}({1})", callback, 1));
                 s.Append("\">");
                 s.Append(1);
                 s.Append("</a>");
-                s.Append("<a href=\"###\" onclick=\"");
+                s.Append("<a href=\"javascript:;\" onclick=\"");
                 s.Append(string.Format("{0}({1})", callback, 2));
                 s.Append("\">");
                 s.Append(2);
@@ -111,22 +117,22 @@ namespace DTCMS.Pages
                 }
                 else
                 {
-                    s.Append("<a href=\"###\" onclick=\"");
-                    s.Append(string.Format("{0}({1})",callback, i));
+                    s.Append("<a href=\"javascript:;\" onclick=\"");
+                    s.Append(string.Format("{0}({1})", callback, i));
                     s.Append("\">");
                     s.Append(i);
                     s.Append("</a>");
                 }
             }
-            if ((countPage-curPage) >(extendPage/2))
+            if ((countPage - curPage) > (extendPage / 2))
             {
                 s.Append("...");
-                s.Append("<a href=\"###\" onclick=\"");
-                s.Append(string.Format("{0}({1})", callback, countPage-1));
+                s.Append("<a href=\"javascript:;\" onclick=\"");
+                s.Append(string.Format("{0}({1})", callback, countPage - 1));
                 s.Append("\">");
                 s.Append(countPage - 1);
                 s.Append("</a>");
-                s.Append("<a href=\"###\" onclick=\"");
+                s.Append("<a href=\"javascript:;\" onclick=\"");
                 s.Append(string.Format("{0}({1})", callback, countPage));
                 s.Append("\">");
                 s.Append(countPage);
@@ -162,8 +168,8 @@ namespace DTCMS.Pages
                 url = url + "?";
             int upnum = (curPage - 1) < 1 ? 1 : (curPage - 1);
             int downnum = (curPage + 1) > countPage ? countPage : (curPage + 1);
-            string t1 = "<a href=\"" + url  + pagetag + "=" + upnum;
-            string t2 = "<a href=\"" + url  + pagetag + "=" + downnum;
+            string t1 = "<a href=\"" + url + pagetag + "=" + upnum;
+            string t2 = "<a href=\"" + url + pagetag + "=" + downnum;
             if (anchor != null)
             {
                 t1 += anchor;
