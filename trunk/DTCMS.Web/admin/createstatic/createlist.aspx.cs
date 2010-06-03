@@ -128,7 +128,27 @@ namespace DTCMS.Web.admin.createstatic
             }
 
             this.Document.Variables.SetValue("list", totalRecord);
-            
+
+        }
+    }
+
+    public class Vector : IFormattable
+    {
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+
+            switch (format.ToUpper())
+            {
+
+                case "N": return "TestN";                
+
+                case "E":
+
+                    return "TestE";
+                default:
+                    return ToString();
+
+            }
         }
     }
 }
