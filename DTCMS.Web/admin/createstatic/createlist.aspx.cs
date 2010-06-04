@@ -127,28 +127,12 @@ namespace DTCMS.Web.admin.createstatic
                 totalRecord = arclistBll.GetArcCount(channelID, classType);
             }
 
-            this.Document.Variables.SetValue("list", totalRecord);
+            Tag tag = this.Document.CurrentRenderingTag;
 
-        }
-    }
+            //获取自定义属性
 
-    public class Vector : IFormattable
-    {
-        public string ToString(string format, IFormatProvider formatProvider)
-        {
+            this.Document.Variables.SetValue("list", "");
 
-            switch (format.ToUpper())
-            {
-
-                case "N": return "TestN";                
-
-                case "E":
-
-                    return "TestE";
-                default:
-                    return ToString();
-
-            }
         }
     }
 }
