@@ -6,12 +6,12 @@
 <body>
 <div id="list">
 	    <ul>
-	    <dt:pagelist PageSize="10">
-	        <li><a href="{$p.id}.html">{$p.title}</a> - {$p.pubdate format="yyyy/MM/dd mm:ss"}</li>
+	    <dt:pagelist PageSize="10" item="first,pre,pageno,next,last,potion">
+	        <li><a href="{$p.id}.html">{$p.title}</a> - {$p.pubdate format="yyyy年MM月dd mm:ss"}</li>
 	    </dt:pagelist>
 	    </ul>
-        共{$list format="first,pre,pageno,next,last,potion"}页/{$list.totalrecord}条数据
-        {$list.first}{$list.pre}{$list.pageno}{$list.next}{$list.last} {$list.option}
+        当前第{$list}页，共{$p.totalpage}页/{$p.totalrecord}条数据
+        {$p.pageitem}
 	<dt:server type="time" var="time">{$time}</dt:server>
 </div>
 </body>
