@@ -27,7 +27,7 @@ namespace DTCMS.TemplateEngine
         internal static readonly Regex EndTagRegex;
 
         /// <summary>
-        /// 变量标签的正则表达式.如: {$:member.name} 或带前缀与属性的变量标签: {$:#.member.name htmlencode='true'}
+        /// 变量标签的正则表达式.如: {$member.name} 或带前缀与属性的变量标签: {$#.member.name htmlencode='true'}
         /// 前缀必须与#号开始.并且与.号结束.
         /// 如变量没有前缀.则表明此变量是根级模板的变量.
         /// 如果变量只有前缀"#."(如#.member.name)则表示当前模板的变量

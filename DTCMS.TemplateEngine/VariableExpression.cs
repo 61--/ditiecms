@@ -11,7 +11,7 @@ using System.Text;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// 变量表达式,如:{$:name.age} 变量元素中的变量表达式则是".age"
+    /// 变量表达式,如:{$name.age} 变量元素中的变量表达式则是".age"
     /// </summary>
     public class VariableExpression : IExpression
     {
