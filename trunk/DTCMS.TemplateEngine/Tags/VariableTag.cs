@@ -15,7 +15,7 @@ using System.Collections;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// 变量元素.如变量: {$:member.name} 或带前缀与属性的变量: {$:#.member.name htmlencode='true'}
+    /// 变量元素.如变量: {$member.name} 或带前缀与属性的变量: {$#.member.name htmlencode='true'}
     /// </summary>
     public class VariableTag : Element, IAttributesElement
     {
@@ -318,7 +318,7 @@ namespace DTCMS.TemplateEngine
         public override string ToString()
         {
             StringBuilder buffer = new StringBuilder();
-            buffer.Append("{$:");
+            buffer.Append("{$");
             buffer.Append(this.VarExpression.ToString());
             foreach (Attribute attribute in this.Attributes)
             {
