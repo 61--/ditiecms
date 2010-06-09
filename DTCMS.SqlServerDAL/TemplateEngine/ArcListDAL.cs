@@ -23,7 +23,7 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
         /// <summary>
         /// 获取文档泛型数据列表
         /// </summary>
-        public List<ArcList> GetArcList(int firstRecort, int lastRecort, string classType, string strWhere, string strOrder)
+        public List<Archive> GetArcList(int firstRecort, int lastRecort, string classType, string strWhere, string strOrder)
         {
             string strSql = "SELECT ID,ClassID,C.ClassName,C.ClassPath,Title,ShortTitle,TitleStyle,TitleFlag,A.ImgUrl,Author,Click,Good,Bad,FilePath,A.PubDate FROM {0}{1} A LEFT JOIN {0}Arc_Class C ON A.ClassID=C.CID WHERE IsHidden=0";
             if (strWhere.Length != 0)
@@ -36,7 +36,7 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
             }
             using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, string.Format(strSql, tablePrefix, classType), null))
             {
-                List<ArcList> lst = new List<ArcList>();
+                List<Archive> lst = new List<Archive>();
 
                 int count = 0;
 
@@ -45,7 +45,7 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
                     count++;
                     if (count >= firstRecort && count <= lastRecort)
                     {
-                        ArcList model = new ArcList();
+                        Archive model = new Archive();
                         model.ID = dbHelper.GetInt(dr["ID"]);
                         model.ClassID = dbHelper.GetInt(dr["ClassID"]);
                         model.ClassName = dbHelper.GetString(dr["ClassName"]);
@@ -72,13 +72,13 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
         /// <summary>
         /// 获取分页文档泛型数据列表
         /// </summary>
-        public List<ArcList> GetPageList(int classID, string classType, int pageSize, int pageIndex)
+        public List<Archive> GetPageList(int classID, string classType, int pageSize, int pageIndex)
         {
             string strSql = "SELECT ID,ClassID,C.ClassName,C.ClassPath,Title,ShortTitle,TitleStyle,TitleFlag,A.ImgUrl,Author,Click,Good,Bad,FilePath,A.PubDate FROM {0}{1} A LEFT JOIN {0}Arc_Class C ON A.ClassID=C.CID AND A.ClassID=" + classID + " WHERE IsHidden=0";
 
             using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, string.Format(strSql, tablePrefix, classType), null))
             {
-                List<ArcList> lst = new List<ArcList>();
+                List<Archive> lst = new List<Archive>();
 
                 int firstRecort = GetFirstIndex(pageSize, pageIndex);
                 int lastRecort = GetLastIndex(pageSize, pageIndex);
@@ -88,7 +88,7 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
                     count++;
                     if (count >= firstRecort && count <= lastRecort)
                     {
-                        ArcList model = new ArcList();
+                        Archive model = new Archive();
                         model.ID = dbHelper.GetInt(dr["ID"]);
                         model.ClassID = dbHelper.GetInt(dr["ClassID"]);
                         model.ClassName = dbHelper.GetString(dr["ClassName"]);

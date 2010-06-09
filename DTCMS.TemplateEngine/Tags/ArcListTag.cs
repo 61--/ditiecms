@@ -209,10 +209,10 @@ namespace DTCMS.TemplateEngine
         /// <param name="writer"></param>
         protected override void RenderTagData(System.IO.TextWriter writer)
         {
-            List<ArcList> arcList = this.GetArcList();
+            List<Archive> arcList = this.GetArcList();
             if (arcList.Count > 0)
             {
-                foreach (ArcList arcInfo in arcList)
+                foreach (Archive arcInfo in arcList)
                 {
                     if (this.Variable != null)
                         this.Variable.Value = arcInfo;
@@ -229,7 +229,7 @@ namespace DTCMS.TemplateEngine
         /// 获取数据
         /// </summary>
         /// <returns></returns>
-        private List<ArcList> GetArcList()
+        private List<Archive> GetArcList()
         {
             //构造Limit语句
             int firstRecort = 1;
@@ -349,7 +349,7 @@ namespace DTCMS.TemplateEngine
 
             ArcListBLL arcListBll = new ArcListBLL();
 
-            List<ArcList> arcList = arcListBll.GetArcList(firstRecort, lastRecort, type, strWhere, strOrder);
+            List<Archive> arcList = arcListBll.GetArcList(firstRecort, lastRecort, type, strWhere, strOrder);
             return arcList;
         }
         #endregion

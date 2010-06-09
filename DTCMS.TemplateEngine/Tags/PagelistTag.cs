@@ -133,10 +133,10 @@ namespace DTCMS.TemplateEngine
         /// <param name="writer"></param>
         protected override void RenderTagData(System.IO.TextWriter writer)
         {
-            List<ArcList> classList = this.GetPageList();
+            List<Archive> classList = this.GetPageList();
             if (classList.Count > 0)
             {
-                foreach (ArcList arcItem in classList)
+                foreach (Archive arcItem in classList)
                 {
                     if (this.Variable != null)
                         this.Variable.Value = arcItem;
@@ -153,7 +153,7 @@ namespace DTCMS.TemplateEngine
         /// 获取数据
         /// </summary>
         /// <returns></returns>
-        private List<ArcList> GetPageList()
+        private List<Archive> GetPageList()
         {
             //获取分页条数
             int pageSize = TypeConvert.ToInt32(this.PageSize.Text);
@@ -174,7 +174,7 @@ namespace DTCMS.TemplateEngine
 
             ArcListBLL arcBll = new ArcListBLL();
 
-            List<ArcList> classList = arcBll.GetPageList(channelID, pageSize, pageIndex);
+            List<Archive> classList = arcBll.GetPageList(channelID, pageSize, pageIndex);
             return classList;
         }
         #endregion
