@@ -21,7 +21,7 @@ namespace DTCMS.IDAL.TemplateEngine
         /// <summary>
         /// 获取文章列表
         /// </summary>
-        List<ArcList> GetArcList(int firstRecort, int lastRecort, string classType, string strWhere, string strOrder);
+        List<Archive> GetArcList(int firstRecort, int lastRecort, string classType, string strWhere, string strOrder);
 
         /// <summary>
         /// 获取栏目列表
@@ -31,7 +31,7 @@ namespace DTCMS.IDAL.TemplateEngine
         /// <summary>
         /// 获取分页列表
         /// </summary>
-        List<ArcList> GetPageList(int classID, string classType, int pageSize, int pageIndex);
+        List<Archive> GetPageList(int classID, string classType, int pageSize, int pageIndex);
 
         ///<summary>
         /// 获取指定栏目下的文档总数（不包含未审核和回收站中的文档）
