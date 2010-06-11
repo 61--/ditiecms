@@ -816,7 +816,9 @@
     <Content Include="inc\colorpicker\js\layout.js" />
     <Content Include="inc\colorpicker\js\utils.js" />
     <Content Include="inc\dialog\dialog.html" />
-    <Content Include="inc\dialog\images\Button.gif" />
+    <Content Include="inc\dialog\dialog.js" />
+    <Content Include="inc\dialog\Demo.html" />
+    <Content Include="inc\dialog\images\button.gif" />
     <Content Include="inc\dialog\images\dialog_bg.jpg" />
     <Content Include="inc\dialog\images\dialog_close.png" />
     <Content Include="inc\dialog\images\dialog_lr.gif" />
@@ -838,8 +840,6 @@
     <Content Include="inc\dialog\images\ico_Warning.gif" />
     <Content Include="inc\dialog\images\ico_Warning.png" />
     <Content Include="inc\dialog\images\window.gif" />
-    <Content Include="inc\dialog\dialog.js" />
-    <Content Include="inc\dialog\Demo.html" />
     <Content Include="inc\treetable\img\base.gif" />
     <Content Include="inc\treetable\img\cd.gif" />
     <Content Include="inc\treetable\img\empty.gif" />
