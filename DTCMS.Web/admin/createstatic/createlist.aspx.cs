@@ -105,7 +105,7 @@ namespace DTCMS.Web.admin.createstatic
             if (classType.Length == 0)
             {
                 ArcListBLL arclistBll = new ArcListBLL();
-                classType = arclistBll.GetClassType(channelID);
+                classType = arclistBll.GetChannelType(channelID);
             }
 
             //获取生成栏目当前页数

@@ -133,10 +133,10 @@ namespace DTCMS.TemplateEngine
         /// <param name="writer"></param>
         protected override void RenderTagData(System.IO.TextWriter writer)
         {
-            List<Archive> classList = this.GetPageList();
-            if (classList.Count > 0)
+            List<Archive> channelList = this.GetPageList();
+            if (channelList.Count > 0)
             {
-                foreach (Archive arcItem in classList)
+                foreach (Archive arcItem in channelList)
                 {
                     if (this.Variable != null)
                         this.Variable.Value = arcItem;
@@ -172,7 +172,7 @@ namespace DTCMS.TemplateEngine
             }
             else
             {
-                channelType = arcBll.GetClassType(channelID);
+                channelType = arcBll.GetChannelType(channelID);
                 CacheAccess.SaveToCache("ChannelType", channelType);
             }
 
@@ -184,8 +184,8 @@ namespace DTCMS.TemplateEngine
                 CacheAccess.SaveToCache("TotalRecord", totalRecord);
             }
 
-            List<Archive> classList = arcBll.GetPageList(channelID, pageSize, pageIndex);
-            return classList;
+            List<Archive> channelList = arcBll.GetPageList(channelID, pageSize, pageIndex);
+            return channelList;
         }
         #endregion
     }

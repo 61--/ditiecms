@@ -14,9 +14,9 @@ namespace DTCMS.Entity.TemplateEngine
     /// <summary>
     /// ArcClass 实体类
     /// </summary>
-    public class ArcClass
+    public class Channel
     {
-        public ArcClass()
+        public Channel()
         { }
 
         private int _id;

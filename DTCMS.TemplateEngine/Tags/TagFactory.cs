@@ -71,7 +71,7 @@ namespace DTCMS.TemplateEngine
                     case "arclist":
                         return new ArcListTag(ownerTemplate);
                     case "channel":
-                        return new ArcClassTag(ownerTemplate);
+                        return new ChannelTag(ownerTemplate);
                     case "pagelist":
                         return new PageListTag(ownerTemplate);
                 }

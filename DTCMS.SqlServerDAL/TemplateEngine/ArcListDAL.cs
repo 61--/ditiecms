@@ -23,7 +23,7 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
         /// <summary>
         /// 获取文档泛型数据列表
         /// </summary>
-        public List<Archive> GetArcList(int firstRecort, int lastRecort, string classType, string strWhere, string strOrder)
+        public List<Archive> GetArcList(int firstRecort, int lastRecort, string channelType, string strWhere, string strOrder)
         {
             string strSql = "SELECT ID,ClassID,C.ClassName,C.ClassPath,Title,ShortTitle,TitleStyle,TitleFlag,A.ImgUrl,Author,Click,Good,Bad,FilePath,A.PubDate FROM {0}{1} A LEFT JOIN {0}Arc_Class C ON A.ClassID=C.CID WHERE IsHidden=0";
             if (strWhere.Length != 0)
@@ -34,7 +34,7 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
             {
                 strSql += strOrder;
             }
-            using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, string.Format(strSql, tablePrefix, classType), null))
+            using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, string.Format(strSql, tablePrefix, channelType), null))
             {
                 List<Archive> lst = new List<Archive>();
 
@@ -72,11 +72,11 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
         /// <summary>
         /// 获取分页文档泛型数据列表
         /// </summary>
-        public List<Archive> GetPageList(int classID, string classType, int pageSize, int pageIndex)
+        public List<Archive> GetPageList(int channelID, string channelType, int pageSize, int pageIndex)
         {
-            string strSql = "SELECT ID,ClassID,C.ClassName,C.ClassPath,Title,ShortTitle,TitleStyle,TitleFlag,A.ImgUrl,Author,Click,Good,Bad,FilePath,A.PubDate FROM {0}{1} A LEFT JOIN {0}Arc_Class C ON A.ClassID=C.CID AND A.ClassID=" + classID + " WHERE IsHidden=0";
+            string strSql = "SELECT ID,ClassID,C.ClassName,C.ClassPath,Title,ShortTitle,TitleStyle,TitleFlag,A.ImgUrl,Author,Click,Good,Bad,FilePath,A.PubDate FROM {0}{1} A LEFT JOIN {0}Arc_Class C ON A.ClassID=C.CID AND A.ClassID=" + channelID + " WHERE IsHidden=0";
 
-            using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, string.Format(strSql, tablePrefix, classType), null))
+            using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, string.Format(strSql, tablePrefix, channelType), null))
             {
                 List<Archive> lst = new List<Archive>();
 
@@ -115,7 +115,7 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
         /// <summary>
         /// 获取栏目泛型数据列表
         /// </summary>
-        public List<ArcClass> GetArcClass(int row, string strWhere)
+        public List<Channel> GetChannelList(int row, string strWhere)
         {
             string strSql = "SELECT CID,ClassName,ClassEname,ClassDomain,ClassPath,Description,SiteID,ImgURL,Keywords FROM {0}Arc_Class";
 
@@ -126,7 +126,7 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
 
             using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, string.Format(strSql, tablePrefix), null))
             {
-                List<ArcClass> lst = new List<ArcClass>();
+                List<Channel> lst = new List<Channel>();
 
                 int count = 0;
 
@@ -135,7 +135,7 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
                     count++;
                     if (count <= row)
                     {
-                        ArcClass model = new ArcClass();
+                        Channel model = new Channel();
                         model.ID = dbHelper.GetInt(dr["CID"]);
                         model.SiteID = dbHelper.GetByte(dr["SiteID"]);
                         model.Name = dbHelper.GetString(dr["ClassName"]);
@@ -156,23 +156,23 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
         ///<summary>
         /// 获取指定栏目下的文档总数（不包含未审核和回收站中的文档）
         /// </summary>
-        public int GetArcCount(int classID, string classType)
+        public int GetArcCount(int channelID, string channelType)
         {
             string strSql = "SELECT COUNT(*) FROM {0}{1} WHERE ClassID=@ClassID AND IsRecycle=0 AND IsVerify=1";
             SqlParameter[] cmdParms ={
-                 AddInParameter("@ClassID",SqlDbType.Int,4,classID)};
+                 AddInParameter("@ClassID",SqlDbType.Int,4,channelID)};
 
-            return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, string.Format(strSql, tablePrefix, classType), cmdParms));
+            return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, string.Format(strSql, tablePrefix, channelType), cmdParms));
         }
 
         /// <summary>
         /// 获取指定栏目的类型
         /// </summary>
-        public int GetClassType(int classID)
+        public int GetChannelType(int channelID)
         {
             string strSql = "SELECT ClassType FROM {0}Arc_Class WHERE CID=@ClassID";
             SqlParameter[] cmdParms ={
-                 AddInParameter("@ClassID",SqlDbType.Int,4,classID)};
+                 AddInParameter("@ClassID",SqlDbType.Int,4,channelID)};
 
             return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, string.Format(strSql, tablePrefix), cmdParms));
         }

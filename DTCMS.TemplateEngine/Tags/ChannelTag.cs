@@ -16,15 +16,15 @@ using DTCMS.Entity.TemplateEngine;
 namespace DTCMS.TemplateEngine
 {
     /// <summary>
-    /// 栏目标签,.如: &lt;dt:class var="class" type="all" /&gt;
+    /// 栏目标签,.如: &lt;dt:channel var="channel" type="all" /&gt;
     /// </summary>
-    public class ArcClassTag : Tag
+    public class ChannelTag : Tag
     {
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="ownerTemplate"></param>
-        internal ArcClassTag(Template ownerTemplate)
+        internal ChannelTag(Template ownerTemplate)
             : base(ownerTemplate)
         { }
 
@@ -145,7 +145,7 @@ namespace DTCMS.TemplateEngine
         /// <returns></returns>
         internal override Element Clone(Template ownerTemplate)
         {
-            ArcClassTag tag = new ArcClassTag(ownerTemplate);
+            ChannelTag tag = new ChannelTag(ownerTemplate);
             this.CopyTo(tag);
             tag.Variable = this.Variable == null ? null : this.Variable.Clone(ownerTemplate);
             tag.Output = this.Output;
@@ -160,15 +160,15 @@ namespace DTCMS.TemplateEngine
         /// <param name="writer"></param>
         protected override void RenderTagData(System.IO.TextWriter writer)
         {
-            List<ArcClass> classList = this.GetClassList();
-            if (classList.Count > 0)
+            List<Channel> channelList = this.GetClassList();
+            if (channelList.Count > 0)
             {
-                foreach (ArcClass classInfo in classList)
+                foreach (Channel channelInfo in channelList)
                 {
                     if (this.Variable != null)
-                        this.Variable.Value = classInfo;
+                        this.Variable.Value = channelInfo;
                     if (this.Output)
-                        writer.Write("<li><a href=\"" + classInfo.ID + "\">" + classInfo.Path + "</a></li>\r\n");
+                        writer.Write("<li><a href=\"" + channelInfo.ID + "\">" + channelInfo.Path + "</a></li>\r\n");
                     base.RenderTagData(writer);
                 }
             }
@@ -180,7 +180,7 @@ namespace DTCMS.TemplateEngine
         /// 获取数据
         /// </summary>
         /// <returns></returns>
-        private List<ArcClass> GetClassList()
+        private List<Channel> GetClassList()
         {
             //获取记录条数
             int row = TypeConvert.ToInt32(this.Row.Text);
@@ -226,10 +226,10 @@ namespace DTCMS.TemplateEngine
                 }
             }
 
-            ArcListBLL classBll = new ArcListBLL();
+            ArcListBLL channelBll = new ArcListBLL();
 
-            List<ArcClass> classList = classBll.GetArcClass(row, type, strWhere);
-            return classList;
+            List<Channel> channelList = channelBll.GetChannelList(row, type, strWhere);
+            return channelList;
         }
         #endregion
     }

@@ -30,101 +30,101 @@ namespace DTCMS.BLL.TemplateEngine
         /// </summary>
         /// <param name="firstRecort">第一条记录</param>
         /// <param name="lastRecort">最后一条记录</param>
-        /// <param name="classType">栏目类型</param>
+        /// <param name="channelType">栏目类型</param>
         /// <param name="strWhere">获取条件</param>
         /// <param name="orderBy">排序字段</param>
         /// <returns>文章泛型实体</returns>
-        public List<Archive> GetArcList(int firstRecort, int lastRecort, string classType, string strWhere, string orderBy)
+        public List<Archive> GetArcList(int firstRecort, int lastRecort, string channelType, string strWhere, string orderBy)
         {
-            switch (classType)
+            switch (channelType)
             {
                 case "1":
                 case "article":
-                    classType = "Arc_Article";
+                    channelType = "Arc_Article";
                     break;
                 case "2":
                 case "soft":
-                    classType = "Arc_Soft";
+                    channelType = "Arc_Soft";
                     break;
                 default:
-                    classType = "Arc_Article";
+                    channelType = "Arc_Article";
                     break;
             }
-            return dal.GetArcList(firstRecort, lastRecort, classType, strWhere, orderBy);
+            return dal.GetArcList(firstRecort, lastRecort, channelType, strWhere, orderBy);
         }
 
         /// <summary>
         /// 获取分页文档泛型数据列表
         /// </summary>
-        /// <param name="classID">栏目ID</param>
+        /// <param name="channelID">栏目ID</param>
         /// <param name="pageSize">分页大小</param>
         /// <param name="pageIndex">当前页数</param>
         /// <returns></returns>
-        public List<Archive> GetPageList(int classID, int pageSize, int pageIndex)
+        public List<Archive> GetPageList(int channelID, int pageSize, int pageIndex)
         {
-            return dal.GetPageList(classID, "Arc_Article", pageSize, pageIndex);
+            return dal.GetPageList(channelID, "Arc_Article", pageSize, pageIndex);
         }
 
         /// <summary>
         /// 获取栏目列表
         /// </summary>
         /// <param name="row">获取条数</param>
-        /// <param name="classType">栏目类型</param>
+        /// <param name="channelType">栏目类型</param>
         /// <param name="strWhere">获取条件</param>
         /// <returns>栏目泛型实体</returns>
-        public List<ArcClass> GetArcClass(int row, string classType, string strWhere)
+        public List<Channel> GetChannelList(int row, string channelType, string strWhere)
         {
-            switch (classType)
+            switch (channelType)
             {
                 case "1":
                 case "article":
-                    classType = "1";
+                    channelType = "1";
                     break;
                 case "2":
                 case "soft":
-                    classType = "2";
+                    channelType = "2";
                     break;
             }
-            if (classType.Length != 0)
+            if (channelType.Length != 0)
             {
-                strWhere += " AND ClassType=" + classType;
+                strWhere += " AND ClassType=" + channelType;
             }
-            return dal.GetArcClass(row, strWhere);
+            return dal.GetChannelList(row, strWhere);
         }
 
         /// <summary>
         /// 获取指定栏目下的文档总数（不包含未审核和回收站中的文档）
         /// </summary>
-        /// <param name="classID">栏目ID</param>
+        /// <param name="channelID">栏目ID</param>
         /// <returns>文档总数</returns>
-        public int GetArcCount(int classID, string classType)
+        public int GetArcCount(int channelID, string channelType)
         {
-            switch (classType)
+            switch (channelType)
             {
                 case "1":
                 case "article":
-                    classType = "Arc_Article";
+                    channelType = "Arc_Article";
                     break;
                 case "2":
                 case "soft":
-                    classType = "Arc_Soft";
+                    channelType = "Arc_Soft";
                     break;
                 default:
-                    classType = "Arc_Article";
+                    channelType = "Arc_Article";
                     break;
             }
-            return dal.GetArcCount(classID, classType);
+            return dal.GetArcCount(channelID, channelType);
         }
 
         /// <summary>
         /// 获取指定栏目的类型
         /// </summary>
-        /// <param name="classID">栏目ID</param>
+        /// <param name="channelID">栏目ID</param>
         /// <returns>栏目类型</returns>
-        public string GetClassType(int classID)
+        public string GetChannelType(int channelID)
         {
-            int classType = dal.GetClassType(classID);
-            switch (classType)
+            int channelType = dal.GetChannelType(channelID);
+            switch (channelType)
             {
                 case 1:
                     return "Arc_Article";
