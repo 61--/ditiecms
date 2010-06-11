@@ -155,6 +155,8 @@ namespace DTCMS.TemplateEngine
         /// <returns></returns>
         private List<Archive> GetPageList()
         {
+            ArcListBLL arcBll = new ArcListBLL();
+
             //获取分页条数
             int pageSize = TypeConvert.ToInt32(this.PageSize.Text);
             //栏目ID
@@ -162,17 +164,25 @@ namespace DTCMS.TemplateEngine
             //当前页码
             int pageIndex = TypeConvert.ToInt32(CacheAccess.GetFromCache("PageIndex"));
             //栏目类型
-            string classType = CacheAccess.GetFromCache("ClassType").ToString();
+            string channelType = string.Empty;
+            object obj = CacheAccess.GetFromCache("ChannelType");
+            if (obj != null)
+            {
+                channelType = obj.ToString();
+            }
+            else
+            {
+                channelType = arcBll.GetClassType(channelID);
+                CacheAccess.SaveToCache("ChannelType", channelType);
+            }
+
             //总记录数
             int totalRecord = TypeConvert.ToInt32(CacheAccess.GetFromCache("TotalRecord"));
             if (totalRecord < 0)
             {
-                ArcListBLL arclistBll = new ArcListBLL();
-                totalRecord = arclistBll.GetArcCount(channelID, classType);
+                totalRecord = arcBll.GetArcCount(channelID, channelType);
                 CacheAccess.SaveToCache("TotalRecord", totalRecord);
             }
-
-            ArcListBLL arcBll = new ArcListBLL();
 
             List<Archive> classList = arcBll.GetPageList(channelID, pageSize, pageIndex);
             return classList;
