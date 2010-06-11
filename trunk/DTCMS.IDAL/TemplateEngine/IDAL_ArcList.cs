@@ -21,26 +21,26 @@ namespace DTCMS.IDAL.TemplateEngine
         /// <summary>
         /// 获取文章列表
         /// </summary>
-        List<Archive> GetArcList(int firstRecort, int lastRecort, string classType, string strWhere, string strOrder);
+        List<Archive> GetArcList(int firstRecort, int lastRecort, string channelType, string strWhere, string strOrder);
 
         /// <summary>
         /// 获取栏目列表
         /// </summary>
-        List<ArcClass> GetArcClass(int row, string strWhere);
+        List<Channel> GetChannelList(int row, string strWhere);
 
         /// <summary>
         /// 获取分页列表
         /// </summary>
-        List<Archive> GetPageList(int classID, string classType, int pageSize, int pageIndex);
+        List<Archive> GetPageList(int channelID, string channelType, int pageSize, int pageIndex);
 
         ///<summary>
         /// 获取指定栏目下的文档总数（不包含未审核和回收站中的文档）
         /// </summary>
-        int GetArcCount(int classID, string classType);
+        int GetArcCount(int channelID, string channelType);
 
         /// <summary>
         /// 获取指定栏目的类型
         /// </summary>
-        int GetClassType(int classID);
+        int GetChannelType(int channelID);
     }
 }
