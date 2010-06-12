@@ -230,7 +230,7 @@ Dialog.prototype.create = function() {
     html.push('<div class="tipRow" id="_TipRow_', this.ID, '" style="', this.ShowTipRow ? "" : "display:none", '">');
     html.push('<div id="_TipTitle_', this.ID, '">', this.TipTitle, '</div>');
     html.push('<div id="_Tip_', this.ID, '">', this.Tip, '</div></div>');
-    html.push('<div id="_Container_', this.ID, '" style="position: relative;width: ', this.Width, 'px; height: ', this.Height, 'px;">');
+    html.push('<div id="_Container_', this.ID, '" style="position:relative; width: ', this.Width, 'px; height: ', this.Height, 'px;">');
     html.push('<div style="position:absolute;height:100%;width:100%;display:none;background-color:#fff;opacity:0.5;" id="_Covering_', this.ID, '">&nbsp;</div>');
     html.push((function(obj) {
         if (obj.InnerHtml) return obj.InnerHtml;
