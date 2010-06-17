@@ -133,10 +133,10 @@ namespace DTCMS.TemplateEngine
         /// <param name="writer"></param>
         protected override void RenderTagData(System.IO.TextWriter writer)
         {
-            List<Archive> channelList = this.GetPageList();
+            List<IArchive> channelList = this.GetPageList();
             if (channelList.Count > 0)
             {
-                foreach (Archive arcItem in channelList)
+                foreach (IArchive arcItem in channelList)
                 {
                     if (this.Variable != null)
                         this.Variable.Value = arcItem;
@@ -153,16 +153,19 @@ namespace DTCMS.TemplateEngine
         /// 获取数据
         /// </summary>
         /// <returns></returns>
-        private List<Archive> GetPageList()
+        private List<IArchive> GetPageList()
         {
             ArcListBLL arcBll = new ArcListBLL();
 
             //获取分页条数
             int pageSize = TypeConvert.ToInt32(this.PageSize.Text);
+
             //栏目ID
             int channelID = TypeConvert.ToInt32(CacheAccess.GetFromCache("ChannelID"));
+
             //当前页码
             int pageIndex = TypeConvert.ToInt32(CacheAccess.GetFromCache("PageIndex"));
+
             //栏目类型
             string channelType = string.Empty;
             object obj = CacheAccess.GetFromCache("ChannelType");
@@ -184,7 +187,7 @@ namespace DTCMS.TemplateEngine
                 CacheAccess.SaveToCache("TotalRecord", totalRecord);
             }
 
-            List<Archive> channelList = arcBll.GetPageList(channelID, pageSize, pageIndex);
+            List<IArchive> channelList = arcBll.GetPageList(channelID, pageSize, pageIndex);
             return channelList;
         }
         #endregion
