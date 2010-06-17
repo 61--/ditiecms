@@ -10,7 +10,7 @@
 	        <li><a href="{$p.id}.html">{$p.title}</a> - {$p.pubdate format="yyyy年MM月dd mm:ss"}</li>
 	    </dt:pagelist>
 	    </ul>
-        当前第{$list}页，共{$p.totalpage}页/{$p.totalrecord}条数据
+        当前第{$p.currentPage}页，共{$p.totalpage}页/{$p.totalrecord}条数据
         {$p.pageitem}
 	<dt:server type="time" var="time">{$time}</dt:server>
 </div>

@@ -11,9 +11,9 @@ using System;
 namespace DTCMS.Entity.TemplateEngine
 {
     /// <summary>
-    /// 文档实体类
+    /// 文档实体接口
     /// </summary>
-    public class Archive
+    public class IArchive
     {
         private int _id;
         private int _classID;

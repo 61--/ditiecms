@@ -70,15 +70,15 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
         }
 
         /// <summary>
-        /// 获取分页文档泛型数据列表
+        /// 获取文章分页泛型数据列表
         /// </summary>
-        public List<Archive> GetPageList(int channelID, string channelType, int pageSize, int pageIndex)
+        public List<IArchive> GetPageList(int channelID, string channelType, int pageSize, int pageIndex)
         {
             string strSql = "SELECT ID,ClassID,C.ClassName,C.ClassPath,Title,ShortTitle,TitleStyle,TitleFlag,A.ImgUrl,Author,Click,Good,Bad,FilePath,A.PubDate FROM {0}{1} A LEFT JOIN {0}Arc_Class C ON A.ClassID=C.CID AND A.ClassID=" + channelID + " WHERE IsHidden=0";
 
             using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, string.Format(strSql, tablePrefix, channelType), null))
             {
-                List<Archive> lst = new List<Archive>();
+                List<IArchive> lst = new List<IArchive>();
 
                 int firstRecort = GetFirstIndex(pageSize, pageIndex);
                 int lastRecort = GetLastIndex(pageSize, pageIndex);
@@ -88,7 +88,7 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
                     count++;
                     if (count >= firstRecort && count <= lastRecort)
                     {
-                        Archive model = new Archive();
+                        IArchive model = new Article_List();
                         model.ID = dbHelper.GetInt(dr["ID"]);
                         model.ClassID = dbHelper.GetInt(dr["ClassID"]);
                         model.ClassName = dbHelper.GetString(dr["ClassName"]);

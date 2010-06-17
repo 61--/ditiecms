@@ -60,7 +60,7 @@ namespace DTCMS.BLL.TemplateEngine
         /// <param name="pageSize">分页大小</param>
         /// <param name="pageIndex">当前页数</param>
         /// <returns></returns>
-        public List<Archive> GetPageList(int channelID, int pageSize, int pageIndex)
+        public List<IArchive> GetPageList(int channelID, int pageSize, int pageIndex)
         {
             return dal.GetPageList(channelID, "Arc_Article", pageSize, pageIndex);
         }
