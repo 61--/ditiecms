@@ -60,10 +60,10 @@
     <Compile Include="Sys_FileInfo.cs" />
     <Compile Include="Modules.cs" />
     <Compile Include="Sys_Template.cs" />
-    <Compile Include="TemplateEngine\Archive.cs" />
+    <Compile Include="TemplateEngine\Archive_List.cs" />
     <Compile Include="TemplateEngine\Article_List.cs" />
     <Compile Include="TemplateEngine\Channel.cs" />
-    <Compile Include="TemplateEngine\IArchive.cs" />
+    <Compile Include="TemplateEngine\Archive.cs" />
     <Compile Include="Userfields.cs" />
     <Compile Include="Usergroup.cs" />
     <Compile Include="Users.cs" />

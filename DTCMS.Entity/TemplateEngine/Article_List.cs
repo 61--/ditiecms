@@ -13,20 +13,41 @@ namespace DTCMS.Entity.TemplateEngine
     /// <summary>
     /// 文章列表实体类
     /// </summary>
-    public class Article_List : IArchive
+    public class Article_List : Archive
     {
-        private int totalRecord;
-        private int currentPage;
-        private int totalPage;
-        private String pageItem;
+        private string _editor;
+        private string _source;
+
+        private int _totalRecord;
+        private int _currentPage;
+        private int _totalPage;
+        private string _pageBar;
+
+        /// <summary>
+        /// 责任编辑
+        /// </summary>
+        public string Editor
+        {
+            get { return _editor; }
+            set { _editor = value; }
+        }
+
+        /// <summary>
+        /// 文章来源
+        /// </summary>
+        public string Source
+        {
+            get { return _source; }
+            set { _source = value; }
+        }
 
         /// <summary>
         /// 总记录数
         /// </summary>
         public int TotalRecord
         {
-            get { return totalRecord; }
-            set { totalRecord = value; }
+            get { return _totalRecord; }
+            set { _totalRecord = value; }
         }
 
         /// <summary>
@@ -34,8 +55,8 @@ namespace DTCMS.Entity.TemplateEngine
         /// </summary>
         public int CurrentPage
         {
-            get { return currentPage; }
-            set { currentPage = value; }
+            get { return _currentPage; }
+            set { _currentPage = value; }
         }
 
         /// <summary>
@@ -43,17 +64,17 @@ namespace DTCMS.Entity.TemplateEngine
         /// </summary>
         public int TotalPage
         {
-            get { return totalPage; }
-            set { totalPage = value; }
+            get { return _totalPage; }
+            set { _totalPage = value; }
         }
 
         /// <summary>
         /// 分页标签
         /// </summary>
-        public String PageItem
+        public string PageItem
         {
-            get { return pageItem; }
-            set { pageItem = value; }
+            get { return _pageBar; }
+            set { _pageBar = value; }
         }
     }
 }

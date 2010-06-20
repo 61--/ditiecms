@@ -7,7 +7,7 @@
 <div id="list">
 	    <ul>
 	    <dt:pagelist PageSize="10" item="first,pre,pageno,next,last,potion">
-	        <li><a href="{$p.id}.html">{$p.title}</a> - {$p.pubdate format="yyyy年MM月dd mm:ss"}</li>
+	        <li><a href="{$p.id}.html">{$p.title}(作者：{$p.source})</a> - {$p.pubdate format="yyyy年MM月dd mm:ss"}</li>
 	    </dt:pagelist>
 	    </ul>
         当前第{$p.currentPage}页，共{$p.totalpage}页/{$p.totalrecord}条数据
