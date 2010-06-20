@@ -34,7 +34,7 @@ namespace DTCMS.BLL.TemplateEngine
         /// <param name="strWhere">获取条件</param>
         /// <param name="orderBy">排序字段</param>
         /// <returns>文章泛型实体</returns>
-        public List<Archive> GetArcList(int firstRecort, int lastRecort, string channelType, string strWhere, string orderBy)
+        public List<Archive_List> GetArcList(int firstRecort, int lastRecort, string channelType, string strWhere, string orderBy)
         {
             switch (channelType)
             {
@@ -60,7 +60,7 @@ namespace DTCMS.BLL.TemplateEngine
         /// <param name="pageSize">分页大小</param>
         /// <param name="pageIndex">当前页数</param>
         /// <returns></returns>
-        public List<IArchive> GetPageList(int channelID, int pageSize, int pageIndex)
+        public List<Archive> GetPageList(int channelID, int pageSize, int pageIndex)
         {
             return dal.GetPageList(channelID, "Arc_Article", pageSize, pageIndex);
         }

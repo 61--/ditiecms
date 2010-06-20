@@ -23,7 +23,7 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
         /// <summary>
         /// 获取文档泛型数据列表
         /// </summary>
-        public List<Archive> GetArcList(int firstRecort, int lastRecort, string channelType, string strWhere, string strOrder)
+        public List<Archive_List> GetArcList(int firstRecort, int lastRecort, string channelType, string strWhere, string strOrder)
         {
             string strSql = "SELECT ID,ClassID,C.ClassName,C.ClassPath,Title,ShortTitle,TitleStyle,TitleFlag,A.ImgUrl,Author,Click,Good,Bad,FilePath,A.PubDate FROM {0}{1} A LEFT JOIN {0}Arc_Class C ON A.ClassID=C.CID WHERE IsHidden=0";
             if (strWhere.Length != 0)
@@ -36,7 +36,7 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
             }
             using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, string.Format(strSql, tablePrefix, channelType), null))
             {
-                List<Archive> lst = new List<Archive>();
+                List<Archive_List> lst = new List<Archive_List>();
 
                 int count = 0;
 
@@ -45,7 +45,7 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
                     count++;
                     if (count >= firstRecort && count <= lastRecort)
                     {
-                        Archive model = new Archive();
+                        Archive_List model = new Archive_List();
                         model.ID = dbHelper.GetInt(dr["ID"]);
                         model.ClassID = dbHelper.GetInt(dr["ClassID"]);
                         model.ClassName = dbHelper.GetString(dr["ClassName"]);
@@ -72,13 +72,13 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
         /// <summary>
         /// 获取文章分页泛型数据列表
         /// </summary>
-        public List<IArchive> GetPageList(int channelID, string channelType, int pageSize, int pageIndex)
+        public List<Archive> GetPageList(int channelID, string channelType, int pageSize, int pageIndex)
         {
-            string strSql = "SELECT ID,ClassID,C.ClassName,C.ClassPath,Title,ShortTitle,TitleStyle,TitleFlag,A.ImgUrl,Author,Click,Good,Bad,FilePath,A.PubDate FROM {0}{1} A LEFT JOIN {0}Arc_Class C ON A.ClassID=C.CID AND A.ClassID=" + channelID + " WHERE IsHidden=0";
+            string strSql = "SELECT ID,ClassID,C.ClassName,C.ClassPath,Title,ShortTitle,TitleStyle,TitleFlag,A.ImgUrl,Author,Editor,Source,Click,Good,Bad,FilePath,A.PubDate FROM {0}{1} A LEFT JOIN {0}Arc_Class C ON A.ClassID=C.CID AND A.ClassID=" + channelID + " WHERE IsHidden=0";
 
             using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, string.Format(strSql, tablePrefix, channelType), null))
             {
-                List<IArchive> lst = new List<IArchive>();
+                List<Archive> lst = new List<Archive>();
 
                 int firstRecort = GetFirstIndex(pageSize, pageIndex);
                 int lastRecort = GetLastIndex(pageSize, pageIndex);
@@ -88,7 +88,7 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
                     count++;
                     if (count >= firstRecort && count <= lastRecort)
                     {
-                        IArchive model = new Article_List();
+                        Article_List model = new Article_List();
                         model.ID = dbHelper.GetInt(dr["ID"]);
                         model.ClassID = dbHelper.GetInt(dr["ClassID"]);
                         model.ClassName = dbHelper.GetString(dr["ClassName"]);
@@ -99,6 +99,8 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
                         model.TitleFlag = dbHelper.GetByte(dr["TitleFlag"]);
                         model.ImgUrl = dbHelper.GetString(dr["ImgUrl"]);
                         model.Author = dbHelper.GetString(dr["Author"]);
+                        model.Editor = dbHelper.GetString(dr["Editor"]);
+                        model.Source = dbHelper.GetString(dr["Source"]);
                         model.Click = dbHelper.GetInt(dr["Click"]);
                         model.Good = dbHelper.GetInt(dr["Good"]);
                         model.Bad = dbHelper.GetInt(dr["Bad"]);
