@@ -14,8 +14,7 @@ namespace DTCMS.TemplateEngine
     /// <summary>
     /// 属性集合
     /// </summary>
-    public class AttributeCollection 
-        : IEnumerable<Attribute>
+    public class AttributeCollection : IEnumerable<Attribute>
     {
         /// <summary>
         /// 构造默认模板属性

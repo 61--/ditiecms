@@ -18,11 +18,6 @@ namespace DTCMS.Entity.TemplateEngine
         private string _editor;
         private string _source;
 
-        private int _totalRecord;
-        private int _currentPage;
-        private int _totalPage;
-        private string _pageBar;
-
         /// <summary>
         /// 责任编辑
         /// </summary>
@@ -39,42 +34,6 @@ namespace DTCMS.Entity.TemplateEngine
         {
             get { return _source; }
             set { _source = value; }
-        }
-
-        /// <summary>
-        /// 总记录数
-        /// </summary>
-        public int TotalRecord
-        {
-            get { return _totalRecord; }
-            set { _totalRecord = value; }
-        }
-
-        /// <summary>
-        /// 当前页数
-        /// </summary>
-        public int CurrentPage
-        {
-            get { return _currentPage; }
-            set { _currentPage = value; }
-        }
-
-        /// <summary>
-        /// 总页数
-        /// </summary>
-        public int TotalPage
-        {
-            get { return _totalPage; }
-            set { _totalPage = value; }
-        }
-
-        /// <summary>
-        /// 分页标签
-        /// </summary>
-        public string PageItem
-        {
-            get { return _pageBar; }
-            set { _pageBar = value; }
-        }
+        }        
     }
 }

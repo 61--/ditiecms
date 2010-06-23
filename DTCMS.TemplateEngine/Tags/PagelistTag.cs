@@ -58,6 +58,11 @@ namespace DTCMS.TemplateEngine
             get { return this.Attributes["PageSize"]; }
         }
 
+        public Attribute Item
+        {
+            get { return this.Attributes["Item"]; }
+        }
+
         /// <summary>
         /// 是否输出此标签的结果值
         /// </summary>
@@ -188,9 +193,6 @@ namespace DTCMS.TemplateEngine
             }
 
             List<Archive> arcList = arcBll.GetPageList(channelID, pageSize, pageIndex);
-            Article_List article = (Article_List)arcList[arcList.Count - 1];
-            article.TotalPage = 50;
-            arcList[arcList.Count - 1] = article;
 
             return arcList;
         }
