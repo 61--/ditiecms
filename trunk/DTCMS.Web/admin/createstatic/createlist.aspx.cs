@@ -127,12 +127,65 @@ namespace DTCMS.Web.admin.createstatic
                 totalRecord = arclistBll.GetArcCount(channelID, classType);
             }
 
-            Tag tag = this.Document.CurrentRenderingTag;
+            //Tag tag = this.Document.TagName
+            Gobal gobal = new Gobal();
+            ElementCollection<Tag> tags = this.Document.GetChildTagsByTagName("PageList");
+            foreach (Tag tag in tags)
+            {
+                gobal.PageItem = tag.Attributes["Item"].Value.ToString();
+            }
+
 
             //获取自定义属性
 
-            this.Document.Variables.SetValue("list", "");
+            this.Document.Variables.SetValue("gobal", gobal);
+        }
+    }
 
+    /// <summary>
+    /// 全局数据实体类
+    /// </summary>
+    public class Gobal
+    {
+        private int _totalRecord;
+        private int _currentPage;
+        private int _totalPage;
+        private string _pageItem;
+
+        /// <summary>
+        /// 总记录数
+        /// </summary>
+        public int TotalRecord
+        {
+            get { return _totalRecord; }
+            set { _totalRecord = value; }
+        }
+
+        /// <summary>
+        /// 当前页数
+        /// </summary>
+        public int CurrentPage
+        {
+            get { return _currentPage; }
+            set { _currentPage = value; }
+        }
+
+        /// <summary>
+        /// 总页数
+        /// </summary>
+        public int TotalPage
+        {
+            get { return _totalPage; }
+            set { _totalPage = value; }
+        }
+
+        /// <summary>
+        /// 分页标签
+        /// </summary>
+        public string PageItem
+        {
+            get { return _pageItem; }
+            set { _pageItem = value; }
         }
     }
 }
