@@ -58,6 +58,9 @@ namespace DTCMS.TemplateEngine
             get { return this.Attributes["PageSize"]; }
         }
 
+        /// <summary>
+        /// 分页项 例：item="first,pre,pageno,next,last,potion"
+        /// </summary>
         public Attribute Item
         {
             get { return this.Attributes["Item"]; }
@@ -160,8 +163,6 @@ namespace DTCMS.TemplateEngine
         /// <returns></returns>
         private List<Archive> GetPageList()
         {
-            ArcListBLL arcBll = new ArcListBLL();
-
             //获取分页条数
             int pageSize = TypeConvert.ToInt32(this.PageSize.Text);
 
@@ -178,20 +179,8 @@ namespace DTCMS.TemplateEngine
             {
                 channelType = obj.ToString();
             }
-            else
-            {
-                channelType = arcBll.GetChannelType(channelID);
-                CacheAccess.SaveToCache("ChannelType", channelType);
-            }
 
-            //总记录数
-            int totalRecord = TypeConvert.ToInt32(CacheAccess.GetFromCache("TotalRecord"));
-            if (totalRecord < 0)
-            {
-                totalRecord = arcBll.GetArcCount(channelID, channelType);
-                CacheAccess.SaveToCache("TotalRecord", totalRecord);
-            }
-
+            ArcListBLL arcBll = new ArcListBLL();
             List<Archive> arcList = arcBll.GetPageList(channelID, pageSize, pageIndex);
 
             return arcList;

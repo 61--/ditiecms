@@ -101,15 +101,39 @@ namespace DTCMS.Web.admin.createstatic
             }
 
             //获取栏目类型
-            string classType = Utils.GetQueryString("classtype");
-            if (classType.Length == 0)
+            string channelType = Utils.GetQueryString("ChannelType");
+            if (channelType.Length == 0)
             {
                 ArcListBLL arclistBll = new ArcListBLL();
-                classType = arclistBll.GetChannelType(channelID);
+                channelType = arclistBll.GetChannelType(channelID);
+                CacheAccess.SaveToCache("ChannelType", channelType);
+            }
+
+            //获取记录总数
+            int totalRecord = Utils.GetQueryInt("TotalRecord");
+            if (totalRecord < 0)
+            {
+                ArcListBLL arclistBll = new ArcListBLL();
+                totalRecord = arclistBll.GetArcCount(channelID, channelType);
+            }
+
+            //获取分页大小
+            int pageSize = Utils.GetQueryInt("PageSize");
+            //获取分页选项
+            string pageItem = Utils.GetQueryString("PageItem");
+            if (pageSize < 0 || pageItem.Length == 0)
+            {
+                //分页大小和分页选项从PageList标签中获取
+                ElementCollection<Tag> tags = this.Document.GetChildTagsByTagName("PageList");
+                foreach (Tag tag in tags)
+                {
+                    pageSize = TypeConvert.ToInt32(tag.Attributes["PageSize"].Value);
+                    pageItem = tag.Attributes["Item"].Value.ToString();
+                }
             }
 
             //获取生成栏目当前页数
-            int pageIndex = Utils.GetQueryInt("pageindex");
+            int pageIndex = Utils.GetQueryInt("PageIndex");
             if (pageIndex < 0)
             {
                 Message.Dialog("生成错误，生成静态页的当前页数为空！", "-1", MessageIcon.Warning);
@@ -119,25 +143,11 @@ namespace DTCMS.Web.admin.createstatic
                 CacheAccess.SaveToCache("PageIndex", pageIndex);
             }
 
-            //获取记录总数
-            int totalRecord = Utils.GetQueryInt("totalrecord");
-            if (totalRecord < 0)
-            {
-                ArcListBLL arclistBll = new ArcListBLL();
-                totalRecord = arclistBll.GetArcCount(channelID, classType);
-            }
-
-            //Tag tag = this.Document.TagName
+            //设置自定义属性
             Gobal gobal = new Gobal();
-            ElementCollection<Tag> tags = this.Document.GetChildTagsByTagName("PageList");
-            foreach (Tag tag in tags)
-            {
-                gobal.PageItem = tag.Attributes["Item"].Value.ToString();
-            }
-
-
-            //获取自定义属性
-
+            gobal.CurrentPage = pageIndex;
+            gobal.TotalPage = (int)Math.Ceiling(totalRecord / TypeConvert.ToFloat(pageSize));
+            gobal.TotalRecord = totalRecord;
             this.Document.Variables.SetValue("gobal", gobal);
         }
     }
