@@ -146,8 +146,9 @@ namespace DTCMS.Web.admin.createstatic
             //设置自定义属性
             Gobal gobal = new Gobal();
             gobal.CurrentPage = pageIndex;
-            gobal.TotalPage = (int)Math.Ceiling(totalRecord / TypeConvert.ToFloat(pageSize));
+            gobal.TotalPage = PageSeting.GetPageCount(totalRecord, pageSize);
             gobal.TotalRecord = totalRecord;
+            gobal.PageBar = PageSeting.GetPageNumbers(pageIndex, gobal.TotalPage, "http://www.91apsx.com", 3, "", "");
             this.Document.Variables.SetValue("gobal", gobal);
         }
     }
@@ -160,7 +161,7 @@ namespace DTCMS.Web.admin.createstatic
         private int _totalRecord;
         private int _currentPage;
         private int _totalPage;
-        private string _pageItem;
+        private string _pageBar;
 
         /// <summary>
         /// 总记录数
@@ -192,10 +193,10 @@ namespace DTCMS.Web.admin.createstatic
         /// <summary>
         /// 分页标签
         /// </summary>
-        public string PageItem
+        public string PageBar
         {
-            get { return _pageItem; }
-            set { _pageItem = value; }
+            get { return _pageBar; }
+            set { _pageBar = value; }
         }
     }
 }
