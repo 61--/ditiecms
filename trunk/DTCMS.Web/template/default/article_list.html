@@ -7,11 +7,11 @@
 <div id="list">
 	    <ul>
 	    <dt:pagelist PageSize="10" item="first,pre,pageno,next,last,potion">
-	        <li><a href="{$p.id}.html">{$p.title}(作者：{$p.source})</a> - {$p.pubdate format="yyyy年MM月dd mm:ss"}</li>
+	        <li><a href="{$p.id}.html">{$p.title}(作者：{$p.author})</a> - {$p.pubdate format="yyyy年MM月dd mm:ss"}</li>
 	    </dt:pagelist>
 	    </ul>
         当前第{$gobal.currentPage}页/共{$gobal.totalpage}页，{$gobal.totalrecord}条数据
-        {$gobal.pageitem}
+        <div>{$gobal.pagebar}</div>
 	<dt:server type="time" var="time">{$time}</dt:server>
 </div>
 </body>

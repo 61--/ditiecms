@@ -19,18 +19,9 @@ namespace DTCMS.Common
         /// <param name="recordTotalCount">共有多少条记录</param>
         /// <param name="pageSize">每页显示多少条记录</param>
         /// <returns>共有几页</returns>
-        public static int GetPageCount(int recordTotalCount, int pageSize)
+        public static int GetPageCount(int totalRecord, int pageSize)
         {
-            int totalCount = 0;
-            if (recordTotalCount % pageSize == 0)
-            {
-                totalCount = recordTotalCount / pageSize;
-            }
-            else
-            {
-                totalCount = recordTotalCount / pageSize + 1;
-            }
-            return totalCount;
+            return (int)Math.Ceiling(totalRecord / TypeConvert.ToFloat(pageSize));
         }
 
         #region 获取ajax形式的分页链接
