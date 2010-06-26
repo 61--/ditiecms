@@ -148,7 +148,7 @@ namespace DTCMS.Web.admin.createstatic
             gobal.CurrentPage = pageIndex;
             gobal.TotalPage = PageSeting.GetPageCount(totalRecord, pageSize);
             gobal.TotalRecord = totalRecord;
-            gobal.PageBar = PageSeting.GetPageNumbers(pageIndex, gobal.TotalPage, "http://www.91apsx.com", 3, "", "");
+            gobal.PageBar = PageSeting.GetPageNumbers(pageIndex, gobal.TotalPage, "?channelID=10", 10, "pageindex", "");
             this.Document.Variables.SetValue("gobal", gobal);
         }
     }

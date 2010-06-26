@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过下列属性集
 // 控制。更改这些属性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("DTCMS.TemplateEngine")]
-[assembly: AssemblyDescription("DTCMS.TemplateEngine")]
+[assembly: AssemblyTitle("DTCMS.Template")]
+[assembly: AssemblyDescription("DTCMS.Template")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("kingthy@gmail.com")]
-[assembly: AssemblyProduct("VTemplate")]
+[assembly: AssemblyProduct("Template")]
 [assembly: AssemblyCopyright("Copyright © 2009-2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

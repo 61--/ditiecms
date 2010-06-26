@@ -153,21 +153,20 @@ namespace DTCMS.Common
             int startPage = 1;
             int endPage = 1;
 
-            if (url.IndexOf("?") > 0)
+            if (url.IndexOf("?") > -1)
                 url = url + "&";
             else
                 url = url + "?";
-            int upnum = (curPage - 1) < 1 ? 1 : (curPage - 1);
-            int downnum = (curPage + 1) > countPage ? countPage : (curPage + 1);
-            string t1 = "<a href=\"" + url + pagetag + "=" + upnum;
-            string t2 = "<a href=\"" + url + pagetag + "=" + downnum;
+
+            string t1 = "<a href=\"" + url + "&" + pagetag + "=1";
+            string t2 = "<a href=\"" + url + "&" + pagetag + "=" + countPage;
             if (anchor != null)
             {
                 t1 += anchor;
                 t2 += anchor;
             }
-            t1 += "\">&laquo;</a>";
-            t2 += "\">&raquo;</a>";
+            t1 += "\">首页</a>";
+            t2 += "\">末页</a>";
 
             if (countPage < 1)
                 countPage = 1;
@@ -187,13 +186,13 @@ namespace DTCMS.Common
                     {
                         endPage = countPage;
                         startPage = endPage - extendPage + 1;
-                        t2 = "";
+                        t2 = "末页";
                     }
                 }
                 else
                 {
                     endPage = extendPage;
-                    t1 = "";
+                    t1 = "首页";
                 }
             }
             else
@@ -207,39 +206,11 @@ namespace DTCMS.Common
             StringBuilder s = new StringBuilder("");
 
             s.Append(t1);
-            if (curPage - (extendPage / 2) > 2)
-            {
-
-                s.Append("<a href=\"");
-                s.Append(url);
-                s.Append(pagetag);
-                s.Append("=");
-                s.Append(1);
-                if (anchor != null)
-                {
-                    s.Append(anchor);
-                }
-                s.Append("\">");
-                s.Append(1);
-                s.Append("</a>");
-                s.Append("<a href=\"");
-                s.Append(url);
-                s.Append(pagetag);
-                s.Append("=");
-                s.Append(2);
-                if (anchor != null)
-                {
-                    s.Append(anchor);
-                }
-                s.Append("\">");
-                s.Append(2);
-                s.Append("</a>");
-                s.Append("...");
-            }
             for (int i = startPage; i <= endPage; i++)
             {
                 if (i == curPage)
                 {
+
                     s.Append("<span>");
                     s.Append(i);
                     s.Append("</span>");
@@ -259,34 +230,6 @@ namespace DTCMS.Common
                     s.Append(i);
                     s.Append("</a>");
                 }
-            }
-            if ((countPage - curPage) > (extendPage / 2))
-            {
-                s.Append("...");
-                s.Append("<a href=\"");
-                s.Append(url);
-                s.Append(pagetag);
-                s.Append("=");
-                s.Append(countPage - 1);
-                if (anchor != null)
-                {
-                    s.Append(anchor);
-                }
-                s.Append("\">");
-                s.Append(countPage - 1);
-                s.Append("</a>");
-                s.Append("<a href=\"");
-                s.Append(url);
-                s.Append(pagetag);
-                s.Append("=");
-                s.Append(countPage);
-                if (anchor != null)
-                {
-                    s.Append(anchor);
-                }
-                s.Append("\">");
-                s.Append(countPage);
-                s.Append("</a>");
             }
             s.Append(t2);
 

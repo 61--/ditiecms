@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.Controls", "DTCMS.Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.SqlProvider", "DTCMS.SqlProvider\DTCMS.SqlProvider.csproj", "{F94F9634-7E54-4B26-9AF2-C5E096131823}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.TemplateEngine", "DTCMS.TemplateEngine\DTCMS.TemplateEngine.csproj", "{FFE421FA-C56D-466D-BCBE-5C451F2C82BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTCMS.Template", "DTCMS.TemplateEngine\DTCMS.Template.csproj", "{FFE421FA-C56D-466D-BCBE-5C451F2C82BC}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution

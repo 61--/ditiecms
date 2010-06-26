@@ -74,7 +74,7 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
         /// </summary>
         public List<Archive> GetPageList(int channelID, string channelType, int pageSize, int pageIndex)
         {
-            string strSql = "SELECT ID,ClassID,C.ClassName,C.ClassPath,Title,ShortTitle,TitleStyle,TitleFlag,A.ImgUrl,Author,Editor,Source,Click,Good,Bad,FilePath,A.PubDate FROM {0}{1} A LEFT JOIN {0}Arc_Class C ON A.ClassID=C.CID AND A.ClassID=" + channelID + " WHERE IsHidden=0";
+            string strSql = "SELECT ID,ClassID,C.ClassName,C.ClassPath,Title,ShortTitle,TitleStyle,TitleFlag,A.ImgUrl,Author,Editor,Source,Click,Good,Bad,FilePath,A.PubDate FROM {0}{1} A LEFT JOIN {0}Arc_Class C ON A.ClassID=C.CID AND A.ClassID=" + channelID + " WHERE IsHidden=0 ORDER BY PubDate DESC";
 
             using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, string.Format(strSql, tablePrefix, channelType), null))
             {
