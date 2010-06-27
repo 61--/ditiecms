@@ -95,10 +95,6 @@ namespace DTCMS.Web.admin.createstatic
             {
                 Message.Dialog("生成错误，生成静态页的栏目ID为空！", "-1", MessageIcon.Warning);
             }
-            else
-            {
-                CacheAccess.SaveToCache("ChannelID", channelID);
-            }
 
             //获取栏目类型
             string channelType = Utils.GetQueryString("ChannelType");
@@ -106,7 +102,6 @@ namespace DTCMS.Web.admin.createstatic
             {
                 ArcListBLL arclistBll = new ArcListBLL();
                 channelType = arclistBll.GetChannelType(channelID);
-                CacheAccess.SaveToCache("ChannelType", channelType);
             }
 
             //获取记录总数
@@ -137,10 +132,6 @@ namespace DTCMS.Web.admin.createstatic
             if (pageIndex < 0)
             {
                 Message.Dialog("生成错误，生成静态页的当前页数为空！", "-1", MessageIcon.Warning);
-            }
-            else
-            {
-                CacheAccess.SaveToCache("PageIndex", pageIndex);
             }
 
             //设置自定义属性

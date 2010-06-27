@@ -18,6 +18,7 @@ using System.Reflection;
 using System.Collections.Specialized;
 using System.Data;
 using System.Data.Common;
+using DTCMS.Common;
 
 namespace DTCMS.TemplateEngine
 {
@@ -241,37 +242,6 @@ namespace DTCMS.TemplateEngine
                 return list;
             }
         }
-        /// <summary>
-        /// 转换字符串为布尔值
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        internal static bool ConverToBoolean(string value)
-        {
-            if (value == "1" || string.Equals(value, Boolean.TrueString, StringComparison.OrdinalIgnoreCase))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// 转换字符串为整型值
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        internal static int ConverToInt32(string value)
-        {
-            int v;
-            if (!int.TryParse(value, out v))
-            {
-                v = 0;
-            }
-            return v;
-        }
 
         /// <summary>
         /// 转换字符串为数值
@@ -494,7 +464,7 @@ namespace DTCMS.TemplateEngine
             {
                 #region 索引值部分
                 //属性名只为数字.则取数组索引
-                int index = Utility.ConverToInt32(propName);
+                int index = TypeConvert.ToInt32(propName);
                 if (container is IList)
                 {
                     IList iList = (IList)container;

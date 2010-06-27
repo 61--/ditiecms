@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections;
 using System.Text.RegularExpressions;
+using DTCMS.Common;
 
 namespace DTCMS.TemplateEngine
 {
@@ -186,7 +187,7 @@ namespace DTCMS.TemplateEngine
             if (array != null)
             {
                 IEnumerator list = array.GetEnumerator();
-                int groupSize = this.GroupSize == null ? 0 : Utility.ConverToInt32(this.GroupSize.GetTextValue());
+                int groupSize = this.GroupSize == null ? 0 : TypeConvert.ToInt32(this.GroupSize.GetTextValue());
                 if (groupSize > 1) list = Utility.SplitToGroup(list, groupSize);
 
                 list.Reset();

@@ -105,7 +105,7 @@ namespace DTCMS.TemplateEngine
                     this.Variable = ParserHelper.CreateVariableIdentity(this.OwnerTemplate, item.Text);
                     break;
                 case "output":
-                    this.Output = Utility.ConverToBoolean(item.Text);
+                    this.Output = TypeConvert.ToBool(item.Text);
                     break;
             }
         }
