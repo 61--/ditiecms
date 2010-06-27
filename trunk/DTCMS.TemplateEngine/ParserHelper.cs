@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using DTCMS.Common;
 
 namespace DTCMS.TemplateEngine
 {
@@ -274,7 +275,7 @@ namespace DTCMS.TemplateEngine
             {
                 //常量表达式
                 return Utility.IsInteger(expressionText) ? 
-                      new ConstantExpression(Utility.ConverToInt32(expressionText))
+                      new ConstantExpression(TypeConvert.ToInt32(expressionText))
                     : new ConstantExpression(expressionText);
             }
         }

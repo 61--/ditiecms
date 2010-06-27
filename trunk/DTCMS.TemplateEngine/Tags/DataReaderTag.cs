@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Configuration;
 using System.Data.Common;
 using System.Data;
+using DTCMS.Common;
 
 namespace DTCMS.TemplateEngine
 {
@@ -241,7 +242,7 @@ namespace DTCMS.TemplateEngine
                         if (this.RowIndex != null)
                         {
                             //只获取其中的某行数据
-                            int row = Utility.ConverToInt32(this.RowIndex.GetTextValue());
+                            int row = TypeConvert.ToInt32(this.RowIndex.GetTextValue());
                             if (table.Rows.Count > row)
                             {
                                 result = table.Rows[row];

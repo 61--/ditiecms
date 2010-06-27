@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Reflection;
+using DTCMS.Common;
 
 namespace DTCMS.TemplateEngine
 {
@@ -101,7 +102,7 @@ namespace DTCMS.TemplateEngine
                     this.Variable = ParserHelper.CreateVariableIdentity(this.OwnerTemplate, item.Text);
                     break;
                 case "output":
-                    this.Output = Utility.ConverToBoolean(item.Text);
+                    this.Output = TypeConvert.ToBool(item.Text);
                     break;
             }
         }

@@ -154,7 +154,7 @@ namespace DTCMS.TemplateEngine
                     this.Variable = ParserHelper.CreateVariableIdentity(this.OwnerTemplate, item.Text);
                     break;
                 case "output":
-                    this.Output = Utility.ConverToBoolean(item.Text);
+                    this.Output = TypeConvert.ToBool(item.Text);
                     break;
             }
         }
@@ -276,7 +276,7 @@ namespace DTCMS.TemplateEngine
             }
             if (this.ChannelID != null && this.ChannelID.Value.GetValue() != null)
             {
-                if (this.SubChannel == null ? true : TypeConvert.ToBool(this.SubChannel.Text, true))
+                if (this.SubChannel == null ? true : TypeConvert.ToBool(this.SubChannel.Text))
                 {
                     //如果包含子栏目
                     //string[] scList = this.ChannelID.Value.GetValue().ToString().Split(',');

@@ -11,6 +11,7 @@ using System.Web;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Collections;
+using DTCMS.Common;
 
 namespace DTCMS.TemplateEngine
 {
@@ -272,15 +273,15 @@ namespace DTCMS.TemplateEngine
 
             if (text.Length > 0)
             {
-                bool removeHtml = this.RemoveHtml == null ? false : Utility.ConverToBoolean(this.RemoveHtml.GetTextValue());
-                bool textEncode = this.TextEncode == null ? false : Utility.ConverToBoolean(this.TextEncode.GetTextValue());
-                bool htmlEncode = this.HtmlEncode == null ? false : Utility.ConverToBoolean(this.HtmlEncode.GetTextValue());
-                bool xmlEncode = this.XmlEncode == null ? false : Utility.ConverToBoolean(this.XmlEncode.GetTextValue());                
-                bool jsEncode = this.JsEncode == null ? false : Utility.ConverToBoolean(this.JsEncode.GetTextValue());
-                bool urlEncode = this.UrlEncode == null ? false : Utility.ConverToBoolean(this.UrlEncode.GetTextValue());
-                bool compressText = this.CompressText == null ? false : Utility.ConverToBoolean(this.CompressText.GetTextValue());
+                bool removeHtml = this.RemoveHtml == null ? false : TypeConvert.ToBool(this.RemoveHtml.GetTextValue());
+                bool textEncode = this.TextEncode == null ? false : TypeConvert.ToBool(this.TextEncode.GetTextValue());
+                bool htmlEncode = this.HtmlEncode == null ? false : TypeConvert.ToBool(this.HtmlEncode.GetTextValue());
+                bool xmlEncode = this.XmlEncode == null ? false : TypeConvert.ToBool(this.XmlEncode.GetTextValue());                
+                bool jsEncode = this.JsEncode == null ? false : TypeConvert.ToBool(this.JsEncode.GetTextValue());
+                bool urlEncode = this.UrlEncode == null ? false : TypeConvert.ToBool(this.UrlEncode.GetTextValue());
+                bool compressText = this.CompressText == null ? false : TypeConvert.ToBool(this.CompressText.GetTextValue());
 
-                int length = this.Length == null ? 0 : Utility.ConverToInt32(this.Length.GetTextValue());
+                int length = this.Length == null ? 0 : TypeConvert.ToInt32(this.Length.GetTextValue());
                 string appendText = this.AppendText == null ? string.Empty : this.AppendText.GetTextValue();
                 Encoding charset = this.Charset == null ? this.OwnerTemplate.Charset : Utility.GetEncodingFromCharset(this.Charset.GetTextValue(), this.OwnerTemplate.Charset);
 
