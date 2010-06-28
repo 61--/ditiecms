@@ -12,7 +12,6 @@ namespace DTCMS.Common
 {
     public class PageSeting
     {
-
         /// <summary>
         /// 算共有几页
         /// </summary>
@@ -146,94 +145,127 @@ namespace DTCMS.Common
         /// <param name="pagetag">页码标记</param>
         /// <param name="anchor">锚点</param>
         /// <returns>页码html</returns>
-        public static string GetPageNumbers(int curPage, int countPage, string url, int extendPage, string pagetag, string anchor)
+        public static string GetPageNum(int curPage, int totalPage, int extendPage, int channelID, string pageItem)
         {
-            if (pagetag == "")
-                pagetag = "page";
-            int startPage = 1;
-            int endPage = 1;
+            string[] items = pageItem.ToLower().Split(',');
+            StringBuilder sb = new StringBuilder();
 
-            if (url.IndexOf("?") > -1)
-                url = url + "&";
-            else
-                url = url + "?";
-
-            string t1 = "<a href=\"" + url + "&" + pagetag + "=1";
-            string t2 = "<a href=\"" + url + "&" + pagetag + "=" + countPage;
-            if (anchor != null)
-            {
-                t1 += anchor;
-                t2 += anchor;
-            }
-            t1 += "\">首页</a>";
-            t2 += "\">末页</a>";
-
-            if (countPage < 1)
-                countPage = 1;
+            if (totalPage < 1)
+                totalPage = 1;
             if (extendPage < 3)
-                extendPage = 2;
+                extendPage = 3;
 
-            if (countPage > extendPage)
+            foreach (string item in items)
             {
-                if (curPage - (extendPage / 2) > 0)
+                switch (item)
                 {
-                    if (curPage + (extendPage / 2) < countPage)
-                    {
-                        startPage = curPage - (extendPage / 2);
-                        endPage = startPage + extendPage - 1;
-                    }
-                    else
-                    {
-                        endPage = countPage;
-                        startPage = endPage - extendPage + 1;
-                        t2 = "末页";
-                    }
-                }
-                else
-                {
-                    endPage = extendPage;
-                    t1 = "首页";
-                }
-            }
-            else
-            {
-                startPage = 1;
-                endPage = countPage;
-                t1 = "";
-                t2 = "";
-            }
+                    case "first":
+                        if (curPage == 1)
+                        {
+                            sb.Append("<a href='#' class='pFirst disabled'>首页</a>");
+                        }
+                        else
+                        {
+                            sb.Append("<a href='index.html' class='pFirst'>首页</a>");
+                        }
+                        break;
+                    case "pre":
+                        if (curPage == 1)
+                        {
+                            sb.Append("<a href='#' class='pPrev disabled'>上一页</a>");
+                        }
+                        else
+                        {
+                            if (curPage == 2)
+                            {
+                                sb.Append("<a href='index.html' class='pPrev'>上一页</a>");
+                            }
+                            else
+                            {
+                                sb.Append("<a href='");
+                                sb.Append("list_1_").Append(curPage - 1).Append(".html");
+                                sb.Append("' class='pPrev'>上一页</a>");
+                            }
+                        }
+                        break;
+                    case "pagenum":
+                        int startPage = 1;
+                        int endPage = 1;
+                        if (totalPage > extendPage)
+                        {
+                            if (curPage - (extendPage / 2) > 0)
+                            {
+                                if (curPage + (extendPage / 2) < totalPage)
+                                {
+                                    startPage = curPage - (extendPage / 2);
+                                    endPage = startPage + extendPage - 1;
+                                }
+                                else
+                                {
+                                    endPage = totalPage;
+                                    startPage = endPage - extendPage + 1;
+                                }
+                            }
+                            else
+                            {
+                                endPage = extendPage;
+                            }
+                        }
+                        else
+                        {
+                            startPage = 1;
+                            endPage = totalPage;
+                        }
 
-            StringBuilder s = new StringBuilder("");
-
-            s.Append(t1);
-            for (int i = startPage; i <= endPage; i++)
-            {
-                if (i == curPage)
-                {
-
-                    s.Append("<span>");
-                    s.Append(i);
-                    s.Append("</span>");
+                        //生成数字分页链接
+                        for (int i = startPage; i <= endPage; i++)
+                        {
+                            if (i == curPage)
+                            {
+                                sb.Append("<strong>");
+                                sb.Append(i);
+                                sb.Append("</strong>");
+                            }
+                            else
+                            {
+                                sb.Append("<a href=\"");
+                                sb.Append("list_1_").Append(i).Append(".html");
+                                sb.Append("\">").Append(i).Append("</a>");
+                            }
+                        }
+                        break;
+                    case "next":
+                        if (curPage == totalPage)
+                        {
+                            sb.Append("<a href='#' class='pNext disabled'>下一页</a>");
+                        }
+                        else
+                        {
+                            sb.Append("<a href='");
+                            sb.Append("list_1_").Append(curPage + 1).Append(".html");
+                            sb.Append("' class='pNext'>下一页</a>");
+                        }
+                        break;
+                    case "last":
+                        if (curPage == totalPage)
+                        {
+                            sb.Append("<a href='#' class='pLast disabled'>末页</a>");
+                        }
+                        else
+                        {
+                            sb.Append("<a href='");
+                            sb.Append("list_1_").Append(totalPage).Append(".html");
+                            sb.Append("' class='pLast'>末页</a>");
+                        }
+                        break;
+                    case "potion":
+                        sb.Append("potion");
+                        break;
+                    default:
+                        break;
                 }
-                else
-                {
-                    s.Append("<a href=\"");
-                    s.Append(url);
-                    s.Append(pagetag);
-                    s.Append("=");
-                    s.Append(i);
-                    if (anchor != null)
-                    {
-                        s.Append(anchor);
-                    }
-                    s.Append("\">");
-                    s.Append(i);
-                    s.Append("</a>");
-                }
-            }
-            s.Append(t2);
-
-            return s.ToString();
+            }            
+            return sb.ToString();
         }
         #endregion
 
