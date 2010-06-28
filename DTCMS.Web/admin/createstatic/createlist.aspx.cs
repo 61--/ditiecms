@@ -139,7 +139,7 @@ namespace DTCMS.Web.admin.createstatic
             gobal.CurrentPage = pageIndex;
             gobal.TotalPage = PageSeting.GetPageCount(totalRecord, pageSize);
             gobal.TotalRecord = totalRecord;
-            gobal.PageBar = PageSeting.GetPageNumbers(pageIndex, gobal.TotalPage, "?channelID=10", 10, "pageindex", "");
+            gobal.PageIndex = PageSeting.GetPageNum(pageIndex, gobal.TotalPage, 10, channelID, pageItem);
             this.Document.Variables.SetValue("gobal", gobal);
         }
     }
@@ -152,7 +152,7 @@ namespace DTCMS.Web.admin.createstatic
         private int _totalRecord;
         private int _currentPage;
         private int _totalPage;
-        private string _pageBar;
+        private string _pageIndex;
 
         /// <summary>
         /// 总记录数
@@ -184,10 +184,10 @@ namespace DTCMS.Web.admin.createstatic
         /// <summary>
         /// 分页标签
         /// </summary>
-        public string PageBar
+        public string PageIndex
         {
-            get { return _pageBar; }
-            set { _pageBar = value; }
+            get { return _pageIndex; }
+            set { _pageIndex = value; }
         }
     }
 }
