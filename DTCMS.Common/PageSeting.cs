@@ -145,7 +145,7 @@ namespace DTCMS.Common
         /// <param name="pagetag">页码标记</param>
         /// <param name="anchor">锚点</param>
         /// <returns>页码html</returns>
-        public static string GetPageNum(int curPage, int totalPage, int extendPage, int channelID, string pageItem)
+        public static string GetPageNum(int curPage, int totalPage, int extendPage, string url, string pageItem)
         {
             string[] items = pageItem.ToLower().Split(',');
             StringBuilder sb = new StringBuilder();
@@ -162,30 +162,25 @@ namespace DTCMS.Common
                     case "first":
                         if (curPage == 1)
                         {
-                            sb.Append("<a href='#' class='pFirst disabled'>首页</a>");
+                            sb.Append("<a href=\"#\" class=\"pFirst disabled\">首页</a>");
                         }
                         else
                         {
-                            sb.Append("<a href='index.html' class='pFirst'>首页</a>");
+                            sb.Append("<a href=\"");
+                            sb.AppendFormat(url, 1);
+                            sb.Append("\" class=\"pFirst\">首页</a>");
                         }
                         break;
                     case "pre":
                         if (curPage == 1)
                         {
-                            sb.Append("<a href='#' class='pPrev disabled'>上一页</a>");
+                            sb.Append("<a href=\"#\" class=\"pPrev disabled\">上一页</a>");
                         }
                         else
                         {
-                            if (curPage == 2)
-                            {
-                                sb.Append("<a href='index.html' class='pPrev'>上一页</a>");
-                            }
-                            else
-                            {
-                                sb.Append("<a href='");
-                                sb.Append("list_1_").Append(curPage - 1).Append(".html");
-                                sb.Append("' class='pPrev'>上一页</a>");
-                            }
+                            sb.Append("<a href=\"");
+                            sb.AppendFormat(url, (curPage - 1));
+                            sb.Append("\" class=\"pPrev\">上一页</a>");
                         }
                         break;
                     case "pagenum":
@@ -229,7 +224,7 @@ namespace DTCMS.Common
                             else
                             {
                                 sb.Append("<a href=\"");
-                                sb.Append("list_1_").Append(i).Append(".html");
+                                sb.AppendFormat(url, i);
                                 sb.Append("\">").Append(i).Append("</a>");
                             }
                         }
@@ -237,25 +232,25 @@ namespace DTCMS.Common
                     case "next":
                         if (curPage == totalPage)
                         {
-                            sb.Append("<a href='#' class='pNext disabled'>下一页</a>");
+                            sb.Append("<a href=\"#\" class=\"pNext disabled\">下一页</a>");
                         }
                         else
                         {
-                            sb.Append("<a href='");
-                            sb.Append("list_1_").Append(curPage + 1).Append(".html");
-                            sb.Append("' class='pNext'>下一页</a>");
+                            sb.Append("<a href=\"");
+                            sb.AppendFormat(url, (curPage + 1));
+                            sb.Append("\" class=\"pNext\">下一页</a>");
                         }
                         break;
                     case "last":
                         if (curPage == totalPage)
                         {
-                            sb.Append("<a href='#' class='pLast disabled'>末页</a>");
+                            sb.Append("<a href=\"#\" class=\"pLast disabled\">末页</a>");
                         }
                         else
                         {
-                            sb.Append("<a href='");
-                            sb.Append("list_1_").Append(totalPage).Append(".html");
-                            sb.Append("' class='pLast'>末页</a>");
+                            sb.Append("<a href=\"");
+                            sb.AppendFormat(url, totalPage);
+                            sb.Append("\" class=\"pLast\">末页</a>");
                         }
                         break;
                     case "potion":
@@ -264,7 +259,7 @@ namespace DTCMS.Common
                     default:
                         break;
                 }
-            }            
+            }
             return sb.ToString();
         }
         #endregion
