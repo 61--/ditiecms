@@ -11,7 +11,7 @@ public class ValidateCode : IHttpHandler, IRequiresSessionState
 {
     public void ProcessRequest(HttpContext context)
     {
-        context.Response.Cache.SetCacheability(HttpCacheability.NoCache);   //特别注意，如不加，单击验证图片＇看不清换一张＇，无效果．
+        context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
         CreateValidateImage(context);
         //context.Response.Write("hello");
     }
@@ -29,6 +29,7 @@ public class ValidateCode : IHttpHandler, IRequiresSessionState
     private const int ImageLinenumber = 3;
     private const int ImagePointnumber = 30;
     public static string ValidateCodekey = "ValidateCodekey";
+    char[] arCode = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
     private int length = 4;
     private string code = string.Empty;
     //颜色列表，用于验证码、噪线、噪点
@@ -52,7 +53,6 @@ public class ValidateCode : IHttpHandler, IRequiresSessionState
     /// <returns>返回单个字符</returns>
     public string CreateCode()
     {
-        char[] arCode = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
         return arCode[random.Next(arCode.Length)].ToString();
     }
 
@@ -88,7 +88,7 @@ public class ValidateCode : IHttpHandler, IRequiresSessionState
                 g.DrawString(c, f, brush, i * 13, 0);
             }
             //将验证码写入到Session中
-            context.Session["ValidateCodekey"] = code;
+            context.Session[ValidateCodekey] = code;
             
             int x, y;
             for (int i = 0; i < ImagePointnumber; i++)
