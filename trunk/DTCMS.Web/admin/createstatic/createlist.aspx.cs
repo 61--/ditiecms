@@ -13,13 +13,20 @@ namespace DTCMS.Web.admin.createstatic
 {
     public partial class createlist : System.Web.UI.Page
     {
-        protected int channelID;
-        protected string channelType;
-        protected int totalRecord;
-        protected int pageSize;
-        protected string pageItem;
-        protected int pageIndex;
-        protected string thisPlace;
+        protected int channelID;    //栏目ID
+        protected string channelType;   //栏目类型
+        protected byte channelAttr; //栏目属性
+        protected int totalRecord;  //总记录数
+        protected int pageSize;     //分页大小
+        protected int pageIndex;    //当前页码
+
+        //以下复杂字段存在隐藏域中
+        protected string pageItem;  //分页项目
+        protected string classUrl;  //栏目地址
+        protected string listTemplet;   //栏目列表模版
+        protected string indexRule; //页码索引规则
+        protected string thisPlace; //当前位置
+        protected string relation;  //栏目关系
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -99,14 +106,14 @@ namespace DTCMS.Web.admin.createstatic
         protected void InitPageTemplate()
         {
             //获取要生成的栏目ID
-            channelID = Utils.GetQueryInt("channelID");
+            channelID = Utils.GetQueryInt("ID");
             if (channelID < 0)
             {
                 Message.Dialog("生成错误，生成静态页的栏目ID为空！", "-1", MessageIcon.Warning);
             }
 
             //获取栏目类型
-            channelType = Utils.GetQueryString("ChannelType");
+            channelType = Utils.GetQueryString("type");
             if (channelType.Length == 0)
             {
                 ArcListBLL arclistBll = new ArcListBLL();
@@ -114,18 +121,24 @@ namespace DTCMS.Web.admin.createstatic
             }
 
             //获取记录总数
-            totalRecord = Utils.GetQueryInt("TotalRecord");
+            totalRecord = Utils.GetQueryInt("total");
             if (totalRecord < 0)
             {
                 ArcListBLL arclistBll = new ArcListBLL();
                 totalRecord = arclistBll.GetArcCount(channelID, channelType);
             }
 
-            //获取分页大小
-            pageSize = Utils.GetQueryInt("PageSize");
+            //获取生成栏目当前页数
+            pageIndex = Utils.GetQueryInt("page");
+            if (pageIndex < 0)
+            {
+                Message.Dialog("生成错误，生成静态页的当前页数为空！", "-1", MessageIcon.Warning);
+            }
 
+            //获取分页大小
+            pageSize = Utils.GetQueryInt("size");
             //获取分页选项
-            pageItem = Utils.GetQueryString("PageItem");
+            pageItem = this.hid_pageItem.Value;
             if (pageSize < 0 || pageItem.Length == 0)
             {
                 //分页大小和分页选项从PageList标签中获取
@@ -137,22 +150,22 @@ namespace DTCMS.Web.admin.createstatic
                 }
             }
 
-            //获取生成栏目当前页数
-            pageIndex = Utils.GetQueryInt("PageIndex");
-            if (pageIndex < 0)
-            {
-                Message.Dialog("生成错误，生成静态页的当前页数为空！", "-1", MessageIcon.Warning);
-            }
-
             //获取栏目当前位置
+            classUrl = this.hid_classUrl.Value;
+            listTemplet = this.hid_listTemplet.Value;
+            indexRule = this.hid_indexRule.Value;
             thisPlace = this.hid_thisPlace.Value;
-            if (thisPlace.Length == 0)
+            relation = this.hid_relation.Value;
+            if (classUrl.Length == 0 || listTemplet.Length == 0 || indexRule.Length == 0 || relation.Length == 0)
             {
                 Arc_ClassBLL classBll = new Arc_ClassBLL();
                 Arc_Class classInfo = classBll.GetModel(channelID);
-
+                classUrl = classInfo.ClassPath;
+                listTemplet = classInfo.ListTemplet;
+                indexRule = classInfo.IndexRule;
+                relation = classInfo.Relation;
             }
-            
+
             //设置自定义属性
             Gobal gobal = new Gobal();
             gobal.CurrentPage = pageIndex;
