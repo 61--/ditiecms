@@ -148,6 +148,7 @@ namespace DTCMS.Web.admin.createstatic
                     pageSize = TypeConvert.ToInt32(tag.Attributes["PageSize"].Value);
                     pageItem = tag.Attributes["Item"].Value.ToString();
                 }
+                this.hid_pageItem.Value = pageItem;
             }
 
             //获取栏目当前位置
@@ -160,10 +161,10 @@ namespace DTCMS.Web.admin.createstatic
             {
                 Arc_ClassBLL classBll = new Arc_ClassBLL();
                 Arc_Class classInfo = classBll.GetModel(channelID);
-                classUrl = classInfo.ClassPath;
-                listTemplet = classInfo.ListTemplet;
-                indexRule = classInfo.IndexRule;
-                relation = classInfo.Relation;
+                classUrl = this.hid_classUrl.Value = classInfo.ClassPath;
+                listTemplet = this.hid_listTemplet.Value = classInfo.ListTemplet;
+                indexRule = this.hid_indexRule.Value = classInfo.IndexRule;
+                relation = this.hid_relation.Value = classInfo.Relation;
             }
 
             //设置自定义属性

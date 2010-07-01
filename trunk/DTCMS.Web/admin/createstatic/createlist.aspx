@@ -8,12 +8,12 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <input type="hidden" id="hid_pageItem" value="<%=pageItem %>" runat="server" />
-    <input type="hidden" id="hid_classUrl" value="<%=classUrl %>" runat="server" />
-    <input type="hidden" id="hid_listTemplet" value="<%=listTemplet %>" runat="server" />
-    <input type="hidden" id="hid_indexRule" value="<%=indexRule %>" runat="server" />
-    <input type="hidden" id="hid_relation" value="<%=relation %>" runat="server" />
-    <input type="hidden" id="hid_thisPlace" value="<%=thisPlace %>" runat="server" />
+    <input type="hidden" id="hid_pageItem" runat="server" />
+    <input type="hidden" id="hid_classUrl" runat="server" />
+    <input type="hidden" id="hid_listTemplet" runat="server" />
+    <input type="hidden" id="hid_indexRule" runat="server" />
+    <input type="hidden" id="hid_relation" runat="server" />
+    <input type="hidden" id="hid_thisPlace" runat="server" />
     </form>
 </body>
 </html>
