@@ -534,7 +534,6 @@ Dialog.alert = function(msg, func, w, h) {
 			<td align="left" id="Message_' + this.ID + '" style="font-size:9pt">' + msg + '</td></tr>\
 	</table>';
     diag.show();
-    diag.okButton.parentNode.style.textAlign = "right";
     diag.okButton.style.display = "none";
     diag.cancelButton.value = "确 定";
     diag.cancelButton.focus();
@@ -566,7 +565,6 @@ Dialog.confirm = function(msg, funcOK, funcCal, w, h) {
 			<td align="left" id="Message_' + this.ID + '" style="font-size:9pt">' + msg + '</td></tr>\
 	</table>';
     diag.show();
-    diag.okButton.parentNode.style.textAlign = "right";
     diag.okButton.focus();
 };
 Dialog.open = function(arg) {
