@@ -44,7 +44,7 @@
 
 .dialog_blue .dialog_header .h_l
 {
-	width:13px;
+	width:11px;
 	background-repeat:no-repeat;
 	background-position:0 0;
 }
@@ -54,7 +54,7 @@
 	background-position:0 -48px;
 }
 .dialog_blue .dialog_header .h_r{
-	width:13px;
+	width:11px;
 	background-repeat:no-repeat;
 	background-position:right 0;
 }
@@ -82,14 +82,14 @@
 	_background:url(images/dialog_lr.gif) repeat-y;
 }
 .dialog_blue .dialog_content .c_l{
-	width:13px;
+	width:11px;
 	background-position:0 0;
 }
 .dialog_blue .dialog_content .c_c{
 	background:#FFF;
 }
 .dialog_blue .dialog_content .c_r{
-	width:13px;
+	width:11px;
 	background-position:right 0;
 }
 .dialog_blue .icon{
@@ -126,10 +126,10 @@
 	text-decoration:none;
 }
 .dialog_blue .dialog_bottom{
-	height:13px;
+	height:11px;
 }
 .dialog_blue .dialog_bottom .b_l{
-	width:13px;
+	width:11px;
 	background-repeat:no-repeat;
 	background-position:0 -33px;
 }
@@ -138,7 +138,7 @@
 	background-position:0 -81px;
 }
 .dialog_blue .dialog_bottom .b_r{
-	width:13px;
+	width:11px;
 	background-repeat:no-repeat;
 	background-position:right -33px;
 }
