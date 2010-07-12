@@ -254,7 +254,38 @@ namespace DTCMS.Common
                         }
                         break;
                     case "potion":
-                        sb.Append("potion");
+                        /*  服务端生成option方法
+                        sb.Append("<select onchange=\"location.href=this.options[this.selectedIndex].value;\">\r\n");
+                        for (int i = 1; i <= totalPage; i++)
+                        {
+                            if (i == curPage)
+                            {
+                                sb.AppendFormat("<option value=\"\" selected=\"selected\">{0}</option>\r\n", i);
+                            }
+                            else
+                            {
+                                sb.Append("<option value=\"");
+                                sb.AppendFormat(url, i);
+                                sb.AppendFormat("\">{0}</option>\r\n", i);
+                            }
+                        }*/
+                        //客户端Javascript生成option方法
+                        sb.AppendLine("<script type=\"text/javascript\">");
+                        sb.AppendLine("function createPageOpt(url, totalPage, curPage){");
+                        sb.AppendLine("    var opt=[];");
+                        sb.AppendLine("    opt.push('<select onchange=\"location.href=\\'',url,'\\'.replace(\\'{0}\\',this.options[this.selectedIndex].value);\">');");
+                        sb.AppendLine("    for(var i=1;i<=totalPage;i++){");
+                        sb.AppendLine("        if(i==curPage){");
+                        sb.AppendLine("            opt.push('<option value=\"\" selected=\"selected\">',i,'</option>');");
+                        sb.AppendLine("        } else{");
+                        sb.AppendLine("            opt.push('<option value=\"',i,'\">',i,'</option>');");
+                        sb.AppendLine("        }");
+                        sb.AppendLine("    }");
+                        sb.AppendLine("    opt.push('</select>');");
+                        sb.AppendLine("    document.write(opt.join(''));");
+                        sb.AppendLine("}");
+                        sb.AppendFormat("createPageOpt('{0}', {1}, {2});", url, totalPage, curPage);
+                        sb.AppendLine("</script>");
                         break;
                     default:
                         break;

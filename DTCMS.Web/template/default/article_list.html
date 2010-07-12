@@ -14,8 +14,9 @@
 </head>
 <body>
 <div id="list">
+        当前位置：{$gobal.thisplace}
 	    <ul>
-	    <dt:pagelist PageSize="10" item="first,pre,pagenum,next,last,potion">
+	    <dt:pagelist PageSize="10" classid="1" item="first,pre,pagenum,next,last,potion">
 	        <li><a href="{$p.id}.html">{$p.title}(作者：{$p.author})</a> - {$p.pubdate format="yyyy年MM月dd mm:ss"}</li>
 	    </dt:pagelist>
 	    </ul>

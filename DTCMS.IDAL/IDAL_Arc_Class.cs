@@ -10,6 +10,7 @@ using System.Data;
 using System.Collections;
 using System.Collections.Generic;
 using DTCMS.Entity;
+using DTCMS.SqlProvider;
 
 namespace DTCMS.IDAL
 {
@@ -84,6 +85,12 @@ namespace DTCMS.IDAL
         /// <param name="ParentID">父栏目ID</param>
         /// <returns>存在返回true，不存在返回false</returns>
         bool ExistsChildNode(int CID);
+
+        /// <summary>
+        /// 获取栏目当前位置
+        /// </summary>
+        /// <param name="CID">栏目ID，多个ID用,号隔开</param>
+        DataTable GetThisPlace(SqlLoading sl);
 
 		/// <summary>
 		/// 得到一个栏目对象实体

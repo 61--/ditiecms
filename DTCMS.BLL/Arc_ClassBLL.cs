@@ -13,6 +13,7 @@ using DTCMS.Entity;
 using DTCMS.Common;
 using DTCMS.IDAL;
 using DTCMS.DALFactory;
+using DTCMS.SqlProvider;
 
 namespace DTCMS.BLL
 {
@@ -70,7 +71,7 @@ namespace DTCMS.BLL
         /// <summary>
         /// 批量删除栏目
         /// </summary>
-        /// <param name="ID">栏目ID，多个ID用,号隔开</param>
+        /// <param name="CID">栏目ID，多个ID用,号隔开</param>
         /// <returns>返回影响行数</returns>
         public int Delete(string CID)
         {
@@ -106,7 +107,7 @@ namespace DTCMS.BLL
         /// <returns>栏目关系</returns>
         public string GetRelation(int ParentID)
         {
-            return dal.GetSingle("Relation", "Cid=" + ParentID) as string;
+            return dal.GetSingle("Relation", "CID=" + ParentID) as string;
         }
 
         /// <summary>
@@ -131,7 +132,18 @@ namespace DTCMS.BLL
         /// <returns>栏目名称</returns>
         public string GetClassName(int CID)
         {
-            return dal.GetSingle("ClassName", "Cid=" + CID) as string;
+            return dal.GetSingle("ClassName", "CID=" + CID) as string;
+        }
+
+        /// <summary>
+        /// 获取栏目当前位置
+        /// </summary>
+        /// <param name="CID">栏目ID，多个ID用,号隔开</param>
+        public DataTable GetThisPlace(string CID)
+        {
+            SqlLoading sl = new SqlLoading();
+            sl.AddSqlWhere("CID", CID, OperateSign.In);
+            return dal.GetThisPlace(sl);
         }
 
         /// <summary>
@@ -183,7 +195,7 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
-        /// 获取栏目下啦树列表
+        /// 获取栏目下拉树列表
         /// </summary>
         /// <param name="parentID">父节点</param>
         /// <param name="count">返回记录总素</param>
@@ -192,6 +204,7 @@ namespace DTCMS.BLL
         {
             return dal.GetDataTable("CID as ID,ClassName as NAME,ParentID", where);
         }
+
         /// <summary>
         /// 获得泛型数据列表
         /// </summary>

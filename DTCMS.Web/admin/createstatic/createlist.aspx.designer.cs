@@ -23,57 +23,57 @@ namespace DTCMS.Web.admin.createstatic {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// hid_pageItem 控件。
+        /// __PAGEITEM 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hid_pageItem;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden @__PAGEITEM;
         
         /// <summary>
-        /// hid_classUrl 控件。
+        /// __CLASSURL 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hid_classUrl;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden @__CLASSURL;
         
         /// <summary>
-        /// hid_listTemplet 控件。
+        /// __LISTTEMPLET 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hid_listTemplet;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden @__LISTTEMPLET;
         
         /// <summary>
-        /// hid_indexRule 控件。
+        /// __INDEXRULE 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hid_indexRule;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden @__INDEXRULE;
         
         /// <summary>
-        /// hid_relation 控件。
+        /// __RELATION 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hid_relation;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden @__RELATION;
         
         /// <summary>
-        /// hid_thisPlace 控件。
+        /// __THISPLACE 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hid_thisPlace;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden @__THISPLACE;
     }
 }
