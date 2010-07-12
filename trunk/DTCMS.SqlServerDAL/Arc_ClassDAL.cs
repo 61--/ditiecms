@@ -12,6 +12,7 @@ using System.Text;
 using System.Collections.Generic;
 using DTCMS.Entity;
 using DTCMS.IDAL;
+using DTCMS.SqlProvider;
 
 namespace DTCMS.SqlServerDAL
 {
@@ -254,13 +255,9 @@ namespace DTCMS.SqlServerDAL
 
             DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
             if (ds != null && ds.Tables.Count > 0)
-            {
                 return ds.Tables[0];
-            }
             else
-            {
                 return null;
-            }
         }
 
         /// <summary>
@@ -275,6 +272,22 @@ namespace DTCMS.SqlServerDAL
                 AddInParameter("@ParentID", SqlDbType.Int, 4, CID)};
 
             return dbHelper.GetInt(dbHelper.ExecuteScalar(CommandType.Text, strSql, cmdParms)) > 0;
+        }
+
+        /// <summary>
+        /// 获取栏目当前位置
+        /// </summary>
+        /// <param name="CID">栏目ID，多个ID用,号隔开</param>
+        public DataTable GetThisPlace(SqlLoading sl)
+        {
+            string strSql = string.Format("SELECT CID,ClassName,ClassEName FROM {0}Arc_Class", tablePrefix);
+            strSql += sl.GetSqlWhereString();
+
+            DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
+            if (ds != null && ds.Tables.Count > 0)
+                return ds.Tables[0];
+            else
+                return null;
         }
 
         /// <summary>

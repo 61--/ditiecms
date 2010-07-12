@@ -2,6 +2,7 @@
 using System.Web;
 using System.Text;
 using System.IO;
+using System.Data;
 using System.Web.SessionState;
 using DTCMS.Common;
 using DTCMS.Entity;
@@ -138,7 +139,7 @@ namespace DTCMS.Web.admin.createstatic
             //获取分页大小
             pageSize = Utils.GetQueryInt("size");
             //获取分页选项
-            pageItem = this.hid_pageItem.Value;
+            pageItem = this.__PAGEITEM.Value;
             if (pageSize < 0 || pageItem.Length == 0)
             {
                 //分页大小和分页选项从PageList标签中获取
@@ -148,23 +149,39 @@ namespace DTCMS.Web.admin.createstatic
                     pageSize = TypeConvert.ToInt32(tag.Attributes["PageSize"].Value);
                     pageItem = tag.Attributes["Item"].Value.ToString();
                 }
-                this.hid_pageItem.Value = pageItem;
+                this.__PAGEITEM.Value = pageItem;
             }
 
             //获取栏目当前位置
-            classUrl = this.hid_classUrl.Value;
-            listTemplet = this.hid_listTemplet.Value;
-            indexRule = this.hid_indexRule.Value;
-            thisPlace = this.hid_thisPlace.Value;
-            relation = this.hid_relation.Value;
+            classUrl = this.__CLASSURL.Value;
+            listTemplet = this.__LISTTEMPLET.Value;
+            indexRule = this.__INDEXRULE.Value;
+            thisPlace = this.__THISPLACE.Value;
+            relation = this.__RELATION.Value;
             if (classUrl.Length == 0 || listTemplet.Length == 0 || indexRule.Length == 0 || relation.Length == 0)
             {
                 Arc_ClassBLL classBll = new Arc_ClassBLL();
                 Arc_Class classInfo = classBll.GetModel(channelID);
-                classUrl = this.hid_classUrl.Value = classInfo.ClassPath;
-                listTemplet = this.hid_listTemplet.Value = classInfo.ListTemplet;
-                indexRule = this.hid_indexRule.Value = classInfo.IndexRule;
-                relation = this.hid_relation.Value = classInfo.Relation;
+                classUrl = this.__CLASSURL.Value = classInfo.ClassPath;
+                listTemplet = this.__LISTTEMPLET.Value = classInfo.ListTemplet;
+                indexRule = this.__INDEXRULE.Value = classInfo.IndexRule;
+                relation = this.__RELATION.Value = classInfo.Relation.TrimEnd('.').Replace('.', ',');
+            }
+            if (thisPlace.Length == 0)
+            {
+                Arc_ClassBLL classBll = new Arc_ClassBLL();
+                DataTable dt = classBll.GetThisPlace(relation);
+
+                thisPlace += "<a href=\"/\">首页</a> &raquo; ";
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    thisPlace += "<a href=\"" + dt.Rows[i]["ClassEName"] + "\">" + dt.Rows[i]["ClassName"] + "</a>";
+                    if (i + 1 < dt.Rows.Count)
+                    {
+                        thisPlace += " &raquo; ";
+                    }
+                }
+                this.__THISPLACE.Value = thisPlace;
             }
 
             //设置自定义属性
@@ -172,8 +189,9 @@ namespace DTCMS.Web.admin.createstatic
             gobal.CurrentPage = pageIndex;
             gobal.TotalPage = PageSeting.GetPageCount(totalRecord, pageSize);
             gobal.TotalRecord = totalRecord;
-            gobal.PageIndex = PageSeting.GetPageNum(pageIndex, gobal.TotalPage, 10, string.Format("list/{0}/{{0}}/", channelID), pageItem);
-            gobal.PageIndex = gobal.PageIndex.Replace(string.Format("list/{0}/1/", channelID), "index.html");
+            gobal.PageIndex = PageSeting.GetPageNum(pageIndex, gobal.TotalPage, 10, "createlist.aspx?id=10&page={0}", pageItem);
+            gobal.ThisPlace = thisPlace;
+            //gobal.PageIndex = gobal.PageIndex.Replace(string.Format("list/{0}/1/", channelID), "index.html");
             this.Document.Variables.SetValue("gobal", gobal);
         }
 
@@ -196,6 +214,7 @@ namespace DTCMS.Web.admin.createstatic
         private int _currentPage;
         private int _totalPage;
         private string _pageIndex;
+        private string _thisPlace;
 
         /// <summary>
         /// 总记录数
@@ -231,6 +250,15 @@ namespace DTCMS.Web.admin.createstatic
         {
             get { return _pageIndex; }
             set { _pageIndex = value; }
+        }
+
+        /// <summary>
+        /// 当前位置
+        /// </summary>
+        public string ThisPlace
+        {
+            get { return _thisPlace; }
+            set { _thisPlace = value; }
         }
     }
 }

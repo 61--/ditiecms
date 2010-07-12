@@ -8,12 +8,12 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <input type="hidden" id="hid_pageItem" runat="server" />
-    <input type="hidden" id="hid_classUrl" runat="server" />
-    <input type="hidden" id="hid_listTemplet" runat="server" />
-    <input type="hidden" id="hid_indexRule" runat="server" />
-    <input type="hidden" id="hid_relation" runat="server" />
-    <input type="hidden" id="hid_thisPlace" runat="server" />
+    <input type="hidden" id="__PAGEITEM" runat="server" />
+    <input type="hidden" id="__CLASSURL" runat="server" />
+    <input type="hidden" id="__LISTTEMPLET" runat="server" />
+    <input type="hidden" id="__INDEXRULE" runat="server" />
+    <input type="hidden" id="__RELATION" runat="server" />
+    <input type="hidden" id="__THISPLACE" runat="server" />
     </form>
 </body>
 </html>
