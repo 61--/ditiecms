@@ -27,7 +27,7 @@ namespace DTCMS.Web.admin.createstatic
         protected string classUrl;  //栏目地址
         protected string listTemplet;   //栏目列表模版
         protected string indexRule; //页码索引规则
-        protected string thisPlace; //当前位置
+        protected string position; //当前位置
         protected string relation;  //栏目关系
 
         protected void Page_Load(object sender, EventArgs e)
@@ -157,7 +157,7 @@ namespace DTCMS.Web.admin.createstatic
             classUrl = this.__CLASSURL.Value;
             listTemplet = this.__LISTTEMPLET.Value;
             indexRule = this.__INDEXRULE.Value;
-            thisPlace = this.__THISPLACE.Value;
+            position = this.__POSITION.Value;
             relation = this.__RELATION.Value;
             if (classUrl.Length == 0 || listTemplet.Length == 0 || indexRule.Length == 0 || relation.Length == 0)
             {
@@ -168,18 +168,18 @@ namespace DTCMS.Web.admin.createstatic
                 indexRule = this.__INDEXRULE.Value = classInfo.IndexRule;
                 relation = this.__RELATION.Value = classInfo.Relation.TrimEnd('.').Replace('.', ',');
             }
-            if (thisPlace.Length == 0)
+            if (position.Length == 0)
             {
                 Arc_ClassBLL classBll = new Arc_ClassBLL();
                 DataTable dt = classBll.GetThisPlace(relation);
 
-                thisPlace += "<a href=\"/\">首页</a> &raquo; ";
+                position += "<a href=\"/\">首页</a> &raquo; ";
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    thisPlace += "<a href=\"" + dt.Rows[i]["ClassEName"] + "\">" + dt.Rows[i]["ClassName"] + "</a>";
+                    position += "<a href=\"" + dt.Rows[i]["ClassEName"] + "\">" + dt.Rows[i]["ClassName"] + "</a>";
                     if (i + 1 < dt.Rows.Count)
                     {
-                        thisPlace += " &raquo; ";
+                        position += " &raquo; ";
                     }
                 }
                 this.__THISPLACE.Value = thisPlace;
@@ -191,7 +191,7 @@ namespace DTCMS.Web.admin.createstatic
             field.TotalPage = PageSeting.GetPageCount(totalRecord, pageSize);
             field.TotalRecord = totalRecord;
             field.PageIndex = PageSeting.GetPageNum(pageIndex, field.TotalPage, 10, "createlist.aspx?id=10&page={0}", pageItem);
-            field.ThisPlace = thisPlace;
+            field.Position = position;
             //gobal.PageIndex = gobal.PageIndex.Replace(string.Format("list/{0}/1/", channelID), "index.html");
             this.Document.Variables.SetValue("field", field);
         }

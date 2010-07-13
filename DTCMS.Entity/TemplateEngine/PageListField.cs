@@ -18,7 +18,7 @@ namespace DTCMS.Entity.TemplateEngine
         private int _currentPage;
         private int _totalPage;
         private string _pageIndex;
-        private string _thisPlace;
+        private string _position;
 
         /// <summary>
         /// 总记录数
@@ -59,10 +59,10 @@ namespace DTCMS.Entity.TemplateEngine
         /// <summary>
         /// 当前位置
         /// </summary>
-        public string ThisPlace
+        public string Position
         {
-            get { return _thisPlace; }
-            set { _thisPlace = value; }
+            get { return _position; }
+            set { _position = value; }
         }
     }
 }
