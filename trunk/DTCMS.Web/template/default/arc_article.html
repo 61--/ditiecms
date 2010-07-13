@@ -4,12 +4,35 @@
     <title>文章内容页</title>
 </head>
 <body>
-{dt:_Public_Header /}
-<div id="Book">
-	[$format(article.id,"C")]<br />
-	[$toupper(article.title)]<br />
-	Time:[$format(article.adddate,"yyyy-MM-dd mm:ss")]
+<div style="padding:10px 200px;">
+    id：{$field.id}<br />
+    classID：{$field.classID}<br />
+    className：{$field.className}<br />
+    classUrl：{$field.classUrl}<br />
+    titleFlag：{$field.titleFlag}<br />
+    title：{$field.title}<br />
+    shortTitle：{$field.shortTitle}<br />
+    titleStyle：{$field.titleStyle}<br />
+    imgUrl：{$field.imgUrl}<br />
+    author：{$field.author}<br />
+    description：{$field.description}<br />
+    click：{$field.click}<br />
+    good：{$field.good}<br />
+    bad：{$field.bad}<br />
+    url：{$field.url}<br />
+    pubDate：{$field.pubDate}<br />
+    tags：{$field.tags}<br />
+    editor：{$field.editor}<br />
+    source：{$field.source}<br />
+    templet：{$field.templet}<br />
+    keywords：{$field.keywords}<br />
+    content：{$field.content}<br />
+    readaccess：{$field.readaccess}<br />
+    money：{$field.money}<br />
+    isComment：{$field.isComment}<br />
+    isPaging：{$field.isPaging}<br />
+    filePath：{$field.filePath}<br />
+    similarArticle：{$field.similarArticle}<br />
 </div>
-{DT:_public_footer /}
 </body>
 </html>
