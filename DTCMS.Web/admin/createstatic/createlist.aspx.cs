@@ -6,6 +6,7 @@ using System.Data;
 using System.Web.SessionState;
 using DTCMS.Common;
 using DTCMS.Entity;
+using DTCMS.Entity.TemplateEngine;
 using DTCMS.BLL;
 using DTCMS.BLL.TemplateEngine;
 using DTCMS.TemplateEngine;
@@ -185,80 +186,23 @@ namespace DTCMS.Web.admin.createstatic
             }
 
             //设置自定义属性
-            Gobal gobal = new Gobal();
-            gobal.CurrentPage = pageIndex;
-            gobal.TotalPage = PageSeting.GetPageCount(totalRecord, pageSize);
-            gobal.TotalRecord = totalRecord;
-            gobal.PageIndex = PageSeting.GetPageNum(pageIndex, gobal.TotalPage, 10, "createlist.aspx?id=10&page={0}", pageItem);
-            gobal.ThisPlace = thisPlace;
+            PageListField field = new PageListField();
+            field.CurrentPage = pageIndex;
+            field.TotalPage = PageSeting.GetPageCount(totalRecord, pageSize);
+            field.TotalRecord = totalRecord;
+            field.PageIndex = PageSeting.GetPageNum(pageIndex, field.TotalPage, 10, "createlist.aspx?id=10&page={0}", pageItem);
+            field.ThisPlace = thisPlace;
             //gobal.PageIndex = gobal.PageIndex.Replace(string.Format("list/{0}/1/", channelID), "index.html");
-            this.Document.Variables.SetValue("gobal", gobal);
+            this.Document.Variables.SetValue("field", field);
         }
 
         /// <summary>
         /// 获取栏目信息
         /// </summary>
-        private void GetClassInfo()
-        {
-            Arc_ClassBLL classBll = new Arc_ClassBLL();
-            Arc_Class classInfo = classBll.GetModel(channelID);
-        }
-    }
-
-    /// <summary>
-    /// 全局数据实体类
-    /// </summary>
-    public class Gobal
-    {
-        private int _totalRecord;
-        private int _currentPage;
-        private int _totalPage;
-        private string _pageIndex;
-        private string _thisPlace;
-
-        /// <summary>
-        /// 总记录数
-        /// </summary>
-        public int TotalRecord
-        {
-            get { return _totalRecord; }
-            set { _totalRecord = value; }
-        }
-
-        /// <summary>
-        /// 当前页数
-        /// </summary>
-        public int CurrentPage
-        {
-            get { return _currentPage; }
-            set { _currentPage = value; }
-        }
-
-        /// <summary>
-        /// 总页数
-        /// </summary>
-        public int TotalPage
-        {
-            get { return _totalPage; }
-            set { _totalPage = value; }
-        }
-
-        /// <summary>
-        /// 分页标签
-        /// </summary>
-        public string PageIndex
-        {
-            get { return _pageIndex; }
-            set { _pageIndex = value; }
-        }
-
-        /// <summary>
-        /// 当前位置
-        /// </summary>
-        public string ThisPlace
-        {
-            get { return _thisPlace; }
-            set { _thisPlace = value; }
-        }
+        //private void GetClassInfo()
+        //{
+        //    Arc_ClassBLL classBll = new Arc_ClassBLL();
+        //    Arc_Class classInfo = classBll.GetModel(channelID);
+        //}
     }
 }
