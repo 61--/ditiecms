@@ -115,6 +115,51 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
         }
 
         /// <summary>
+        /// 获取指定ID文章实体
+        /// </summary>
+        /// <param name="ID">文档ID</param>
+        public Archive GetArticleInfo(int ID, string channelType)
+        {
+            string strSql = "SELECT ID,ClassID,C.ClassName,TitleFlag,Title,ShortTitle,TitleStyle,A.ImgUrl,Author,A.Description,Click,Good,Bad,PubDate,Tags,Editor,Source,Templet,A.Keywords,Acontent,A.Readaccess,Money,A.IsComment,IsPaging,FilePath,SimilarArticle FROM DT_Arc_Article A LEFT JOIN DT_Arc_Class C ON classID=C.CID WHERE A.ID=" + ID + " WHERE IsHidden=0 ORDER BY PubDate DESC";
+
+            using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, string.Format(strSql, tablePrefix, channelType), null))
+            {
+                //Archive archiveInfo = new Article_Info();
+
+                int firstRecort = 1;
+                int lastRecort = 1;
+                int count = 0;
+                while (dr.Read())
+                {
+                    count++;
+                    if (count >= firstRecort && count <= lastRecort)
+                    {
+                        Archive model = new Article_Info();
+                        model.ID = dbHelper.GetInt(dr["ID"]);
+                        model.ClassID = dbHelper.GetInt(dr["ClassID"]);
+                        model.ClassName = dbHelper.GetString(dr["ClassName"]);
+                        model.ClassUrl = dbHelper.GetString(dr["ClassPath"]);
+                        model.Title = dbHelper.GetString(dr["Title"]);
+                        model.ShortTitle = dbHelper.GetString(dr["ShortTitle"]);
+                        model.TitleStyle = dbHelper.GetString(dr["TitleStyle"]);
+                        model.TitleFlag = dbHelper.GetByte(dr["TitleFlag"]);
+                        model.ImgUrl = dbHelper.GetString(dr["ImgUrl"]);
+                        model.Author = dbHelper.GetString(dr["Author"]);
+                        model.Editor = dbHelper.GetString(dr["Editor"]);
+                        model.Source = dbHelper.GetString(dr["Source"]);
+                        model.Click = dbHelper.GetInt(dr["Click"]);
+                        model.Good = dbHelper.GetInt(dr["Good"]);
+                        model.Bad = dbHelper.GetInt(dr["Bad"]);
+                        model.Url = dbHelper.GetString(dr["FilePath"]);
+                        model.PubDate = dbHelper.GetDateTime(dr["PubDate"]);
+
+                        return model;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// 获取栏目泛型数据列表
         /// </summary>
         public List<Channel> GetChannelList(int row, string strWhere)

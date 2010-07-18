@@ -59,10 +59,27 @@ namespace DTCMS.BLL.TemplateEngine
         /// <param name="channelID">栏目ID</param>
         /// <param name="pageSize">分页大小</param>
         /// <param name="pageIndex">当前页数</param>
-        /// <returns></returns>
         public List<Archive> GetPageList(int channelID, int pageSize, int pageIndex)
         {
             return dal.GetPageList(channelID, "Arc_Article", pageSize, pageIndex);
+        }
+
+        /// <summary>
+        /// 获取指定类型指定ID文档实体
+        /// </summary>
+        /// <param name="ID">文档ID</param>
+        /// <param name="channelType">栏目类型（string）</param>
+        public Archive GetArchiveInfo(int ID, string channelType)
+        {
+            switch (channelType)
+            {
+                case 1:
+                    return dal.GetArticleInfo(ID);
+                case 2:
+                    break;;
+                default:
+                    return dal.GetArticleInfo(ID);
+            }
         }
 
         /// <summary>

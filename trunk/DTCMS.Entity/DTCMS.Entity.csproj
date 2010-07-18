@@ -61,7 +61,7 @@
     <Compile Include="Modules.cs" />
     <Compile Include="Sys_Template.cs" />
     <Compile Include="TemplateEngine\Archive_List.cs" />
-    <Compile Include="TemplateEngine\ArticleInfo.cs" />
+    <Compile Include="TemplateEngine\Article_Info.cs" />
     <Compile Include="TemplateEngine\Article_List.cs" />
     <Compile Include="TemplateEngine\Channel.cs" />
     <Compile Include="TemplateEngine\Archive.cs" />

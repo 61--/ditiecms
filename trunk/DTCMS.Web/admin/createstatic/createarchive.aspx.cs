@@ -1,18 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Text;
 using System.IO;
+using System.Data;
+using System.Web.SessionState;
+using DTCMS.Common;
 using DTCMS.Entity;
+using DTCMS.Entity.TemplateEngine;
 using DTCMS.BLL;
+using DTCMS.BLL.TemplateEngine;
 using DTCMS.TemplateEngine;
 
 namespace DTCMS.Web.admin.createstatic
 {
     public partial class createarchive : System.Web.UI.Page
     {
+        protected int channelID;    //栏目ID
+        protected int channelType;   //栏目类型
+        protected int archiveID;   //文档ID
+        protected int pageIndex = 1;    //文档当前页码
+
+        //以下复杂字段存在隐藏域中
+        protected string classUrl;  //栏目地址
+        protected string archiveTemplet;   //文档模版
+        //protected string indexRule; //页码索引规则
+        protected string position; //当前位置
+        protected string relation;  //栏目关系
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //输出数据
@@ -84,6 +98,38 @@ namespace DTCMS.Web.admin.createstatic
         /// <summary>
         /// 初始化当前页面模板数据
         /// </summary>
-        protected void InitPageTemplate() { }
+        protected void InitPageTemplate() 
+        {
+            //获取要生成的栏目ID
+            archiveID = Utils.GetQueryInt("ID");
+            if (archiveID < 0)
+            {
+                Message.Dialog("生成错误，生成静态页的文档ID为空！", "-1", MessageIcon.Warning);
+            }
+
+            //获取栏目类型
+            channelType = Utils.GetQueryInt("type");
+            if (channelType < 0)
+            {
+                ArcListBLL arclistBll = new ArcListBLL();
+                Message.Dialog("生成错误，请选择要生成的文档类型！", "-1", MessageIcon.Warning);
+            }
+
+            //获取生成文档当前页数，默认为第一页
+            pageIndex = Utils.GetQueryInt("page");
+            if (pageIndex < 0)
+                pageIndex = 1;
+
+            Archive archiveInfo;
+            switch (channelType)
+            {
+                case 1:
+                    archiveInfo = new Article_Info();
+                    break;
+                default:
+                    archiveInfo = new Article_Info();
+                    break;
+            }
+        }
     }
 }

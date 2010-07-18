@@ -33,6 +33,11 @@ namespace DTCMS.IDAL.TemplateEngine
         /// </summary>
         List<Archive> GetPageList(int channelID, string channelType, int pageSize, int pageIndex);
 
+        /// <summary>
+        /// 获取指定ID文章实体
+        /// </summary>
+        Archive GetArticleInfo(int ID);
+
         ///<summary>
         /// 获取指定栏目下的文档总数（不包含未审核和回收站中的文档）
         /// </summary>
