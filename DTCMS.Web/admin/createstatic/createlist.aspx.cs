@@ -182,7 +182,7 @@ namespace DTCMS.Web.admin.createstatic
                         position += " &raquo; ";
                     }
                 }
-                this.__THISPLACE.Value = thisPlace;
+                this.__POSITION.Value = position;
             }
 
             //设置自定义属性

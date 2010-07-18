@@ -13,7 +13,8 @@
     <input type="hidden" id="__LISTTEMPLET" runat="server" />
     <input type="hidden" id="__INDEXRULE" runat="server" />
     <input type="hidden" id="__RELATION" runat="server" />
-    <input type="hidden" id="__THISPLACE" runat="server" />
+    <input type="hidden" id="__POSITION" runat="server" />
     </form>
 </body>
 </html>
+        

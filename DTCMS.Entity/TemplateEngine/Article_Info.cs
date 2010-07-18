@@ -9,7 +9,7 @@ using System;
 
 namespace DTCMS.Entity.TemplateEngine
 {
-    public class ArticleInfo : Archive
+    public class Article_Info : Archive
     {
         private string _tags;
         private string _editor;

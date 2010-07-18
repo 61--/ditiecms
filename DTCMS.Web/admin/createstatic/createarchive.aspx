@@ -8,9 +8,10 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
-    </div>
+        <input type="hidden" id="__ARCHIVETEMPLET" runat="server" />
+        <input type="hidden" id="__CLASSURL" runat="server" />
+        <input type="hidden" id="__RELATION" runat="server" />
+        <input type="hidden" id="__POSITION" runat="server" />
     </form>
 </body>
 </html>
