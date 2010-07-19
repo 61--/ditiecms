@@ -68,15 +68,15 @@ namespace DTCMS.BLL.TemplateEngine
         /// 获取指定类型指定ID文档实体
         /// </summary>
         /// <param name="ID">文档ID</param>
-        /// <param name="channelType">栏目类型（string）</param>
-        public Archive GetArchiveInfo(int ID, string channelType)
+        /// <param name="channelType">栏目类型（int）</param>
+        public List<Archive> GetArchiveInfo(int ID, int channelType)
         {
             switch (channelType)
             {
                 case 1:
                     return dal.GetArticleInfo(ID);
                 case 2:
-                    break;;
+                    return null;
                 default:
                     return dal.GetArticleInfo(ID);
             }

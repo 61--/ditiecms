@@ -3,7 +3,7 @@ using System.Web;
 using System.Text;
 using System.IO;
 using System.Data;
-using System.Web.SessionState;
+using System.Collections.Generic;
 using DTCMS.Common;
 using DTCMS.Entity;
 using DTCMS.Entity.TemplateEngine;
@@ -120,16 +120,9 @@ namespace DTCMS.Web.admin.createstatic
             if (pageIndex < 0)
                 pageIndex = 1;
 
-            Archive archiveInfo;
-            switch (channelType)
-            {
-                case 1:
-                    archiveInfo = new Article_Info();
-                    break;
-                default:
-                    archiveInfo = new Article_Info();
-                    break;
-            }
+            ArcListBLL arcBll = new ArcListBLL();
+            List<Archive> archiveInfo = arcBll.GetArchiveInfo(archiveID, channelType);
+            this.Document.Variables.SetValue("field", archiveInfo[0]);
         }
     }
 }
