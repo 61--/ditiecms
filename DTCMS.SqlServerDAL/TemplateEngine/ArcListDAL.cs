@@ -118,45 +118,66 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
         /// 获取指定ID文章实体
         /// </summary>
         /// <param name="ID">文档ID</param>
-        public Archive GetArticleInfo(int ID, string channelType)
+        public List<Archive> GetArticleInfo(int ID)
         {
-            string strSql = "SELECT ID,ClassID,C.ClassName,TitleFlag,Title,ShortTitle,TitleStyle,A.ImgUrl,Author,A.Description,Click,Good,Bad,PubDate,Tags,Editor,Source,Templet,A.Keywords,Acontent,A.Readaccess,Money,A.IsComment,IsPaging,FilePath,SimilarArticle FROM DT_Arc_Article A LEFT JOIN DT_Arc_Class C ON classID=C.CID WHERE A.ID=" + ID + " WHERE IsHidden=0 ORDER BY PubDate DESC";
+            string strSql = "SELECT ID,ClassID,C.ClassName,TitleFlag,Title,ShortTitle,TitleStyle,A.ImgUrl,Author,A.Description,Click,Good,Bad,PubDate,Tags,Editor,Source,Templet,A.Keywords,Acontent,A.Readaccess,Money,A.IsComment,IsPaging,FilePath,SimilarArticle FROM {0}Arc_Article A LEFT JOIN {0}Arc_Class C ON classID=C.CID WHERE A.ID={1} AND IsHidden=0 ORDER BY PubDate DESC";
+            List<Archive> lst = new List<Archive>();
+            int _classID = 0;
 
-            using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, string.Format(strSql, tablePrefix, channelType), null))
+            using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, string.Format(strSql, tablePrefix, ID), null))
             {
-                //Archive archiveInfo = new Article_Info();
-
-                int firstRecort = 1;
-                int lastRecort = 1;
-                int count = 0;
-                while (dr.Read())
+                if (dr.Read())
                 {
-                    count++;
-                    if (count >= firstRecort && count <= lastRecort)
-                    {
-                        Archive model = new Article_Info();
-                        model.ID = dbHelper.GetInt(dr["ID"]);
-                        model.ClassID = dbHelper.GetInt(dr["ClassID"]);
-                        model.ClassName = dbHelper.GetString(dr["ClassName"]);
-                        model.ClassUrl = dbHelper.GetString(dr["ClassPath"]);
-                        model.Title = dbHelper.GetString(dr["Title"]);
-                        model.ShortTitle = dbHelper.GetString(dr["ShortTitle"]);
-                        model.TitleStyle = dbHelper.GetString(dr["TitleStyle"]);
-                        model.TitleFlag = dbHelper.GetByte(dr["TitleFlag"]);
-                        model.ImgUrl = dbHelper.GetString(dr["ImgUrl"]);
-                        model.Author = dbHelper.GetString(dr["Author"]);
-                        model.Editor = dbHelper.GetString(dr["Editor"]);
-                        model.Source = dbHelper.GetString(dr["Source"]);
-                        model.Click = dbHelper.GetInt(dr["Click"]);
-                        model.Good = dbHelper.GetInt(dr["Good"]);
-                        model.Bad = dbHelper.GetInt(dr["Bad"]);
-                        model.Url = dbHelper.GetString(dr["FilePath"]);
-                        model.PubDate = dbHelper.GetDateTime(dr["PubDate"]);
+                    Article_Info model = new Article_Info();
+                    model.ID = dbHelper.GetInt(dr["ID"]);
+                    model.ClassID = _classID = dbHelper.GetInt(dr["ClassID"]);
+                    model.ClassName = dbHelper.GetString(dr["ClassName"]);
+                    //model.ClassUrl = dbHelper.GetString(dr["ClassPath"]);
+                    model.Title = dbHelper.GetString(dr["Title"]);
+                    model.ShortTitle = dbHelper.GetString(dr["ShortTitle"]);
+                    model.TitleStyle = dbHelper.GetString(dr["TitleStyle"]);
+                    model.TitleFlag = dbHelper.GetByte(dr["TitleFlag"]);
+                    model.Tags = dbHelper.GetString(dr["Tags"]);
+                    model.Keywords = dbHelper.GetString(dr["Keywords"]);
+                    model.Description = dbHelper.GetString(dr["Description"]);
+                    model.Content = dbHelper.GetString(dr["Acontent"]);
+                    model.ImgUrl = dbHelper.GetString(dr["ImgUrl"]);
+                    model.Author = dbHelper.GetString(dr["Author"]);
+                    model.Editor = dbHelper.GetString(dr["Editor"]);
+                    model.Source = dbHelper.GetString(dr["Source"]);
+                    model.Click = dbHelper.GetInt(dr["Click"]);
+                    model.Good = dbHelper.GetInt(dr["Good"]);
+                    model.Bad = dbHelper.GetInt(dr["Bad"]);
+                    model.Url = dbHelper.GetString(dr["FilePath"]);
+                    model.Readaccess = dbHelper.GetInt16(dr["Readaccess"]);
+                    model.Money = dbHelper.GetInt16(dr["Money"]);
+                    model.IsComment = dbHelper.GetByte(dr["IsComment"]);
+                    model.IsPaging = dbHelper.GetByte(dr["IsPaging"]);
+                    model.Templet = dbHelper.GetString(dr["Templet"]);
+                    model.SimilarArticle = dbHelper.GetString(dr["SimilarArticle"]);
+                    model.PubDate = dbHelper.GetDateTime(dr["PubDate"]);
 
-                        return model;
-                    }
+                    lst.Add(model);
                 }
             }
+
+            //获取上一篇、下一篇
+            strSql = @"SELECT TOP 1 -1 AS PN,ID,Title,FilePath FROM {0}Arc_Article WHERE ClassID={1} AND ID<{2} ORDER BY ID DESC;
+                       SELECT TOP 1 1 AS PN,ID,Title,FilePath FROM {0}Arc_Article WHERE ClassID={1} AND ID>{2} ORDER BY ID ASC";
+            using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, string.Format(strSql, tablePrefix, _classID, ID), null))
+            {
+                while (dr.Read())
+                {
+                    Article_Info model = new Article_Info();
+                    model.ID = dbHelper.GetInt(dr["ID"]);
+                    model.Title = dbHelper.GetString(dr["Title"]);
+                    model.Url = dbHelper.GetString(dr["FilePath"]);
+
+                    lst.Add(model);
+                }
+            }
+
+            return lst;
         }
 
         /// <summary>
