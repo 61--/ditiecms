@@ -162,8 +162,7 @@ namespace DTCMS.SqlServerDAL.TemplateEngine
             }
 
             //获取上一篇、下一篇
-            strSql = @"SELECT TOP 1 -1 AS PN,ID,Title,FilePath FROM {0}Arc_Article WHERE ClassID={1} AND ID<{2} ORDER BY ID DESC;
-                       SELECT TOP 1 1 AS PN,ID,Title,FilePath FROM {0}Arc_Article WHERE ClassID={1} AND ID>{2} ORDER BY ID ASC";
+            strSql = "SELECT TOP 1 ID,Title,FilePath FROM {0}Arc_Article WHERE ClassID={1} AND ID<{2} ORDER BY ID DESC;SELECT TOP 1 ID,Title,FilePath FROM {0}Arc_Article WHERE ClassID={1} AND ID>{2} ORDER BY ID ASC";
             using (SqlDataReader dr = dbHelper.ExecuteReader(CommandType.Text, string.Format(strSql, tablePrefix, _classID, ID), null))
             {
                 while (dr.Read())

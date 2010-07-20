@@ -60,6 +60,7 @@
     <Compile Include="Sys_FileInfo.cs" />
     <Compile Include="Modules.cs" />
     <Compile Include="Sys_Template.cs" />
+    <Compile Include="TemplateEngine\ArchiveField.cs" />
     <Compile Include="TemplateEngine\Archive_List.cs" />
     <Compile Include="TemplateEngine\Article_Info.cs" />
     <Compile Include="TemplateEngine\Article_List.cs" />
