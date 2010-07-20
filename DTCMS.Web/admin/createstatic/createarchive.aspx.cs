@@ -98,8 +98,9 @@ namespace DTCMS.Web.admin.createstatic
         /// <summary>
         /// 初始化当前页面模板数据
         /// </summary>
-        protected void InitPageTemplate() 
+        protected void InitPageTemplate()
         {
+            #region 获取文档内容
             //获取要生成的栏目ID
             archiveID = Utils.GetQueryInt("ID");
             if (archiveID < 0)
@@ -122,7 +123,63 @@ namespace DTCMS.Web.admin.createstatic
 
             ArcListBLL arcBll = new ArcListBLL();
             List<Archive> archiveInfo = arcBll.GetArchiveInfo(archiveID, channelType);
+            channelID = archiveInfo[0].ClassID;
+            #endregion
+
+            #region 获取当前位置
+            ArchiveField gobal = new ArchiveField();
+
+            //获取栏目当前位置
+            classUrl = this.__CLASSURL.Value;
+            position = this.__POSITION.Value;
+            relation = this.__RELATION.Value;
+            if (classUrl.Length == 0 || relation.Length == 0)
+            {
+                Arc_ClassBLL classBll = new Arc_ClassBLL();
+                Arc_Class classInfo = classBll.GetModel(channelID);
+                classUrl = this.__CLASSURL.Value = classInfo.ClassPath;
+                relation = this.__RELATION.Value = classInfo.Relation.TrimEnd('.').Replace('.', ',');
+            }
+            if (position.Length == 0)
+            {
+                Arc_ClassBLL classBll = new Arc_ClassBLL();
+                DataTable dt = classBll.GetThisPlace(relation);
+
+                position += "<a href=\"/\">首页</a> &raquo; ";
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    position += "<a href=\"" + dt.Rows[i]["ClassEName"] + "\">" + dt.Rows[i]["ClassName"] + "</a>";
+                    if (i + 1 < dt.Rows.Count)
+                    {
+                        position += " &raquo; ";
+                    }
+                }
+                this.__POSITION.Value = gobal.Position = position;
+            }
+            #endregion
+
+            #region 获取上一篇、下一篇链接
+            int count = archiveInfo.Count;
+            for (int i = 1; i < count; i++)
+            {
+                if (archiveInfo[i] != null)
+                {
+                    string temp = "<a href=\"" + archiveInfo[i].Url + "\">" + archiveInfo[i].Title + "</a>";
+                    if (archiveInfo[i].ID < archiveID)
+                    {
+                        gobal.Prior = temp;
+                    }
+                    else
+                    {
+                        gobal.Next = temp;
+                    }
+                }
+            }
+
+            #endregion
+
             this.Document.Variables.SetValue("field", archiveInfo[0]);
+            this.Document.Variables.SetValue("gobal", gobal);
         }
     }
 }

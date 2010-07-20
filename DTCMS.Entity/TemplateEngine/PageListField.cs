@@ -10,7 +10,7 @@ using System;
 namespace DTCMS.Entity.TemplateEngine
 {
     /// <summary>
-    /// 全局数据实体类
+    /// 栏目分页数据实体类
     /// </summary>
     public class PageListField
     {
