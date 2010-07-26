@@ -123,7 +123,15 @@ namespace DTCMS.Web.admin.createstatic
 
             ArcListBLL arcBll = new ArcListBLL();
             List<Archive> archiveInfo = arcBll.GetArchiveInfo(archiveID, channelType);
-            channelID = archiveInfo[0].ClassID;
+            if (archiveInfo.Count > 0)
+            {
+                channelID = archiveInfo[0].ClassID;
+            }
+            else
+            {
+                return;
+            }
+
             #endregion
 
             #region 获取当前位置
