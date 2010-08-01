@@ -1161,6 +1161,10 @@
     <Content Include="config\sys\gobal.config" />
     <Content Include="config\sys\SectionConfig.config" />
     <Content Include="config\sys\DialogConfig.config" />
+    <Content Include="config\site.config" />
+    <Content Include="config\system.config" />
+    <Content Include="config\section.config" />
+    <Content Include="cms.config" />
     <None Include="editor\fckeditor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
     <None Include="editor\fckeditor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
     <None Include="editor\fckeditor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />
