@@ -15,7 +15,7 @@ using System.Data;
 
 namespace DTCMS.Config
 {
-    public class SectionConfig:BaseConfig
+    public class SectionConfig : BaseConfig
     {
         private readonly string path = Utils.GetRootPath() + ConfigPath.SECTION;
         /// <summary>
@@ -30,19 +30,19 @@ namespace DTCMS.Config
             dtSectionList.Columns.Add("value");
             dtSectionList.AcceptChanges();
 
-            XmlNodeList sectionNodeList = SelectNodes(path,"/configuration/section[@key='" + sectionkey + "']/item");
+            XmlNodeList sectionNodeList = SelectNodes(path, "/configuration/section[@key='" + sectionkey + "']/item");
             if (sectionNodeList != null && sectionNodeList.Count > 0)
             {
                 foreach (XmlNode sectionNode in sectionNodeList)
                 {
                     DataRow drNew = dtSectionList.NewRow();
-                    drNew["key"]=sectionNode.Attributes["key"].Value.Trim();
+                    drNew["key"] = sectionNode.Attributes["key"].Value.Trim();
                     drNew["value"] = sectionNode.Attributes["value"].Value.Trim();
-                    dtSectionList.Rows.Add(drNew);              
+                    dtSectionList.Rows.Add(drNew);
                 }
             }
             return dtSectionList;
-        }       
+        }
 
     }
 }

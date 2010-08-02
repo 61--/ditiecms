@@ -185,7 +185,7 @@ namespace DTCMS.Web.admin
         private string AttachmentListToJson()
         {
             StringBuilder sbJson = new StringBuilder();
-            SystemConfig sysConfig = GobalConfig.GetCobalInstance().LoadGoableConfig();
+            SystemConfig sysConfig = CMSConfig.GetCobalInstance().LoadGoableConfig();
 
             sbJson.Append("{");
             sbJson.Append("'HasWaterMark':'" + sysConfig.Attachments.HasWaterMark + "'");

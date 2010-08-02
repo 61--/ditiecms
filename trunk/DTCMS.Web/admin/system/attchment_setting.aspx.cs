@@ -27,7 +27,7 @@ namespace DTCMS.Web.admin.sys
         private void InitPage()
         {
             InitFontType();
-            SystemConfig sysConfig = GobalConfig.GetCobalInstance().LoadGoableConfig();
+            SystemConfig sysConfig = CMSConfig.GetCobalInstance().LoadGoableConfig();
 
             this.hideen_dirctory.Value = sysConfig.Attachments.Directory;
             InitDirctory(this.hideen_dirctory.Value.Trim());
@@ -55,7 +55,7 @@ namespace DTCMS.Web.admin.sys
         {
             try
             {
-                SystemConfig sysConfig = GobalConfig.GetCobalInstance().LoadGoableConfig();
+                SystemConfig sysConfig = CMSConfig.GetCobalInstance().LoadGoableConfig();
 
                 sysConfig.Attachments.Directory = this.hideen_dirctory.Value.Trim();
                 sysConfig.Attachments.HasAbbrImage = this.chk_HashAbbrImage.Checked ? "1" : "0";
@@ -77,7 +77,7 @@ namespace DTCMS.Web.admin.sys
                 sysConfig.Attachments.FlashFormat = this.txt_Flash.Value.Trim();
                 sysConfig.Attachments.AttachmentFormat = this.txt_AttachmentFormat.Value.Trim();
 
-                GobalConfig.GetCobalInstance().SaveGobalConfig(sysConfig);
+                CMSConfig.GetCobalInstance().SaveGobalConfig(sysConfig);
 
                 Message.Dialog("附件配置保存成功", "-1", MessageIcon.Success, 0);
             }
