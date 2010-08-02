@@ -1164,6 +1164,7 @@
     <Content Include="config\site.config" />
     <Content Include="config\system.config" />
     <Content Include="config\section.config" />
+    <Content Include="CMS.config" />
     <None Include="editor\fckeditor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
     <None Include="editor\fckeditor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
     <None Include="editor\fckeditor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />

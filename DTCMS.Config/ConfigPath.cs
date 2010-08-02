@@ -12,8 +12,10 @@ using System.Text;
 namespace DTCMS.Config
 {
     public class ConfigPath
-    {        
-        public const string GOBAL = "config\\sys\\gobal.config";    //全局
+    {
+        public const string CFG_CMS = "CMS.config";    //全局配置
+
+        public const string CFG_SITE = "config\\site.config";   //站点配置
 
         public const string SECTION = "config\\sys\\SectionConfig.config";  //下拉列表
 

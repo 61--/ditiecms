@@ -15,7 +15,7 @@ using System.Data;
 
 namespace DTCMS.Config
 {
-    public class DialogConfig:BaseConfig
+    public class DialogConfig : BaseConfig
     {
         private readonly string path = Utils.GetRootPath() + ConfigPath.DIALOG;
 
@@ -32,7 +32,7 @@ namespace DTCMS.Config
 
         public void SetDialogSingle(string dialogkey, string dialogvalue)
         {
-            XmlNode dialogNode = SelectSingleNodes(path,("/configuration/dialog[@key='" + dialogkey + "']"));
+            XmlNode dialogNode = SelectSingleNodes(path, ("/configuration/dialog[@key='" + dialogkey + "']"));
 
             if (dialogNode != null)
             {

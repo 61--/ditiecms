@@ -19,7 +19,7 @@ namespace DTCMS.Web.admin
         }
         private string ExistsFormat()
         {
-            SystemConfig sysConfig = GobalConfig.GetCobalInstance().LoadGoableConfig();
+            SystemConfig sysConfig = CMSConfig.GetCobalInstance().LoadGoableConfig();
 
             StringBuilder sb = new StringBuilder();
             sb.Append("<script>\r\n");

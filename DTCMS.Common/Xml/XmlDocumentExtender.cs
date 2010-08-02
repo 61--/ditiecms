@@ -36,7 +36,6 @@ namespace DTCMS.Common.Xml
         { }
         #endregion
 
-
         /// <summary>
         /// 加载的文件名(含路径)
         /// </summary>
@@ -48,7 +47,6 @@ namespace DTCMS.Common.Xml
             else
                 throw new Exception("文件: " + filename + " 不存在!");
         }
-
 
         /// <summary>
         /// 在指定的Xml元素下,添加子Xml元素
@@ -198,9 +196,6 @@ namespace DTCMS.Common.Xml
 
             return xmlNode;
         }
-
-
-
 
         /// <summary>
         /// 删除指定路径下面的所有子结点和自身
