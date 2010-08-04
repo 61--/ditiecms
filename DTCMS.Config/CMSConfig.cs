@@ -6,15 +6,10 @@
 // 修改描述: 
 //------------------------------------------------------------------------------
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+using System.Web.Caching;
 using DTCMS.Common;
 using DTCMS.Common.Xml;
-using System.Xml;
-using System.IO;
-using System.Web.Caching;
-using DTCMS.Entity;
+using DTCMS.Entity.Config;
 
 namespace DTCMS.Config
 {
@@ -23,7 +18,7 @@ namespace DTCMS.Config
         private readonly string path = Utils.GetRootPath() + ConfigPath.CFG_CMS;
         private static CMSConfig cmsConfig = null;
 
-        public static CMSConfig GetCobalInstance()
+        public static CMSConfig GetInstance()
         {
             if (cmsConfig == null)
             {
@@ -35,25 +30,25 @@ namespace DTCMS.Config
         /// <summary>
         ///序列化CMS配置文件
         /// </summary>
-        public void SaveGobalConfig(CMSConfigInfo cmsConfig)
+        public void SaveConfig(CMSConfigInfo cmsConfigInfo)
         {
-            SerializerXML.Save(cmsConfig, path);
+            SerializerXML.Save(cmsConfigInfo, path);
         }
 
         /// <summary>
         /// 反序列化CMS配置文件
         /// </summary>
         /// <returns></returns>
-        public CMSConfigInfo LoadGoableConfig()
+        public CMSConfigInfo LoadConfig()
         {
-            CMSConfigInfo cmsConfig = (CMSConfigInfo)CacheAccess.GetFromCache("CMSCONFIG");
-            if (cmsConfig == null)
+            CMSConfigInfo cmsConfigInfo = (CMSConfigInfo)CacheAccess.GetFromCache("CMSCONFIG");
+            if (cmsConfigInfo == null)
             {
-                cmsConfig = (CMSConfigInfo)SerializerXML.Load(typeof(CMSConfigInfo), path);
+                cmsConfigInfo = (CMSConfigInfo)SerializerXML.Load(typeof(CMSConfigInfo), path);
                 CacheDependency cmsConfigDependency = new CacheDependency(path);
-                CacheAccess.SaveToCache("CMSCONFIG", cmsConfig, cmsConfigDependency);
+                CacheAccess.SaveToCache("CMSCONFIG", cmsConfigInfo, cmsConfigDependency);
             }
-            return cmsConfig;
+            return cmsConfigInfo;
         }
     }
 }

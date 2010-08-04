@@ -47,6 +47,7 @@
     <Compile Include="AttachMent.cs" />
     <Compile Include="Config\Attachment.cs" />
     <Compile Include="Config\CMSConfigInfo.cs" />
+    <Compile Include="Config\SiteConfigInfo.cs" />
     <Compile Include="Config\SysInfoParam.cs" />
     <Compile Include="Config\SystemConfig.cs" />
     <Compile Include="Config\WaterImage.cs" />

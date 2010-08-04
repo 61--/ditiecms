@@ -13,7 +13,7 @@ namespace DTCMS.Config
 {
     public class ConfigPath
     {
-        public const string CFG_CMS = "CMS.config";    //全局配置
+        public const string CFG_CMS = "cms.config";    //全局配置
 
         public const string CFG_SITE = "config\\site.config";   //站点配置
 
