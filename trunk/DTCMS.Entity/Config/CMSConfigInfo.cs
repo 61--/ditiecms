@@ -8,7 +8,7 @@
 using System;
 using System.Xml.Serialization;
 
-namespace DTCMS.Entity
+namespace DTCMS.Entity.Config
 {
     [Serializable]
     public class CMSConfigInfo
