@@ -6,10 +6,12 @@ using System.Data;
 using System.Collections.Generic;
 using DTCMS.Common;
 using DTCMS.Entity;
+using DTCMS.Entity.Config;
 using DTCMS.Entity.TemplateEngine;
 using DTCMS.BLL;
 using DTCMS.BLL.TemplateEngine;
 using DTCMS.TemplateEngine;
+using DTCMS.Config;
 
 namespace DTCMS.Web.admin.createstatic
 {
@@ -186,8 +188,15 @@ namespace DTCMS.Web.admin.createstatic
 
             #endregion
 
+            #region 获取配置信息
+            SiteConfigInfo site = ConfigAccess.LoadConfig<SiteConfigInfo>("CFG_SITE");
+
+
+            #endregion
+
             this.Document.Variables.SetValue("field", archiveInfo[0]);
-            this.Document.Variables.SetValue("gobal", gobal);
+            this.Document.Variables.SetValue("gobal", gobal); 
+            this.Document.Variables.SetValue("site", site);
         }
     }
 }
