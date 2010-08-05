@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseConfig.cs" />
+    <Compile Include="ConfigAccess.cs" />
     <Compile Include="ConfigPath.cs" />
     <Compile Include="DialogConfig.cs" />
     <Compile Include="CMSConfig.cs" />

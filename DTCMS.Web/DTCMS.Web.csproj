@@ -106,13 +106,6 @@
     <Compile Include="admin\AjaxTest.aspx.designer.cs">
       <DependentUpon>AjaxTest.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\ajax\attachment_list.aspx.cs">
-      <DependentUpon>attachment_list.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\ajax\attachment_list.aspx.designer.cs">
-      <DependentUpon>attachment_list.aspx</DependentUpon>
-    </Compile>
     <Compile Include="admin\ajax\class_list.aspx.cs">
       <DependentUpon>class_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -228,20 +221,6 @@
     <Compile Include="admin\attachment\attachmentsearch.aspx.designer.cs">
       <DependentUpon>attachmentsearch.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\attachment\attachmentload.aspx.cs">
-      <DependentUpon>attachmentload.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\attachment\attachmentload.aspx.designer.cs">
-      <DependentUpon>attachmentload.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\attachment\simpleuploader.aspx.cs">
-      <DependentUpon>simpleuploader.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\attachment\simpleuploader.aspx.designer.cs">
-      <DependentUpon>simpleuploader.aspx</DependentUpon>
-    </Compile>
     <Compile Include="admin\dialog\authorlist.aspx.cs">
       <DependentUpon>authorlist.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -284,13 +263,6 @@
     <Compile Include="admin\controlpanel.aspx.designer.cs">
       <DependentUpon>controlpanel.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\site\class_add.aspx.cs">
-      <DependentUpon>class_add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\site\class_add.aspx.designer.cs">
-      <DependentUpon>class_add.aspx</DependentUpon>
-    </Compile>
     <Compile Include="admin\content\article_add.aspx.cs">
       <DependentUpon>article_add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -304,20 +276,6 @@
     </Compile>
     <Compile Include="admin\dialog\taglist.aspx.designer.cs">
       <DependentUpon>taglist.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\system\attchment_setting.aspx.cs">
-      <DependentUpon>attchment_setting.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\system\attchment_setting.aspx.designer.cs">
-      <DependentUpon>attchment_setting.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\system\base_setting.aspx.cs">
-      <DependentUpon>base_setting.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\system\base_setting.aspx.designer.cs">
-      <DependentUpon>base_setting.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\template\templatefile_list.aspx.cs">
       <DependentUpon>templatefile_list.aspx</DependentUpon>
@@ -340,13 +298,6 @@
     <Compile Include="admin\template\template_list.aspx.designer.cs">
       <DependentUpon>template_list.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin\Test.aspx.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\Test.aspx.designer.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -365,7 +316,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\AjaxTest.aspx" />
-    <Content Include="admin\ajax\attachment_list.aspx" />
     <Content Include="admin\ajax\class_list.aspx" />
     <Content Include="admin\ajax\dialog_list.aspx" />
     <Content Include="admin\createstatic\createarchive.aspx" />
@@ -406,8 +356,6 @@
     <Content Include="admin\attachment\emptyPage.html" />
     <Content Include="admin\attachment\attachmentmanage.aspx" />
     <Content Include="admin\attachment\attachmentsearch.aspx" />
-    <Content Include="admin\attachment\attachmentload.aspx" />
-    <Content Include="admin\attachment\simpleuploader.aspx" />
     <Content Include="admin\attachment\test.html" />
     <Content Include="admin\images\ico\i_verify.gif" />
     <Content Include="admin\images\ico\m_add.gif" />
@@ -431,8 +379,6 @@
     <Content Include="admin\dialog\classpagelist.aspx" />
     <Content Include="admin\site\class_list.html" />
     <Content Include="admin\dialog\taglist.aspx" />
-    <Content Include="admin\system\attchment_setting.aspx" />
-    <Content Include="admin\system\base_setting.aspx" />
     <Content Include="admin\system\database_runsql.aspx" />
     <Content Include="admin\template\templatefile_list.aspx" />
     <Content Include="admin\template\template_add.aspx" />
@@ -885,9 +831,7 @@
     <Content Include="admin\images\login_toptitle.gif" />
     <Content Include="admin\images\logo_01.gif" />
     <Content Include="admin\login.aspx" />
-    <Content Include="admin\site\class_add.aspx" />
     <Content Include="admin\content\article_add.aspx" />
-    <Content Include="admin\Test.aspx" />
     <Content Include="bin\FredCK.FCKeditorV2.dll" />
     <Content Include="inc\dialog\dialog.css" />
     <Content Include="editor\fckeditor\css\behaviors\disablehandles.htc" />

@@ -14,7 +14,7 @@ namespace DTCMS.Entity.Config
     /// 站点设置
     /// </summary>
     [Serializable]
-    public class SiteConfigInfo
+    public class SiteConfigInfo : IConfigInfo
     {
         private string _siteOpen;
         private string _webName;

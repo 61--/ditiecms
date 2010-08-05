@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 namespace DTCMS.Entity.Config
 {
     [Serializable]
-    public class CMSConfigInfo
+    public class CMSConfigInfo : IConfigInfo
     {
         private string _dbConnection;
         private string _tablePrefix;
