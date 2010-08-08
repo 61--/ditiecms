@@ -320,7 +320,7 @@ namespace DTCMS.Web.admin
         /// </summary>
         private void InitDefaultData()
         {
-            SystemConfig sysConfig = CMSConfig.GetCobalInstance().LoadGoableConfig();
+            SystemConfig sysConfig = CMSConfig.GetInstance().LoadConfig();
 
             txt_ClassPath.Value = sysConfig.SysInfoParams.ClassPath.Trim();
             slt_CheckLevel.SelectedIndex = slt_CheckLevel.Items.IndexOf(slt_CheckLevel.Items.FindByValue(sysConfig.SysInfoParams.CheckLevel));
