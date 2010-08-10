@@ -57,38 +57,18 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div id="container">
+<%--    <div id="container">
         <div id="tab_menu" class="tabs">
             <ul>
                 <li class="tab_on"><a href="javascript:;">权限配置</a></li>
             </ul>
-        </div>
-        <table class="table1">
-            <tr>
-               <td style="width:170px;">
-                    <fieldset style="padding:6px;border:1px solid #BDBCBD;">
-                        <legend style="margin-left: 8px;">角色列表</legend>
-                        <asp:Repeater ID="rpt_RolesList" runat="server">
-                            <HeaderTemplate><ul></HeaderTemplate>
-                            <ItemTemplate><li id="<%# Eval("ID") %>"><a href="javascript:;" onclick=""><%# Eval("RoleName")%></a></li>
-                            </ItemTemplate>
-                            <FooterTemplate></ul></FooterTemplate>
-                        </asp:Repeater>
-                    </fieldset>
-                </td>
-                <td style="padding-left:10px;">
-                    <div id="gridTreeDiv">
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
+        </div>--%>
+        <div id="gridTreeDiv"></div>
+    <%--</div>--%>
     </form>
     <script type="text/javascript">
         $(document).ready(function() {
-            showLoading();
             LoadData();
-            hideMessage();
         });
         function LoadData() {
             var callback = function(res) {
@@ -109,7 +89,7 @@
             gridTree.tableDesc = "<table id=\"tab\" class=\"GridTree\">";
 
             var headerDataList = new Array("模块名称", "权限设置");
-            var widthList = new Array("30%", "70%");
+            var widthList = new Array("50%", "50%");
 
             gridTree.setHeader(headerDataList, -1, widthList, true, "GridTreeHead", "", "", "");
             //设置列样式

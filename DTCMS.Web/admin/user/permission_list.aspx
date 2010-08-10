@@ -28,13 +28,13 @@
                 <a <%= DeletePermission?"href='javascript:deleteData();'":"disabled='disabled'" %> class="button b4"><img src="../images/ico/i_allDelete.gif" alt="" />批量删除</a>
             </div>
             <table style="width:100%;">
-                <tr>
-                    <td style="width:50%;vertical-align:top;">
+                <tr style="vertical-align:top;">
+                    <td style="width:50%;">
                         <DT:DataGrid ID="dt_DataGrid" PrimaryKey="ID" BindAjaxMethod="DTCMS.Web.admin.permission_list.GetRolesJsonData" 
                             RowHandler="contextMenu(this)" IsPage="false" CssClass="table_data" runat="server">
                             <Colunms>
-                                <DT:CheckBox Visible="true" Width="8%" />
-                                <DT:RowNumber HeaderText="ID" Increase="false" SortField="ID" Visible="true" Width="12%" />
+                                <DT:CheckBox Visible="true" Width="6%" />
+                                <DT:RowNumber HeaderText="ID" Increase="false" SortField="ID" Visible="true" Width="14%" />
                                 <DT:ColumnItem HeaderText="角色名称" Width="30%" DataField="RoleName" />
                                 <DT:ColumnItem HeaderText="系统角色" Width="20%" DataField="ID" DataFormat="formatIsSystem" />
                                 <DT:ColumnItem HeaderText="操作" Width="30%" DataField="ID" DataFormat="formatOperate" CssClass="bleft" />
@@ -43,7 +43,7 @@
                     </td>
                     <td style="width:50%;">
                         <div style="margin-left:5px;">
-                            <iframe id="main_body" name="main_body" width="100%" onload="setFrameHeight();" frameborder="0" style="border:1px #CAD9EA solid;" src="../controlpanel.aspx"></iframe>
+                            <iframe id="main_body" name="main_body" width="100%" onload="setFrameHeight();" frameborder="0" <%--style="border:1px #CAD9EA solid;"--%> src="permission_setting.aspx?Id=1"></iframe>
                         </div>
                     </td>
                 </tr>
@@ -52,8 +52,13 @@
     </form>
     <script type="text/javascript">
         function setFrameHeight(){
-            iframeHeight = document.body.offsetHeight-160;
+            //alert($(document).height())
+            iframeHeight = $(document).height()-100;
             $("#main_body").height(iframeHeight);
+        }
+        function setFrameUrl(Id){
+            url="permission_setting.aspx?Id="+Id;
+            $("#main_body").attr("src", url);
         }
         //操作权限
         var EditPermission = <%= EditPermission.ToString().ToLower() %>;
@@ -65,7 +70,7 @@
         function formatOperate(r){
             var operateLink = '';
             if (SettingPermission) {
-                operateLink += '<a href="permission_setting.aspx?Id=' + r.id + '">配置</a>&nbsp;&nbsp;';
+                operateLink += '<a href="javascript:setFrameUrl(' + r.id + ');" target="main_body">配置</a>&nbsp;&nbsp;';
             } else {
                 operateLink += '<a disabled="disabled">配置</a>&nbsp;&nbsp;';
             }
