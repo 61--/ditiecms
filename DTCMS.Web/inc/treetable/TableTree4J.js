@@ -645,7 +645,7 @@ function TableTree4J(objectName, sequence, checked, t4JDir) {
         var codes = this.codeNodeTR(rootNod);
         var nodestitle = "";
         if (this.checked) {
-            nodestitle = nodestitle + "<td width=\"" + this.headerWidthList[widthList++] + "\"><input type=\"checkbox\" onclick=\"invertCheckBox(this)\" name=\"title\" /></td>";   //checkbox
+            nodestitle = nodestitle + "<td width=\"" + this.headerWidthList[widthList++] + "\"><input type=\"checkbox\" onclick=\"invertCheck(this)\" name=\"title\" /></td>";   //checkbox
         }
         if (this.sequence) {
             nodestitle = nodestitle + "<td width=\"" + this.headerWidthList[widthList++] + "\">ID</td>";

@@ -171,7 +171,7 @@ namespace DTCMS.Controls
                         output.RenderBeginTag(HtmlTextWriterTag.Th);
 
                         output.AddAttribute(HtmlTextWriterAttribute.Type, "checkbox");
-                        output.AddAttribute(HtmlTextWriterAttribute.Onclick, "invertCheckBox(this)");
+                        output.AddAttribute(HtmlTextWriterAttribute.Onclick, "invertCheck(this)");
                         output.RenderBeginTag(HtmlTextWriterTag.Input);
                         output.RenderEndTag();
                         output.RenderEndTag();

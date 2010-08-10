@@ -27,21 +27,34 @@
                 <a <%= SettingPermission?"href='javascript:settingData();'":"disabled='disabled'" %> class="button b4"><img src="../images/ico/i_setting.gif" alt="" />配置权限</a>
                 <a <%= DeletePermission?"href='javascript:deleteData();'":"disabled='disabled'" %> class="button b4"><img src="../images/ico/i_allDelete.gif" alt="" />批量删除</a>
             </div>
-            <DT:DataGrid ID="dt_DataGrid" PrimaryKey="ID" BindAjaxMethod="DTCMS.Web.admin.permission_list.GetRolesJsonData" 
-                RowHandler="contextMenu(this)" IsPage="false" CssClass="table_data" runat="server">
-                <Colunms>
-                    <DT:CheckBox Visible="true" Width="4%" />
-                    <DT:RowNumber HeaderText="ID" Increase="false" SortField="ID" Visible="true" Width="6%" />
-                    <DT:ColumnItem HeaderText="角色名称" Width="15%" DataField="RoleName" />
-                    <DT:ColumnItem HeaderText="角色描述" Width="30%" DataField="Description" />
-                    <DT:ColumnItem HeaderText="创建时间" Width="15%" DataField="AddDate" SortField="AddDate" />
-                    <DT:ColumnItem HeaderText="系统角色" Width="10%" DataField="ID" DataFormat="formatIsSystem" />
-                    <DT:ColumnItem HeaderText="操作" Width="20%" DataField="ID" DataFormat="formatOperate" CssClass="bleft" />
-                </Colunms>
-            </DT:DataGrid>
+            <table style="width:100%;">
+                <tr>
+                    <td style="width:50%;vertical-align:top;">
+                        <DT:DataGrid ID="dt_DataGrid" PrimaryKey="ID" BindAjaxMethod="DTCMS.Web.admin.permission_list.GetRolesJsonData" 
+                            RowHandler="contextMenu(this)" IsPage="false" CssClass="table_data" runat="server">
+                            <Colunms>
+                                <DT:CheckBox Visible="true" Width="8%" />
+                                <DT:RowNumber HeaderText="ID" Increase="false" SortField="ID" Visible="true" Width="12%" />
+                                <DT:ColumnItem HeaderText="角色名称" Width="30%" DataField="RoleName" />
+                                <DT:ColumnItem HeaderText="系统角色" Width="20%" DataField="ID" DataFormat="formatIsSystem" />
+                                <DT:ColumnItem HeaderText="操作" Width="30%" DataField="ID" DataFormat="formatOperate" CssClass="bleft" />
+                            </Colunms>
+                        </DT:DataGrid>
+                    </td>
+                    <td style="width:50%;">
+                        <div style="margin-left:5px;">
+                            <iframe id="main_body" name="main_body" width="100%" onload="setFrameHeight();" frameborder="0" style="border:1px #CAD9EA solid;" src="../controlpanel.aspx"></iframe>
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </div>
     </form>
     <script type="text/javascript">
+        function setFrameHeight(){
+            iframeHeight = document.body.offsetHeight-160;
+            $("#main_body").height(iframeHeight);
+        }
         //操作权限
         var EditPermission = <%= EditPermission.ToString().ToLower() %>;
         var DeletePermission = <%= DeletePermission.ToString().ToLower() %>;
