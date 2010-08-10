@@ -17,23 +17,23 @@ namespace DTCMS.Web.admin
         {
             AjaxPro.Utility.RegisterTypeForAjax(typeof(permission_setting));
 
-            if (!IsPostBack)
-            {
-                BindRolesList();
-            }
+            //if (!IsPostBack)
+            //{
+            //    BindRolesList();
+            //}
         }
 
         /// <summary>
         /// 绑定角色列表
         /// </summary>
-        private void BindRolesList()
-        {
-            RolesBLL roleBll = new RolesBLL();
-            DataTable dt = roleBll.GetList();
+        //private void BindRolesList()
+        //{
+        //    RolesBLL roleBll = new RolesBLL();
+        //    DataTable dt = roleBll.GetList();
 
-            rpt_RolesList.DataSource = dt;
-            rpt_RolesList.DataBind();
-        }
+        //    rpt_RolesList.DataSource = dt;
+        //    rpt_RolesList.DataBind();
+        //}
 
         /// <summary>
         /// 获取模块Json数据
