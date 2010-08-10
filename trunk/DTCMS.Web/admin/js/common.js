@@ -82,7 +82,7 @@ function select(object) {   //单击选择当前行
 }
 
 /*** 全选反选*name=items ***/
-function invertCheckBox(elem) {
+function invertCheck(elem) {
     var input = document.getElementsByName("items");
     var len = input.length;
     for (var i = 0; i < len; i++) {
