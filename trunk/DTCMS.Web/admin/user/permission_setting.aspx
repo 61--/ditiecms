@@ -62,16 +62,25 @@
         }
         .mlist td{
             vertical-align:middle;
-            text-indent: 10px;
-            line-height: 22px;
         }
         .mlist th{
-            line-height: 28px;
-            height: 28px;
+            line-height: 26px;
+            height: 26px;
             font-weight: bold;
             text-indent: 10px;
             border-top: 1px solid #D3E0ED;
             border-bottom: 1px solid #D3E0ED;
+        }
+        .mlist .mt
+        {
+        	font-weight:bold;
+        	line-height:24px;
+        	text-indent: 10px;
+        }
+        .mlist .mi
+        {
+        	line-height: 22px;
+        	text-indent: 30px;
         }
     </style>
 </head>

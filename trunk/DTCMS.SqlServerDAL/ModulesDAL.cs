@@ -244,6 +244,25 @@ namespace DTCMS.SqlServerDAL
         }
 
         /// <summary>
+        /// 获取所有所有模块信息
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetModules()
+        {
+            string strSql = "SELECT ModuleID,ParentID,ModuleName FROM dt_Modules ORDER BY ModuleID,OrderID";
+
+            DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                return ds.Tables[0];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
         /// 根据查询条件获取模块泛型数据列表
         /// </summary>
         /// <param name="where">查询条件</param>
