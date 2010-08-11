@@ -55,7 +55,7 @@ namespace DTCMS.Web.admin
                                 for (int k = 0; k < dr3.Length; k++)
                                 {
                                     if (k % 2 == 0)
-                                        sb.AppendFormat("<tr class=\"mi\"><td style=\"width:30%\"><input type=\"checkbox\" id=\"{0}\" name=\"{0}\" onclick=\"checkRole();\" /><label for=\"{0}\">{1}</label></td>", dr3[k]["moduleid"], dr3[k]["modulename"]);
+                                        sb.AppendFormat("<tr class=\"mi\"><td style=\"width:35%\"><input type=\"checkbox\" id=\"{0}\" name=\"{0}\" onclick=\"checkRole();\" /><label for=\"{0}\">{1}</label></td>", dr3[k]["moduleid"], dr3[k]["modulename"]);
                                     else
                                         sb.AppendFormat("<tr class=\"mi\" style=\"background:#F3F9FB;\"><td><input type=\"checkbox\" id=\"{0}\" name=\"{0}\" onclick=\"checkRole();\" /><label for=\"{0}\">{1}</label></td>", dr3[k]["moduleid"], dr3[k]["modulename"]);
 
@@ -63,7 +63,7 @@ namespace DTCMS.Web.admin
                                     sb.Append("<td>");
                                     for (int c = 0; c < drcontrol.Length; c++)
                                     {
-                                        sb.AppendFormat("<input type=\"checkbox\" id=\"{0}-{1}\" name=\"{0}-{1}\" onclick=\"\" /><label for=\"{0}-{1}\">{2}</label>&nbsp;&nbsp;", drcontrol[c]["ModuleID"], drcontrol[c]["ControlValue"], drcontrol[c]["ControlName"]);
+                                        sb.AppendFormat("<input type=\"checkbox\" id=\"{0}-{1}\" name=\"{0}-{1}\" value=\"{1}\" onclick=\"\" /><label for=\"{0}-{1}\">{2}</label>&nbsp;&nbsp;", drcontrol[c]["ModuleID"], drcontrol[c]["ControlValue"], drcontrol[c]["ControlName"]);
                                     }
                                     sb.Append("</td></tr>");
                                 }

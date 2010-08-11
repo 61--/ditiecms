@@ -29,7 +29,7 @@
             </div>
             <table style="width:100%;">
                 <tr style="vertical-align:top;">
-                    <td style="width:50%;">
+                    <td style="width:48%;">
                         <DT:DataGrid ID="dt_DataGrid" PrimaryKey="ID" BindAjaxMethod="DTCMS.Web.admin.permission_list.GetRolesJsonData" 
                             RowHandler="contextMenu(this)" IsPage="false" CssClass="table_data" runat="server">
                             <Colunms>
@@ -41,7 +41,7 @@
                             </Colunms>
                         </DT:DataGrid>
                     </td>
-                    <td style="width:50%;">
+                    <td style="width:52%;">
                         <div style="margin-left:5px;">
                             <iframe id="main_body" name="main_body" width="100%" onload="setFrameHeight();" frameborder="0" <%--style="border:1px #CAD9EA solid;"--%> src="permission_setting.aspx?Id=1"></iframe>
                         </div>
