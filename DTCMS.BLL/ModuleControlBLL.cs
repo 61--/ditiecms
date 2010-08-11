@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
 using DTCMS.Entity;
 using DTCMS.IDAL;
 using DTCMS.DALFactory;
@@ -63,6 +64,15 @@ namespace DTCMS.BLL
         public bool Exists(int ID, string filedName, string filedValue)
         {
             return dal.Exists(ID, filedName, filedValue);
+        }
+
+        /// <summary>
+        /// 获取模块控制码
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetModuleControl()
+        {
+            return dal.GetModuleControl();
         }
 
         /// <summary>

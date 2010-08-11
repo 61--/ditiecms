@@ -27,35 +27,45 @@ namespace DTCMS.Web.admin
         protected string GetModulesByControl()
         {
             ModulesBLL moduleBll = new ModulesBLL();
-            DataTable dt = moduleBll.GetModulesByControl();
+            ModuleControlBLL controlBll = new ModuleControlBLL();
+            DataTable modules = moduleBll.GetModules();
+            DataTable control = controlBll.GetModuleControl();
             StringBuilder sb = new StringBuilder();
 
             //获取顶级模块
-            DataRow[] dr1 = GetChildModule(dt, "M0");
+            DataRow[] dr1 = GetChildModule(modules, "M0");
             if (dr1 != null & dr1.Length > 0)
             {
                 sb.Append("<table class=\"mlist\">");
                 for (int i = 0; i < dr1.Length; i++)
                 {
-                    sb.AppendFormat("<tr><th>{0}</th></tr>", dr1[i]["modulename"]);
+                    sb.AppendFormat("<tr><th colspan=\"2\">{0}</th></tr>\r\n", dr1[i]["modulename"]);
 
                     //获取第二级模块
-                    DataRow[] dr2 = GetChildModule(dt, dr1[i]["moduleid"].ToString());
+                    DataRow[] dr2 = GetChildModule(modules, dr1[i]["moduleid"].ToString());
                     if (dr2 != null && dr2.Length > 0)
                     {
                         for (int j = 0; j < dr2.Length; j++)
                         {
-                            sb.AppendFormat("<tr class=\"mitem\"><td>{0}</td></tr>", dr2[j]["modulename"]);
+                            sb.AppendFormat("<tr class=\"mt\"><td colspan=\"2\"><input type=\"checkbox\" id=\"{0}\" name=\"{0}\" onclick=\"checkRole();\" /><label for=\"{0}\">{1}</label></td></tr>\r\n", dr2[j]["moduleid"], dr2[j]["modulename"]);
                             //获取第三级模块
-                            DataRow[] dr3 = GetChildModule(dt, dr2[j]["moduleid"].ToString());
+                            DataRow[] dr3 = GetChildModule(modules, dr2[j]["moduleid"].ToString());
                             if (dr3 != null && dr3.Length > 0)
                             {
                                 for (int k = 0; k < dr3.Length; k++)
                                 {
                                     if (k % 2 == 0)
-                                        sb.AppendFormat("<tr><td>{0}</td></tr>", dr3[k]["modulename"]);
+                                        sb.AppendFormat("<tr class=\"mi\"><td style=\"width:30%\"><input type=\"checkbox\" id=\"{0}\" name=\"{0}\" onclick=\"checkRole();\" /><label for=\"{0}\">{1}</label></td>", dr3[k]["moduleid"], dr3[k]["modulename"]);
                                     else
-                                        sb.AppendFormat("<tr style=\"background:#F3F9FB;\"><td>{0}</td></tr>", dr3[k]["modulename"]);
+                                        sb.AppendFormat("<tr class=\"mi\" style=\"background:#F3F9FB;\"><td><input type=\"checkbox\" id=\"{0}\" name=\"{0}\" onclick=\"checkRole();\" /><label for=\"{0}\">{1}</label></td>", dr3[k]["moduleid"], dr3[k]["modulename"]);
+
+                                    DataRow[] drcontrol = GetControlByModule(control, dr3[k]["moduleid"].ToString());
+                                    sb.Append("<td>");
+                                    for (int c = 0; c < drcontrol.Length; c++)
+                                    {
+                                        sb.AppendFormat("<input type=\"checkbox\" id=\"{0}-{1}\" name=\"{0}-{1}\" onclick=\"\" /><label for=\"{0}-{1}\">{2}</label>&nbsp;&nbsp;", drcontrol[c]["ModuleID"], drcontrol[c]["ControlValue"], drcontrol[c]["ControlName"]);
+                                    }
+                                    sb.Append("</td></tr>");
                                 }
                             }
                         }
@@ -69,7 +79,12 @@ namespace DTCMS.Web.admin
 
         private static DataRow[] GetChildModule(DataTable dt, string parentId)
         {
-            return dt.Select(string.Format("parentId='{0}'", parentId));
+            return dt.Select(string.Format("ParentId='{0}'", parentId));
+        }
+
+        private static DataRow[] GetControlByModule(DataTable dt, string ID)
+        {
+            return dt.Select(string.Format("ModuleId='{0}'", ID));
         }
 
         /// <summary>

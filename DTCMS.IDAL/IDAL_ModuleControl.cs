@@ -56,6 +56,11 @@ namespace DTCMS.IDAL
 		/// <returns>存在返回true，不存在返回false</returns>
 		bool Exists(int ID, string filedName, string filedValue);
 
+        /// <summary>
+        /// 获取模块控制码
+        /// </summary>
+        DataTable GetModuleControl();
+
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
