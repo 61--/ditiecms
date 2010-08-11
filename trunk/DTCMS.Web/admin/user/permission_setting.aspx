@@ -96,8 +96,12 @@
     <%--</div>--%>
     
         <%= GetModulesByControl()%>
+        <input type="checkbox" id="test" name="test" value="1" onclick="checkRole();" />
     </form>
     <script type="text/javascript">
+        function checkRole() {
+            alert($("#test").val());
+        }
         $(document).ready(function() {
             //LoadData();
         });
