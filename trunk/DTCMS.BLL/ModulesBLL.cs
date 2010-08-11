@@ -152,6 +152,11 @@ namespace DTCMS.BLL
             return dal.GetPageList(pageSize, pageIndex, out count);
         }
 
+        public DataTable GetModulesByControl()
+        {
+            return dal.GetModulesByControl(); ;
+        }
+
         /// <summary>
         /// 获取DataTable，并转换成Json格式数据
         /// </summary>

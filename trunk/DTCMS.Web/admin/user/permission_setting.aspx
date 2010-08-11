@@ -53,6 +53,26 @@
         .GridTreeHead .bleft{   
 	        background-position:left bottom;
         }
+
+        .mlist{
+            width: 100%;
+            font-size: 12px;
+            border: 1px #CAD9EA solid;
+            border-collapse: collapse;
+        }
+        .mlist td{
+            vertical-align:middle;
+            text-indent: 10px;
+            line-height: 22px;
+        }
+        .mlist th{
+            line-height: 28px;
+            height: 28px;
+            font-weight: bold;
+            text-indent: 10px;
+            border-top: 1px solid #D3E0ED;
+            border-bottom: 1px solid #D3E0ED;
+        }
     </style>
 </head>
 <body>
@@ -65,10 +85,12 @@
         </div>--%>
         <div id="gridTreeDiv"></div>
     <%--</div>--%>
+    
+        <%= GetModulesByControl()%>
     </form>
     <script type="text/javascript">
         $(document).ready(function() {
-            LoadData();
+            //LoadData();
         });
         function LoadData() {
             var callback = function(res) {
