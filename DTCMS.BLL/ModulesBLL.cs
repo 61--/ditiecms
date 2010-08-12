@@ -155,9 +155,9 @@ namespace DTCMS.BLL
         /// <summary>
         /// 获取所有所有模块信息
         /// </summary>
-        public DataTable GetModules()
+        public DataTable GetModules(int roleID)
         {
-            return dal.GetModules(); ;
+            return dal.GetModules(roleID); ;
         }
 
         /// <summary>

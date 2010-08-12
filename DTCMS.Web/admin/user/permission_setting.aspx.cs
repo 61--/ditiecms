@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using DTCMS.BLL;
+using DTCMS.Common;
 
 namespace DTCMS.Web.admin
 {
@@ -28,7 +29,7 @@ namespace DTCMS.Web.admin
         {
             ModulesBLL moduleBll = new ModulesBLL();
             ModuleControlBLL controlBll = new ModuleControlBLL();
-            DataTable modules = moduleBll.GetModules();
+            DataTable modules = moduleBll.GetModules(Utils.GetQueryInt("ID"));
             DataTable control = controlBll.GetModuleControl();
             StringBuilder sb = new StringBuilder();
 
@@ -47,7 +48,7 @@ namespace DTCMS.Web.admin
                     {
                         for (int j = 0; j < dr2.Length; j++)
                         {
-                            sb.AppendFormat("<tr class=\"mt\"><td colspan=\"2\"><input type=\"checkbox\" id=\"{0}\" name=\"{0}\" onclick=\"checkRole();\" /><label for=\"{0}\">{1}</label></td></tr>\r\n", dr2[j]["moduleid"], dr2[j]["modulename"]);
+                            sb.AppendFormat("<tr class=\"mt\"><td colspan=\"2\"><input type=\"checkbox\" id=\"{0}\" name=\"test\" value=\"{0}\" onclick=\"\" /><label for=\"{0}\">{1}</label></td></tr>\r\n", dr2[j]["moduleid"], dr2[j]["modulename"]);
                             //获取第三级模块
                             DataRow[] dr3 = GetChildModule(modules, dr2[j]["moduleid"].ToString());
                             if (dr3 != null && dr3.Length > 0)
@@ -107,6 +108,11 @@ namespace DTCMS.Web.admin
         {
             ModulesBLL moduleBll = new ModulesBLL();
             return moduleBll.GetModulesJsonData();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            JScript.ShowMessage(this, Request.Form["test"]);
         }
     }
 }

@@ -87,7 +87,7 @@ namespace DTCMS.IDAL
          /// <summary>
         /// 获取所有所有模块信息
         /// </summary>
-        DataTable GetModules();
+        DataTable GetModules(int roleID);
 
         /// <summary>
         /// 根据查询条件获取模块泛型数据列表
