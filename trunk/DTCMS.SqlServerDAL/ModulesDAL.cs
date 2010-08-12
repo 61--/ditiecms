@@ -230,7 +230,7 @@ namespace DTCMS.SqlServerDAL
         /// </summary>
         public DataTable GetModulesByControl()
         {
-            string strSql = "SELECT M.ModuleID,ParentID,ModuleName,M.OrderID FROM dt_Modules M INNER JOIN DT_ModuleControl C ON M.ModuleID=C.ModuleID GROUP BY M.ModuleID,ParentID,ModuleName,ModuleDepth,M.OrderID";
+            string strSql = string.Format("SELECT M.ModuleID,ParentID,ModuleName,M.OrderID FROM {0}Modules M INNER JOIN {0}ModuleControl C ON M.ModuleID=C.ModuleID GROUP BY M.ModuleID,ParentID,ModuleName,ModuleDepth,M.OrderID", tablePrefix);
 
             DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
             if (ds != null && ds.Tables.Count > 0)
@@ -244,12 +244,12 @@ namespace DTCMS.SqlServerDAL
         }
 
         /// <summary>
-        /// 获取所有所有模块信息
+        /// 根据角色ID获取所有所有模块和权限信息
         /// </summary>
         /// <returns></returns>
-        public DataTable GetModules()
+        public DataTable GetModules(int roleID)
         {
-            string strSql = "SELECT ModuleID,ParentID,ModuleName FROM dt_Modules ORDER BY ModuleID,OrderID";
+            string strSql = string.Format("SELECT M.ModuleID,M.ParentID,M.ModuleName,R.ControlValue FROM {0}Modules M LEFT JOIN {0}RolesInModules R ON M.ModuleID=R.ModuleID AND R.RoleID={1} ORDER BY M.ModuleID,M.OrderID", tablePrefix, roleID);
 
             DataSet ds = dbHelper.ExecuteQuery(CommandType.Text, strSql);
             if (ds != null && ds.Tables.Count > 0)

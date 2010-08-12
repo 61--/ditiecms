@@ -96,11 +96,12 @@
     <%--</div>--%>
     
         <%= GetModulesByControl()%>
-        <input type="checkbox" id="test" name="test" value="1" onclick="checkRole();" />
+    <input id="btn_SaveRole" type="button" class="button b4" onclick="checkRole()" value="保存权限" />
+    <asp:Button ID="Button1" runat="server" Text="Button" onclick="Button1_Click" />
     </form>
     <script type="text/javascript">
         function checkRole() {
-            alert($("#test").val());
+            alert(document.form1.test.value)
         }
         $(document).ready(function() {
             //LoadData();
