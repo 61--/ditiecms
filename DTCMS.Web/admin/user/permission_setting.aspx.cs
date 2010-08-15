@@ -48,7 +48,7 @@ namespace DTCMS.Web.admin
                     {
                         for (int j = 0; j < dr2.Length; j++)
                         {
-                            sb.AppendFormat("<tr class=\"mt\"><td colspan=\"2\"><input type=\"checkbox\" id=\"{0}\" name=\"test\" value=\"{0}\" onclick=\"\" /><label for=\"{0}\">{1}</label></td></tr>\r\n", dr2[j]["moduleid"], dr2[j]["modulename"]);
+                            sb.AppendFormat("<tr class=\"mt\"><td colspan=\"2\"><input type=\"checkbox\" id=\"{0}\" name=\"mudule-2\" value=\"{0}\" onclick=\"\" /><label for=\"{0}\">{1}</label></td></tr>\r\n", dr2[j]["moduleid"], dr2[j]["modulename"]);
                             //获取第三级模块
                             DataRow[] dr3 = GetChildModule(modules, dr2[j]["moduleid"].ToString());
                             if (dr3 != null && dr3.Length > 0)
