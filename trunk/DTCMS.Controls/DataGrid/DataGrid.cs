@@ -401,7 +401,7 @@ namespace DTCMS.Controls
                 js.Append("(sortValue,callback);}\r\n");
             }
             js.Append("AjaxPro.onTimeout=function(){alert('请求超时，请刷新本页面重试！');}\r\n");
-            js.Append("AjaxPro.onLoading=function(b){if(isLoading){if(b){showLoading('正在加载数据，请稍候...', '#dataList');}else{hideMessage();isLoading=false;}}}");
+            js.Append("AjaxPro.onLoading=function(b){if(isLoading){if(b){showLoading('正在加载数据，请稍候...','#dataList');}else{hideMessage();isLoading=false;}}}");
             return js.ToString();
         }
     }

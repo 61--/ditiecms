@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-    <title>DTCMS内容管理系统后台登陆</title>
+    <title>DTCMS内容管理系统后台登录</title>
     <link rel="stylesheet" type="text/css" href="css/login.css" />
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="../inc/dialog/dialog.js"></script>
@@ -30,7 +30,7 @@
     <form id="form1" runat="server">
         <div class="main">
             <div class="title">
-                <em style="text-align: center"><a href="/Default.aspx" target="_top">返回首页</a></em> <em style="text-align: center"><a href="javascript:alert('请联系网站管理员！')">
+                <em style="text-align: center"><a href="/" target="_top">返回首页</a></em> <em style="text-align: center"><a href="javascript:alert('请联系网站管理员！')">
                     忘记密码？</a></em>
             </div>
             <div class="login">
@@ -66,7 +66,7 @@
                 <div class="butbox">
                     <dl>
                         <dt></dt>
-                        <dd>
+                        <dd>奔
                         </dd>
                     </dl>
                 </div>
