@@ -48,7 +48,7 @@ namespace DTCMS.Web.admin
                     {
                         for (int j = 0; j < dr2.Length; j++)
                         {
-                            sb.AppendFormat("<tr class=\"mt\"><td colspan=\"2\"><input type=\"checkbox\" id=\"{0}\" name=\"mudule-2\" value=\"{0}\" onclick=\"\" /><label for=\"{0}\">{1}</label></td></tr>\r\n", dr2[j]["moduleid"], dr2[j]["modulename"]);
+                            sb.AppendFormat("<tr class=\"mt\"><td colspan=\"2\"><input type=\"checkbox\" id=\"{0}\" name=\"modules\" value=\"{0}\" onclick=\"\" /><label for=\"{0}\">{1}</label></td></tr>\r\n", dr2[j]["moduleid"], dr2[j]["modulename"]);
                             //获取第三级模块
                             DataRow[] dr3 = GetChildModule(modules, dr2[j]["moduleid"].ToString());
                             if (dr3 != null && dr3.Length > 0)
@@ -56,15 +56,15 @@ namespace DTCMS.Web.admin
                                 for (int k = 0; k < dr3.Length; k++)
                                 {
                                     if (k % 2 == 0)
-                                        sb.AppendFormat("<tr class=\"mi\"><td style=\"width:35%\"><input type=\"checkbox\" id=\"{0}\" name=\"{0}\" onclick=\"checkRole();\" /><label for=\"{0}\">{1}</label></td>", dr3[k]["moduleid"], dr3[k]["modulename"]);
+                                        sb.AppendFormat("<tr class=\"mi\"><td style=\"width:35%\"><input type=\"checkbox\" id=\"{0}\" name=\"s-modules\" value=\"{0}\" onclick=\"checkRole();\" /><label for=\"{0}\">{1}</label></td>", dr3[k]["moduleid"], dr3[k]["modulename"]);
                                     else
-                                        sb.AppendFormat("<tr class=\"mi\" style=\"background:#F3F9FB;\"><td><input type=\"checkbox\" id=\"{0}\" name=\"{0}\" onclick=\"checkRole();\" /><label for=\"{0}\">{1}</label></td>", dr3[k]["moduleid"], dr3[k]["modulename"]);
+                                        sb.AppendFormat("<tr class=\"mi\" style=\"background:#F3F9FB;\"><td><input type=\"checkbox\" id=\"{0}\" name=\"s-modules\" value=\"{0}\" onclick=\"checkRole();\" /><label for=\"{0}\">{1}</label></td>", dr3[k]["moduleid"], dr3[k]["modulename"]);
 
                                     DataRow[] drcontrol = GetControlByModule(control, dr3[k]["moduleid"].ToString());
                                     sb.Append("<td>");
                                     for (int c = 0; c < drcontrol.Length; c++)
                                     {
-                                        sb.AppendFormat("<input type=\"checkbox\" id=\"{0}-{1}\" name=\"{0}-{1}\" value=\"{1}\" onclick=\"\" /><label for=\"{0}-{1}\">{2}</label>&nbsp;&nbsp;", drcontrol[c]["ModuleID"], drcontrol[c]["ControlValue"], drcontrol[c]["ControlName"]);
+                                        sb.AppendFormat("<input type=\"checkbox\" id=\"{0}-{1}\" name=\"{0}\" value=\"{1}\" onclick=\"\" /><label for=\"{0}-{1}\">{2}</label>&nbsp;&nbsp;", drcontrol[c]["ModuleID"], drcontrol[c]["ControlValue"], drcontrol[c]["ControlName"]);
                                     }
                                     sb.Append("</td></tr>");
                                 }
