@@ -100,10 +100,22 @@
     </form>
     <script type="text/javascript">
         function saveControl() {
-            var test = $("input[name='test']:checked");
-            $.each(test, function(i, n) {
-                alert(n.id);
+            var modules = $("input[name='modules']:checked");
+            var mList = [];
+            var sList = [];
+            $.each(modules, function(i, n) {
+                mList.push(n.id);
             });
+            var smodules = $("input[name='s-modules']:checked");
+            $.each(smodules, function(i, n) {
+                var controls = $("input[name='" + n.value + "']:checked");
+                var mcontrol = 0;
+                $.each(controls, function(j, x) {
+                    mcontrol += parseInt(x.value);
+                });
+                sList.push(n.value + ":" + mcontrol);
+            });
+            alert(sList.join(';'));
         }
         $(document).ready(function() {
             //LoadData();
