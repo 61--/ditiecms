@@ -99,6 +99,9 @@
     <input id="btn_SaveRole" type="button" class="button b4" onclick="saveControl()" value="保存权限" />
     </form>
     <script type="text/javascript">
+        function checkNode(moduleId, deep) {
+            $("#T-" + moduleId + " input[type='checkbox']").attr("checked", "checked");
+        }
         function saveControl() {
             var modules = $("input[name='modules']:checked");
             var mList = [];
