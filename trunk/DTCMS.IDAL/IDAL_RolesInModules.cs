@@ -47,6 +47,11 @@ namespace DTCMS.IDAL
 		/// <returns>返回影响行数</returns>
 		int Delete(int ID);
 
+        /// <summary>
+        /// 删除权限ID下的所有模块权限控制码
+        /// </summary>
+        int DeleteRoleControl(int roleID);
+
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>

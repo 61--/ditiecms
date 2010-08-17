@@ -56,6 +56,14 @@ namespace DTCMS.BLL
         }
 
         /// <summary>
+        /// 删除权限ID下的所有模块权限控制码
+        /// </summary>
+        public int DeleteRoleControl(int roleID)
+        {
+            return dal.DeleteRoleControl(roleID);
+        }
+
+        /// <summary>
         /// 判断某个字段值是否存在
         /// </summary>
         /// <param name="ID">ID</param>

@@ -10,11 +10,14 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using DTCMS.BLL;
 using DTCMS.Common;
+using DTCMS.Entity;
 
 namespace DTCMS.Web.admin
 {
     public partial class permission_setting : AdminPage
     {
+        protected int roleID = Utils.GetQueryInt("ID");
+
         protected void Page_Load(object sender, EventArgs e)
         {
             AjaxPro.Utility.RegisterTypeForAjax(typeof(permission_setting));
@@ -99,6 +102,41 @@ namespace DTCMS.Web.admin
         //    rpt_RolesList.DataSource = dt;
         //    rpt_RolesList.DataBind();
         //}
+
+        /// <summary>
+        /// 保存角色模块权限
+        /// </summary>
+        [AjaxPro.AjaxMethod]
+        public int SaveModulesControl(int ID, string ctl)
+        {
+            RolesInModulesBLL rimBll = new RolesInModulesBLL();
+            RolesInModules rimInfo = new RolesInModules();
+            rimInfo.RoleID = ID;
+
+            try
+            {
+                //删除角色所有权限控制码
+                rimBll.DeleteRoleControl(ID);
+
+                if (ctl.Length == 0)
+                    return 1;
+
+                //添加角色权限控制码
+                string[] mctl = ctl.Split(',');
+                foreach (string m in mctl)
+                {
+                    rimInfo.ModuleID = m.Substring(0, 8);
+                    rimInfo.ControlValue = Convert.ToInt32(m.Substring(9, m.Length - 9));
+
+                    rimBll.Add(rimInfo);
+                }
+                return 1;
+            }
+            catch
+            {
+                return -1;
+            }
+        }
 
         /// <summary>
         /// 获取模块Json数据
