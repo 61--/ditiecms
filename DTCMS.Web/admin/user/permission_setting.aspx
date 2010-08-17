@@ -118,7 +118,18 @@
                 });
                 sList.push(n.value + ":" + mcontrol);
             });
-            alert(sList.join(';'));
+            var ctlJson = sList.join(',');
+            var callback = function(res) {
+                if (res.error) {
+                    alert("请求错误，请刷新页面重试！\n" + res.error.Message);
+                } else {
+                    if (res.value > 0)
+                        showSuccess("保存权限成功！");
+                    else
+                        showError("保存权限失败，请刷新页面重试！");
+                }
+            }
+            DTCMS.Web.admin.permission_setting.SaveModulesControl(<%=roleID %> ,ctlJson, callback);
         }
         $(document).ready(function() {
             //LoadData();
