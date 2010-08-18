@@ -28,6 +28,10 @@ namespace DTCMS.Web.admin
             //}
         }
 
+        /// <summary>
+        /// 获取模块列表
+        /// </summary>
+        /// <returns></returns>
         protected string GetModulesByControl()
         {
             ModulesBLL moduleBll = new ModulesBLL();
@@ -116,7 +120,7 @@ namespace DTCMS.Web.admin
             try
             {
                 //删除角色所有权限控制码
-                rimBll.DeleteRoleControl(ID);
+                //rimBll.DeleteRoleControl(ID);
 
                 if (ctl.Length == 0)
                     return 1;
@@ -128,7 +132,7 @@ namespace DTCMS.Web.admin
                     rimInfo.ModuleID = m.Substring(0, 8);
                     rimInfo.ControlValue = Convert.ToInt32(m.Substring(9, m.Length - 9));
 
-                    rimBll.Add(rimInfo);
+                    rimBll.Update(rimInfo);
                 }
                 return 1;
             }

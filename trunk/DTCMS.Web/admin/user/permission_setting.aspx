@@ -102,6 +102,7 @@
         function checkNode(moduleId, deep) {
             $("#T-" + moduleId + " input[type='checkbox']").attr("checked", "checked");
         }
+        //保存权限
         function saveControl() {
             var modules = $("input[name='modules']:checked");
             var mList = [];
@@ -109,7 +110,7 @@
             $.each(modules, function(i, n) {
                 mList.push(n.id);
             });
-            var smodules = $("input[name='s-modules']:checked");
+            var smodules = $("input[name='s-modules']");
             $.each(smodules, function(i, n) {
                 var controls = $("input[name='" + n.value + "']:checked");
                 var mcontrol = 0;
@@ -124,7 +125,7 @@
                     alert("请求错误，请刷新页面重试！\n" + res.error.Message);
                 } else {
                     if (res.value > 0)
-                        showSuccess("保存权限成功！");
+                        showSuccess("保存角色权限成功！");
                     else
                         showError("保存权限失败，请刷新页面重试！");
                 }

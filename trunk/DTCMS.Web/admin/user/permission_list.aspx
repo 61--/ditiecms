@@ -12,6 +12,36 @@
     <script type="text/javascript" src="../js/public.js"></script>
     <script type="text/javascript" src="../js/datagrid.js"></script>
     <script type="text/javascript" src="../js/contextmenu.js"></script>
+    <style type="text/css">
+        .mlist{
+            width: 100%;
+            font-size: 12px;
+            border: 1px #CAD9EA solid;
+            border-collapse: collapse;
+        }
+        .mlist td{
+            vertical-align:middle;
+        }
+        .mlist th{
+            line-height: 26px;
+            height: 26px;
+            font-weight: bold;
+            text-indent: 10px;
+            border-top: 1px solid #D3E0ED;
+            border-bottom: 1px solid #D3E0ED;
+        }
+        .mlist .mt
+        {
+        	font-weight:bold;
+        	line-height:24px;
+        	text-indent: 10px;
+        }
+        .mlist .mi
+        {
+        	line-height: 22px;
+        	text-indent: 30px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -42,20 +72,21 @@
                         </DT:DataGrid>
                     </td>
                     <td style="width:52%;">
-                        <div style="margin-left:5px;">
-                            <iframe id="main_body" name="main_body" width="100%" onload="setFrameHeight();" frameborder="0" <%--style="border:1px #CAD9EA solid;"--%> src="permission_setting.aspx?Id=1"></iframe>
+                        <div id="moduleList" style="margin-left:5px;border:1px #CAD9EA solid;height:400px;overflow:auto">
+                            <%--<iframe id="main_body" name="main_body" width="100%" onload="setFrameHeight();" frameborder="0" src="permission_setting.aspx?Id=1"></iframe>--%>
+                            <div style="">
+                                <%=GetModulessControl() %>
+                            </div>
                         </div>
+                        <script type="text/javascript">
+                            $("#moduleList").height($(document).height() - 100);
+                        </script>
                     </td>
                 </tr>
             </table>
         </div>
     </form>
     <script type="text/javascript">
-        function setFrameHeight(){
-            //alert($(document).height())
-            iframeHeight = $(document).height()-100;
-            $("#main_body").height(iframeHeight);
-        }
         function setFrameUrl(Id){
             url="permission_setting.aspx?Id="+Id;
             $("#main_body").attr("src", url);
