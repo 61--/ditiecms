@@ -52,10 +52,8 @@ namespace DTCMS.SqlServerDAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("UPDATE " + tablePrefix + "RolesInModules SET ");
-            strSql.Append("RoleID=@RoleID,");
-            strSql.Append("ModuleID=@ModuleID,");
             strSql.Append("ControlValue=@ControlValue");
-            strSql.Append(" WHERE ID=@ID");
+            strSql.Append(" WHERE RoleID=@RoleID AND ModuleID=@ModuleID");
             SqlParameter[] cmdParms = {
 				AddInParameter("@RoleID", SqlDbType.Int, 4, model.RoleID),
 				AddInParameter("@ModuleID", SqlDbType.Char, 8, model.ModuleID),
