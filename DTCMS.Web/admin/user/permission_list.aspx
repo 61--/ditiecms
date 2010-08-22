@@ -13,10 +13,22 @@
     <script type="text/javascript" src="../js/datagrid.js"></script>
     <script type="text/javascript" src="../js/contextmenu.js"></script>
     <style type="text/css">
+        .editbox{
+        	margin-left:5px;
+        	border:1px #CAD9EA solid;
+        	height:400px;
+        	overflow-x:hidden;
+        	overflow-y:auto;
+        }
+        .editbox h3
+        {
+        	font-size:14px;
+        	line-height:30px;
+        	text-align:center;
+        }
         .mlist{
             width: 100%;
             font-size: 12px;
-            border: 1px #CAD9EA solid;
             border-collapse: collapse;
         }
         .mlist td{
@@ -27,8 +39,8 @@
             height: 26px;
             font-weight: bold;
             text-indent: 10px;
-            border-top: 1px solid #D3E0ED;
-            border-bottom: 1px solid #D3E0ED;
+            border-top: 1px dashed #D3E0ED;
+            border-bottom: 1px dashed #D3E0ED;
         }
         .mlist .mt
         {
@@ -72,10 +84,12 @@
                         </DT:DataGrid>
                     </td>
                     <td style="width:52%;">
-                        <div id="moduleList" style="margin-left:5px;border:1px #CAD9EA solid;height:400px;overflow:auto">
+                        <div id="moduleList" class="editbox">
                             <%--<iframe id="main_body" name="main_body" width="100%" onload="setFrameHeight();" frameborder="0" src="permission_setting.aspx?Id=1"></iframe>--%>
-                            <div style="">
-                                <%=GetModulessControl() %>
+                            <h3>超级管理员</h3>
+                            <%=GetModulesControl() %>
+                            <div style="margin:15px auto;text-align:center;">
+                                <button id="btn_Submit" class="b4" onclick="saveControl()"><img src="../images/ico/i_save.gif" />保存权限</button>
                             </div>
                         </div>
                         <script type="text/javascript">
@@ -87,14 +101,43 @@
         </div>
     </form>
     <script type="text/javascript">
-        function setFrameUrl(Id){
-            url="permission_setting.aspx?Id="+Id;
-            $("#main_body").attr("src", url);
-        }
         //操作权限
         var EditPermission = <%= EditPermission.ToString().ToLower() %>;
         var DeletePermission = <%= DeletePermission.ToString().ToLower() %>;
         var SettingPermission = <%= SettingPermission.ToString().ToLower() %>;
+        var roleID = 1;     //默认加载ID为1的角色权限
+        function checkNode(moduleId, deep) {
+            if($("#"+moduleId).attr("checked"))
+                $("#T-" + moduleId + " input[type='checkbox']").attr("checked", "checked");
+            else
+                $("#T-" + moduleId + " input[type='checkbox']").attr("checked", "");
+        }
+        //保存权限
+        function saveControl() {
+            var sList = [];
+            var modules = $("input[name='modules']");
+            $.each(modules, function(i, n) {
+                var controls = $("input[name='" + n.value + "']:checked");
+                var mcontrol = 0;
+                $.each(controls, function(j, x) {
+                    mcontrol += parseInt(x.value);
+                });
+                sList.push(n.value + ":" + mcontrol);
+            });
+            var ctlJson = sList.join(',');
+            var callback = function(res) {
+                if (res.error) {
+                    alert("请求错误，请刷新页面重试！\n" + res.error.Message);
+                } else {
+                    if (res.value > 0)
+                        showSuccess("保存角色权限成功！");
+                    else
+                        showError("保存权限失败，请刷新页面重试！");
+                }
+            }
+            alert(ctlJson)
+            DTCMS.Web.admin.permission_setting.SaveModulesControl(roleID ,ctlJson, callback);
+        }
         function formatIsSystem(r){
             return r.id == 1 ? '是' : '否';
         }
