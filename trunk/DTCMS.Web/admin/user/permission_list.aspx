@@ -106,16 +106,20 @@
         var DeletePermission = <%= DeletePermission.ToString().ToLower() %>;
         var SettingPermission = <%= SettingPermission.ToString().ToLower() %>;
         var roleID = 1;     //默认加载ID为1的角色权限
-        function checkNode(moduleId, deep) {
-            if($("#"+moduleId).attr("checked"))
-                $("#T-" + moduleId + " input[type='checkbox']").attr("checked", "checked");
-            else
-                $("#T-" + moduleId + " input[type='checkbox']").attr("checked", "");
+        
+        //选中节点
+        function checkNode(node) {
+            var modules = document.getElementsByName(node.value);
+            for(var i = $.browser.msie ? 1 : 0; i < modules.length; i++){
+                modules[i].checked = node.checked;
+                //递归选中选子节点
+                checkNode(modules[i]);
+            }
         }
         //保存权限
         function saveControl() {
             var sList = [];
-            var modules = $("input[name='modules']");
+            var modules = $("input[class='modules']");
             $.each(modules, function(i, n) {
                 var controls = $("input[name='" + n.value + "']:checked");
                 var mcontrol = 0;
@@ -135,9 +139,9 @@
                         showError("保存权限失败，请刷新页面重试！");
                 }
             }
-            alert(ctlJson)
             DTCMS.Web.admin.permission_setting.SaveModulesControl(roleID ,ctlJson, callback);
         }
+        //格式化数据列表
         function formatIsSystem(r){
             return r.id == 1 ? '是' : '否';
         }

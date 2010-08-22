@@ -46,7 +46,7 @@ namespace DTCMS.Web.admin
                 for (int i = 0; i < dr1.Length; i++)
                 {
                     sb.AppendFormat("<table id=\"T-{0}\" class=\"mlist\">", dr1[i]["moduleid"]);
-                    sb.AppendFormat("<tr><th colspan=\"2\"><input type=\"checkbox\" id=\"{0}\" pid=\"M0\" value=\"{0}\" onclick=\"checkNode('{0}',1);\" /><label for=\"{0}\">{1}</label></th></tr>\r\n",
+                    sb.AppendFormat("<tr><th colspan=\"2\"><input type=\"checkbox\" id=\"{0}\" name=\"M0\" value=\"{0}\" onclick=\"checkNode(this);\" /><label for=\"{0}\">{1}</label></th></tr>\r\n",
                         dr1[i]["moduleid"], dr1[i]["modulename"]);
 
                     //获取第二级模块
@@ -55,7 +55,7 @@ namespace DTCMS.Web.admin
                     {
                         for (int j = 0; j < dr2.Length; j++)
                         {
-                            sb.AppendFormat("<tr class=\"mt\"><td colspan=\"2\"><input type=\"checkbox\" id=\"{0}\" pid=\"{1}\" value=\"{0}\" onclick=\"checkNode('{0}',2);\" /><label for=\"{0}\">{2}</label></td></tr>\r\n",
+                            sb.AppendFormat("<tr class=\"mt\"><td colspan=\"2\"><input type=\"checkbox\" id=\"{0}\" name=\"{1}\" value=\"{0}\" onclick=\"checkNode(this);\" /><label for=\"{0}\">{2}</label></td></tr>\r\n",
                                 dr2[j]["moduleid"], dr1[i]["moduleid"], dr2[j]["modulename"]);
                             //获取第三级模块
                             DataRow[] dr3 = GetChildModule(modules, dr2[j]["moduleid"].ToString());
@@ -64,17 +64,17 @@ namespace DTCMS.Web.admin
                                 for (int k = 0; k < dr3.Length; k++)
                                 {
                                     if (k % 2 == 0)
-                                        sb.AppendFormat("<tr class=\"mi\"><td style=\"width:35%\"><input type=\"checkbox\" id=\"{0}\" name=\"modules\" value=\"{0}\" onclick=\"checkNode('{0}',3);\" /><label for=\"{0}\">{1}</label></td>",
-                                            dr3[k]["moduleid"], dr3[k]["modulename"]);
+                                        sb.AppendFormat("<tr class=\"mi\"><td style=\"width:35%\"><input type=\"checkbox\" id=\"{0}\" name=\"{1}\" value=\"{0}\" class=\"modules\" onclick=\"checkNode(this);\" /><label for=\"{0}\">{2}</label></td>",
+                                            dr3[k]["moduleid"], dr2[j]["moduleid"], dr3[k]["modulename"]);
                                     else
-                                        sb.AppendFormat("<tr class=\"mi\" style=\"background:#F3F9FB;\"><td><input type=\"checkbox\" id=\"{0}\" name=\"modules\" value=\"{0}\" onclick=\"checkNode('{0}',3);\" /><label for=\"{0}\">{1}</label></td>",
-                                            dr3[k]["moduleid"], dr3[k]["modulename"]);
+                                        sb.AppendFormat("<tr class=\"mi\" style=\"background:#F3F9FB;\"><td><input type=\"checkbox\" id=\"{0}\" name=\"{1}\" value=\"{0}\" class=\"modules\" onclick=\"checkNode(this);\" /><label for=\"{0}\">{2}</label></td>",
+                                            dr3[k]["moduleid"], dr2[j]["moduleid"], dr3[k]["modulename"]);
 
                                     DataRow[] drcontrol = GetControlByModule(control, dr3[k]["moduleid"].ToString());
                                     sb.Append("<td>");
                                     for (int c = 0; c < drcontrol.Length; c++)
                                     {
-                                        sb.AppendFormat("<input type=\"checkbox\" id=\"{0}-{1}\" name=\"{0}\" value=\"{1}\" onclick=\"checkNode('{0}',4);\" /><label for=\"{0}-{1}\">{2}</label>&nbsp;&nbsp;",
+                                        sb.AppendFormat("<input type=\"checkbox\" id=\"{0}-{1}\" name=\"{0}\" value=\"{1}\" /><label for=\"{0}-{1}\">{2}</label>&nbsp;&nbsp;",
                                             drcontrol[c]["ModuleID"], drcontrol[c]["ControlValue"], drcontrol[c]["ControlName"]);
                                     }
                                     sb.Append("</td></tr>");
