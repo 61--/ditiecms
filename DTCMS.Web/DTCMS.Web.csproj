@@ -389,6 +389,9 @@
     <Content Include="admin\user\user_add.aspx" />
     <Content Include="admin\user\user_list.aspx" />
     <Content Include="ajaxpro\请勿删除本目录 .txt" />
+    <Content Include="bin\AjaxPro.2.dll" />
+    <Content Include="bin\AjaxPro.JSON.2.dll" />
+    <Content Include="bin\CKFinder.dll" />
     <Content Include="bin\DTCMS.BLL.dll" />
     <Content Include="bin\DTCMS.BLL.pdb" />
     <Content Include="bin\DTCMS.Common.dll" />
@@ -411,6 +414,8 @@
     <Content Include="bin\DTCMS.SqlServerDAL.pdb" />
     <Content Include="bin\DTCMS.Template.dll" />
     <Content Include="bin\DTCMS.Template.pdb" />
+    <Content Include="bin\DTCMS.Web.dll" />
+    <Content Include="bin\DTCMS.Web.pdb" />
     <Content Include="ckfinder\bin\CKFinder.dll" />
     <Content Include="ckfinder\ckfinder.html" />
     <Content Include="ckfinder\ckfinder.js" />
