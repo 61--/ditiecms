@@ -416,6 +416,7 @@
     <Content Include="bin\DTCMS.Template.pdb" />
     <Content Include="bin\DTCMS.Web.dll" />
     <Content Include="bin\DTCMS.Web.pdb" />
+    <Content Include="bin\FredCK.FCKeditorV2.dll" />
     <Content Include="ckfinder\bin\CKFinder.dll" />
     <Content Include="ckfinder\ckfinder.html" />
     <Content Include="ckfinder\ckfinder.js" />
@@ -837,7 +838,6 @@
     <Content Include="admin\images\logo_01.gif" />
     <Content Include="admin\login.aspx" />
     <Content Include="admin\content\article_add.aspx" />
-    <Content Include="bin\FredCK.FCKeditorV2.dll" />
     <Content Include="inc\dialog\dialog.css" />
     <Content Include="editor\fckeditor\css\behaviors\disablehandles.htc" />
     <Content Include="editor\fckeditor\css\behaviors\showtableborders.htc" />
