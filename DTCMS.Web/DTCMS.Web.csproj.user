@@ -12,9 +12,9 @@
           <NativeDebugging>False</NativeDebugging>
           <SQLDebugging>False</SQLDebugging>
           <PublishCopyOption>RunFiles</PublishCopyOption>
-          <PublishTargetLocation>ftp://cd150.gotoip.net/www/91aspx/</PublishTargetLocation>
+          <PublishTargetLocation>E:\DiTieCMS\发布文件\</PublishTargetLocation>
           <PublishDeleteAllFiles>False</PublishDeleteAllFiles>
-          <PublishCopyAppData>True</PublishCopyAppData>
+          <PublishCopyAppData>False</PublishCopyAppData>
           <ExternalProgram>
           </ExternalProgram>
           <StartExternalURL>
