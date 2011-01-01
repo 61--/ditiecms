@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{988A1601-13AB-4AEC-AC87-FF4E55493202}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tuan.WinForm</RootNamespace>
+    <AssemblyName>Tuan.WinForm</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v9.2, Version=9.2.4.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v9.2, Version=9.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.OfficeSkins.v9.2, Version=9.2.4.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v9.2, Version=9.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v9.2, Version=9.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\DevExpress 2009.2\Components\Sources\DevExpress.DLL\DevExpress.XtraBars.v9.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v9.2, Version=9.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v9.2, Version=9.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v9.2, Version=9.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config\SystemConfig.cs" />
+    <Compile Include="DevSkinBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DevSkinBase.Designer.cs">
+      <DependentUpon>DevSkinBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadDataFromApiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadDataFromApiForm.Designer.cs">
+      <DependentUpon>LoadDataFromApiForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DevSkinBase.resx">
+      <DependentUpon>DevSkinBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadDataFromApiForm.resx">
+      <DependentUpon>LoadDataFromApiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingForm.resx">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StationSetForm.resx">
+      <DependentUpon>StationSetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TuanMainForm.resx">
+      <DependentUpon>TuanMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingForm.Designer.cs">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StationSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StationSetForm.Designer.cs">
+      <DependentUpon>StationSetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TuanMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TuanMainForm.Designer.cs">
+      <DependentUpon>TuanMainForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MyBin\DevExpress.BonusSkins.v9.2.dll" />
+    <Content Include="MyBin\DevExpress.Charts.v9.2.Core.dll" />
+    <Content Include="MyBin\DevExpress.Data.v9.2.dll" />
+    <Content Include="MyBin\DevExpress.OfficeSkins.v9.2.dll" />
+    <Content Include="MyBin\DevExpress.Tutorials.v9.2.dll" />
+    <Content Include="MyBin\DevExpress.Utils.v9.2.dll" />
+    <Content Include="MyBin\DevExpress.XtraBars.v9.2.dll" />
+    <Content Include="MyBin\DevExpress.XtraCharts.v9.2.dll" />
+    <Content Include="MyBin\DevExpress.XtraCharts.v9.2.UI.dll" />
+    <Content Include="MyBin\DevExpress.XtraEditors.v9.2.dll" />
+    <Content Include="MyBin\DevExpress.XtraGrid.v9.2.dll" />
+    <Content Include="MyBin\DevExpress.XtraLayout.v9.2.dll" />
+    <Content Include="MyBin\DevExpress.XtraNavBar.v9.2.dll" />
+    <Content Include="MyBin\DevExpress.XtraPivotGrid.v9.2.dll" />
+    <Content Include="MyBin\DevExpress.XtraPrinting.v9.2.dll" />
+    <Content Include="MyBin\DevExpress.XtraReports.v9.2.dll" />
+    <Content Include="MyBin\DevExpress.XtraRichEdit.v9.2.dll" />
+    <Content Include="MyBin\DevExpress.XtraScheduler.v9.2.dll" />
+    <Content Include="MyBin\DevExpress.XtraTreeList.v9.2.dll" />
+    <Content Include="MyBin\DevExpress.XtraWizard.v9.2.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tuan.Common\Tuan.Common.csproj">
+      <Project>{0E8C4FD9-0EBE-433D-951E-C91C5F09EA2C}</Project>
+      <Name>Tuan.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

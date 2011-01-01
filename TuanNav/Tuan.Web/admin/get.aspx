@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="get.aspx.cs" Inherits="Tuan.Web.get" %>

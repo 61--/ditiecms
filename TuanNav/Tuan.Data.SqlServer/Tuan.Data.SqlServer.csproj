@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C0A8F267-9EF6-40CF-88AA-2664D107D846}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tuan.Data.SqlServer</RootNamespace>
+    <AssemblyName>Tuan.Data.SqlServer</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CityDAO.cs" />
+    <Compile Include="DataBaseDAO.cs" />
+    <Compile Include="Provider\DataProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider\DeclareVariable.cs" />
+    <Compile Include="Provider\PagerInfo.cs" />
+    <Compile Include="Provider\SqlHelper.cs" />
+    <Compile Include="CategoryDAO.cs" />
+    <Compile Include="TuanGouDAO.cs" />
+    <Compile Include="TuanSiteDAO.cs" />
+    <Compile Include="UserDAO.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tuan.Common\Tuan.Common.csproj">
+      <Project>{0E8C4FD9-0EBE-433D-951E-C91C5F09EA2C}</Project>
+      <Name>Tuan.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tuan.Data\Tuan.Data.csproj">
+      <Project>{A986660D-A1B5-4052-B827-BBF195847B18}</Project>
+      <Name>Tuan.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tuan.Entity\Tuan.Entity.csproj">
+      <Project>{C184156B-7D57-480E-AACB-E21A4E7481A3}</Project>
+      <Name>Tuan.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

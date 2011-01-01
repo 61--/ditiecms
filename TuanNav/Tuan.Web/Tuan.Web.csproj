@@ -1,0 +1,375 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{61CE38CC-EF04-448E-BB79-CEA8F0CDD43A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tuan.Web</RootNamespace>
+    <AssemblyName>Tuan.Web</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="admin\city_list.aspx.cs">
+      <DependentUpon>city_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\city_list.aspx.designer.cs">
+      <DependentUpon>city_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\get.aspx.cs">
+      <DependentUpon>get.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\get.aspx.designer.cs">
+      <DependentUpon>get.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\tuangou_get.aspx.cs">
+      <DependentUpon>tuangou_get.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\tuangou_get.aspx.designer.cs">
+      <DependentUpon>tuangou_get.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\tuan_add.aspx.cs">
+      <DependentUpon>tuan_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\tuan_add.aspx.designer.cs">
+      <DependentUpon>tuan_add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="error.aspx.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="error.aspx.designer.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\site_add.aspx.cs">
+      <DependentUpon>site_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\site_add.aspx.designer.cs">
+      <DependentUpon>site_add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\site_list.aspx.cs">
+      <DependentUpon>site_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\site_list.aspx.designer.cs">
+      <DependentUpon>site_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\tuan_list.aspx.cs">
+      <DependentUpon>tuan_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\tuan_list.aspx.designer.cs">
+      <DependentUpon>tuan_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\user_list.aspx.cs">
+      <DependentUpon>user_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\user_list.aspx.designer.cs">
+      <DependentUpon>user_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\comment_list.aspx.cs">
+      <DependentUpon>comment_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\comment_list.aspx.designer.cs">
+      <DependentUpon>comment_list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="js\site_json.ashx.cs">
+      <DependentUpon>site_json.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="list.aspx.cs">
+      <DependentUpon>list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="list.aspx.designer.cs">
+      <DependentUpon>list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="register.aspx.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="register.aspx.designer.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\system.aspx.cs">
+      <DependentUpon>system.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\system.aspx.designer.cs">
+      <DependentUpon>system.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\site_add.aspx.cs">
+      <DependentUpon>site_add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\site_add.aspx.designer.cs">
+      <DependentUpon>site_add.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.config" />
+    <Content Include="css\gobal.css" />
+    <Content Include="images\i_arrows.gif" />
+    <Content Include="images\logo.jpg" />
+    <Content Include="images\nav_bg.gif" />
+    <Content Include="images\nav_bg_hover.gif" />
+    <Content Include="images\site_bg.jpg" />
+    <Content Include="login.aspx" />
+    <Content Include="register.aspx" />
+    <Content Include="user\site_add.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tuan.Api\Tuan.Api.csproj">
+      <Project>{D638198E-53F9-4FE0-BB20-E5CDFB1F33DD}</Project>
+      <Name>Tuan.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tuan.Common\Tuan.Common.csproj">
+      <Project>{0E8C4FD9-0EBE-433D-951E-C91C5F09EA2C}</Project>
+      <Name>Tuan.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tuan.Config\Tuan.Config.csproj">
+      <Project>{264447C8-C761-4C91-8917-AB57601FF69A}</Project>
+      <Name>Tuan.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tuan.Controls\Tuan.Controls.csproj">
+      <Project>{4FF83811-41AB-4AE0-B98D-AC2E3F5737DE}</Project>
+      <Name>Tuan.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tuan.Data.SqlServer\Tuan.Data.SqlServer.csproj">
+      <Project>{C0A8F267-9EF6-40CF-88AA-2664D107D846}</Project>
+      <Name>Tuan.Data.SqlServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tuan.Data\Tuan.Data.csproj">
+      <Project>{A986660D-A1B5-4052-B827-BBF195847B18}</Project>
+      <Name>Tuan.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tuan.Entity\Tuan.Entity.csproj">
+      <Project>{C184156B-7D57-480E-AACB-E21A4E7481A3}</Project>
+      <Name>Tuan.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tuan.Web.UI\Tuan.Web.UI.csproj">
+      <Project>{1DCDDA17-268A-4E28-BFA8-193A413E2B3D}</Project>
+      <Name>Tuan.Web.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="admin\city_list.aspx" />
+    <Content Include="admin\index.aspx" />
+    <Content Include="admin\site_add.aspx" />
+    <Content Include="admin\site_list.aspx" />
+    <Content Include="admin\tuan_list.aspx" />
+    <Content Include="admin\user_list.aspx" />
+    <Content Include="admin\comment_list.aspx" />
+    <Content Include="bin\Tuan.Common.dll" />
+    <Content Include="bin\Tuan.Common.pdb" />
+    <Content Include="bin\Tuan.Config.dll" />
+    <Content Include="bin\Tuan.Config.pdb" />
+    <Content Include="bin\Tuan.Controls.dll" />
+    <Content Include="bin\Tuan.Controls.pdb" />
+    <Content Include="bin\Tuan.Data.dll" />
+    <Content Include="bin\Tuan.Data.pdb" />
+    <Content Include="bin\Tuan.Data.SqlServer.dll" />
+    <Content Include="bin\Tuan.Data.SqlServer.pdb" />
+    <Content Include="bin\Tuan.Entity.dll" />
+    <Content Include="bin\Tuan.Entity.pdb" />
+    <Content Include="css\admin.css" />
+    <Content Include="css\modal.css" />
+    <Content Include="images\admin\error.gif" />
+    <Content Include="images\admin\i_sort.gif" />
+    <Content Include="images\admin\loading.gif" />
+    <Content Include="images\admin\pButton.gif" />
+    <Content Include="images\admin\simple_info.gif" />
+    <Content Include="images\admin\simple_stat.gif" />
+    <Content Include="images\admin\success.gif" />
+    <Content Include="images\admin\th_bg.gif" />
+    <Content Include="images\dialog\button.gif" />
+    <Content Include="images\dialog\dialog_bg.jpg" />
+    <Content Include="images\dialog\dialog_close.png" />
+    <Content Include="images\dialog\dialog_lr.gif" />
+    <Content Include="images\dialog\dialog_lr.png" />
+    <Content Include="images\dialog\dialog_ul.gif" />
+    <Content Include="images\dialog\dialog_ul.png" />
+    <Content Include="images\dialog\ico_alert.gif" />
+    <Content Include="images\dialog\ico_confirm.gif" />
+    <Content Include="images\dialog\window.gif" />
+    <Content Include="images\i_ad.gif" />
+    <Content Include="images\i_message.gif" />
+    <Content Include="images\noimage.gif" />
+    <Content Include="images\search_bn.gif" />
+    <Content Include="index.aspx" />
+    <Content Include="js\base.js" />
+    <Content Include="js\datagrid.js" />
+    <Content Include="js\dialog.js" />
+    <Content Include="js\jquery.plugin.js" />
+    <Content Include="search.aspx" />
+    <Content Include="admin\system.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="admin\tuan_add.aspx" />
+    <Content Include="css\dialog.css" />
+    <Content Include="error.aspx" />
+    <Content Include="ajax\upload_json.ashx" />
+    <Content Include="images\admin\ico_clock.png" />
+    <Content Include="images\admin\ico_folder.png" />
+    <Content Include="images\admin\ico_title.gif" />
+    <Content Include="images\admin\site.png" />
+    <Content Include="images\button.jpg" />
+    <Content Include="images\dialog\ico_error.gif" />
+    <Content Include="images\dialog\ico_information.gif" />
+    <Content Include="images\dialog\ico_question.gif" />
+    <Content Include="images\dialog\ico_stop.gif" />
+    <Content Include="images\dialog\ico_success.gif" />
+    <Content Include="images\dialog\ico_warning.gif" />
+    <Content Include="js\fileupload.js" />
+    <Content Include="js\jquery.autocomplete.js" />
+    <Content Include="js\jquery.validate.js" />
+    <Content Include="test.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="admin\get.aspx" />
+    <Content Include="admin\tuangou_get.aspx" />
+    <Content Include="bin\Tuan.Api.dll" />
+    <Content Include="bin\Tuan.Api.pdb" />
+    <Content Include="bin\Tuan.Passport.dll" />
+    <Content Include="bin\Tuan.Passport.pdb" />
+    <Content Include="bin\Tuan.Web.UI.dll" />
+    <Content Include="bin\Tuan.Web.UI.pdb" />
+    <Content Include="css\jquery.autocomplete.css" />
+    <Content Include="images\admin\bar_bg.gif" />
+    <Content Include="js\site_json.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="admin\footer.aspx" />
+    <Content Include="admin\header.aspx" />
+    <Content Include="config\UrlRewrite.config" />
+    <Content Include="footer.aspx" />
+    <Content Include="header.aspx" />
+    <Content Include="images\blue\buy_btn.gif" />
+    <Content Include="images\blue\category_bg.gif" />
+    <Content Include="images\blue\head_bg.gif" />
+    <Content Include="images\blue\logo.gif" />
+    <Content Include="images\blue\logo2.gif" />
+    <Content Include="images\blue\nav_bg.gif" />
+    <Content Include="images\blue\nav_hover_bg.gif" />
+    <Content Include="images\blue\search_bg.gif" />
+    <Content Include="images\blue\search_btn.gif" />
+    <Content Include="images\blue\select_bg.gif" />
+    <Content Include="images\blue\take_btn.gif" />
+    <Content Include="images\blue\tuan_bg.gif" />
+    <Content Include="images\blue\tuan_hot.gif" />
+    <Content Include="images\blue\tuan_new.gif" />
+    <Content Include="images\i_loading.gif" />
+    <Content Include="images\i_point.gif" />
+    <Content Include="images\i_talk.gif" />
+    <Content Include="images\share_bg.gif" />
+    <Content Include="a.html" />
+    <Content Include="list.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3804</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
