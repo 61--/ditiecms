@@ -1,0 +1,350 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>团来了 - <%=cityname %>站——您的团购生活导航专家！</title>
+    <link type="text/css" rel="stylesheet" href="css/gobal.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script src="js/jquery.plugin.js" type="text/javascript"></script>
+    <script src="js/base.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="header">
+<div id="top" class="bodywidth">
+	<div id="site_nav">
+		<%=GetLoginInfo() %>
+		<span class="n_b">会员中心 | <a href="/user/site_add.aspx">网址提交</a> | 帮助中心</span>
+	</div>
+	<table class="site_basic">
+		<tr>
+			<td width="320"><a href="/"><img src="images/blue/logo.gif" alt="团来了" width="285" height="100" /></a></td>
+			<td style="text-align:left;">
+			    <span id="city"><%=cityname %>站</span> <span class="changecity">
+			    <a href="javascript:;" onclick="$('#citylist ul').toggle();">切换城市</a></span>
+			    <div id="citylist"><ul><%for(int i=0;i<cityList.Rows.Count;i++){ %>
+			        <li><a href="/<%=cityList.Rows[i]["ECity"] %>/index.aspx"><%=cityList.Rows[i]["City"] %></a></li><%} %></ul>
+			    </div>
+			</td>
+			<td width="450">
+			    <div class="search">
+			        <input type="text" name="keyword" class="input" id="keyword" /><button type="button" id="btn_search">搜 索</button>
+			        <span class="text">热门关键字：食全酒美 休闲娱乐 美容保健 精品购物 化妆品 其他</span>
+			     </div>
+			</td>
+		</tr>
+	</table>
+</div>
+</div>
+<div id="nav">
+	<ul class="nav_link bodywidth">
+		<li class="hover"><a href="/<%=ecity %>/index.aspx">首 页</a></li>
+		<li><a href="/<%=ecity %>/list.aspx">今日团购</a></li>
+		<li><a href="#">团购地图</a></li>
+		<li><a href="#">团购导航</a></li>
+		<li><a href="#">个人中心</a></li>
+		<li><a href="#">团购论坛</a></li>
+	</ul>
+</div>
+<div id="content" class="bodywidth">
+    <div id="recommend">
+        <div class="main">
+        <table width="100%" height="100%" cellspacing="6">
+            <tr>
+                <td colspan="2" height="30"><h3><a href="/">【美团客】</a><a href="/">冬装新款甜美女童棉衣 原价158元现价79元包邮</a></h3></td>
+            </tr>
+            <tr>
+                <td width="240">
+                    <dl class="meta">
+                        <dt class="price">原 价</dt>
+                        <dt class="rebate">折 扣</dt>
+                        <dt class="save">节 省</dt>
+                        <dd class="price"><code>￥</code>65.00</dd>
+                        <dd class="rebate">4.4折</dd>
+                        <dd class="save"><code>￥</code>36.00</dd>
+                    </dl>
+                </td>
+                <td rowspan="4" width="260" height="204" align="center"><img src="http://img.taobaocdn.com/bao/uploaded/i4/T1FKFPXaXmXXb1upjX.jpg_670x670.jpg" height="198" width="240" /></td>
+            </tr>
+            <tr>
+                <td class="nums"><p>共有 <strong>957</strong> 人购买</p>
+                    <p>评论：0 观点：0</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="timer">
+                    <p>剩余时间: </p>
+                    <div>
+                        <p class="hour">1</p>
+                        <span class="label">小时</span>
+                        <p class="min">10</p>
+                        <span class="label">分</span>
+                        <p class="sec">4</p>
+                        <p class="dsec">.4</p>
+                        <span class="label">秒</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="buy">
+                    <p><code>￥</code>29.00</p>
+                </td>
+            </tr>
+        </table>
+        </div>
+        <div class="list">
+        	<dl><dt><img src="http://img.taobaocdn.com/bao/uploaded/i4/T1FKFPXaXmXXb1upjX.jpg_670x670.jpg" width="73" height="73" /></dt>
+        		<dd class="tprice">现 价:<span><code>￥</code>629.00</span></dd>
+        		<dd class="price">原 价:<span><code>￥</code>5065.00</span></dd>
+        		<dd class="info">手剥奶油小白杏</dd>
+        	</dl>
+        	<dl><dt><img src="http://img.taobaocdn.com/bao/uploaded/i4/T1FKFPXaXmXXb1upjX.jpg_670x670.jpg" width="73" height="73" /></dt>
+        		<dd class="tprice">现 价:<span><code>￥</code>629.00</span></dd>
+        		<dd class="price">原 价:<span><code>￥</code>5065.00</span></dd>
+        		<dd class="info">手剥奶油小白杏</dd>
+        	</dl>
+			<dl class="hover" style="border-bottom:0"><dt><img src="http://img.taobaocdn.com/bao/uploaded/i4/T1FKFPXaXmXXb1upjX.jpg_670x670.jpg" width="73" height="73" /></dt>
+        		<dd class="tprice">现 价:<span><code>￥</code>629.00</span></dd>
+        		<dd class="price">原 价:<span><code>￥</code>5065.00</span></dd>
+        		<dd class="info">手剥奶油小白杏</dd>
+        	</dl>
+        </div>
+    </div>
+    <div id="tools">
+    	<div id="share">
+			<div id="ckepop">
+				<a href="http://www.jiathis.com/share/?uid=97610" class="jiathis jtico jtico_jiathis" target="_blank">这么多的优惠信息，怎敢独享？</a>
+				<div class="links">
+					<a title="分享到淘江湖" class="jiathis_button_taobao"></a>
+					<a title="分享到新浪微博" class="jiathis_button_tsina"></a>
+					<a title="分享到QQ空间" class="jiathis_button_qzone"></a>
+					<a title="分享到QQ收藏" class="jiathis_button_qq"></a>
+					<a title="分享到开心网" class="jiathis_button_kaixin001"></a>
+					<a title="分享到人人网" class="jiathis_button_renren"></a>
+					<a title="分享到豆瓣" class="jiathis_button_douban"></a>
+					<a title="分享到百度搜藏" class="jiathis_button_baidu"></a>
+					<a title="分享到邮件" class="jiathis_button_email"></a>
+				</div>
+			</div>
+			<div style="clear:left"></div>
+			<div id="scroll_ad">
+				<ul>
+					<li><a target="_blank" href="">团来了（TuanLet）今日上线了！希望大家多多支持。</a></li>
+					<li><a target="_blank" href="">团来了API接口推出，请各团购网做好接口网购将自动收录。</a></li>
+				</ul>
+			</div>
+    	</div>
+    	<div id="take">
+    		<dl>
+    			<dt></dt>
+    			<dd class="form"><input type="text" id="mail_take" style="vertical-align:middle;" value="本功能开通中,敬请期待！" /><button style="vertical-align:middle;">邮件订阅</button></dd>
+    			<dd>*此服务完全免费并随时可以取消。<br />*我们不会泄漏您的帐户信息。</dd>
+    		</dl>
+    	</div>
+    </div>
+    <div id="banner"></div>
+    <div id="tuan">
+    	<div id="tuan_content">
+    		<div class="tuan_list">
+    			<h2>最新团购</h2>
+    			<div class="title new"></div>
+    			<div class="select">
+    				<dl><dt>价 &nbsp; 格:</dt>
+    					<dd class="cur"><a href="javascript:;">全部</a></dd>
+    					<dd><a href="javascript:;">0-50元</a></dd>
+						<dd><a href="javascript:;">50-100元</a></dd>
+						<dd><a href="javascript:;">100-150元</a></dd>
+						<dd><a href="javascript:;">150-200元</a></dd>
+						<dd><a href="javascript:;">200元以上</a></dd>
+    				</dl>
+    				<dl><dt>排 &nbsp; 序:</dt>
+    					<dd class="cur"><a href="javascript:;">默认排序</a></dd>
+    					<dd><a href="javascript:;">时间排序</a></dd>
+						<dd><a href="javascript:;">价格排序</a></dd>
+						<dd><a href="javascript:;">人气排序</a></dd>
+						<dd><a href="javascript:;">折扣排序</a></dd>
+    				</dl>
+    			</div>
+    			<div class="category">
+    				<ul>
+    					<li class="cur"><a href="javascript:;">所有分类</a></li>
+						<li><a href="javascript:;">食全酒美<span class='catenum'>(2)</span></a></li>
+						<li><a href="javascript:;">休闲娱乐<span class='catenum'>(20)</span></a></li>
+						<li><a href="javascript:;">美容保健<span class='catenum'>(5)</span></a></li>
+						<li><a href="javascript:;">精品购物<span class='catenum'>(829)</span></a></li>
+						<li><a href="javascript:;">化妆品<span class='catenum'>(663)</span></a></li>
+						<li><a href="javascript:;">其他<span class='catenum'>(91)</span></a></li>
+						<li><a href="javascript:;">自定义</a></li>
+    				</ul>
+    			</div>
+    			<div class="list_3col">
+    				<div class="detail">
+    					<img src="http://s3.tuanimg.com/deal/deal_image/0004/8875/normal/b0833447-2404-4e3f-b35c-3b21a8372e73.jpg" />
+    					<div class="head"><a href="/">【拉手网】</a><h5><a href="/">仅售68元！“渝香汇新坐标川菜馆”周年庆，特推出原价160元的麻辣</a></h5></div>
+    					<dl class="meta">
+	                        <dt>团购价:</dt>
+	                        <dd class="tprice"><code>￥</code>650.00</dd>
+	                        <dt>折扣:</dt>
+	                        <dd class="rebate">4.4折</dd>
+	                    </dl>
+						<dl class="meta">
+	                        <dt>原价:</dt>
+	                        <dd class="price"><code>￥</code>65.00</dd>
+	                    </dl>
+	                    <dl class="meta">
+	                    	<dt>已售:</dt>
+	                        <dd class="sale">500件</dd>
+	                    </dl>
+	                    <dl class="meta">
+	                    	<dd class="talk"><a href="/">(50)</a></dd>
+	                        <dd class="point"><a href="/">(26)</a></dd>
+	                    </dl>
+	                    <button>立即购买</button>
+    				</div>
+    				
+    				<div class="detail">
+    					<img src="http://s3.tuanimg.com/deal/deal_image/0004/8875/normal/b0833447-2404-4e3f-b35c-3b21a8372e73.jpg" />
+    					<div class="head"><a href="/">【拉手网】</a><h5><a href="/">仅售68元！“渝香汇新坐标川菜馆”周年庆，特推出原价160元的麻辣</a></h5></div>
+    					<dl class="meta">
+	                        <dt>团购价:</dt>
+	                        <dd class="tprice"><code>￥</code>650.00</dd>
+	                        <dt>折扣:</dt>
+	                        <dd class="rebate">4.4折</dd>
+	                    </dl>
+						<dl class="meta">
+	                        <dt>原价:</dt>
+	                        <dd class="price"><code>￥</code>65.00</dd>
+	                    </dl>
+	                    <dl class="meta">
+	                    	<dt>已售:</dt>
+	                        <dd class="sale">500件</dd>
+	                    </dl>
+	                    <dl class="meta">
+	                    	<dd class="talk"><a href="/">(50)</a></dd>
+	                        <dd class="point"><a href="/">(26)</a></dd>
+	                    </dl>
+	                    <button>立即购买</button>
+    				</div>
+					<div class="detail">
+    					<img src="http://s3.tuanimg.com/deal/deal_image/0004/8875/normal/b0833447-2404-4e3f-b35c-3b21a8372e73.jpg" />
+    					<div class="head"><a href="/">【拉手网】</a><h5><a href="/">仅售68元！“渝香汇新坐标川菜馆”周年庆，特推出原价160元的麻辣</a></h5></div>
+    					<dl class="meta">
+	                        <dt>团购价:</dt>
+	                        <dd class="tprice"><code>￥</code>650.00</dd>
+	                        <dt>折扣:</dt>
+	                        <dd class="rebate">4.4折</dd>
+	                    </dl>
+						<dl class="meta">
+	                        <dt>原价:</dt>
+	                        <dd class="price"><code>￥</code>65.00</dd>
+	                    </dl>
+	                    <dl class="meta">
+	                    	<dt>已售:</dt>
+	                        <dd class="sale">500件</dd>
+	                    </dl>
+	                    <dl class="meta">
+	                    	<dd class="talk"><a href="/">(50)</a></dd>
+	                        <dd class="point"><a href="/">(26)</a></dd>
+	                    </dl>
+	                    <button>立即购买</button>
+    				</div>
+					<div class="detail">
+    					<img src="http://s3.tuanimg.com/deal/deal_image/0004/8875/normal/b0833447-2404-4e3f-b35c-3b21a8372e73.jpg" />
+    					<div class="head"><a href="/">【拉手网】</a><h5><a href="/">仅售68元！“渝香汇新坐标川菜馆”周年庆，特推出原价160元的麻辣</a></h5></div>
+    					<dl class="meta">
+	                        <dt>团购价:</dt>
+	                        <dd class="tprice"><code>￥</code>650.00</dd>
+	                        <dt>折扣:</dt>
+	                        <dd class="rebate">4.4折</dd>
+	                    </dl>
+						<dl class="meta">
+	                        <dt>原价:</dt>
+	                        <dd class="price"><code>￥</code>65.00</dd>
+	                    </dl>
+	                    <dl class="meta">
+	                    	<dt>已售:</dt>
+	                        <dd class="sale">500件</dd>
+	                    </dl>
+	                    <dl class="meta">
+	                    	<dd class="talk"><a href="/">(50)</a></dd>
+	                        <dd class="point"><a href="/">(26)</a></dd>
+	                    </dl>
+	                    <button>立即购买</button>
+    				</div>
+					<div class="detail">
+    					<img src="http://s3.tuanimg.com/deal/deal_image/0004/8875/normal/b0833447-2404-4e3f-b35c-3b21a8372e73.jpg" />
+    					<div class="head"><a href="/">【拉手网】</a><h5><a href="/">仅售68元！“渝香汇新坐标川菜馆”周年庆，特推出原价160元的麻辣</a></h5></div>
+    					<dl class="meta">
+	                        <dt>团购价:</dt>
+	                        <dd class="tprice"><code>￥</code>650.00</dd>
+	                        <dt>折扣:</dt>
+	                        <dd class="rebate">4.4折</dd>
+	                    </dl>
+						<dl class="meta">
+	                        <dt>原价:</dt>
+	                        <dd class="price"><code>￥</code>65.00</dd>
+	                    </dl>
+	                    <dl class="meta">
+	                    	<dt>已售:</dt>
+	                        <dd class="sale">500件</dd>
+	                    </dl>
+	                    <dl class="meta">
+	                    	<dd class="talk"><a href="/">(50)</a></dd>
+	                        <dd class="point"><a href="/">(26)</a></dd>
+	                    </dl>
+	                    <button>立即购买</button>
+    				</div>
+					<div class="detail">
+    					<img src="http://s3.tuanimg.com/deal/deal_image/0004/8875/normal/b0833447-2404-4e3f-b35c-3b21a8372e73.jpg" />
+    					<div class="head"><a href="/">【拉手网】</a><h5><a href="/">仅售68元！“渝香汇新坐标川菜馆”周年庆，特推出原价160元的麻辣</a></h5></div>
+    					<dl class="meta">
+	                        <dt>团购价:</dt>
+	                        <dd class="tprice"><code>￥</code>650.00</dd>
+	                        <dt>折扣:</dt>
+	                        <dd class="rebate">4.4折</dd>
+	                    </dl>
+						<dl class="meta">
+	                        <dt>原价:</dt>
+	                        <dd class="price"><code>￥</code>65.00</dd>
+	                    </dl>
+	                    <dl class="meta">
+	                    	<dt>已售:</dt>
+	                        <dd class="sale">500件</dd>
+	                    </dl>
+	                    <dl class="meta">
+	                    	<dd class="talk"><a href="/">(50)</a></dd>
+	                        <dd class="point"><a href="/">(26)</a></dd>
+	                    </dl>
+	                    <button>立即购买</button>
+    				</div>
+
+    			</div>
+    		</div>
+    	</div>
+    	<div id="tuan_bar">
+    	
+    	</div>
+    	<div id="tuan_nav">
+    	
+    	</div>
+    </div>
+</div>
+<div style="clear:left;"></div>
+<div id="footer">
+	<div id="links">
+		<div class="bodywidth">
+			<a href="about.aspx">关于我们</a>|<a href="site_add.aspx">网址提交</a>|<a href="api.aspx">开放API</a>|
+			<a href="#">意见反馈</a>|<a href="#">用户留言</a>
+		</div>
+	</div>
+	<div id="flinks">
+		<div class="bodywidth">
+			<strong>友情链接:</strong><a href="http://www.pc123.org" target="_blank">电脑编程网</a>|<a href="http://www.91aspx.com" target="_blank">ASP.NET网站开发</a>|<a href="http://bbs.anzhuoku.com" target="_blank">安卓库</a>
+		</div>
+	</div>
+	<div id="copyright" class="bodywidth">
+		CopyRight &copy; 团来了 <a href="http://www.tuanlet.com">www.tuanlet.com</a> 2010 <a href="http://www.miibeian.gov.cn">闽ICP备10001617号</a>
+	</div>
+</div>
+<script type="text/javascript" src="http://v1.jiathis.com/code/jia.js?uid=97610" charset="utf-8"></script>
+</body>
+</html>

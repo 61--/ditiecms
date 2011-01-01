@@ -1,0 +1,156 @@
+﻿/*------Dialog样式-------*/
+html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, form, table, th, td {
+	margin: 0px;
+	padding: 0px;
+}
+#dialog{
+	width:450px;
+	margin:12% auto;
+}
+.dialog_blue
+{
+	border:0;
+	border-collapse: collapse;
+}
+.dialog_blue .button {
+	border: 0px;
+	height: 22px;
+	letter-spacing: 2px;
+	color: #FFF;
+	overflow:hidden;
+	width:64px;	
+	cursor:pointer;
+	background: url(../images/dialog/button.gif) left bottom no-repeat;
+}
+.dialog_blue .dialog_header
+{
+	width:100%;
+	height:33px;
+}
+.dialog_blue .dialog_header .h_l,
+.dialog_blue .dialog_header .h_c,
+.dialog_blue .dialog_header .h_r,
+.dialog_blue .dialog_bottom .b_l,
+.dialog_blue .dialog_bottom .b_c,
+.dialog_blue .dialog_bottom .b_r
+{
+	background:url(../images/dialog/dialog_ul.png);
+	_background:url(../images/dialog/dialog_ul.gif);
+}
+
+.dialog_blue .dialog_header .h_l
+{
+	width:11px;
+	background-repeat:no-repeat;
+	background-position:0 0;
+}
+.dialog_blue .dialog_header .h_c
+{
+	background-repeat:repeat-x;
+	background-position:0 -48px;
+}
+.dialog_blue .dialog_header .h_r{
+	width:11px;
+	background-repeat:no-repeat;
+	background-position:right 0;
+}
+.dialog_blue .dialog_header h2{
+	color:#333;
+	font-size:12px;
+	padding-top:6px;
+	text-indent:2px;
+	float:left;
+}
+.dialog_blue a.close{
+	width:16px;
+	height:16px;
+	display:block;
+	margin:4px 0px 0px 0px;
+	overflow:hidden;
+	background:url(../images/dialog/dialog_close.png) 0px 0px no-repeat;
+}
+.dialog_blue a.close:hover{
+	background:url(../images/dialog/dialog_close.png) 0px -16px no-repeat;	
+}
+.dialog_blue .dialog_content .c_l,
+.dialog_blue .dialog_content .c_r
+{
+	background:url(../images/dialog/dialog_lr.png) repeat-y;
+	_background:url(../images/dialog/dialog_lr.gif) repeat-y;
+}
+.dialog_blue .dialog_content .c_l{
+	width:11px;
+	background-position:0 0;
+}
+.dialog_blue .dialog_content .c_c{
+	background:#FFF;
+}
+.dialog_blue .dialog_content .c_r{
+	width:11px;
+	background-position:right 0;
+}
+.dialog_blue .icon{
+	width:80px;
+	height:80px;
+	text-align:center;
+}
+.dialog_blue .icon2
+{
+	width:70px;
+	height:70px;
+	margin-left:10px;
+	margin-top:20px;
+}
+.dialog_blue .message
+{
+    width:320px;
+	font-size:12px;
+	line-height:20px;
+	color:#333;
+}
+.dialog_blue .dialog_content .buttonRow{
+	text-align:right;
+	padding:5px 8px;
+	background:#F6F6F6;
+	border-top:1px #DADEE5 solid;
+}
+.dialog_blue .dialog_content .buttonRow a{
+	font-size:13px;
+	color:#0386CC;
+	text-decoration:none;
+}
+.dialog_blue .dialog_bottom{
+	height:11px;
+}
+.dialog_blue .dialog_bottom .b_l{
+	width:11px;
+	background-repeat:no-repeat;
+	background-position:0 -33px;
+}
+.dialog_blue .dialog_bottom .b_c{
+	background-repeat:repeat-x;
+	background-position:0 -81px;
+}
+.dialog_blue .dialog_bottom .b_r{
+	width:11px;
+	background-repeat:no-repeat;
+	background-position:right -33px;
+}
+.success{
+	background:url(../images/dialog/ico_success.gif) 16px 16px no-repeat;
+}
+.error{
+	background:url(../images/dialog/ico_error.gif) 16px 16px no-repeat;
+}
+.warning{
+	background:url(../images/dialog/ico_warning.gif) 16px 16px no-repeat;
+}
+.stop{
+	background:url(../images/dialog/ico_stop.gif) 16px 16px no-repeat;
+}
+.question{
+	background:url(../images/dialog/ico_question.gif) 16px 16px no-repeat;
+}
+.information{
+	background:url(../images/dialog/ico_information.gif) 16px 16px no-repeat;
+}

@@ -1,0 +1,102 @@
+﻿html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, form, table, th, td {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #3c3c3c;
+}
+img
+{
+    border:0;
+    vertical-align:middle;
+}
+.w_xxs
+{
+    width:60px;
+}
+.w_xs
+{
+    width:100px;
+}
+.w_s
+{
+    width:200px;
+}
+.w_m
+{
+    width:300px;
+}
+.w_l
+{
+    width:400px;
+}
+.w_xl
+{
+    width:500px;
+}
+.w_xxl
+{
+    width:600px;
+}
+.input_form
+{
+	width:96%;
+	margin:10px auto;
+}
+.input_text,.input_clock
+{
+	border:1px #D0CECE solid;
+	height:20px;
+	line-height:20px;
+}
+.input_btn
+{
+    height:22px;
+    font-size:13px;
+}
+.input_clock
+{
+    cursor:pointer;
+    background:url(../images/admin/ico_clock.png) 99% 50% no-repeat;
+}
+.input_form span
+{
+	color:#F00;
+	padding-left:5px;
+}
+.input_form tr
+{
+	height:30px;
+}
+.input_form tr th
+{
+	font-weight:normal;
+	text-align:right;
+}
+/*------- Tip Style -------*/
+.popup_msg
+{
+	vertical-align:middle;
+	height:30px;
+	overflow:hidden;
+}
+.popup_msg .popup_header{
+	display:none;
+}
+.popup_msg .popup_content
+{
+	text-align:center;
+	line-height:30px;
+	height:30px;
+	_padding-top:6px;
+}
+.popup_msg .popup_bottom
+{
+	display:none;
+}
+.popup_msg img
+{	
+	vertical-align:middle;
+}
