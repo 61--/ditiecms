@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{086A7F54-1A11-42E1-BE0D-33863EAEF4A3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DTCMS.Common</RootNamespace>
+    <AssemblyName>DTCMS.Common</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CacheAccess.cs" />
+    <Compile Include="FileAccessHelper.cs" />
+    <Compile Include="JScript.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="PageSeting.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Regular.cs" />
+    <Compile Include="TypeConvert.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="WaterImage.cs" />
+    <Compile Include="Xml\SerializerXML.cs" />
+    <Compile Include="Xml\XmlDocumentExtender.cs" />
+    <Compile Include="Xml\XmlNodeVisitor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\DTCMS.Common.dll" />
+    <Content Include="bin\Debug\DTCMS.Common.pdb" />
+    <Content Include="obj\Debug\DTCMS.Common.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\DTCMS.Common.dll" />
+    <Content Include="obj\Debug\DTCMS.Common.pdb" />
+    <Content Include="obj\Debug\Refactor\DTCMS.Common.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
