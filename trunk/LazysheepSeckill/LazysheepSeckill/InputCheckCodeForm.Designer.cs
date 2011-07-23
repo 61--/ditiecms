@@ -34,6 +34,7 @@
             this.cbx_AutoSubmit = new System.Windows.Forms.CheckBox();
             this.tbx_CheckCode = new System.Windows.Forms.TextBox();
             this.btn_Submit = new System.Windows.Forms.Button();
+            this.lbl_ErrInfo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic_CheckCode)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,11 +49,14 @@
             // 
             // pic_CheckCode
             // 
-            this.pic_CheckCode.Location = new System.Drawing.Point(15, 28);
+            this.pic_CheckCode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pic_CheckCode.Location = new System.Drawing.Point(15, 33);
             this.pic_CheckCode.Name = "pic_CheckCode";
-            this.pic_CheckCode.Size = new System.Drawing.Size(153, 58);
+            this.pic_CheckCode.Size = new System.Drawing.Size(150, 50);
+            this.pic_CheckCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pic_CheckCode.TabIndex = 1;
             this.pic_CheckCode.TabStop = false;
+            this.pic_CheckCode.Click += new System.EventHandler(this.pic_CheckCode_Click);
             // 
             // cbx_AutoSubmit
             // 
@@ -68,20 +72,32 @@
             // 
             // tbx_CheckCode
             // 
-            this.tbx_CheckCode.Location = new System.Drawing.Point(174, 28);
+            this.tbx_CheckCode.Location = new System.Drawing.Point(176, 34);
+            this.tbx_CheckCode.MaxLength = 4;
             this.tbx_CheckCode.Name = "tbx_CheckCode";
-            this.tbx_CheckCode.Size = new System.Drawing.Size(100, 21);
+            this.tbx_CheckCode.Size = new System.Drawing.Size(96, 21);
             this.tbx_CheckCode.TabIndex = 0;
+            this.tbx_CheckCode.TextChanged += new System.EventHandler(this.tbx_CheckCode_TextChanged);
             // 
             // btn_Submit
             // 
-            this.btn_Submit.Location = new System.Drawing.Point(175, 62);
+            this.btn_Submit.Location = new System.Drawing.Point(175, 61);
             this.btn_Submit.Name = "btn_Submit";
-            this.btn_Submit.Size = new System.Drawing.Size(99, 23);
+            this.btn_Submit.Size = new System.Drawing.Size(98, 23);
             this.btn_Submit.TabIndex = 1;
             this.btn_Submit.Text = "确 定(&Enter)";
             this.btn_Submit.UseVisualStyleBackColor = true;
             this.btn_Submit.Click += new System.EventHandler(this.btn_Submit_Click);
+            // 
+            // lbl_ErrInfo
+            // 
+            this.lbl_ErrInfo.AutoSize = true;
+            this.lbl_ErrInfo.ForeColor = System.Drawing.Color.Green;
+            this.lbl_ErrInfo.Location = new System.Drawing.Point(165, 93);
+            this.lbl_ErrInfo.Name = "lbl_ErrInfo";
+            this.lbl_ErrInfo.Size = new System.Drawing.Size(113, 12);
+            this.lbl_ErrInfo.TabIndex = 4;
+            this.lbl_ErrInfo.Text = "点击图片更换验证码";
             // 
             // InputCheckCodeForm
             // 
@@ -89,6 +105,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(286, 116);
+            this.Controls.Add(this.lbl_ErrInfo);
             this.Controls.Add(this.btn_Submit);
             this.Controls.Add(this.tbx_CheckCode);
             this.Controls.Add(this.cbx_AutoSubmit);
@@ -115,5 +132,6 @@
         private System.Windows.Forms.CheckBox cbx_AutoSubmit;
         private System.Windows.Forms.TextBox tbx_CheckCode;
         private System.Windows.Forms.Button btn_Submit;
+        private System.Windows.Forms.Label lbl_ErrInfo;
     }
 }
