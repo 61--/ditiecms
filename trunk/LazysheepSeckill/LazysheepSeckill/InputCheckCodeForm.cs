@@ -19,7 +19,6 @@ namespace LazysheepSeckill
             InitializeComponent();
 
             LoadCheckCodeImage();
-
         }
 
         private void LoadCheckCodeImage()

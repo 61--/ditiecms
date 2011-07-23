@@ -55,7 +55,7 @@ namespace LazysheepSeckill
             string loginUrl = "http://login.taobao.com/member/login.jhtml";
             http.Method = "GET";
 
-            html = http.RequestUrl("http://login.taobao.com/member/login.jhtml");
+            html = http.RequestUrl("https://login.taobao.com/member/login.jhtml");
             html = html.Substring(0, html.IndexOf("</form>")).Substring(html.IndexOf("<form id=\"J_StaticForm\""));
 
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
@@ -93,28 +93,24 @@ namespace LazysheepSeckill
                     PASSVALUE = doc.GetElementbyId("J_StandardCode_m").Attributes["data-src"].Value;
 
                     InputCheckCodeForm checkCodeForm = new InputCheckCodeForm();
-                    if (checkCodeForm.ShowDialog() == DialogResult.OK)
-                    {
-                        MessageBox.Show(PASSVALUE);
-                        LoginTaobao(PASSVALUE);
-                        return;
-                    }
+                    checkCodeForm.Owner = this;
+                    checkCodeForm.Show();
                 }
                 else if (html.IndexOf("密码和账户名不匹配") > 0 || html.IndexOf("该账户名不存在") > 0)
                 {
-                    MessageBox.Show("登录用户名或密码错误。");
+                    MessageBox.Show(this, "登录用户名或密码错误！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 else if (html.IndexOf("全登陆不允许iframe嵌入") > 0)
                 {
-                    MessageBox.Show("未知错误，请重新登录。");
+                    MessageBox.Show(this, "未知错误，请重新登录！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 else
                 {
-                    MessageBox.Show("登录成功。");
+                    MessageBox.Show(this, "登录成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                DebugTest(html, "后");
+                DebugTest(html, "login");
             }
         }
 
@@ -129,7 +125,7 @@ namespace LazysheepSeckill
             string goodsUrl = tbx_goodsUrl.Text.Trim();
             if (string.IsNullOrEmpty(goodsUrl))
             {
-                MessageBox.Show("请输入商品地址。");
+                MessageBox.Show(this, "请输入商品地址！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             string html = string.Empty;
@@ -311,12 +307,8 @@ namespace LazysheepSeckill
         {
             InputCheckCodeForm checkCodeForm = new InputCheckCodeForm();
             //InputCheckCodeForm.LoginTaobaoEvent += new InputCheckCodeForm.LoginTaobaoDelegate(LoginTaobao);
-            //checkCodeForm.Show();
-
-            if (checkCodeForm.ShowDialog() == DialogResult.OK)
-            {
-                MessageBox.Show(PASSVALUE);
-            }
+            checkCodeForm.Owner = this;
+            checkCodeForm.Show();
         }
     }
 }
