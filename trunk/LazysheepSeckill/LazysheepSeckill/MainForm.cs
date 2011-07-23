@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using HtmlAgilityPack;
 using Config;
 using Utils;
+using System.Threading;
 
 namespace LazysheepSeckill
 {
@@ -22,6 +23,7 @@ namespace LazysheepSeckill
 
         public MainForm()
         {
+            Control.CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
             InitializeData();
         }
@@ -37,12 +39,23 @@ namespace LazysheepSeckill
             }
         }
 
-        private void LoginTaobao(string checkCode)
+        private void DebugTest(string s, string tag)
+        {
+            System.IO.FileStream fs = new System.IO.FileStream(string.Format("{0}\\log_{1}-{2}.html",
+                System.Environment.CurrentDirectory, DateTime.Now.ToString("yyyyMMddHHmmss"), tag), System.IO.FileMode.Create);
+            byte[] data = System.Text.Encoding.Default.GetBytes(s);
+            fs.Write(data, 0, data.Length);
+            fs.Close();
+
+        }
+
+        private void LoginTaobao(object checkCode)
         {
             string html = string.Empty;
             string loginUrl = "http://login.taobao.com/member/login.jhtml";
             http.Method = "GET";
-            html = http.RequestToHtml(loginUrl);
+
+            html = http.RequestUrl("http://login.taobao.com/member/login.jhtml");
             html = html.Substring(0, html.IndexOf("</form>")).Substring(html.IndexOf("<form id=\"J_StaticForm\""));
 
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
@@ -51,7 +64,7 @@ namespace LazysheepSeckill
             HtmlNodeCollection inputNodes = doc.DocumentNode.SelectNodes("//input[@type='hidden']");
             if (inputNodes == null)
             {
-                MessageBox.Show("未知错误，请检查网络连接后重试。");
+                MessageBox.Show("未知错误，请检查网络是否正常后重试。");
                 return;
             }
 
@@ -63,10 +76,11 @@ namespace LazysheepSeckill
             http.AddPostKey(postData.ToString());
             http.AddPostKey("TPL_username", tbx_UserName.Text);
             http.AddPostKey("TPL_password", tbx_PassWord.Text);
-            http.AddPostKey("TPL_checkcode", checkCode);
-            http.EditPostKey("need_check_code", checkCode == "" ? "" : "true");
+            http.AddPostKey("TPL_checkcode", checkCode == null ? "" : checkCode.ToString());
+            http.EditPostKey("need_check_code", checkCode == null ? "" : "true");
             http.Method = "POST";
-            html = http.RequestToHtml(loginUrl);
+
+            html = http.RequestUrl(loginUrl);
 
             if (http.Error)
             {
@@ -86,22 +100,28 @@ namespace LazysheepSeckill
                         return;
                     }
                 }
-                else if (html.IndexOf("您输入的密码和账户名不匹配") > 0)
+                else if (html.IndexOf("密码和账户名不匹配") > 0 || html.IndexOf("该账户名不存在") > 0)
                 {
                     MessageBox.Show("登录用户名或密码错误。");
+                    return;
+                }
+                else if (html.IndexOf("全登陆不允许iframe嵌入") > 0)
+                {
+                    MessageBox.Show("未知错误，请重新登录。");
                     return;
                 }
                 else
                 {
                     MessageBox.Show("登录成功。");
                 }
-                MessageBox.Show(html);
+                DebugTest(html, "后");
             }
         }
 
         private void btn_LoginTaobao_Click(object sender, EventArgs e)
         {
-            LoginTaobao("");
+            Thread t = new Thread(new ParameterizedThreadStart(LoginTaobao));
+            t.Start(null);
         }
 
         private void btn_openGoods_Click(object sender, EventArgs e)
@@ -114,7 +134,7 @@ namespace LazysheepSeckill
             }
             string html = string.Empty;
             http.Method = "GET";
-            html = http.RequestToHtml(goodsUrl);
+            html = http.RequestUrl(goodsUrl);
             if (http.Error)
             {
                 MessageBox.Show(http.ErrorMsg);
