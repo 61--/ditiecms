@@ -258,5 +258,10 @@ namespace LazysheepSeckill
 
             base.OnClosed(e);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new InputCheckCodeForm().Show();
+        }
     }
 }

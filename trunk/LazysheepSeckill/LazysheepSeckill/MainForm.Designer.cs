@@ -43,6 +43,7 @@
             this.wbr_main = new System.Windows.Forms.WebBrowser();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.sslabelMessage = new System.Windows.Forms.ToolStripStatusLabel();
+            this.button1 = new System.Windows.Forms.Button();
             this.gbx_taobaoLogin.SuspendLayout();
             this.gbx_goodsinfo.SuspendLayout();
             this.tabControlMain.SuspendLayout();
@@ -144,10 +145,18 @@
             this.sslabelMessage.Name = "sslabelMessage";
             resources.ApplyResources(this.sslabelMessage, "sslabelMessage");
             // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.gbx_goodsinfo);
             this.Controls.Add(this.gbx_taobaoLogin);
@@ -181,6 +190,7 @@
         private System.Windows.Forms.WebBrowser wbr_main;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel sslabelMessage;
+        private System.Windows.Forms.Button button1;
     }
 }
 
