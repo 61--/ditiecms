@@ -226,7 +226,7 @@ namespace Utils
             cPostData = Regex.Replace(cPostData, string.Format("{0}=*[0-9]+&", Key), string.Format("{0}={1}&", Key, Value), RegexOptions.IgnoreCase);
         }
 
-        public string RequestUrl(string Url)
+        public HttpWebResponse Request(string Url)
         {
             Url = UrlEncode(Url);
             //System.Diagnostics.Debug.WriteLine(Url);
@@ -341,27 +341,6 @@ namespace Utils
                     } // if Response.Cookie.Count > 0
                 } // if this.bHandleCookies = 0
 
-
-                // *** Save the response object for external access
-                Encoding enc;
-                try
-                {
-                    if (response.ContentEncoding.Length > 0)
-                        enc = Encoding.GetEncoding(response.ContentEncoding);
-                    else
-                        enc = Encoding.GetEncoding(cEncoding);
-                }
-                catch
-                {
-                    // *** Invalid encoding passed
-                    enc = Encoding.GetEncoding(cEncoding);
-                }
-
-                // *** drag to a stream
-                StreamReader strResponse = new StreamReader(response.GetResponseStream(), enc);
-                string str = strResponse.ReadToEnd();
-                response.Close();
-                strResponse.Close();
                 //自动跟踪引用页
                 if (this.bHandleReferer)
                 {
@@ -373,7 +352,7 @@ namespace Utils
 
                     //这里需要自动获得跳转页面的地址。并且再次使用这个方法访问页面
                 }
-                return str;
+                return response;
             }
             catch (Exception e)
             {
@@ -383,6 +362,43 @@ namespace Utils
                 this.bError = true;
                 return null;
             }
+        }
+
+        public string RequestToHtml(string Url)
+        {
+            HttpWebResponse response = Request(Url);
+            // *** Save the response object for external access
+            Encoding enc;
+            try
+            {
+                if (response.ContentEncoding.Length > 0)
+                    enc = Encoding.GetEncoding(response.ContentEncoding);
+                else
+                    enc = Encoding.GetEncoding(cEncoding);
+            }
+            catch
+            {
+                // *** Invalid encoding passed
+                enc = Encoding.GetEncoding(cEncoding);
+            }
+
+            // *** drag to a stream
+            StreamReader strResponse = new StreamReader(response.GetResponseStream(), enc);
+            string str = strResponse.ReadToEnd();
+            response.Close();
+            strResponse.Close();
+            //自动跟踪引用页
+            if (this.bHandleReferer)
+            {
+                this.cReferer = Url;
+            }
+            //自动处理HTTP/1.0 302 Moved Temporarily中的Location后的页面。（自动完成跳转）
+            if (this.bLocation)
+            {
+
+                //这里需要自动获得跳转页面的地址。并且再次使用这个方法访问页面
+            }
+            return str;
         }
 
         private string UrlEncode(string url)

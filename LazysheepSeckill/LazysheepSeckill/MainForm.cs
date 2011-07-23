@@ -41,7 +41,7 @@ namespace LazysheepSeckill
             string html = string.Empty;
             string loginUrl = "http://login.taobao.com/member/login.jhtml";
             http.Method = "GET";
-            html = http.RequestUrl(loginUrl);
+            html = http.RequestToHtml(loginUrl);
             html = html.Substring(0, html.IndexOf("</form>")).Substring(html.IndexOf("<form id=\"J_StaticForm\""));
 
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
@@ -64,7 +64,7 @@ namespace LazysheepSeckill
             http.AddPostKey("TPL_password", tbx_PassWord.Text);
             //http.EditPostKey("loginType", "3");
             http.Method = "POST";
-            html = http.RequestUrl(loginUrl);
+            html = http.RequestToHtml(loginUrl);
 
             if (http.Error)
             {
@@ -72,7 +72,21 @@ namespace LazysheepSeckill
             }
             else
             {
-                MessageBox.Show(html);
+                if (html.IndexOf("请输入验证码") > 0)
+                {
+                    new InputCheckCodeForm().Show();
+                    return;
+                }
+                else if (html.IndexOf("您输入的密码和账户名不匹配")>0)
+                {
+                    MessageBox.Show("登录用户名或密码错误。");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("登录成功。");
+                }
+                //MessageBox.Show(html);
             }
         }
 
@@ -86,7 +100,7 @@ namespace LazysheepSeckill
             }
             string html = string.Empty;
             http.Method = "GET";
-            html = http.RequestUrl(goodsUrl);
+            html = http.RequestToHtml(goodsUrl);
             if (http.Error)
             {
                 MessageBox.Show(http.ErrorMsg);
