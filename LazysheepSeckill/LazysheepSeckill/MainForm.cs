@@ -18,6 +18,7 @@ namespace LazysheepSeckill
         string strServer = string.Empty;
         string strPath = string.Empty;
         HttpUtils http = new HttpUtils();
+        public static string PASSVALUE;
 
         public MainForm()
         {
@@ -36,7 +37,7 @@ namespace LazysheepSeckill
             }
         }
 
-        private void btn_LoginTaobao_Click(object sender, EventArgs e)
+        private void LoginTaobao(string checkCode)
         {
             string html = string.Empty;
             string loginUrl = "http://login.taobao.com/member/login.jhtml";
@@ -62,7 +63,8 @@ namespace LazysheepSeckill
             http.AddPostKey(postData.ToString());
             http.AddPostKey("TPL_username", tbx_UserName.Text);
             http.AddPostKey("TPL_password", tbx_PassWord.Text);
-            //http.EditPostKey("loginType", "3");
+            http.AddPostKey("TPL_checkcode", checkCode);
+            http.EditPostKey("need_check_code", checkCode == "" ? "" : "true");
             http.Method = "POST";
             html = http.RequestToHtml(loginUrl);
 
@@ -74,10 +76,17 @@ namespace LazysheepSeckill
             {
                 if (html.IndexOf("请输入验证码") > 0)
                 {
-                    new InputCheckCodeForm().Show();
-                    return;
+                    PASSVALUE = doc.GetElementbyId("J_StandardCode_m").Attributes["data-src"].Value;
+
+                    InputCheckCodeForm checkCodeForm = new InputCheckCodeForm();
+                    if (checkCodeForm.ShowDialog() == DialogResult.OK)
+                    {
+                        MessageBox.Show(PASSVALUE);
+                        LoginTaobao(PASSVALUE);
+                        return;
+                    }
                 }
-                else if (html.IndexOf("您输入的密码和账户名不匹配")>0)
+                else if (html.IndexOf("您输入的密码和账户名不匹配") > 0)
                 {
                     MessageBox.Show("登录用户名或密码错误。");
                     return;
@@ -86,8 +95,13 @@ namespace LazysheepSeckill
                 {
                     MessageBox.Show("登录成功。");
                 }
-                //MessageBox.Show(html);
+                MessageBox.Show(html);
             }
+        }
+
+        private void btn_LoginTaobao_Click(object sender, EventArgs e)
+        {
+            LoginTaobao("");
         }
 
         private void btn_openGoods_Click(object sender, EventArgs e)
@@ -275,7 +289,14 @@ namespace LazysheepSeckill
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new InputCheckCodeForm().Show();
+            InputCheckCodeForm checkCodeForm = new InputCheckCodeForm();
+            //InputCheckCodeForm.LoginTaobaoEvent += new InputCheckCodeForm.LoginTaobaoDelegate(LoginTaobao);
+            //checkCodeForm.Show();
+
+            if (checkCodeForm.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show(PASSVALUE);
+            }
         }
     }
 }

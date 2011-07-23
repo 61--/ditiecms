@@ -19,24 +19,26 @@ namespace LazysheepSeckill
             InitializeComponent();
 
             LoadCheckCodeImage();
+
         }
 
         private void LoadCheckCodeImage()
         {
-            //HttpUtils http = new HttpUtils();
-            //http.Method = "GET";
-            //Stream stream = http.Request("https://regcheckcode.taobao.com/auction/checkcode?sessionID=2b2b8f048540ce4cecf511e5ee155379").GetResponseStream();
+            HttpUtils http = new HttpUtils();
+            http.Method = "GET";
+            Stream stream = http.Request("https://regcheckcode.taobao.com/auction/checkcode?sessionID=2b2b8f048540ce4cecf511e5ee155379").GetResponseStream();
 
-            //Image checkcodeImage = Image.FromStream(stream);
-            //pic_CheckCode.Image = checkcodeImage;
+            Image checkcodeImage = Image.FromStream(stream);
+            pic_CheckCode.Image = checkcodeImage;
 
-            pic_CheckCode.ImageLocation = "https://regcheckcode.taobao.com/auction/checkcode?sessionID=2b2b8f048540ce4cecf511e5ee155379";
+            //pic_CheckCode.ImageLocation = "https://regcheckcode.taobao.com/auction/checkcode?sessionID=2b2b8f048540ce4cecf511e5ee155379";
         }
 
         private void btn_Submit_Click(object sender, EventArgs e)
         {
             if (tbx_CheckCode.Text.Length == 4)
             {
+                MainForm.PASSVALUE = tbx_CheckCode.Text;
                 this.Close();
             }
             else
@@ -50,6 +52,7 @@ namespace LazysheepSeckill
         {
             if (cbx_AutoSubmit.Checked && tbx_CheckCode.Text.Length == 4)
             {
+                MainForm.PASSVALUE = tbx_CheckCode.Text;
                 this.Close();
             }
         }
