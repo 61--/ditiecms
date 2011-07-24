@@ -44,6 +44,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.sslabelMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.button1 = new System.Windows.Forms.Button();
+            this.skin = new Sunisoft.IrisSkin.SkinEngine(((System.ComponentModel.Component)(this)));
             this.gbx_taobaoLogin.SuspendLayout();
             this.gbx_goodsinfo.SuspendLayout();
             this.tabControlMain.SuspendLayout();
@@ -152,6 +153,11 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // skin
+            // 
+            this.skin.SerialNumber = "";
+            this.skin.SkinFile = "";
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -162,6 +168,7 @@
             this.Controls.Add(this.gbx_taobaoLogin);
             this.Controls.Add(this.tabControlMain);
             this.Name = "MainForm";
+            this.TopMost = true;
             this.gbx_taobaoLogin.ResumeLayout(false);
             this.gbx_taobaoLogin.PerformLayout();
             this.gbx_goodsinfo.ResumeLayout(false);
@@ -191,6 +198,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel sslabelMessage;
         private System.Windows.Forms.Button button1;
+        private Sunisoft.IrisSkin.SkinEngine skin;
     }
 }
 
