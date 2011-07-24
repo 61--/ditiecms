@@ -27,7 +27,12 @@ namespace LazysheepSeckill
             m_SplashThread = new Thread(new ThreadStart(delegate()
             {
                 CreateInstance(splashFormType);
-                Application.Run(m_SplashForm);
+                //Application.Run(m_SplashForm);
+
+                if (m_SplashForm.ShowDialog() == DialogResult.OK)
+                {
+                    Application.Run(new MainForm());
+                }
             }));
 
             m_SplashThread.IsBackground = true;

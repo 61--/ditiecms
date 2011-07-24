@@ -26,8 +26,8 @@ namespace LazysheepSeckill
             
             InitializeComponent();
 
-            InitializeData();
-                    }
+            //InitializeData();  放到frmSplash初始化
+        }
 
         private void InitializeData()
         {
