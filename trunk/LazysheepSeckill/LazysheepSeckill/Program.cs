@@ -15,10 +15,8 @@ namespace LazysheepSeckill
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-
-            Splasher.Show(typeof(frmSplash));
             Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
-            Application.Run(new MainForm());
+            Splasher.Show(typeof(frmSplash));
         }
 
         private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs ex)
