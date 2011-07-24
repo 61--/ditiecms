@@ -23,9 +23,15 @@ namespace LazysheepSeckill
 
         public MainForm()
         {
-            Control.CheckForIllegalCrossThreadCalls = false;
+            
             InitializeComponent();
+
+            Splasher.Status = "正在初始化程序...";
             InitializeData();
+            skin.SkinFile = @"Skins\MacOS.ssk";
+            Control.CheckForIllegalCrossThreadCalls = false;
+            Splasher.Status = "初始化完毕...";
+            Splasher.Close();
         }
 
         private void InitializeData()
@@ -93,8 +99,7 @@ namespace LazysheepSeckill
                     PASSVALUE = doc.GetElementbyId("J_StandardCode_m").Attributes["data-src"].Value;
 
                     InputCheckCodeForm checkCodeForm = new InputCheckCodeForm();
-                    checkCodeForm.Owner = this;
-                    checkCodeForm.Show();
+                    checkCodeForm.Show(this);
                 }
                 else if (html.IndexOf("密码和账户名不匹配") > 0 || html.IndexOf("该账户名不存在") > 0)
                 {
@@ -308,7 +313,7 @@ namespace LazysheepSeckill
             InputCheckCodeForm checkCodeForm = new InputCheckCodeForm();
             //InputCheckCodeForm.LoginTaobaoEvent += new InputCheckCodeForm.LoginTaobaoDelegate(LoginTaobao);
             checkCodeForm.Owner = this;
-            checkCodeForm.Show();
+            checkCodeForm.Show(this);
         }
     }
 }
