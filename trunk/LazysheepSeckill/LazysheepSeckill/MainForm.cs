@@ -26,16 +26,15 @@ namespace LazysheepSeckill
             
             InitializeComponent();
 
-            Splasher.Status = "正在初始化程序...";
             InitializeData();
-            skin.SkinFile = @"Skins\MacOS.ssk";
-            Control.CheckForIllegalCrossThreadCalls = false;
-            Splasher.Status = "初始化完毕...";
-            Splasher.Close();
-        }
+                    }
 
         private void InitializeData()
         {
+            Splasher.Status = "正在初始化程序...";
+
+            Control.CheckForIllegalCrossThreadCalls = false;
+            skin.SkinFile = @"Skins\MacOS.ssk";
             AppConfigInfo config = ConfigAccess<AppConfigInfo>.GetConfig();
             if (config != null)
             {
@@ -43,6 +42,9 @@ namespace LazysheepSeckill
                 tbx_PassWord.Text = SecurityUtils.DesDecode(config.PassWord);
                 tbx_goodsUrl.Text = config.GoodsUrl;
             }
+
+            Splasher.Status = "初始化完毕...";
+            Splasher.Close();
         }
 
         private void DebugTest(string s, string tag)

@@ -11,7 +11,8 @@
     <RootNamespace>HtmlAgilityPack</RootNamespace>
     <AssemblyName>HtmlAgilityPack</AssemblyName>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>HtmlAgilityPack.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
     <SccProjectName>
     </SccProjectName>
     <SccLocalPath>
@@ -99,9 +100,6 @@
     <Compile Include="MixedCodeDocument.cs" />
     <Compile Include="HtmlCmdLine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="HtmlAgilityPack.snk" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
