@@ -16,6 +16,7 @@ namespace LazysheepSeckill
         HttpUtils http = new HttpUtils();
         public static string PASSVALUE;
         private SplashScreen mSplashScreen;
+        private AppConfigInfo mConfig;
 
         public MainForm(SplashScreen splash)
         {
@@ -23,20 +24,28 @@ namespace LazysheepSeckill
             mSplashScreen.SetProgress("正在加载系统组件...", 0.2);
             InitializeComponent();
             mSplashScreen.SetProgress("正在加载程序数据...", 0.6);
-            InitializeData(); 
+            InitializeData();
             mSplashScreen.SetProgress("程序加载完毕...", 1.0);
         }
 
         private void InitializeData()
         {
             Control.CheckForIllegalCrossThreadCalls = false;
-            skin.SkinFile = @"Skins\MacOS.ssk";
-            AppConfigInfo config = ConfigAccess<AppConfigInfo>.GetConfig();
-            if (config != null)
+            mConfig = ConfigAccess<AppConfigInfo>.GetConfig();
+            if (mConfig == null)
             {
-                tbx_UserName.Text = config.UserName;
-                tbx_PassWord.Text = SecurityUtils.DesDecode(config.PassWord);
-                tbx_goodsUrl.Text = config.GoodsUrl;
+                return;
+            }
+            if (mConfig.UserData != null)
+            {
+                tbx_UserName.Text = mConfig.UserData.UserName;
+                tbx_PassWord.Text = SecurityUtils.DesDecode(mConfig.UserData.PassWord);
+                tbx_goodsUrl.Text = mConfig.UserData.GoodsUrl;
+            }
+            if (mConfig.SystemSetting != null)
+            {
+                this.TopMost = mConfig.SystemSetting.WindowTopMost;
+                this.skin.SkinFile = mConfig.SystemSetting.SkinFile;
             }
         }
 
@@ -295,11 +304,11 @@ namespace LazysheepSeckill
 
         protected override void OnClosed(EventArgs e)
         {
-            AppConfigInfo config = new AppConfigInfo();
-            config.UserName = tbx_UserName.Text;
-            config.PassWord = SecurityUtils.DesEncode(tbx_PassWord.Text);
-            config.GoodsUrl = tbx_goodsUrl.Text;
-            ConfigAccess<AppConfigInfo>.SaveConfig(config);
+            mConfig.UserData = new UserData();
+            mConfig.UserData.UserName = tbx_UserName.Text;
+            mConfig.UserData.PassWord = SecurityUtils.DesEncode(tbx_PassWord.Text);
+            mConfig.UserData.GoodsUrl = tbx_goodsUrl.Text;
+            ConfigAccess<AppConfigInfo>.SaveConfig(mConfig);
 
             base.OnClosed(e);
         }
