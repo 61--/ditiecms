@@ -405,7 +405,7 @@
     <value>4</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>0, 644</value>
+    <value>0, 647</value>
   </metadata>
   <data name="sslabelMessage.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 17</value>

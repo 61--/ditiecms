@@ -16,7 +16,11 @@ namespace LazysheepSeckill
             Application.SetCompatibleTextRenderingDefault(false);
 
             Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
-            Splasher.Show(typeof(frmSplash));
+            
+            SplashScreen splash = new SplashScreen();
+            splash.Show();
+
+            Application.Run(new MainForm(splash));
         }
 
         private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs ex)

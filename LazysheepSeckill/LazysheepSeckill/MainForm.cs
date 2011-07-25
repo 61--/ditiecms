@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
-using HtmlAgilityPack;
-using Config;
-using Utils;
 using System.Threading;
+using System.Windows.Forms;
+using Config;
+using HtmlAgilityPack;
+using Utils;
 
 namespace LazysheepSeckill
 {
@@ -20,19 +15,20 @@ namespace LazysheepSeckill
         string strPath = string.Empty;
         HttpUtils http = new HttpUtils();
         public static string PASSVALUE;
+        private SplashScreen mSplashScreen;
 
-        public MainForm()
+        public MainForm(SplashScreen splash)
         {
-            
+            mSplashScreen = splash;
+            mSplashScreen.SetProgress("正在加载组件...", 0.2);
             InitializeComponent();
-
-            //InitializeData();  放到frmSplash初始化
+            mSplashScreen.SetProgress("正在加载数据...", 0.6);
+            InitializeData(); 
+            mSplashScreen.SetProgress("程序加载完毕...", 1.0);
         }
 
         private void InitializeData()
         {
-            Splasher.Status = "正在初始化程序...";
-
             Control.CheckForIllegalCrossThreadCalls = false;
             skin.SkinFile = @"Skins\MacOS.ssk";
             AppConfigInfo config = ConfigAccess<AppConfigInfo>.GetConfig();
@@ -42,9 +38,6 @@ namespace LazysheepSeckill
                 tbx_PassWord.Text = SecurityUtils.DesDecode(config.PassWord);
                 tbx_goodsUrl.Text = config.GoodsUrl;
             }
-
-            Splasher.Status = "初始化完毕...";
-            Splasher.Close();
         }
 
         private void DebugTest(string s, string tag)
@@ -124,6 +117,7 @@ namespace LazysheepSeckill
         private void btn_LoginTaobao_Click(object sender, EventArgs e)
         {
             Thread t = new Thread(new ParameterizedThreadStart(LoginTaobao));
+            t.IsBackground = true;
             t.Start(null);
         }
 
@@ -316,6 +310,12 @@ namespace LazysheepSeckill
             //InputCheckCodeForm.LoginTaobaoEvent += new InputCheckCodeForm.LoginTaobaoDelegate(LoginTaobao);
             checkCodeForm.Owner = this;
             checkCodeForm.Show(this);
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            mSplashScreen.Hide();
+            this.Activate();
         }
     }
 }
