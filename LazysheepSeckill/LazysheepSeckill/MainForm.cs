@@ -62,10 +62,10 @@ namespace LazysheepSeckill
         private void LoginTaobao(object checkCode)
         {
             string html = string.Empty;
-            string loginUrl = "http://login.taobao.com/member/login.jhtml";
+            string loginUrl = "https://login.taobao.com/member/login.jhtml";
             http.Method = "GET";
 
-            html = http.RequestUrl("https://login.taobao.com/member/login.jhtml");
+            html = http.RequestUrl("https://login.taobao.com/");
             html = html.Substring(0, html.IndexOf("</form>")).Substring(html.IndexOf("<form id=\"J_StaticForm\""));
 
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
@@ -94,7 +94,7 @@ namespace LazysheepSeckill
 
             if (http.Error)
             {
-                MessageBox.Show(http.ErrorMsg);
+                MessageBox.Show(http.ErrorMsg, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

@@ -179,7 +179,7 @@ namespace Utils
         // *** member properties
         string cPostData = ""; //提交的数据
         int nConnectTimeout = 30; //超时
-        string cUserAgent = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.2; Trident/4.0; TencentTraveler 4.0; .NET CLR 2.0.50727)";
+        string cUserAgent = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.2; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022)";
         bool bHandleReferer = true; //自动操作引用页
         string cReferer = ""; //引用页
         string cMethod = "POST"; //提交模式POST ro GET
@@ -239,9 +239,8 @@ namespace Utils
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
                 request.UserAgent = this.cUserAgent;
                 request.Timeout = this.nConnectTimeout * 1000;
-                request.Accept = "image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/x-shockwave-flash, */*";
+                request.Accept = "application/x-shockwave-flash, image/gif, image/jpeg, image/pjpeg, image/pjpeg, application/x-ms-application, application/x-ms-xbap, application/vnd.ms-xpsdocument, application/xaml+xml, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*";
                 request.Referer = this.cReferer;
-                //Request.Connection = "keep-alive";
 
                 // 需要安全验证的访问
                 if (this.cUsername.Length > 0)
