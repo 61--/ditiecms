@@ -20,9 +20,9 @@ namespace LazysheepSeckill
         public MainForm(SplashScreen splash)
         {
             mSplashScreen = splash;
-            mSplashScreen.SetProgress("正在加载组件...", 0.2);
+            mSplashScreen.SetProgress("正在加载系统组件...", 0.2);
             InitializeComponent();
-            mSplashScreen.SetProgress("正在加载数据...", 0.6);
+            mSplashScreen.SetProgress("正在加载程序数据...", 0.6);
             InitializeData(); 
             mSplashScreen.SetProgress("程序加载完毕...", 1.0);
         }
