@@ -94,7 +94,7 @@ namespace LazysheepSeckill
                 g.FillRectangle(this.mBrush, this.Bound);
 
                 //text
-                g.DrawString(String.Format("°æ±¾ v{0}", Application.ProductVersion), mTextFont, mTextBrush, this.Width-100, 75);
+                g.DrawString(String.Format("°æ±¾ v{0}", Application.ProductVersion), mTextFont, mTextBrush, this.Width-110, 80);
                 g.DrawString(mMessageText, SystemFonts.DialogFont, mTextBrush, 15, this.Height - 45);
 
                 //progress bar

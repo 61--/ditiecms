@@ -1,32 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace Config
 {
     [Serializable]
     public class AppConfigInfo : IConfigInfo
     {
-        private string _username;
-        private string _password;
-        private string _goodsurl;
+        [XmlElement(ElementName = "UserData")]
+        public UserData UserData
+        {
+            get;
+            set;
+        }
 
+        [XmlElement(ElementName = "SystemSetting")]
+        public SystemSetting SystemSetting
+        {
+            get;
+            set;
+        }
+    }
+
+    [Serializable]
+    public class UserData
+    {
         public string UserName
         {
-            get { return _username; }
-            set { _username = value; }
+            get;
+            set;
         }
 
         public string PassWord
         {
-            get { return _password; }
-            set { _password = value; }
+            get;
+            set;
         }
 
         public string GoodsUrl
         {
-            get { return _goodsurl; }
-            set { _goodsurl = value; }
+            get;
+            set;
+        }
+    }
+
+    [Serializable]
+    public class SystemSetting
+    {
+        public bool WindowTopMost
+        {
+            get;
+            set;
+        }
+
+        public string SkinFile
+        {
+            get;
+            set;
         }
     }
 }
