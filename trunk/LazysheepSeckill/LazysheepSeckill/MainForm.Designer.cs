@@ -168,7 +168,7 @@
             this.Controls.Add(this.gbx_taobaoLogin);
             this.Controls.Add(this.tabControlMain);
             this.Name = "MainForm";
-            this.TopMost = true;
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.gbx_taobaoLogin.ResumeLayout(false);
             this.gbx_taobaoLogin.PerformLayout();
             this.gbx_goodsinfo.ResumeLayout(false);
