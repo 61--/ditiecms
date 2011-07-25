@@ -98,7 +98,15 @@ namespace LazysheepSeckill
             }
             else
             {
-                if (html.IndexOf("请输入验证码") > 0)
+                if (html.IndexOf("window.location = \"http") > 0)
+                {
+                    string url = html.Substring(html.IndexOf("window.location = \"http") + 19, 255).Substring(0, html.IndexOf("\"") - 7);
+                    http.Method = "GET";
+                    http.RequestUrl(url);
+                    tbx_goodsUrl.Text = url;
+                    MessageBox.Show(this, "登录成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (html.IndexOf("请输入验证码") > 0)
                 {
                     PASSVALUE = doc.GetElementbyId("J_StandardCode_m").Attributes["data-src"].Value;
 
@@ -110,16 +118,11 @@ namespace LazysheepSeckill
                     MessageBox.Show(this, "登录用户名或密码错误！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                else if (html.IndexOf("全登陆不允许iframe嵌入") > 0)
+                else
                 {
                     MessageBox.Show(this, "未知错误，请重新登录！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                else
-                {
-                    MessageBox.Show(this, "登录成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                DebugTest(html, "login");
             }
         }
 
@@ -304,6 +307,7 @@ namespace LazysheepSeckill
 
         protected override void OnClosed(EventArgs e)
         {
+            mConfig = mConfig ?? new AppConfigInfo();
             mConfig.UserData = new UserData();
             mConfig.UserData.UserName = tbx_UserName.Text;
             mConfig.UserData.PassWord = SecurityUtils.DesEncode(tbx_PassWord.Text);

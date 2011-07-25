@@ -11,16 +11,18 @@ namespace Config
         [XmlElement(ElementName = "UserData")]
         public UserData UserData
         {
-            get;
-            set;
+            get { return m_UserData; }
+            set { m_UserData = value; }
         }
+        private UserData m_UserData;
 
         [XmlElement(ElementName = "SystemSetting")]
         public SystemSetting SystemSetting
         {
-            get;
-            set;
+            get { return m_SystemSetting; }
+            set { m_SystemSetting = value; }
         }
+        private SystemSetting m_SystemSetting;
     }
 
     [Serializable]
@@ -28,21 +30,24 @@ namespace Config
     {
         public string UserName
         {
-            get;
-            set;
+            get { return m_UserName; }
+            set { m_UserName = value; }
         }
+        private string m_UserName;
 
         public string PassWord
         {
-            get;
-            set;
+            get { return m_PassWord; }
+            set { m_PassWord = value; }
         }
+        private string m_PassWord;
 
         public string GoodsUrl
         {
-            get;
-            set;
+            get { return m_GoodsUrl; }
+            set { m_GoodsUrl = value; }
         }
+        private string m_GoodsUrl;
     }
 
     [Serializable]
@@ -50,14 +55,16 @@ namespace Config
     {
         public bool WindowTopMost
         {
-            get;
-            set;
+            get { return m_WindowTopMost; }
+            set { m_WindowTopMost = value; }
         }
+        private bool m_WindowTopMost;
 
         public string SkinFile
         {
-            get;
-            set;
+            get { return m_SkinFile; }
+            set { m_SkinFile = value; }
         }
+        private string m_SkinFile;
     }
 }
