@@ -118,13 +118,34 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cbx_UserName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 23</value>
+  </data>
+  <data name="cbx_UserName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 20</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cbx_UserName.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;cbx_UserName.Name" xml:space="preserve">
+    <value>cbx_UserName</value>
+  </data>
+  <data name="&gt;&gt;cbx_UserName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbx_UserName.Parent" xml:space="preserve">
+    <value>gbx_taobaoLogin</value>
+  </data>
+  <data name="&gt;&gt;cbx_UserName.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="tbx_PassWord.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 55</value>
   </data>
   <data name="tbx_PassWord.Size" type="System.Drawing.Size, System.Drawing">
     <value>118, 21</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tbx_PassWord.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
@@ -138,7 +159,7 @@
     <value>gbx_taobaoLogin</value>
   </data>
   <data name="&gt;&gt;tbx_PassWord.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btn_LoginTaobao.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -166,7 +187,7 @@
     <value>gbx_taobaoLogin</value>
   </data>
   <data name="&gt;&gt;btn_LoginTaobao.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="lbl_PassWord.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -196,27 +217,6 @@
     <value>gbx_taobaoLogin</value>
   </data>
   <data name="&gt;&gt;lbl_PassWord.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tbx_UserName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 21</value>
-  </data>
-  <data name="tbx_UserName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 21</value>
-  </data>
-  <data name="tbx_UserName.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tbx_UserName.Name" xml:space="preserve">
-    <value>tbx_UserName</value>
-  </data>
-  <data name="&gt;&gt;tbx_UserName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbx_UserName.Parent" xml:space="preserve">
-    <value>gbx_taobaoLogin</value>
-  </data>
-  <data name="&gt;&gt;tbx_UserName.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="lbl_UserName.AutoSize" type="System.Boolean, mscorlib">
@@ -375,39 +375,6 @@
   <data name="&gt;&gt;gbx_goodsinfo.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;wbr_main.Name" xml:space="preserve">
-    <value>wbr_main</value>
-  </data>
-  <data name="&gt;&gt;wbr_main.Type" xml:space="preserve">
-    <value>System.Windows.Forms.WebBrowser, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;wbr_main.Parent" xml:space="preserve">
-    <value>tabControlMain</value>
-  </data>
-  <data name="&gt;&gt;wbr_main.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tabControlMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>201, 182</value>
-  </data>
-  <data name="tabControlMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>679, 462</value>
-  </data>
-  <data name="tabControlMain.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tabControlMain.Name" xml:space="preserve">
-    <value>tabControlMain</value>
-  </data>
-  <data name="&gt;&gt;tabControlMain.Type" xml:space="preserve">
-    <value>Crownwood.Magic.Controls.TabControl, MagicLibrary, Version=1.7.0.0, Culture=neutral, PublicKeyToken=3a6eb82f876a49bc</value>
-  </data>
-  <data name="&gt;&gt;tabControlMain.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabControlMain.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="wbr_main.Location" type="System.Drawing.Point, System.Drawing">
     <value>651, 26</value>
   </data>
@@ -432,9 +399,33 @@
   <data name="&gt;&gt;wbr_main.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="tabControlMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>201, 154</value>
+  </data>
+  <data name="tabControlMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>679, 462</value>
+  </data>
+  <data name="tabControlMain.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tabControlMain.Name" xml:space="preserve">
+    <value>tabControlMain</value>
+  </data>
+  <data name="&gt;&gt;tabControlMain.Type" xml:space="preserve">
+    <value>Crownwood.Magic.Controls.TabControl, MagicLibrary, Version=1.7.0.0, Culture=neutral, PublicKeyToken=3a6eb82f876a49bc</value>
+  </data>
+  <data name="&gt;&gt;tabControlMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControlMain.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>0, 647</value>
   </metadata>
+  <data name="sslabelMessage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 17</value>
+  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 647</value>
   </data>
@@ -458,9 +449,6 @@
   </data>
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="sslabelMessage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
   </data>
   <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -495,36 +483,6 @@
   <metadata name="menu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>0, 0</value>
   </metadata>
-  <data name="menu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menu.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 3, 0, 3</value>
-  </data>
-  <data name="menu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 26</value>
-  </data>
-  <data name="menu.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;menu.Name" xml:space="preserve">
-    <value>menu</value>
-  </data>
-  <data name="&gt;&gt;menu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menu.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menu.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="FileMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 20</value>
-  </data>
-  <data name="FileMenuItem.Text" xml:space="preserve">
-    <value>文件(&amp;F)</value>
-  </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 22</value>
   </data>
@@ -540,11 +498,11 @@
   <data name="退出EToolStripMenuItem.Text" xml:space="preserve">
     <value>退出(&amp;E)</value>
   </data>
-  <data name="UserMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 20</value>
+  <data name="FileMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 20</value>
   </data>
-  <data name="UserMenuItem.Text" xml:space="preserve">
-    <value>用户(&amp;U)</value>
+  <data name="FileMenuItem.Text" xml:space="preserve">
+    <value>文件(&amp;F)</value>
   </data>
   <data name="用户中心ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 22</value>
@@ -567,17 +525,11 @@
   <data name="帐号管理ToolStripMenuItem.Text" xml:space="preserve">
     <value>帐号管理(&amp;A)</value>
   </data>
-  <data name="ToolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 20</value>
+  <data name="UserMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 20</value>
   </data>
-  <data name="ToolsMenuItem.Text" xml:space="preserve">
-    <value>工具(&amp;T)</value>
-  </data>
-  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
-  </data>
-  <data name="toolStripMenuItem1.Text" xml:space="preserve">
-    <value>计算器(&amp;C)</value>
+  <data name="UserMenuItem.Text" xml:space="preserve">
+    <value>用户(&amp;U)</value>
   </data>
   <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 22</value>
@@ -591,6 +543,12 @@
   <data name="时间校对TToolStripMenuItem.Text" xml:space="preserve">
     <value>时间校对(&amp;T)</value>
   </data>
+  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="toolStripMenuItem1.Text" xml:space="preserve">
+    <value>计算器(&amp;C)</value>
+  </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 6</value>
   </data>
@@ -600,11 +558,11 @@
   <data name="选项OToolStripMenuItem.Text" xml:space="preserve">
     <value>选项(&amp;O)</value>
   </data>
-  <data name="HelpMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 20</value>
+  <data name="ToolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 20</value>
   </data>
-  <data name="HelpMenuItem.Text" xml:space="preserve">
-    <value>帮助(&amp;H)</value>
+  <data name="ToolsMenuItem.Text" xml:space="preserve">
+    <value>工具(&amp;T)</value>
   </data>
   <data name="帮助F1ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 22</value>
@@ -632,6 +590,36 @@
   </data>
   <data name="关于本软件ToolStripMenuItem.Text" xml:space="preserve">
     <value>关于本软件</value>
+  </data>
+  <data name="HelpMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 20</value>
+  </data>
+  <data name="HelpMenuItem.Text" xml:space="preserve">
+    <value>帮助(&amp;H)</value>
+  </data>
+  <data name="menu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menu.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 3, 0, 3</value>
+  </data>
+  <data name="menu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>892, 26</value>
+  </data>
+  <data name="menu.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;menu.Name" xml:space="preserve">
+    <value>menu</value>
+  </data>
+  <data name="&gt;&gt;menu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menu.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menu.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

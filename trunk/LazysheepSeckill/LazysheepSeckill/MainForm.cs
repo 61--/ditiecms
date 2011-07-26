@@ -36,10 +36,20 @@ namespace LazysheepSeckill
             {
                 return;
             }
-            if (mConfig.UserData != null)
+            if (mConfig.UserData.Account != null && mConfig.UserData.Account.Count > 0)
             {
-                tbx_UserName.Text = mConfig.UserData.UserName;
-                tbx_PassWord.Text = SecurityUtils.DesDecode(mConfig.UserData.PassWord);
+                cbx_UserName.DataSource = mConfig.UserData.Account;
+                cbx_UserName.DisplayMember = "UserName";
+                cbx_UserName.ValueMember = "UserName";
+                if (!string.IsNullOrEmpty(mConfig.UserData.DefaultAccount))
+                {
+                    cbx_UserName.SelectedValue = mConfig.UserData.DefaultAccount;
+                }
+                else
+                {
+                    cbx_UserName.SelectedIndex = 0;
+                }
+                tbx_PassWord.Text = GetPwdByUserName(cbx_UserName.SelectedValue.ToString());
                 tbx_goodsUrl.Text = mConfig.UserData.GoodsUrl;
             }
             if (mConfig.SystemSetting != null)
@@ -47,6 +57,34 @@ namespace LazysheepSeckill
                 this.TopMost = mConfig.SystemSetting.WindowTopMost;
                 this.skin.SkinFile = mConfig.SystemSetting.SkinFile;
             }
+        }
+
+        private string GetPwdByUserName(string userName)
+        {
+            foreach (Account ac in mConfig.UserData.Account)
+            {
+                if (ac.UserName == userName)
+                {
+                    return SecurityUtils.DesDecode(ac.PassWord);
+                }
+            }
+            return null;
+        }
+
+        private void AddorEditAccount(string userName, string passWord)
+        {
+            foreach (Account ac in mConfig.UserData.Account)
+            {
+                if (ac.UserName == userName)
+                {
+                    ac.PassWord = SecurityUtils.DesEncode(passWord);
+                    return;
+                }
+            }
+            Account account = new Account();
+            account.UserName = userName;
+            account.PassWord = SecurityUtils.DesEncode(passWord);
+            mConfig.UserData.Account.Add(account);
         }
 
         private void DebugTest(string s, string tag)
@@ -84,7 +122,7 @@ namespace LazysheepSeckill
                 postData += string.Format("{0}={1}&", node.Attributes["name"].Value, node.Attributes["value"] == null ? "" : node.Attributes["value"].Value);
             }
             http.AddPostKey(postData.ToString());
-            http.AddPostKey("TPL_username", tbx_UserName.Text);
+            http.AddPostKey("TPL_username", cbx_UserName.Text);
             http.AddPostKey("TPL_password", tbx_PassWord.Text);
 
             string need_check_code = doc.DocumentNode.SelectSingleNode("//input[@name='need_check_code']").Attributes["value"].Value;
@@ -106,7 +144,7 @@ namespace LazysheepSeckill
                 http.AddPostKey("TPL_checkcode", string.Empty);
                 http.EditPostKey("need_check_code", string.Empty);
             }
-            
+
             http.Method = "POST";
 
             html = http.RequestUrl(loginUrl);
@@ -145,6 +183,7 @@ namespace LazysheepSeckill
 
         private void btn_LoginTaobao_Click(object sender, EventArgs e)
         {
+            AddorEditAccount(cbx_UserName.Text, tbx_PassWord.Text);
             Thread t = new Thread(new ParameterizedThreadStart(LoginTaobao));
             t.IsBackground = true;
             t.Start(null);
@@ -325,10 +364,10 @@ namespace LazysheepSeckill
         protected override void OnClosed(EventArgs e)
         {
             mConfig = mConfig ?? new AppConfigInfo();
-            mConfig.UserData = new UserData();
-            mConfig.UserData.UserName = tbx_UserName.Text;
-            mConfig.UserData.PassWord = SecurityUtils.DesEncode(tbx_PassWord.Text);
+            mConfig.UserData = mConfig.UserData ?? new UserData();
+            mConfig.UserData.DefaultAccount = cbx_UserName.SelectedValue.ToString();
             mConfig.UserData.GoodsUrl = tbx_goodsUrl.Text;
+
             ConfigAccess<AppConfigInfo>.SaveConfig(mConfig);
 
             base.OnClosed(e);
@@ -346,6 +385,11 @@ namespace LazysheepSeckill
         {
             mSplashScreen.Hide();
             this.Activate();
+        }
+
+        private void cbx_UserName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tbx_PassWord.Text = GetPwdByUserName(cbx_UserName.SelectedValue.ToString());
         }
     }
 }
