@@ -33,7 +33,6 @@
             this.tbx_PassWord = new System.Windows.Forms.TextBox();
             this.btn_LoginTaobao = new System.Windows.Forms.Button();
             this.lbl_PassWord = new System.Windows.Forms.Label();
-            this.tbx_UserName = new System.Windows.Forms.TextBox();
             this.lbl_UserName = new System.Windows.Forms.Label();
             this.gbx_goodsinfo = new System.Windows.Forms.GroupBox();
             this.btn_openGoods = new System.Windows.Forms.Button();
@@ -67,6 +66,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于本软件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbx_UserName = new System.Windows.Forms.ComboBox();
             this.gbx_taobaoLogin.SuspendLayout();
             this.gbx_goodsinfo.SuspendLayout();
             this.tabControlMain.SuspendLayout();
@@ -76,10 +76,10 @@
             // 
             // gbx_taobaoLogin
             // 
+            this.gbx_taobaoLogin.Controls.Add(this.cbx_UserName);
             this.gbx_taobaoLogin.Controls.Add(this.tbx_PassWord);
             this.gbx_taobaoLogin.Controls.Add(this.btn_LoginTaobao);
             this.gbx_taobaoLogin.Controls.Add(this.lbl_PassWord);
-            this.gbx_taobaoLogin.Controls.Add(this.tbx_UserName);
             this.gbx_taobaoLogin.Controls.Add(this.lbl_UserName);
             resources.ApplyResources(this.gbx_taobaoLogin, "gbx_taobaoLogin");
             this.gbx_taobaoLogin.Name = "gbx_taobaoLogin";
@@ -102,11 +102,6 @@
             // 
             resources.ApplyResources(this.lbl_PassWord, "lbl_PassWord");
             this.lbl_PassWord.Name = "lbl_PassWord";
-            // 
-            // tbx_UserName
-            // 
-            resources.ApplyResources(this.tbx_UserName, "tbx_UserName");
-            this.tbx_UserName.Name = "tbx_UserName";
             // 
             // lbl_UserName
             // 
@@ -329,6 +324,13 @@
             this.关于本软件ToolStripMenuItem.Name = "关于本软件ToolStripMenuItem";
             resources.ApplyResources(this.关于本软件ToolStripMenuItem, "关于本软件ToolStripMenuItem");
             // 
+            // cbx_UserName
+            // 
+            this.cbx_UserName.FormattingEnabled = true;
+            resources.ApplyResources(this.cbx_UserName, "cbx_UserName");
+            this.cbx_UserName.Name = "cbx_UserName";
+            this.cbx_UserName.SelectedIndexChanged += new System.EventHandler(this.cbx_UserName_SelectedIndexChanged);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -360,7 +362,6 @@
 
         private System.Windows.Forms.GroupBox gbx_taobaoLogin;
         private System.Windows.Forms.Label lbl_UserName;
-        private System.Windows.Forms.TextBox tbx_UserName;
         private System.Windows.Forms.Label lbl_PassWord;
         private System.Windows.Forms.TextBox tbx_PassWord;
         private System.Windows.Forms.Button btn_LoginTaobao;
@@ -396,6 +397,7 @@
         private System.Windows.Forms.ToolStripMenuItem 选项OToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ComboBox cbx_UserName;
     }
 }
 
