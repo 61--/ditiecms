@@ -147,8 +147,20 @@
     <Content Include="dll\IrisSkin2.dll" />
     <Content Include="dll\MagicLibrary.dll" />
     <Content Include="icon.ico" />
+    <None Include="Resources\home.png" />
+    <None Include="Resources\alarm-clock-select.png" />
+    <None Include="Resources\compass.png" />
+    <None Include="Resources\credit-card.png" />
+    <None Include="Resources\hourglass.png" />
     <Content Include="Resources\image_load_progress_texture.png" />
     <Content Include="Resources\image_logo.png" />
+    <None Include="Resources\television.png" />
+    <None Include="Resources\wrench-screwdriver.png" />
+    <None Include="Resources\user-white.png" />
+    <None Include="Resources\information.png" />
+    <None Include="Resources\user-green.png" />
+    <None Include="Resources\question.png" />
+    <None Include="Resources\menubarbg.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

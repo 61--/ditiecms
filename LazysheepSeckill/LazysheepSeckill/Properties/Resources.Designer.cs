@@ -60,6 +60,41 @@ namespace LazysheepSeckill.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap alarm_clock_select {
+            get {
+                object obj = ResourceManager.GetObject("alarm-clock-select", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap compass {
+            get {
+                object obj = ResourceManager.GetObject("compass", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap credit_card {
+            get {
+                object obj = ResourceManager.GetObject("credit-card", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap home {
+            get {
+                object obj = ResourceManager.GetObject("home", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap hourglass {
+            get {
+                object obj = ResourceManager.GetObject("hourglass", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap image_load_progress_texture {
             get {
                 object obj = ResourceManager.GetObject("image_load_progress_texture", resourceCulture);
@@ -70,6 +105,55 @@ namespace LazysheepSeckill.Properties {
         internal static System.Drawing.Bitmap image_logo {
             get {
                 object obj = ResourceManager.GetObject("image_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap information {
+            get {
+                object obj = ResourceManager.GetObject("information", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap menubarbg {
+            get {
+                object obj = ResourceManager.GetObject("menubarbg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap question {
+            get {
+                object obj = ResourceManager.GetObject("question", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap television {
+            get {
+                object obj = ResourceManager.GetObject("television", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap user_green {
+            get {
+                object obj = ResourceManager.GetObject("user-green", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap user_white {
+            get {
+                object obj = ResourceManager.GetObject("user-white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap wrench_screwdriver {
+            get {
+                object obj = ResourceManager.GetObject("wrench-screwdriver", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

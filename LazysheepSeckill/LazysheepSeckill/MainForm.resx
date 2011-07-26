@@ -117,98 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;tbx_PassWord.Name" xml:space="preserve">
-    <value>tbx_PassWord</value>
-  </data>
-  <data name="&gt;&gt;tbx_PassWord.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbx_PassWord.Parent" xml:space="preserve">
-    <value>gbx_taobaoLogin</value>
-  </data>
-  <data name="&gt;&gt;tbx_PassWord.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;btn_LoginTaobao.Name" xml:space="preserve">
-    <value>btn_LoginTaobao</value>
-  </data>
-  <data name="&gt;&gt;btn_LoginTaobao.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btn_LoginTaobao.Parent" xml:space="preserve">
-    <value>gbx_taobaoLogin</value>
-  </data>
-  <data name="&gt;&gt;btn_LoginTaobao.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lbl_PassWord.Name" xml:space="preserve">
-    <value>lbl_PassWord</value>
-  </data>
-  <data name="&gt;&gt;lbl_PassWord.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbl_PassWord.Parent" xml:space="preserve">
-    <value>gbx_taobaoLogin</value>
-  </data>
-  <data name="&gt;&gt;lbl_PassWord.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tbx_UserName.Name" xml:space="preserve">
-    <value>tbx_UserName</value>
-  </data>
-  <data name="&gt;&gt;tbx_UserName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbx_UserName.Parent" xml:space="preserve">
-    <value>gbx_taobaoLogin</value>
-  </data>
-  <data name="&gt;&gt;tbx_UserName.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;lbl_UserName.Name" xml:space="preserve">
-    <value>lbl_UserName</value>
-  </data>
-  <data name="&gt;&gt;lbl_UserName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbl_UserName.Parent" xml:space="preserve">
-    <value>gbx_taobaoLogin</value>
-  </data>
-  <data name="&gt;&gt;lbl_UserName.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="gbx_taobaoLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="gbx_taobaoLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 115</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="gbx_taobaoLogin.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="gbx_taobaoLogin.Text" xml:space="preserve">
-    <value>登录淘宝帐号</value>
-  </data>
-  <data name="&gt;&gt;gbx_taobaoLogin.Name" xml:space="preserve">
-    <value>gbx_taobaoLogin</value>
-  </data>
-  <data name="&gt;&gt;gbx_taobaoLogin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gbx_taobaoLogin.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;gbx_taobaoLogin.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="tbx_PassWord.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 55</value>
   </data>
   <data name="tbx_PassWord.Size" type="System.Drawing.Size, System.Drawing">
     <value>118, 21</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tbx_PassWord.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
@@ -223,6 +139,10 @@
   </data>
   <data name="&gt;&gt;tbx_PassWord.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btn_LoginTaobao.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btn_LoginTaobao.Location" type="System.Drawing.Point, System.Drawing">
     <value>102, 85</value>
@@ -250,6 +170,9 @@
   </data>
   <data name="lbl_PassWord.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="lbl_PassWord.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lbl_PassWord.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 58</value>
@@ -299,6 +222,9 @@
   <data name="lbl_UserName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lbl_UserName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lbl_UserName.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 26</value>
   </data>
@@ -323,65 +249,32 @@
   <data name="&gt;&gt;lbl_UserName.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;btn_openGoods.Name" xml:space="preserve">
-    <value>btn_openGoods</value>
+  <data name="gbx_taobaoLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 33</value>
   </data>
-  <data name="&gt;&gt;btn_openGoods.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="gbx_taobaoLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 115</value>
   </data>
-  <data name="&gt;&gt;btn_openGoods.Parent" xml:space="preserve">
-    <value>gbx_goodsinfo</value>
-  </data>
-  <data name="&gt;&gt;btn_openGoods.ZOrder" xml:space="preserve">
+  <data name="gbx_taobaoLogin.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;tbx_goodsUrl.Name" xml:space="preserve">
-    <value>tbx_goodsUrl</value>
+  <data name="gbx_taobaoLogin.Text" xml:space="preserve">
+    <value>登录淘宝帐号</value>
   </data>
-  <data name="&gt;&gt;tbx_goodsUrl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;gbx_taobaoLogin.Name" xml:space="preserve">
+    <value>gbx_taobaoLogin</value>
   </data>
-  <data name="&gt;&gt;tbx_goodsUrl.Parent" xml:space="preserve">
-    <value>gbx_goodsinfo</value>
-  </data>
-  <data name="&gt;&gt;tbx_goodsUrl.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;lbl_goodsUrl.Name" xml:space="preserve">
-    <value>lbl_goodsUrl</value>
-  </data>
-  <data name="&gt;&gt;lbl_goodsUrl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbl_goodsUrl.Parent" xml:space="preserve">
-    <value>gbx_goodsinfo</value>
-  </data>
-  <data name="&gt;&gt;lbl_goodsUrl.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="gbx_goodsinfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>201, 13</value>
-  </data>
-  <data name="gbx_goodsinfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>679, 114</value>
-  </data>
-  <data name="gbx_goodsinfo.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="gbx_goodsinfo.Text" xml:space="preserve">
-    <value>商品信息</value>
-  </data>
-  <data name="&gt;&gt;gbx_goodsinfo.Name" xml:space="preserve">
-    <value>gbx_goodsinfo</value>
-  </data>
-  <data name="&gt;&gt;gbx_goodsinfo.Type" xml:space="preserve">
+  <data name="&gt;&gt;gbx_taobaoLogin.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;gbx_goodsinfo.Parent" xml:space="preserve">
+  <data name="&gt;&gt;gbx_taobaoLogin.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;gbx_goodsinfo.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;gbx_taobaoLogin.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="btn_openGoods.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btn_openGoods.Location" type="System.Drawing.Point, System.Drawing">
     <value>607, 19</value>
@@ -431,6 +324,9 @@
   <data name="lbl_goodsUrl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="lbl_goodsUrl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="lbl_goodsUrl.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 24</value>
   </data>
@@ -455,6 +351,30 @@
   <data name="&gt;&gt;lbl_goodsUrl.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="gbx_goodsinfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>201, 34</value>
+  </data>
+  <data name="gbx_goodsinfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>679, 114</value>
+  </data>
+  <data name="gbx_goodsinfo.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="gbx_goodsinfo.Text" xml:space="preserve">
+    <value>商品信息</value>
+  </data>
+  <data name="&gt;&gt;gbx_goodsinfo.Name" xml:space="preserve">
+    <value>gbx_goodsinfo</value>
+  </data>
+  <data name="&gt;&gt;gbx_goodsinfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbx_goodsinfo.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;gbx_goodsinfo.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="&gt;&gt;wbr_main.Name" xml:space="preserve">
     <value>wbr_main</value>
   </data>
@@ -468,7 +388,7 @@
     <value>4</value>
   </data>
   <data name="tabControlMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>201, 134</value>
+    <value>201, 182</value>
   </data>
   <data name="tabControlMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>679, 462</value>
@@ -486,7 +406,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tabControlMain.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="wbr_main.Location" type="System.Drawing.Point, System.Drawing">
     <value>651, 26</value>
@@ -542,8 +462,11 @@
   <data name="sslabelMessage.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 17</value>
   </data>
+  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 146</value>
+    <value>12, 154</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -569,6 +492,147 @@
   <metadata name="skin.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>110, 52</value>
   </metadata>
+  <metadata name="menu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 0</value>
+  </metadata>
+  <data name="menu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menu.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 3, 0, 3</value>
+  </data>
+  <data name="menu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>892, 26</value>
+  </data>
+  <data name="menu.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;menu.Name" xml:space="preserve">
+    <value>menu</value>
+  </data>
+  <data name="&gt;&gt;menu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menu.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menu.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="FileMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 20</value>
+  </data>
+  <data name="FileMenuItem.Text" xml:space="preserve">
+    <value>文件(&amp;F)</value>
+  </data>
+  <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="toolStripMenuItem2.Text" xml:space="preserve">
+    <value>开始秒杀(&amp;B)</value>
+  </data>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 6</value>
+  </data>
+  <data name="退出EToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="退出EToolStripMenuItem.Text" xml:space="preserve">
+    <value>退出(&amp;E)</value>
+  </data>
+  <data name="UserMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 20</value>
+  </data>
+  <data name="UserMenuItem.Text" xml:space="preserve">
+    <value>用户(&amp;U)</value>
+  </data>
+  <data name="用户中心ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="用户中心ToolStripMenuItem.Text" xml:space="preserve">
+    <value>个人中心(&amp;C)</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 6</value>
+  </data>
+  <data name="地址库ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="地址库ToolStripMenuItem.Text" xml:space="preserve">
+    <value>地址库(&amp;D)</value>
+  </data>
+  <data name="帐号管理ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="帐号管理ToolStripMenuItem.Text" xml:space="preserve">
+    <value>帐号管理(&amp;A)</value>
+  </data>
+  <data name="ToolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 20</value>
+  </data>
+  <data name="ToolsMenuItem.Text" xml:space="preserve">
+    <value>工具(&amp;T)</value>
+  </data>
+  <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="toolStripMenuItem1.Text" xml:space="preserve">
+    <value>计算器(&amp;C)</value>
+  </data>
+  <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="toolStripMenuItem3.Text" xml:space="preserve">
+    <value>定时器(&amp;A)</value>
+  </data>
+  <data name="时间校对TToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="时间校对TToolStripMenuItem.Text" xml:space="preserve">
+    <value>时间校对(&amp;T)</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 6</value>
+  </data>
+  <data name="选项OToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="选项OToolStripMenuItem.Text" xml:space="preserve">
+    <value>选项(&amp;O)</value>
+  </data>
+  <data name="HelpMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 20</value>
+  </data>
+  <data name="HelpMenuItem.Text" xml:space="preserve">
+    <value>帮助(&amp;H)</value>
+  </data>
+  <data name="帮助F1ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="帮助F1ToolStripMenuItem.Text" xml:space="preserve">
+    <value>帮助        F1</value>
+  </data>
+  <data name="检查更新ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="检查更新ToolStripMenuItem.Text" xml:space="preserve">
+    <value>检查更新..</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 6</value>
+  </data>
+  <data name="关于ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="关于ToolStripMenuItem.Text" xml:space="preserve">
+    <value>主页</value>
+  </data>
+  <data name="关于本软件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="关于本软件ToolStripMenuItem.Text" xml:space="preserve">
+    <value>关于本软件</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -1992,7 +2056,6 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
 </value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
@@ -2016,6 +2079,132 @@
   </data>
   <data name="&gt;&gt;skin.Type" xml:space="preserve">
     <value>Sunisoft.IrisSkin.SkinEngine, IrisSkin2, Version=2006.3.22.45, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;FileMenuItem.Name" xml:space="preserve">
+    <value>FileMenuItem</value>
+  </data>
+  <data name="&gt;&gt;FileMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem2.Name" xml:space="preserve">
+    <value>toolStripMenuItem2</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator4.Name" xml:space="preserve">
+    <value>toolStripSeparator4</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;退出EToolStripMenuItem.Name" xml:space="preserve">
+    <value>退出EToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;退出EToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UserMenuItem.Name" xml:space="preserve">
+    <value>UserMenuItem</value>
+  </data>
+  <data name="&gt;&gt;UserMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;用户中心ToolStripMenuItem.Name" xml:space="preserve">
+    <value>用户中心ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;用户中心ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
+    <value>toolStripSeparator3</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;地址库ToolStripMenuItem.Name" xml:space="preserve">
+    <value>地址库ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;地址库ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;帐号管理ToolStripMenuItem.Name" xml:space="preserve">
+    <value>帐号管理ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;帐号管理ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ToolsMenuItem.Name" xml:space="preserve">
+    <value>ToolsMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ToolsMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
+    <value>toolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem3.Name" xml:space="preserve">
+    <value>toolStripMenuItem3</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;时间校对TToolStripMenuItem.Name" xml:space="preserve">
+    <value>时间校对TToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;时间校对TToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
+    <value>toolStripSeparator2</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;选项OToolStripMenuItem.Name" xml:space="preserve">
+    <value>选项OToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;选项OToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;HelpMenuItem.Name" xml:space="preserve">
+    <value>HelpMenuItem</value>
+  </data>
+  <data name="&gt;&gt;HelpMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;帮助F1ToolStripMenuItem.Name" xml:space="preserve">
+    <value>帮助F1ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;帮助F1ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;检查更新ToolStripMenuItem.Name" xml:space="preserve">
+    <value>检查更新ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;检查更新ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;关于ToolStripMenuItem.Name" xml:space="preserve">
+    <value>关于ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;关于ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;关于本软件ToolStripMenuItem.Name" xml:space="preserve">
+    <value>关于本软件ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;关于本软件ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

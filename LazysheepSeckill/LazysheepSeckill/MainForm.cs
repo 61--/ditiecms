@@ -65,7 +65,7 @@ namespace LazysheepSeckill
             string loginUrl = "https://login.taobao.com/member/login.jhtml";
             http.Method = "GET";
 
-            html = http.RequestUrl("https://login.taobao.com/");
+            html = http.RequestUrl("http://login.taobao.com/");
             html = html.Substring(0, html.IndexOf("</form>")).Substring(html.IndexOf("<form id=\"J_StaticForm\""));
 
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
@@ -86,8 +86,27 @@ namespace LazysheepSeckill
             http.AddPostKey(postData.ToString());
             http.AddPostKey("TPL_username", tbx_UserName.Text);
             http.AddPostKey("TPL_password", tbx_PassWord.Text);
-            http.AddPostKey("TPL_checkcode", checkCode == null ? "" : checkCode.ToString());
-            http.EditPostKey("need_check_code", checkCode == null ? "" : "true");
+
+            string need_check_code = doc.DocumentNode.SelectSingleNode("//input[@name='need_check_code']").Attributes["value"].Value;
+            if (need_check_code == "true")
+            {
+                PASSVALUE = doc.GetElementbyId("J_StandardCode_m").Attributes["data-src"].Value;
+
+                InputCheckCodeForm ccForm = new InputCheckCodeForm();
+                if (ccForm.ShowDialog(this) != DialogResult.OK)
+                {
+                    return;
+                }
+
+                http.AddPostKey("TPL_checkcode", checkCode == null ? "" : checkCode.ToString());
+                http.EditPostKey("need_check_code", "true");
+            }
+            else
+            {
+                http.AddPostKey("TPL_checkcode", string.Empty);
+                http.EditPostKey("need_check_code", string.Empty);
+            }
+            
             http.Method = "POST";
 
             html = http.RequestUrl(loginUrl);
@@ -102,16 +121,14 @@ namespace LazysheepSeckill
                 {
                     string url = html.Substring(html.IndexOf("window.location = \"http") + 19, 255).Substring(0, html.IndexOf("\"") - 7);
                     http.Method = "GET";
-                    http.RequestUrl(url);
+                    //http.RequestUrl(url);
                     tbx_goodsUrl.Text = url;
                     MessageBox.Show(this, "登录成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (html.IndexOf("请输入验证码") > 0)
                 {
-                    PASSVALUE = doc.GetElementbyId("J_StandardCode_m").Attributes["data-src"].Value;
-
-                    InputCheckCodeForm checkCodeForm = new InputCheckCodeForm();
-                    checkCodeForm.Show(this);
+                    MessageBox.Show(this, "请输入验证码！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
                 else if (html.IndexOf("密码和账户名不匹配") > 0 || html.IndexOf("该账户名不存在") > 0)
                 {
