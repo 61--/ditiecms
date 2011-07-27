@@ -17,10 +17,10 @@ namespace Config
             {
                 lock (lockHelper)
                 {
-                    Type type = typeof(T);
                     try
                     {
-                        _instance = (T)XmlSerializerUtils.Load(type, GetPath(type.Name));
+                        _instance = new T();
+                        _instance = (T)XmlSerializerUtils.Load(typeof(T), _instance.GetPATH());
                     }
                     catch
                     {
@@ -34,24 +34,7 @@ namespace Config
 
         public static void SaveConfig(IConfigInfo configInfo)
         {
-            XmlSerializerUtils.Save((T)configInfo, GetPath(typeof(T).Name));
-        }
-
-        /// <summary>
-        /// 获取配置文件位置
-        /// </summary>
-        /// <param name="configName"></param>
-        /// <returns></returns>
-        private static string GetPath(string configName)
-        {
-            switch (configName)
-            {
-                case "AppConfigInfo":
-                    return "app.config";
-                
-                default:
-                    return "";
-            }
+            XmlSerializerUtils.Save((T)configInfo, configInfo.GetPATH());
         }
     }
 }
