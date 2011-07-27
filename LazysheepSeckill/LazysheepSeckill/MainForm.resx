@@ -484,25 +484,28 @@
     <value>0, 0</value>
   </metadata>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>136, 22</value>
   </data>
   <data name="toolStripMenuItem2.Text" xml:space="preserve">
     <value>开始秒杀(&amp;B)</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>133, 6</value>
   </data>
   <data name="退出EToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>136, 22</value>
   </data>
   <data name="退出EToolStripMenuItem.Text" xml:space="preserve">
     <value>退出(&amp;E)</value>
   </data>
   <data name="FileMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 20</value>
+    <value>75, 20</value>
   </data>
   <data name="FileMenuItem.Text" xml:space="preserve">
     <value>文件(&amp;F)</value>
+  </data>
+  <data name="用户中心ToolStripMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
   </data>
   <data name="用户中心ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 22</value>
@@ -526,73 +529,73 @@
     <value>帐号管理(&amp;A)</value>
   </data>
   <data name="UserMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 20</value>
+    <value>75, 20</value>
   </data>
   <data name="UserMenuItem.Text" xml:space="preserve">
     <value>用户(&amp;U)</value>
   </data>
   <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>136, 22</value>
   </data>
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
     <value>定时器(&amp;A)</value>
   </data>
   <data name="时间校对TToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>136, 22</value>
   </data>
   <data name="时间校对TToolStripMenuItem.Text" xml:space="preserve">
     <value>时间校对(&amp;T)</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>136, 22</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>计算器(&amp;C)</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>133, 6</value>
   </data>
   <data name="选项OToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>136, 22</value>
   </data>
   <data name="选项OToolStripMenuItem.Text" xml:space="preserve">
     <value>选项(&amp;O)</value>
   </data>
   <data name="ToolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 20</value>
+    <value>75, 20</value>
   </data>
   <data name="ToolsMenuItem.Text" xml:space="preserve">
     <value>工具(&amp;T)</value>
   </data>
   <data name="帮助F1ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>154, 22</value>
   </data>
   <data name="帮助F1ToolStripMenuItem.Text" xml:space="preserve">
     <value>帮助        F1</value>
   </data>
   <data name="检查更新ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>154, 22</value>
   </data>
   <data name="检查更新ToolStripMenuItem.Text" xml:space="preserve">
     <value>检查更新..</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>151, 6</value>
   </data>
   <data name="关于ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>154, 22</value>
   </data>
   <data name="关于ToolStripMenuItem.Text" xml:space="preserve">
     <value>主页</value>
   </data>
   <data name="关于本软件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>154, 22</value>
   </data>
   <data name="关于本软件ToolStripMenuItem.Text" xml:space="preserve">
     <value>关于本软件</value>
   </data>
   <data name="HelpMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 20</value>
+    <value>75, 20</value>
   </data>
   <data name="HelpMenuItem.Text" xml:space="preserve">
     <value>帮助(&amp;H)</value>
@@ -2044,6 +2047,9 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
 </value>
   </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
@@ -2128,12 +2134,6 @@
   <data name="&gt;&gt;ToolsMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
-    <value>toolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;toolStripMenuItem3.Name" xml:space="preserve">
     <value>toolStripMenuItem3</value>
   </data>
@@ -2144,6 +2144,12 @@
     <value>时间校对TToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;时间校对TToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem1.Name" xml:space="preserve">
+    <value>toolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">

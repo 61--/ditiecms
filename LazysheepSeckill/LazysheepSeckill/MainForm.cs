@@ -23,9 +23,10 @@ namespace LazysheepSeckill
             mSplashScreen = splash;
             mSplashScreen.SetProgress("正在加载系统组件...", 0.2);
             InitializeComponent();
-            mSplashScreen.SetProgress("正在加载程序数据...", 0.6);
+            mSplashScreen.SetProgress("正在读取程序配置...", 0.6);
             InitializeData();
             mSplashScreen.SetProgress("程序加载完毕...", 1.0);
+            mSplashScreen.Hide();
         }
 
         private void InitializeData()
@@ -36,7 +37,7 @@ namespace LazysheepSeckill
             {
                 return;
             }
-            if (mConfig.UserData.Account != null && mConfig.UserData.Account.Count > 0)
+            if (mConfig.UserData != null && mConfig.UserData.Account.Count > 0)
             {
                 cbx_UserName.DataSource = mConfig.UserData.Account;
                 cbx_UserName.DisplayMember = "UserName";
@@ -157,10 +158,10 @@ namespace LazysheepSeckill
             {
                 if (html.IndexOf("window.location = \"http") > 0)
                 {
-                    string url = html.Substring(html.IndexOf("window.location = \"http") + 19, 255).Substring(0, html.IndexOf("\"") - 7);
-                    http.Method = "GET";
+                    //string url = html.Substring(html.IndexOf("window.location = \"http") + 19, 255).Substring(0, html.IndexOf("\"") - 7);
+                    //http.Method = "GET";
                     //http.RequestUrl(url);
-                    tbx_goodsUrl.Text = url;
+                    //tbx_goodsUrl.Text = url;
                     MessageBox.Show(this, "登录成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (html.IndexOf("请输入验证码") > 0)
@@ -365,11 +366,17 @@ namespace LazysheepSeckill
         {
             mConfig = mConfig ?? new AppConfigInfo();
             mConfig.UserData = mConfig.UserData ?? new UserData();
-            mConfig.UserData.DefaultAccount = cbx_UserName.SelectedValue.ToString();
+            mConfig.UserData.DefaultAccount = cbx_UserName.Text;
             mConfig.UserData.GoodsUrl = tbx_goodsUrl.Text;
 
-            ConfigAccess<AppConfigInfo>.SaveConfig(mConfig);
+            try
+            {
+                ConfigAccess<AppConfigInfo>.SaveConfig(mConfig);
+            }
+            catch (Exception ex)
+            {
 
+            }
             base.OnClosed(e);
         }
 

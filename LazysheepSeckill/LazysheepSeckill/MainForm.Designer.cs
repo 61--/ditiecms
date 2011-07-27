@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.gbx_taobaoLogin = new System.Windows.Forms.GroupBox();
+            this.cbx_UserName = new System.Windows.Forms.ComboBox();
             this.tbx_PassWord = new System.Windows.Forms.TextBox();
             this.btn_LoginTaobao = new System.Windows.Forms.Button();
             this.lbl_PassWord = new System.Windows.Forms.Label();
@@ -55,9 +56,9 @@
             this.地址库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帐号管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.时间校对TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.选项OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,7 +67,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于本软件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cbx_UserName = new System.Windows.Forms.ComboBox();
             this.gbx_taobaoLogin.SuspendLayout();
             this.gbx_goodsinfo.SuspendLayout();
             this.tabControlMain.SuspendLayout();
@@ -84,6 +84,13 @@
             resources.ApplyResources(this.gbx_taobaoLogin, "gbx_taobaoLogin");
             this.gbx_taobaoLogin.Name = "gbx_taobaoLogin";
             this.gbx_taobaoLogin.TabStop = false;
+            // 
+            // cbx_UserName
+            // 
+            this.cbx_UserName.FormattingEnabled = true;
+            resources.ApplyResources(this.cbx_UserName, "cbx_UserName");
+            this.cbx_UserName.Name = "cbx_UserName";
+            this.cbx_UserName.SelectedIndexChanged += new System.EventHandler(this.cbx_UserName_SelectedIndexChanged);
             // 
             // tbx_PassWord
             // 
@@ -226,8 +233,9 @@
             // 
             // 用户中心ToolStripMenuItem
             // 
-            this.用户中心ToolStripMenuItem.Name = "用户中心ToolStripMenuItem";
+            this.用户中心ToolStripMenuItem.Image = global::LazysheepSeckill.Properties.Resources.user_center;
             resources.ApplyResources(this.用户中心ToolStripMenuItem, "用户中心ToolStripMenuItem");
+            this.用户中心ToolStripMenuItem.Name = "用户中心ToolStripMenuItem";
             // 
             // toolStripSeparator3
             // 
@@ -257,11 +265,6 @@
             this.ToolsMenuItem.Name = "ToolsMenuItem";
             resources.ApplyResources(this.ToolsMenuItem, "ToolsMenuItem");
             // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
-            // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Image = global::LazysheepSeckill.Properties.Resources.hourglass;
@@ -273,6 +276,11 @@
             this.时间校对TToolStripMenuItem.Image = global::LazysheepSeckill.Properties.Resources.alarm_clock_select;
             this.时间校对TToolStripMenuItem.Name = "时间校对TToolStripMenuItem";
             resources.ApplyResources(this.时间校对TToolStripMenuItem, "时间校对TToolStripMenuItem");
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             // 
             // toolStripSeparator2
             // 
@@ -323,13 +331,6 @@
             this.关于本软件ToolStripMenuItem.Image = global::LazysheepSeckill.Properties.Resources.information;
             this.关于本软件ToolStripMenuItem.Name = "关于本软件ToolStripMenuItem";
             resources.ApplyResources(this.关于本软件ToolStripMenuItem, "关于本软件ToolStripMenuItem");
-            // 
-            // cbx_UserName
-            // 
-            this.cbx_UserName.FormattingEnabled = true;
-            resources.ApplyResources(this.cbx_UserName, "cbx_UserName");
-            this.cbx_UserName.Name = "cbx_UserName";
-            this.cbx_UserName.SelectedIndexChanged += new System.EventHandler(this.cbx_UserName_SelectedIndexChanged);
             // 
             // MainForm
             // 

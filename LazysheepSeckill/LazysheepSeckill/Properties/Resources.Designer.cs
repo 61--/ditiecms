@@ -137,16 +137,16 @@ namespace LazysheepSeckill.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap user_green {
+        internal static System.Drawing.Bitmap user_center {
             get {
-                object obj = ResourceManager.GetObject("user-green", resourceCulture);
+                object obj = ResourceManager.GetObject("user-center", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap user_white {
+        internal static System.Drawing.Bitmap user_green {
             get {
-                object obj = ResourceManager.GetObject("user-white", resourceCulture);
+                object obj = ResourceManager.GetObject("user-green", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
