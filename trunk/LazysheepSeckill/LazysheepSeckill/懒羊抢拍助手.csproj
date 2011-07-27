@@ -154,9 +154,9 @@
     <None Include="Resources\hourglass.png" />
     <Content Include="Resources\image_load_progress_texture.png" />
     <Content Include="Resources\image_logo.png" />
+    <None Include="Resources\user-center.gif" />
     <None Include="Resources\television.png" />
     <None Include="Resources\wrench-screwdriver.png" />
-    <None Include="Resources\user-white.png" />
     <None Include="Resources\information.png" />
     <None Include="Resources\user-green.png" />
     <None Include="Resources\question.png" />

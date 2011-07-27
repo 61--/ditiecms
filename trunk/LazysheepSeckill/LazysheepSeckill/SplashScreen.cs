@@ -94,7 +94,7 @@ namespace LazysheepSeckill
                 g.FillRectangle(this.mBrush, this.Bound);
 
                 //text
-                g.DrawString(String.Format("°æ±¾ v{0}", Application.ProductVersion), mTextFont, mTextBrush, this.Width-110, 80);
+                g.DrawString(String.Format("°æ±¾ v{0}", Application.ProductVersion), mTextFont, mTextBrush, this.Width - 110, 80);
                 g.DrawString(mMessageText, SystemFonts.DialogFont, mTextBrush, 15, this.Height - 45);
 
                 //progress bar
@@ -103,7 +103,7 @@ namespace LazysheepSeckill
                 //line changed to texture:
                 g.DrawImageUnscaledAndClipped(
                     Properties.Resources.image_load_progress_texture,
-                    new Rectangle(10, this.Height-50, (int)(w * mCompletionFraction), Properties.Resources.image_load_progress_texture.Height));
+                    new Rectangle(10, this.Height - 50, (int)(w * mCompletionFraction), Properties.Resources.image_load_progress_texture.Height));
             }
         }
         #endregion
@@ -123,6 +123,10 @@ namespace LazysheepSeckill
         }
         public void Hide()
         {
+            if (fSplash == null)
+            {
+                return;
+            }
             if (mMainWindowHandle != IntPtr.Zero)
                 SetForegroundWindow(mMainWindowHandle);
             fSplash.Close(FloatingWindow.AnimateMode.Blend, 500);
