@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Lazysheep Studio")]
 [assembly: AssemblyProduct("懒羊抢拍助手 1.0Beta")]
-[assembly: AssemblyCopyright("Copyright © Lazysheep Studio 2011")]
+[assembly: AssemblyCopyright("Copyright (C) Lazysheep Studio 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

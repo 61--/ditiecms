@@ -12,9 +12,9 @@ namespace LazysheepSeckill
         public AboutForm()
         {
             InitializeComponent();
-            this.Text = String.Format("关于 {0} {0}", AssemblyTitle);
+            this.Text = String.Format("关于 {0}", AssemblyTitle);
             this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("版本 {0} {0}", AssemblyVersion);
+            this.labelVersion.Text = String.Format("版本 {0}", AssemblyVersion);
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription;
@@ -51,12 +51,12 @@ namespace LazysheepSeckill
         {
             get
             {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    return "";
-                }
-                return ((AssemblyDescriptionAttribute)attributes[0]).Description;
+                //object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
+                //if (attributes.Length == 0)
+                //{
+                    return "本软件仅用于网友交流测试使用，请勿用作非法用途，否则造成的损失用户自行承担。";
+                //}
+                //return ((AssemblyDescriptionAttribute)attributes[0]).Description;
             }
         }
 
