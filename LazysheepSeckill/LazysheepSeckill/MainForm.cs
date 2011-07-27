@@ -16,7 +16,7 @@ namespace LazysheepSeckill
         HttpUtils http = new HttpUtils();
         public static string PASSVALUE;
         private SplashScreen mSplashScreen;
-        private AppConfigInfo mConfig;
+        private UserConfigInfo mUserConfig;
 
         public MainForm(SplashScreen splash)
         {
@@ -32,37 +32,39 @@ namespace LazysheepSeckill
         private void InitializeData()
         {
             Control.CheckForIllegalCrossThreadCalls = false;
-            mConfig = ConfigAccess<AppConfigInfo>.GetConfig();
-            if (mConfig == null)
+            mUserConfig = ConfigAccess<UserConfigInfo>.GetConfig();
+            if (mUserConfig == null)
             {
                 return;
             }
-            if (mConfig.UserData != null && mConfig.UserData.Account.Count > 0)
+            if (mUserConfig.Account != null && mUserConfig.Account.Count > 0)
             {
-                cbx_UserName.DataSource = mConfig.UserData.Account;
+                cbx_UserName.DataSource = mUserConfig.Account;
                 cbx_UserName.DisplayMember = "UserName";
                 cbx_UserName.ValueMember = "UserName";
-                if (!string.IsNullOrEmpty(mConfig.UserData.DefaultAccount))
+                if (!string.IsNullOrEmpty(mUserConfig.DefaultAccount))
                 {
-                    cbx_UserName.SelectedValue = mConfig.UserData.DefaultAccount;
+                    cbx_UserName.SelectedValue = mUserConfig.DefaultAccount;
                 }
                 else
                 {
                     cbx_UserName.SelectedIndex = 0;
                 }
                 tbx_PassWord.Text = GetPwdByUserName(cbx_UserName.SelectedValue.ToString());
-                tbx_goodsUrl.Text = mConfig.UserData.GoodsUrl;
+                tbx_goodsUrl.Text = mUserConfig.GoodsUrl;
             }
-            if (mConfig.SystemSetting != null)
+
+            AppConfigInfo mAppConfig = ConfigAccess<AppConfigInfo>.GetConfig();
+            if (mAppConfig != null)
             {
-                this.TopMost = mConfig.SystemSetting.WindowTopMost;
-                this.skin.SkinFile = mConfig.SystemSetting.SkinFile;
+                this.TopMost = mAppConfig.WindowTopMost;
+                this.skin.SkinFile = mAppConfig.SkinFile;
             }
         }
 
         private string GetPwdByUserName(string userName)
         {
-            foreach (Account ac in mConfig.UserData.Account)
+            foreach (Account ac in mUserConfig.Account)
             {
                 if (ac.UserName == userName)
                 {
@@ -74,7 +76,7 @@ namespace LazysheepSeckill
 
         private void AddorEditAccount(string userName, string passWord)
         {
-            foreach (Account ac in mConfig.UserData.Account)
+            foreach (Account ac in mUserConfig.Account)
             {
                 if (ac.UserName == userName)
                 {
@@ -85,7 +87,7 @@ namespace LazysheepSeckill
             Account account = new Account();
             account.UserName = userName;
             account.PassWord = SecurityUtils.DesEncode(passWord);
-            mConfig.UserData.Account.Add(account);
+            mUserConfig.Account.Add(account);
         }
 
         private void DebugTest(string s, string tag)
@@ -379,14 +381,13 @@ namespace LazysheepSeckill
 
         protected override void OnClosed(EventArgs e)
         {
-            mConfig = mConfig ?? new AppConfigInfo();
-            mConfig.UserData = mConfig.UserData ?? new UserData();
-            mConfig.UserData.DefaultAccount = cbx_UserName.Text;
-            mConfig.UserData.GoodsUrl = tbx_goodsUrl.Text;
+            mUserConfig = mUserConfig ?? new UserConfigInfo();
+            mUserConfig.DefaultAccount = cbx_UserName.Text;
+            mUserConfig.GoodsUrl = tbx_goodsUrl.Text;
 
             try
             {
-                ConfigAccess<AppConfigInfo>.SaveConfig(mConfig);
+                ConfigAccess<UserConfigInfo>.SaveConfig(mUserConfig);
             }
             catch (Exception ex)
             {
