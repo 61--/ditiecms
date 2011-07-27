@@ -8,6 +8,11 @@ namespace Config
     [Serializable]
     public class AppConfigInfo : IConfigInfo
     {
+        public AppConfigInfo()
+        {
+            CFG_PATH = "app.config";
+        }
+
         [XmlElement(ElementName = "UserData")]
         public UserData UserData
         {
