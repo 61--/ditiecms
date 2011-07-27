@@ -398,5 +398,11 @@ namespace LazysheepSeckill
         {
             tbx_PassWord.Text = GetPwdByUserName(cbx_UserName.SelectedValue.ToString());
         }
+
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.ShowDialog(this);
+        }
     }
 }

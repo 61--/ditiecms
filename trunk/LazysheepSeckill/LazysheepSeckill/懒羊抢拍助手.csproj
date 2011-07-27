@@ -152,6 +152,7 @@
     <None Include="Resources\compass.png" />
     <None Include="Resources\credit-card.png" />
     <None Include="Resources\hourglass.png" />
+    <None Include="Resources\about.jpg" />
     <Content Include="Resources\image_load_progress_texture.png" />
     <Content Include="Resources\image_logo.png" />
     <None Include="Resources\user-center.gif" />

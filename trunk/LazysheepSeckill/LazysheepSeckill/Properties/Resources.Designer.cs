@@ -60,6 +60,13 @@ namespace LazysheepSeckill.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap about {
+            get {
+                object obj = ResourceManager.GetObject("about", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap alarm_clock_select {
             get {
                 object obj = ResourceManager.GetObject("alarm-clock-select", resourceCulture);

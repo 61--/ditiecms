@@ -63,10 +63,10 @@
             this.选项OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助F1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.检查更新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关于本软件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HomeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbx_taobaoLogin.SuspendLayout();
             this.gbx_goodsinfo.SuspendLayout();
             this.tabControlMain.SuspendLayout();
@@ -297,10 +297,10 @@
             // 
             this.HelpMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.帮助F1ToolStripMenuItem,
-            this.检查更新ToolStripMenuItem,
+            this.UpdateToolStripMenuItem,
             this.toolStripSeparator1,
-            this.关于ToolStripMenuItem,
-            this.关于本软件ToolStripMenuItem});
+            this.HomeToolStripMenuItem,
+            this.AboutToolStripMenuItem});
             this.HelpMenuItem.Image = global::LazysheepSeckill.Properties.Resources.question;
             this.HelpMenuItem.Name = "HelpMenuItem";
             resources.ApplyResources(this.HelpMenuItem, "HelpMenuItem");
@@ -310,27 +310,28 @@
             this.帮助F1ToolStripMenuItem.Name = "帮助F1ToolStripMenuItem";
             resources.ApplyResources(this.帮助F1ToolStripMenuItem, "帮助F1ToolStripMenuItem");
             // 
-            // 检查更新ToolStripMenuItem
+            // UpdateToolStripMenuItem
             // 
-            this.检查更新ToolStripMenuItem.Name = "检查更新ToolStripMenuItem";
-            resources.ApplyResources(this.检查更新ToolStripMenuItem, "检查更新ToolStripMenuItem");
+            this.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem";
+            resources.ApplyResources(this.UpdateToolStripMenuItem, "UpdateToolStripMenuItem");
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
-            // 关于ToolStripMenuItem
+            // HomeToolStripMenuItem
             // 
-            this.关于ToolStripMenuItem.Image = global::LazysheepSeckill.Properties.Resources.home;
-            this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            resources.ApplyResources(this.关于ToolStripMenuItem, "关于ToolStripMenuItem");
+            this.HomeToolStripMenuItem.Image = global::LazysheepSeckill.Properties.Resources.home;
+            this.HomeToolStripMenuItem.Name = "HomeToolStripMenuItem";
+            resources.ApplyResources(this.HomeToolStripMenuItem, "HomeToolStripMenuItem");
             // 
-            // 关于本软件ToolStripMenuItem
+            // AboutToolStripMenuItem
             // 
-            this.关于本软件ToolStripMenuItem.Image = global::LazysheepSeckill.Properties.Resources.information;
-            this.关于本软件ToolStripMenuItem.Name = "关于本软件ToolStripMenuItem";
-            resources.ApplyResources(this.关于本软件ToolStripMenuItem, "关于本软件ToolStripMenuItem");
+            this.AboutToolStripMenuItem.Image = global::LazysheepSeckill.Properties.Resources.information;
+            this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
+            resources.ApplyResources(this.AboutToolStripMenuItem, "AboutToolStripMenuItem");
+            this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -383,10 +384,10 @@
         private System.Windows.Forms.ToolStripMenuItem 退出EToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem HelpMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 帮助F1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 检查更新ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UpdateToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 关于本软件ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem HomeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 时间校对TToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 用户中心ToolStripMenuItem;

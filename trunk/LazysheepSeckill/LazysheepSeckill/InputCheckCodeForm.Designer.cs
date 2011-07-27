@@ -104,13 +104,14 @@
             this.AcceptButton = this.btn_Submit;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(286, 119);
+            this.ClientSize = new System.Drawing.Size(286, 124);
             this.Controls.Add(this.lbl_ErrInfo);
             this.Controls.Add(this.btn_Submit);
             this.Controls.Add(this.tbx_CheckCode);
             this.Controls.Add(this.cbx_AutoSubmit);
             this.Controls.Add(this.pic_CheckCode);
             this.Controls.Add(this.lbl_Info);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(294, 150);
