@@ -223,7 +223,7 @@ namespace Utils
         /// <param name="Value"></param>
         public void EditPostKey(string Key, string Value)
         {
-            cPostData = Regex.Replace(cPostData, string.Format("{0}=*[0-9]+&", Key), string.Format("{0}={1}&", Key, Value), RegexOptions.IgnoreCase);
+            cPostData = Regex.Replace(cPostData, string.Format(@"{0}=([^\&]*)(\&?)", Key), string.Format("{0}={1}&", Key, Value), RegexOptions.IgnoreCase);
         }
 
         public string RequestUrl(string Url)
@@ -340,7 +340,6 @@ namespace Utils
                     } // if Response.Cookie.Count > 0
                 } // if this.bHandleCookies = 0
 
-
                 // *** Save the response object for external access
                 Encoding enc;
                 try
@@ -369,8 +368,13 @@ namespace Utils
                 //自动处理HTTP/1.0 302 Moved Temporarily中的Location后的页面。（自动完成跳转）
                 if (this.bLocation)
                 {
-
                     //这里需要自动获得跳转页面的地址。并且再次使用这个方法访问页面
+                    string redirectUrl = response.GetResponseHeader("Location");
+                    if (redirectUrl.Length>0)
+                    {
+                        Method = "GET";
+                        RequestUrl(redirectUrl);
+                    }
                 }
                 return str;
             }
