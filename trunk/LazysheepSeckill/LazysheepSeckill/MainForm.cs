@@ -104,7 +104,9 @@ namespace LazysheepSeckill
             string loginUrl = "https://login.taobao.com/member/login.jhtml";
             http.Method = "GET";
 
-            html = http.RequestUrl("http://login.taobao.com/");
+            html = http.RequestUrl("https://login.taobao.com/member/login.jhtml?f=top&redirectURL=http%3A%2F%2Fwww.taobao.com%2F");
+            WriteCookies();
+
             html = html.Substring(0, html.IndexOf("</form>")).Substring(html.IndexOf("<form id=\"J_StaticForm\""));
 
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
@@ -147,8 +149,9 @@ namespace LazysheepSeckill
             }
 
             http.Method = "POST";
-
+            http.Location = true;
             html = http.RequestUrl(loginUrl);
+            WriteCookies();
 
             if (http.Error)
             {
@@ -161,6 +164,7 @@ namespace LazysheepSeckill
                     //string url = html.Substring(html.IndexOf("window.location = \"http") + 19, 255).Substring(0, html.IndexOf("\"") - 7);
                     //http.Method = "GET";
                     //http.RequestUrl(url);
+                    //MessageBox.Show(url);
                     //tbx_goodsUrl.Text = url;
                     MessageBox.Show(this, "登录成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -201,6 +205,7 @@ namespace LazysheepSeckill
             string html = string.Empty;
             http.Method = "GET";
             html = http.RequestUrl(goodsUrl);
+            WriteCookies();
             if (http.Error)
             {
                 MessageBox.Show(http.ErrorMsg);
@@ -209,6 +214,16 @@ namespace LazysheepSeckill
             {
                 MessageBox.Show(html);
             }
+        }
+
+        private void WriteCookies()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (System.Net.Cookie cook in http.Cookies)
+            {
+                sb.AppendFormat("{0} = {1}\r\n", cook.Name, cook.Value);
+            }
+            DebugTest(sb.ToString(), "cookie");
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
