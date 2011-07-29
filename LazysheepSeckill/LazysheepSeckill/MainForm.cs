@@ -106,7 +106,7 @@ namespace LazysheepSeckill
             string loginUrl = "https://login.taobao.com/member/login.jhtml";
             http.Method = "GET";
 
-            html = http.RequestUrl("https://login.taobao.com/member/login.jhtml?f=top&redirectURL=http%3A%2F%2Fwww.taobao.com%2F");
+            html = http.RequestUrl("https://login.taobao.com");
             WriteCookies();
 
             html = html.Substring(0, html.IndexOf("</form>")).Substring(html.IndexOf("<form id=\"J_StaticForm\""));
@@ -220,12 +220,12 @@ namespace LazysheepSeckill
 
         private void WriteCookies()
         {
-            StringBuilder sb = new StringBuilder();
-            foreach (System.Net.Cookie cook in http.Cookies)
-            {
-                sb.AppendFormat("{0} = {1}\r\n", cook.Name, cook.Value);
-            }
-            DebugTest(sb.ToString(), "cookie");
+            //StringBuilder sb = new StringBuilder();
+            //foreach (System.Net.Cookie cook in http.Cookies)
+            //{
+            //    sb.AppendFormat("{0} = {1}\r\n", cook.Name, cook.Value);
+            //}
+            //DebugTest(sb.ToString(), "cookie");
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)

@@ -23,6 +23,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Collections;
 
 namespace Utils
 {
@@ -278,9 +279,11 @@ namespace Utils
                 if (this.bHandleCookies)
                 {
                     request.CookieContainer = new CookieContainer();
+                    
                     if (this.oCookies != null && this.oCookies.Count > 0)
                     {
-                        request.CookieContainer.Add(this.oCookies);
+                        request.CookieContainer.Add(request.RequestUri, this.oCookies);
+                        BugFix_CookieDomain(request.CookieContainer);
                     }
                 }
 
@@ -370,7 +373,7 @@ namespace Utils
                 {
                     //这里需要自动获得跳转页面的地址。并且再次使用这个方法访问页面
                     string redirectUrl = response.GetResponseHeader("Location");
-                    if (redirectUrl.Length>0)
+                    if (redirectUrl.Length > 0)
                     {
                         Method = "GET";
                         RequestUrl(redirectUrl);
@@ -403,6 +406,28 @@ namespace Utils
                 }
             }
             return sb.ToString();
+        }
+
+        private void BugFix_CookieDomain(CookieContainer cookieContainer)
+        {
+            System.Type _ContainerType = typeof(CookieContainer);
+            Hashtable table = (Hashtable)_ContainerType.InvokeMember("m_domainTable",
+                                       System.Reflection.BindingFlags.NonPublic |
+                                       System.Reflection.BindingFlags.GetField |
+                                       System.Reflection.BindingFlags.Instance,
+                                       null,
+                                       cookieContainer,
+                                       new object[] { });
+            ArrayList keys = new ArrayList(table.Keys);
+            foreach (string keyObj in keys)
+            {
+                string key = (keyObj as string);
+                if (key[0] == '.')
+                {
+                    string newKey = key.Remove(0, 1);
+                    table[newKey] = table[keyObj];
+                }
+            }
         }
     }
 }
