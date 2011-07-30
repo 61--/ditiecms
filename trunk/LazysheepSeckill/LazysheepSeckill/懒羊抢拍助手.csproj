@@ -156,7 +156,11 @@
     <None Include="Resources\calendar.png" />
     <Content Include="Resources\image_load_progress_texture.png" />
     <Content Include="Resources\image_logo.png" />
-    <None Include="Resources\user-center.gif" />
+    <None Include="Resources\stop.png" />
+    <None Include="Resources\pause.png" />
+    <None Include="Resources\start.png" />
+    <None Include="Resources\option.png" />
+    <None Include="Resources\user-center.png" />
     <None Include="Resources\television.png" />
     <None Include="Resources\wrench-screwdriver.png" />
     <None Include="Resources\information.png" />
