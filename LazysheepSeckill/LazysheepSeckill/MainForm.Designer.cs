@@ -48,6 +48,8 @@
             this.menu = new System.Windows.Forms.MenuStrip();
             this.FileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.退出EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -180,8 +182,11 @@
             // 
             // skin
             // 
+            this.skin.MenuFont = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(134)));
+            this.skin.ResSysMenuClose = "关闭(&C)    Alt+F4";
             this.skin.SerialNumber = "";
             this.skin.SkinFile = "";
+            this.skin.TitleFont = new System.Drawing.Font("宋体", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(134)));
             // 
             // menu
             // 
@@ -199,6 +204,8 @@
             // 
             this.FileMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem2,
+            this.toolStripMenuItem4,
+            this.toolStripMenuItem5,
             this.toolStripSeparator4,
             this.退出EToolStripMenuItem});
             this.FileMenuItem.Image = global::LazysheepSeckill.Properties.Resources.television;
@@ -207,8 +214,21 @@
             // 
             // toolStripMenuItem2
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Image = global::LazysheepSeckill.Properties.Resources.start;
             resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Image = global::LazysheepSeckill.Properties.Resources.pause;
+            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Image = global::LazysheepSeckill.Properties.Resources.stop;
+            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             // 
             // toolStripSeparator4
             // 
@@ -233,7 +253,6 @@
             // 
             // 用户中心ToolStripMenuItem
             // 
-            this.用户中心ToolStripMenuItem.Image = global::LazysheepSeckill.Properties.Resources.user_center;
             resources.ApplyResources(this.用户中心ToolStripMenuItem, "用户中心ToolStripMenuItem");
             this.用户中心ToolStripMenuItem.Name = "用户中心ToolStripMenuItem";
             // 
@@ -261,7 +280,7 @@
             this.toolStripMenuItem1,
             this.toolStripSeparator2,
             this.选项OToolStripMenuItem});
-            this.ToolsMenuItem.Image = global::LazysheepSeckill.Properties.Resources.compass;
+            this.ToolsMenuItem.Image = global::LazysheepSeckill.Properties.Resources.wrench_screwdriver;
             this.ToolsMenuItem.Name = "ToolsMenuItem";
             resources.ApplyResources(this.ToolsMenuItem, "ToolsMenuItem");
             // 
@@ -289,7 +308,7 @@
             // 
             // 选项OToolStripMenuItem
             // 
-            this.选项OToolStripMenuItem.Image = global::LazysheepSeckill.Properties.Resources.wrench_screwdriver;
+            this.选项OToolStripMenuItem.Image = global::LazysheepSeckill.Properties.Resources.option;
             this.选项OToolStripMenuItem.Name = "选项OToolStripMenuItem";
             resources.ApplyResources(this.选项OToolStripMenuItem, "选项OToolStripMenuItem");
             // 
@@ -329,8 +348,8 @@
             // AboutToolStripMenuItem
             // 
             this.AboutToolStripMenuItem.Image = global::LazysheepSeckill.Properties.Resources.information;
-            this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
             resources.ApplyResources(this.AboutToolStripMenuItem, "AboutToolStripMenuItem");
+            this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
             this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // MainForm
@@ -400,6 +419,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ComboBox cbx_UserName;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
     }
 }
 
