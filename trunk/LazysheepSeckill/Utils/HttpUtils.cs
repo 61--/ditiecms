@@ -279,11 +279,11 @@ namespace Utils
                 if (this.bHandleCookies)
                 {
                     request.CookieContainer = new CookieContainer();
-                    
+                    request.CookieContainer.PerDomainCapacity = 100;    //干她妈逼的，这个属性浪费了哥几天时间，悲催的。
                     if (this.oCookies != null && this.oCookies.Count > 0)
                     {
                         request.CookieContainer.Add(request.RequestUri, this.oCookies);
-                        BugFix_CookieDomain(request.CookieContainer);
+                        //BugFix_CookieDomain(request.CookieContainer);
                     }
                 }
 
