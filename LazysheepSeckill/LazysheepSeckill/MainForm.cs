@@ -14,6 +14,7 @@ namespace LazysheepSeckill
         string strServer = string.Empty;
         string strPath = string.Empty;
         HttpUtils http = new HttpUtils();
+        private WebBrowser mUserBrowser;
         public static string PASSVALUE;
         private SplashScreen mSplashScreen;
         private UserConfigInfo mUserConfig;
@@ -204,18 +205,35 @@ namespace LazysheepSeckill
                 MessageBox.Show(this, "请输入商品地址！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            string html = string.Empty;
-            http.Method = "GET";
-            html = http.RequestUrl(goodsUrl);
-            WriteCookies();
-            if (http.Error)
+
+            if (tabControlMain.Controls.Count == 1)
             {
-                MessageBox.Show(http.ErrorMsg);
+                mUserBrowser = new WebBrowser();
+                mUserBrowser.Anchor = (System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right));
+                mUserBrowser.TabIndex = 1;
+                TabPage userPage = new TabPage();
+                userPage.Controls.Add(mUserBrowser);
+                this.tabControlMain.TabPages.Add(userPage);
+                this.tabControlMain.SelectedIndex = 1;
             }
             else
             {
-                MessageBox.Show(html);
+                this.tabControlMain.SelectedIndex = 1;
             }
+            
+
+            //string html = string.Empty;
+            //http.Method = "GET";
+            //html = http.RequestUrl(goodsUrl);
+            //WriteCookies();
+            //if (http.Error)
+            //{
+            //    MessageBox.Show(http.ErrorMsg);
+            //}
+            //else
+            //{
+            //    this.mUserBrowser.DocumentText = html;
+            //}
         }
 
         private void WriteCookies()
@@ -382,7 +400,10 @@ namespace LazysheepSeckill
         protected override void OnClosed(EventArgs e)
         {
             mUserConfig = mUserConfig ?? new UserConfigInfo();
-            mUserConfig.DefaultAccount = cbx_UserName.Text;
+            if (cbx_UserName.SelectedValue != null)
+            {
+                mUserConfig.DefaultAccount = cbx_UserName.SelectedValue.ToString();
+            }
             mUserConfig.GoodsUrl = tbx_goodsUrl.Text;
 
             try
@@ -415,10 +436,54 @@ namespace LazysheepSeckill
             tbx_PassWord.Text = GetPwdByUserName(cbx_UserName.SelectedValue.ToString());
         }
 
-        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        #region 菜单栏点击事件
+        private void SeckillMenuItem_Click(object sender, EventArgs e)
         {
-            AboutForm aboutForm = new AboutForm();
-            aboutForm.ShowDialog(this);
+            ToolStripMenuItem menu_click = (ToolStripMenuItem)sender;
+            switch (menu_click.Name)
+            {
+                case "BeginMenuItem":
+                    break;
+                case "PauseMenuItem":
+                    break;
+                case "StopMenuItem":
+                    break;
+                case "ExitMenuItem":
+                    if (MessageBox.Show(this, "是否要退出应用程序？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    {
+                        Application.Exit();
+                    }
+                    break;
+            }
         }
+
+        private void UserMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ToolsMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HelpMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem menu_click = (ToolStripMenuItem)sender;
+            switch (menu_click.Name)
+            {
+                case "F1MenuItem":
+                    break;
+                case "UpdateMenuItem":
+                    break;
+                case "HomeMenuItem":
+                    break;
+                case "AboutMenuItem":
+                    AboutForm aboutForm = new AboutForm();
+                    aboutForm.ShowDialog(this);
+                    break;
+            }
+        }
+        #endregion
     }
 }

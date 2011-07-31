@@ -39,41 +39,43 @@
             this.btn_openGoods = new System.Windows.Forms.Button();
             this.tbx_goodsUrl = new System.Windows.Forms.TextBox();
             this.lbl_goodsUrl = new System.Windows.Forms.Label();
-            this.tabControlMain = new Crownwood.Magic.Controls.TabControl();
-            this.wbr_main = new System.Windows.Forms.WebBrowser();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.sslabelMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.button1 = new System.Windows.Forms.Button();
             this.skin = new Sunisoft.IrisSkin.SkinEngine(((System.ComponentModel.Component)(this)));
             this.menu = new System.Windows.Forms.MenuStrip();
-            this.FileMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.SeckillMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BeginMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PauseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.退出EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.用户中心ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UserCenterMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.地址库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.帐号管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddressMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AccountMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.时间校对TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.TimingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CompareTimeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CalculatorMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.选项OToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OptionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.帮助F1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.UpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.F1MenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UpdateMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.HomeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HomeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startTabPage = new System.Windows.Forms.TabPage();
+            this.tabControlMain = new System.Windows.Forms.TabControl();
+            this.startPageBrowser = new System.Windows.Forms.WebBrowser();
             this.gbx_taobaoLogin.SuspendLayout();
             this.gbx_goodsinfo.SuspendLayout();
-            this.tabControlMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menu.SuspendLayout();
+            this.startTabPage.SuspendLayout();
+            this.tabControlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbx_taobaoLogin
@@ -143,24 +145,6 @@
             resources.ApplyResources(this.lbl_goodsUrl, "lbl_goodsUrl");
             this.lbl_goodsUrl.Name = "lbl_goodsUrl";
             // 
-            // tabControlMain
-            // 
-            this.tabControlMain.Controls.Add(this.wbr_main);
-            this.tabControlMain.HideTabsMode = Crownwood.Magic.Controls.TabControl.HideTabsModes.ShowAlways;
-            resources.ApplyResources(this.tabControlMain, "tabControlMain");
-            this.tabControlMain.Name = "tabControlMain";
-            this.tabControlMain.PositionTop = true;
-            this.tabControlMain.ShowArrows = true;
-            this.tabControlMain.ShowClose = true;
-            // 
-            // wbr_main
-            // 
-            resources.ApplyResources(this.wbr_main, "wbr_main");
-            this.wbr_main.MinimumSize = new System.Drawing.Size(20, 20);
-            this.wbr_main.Name = "wbr_main";
-            this.wbr_main.ScrollBarsEnabled = false;
-            this.wbr_main.Url = new System.Uri("http://www.tuanlet.com", System.UriKind.Absolute);
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -193,175 +177,210 @@
             this.menu.BackColor = System.Drawing.SystemColors.Control;
             this.menu.BackgroundImage = global::LazysheepSeckill.Properties.Resources.menubarbg;
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.FileMenuItem,
+            this.SeckillMenuItem,
             this.UserMenuItem,
             this.ToolsMenuItem,
             this.HelpMenuItem});
             resources.ApplyResources(this.menu, "menu");
             this.menu.Name = "menu";
             // 
-            // FileMenuItem
+            // SeckillMenuItem
             // 
-            this.FileMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem4,
-            this.toolStripMenuItem5,
+            this.SeckillMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BeginMenuItem,
+            this.PauseMenuItem,
+            this.StopMenuItem,
             this.toolStripSeparator4,
-            this.退出EToolStripMenuItem});
-            this.FileMenuItem.Image = global::LazysheepSeckill.Properties.Resources.television;
-            this.FileMenuItem.Name = "FileMenuItem";
-            resources.ApplyResources(this.FileMenuItem, "FileMenuItem");
+            this.ExitMenuItem});
+            this.SeckillMenuItem.Image = global::LazysheepSeckill.Properties.Resources.television;
+            this.SeckillMenuItem.Name = "SeckillMenuItem";
+            resources.ApplyResources(this.SeckillMenuItem, "SeckillMenuItem");
             // 
-            // toolStripMenuItem2
+            // BeginMenuItem
             // 
-            this.toolStripMenuItem2.Image = global::LazysheepSeckill.Properties.Resources.start;
-            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.BeginMenuItem.Image = global::LazysheepSeckill.Properties.Resources.start;
+            resources.ApplyResources(this.BeginMenuItem, "BeginMenuItem");
+            this.BeginMenuItem.Name = "BeginMenuItem";
+            this.BeginMenuItem.Click += new System.EventHandler(this.SeckillMenuItem_Click);
             // 
-            // toolStripMenuItem4
+            // PauseMenuItem
             // 
-            this.toolStripMenuItem4.Image = global::LazysheepSeckill.Properties.Resources.pause;
-            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.PauseMenuItem.Image = global::LazysheepSeckill.Properties.Resources.pause;
+            resources.ApplyResources(this.PauseMenuItem, "PauseMenuItem");
+            this.PauseMenuItem.Name = "PauseMenuItem";
+            this.PauseMenuItem.Click += new System.EventHandler(this.SeckillMenuItem_Click);
             // 
-            // toolStripMenuItem5
+            // StopMenuItem
             // 
-            this.toolStripMenuItem5.Image = global::LazysheepSeckill.Properties.Resources.stop;
-            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.StopMenuItem.Image = global::LazysheepSeckill.Properties.Resources.stop;
+            resources.ApplyResources(this.StopMenuItem, "StopMenuItem");
+            this.StopMenuItem.Name = "StopMenuItem";
+            this.StopMenuItem.Click += new System.EventHandler(this.SeckillMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
             // 
-            // 退出EToolStripMenuItem
+            // ExitMenuItem
             // 
-            this.退出EToolStripMenuItem.Name = "退出EToolStripMenuItem";
-            resources.ApplyResources(this.退出EToolStripMenuItem, "退出EToolStripMenuItem");
+            this.ExitMenuItem.Name = "ExitMenuItem";
+            resources.ApplyResources(this.ExitMenuItem, "ExitMenuItem");
+            this.ExitMenuItem.Click += new System.EventHandler(this.SeckillMenuItem_Click);
             // 
             // UserMenuItem
             // 
             this.UserMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.用户中心ToolStripMenuItem,
+            this.UserCenterMenuItem,
             this.toolStripSeparator3,
-            this.地址库ToolStripMenuItem,
-            this.帐号管理ToolStripMenuItem});
+            this.AddressMenuItem,
+            this.AccountMenuItem});
             this.UserMenuItem.Image = global::LazysheepSeckill.Properties.Resources.user_green;
             this.UserMenuItem.Name = "UserMenuItem";
             resources.ApplyResources(this.UserMenuItem, "UserMenuItem");
             // 
-            // 用户中心ToolStripMenuItem
+            // UserCenterMenuItem
             // 
-            resources.ApplyResources(this.用户中心ToolStripMenuItem, "用户中心ToolStripMenuItem");
-            this.用户中心ToolStripMenuItem.Name = "用户中心ToolStripMenuItem";
+            resources.ApplyResources(this.UserCenterMenuItem, "UserCenterMenuItem");
+            this.UserCenterMenuItem.Name = "UserCenterMenuItem";
+            this.UserCenterMenuItem.Click += new System.EventHandler(this.UserMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
-            // 地址库ToolStripMenuItem
+            // AddressMenuItem
             // 
-            this.地址库ToolStripMenuItem.Name = "地址库ToolStripMenuItem";
-            resources.ApplyResources(this.地址库ToolStripMenuItem, "地址库ToolStripMenuItem");
+            this.AddressMenuItem.Name = "AddressMenuItem";
+            resources.ApplyResources(this.AddressMenuItem, "AddressMenuItem");
+            this.AddressMenuItem.Click += new System.EventHandler(this.UserMenuItem_Click);
             // 
-            // 帐号管理ToolStripMenuItem
+            // AccountMenuItem
             // 
-            this.帐号管理ToolStripMenuItem.Image = global::LazysheepSeckill.Properties.Resources.credit_card;
-            this.帐号管理ToolStripMenuItem.Name = "帐号管理ToolStripMenuItem";
-            resources.ApplyResources(this.帐号管理ToolStripMenuItem, "帐号管理ToolStripMenuItem");
+            this.AccountMenuItem.Image = global::LazysheepSeckill.Properties.Resources.credit_card;
+            this.AccountMenuItem.Name = "AccountMenuItem";
+            resources.ApplyResources(this.AccountMenuItem, "AccountMenuItem");
+            this.AccountMenuItem.Click += new System.EventHandler(this.UserMenuItem_Click);
             // 
             // ToolsMenuItem
             // 
             this.ToolsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem3,
-            this.时间校对TToolStripMenuItem,
-            this.toolStripMenuItem1,
+            this.TimingMenuItem,
+            this.CompareTimeMenuItem,
+            this.CalculatorMenuItem,
             this.toolStripSeparator2,
-            this.选项OToolStripMenuItem});
+            this.OptionMenuItem});
             this.ToolsMenuItem.Image = global::LazysheepSeckill.Properties.Resources.wrench_screwdriver;
             this.ToolsMenuItem.Name = "ToolsMenuItem";
             resources.ApplyResources(this.ToolsMenuItem, "ToolsMenuItem");
             // 
-            // toolStripMenuItem3
+            // TimingMenuItem
             // 
-            this.toolStripMenuItem3.Image = global::LazysheepSeckill.Properties.Resources.hourglass;
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
+            this.TimingMenuItem.Image = global::LazysheepSeckill.Properties.Resources.hourglass;
+            this.TimingMenuItem.Name = "TimingMenuItem";
+            resources.ApplyResources(this.TimingMenuItem, "TimingMenuItem");
+            this.TimingMenuItem.Click += new System.EventHandler(this.ToolsMenuItem_Click);
             // 
-            // 时间校对TToolStripMenuItem
+            // CompareTimeMenuItem
             // 
-            this.时间校对TToolStripMenuItem.Image = global::LazysheepSeckill.Properties.Resources.alarm_clock_select;
-            this.时间校对TToolStripMenuItem.Name = "时间校对TToolStripMenuItem";
-            resources.ApplyResources(this.时间校对TToolStripMenuItem, "时间校对TToolStripMenuItem");
+            this.CompareTimeMenuItem.Image = global::LazysheepSeckill.Properties.Resources.alarm_clock_select;
+            this.CompareTimeMenuItem.Name = "CompareTimeMenuItem";
+            resources.ApplyResources(this.CompareTimeMenuItem, "CompareTimeMenuItem");
+            this.CompareTimeMenuItem.Click += new System.EventHandler(this.ToolsMenuItem_Click);
             // 
-            // toolStripMenuItem1
+            // CalculatorMenuItem
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
+            this.CalculatorMenuItem.Name = "CalculatorMenuItem";
+            resources.ApplyResources(this.CalculatorMenuItem, "CalculatorMenuItem");
+            this.CalculatorMenuItem.Click += new System.EventHandler(this.ToolsMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
-            // 选项OToolStripMenuItem
+            // OptionMenuItem
             // 
-            this.选项OToolStripMenuItem.Image = global::LazysheepSeckill.Properties.Resources.option;
-            this.选项OToolStripMenuItem.Name = "选项OToolStripMenuItem";
-            resources.ApplyResources(this.选项OToolStripMenuItem, "选项OToolStripMenuItem");
+            this.OptionMenuItem.Image = global::LazysheepSeckill.Properties.Resources.option;
+            this.OptionMenuItem.Name = "OptionMenuItem";
+            resources.ApplyResources(this.OptionMenuItem, "OptionMenuItem");
+            this.OptionMenuItem.Click += new System.EventHandler(this.ToolsMenuItem_Click);
             // 
             // HelpMenuItem
             // 
             this.HelpMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.帮助F1ToolStripMenuItem,
-            this.UpdateToolStripMenuItem,
+            this.F1MenuItem,
+            this.UpdateMenuItem,
             this.toolStripSeparator1,
-            this.HomeToolStripMenuItem,
-            this.AboutToolStripMenuItem});
+            this.HomeMenuItem,
+            this.AboutMenuItem});
             this.HelpMenuItem.Image = global::LazysheepSeckill.Properties.Resources.question;
             this.HelpMenuItem.Name = "HelpMenuItem";
             resources.ApplyResources(this.HelpMenuItem, "HelpMenuItem");
             // 
-            // 帮助F1ToolStripMenuItem
+            // F1MenuItem
             // 
-            this.帮助F1ToolStripMenuItem.Name = "帮助F1ToolStripMenuItem";
-            resources.ApplyResources(this.帮助F1ToolStripMenuItem, "帮助F1ToolStripMenuItem");
+            this.F1MenuItem.Name = "F1MenuItem";
+            resources.ApplyResources(this.F1MenuItem, "F1MenuItem");
+            this.F1MenuItem.Click += new System.EventHandler(this.HelpMenuItem_Click);
             // 
-            // UpdateToolStripMenuItem
+            // UpdateMenuItem
             // 
-            this.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem";
-            resources.ApplyResources(this.UpdateToolStripMenuItem, "UpdateToolStripMenuItem");
+            this.UpdateMenuItem.Name = "UpdateMenuItem";
+            resources.ApplyResources(this.UpdateMenuItem, "UpdateMenuItem");
+            this.UpdateMenuItem.Click += new System.EventHandler(this.HelpMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
-            // HomeToolStripMenuItem
+            // HomeMenuItem
             // 
-            this.HomeToolStripMenuItem.Image = global::LazysheepSeckill.Properties.Resources.home;
-            this.HomeToolStripMenuItem.Name = "HomeToolStripMenuItem";
-            resources.ApplyResources(this.HomeToolStripMenuItem, "HomeToolStripMenuItem");
+            this.HomeMenuItem.Image = global::LazysheepSeckill.Properties.Resources.home;
+            this.HomeMenuItem.Name = "HomeMenuItem";
+            resources.ApplyResources(this.HomeMenuItem, "HomeMenuItem");
+            this.HomeMenuItem.Click += new System.EventHandler(this.HelpMenuItem_Click);
             // 
-            // AboutToolStripMenuItem
+            // AboutMenuItem
             // 
-            this.AboutToolStripMenuItem.Image = global::LazysheepSeckill.Properties.Resources.information;
-            resources.ApplyResources(this.AboutToolStripMenuItem, "AboutToolStripMenuItem");
-            this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
-            this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
+            this.AboutMenuItem.Image = global::LazysheepSeckill.Properties.Resources.information;
+            resources.ApplyResources(this.AboutMenuItem, "AboutMenuItem");
+            this.AboutMenuItem.Name = "AboutMenuItem";
+            this.AboutMenuItem.Click += new System.EventHandler(this.HelpMenuItem_Click);
+            // 
+            // startTabPage
+            // 
+            this.startTabPage.Controls.Add(this.startPageBrowser);
+            resources.ApplyResources(this.startTabPage, "startTabPage");
+            this.startTabPage.Name = "startTabPage";
+            this.startTabPage.UseVisualStyleBackColor = true;
+            // 
+            // tabControlMain
+            // 
+            resources.ApplyResources(this.tabControlMain, "tabControlMain");
+            this.tabControlMain.Controls.Add(this.startTabPage);
+            this.tabControlMain.Name = "tabControlMain";
+            this.tabControlMain.SelectedIndex = 0;
+            // 
+            // startPageBrowser
+            // 
+            resources.ApplyResources(this.startPageBrowser, "startPageBrowser");
+            this.startPageBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.startPageBrowser.Name = "startPageBrowser";
+            this.startPageBrowser.Url = new System.Uri("http://www.baidu.com", System.UriKind.Absolute);
             // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menu);
             this.Controls.Add(this.gbx_goodsinfo);
             this.Controls.Add(this.gbx_taobaoLogin);
-            this.Controls.Add(this.tabControlMain);
             this.MainMenuStrip = this.menu;
             this.Name = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -369,11 +388,12 @@
             this.gbx_taobaoLogin.PerformLayout();
             this.gbx_goodsinfo.ResumeLayout(false);
             this.gbx_goodsinfo.PerformLayout();
-            this.tabControlMain.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
+            this.startTabPage.ResumeLayout(false);
+            this.tabControlMain.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -390,37 +410,38 @@
         private System.Windows.Forms.Label lbl_goodsUrl;
         private System.Windows.Forms.TextBox tbx_goodsUrl;
         private System.Windows.Forms.Button btn_openGoods;
-        public Crownwood.Magic.Controls.TabControl tabControlMain;
-        private System.Windows.Forms.WebBrowser wbr_main;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel sslabelMessage;
         private System.Windows.Forms.Button button1;
         private Sunisoft.IrisSkin.SkinEngine skin;
         private System.Windows.Forms.MenuStrip menu;
-        private System.Windows.Forms.ToolStripMenuItem FileMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SeckillMenuItem;
         private System.Windows.Forms.ToolStripMenuItem UserMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolsMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 退出EToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ExitMenuItem;
         private System.Windows.Forms.ToolStripMenuItem HelpMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 帮助F1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem UpdateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem F1MenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UpdateMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem HomeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem AboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 时间校对TToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem 用户中心ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 地址库ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 帐号管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem HomeMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AboutMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CompareTimeMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CalculatorMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UserCenterMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AddressMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AccountMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem BeginMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TimingMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem 选项OToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OptionMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ComboBox cbx_UserName;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem PauseMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem StopMenuItem;
+        private System.Windows.Forms.TabPage startTabPage;
+        private System.Windows.Forms.TabControl tabControlMain;
+        private System.Windows.Forms.WebBrowser startPageBrowser;
     }
 }
 
