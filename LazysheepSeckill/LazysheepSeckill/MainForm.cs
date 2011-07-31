@@ -209,7 +209,7 @@ namespace LazysheepSeckill
             if (tabControlMain.Controls.Count == 1)
             {
                 mUserBrowser = new WebBrowser();
-                mUserBrowser.Anchor = (System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right));
+                mUserBrowser.Anchor = (System.Windows.Forms.AnchorStyles)15;
                 mUserBrowser.TabIndex = 1;
                 TabPage userPage = new TabPage();
                 userPage.Controls.Add(mUserBrowser);

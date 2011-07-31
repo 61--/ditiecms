@@ -68,8 +68,8 @@
             this.HomeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startTabPage = new System.Windows.Forms.TabPage();
-            this.tabControlMain = new System.Windows.Forms.TabControl();
             this.startPageBrowser = new System.Windows.Forms.WebBrowser();
+            this.tabControlMain = new System.Windows.Forms.TabControl();
             this.gbx_taobaoLogin.SuspendLayout();
             this.gbx_goodsinfo.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -357,19 +357,19 @@
             this.startTabPage.Name = "startTabPage";
             this.startTabPage.UseVisualStyleBackColor = true;
             // 
-            // tabControlMain
-            // 
-            resources.ApplyResources(this.tabControlMain, "tabControlMain");
-            this.tabControlMain.Controls.Add(this.startTabPage);
-            this.tabControlMain.Name = "tabControlMain";
-            this.tabControlMain.SelectedIndex = 0;
-            // 
             // startPageBrowser
             // 
             resources.ApplyResources(this.startPageBrowser, "startPageBrowser");
             this.startPageBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.startPageBrowser.Name = "startPageBrowser";
             this.startPageBrowser.Url = new System.Uri("http://www.baidu.com", System.UriKind.Absolute);
+            // 
+            // tabControlMain
+            // 
+            resources.ApplyResources(this.tabControlMain, "tabControlMain");
+            this.tabControlMain.Controls.Add(this.startTabPage);
+            this.tabControlMain.Name = "tabControlMain";
+            this.tabControlMain.SelectedIndex = 0;
             // 
             // MainForm
             // 
