@@ -120,8 +120,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Skins\MacOS.ssk" />
-    <None Include="Skins\XPBlue.ssk" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -174,6 +172,8 @@
     <None Include="Resources\question.png" />
     <None Include="Resources\menubarbg.png" />
     <None Include="Skins\default.ssk" />
+    <None Include="Skins\MacOS.ssk" />
+    <None Include="Skins\XPBlue.ssk" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

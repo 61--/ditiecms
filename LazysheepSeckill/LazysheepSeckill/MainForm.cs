@@ -15,6 +15,7 @@ namespace LazysheepSeckill
         string strPath = string.Empty;
         HttpUtils http = new HttpUtils();
         private WebBrowser mUserBrowser;
+        private TabPage userPage;
         public static string PASSVALUE;
         private SplashScreen mSplashScreen;
         private UserConfigInfo mUserConfig;
@@ -210,9 +211,10 @@ namespace LazysheepSeckill
             {
                 mUserBrowser = new WebBrowser();
                 mUserBrowser.Anchor = (System.Windows.Forms.AnchorStyles)15;
-                mUserBrowser.TabIndex = 1;
-                TabPage userPage = new TabPage();
+                mUserBrowser.Url = new Uri("about:blank");
+                userPage = new TabPage();
                 userPage.Controls.Add(mUserBrowser);
+                userPage.Text = "空白页";
                 this.tabControlMain.TabPages.Add(userPage);
                 this.tabControlMain.SelectedIndex = 1;
             }
@@ -220,7 +222,23 @@ namespace LazysheepSeckill
             {
                 this.tabControlMain.SelectedIndex = 1;
             }
-            
+
+            Uri goodsUri = new Uri(goodsUrl);
+            if (this.http.Cookies != null)
+            {
+                System.Net.CookieContainer ccr = new System.Net.CookieContainer();
+                ccr.Add(goodsUri, http.Cookies);
+                System.Net.CookieCollection ccn = ccr.GetCookies(goodsUri);
+                foreach (System.Net.Cookie c in ccn)
+                {
+                    InternetSetCookie(goodsUrl, c.Name, c.Value);
+                }
+            }
+            mUserBrowser.Url = goodsUri;
+            mUserBrowser.Navigated += new WebBrowserNavigatedEventHandler(UserBrowser_Navigate);
+            mUserBrowser.NewWindow += new System.ComponentModel.CancelEventHandler(UserBrowser_NewWindow);
+
+            //mUserBrowser.Document.Cookie;
 
             //string html = string.Empty;
             //http.Method = "GET";
@@ -235,6 +253,21 @@ namespace LazysheepSeckill
             //    this.mUserBrowser.DocumentText = html;
             //}
         }
+
+        private void UserBrowser_NewWindow(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
+        private void UserBrowser_Navigate(object sender, EventArgs e)
+        {
+            tbx_goodsUrl.Text = mUserBrowser.Url.ToString();
+            userPage.Text = mUserBrowser.Document.Title;
+        }
+
+        [System.Runtime.InteropServices.DllImport("wininet.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto, SetLastError = true)]
+        public static extern bool InternetSetCookie(string lpszUrlName, string lbszCookieName, string lpszCookieData);
+
 
         private void WriteCookies()
         {
