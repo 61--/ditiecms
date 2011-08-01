@@ -472,7 +472,7 @@
     <value>2</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>0, 647</value>
+    <value>0, 667</value>
   </metadata>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 667</value>
@@ -559,7 +559,7 @@
     <value>3</value>
   </data>
   <data name="SeckillMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 20</value>
+    <value>75, 20</value>
   </data>
   <data name="SeckillMenuItem.Text" xml:space="preserve">
     <value>抢拍(&amp;F)</value>
@@ -601,7 +601,7 @@
     <value>退出(&amp;E)</value>
   </data>
   <data name="UserMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 20</value>
+    <value>75, 20</value>
   </data>
   <data name="UserMenuItem.Text" xml:space="preserve">
     <value>用户(&amp;U)</value>
@@ -625,82 +625,82 @@
     <value>None</value>
   </data>
   <data name="UserCenterMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
+    <value>154, 22</value>
   </data>
   <data name="UserCenterMenuItem.Text" xml:space="preserve">
     <value>个人中心(&amp;C)...</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 6</value>
+    <value>151, 6</value>
   </data>
   <data name="AddressMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
+    <value>154, 22</value>
   </data>
   <data name="AddressMenuItem.Text" xml:space="preserve">
     <value>地址库(&amp;D)...</value>
   </data>
   <data name="AccountMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 22</value>
+    <value>154, 22</value>
   </data>
   <data name="AccountMenuItem.Text" xml:space="preserve">
     <value>帐号管理(&amp;A)...</value>
   </data>
   <data name="ToolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 20</value>
+    <value>75, 20</value>
   </data>
   <data name="ToolsMenuItem.Text" xml:space="preserve">
     <value>工具(&amp;T)</value>
   </data>
   <data name="TimingMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 22</value>
+    <value>142, 22</value>
   </data>
   <data name="TimingMenuItem.Text" xml:space="preserve">
     <value>定时器(&amp;A)...</value>
   </data>
   <data name="CompareTimeMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 22</value>
+    <value>142, 22</value>
   </data>
   <data name="CompareTimeMenuItem.Text" xml:space="preserve">
     <value>时间校对(&amp;T)</value>
   </data>
   <data name="CalculatorMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 22</value>
+    <value>142, 22</value>
   </data>
   <data name="CalculatorMenuItem.Text" xml:space="preserve">
     <value>计算器(&amp;C)...</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 6</value>
+    <value>139, 6</value>
   </data>
   <data name="OptionMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 22</value>
+    <value>142, 22</value>
   </data>
   <data name="OptionMenuItem.Text" xml:space="preserve">
     <value>选项(&amp;O)...</value>
   </data>
   <data name="HelpMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 20</value>
+    <value>75, 20</value>
   </data>
   <data name="HelpMenuItem.Text" xml:space="preserve">
     <value>帮助(&amp;H)</value>
   </data>
   <data name="F1MenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 22</value>
+    <value>154, 22</value>
   </data>
   <data name="F1MenuItem.Text" xml:space="preserve">
     <value>帮助        F1</value>
   </data>
   <data name="UpdateMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 22</value>
+    <value>154, 22</value>
   </data>
   <data name="UpdateMenuItem.Text" xml:space="preserve">
     <value>检查更新...</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 6</value>
+    <value>151, 6</value>
   </data>
   <data name="HomeMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 22</value>
+    <value>154, 22</value>
   </data>
   <data name="HomeMenuItem.Text" xml:space="preserve">
     <value>主页</value>
@@ -709,22 +709,10 @@
     <value>None</value>
   </data>
   <data name="AboutMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 22</value>
+    <value>154, 22</value>
   </data>
   <data name="AboutMenuItem.Text" xml:space="preserve">
     <value>关于本软件...</value>
-  </data>
-  <data name="startPageBrowser.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="startPageBrowser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-3, -3</value>
-  </data>
-  <data name="startPageBrowser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>678, 346</value>
-  </data>
-  <data name="startPageBrowser.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;startPageBrowser.Name" xml:space="preserve">
     <value>startPageBrowser</value>
@@ -765,6 +753,30 @@
   <data name="&gt;&gt;startTabPage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="startPageBrowser.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="startPageBrowser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-3, -3</value>
+  </data>
+  <data name="startPageBrowser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>678, 346</value>
+  </data>
+  <data name="startPageBrowser.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;startPageBrowser.Name" xml:space="preserve">
+    <value>startPageBrowser</value>
+  </data>
+  <data name="&gt;&gt;startPageBrowser.Type" xml:space="preserve">
+    <value>System.Windows.Forms.WebBrowser, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;startPageBrowser.Parent" xml:space="preserve">
+    <value>startTabPage</value>
+  </data>
+  <data name="&gt;&gt;startPageBrowser.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="tabControlMain.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -791,6 +803,12 @@
   </data>
   <data name="&gt;&gt;tabControlMain.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="stl_Status.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 17</value>
+  </data>
+  <data name="stl_Status.Text" xml:space="preserve">
+    <value>就绪</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -2373,6 +2391,12 @@
   </data>
   <data name="&gt;&gt;AboutMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;stl_Status.Name" xml:space="preserve">
+    <value>stl_Status</value>
+  </data>
+  <data name="&gt;&gt;stl_Status.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
