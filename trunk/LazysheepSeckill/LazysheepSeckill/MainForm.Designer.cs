@@ -70,6 +70,7 @@
             this.startTabPage = new System.Windows.Forms.TabPage();
             this.startPageBrowser = new System.Windows.Forms.WebBrowser();
             this.tabControlMain = new System.Windows.Forms.TabControl();
+            this.stl_Status = new System.Windows.Forms.ToolStripStatusLabel();
             this.gbx_taobaoLogin.SuspendLayout();
             this.gbx_goodsinfo.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -148,7 +149,8 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sslabelMessage});
+            this.sslabelMessage,
+            this.stl_Status});
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
             // 
@@ -371,6 +373,11 @@
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
             // 
+            // stl_Status
+            // 
+            this.stl_Status.Name = "stl_Status";
+            resources.ApplyResources(this.stl_Status, "stl_Status");
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -442,6 +449,7 @@
         private System.Windows.Forms.TabPage startTabPage;
         private System.Windows.Forms.TabControl tabControlMain;
         private System.Windows.Forms.WebBrowser startPageBrowser;
+        private System.Windows.Forms.ToolStripStatusLabel stl_Status;
     }
 }
 
