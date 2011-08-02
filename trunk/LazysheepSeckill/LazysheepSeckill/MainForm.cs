@@ -96,7 +96,7 @@ namespace LazysheepSeckill
             bool result = CoreFactory.GetInstance().Login(cbx_UserName.Text, tbx_PassWord.Text);
             if (result)
             {
-                MessageBox.Show(this, "登录成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "恭喜你，登录成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
