@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Utils;
-using HtmlAgilityPack;
-using System.Windows.Forms;
 using System.Net;
+using System.Windows.Forms;
+using HtmlAgilityPack;
+using Utils;
 
 namespace Core
 {
@@ -49,7 +47,7 @@ namespace Core
                 CheckCodeForm ccForm = new CheckCodeForm(checkCodeUrl);
                 if (ccForm.ShowDialog() != DialogResult.OK)
                 {
-                    m_ErrorMsg = "请输入验证码后再登录!";
+                    m_ErrorMsg = "请输入验证码!";
                     return false;
                 }
                 string checkCode = ccForm.CheckCode;
@@ -86,7 +84,7 @@ namespace Core
                 }
                 else if (html.IndexOf("请输入验证码") > 0)
                 {
-                    m_ErrorMsg = "请输入验证码！";
+                    m_ErrorMsg = "请输入验证码后再登录！";
                     m_NeedCheckCode = true;
                     return false;
                 }
