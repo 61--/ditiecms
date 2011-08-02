@@ -202,6 +202,7 @@ namespace LazysheepSeckill
                 mUserBrowser.Size = new System.Drawing.Size(678, 346);
                 mUserBrowser.Location = new System.Drawing.Point(-3, -3);
                 mUserBrowser.ScrollBarsEnabled = true;
+                mUserBrowser.ScriptErrorsSuppressed = true;
                 mUserBrowser.Url = new Uri("about:blank");
                 userTabPage = new TabPage();
                 userTabPage.Size = new System.Drawing.Size(672, 340);
@@ -221,10 +222,12 @@ namespace LazysheepSeckill
                 System.Net.CookieContainer ccr = new System.Net.CookieContainer();
                 ccr.Add(goodsUri, http.Cookies);
                 System.Net.CookieCollection ccn = ccr.GetCookies(goodsUri);
+                string cookie = "";
                 foreach (System.Net.Cookie c in ccn)
                 {
-                    InternetSetCookie(goodsUrl, c.Name, c.Value);
+                    cookie += string.Format("{0}={1};", c.Name, c.Value);
                 }
+                ((mshtml.IHTMLDocument2)mUserBrowser.Document.DomDocument).cookie = cookie;
             }
             mUserBrowser.Url = goodsUri;
             mUserBrowser.Navigated += new WebBrowserNavigatedEventHandler(UserBrowser_Navigate);
