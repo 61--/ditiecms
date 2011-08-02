@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlAgilityPack", "HtmlAgil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "懒羊抢拍助手", "LazysheepSeckill\懒羊抢拍助手.csproj", "{12D8EDEB-A91A-4E1B-8175-441CA1BD66A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{B76F1F94-3A89-47E6-94F0-3D197A749B22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{12D8EDEB-A91A-4E1B-8175-441CA1BD66A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12D8EDEB-A91A-4E1B-8175-441CA1BD66A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12D8EDEB-A91A-4E1B-8175-441CA1BD66A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B76F1F94-3A89-47E6-94F0-3D197A749B22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B76F1F94-3A89-47E6-94F0-3D197A749B22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B76F1F94-3A89-47E6-94F0-3D197A749B22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B76F1F94-3A89-47E6-94F0-3D197A749B22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

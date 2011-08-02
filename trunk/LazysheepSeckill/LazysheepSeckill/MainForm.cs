@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Config;
 using HtmlAgilityPack;
 using Utils;
+using Core;
 
 namespace LazysheepSeckill
 {
@@ -13,10 +14,8 @@ namespace LazysheepSeckill
     {
         string strServer = string.Empty;
         string strPath = string.Empty;
-        HttpUtils http = new HttpUtils();
         private WebBrowser mUserBrowser;
         private TabPage userTabPage;
-        public static string PASSVALUE;
         private SplashScreen mSplashScreen;
         private UserConfigInfo mUserConfig;
 
@@ -70,94 +69,6 @@ namespace LazysheepSeckill
 
         }
 
-        private void LoginTaobao(object checkCode)
-        {
-            string html = string.Empty;
-            string loginUrl = "https://login.taobao.com/member/login.jhtml";
-            http.Method = "GET";
-
-            html = http.RequestUrl("https://login.taobao.com");
-            WriteCookies();
-
-            html = html.Substring(0, html.IndexOf("</form>")).Substring(html.IndexOf("<form id=\"J_StaticForm\""));
-
-            HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
-            doc.LoadHtml(html);
-
-            HtmlNodeCollection inputNodes = doc.DocumentNode.SelectNodes("//input[@type='hidden']");
-            if (inputNodes == null)
-            {
-                MessageBox.Show("未知错误，请检查网络是否正常后重试。");
-                return;
-            }
-
-            StringBuffer postData = new StringBuffer();
-            foreach (HtmlNode node in inputNodes)
-            {
-                postData += string.Format("{0}={1}&", node.Attributes["name"].Value, node.Attributes["value"] == null ? "" : node.Attributes["value"].Value);
-            }
-            http.AddPostKey(postData.ToString());
-            http.AddPostKey("TPL_username", cbx_UserName.Text);
-            http.AddPostKey("TPL_password", tbx_PassWord.Text);
-
-            string need_check_code = doc.DocumentNode.SelectSingleNode("//input[@name='need_check_code']").Attributes["value"].Value;
-            if (need_check_code == "true")
-            {
-                PASSVALUE = doc.GetElementbyId("J_StandardCode_m").Attributes["data-src"].Value;
-
-                InputCheckCodeForm ccForm = new InputCheckCodeForm();
-                if (ccForm.ShowDialog(this) != DialogResult.OK)
-                {
-                    return;
-                }
-
-                http.AddPostKey("TPL_checkcode", checkCode == null ? "" : checkCode.ToString());
-                http.EditPostKey("need_check_code", "true");
-            }
-            else
-            {
-                http.AddPostKey("TPL_checkcode", string.Empty);
-                http.EditPostKey("need_check_code", string.Empty);
-            }
-
-            http.Method = "POST";
-            http.Location = true;
-            html = http.RequestUrl(loginUrl);
-            WriteCookies();
-
-            if (http.Error)
-            {
-                MessageBox.Show(http.ErrorMsg, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                if (html.IndexOf("window.location = \"http") > 0)
-                {
-                    //string url = html.Substring(html.IndexOf("window.location = \"http") + 19, 255).Substring(0, html.IndexOf("\"") - 7);
-                    //http.Method = "GET";
-                    //http.RequestUrl(url);
-                    //MessageBox.Show(url);
-                    //tbx_goodsUrl.Text = url;
-                    MessageBox.Show(this, "登录成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else if (html.IndexOf("请输入验证码") > 0)
-                {
-                    MessageBox.Show(this, "请输入验证码！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                else if (html.IndexOf("密码和账户名不匹配") > 0 || html.IndexOf("该账户名不存在") > 0)
-                {
-                    MessageBox.Show(this, "登录用户名或密码错误！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                else
-                {
-                    MessageBox.Show(this, "未知错误，请重新登录！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-        }
-
         [System.Runtime.InteropServices.DllImport("wininet.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto, SetLastError = true)]
         public static extern bool InternetSetCookie(string lpszUrlName, string lbszCookieName, string lpszCookieData);
 
@@ -181,9 +92,16 @@ namespace LazysheepSeckill
         private void btn_LoginTaobao_Click(object sender, EventArgs e)
         {
             AddorEditAccount(cbx_UserName.Text, tbx_PassWord.Text);
-            Thread t = new Thread(new ParameterizedThreadStart(LoginTaobao));
-            t.IsBackground = true;
-            t.Start(null);
+
+            bool result = CoreFactory.GetInstance().Login(cbx_UserName.Text, tbx_PassWord.Text);
+            if (result)
+            {
+                MessageBox.Show(this, "登录成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show(this, CoreFactory.GetInstance().ErrorMsg, "提示", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
         }
 
         private void btn_openGoods_Click(object sender, EventArgs e)
@@ -217,17 +135,15 @@ namespace LazysheepSeckill
             }
 
             Uri goodsUri = new Uri(goodsUrl);
-            if (this.http.Cookies != null)
+            if (CoreFactory.GetInstance().Cookies != null)
             {
                 System.Net.CookieContainer ccr = new System.Net.CookieContainer();
-                ccr.Add(goodsUri, http.Cookies);
+                ccr.Add(goodsUri, CoreFactory.GetInstance().Cookies);
                 System.Net.CookieCollection ccn = ccr.GetCookies(goodsUri);
-                string cookie = "";
                 foreach (System.Net.Cookie c in ccn)
                 {
-                    cookie += string.Format("{0}={1};", c.Name, c.Value);
+                    InternetSetCookie(goodsUrl, c.Name, c.Value);
                 }
-                ((mshtml.IHTMLDocument2)mUserBrowser.Document.DomDocument).cookie = cookie;
             }
             mUserBrowser.Url = goodsUri;
             mUserBrowser.Navigated += new WebBrowserNavigatedEventHandler(UserBrowser_Navigate);
@@ -252,10 +168,10 @@ namespace LazysheepSeckill
 
         private void button1_Click(object sender, EventArgs e)
         {
-            InputCheckCodeForm checkCodeForm = new InputCheckCodeForm();
-            //InputCheckCodeForm.LoginTaobaoEvent += new InputCheckCodeForm.LoginTaobaoDelegate(LoginTaobao);
-            checkCodeForm.Owner = this;
-            checkCodeForm.Show(this);
+            //InputCheckCodeForm checkCodeForm = new InputCheckCodeForm();
+            ////InputCheckCodeForm.LoginTaobaoEvent += new InputCheckCodeForm.LoginTaobaoDelegate(LoginTaobao);
+            //checkCodeForm.Owner = this;
+            //checkCodeForm.Show(this);
         }
         #endregion 公共控件事件
 
@@ -337,7 +253,7 @@ namespace LazysheepSeckill
 
             }
             base.OnClosed(e);
-        }        
+        }
         #endregion 主窗体事件
 
         #region 菜单栏点击事件

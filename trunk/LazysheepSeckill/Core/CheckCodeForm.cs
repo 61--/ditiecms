@@ -9,14 +9,18 @@ using Config;
 using Utils;
 using System.IO;
 
-namespace LazysheepSeckill
+namespace Core
 {
-    public partial class InputCheckCodeForm : Form
+    public partial class CheckCodeForm : Form
     {
-        public InputCheckCodeForm()
-        {
-            InitializeComponent();
+        private string m_CheckCodeUrl;
+        public string CheckCode;
 
+        public CheckCodeForm(string checkCodeUrl)
+        {
+            this.m_CheckCodeUrl = checkCodeUrl;
+
+            InitializeComponent();
             LoadCheckCodeImage();
         }
 
@@ -29,13 +33,15 @@ namespace LazysheepSeckill
             //Image checkcodeImage = Image.FromStream(stream);
             //pic_CheckCode.Image = checkcodeImage;
 
-            pic_CheckCode.ImageLocation = "https://regcheckcode.taobao.com/auction/checkcode?sessionID=2b2b8f048540ce4cecf511e5ee155379";
+            pic_CheckCode.ImageLocation = m_CheckCodeUrl;
         }
 
         private void btn_Submit_Click(object sender, EventArgs e)
         {
             if (tbx_CheckCode.Text.Length == 4)
             {
+                CheckCode = tbx_CheckCode.Text;
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
@@ -49,6 +55,8 @@ namespace LazysheepSeckill
         {
             if (cbx_AutoSubmit.Checked && tbx_CheckCode.Text.Length == 4)
             {
+                CheckCode = tbx_CheckCode.Text;
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
         }
