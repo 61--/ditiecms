@@ -61,14 +61,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>dll\MagicLibrary.dll</HintPath>
     </Reference>
-    <COMReference Include="MSHTML">
-      <Guid>{3050F1C5-98B5-11CF-BB82-00AA00BDCE0B}</Guid>
-      <VersionMajor>4</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-    </COMReference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -145,6 +137,10 @@
     <ProjectReference Include="..\Config\Config.csproj">
       <Project>{0D809196-3429-4F63-8980-BD675059DF27}</Project>
       <Name>Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{B76F1F94-3A89-47E6-94F0-3D197A749B22}</Project>
+      <Name>Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\HtmlAgilityPack\HtmlAgilityPack.csproj">
       <Project>{193BB801-054F-4729-9D5D-FCE1E32594BF}</Project>
