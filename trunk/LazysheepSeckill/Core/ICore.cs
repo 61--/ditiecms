@@ -7,6 +7,8 @@ namespace Core
     {
         bool Login(string userName, string passWord);
 
+        GoodsEntity GetGoodsInfo(string goodsUrl);
+
         string ErrorMsg { get; }
 
         CookieCollection Cookies { get; }
