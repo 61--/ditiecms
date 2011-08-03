@@ -117,98 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;cbx_UserName.Name" xml:space="preserve">
-    <value>cbx_UserName</value>
-  </data>
-  <data name="&gt;&gt;cbx_UserName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbx_UserName.Parent" xml:space="preserve">
-    <value>gbx_taobaoLogin</value>
-  </data>
-  <data name="&gt;&gt;cbx_UserName.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tbx_PassWord.Name" xml:space="preserve">
-    <value>tbx_PassWord</value>
-  </data>
-  <data name="&gt;&gt;tbx_PassWord.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tbx_PassWord.Parent" xml:space="preserve">
-    <value>gbx_taobaoLogin</value>
-  </data>
-  <data name="&gt;&gt;tbx_PassWord.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;btn_LoginTaobao.Name" xml:space="preserve">
-    <value>btn_LoginTaobao</value>
-  </data>
-  <data name="&gt;&gt;btn_LoginTaobao.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btn_LoginTaobao.Parent" xml:space="preserve">
-    <value>gbx_taobaoLogin</value>
-  </data>
-  <data name="&gt;&gt;btn_LoginTaobao.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lbl_PassWord.Name" xml:space="preserve">
-    <value>lbl_PassWord</value>
-  </data>
-  <data name="&gt;&gt;lbl_PassWord.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbl_PassWord.Parent" xml:space="preserve">
-    <value>gbx_taobaoLogin</value>
-  </data>
-  <data name="&gt;&gt;lbl_PassWord.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;lbl_UserName.Name" xml:space="preserve">
-    <value>lbl_UserName</value>
-  </data>
-  <data name="&gt;&gt;lbl_UserName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lbl_UserName.Parent" xml:space="preserve">
-    <value>gbx_taobaoLogin</value>
-  </data>
-  <data name="&gt;&gt;lbl_UserName.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="gbx_taobaoLogin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 33</value>
-  </data>
-  <data name="gbx_taobaoLogin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 115</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="gbx_taobaoLogin.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="gbx_taobaoLogin.Text" xml:space="preserve">
-    <value>登录淘宝帐号</value>
-  </data>
-  <data name="&gt;&gt;gbx_taobaoLogin.Name" xml:space="preserve">
-    <value>gbx_taobaoLogin</value>
-  </data>
-  <data name="&gt;&gt;gbx_taobaoLogin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gbx_taobaoLogin.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;gbx_taobaoLogin.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="cbx_UserName.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 23</value>
   </data>
   <data name="cbx_UserName.Size" type="System.Drawing.Size, System.Drawing">
     <value>118, 20</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cbx_UserName.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -333,6 +249,30 @@
   <data name="&gt;&gt;lbl_UserName.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="gbx_taobaoLogin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 33</value>
+  </data>
+  <data name="gbx_taobaoLogin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 115</value>
+  </data>
+  <data name="gbx_taobaoLogin.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="gbx_taobaoLogin.Text" xml:space="preserve">
+    <value>登录淘宝帐号</value>
+  </data>
+  <data name="&gt;&gt;gbx_taobaoLogin.Name" xml:space="preserve">
+    <value>gbx_taobaoLogin</value>
+  </data>
+  <data name="&gt;&gt;gbx_taobaoLogin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbx_taobaoLogin.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;gbx_taobaoLogin.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
   <data name="lbl_GoodsStock.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -386,6 +326,9 @@
   </data>
   <data name="&gt;&gt;lbl_GoodsPrice.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="lbl_GoodsStatus.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="lbl_GoodsStatus.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -495,6 +438,9 @@
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -553,7 +499,7 @@
     <value>NoControl</value>
   </data>
   <data name="btn_openGoods.Location" type="System.Drawing.Point, System.Drawing">
-    <value>607, 16</value>
+    <value>608, 19</value>
   </data>
   <data name="btn_openGoods.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 24</value>
@@ -577,7 +523,7 @@
     <value>8</value>
   </data>
   <data name="tbx_goodsUrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>72, 18</value>
+    <value>72, 20</value>
   </data>
   <data name="tbx_goodsUrl.Size" type="System.Drawing.Size, System.Drawing">
     <value>530, 21</value>
@@ -654,6 +600,15 @@
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>0, 667</value>
   </metadata>
+  <data name="sslabelMessage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 17</value>
+  </data>
+  <data name="stl_Status.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 17</value>
+  </data>
+  <data name="stl_Status.Text" xml:space="preserve">
+    <value>就绪</value>
+  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 667</value>
   </data>
@@ -678,51 +633,12 @@
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="sslabelMessage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
-  </data>
-  <data name="stl_Status.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 17</value>
-  </data>
-  <data name="stl_Status.Text" xml:space="preserve">
-    <value>就绪</value>
-  </data>
   <metadata name="skin.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>110, 52</value>
   </metadata>
   <metadata name="menu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>0, 0</value>
   </metadata>
-  <data name="menu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menu.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 3, 0, 3</value>
-  </data>
-  <data name="menu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 26</value>
-  </data>
-  <data name="menu.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;menu.Name" xml:space="preserve">
-    <value>menu</value>
-  </data>
-  <data name="&gt;&gt;menu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menu.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menu.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="SeckillMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 20</value>
-  </data>
-  <data name="SeckillMenuItem.Text" xml:space="preserve">
-    <value>抢拍(&amp;F)</value>
-  </data>
   <data name="BeginMenuItem.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -759,11 +675,11 @@
   <data name="ExitMenuItem.Text" xml:space="preserve">
     <value>退出(&amp;E)</value>
   </data>
-  <data name="UserMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 20</value>
+  <data name="SeckillMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 20</value>
   </data>
-  <data name="UserMenuItem.Text" xml:space="preserve">
-    <value>用户(&amp;U)</value>
+  <data name="SeckillMenuItem.Text" xml:space="preserve">
+    <value>抢拍(&amp;F)</value>
   </data>
   <data name="UserCenterMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -804,11 +720,11 @@
   <data name="AccountMenuItem.Text" xml:space="preserve">
     <value>帐号管理(&amp;A)...</value>
   </data>
-  <data name="ToolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 20</value>
+  <data name="UserMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 20</value>
   </data>
-  <data name="ToolsMenuItem.Text" xml:space="preserve">
-    <value>工具(&amp;T)</value>
+  <data name="UserMenuItem.Text" xml:space="preserve">
+    <value>用户(&amp;U)</value>
   </data>
   <data name="TimingMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 22</value>
@@ -837,11 +753,11 @@
   <data name="OptionMenuItem.Text" xml:space="preserve">
     <value>选项(&amp;O)...</value>
   </data>
-  <data name="HelpMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 20</value>
+  <data name="ToolsMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 20</value>
   </data>
-  <data name="HelpMenuItem.Text" xml:space="preserve">
-    <value>帮助(&amp;H)</value>
+  <data name="ToolsMenuItem.Text" xml:space="preserve">
+    <value>工具(&amp;T)</value>
   </data>
   <data name="F1MenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 22</value>
@@ -872,6 +788,48 @@
   </data>
   <data name="AboutMenuItem.Text" xml:space="preserve">
     <value>关于本软件...</value>
+  </data>
+  <data name="HelpMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 20</value>
+  </data>
+  <data name="HelpMenuItem.Text" xml:space="preserve">
+    <value>帮助(&amp;H)</value>
+  </data>
+  <data name="menu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menu.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 3, 0, 3</value>
+  </data>
+  <data name="menu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>892, 26</value>
+  </data>
+  <data name="menu.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;menu.Name" xml:space="preserve">
+    <value>menu</value>
+  </data>
+  <data name="&gt;&gt;menu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menu.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menu.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="startPageBrowser.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="startPageBrowser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-3, -3</value>
+  </data>
+  <data name="startPageBrowser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>678, 346</value>
+  </data>
+  <data name="startPageBrowser.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;startPageBrowser.Name" xml:space="preserve">
     <value>startPageBrowser</value>
@@ -910,30 +868,6 @@
     <value>tabControlMain</value>
   </data>
   <data name="&gt;&gt;startTabPage.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="startPageBrowser.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="startPageBrowser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-3, -3</value>
-  </data>
-  <data name="startPageBrowser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>678, 346</value>
-  </data>
-  <data name="startPageBrowser.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;startPageBrowser.Name" xml:space="preserve">
-    <value>startPageBrowser</value>
-  </data>
-  <data name="&gt;&gt;startPageBrowser.Type" xml:space="preserve">
-    <value>System.Windows.Forms.WebBrowser, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;startPageBrowser.Parent" xml:space="preserve">
-    <value>startTabPage</value>
-  </data>
-  <data name="&gt;&gt;startPageBrowser.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="tabControlMain.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
