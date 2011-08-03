@@ -22,15 +22,37 @@ namespace LazysheepSeckill
         public MainForm(SplashScreen splash)
         {
             mSplashScreen = splash;
-            mSplashScreen.SetProgress("正在加载系统组件...", 0.2);
+            mSplashScreen.SetProgress("正在加载系统组件...", 0.25);
             InitializeComponent();
-            mSplashScreen.SetProgress("正在读取程序配置...", 0.6);
+            mSplashScreen.SetProgress("正在读取程序配置...", 0.5);
             InitializeData();
+            mSplashScreen.SetProgress("正在检测新版本...", 0.75);
+            bool needUpdate = DetectUpdate();
+            if (needUpdate)
+            {
+                mSplashScreen.Hide();
+                if (MessageBox.Show("检测到有新版本程序发布，点击确定开始自动更新。", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    //开始更新操作
+                }
+            }
             mSplashScreen.SetProgress("程序加载完毕...", 1.0);
             mSplashScreen.Hide();
         }
 
         #region 业务逻辑方法
+        private bool DetectUpdate()
+        {
+            HttpUtils http = new HttpUtils();
+            http.Method = "GET";
+            string newVersions = http.RequestUrl("http://amazweb.googlecode.com/svn/trunk/Lazysheep/versions.txt");
+            string curVersions = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            if (curVersions.Equals(newVersions))
+                return false;
+            else
+                return true;
+        }
+
         private string GetPwdByUserName(string userName)
         {
             foreach (Account ac in mUserConfig.Account)
@@ -96,7 +118,7 @@ namespace LazysheepSeckill
             bool result = CoreFactory.GetInstance().Login(cbx_UserName.Text, tbx_PassWord.Text);
             if (result)
             {
-                MessageBox.Show(this, "恭喜你，登录成功!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "恭喜你，登录成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
