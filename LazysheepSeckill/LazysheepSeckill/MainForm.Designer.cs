@@ -36,12 +36,20 @@
             this.lbl_PassWord = new System.Windows.Forms.Label();
             this.lbl_UserName = new System.Windows.Forms.Label();
             this.gbx_goodsinfo = new System.Windows.Forms.GroupBox();
+            this.lbl_GoodsStock = new System.Windows.Forms.Label();
+            this.lbl_GoodsPrice = new System.Windows.Forms.Label();
+            this.lbl_GoodsStatus = new System.Windows.Forms.Label();
+            this.lbl_GoodsTitle = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btn_openGoods = new System.Windows.Forms.Button();
             this.tbx_goodsUrl = new System.Windows.Forms.TextBox();
             this.lbl_goodsUrl = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.sslabelMessage = new System.Windows.Forms.ToolStripStatusLabel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.stl_Status = new System.Windows.Forms.ToolStripStatusLabel();
             this.skin = new Sunisoft.IrisSkin.SkinEngine(((System.ComponentModel.Component)(this)));
             this.menu = new System.Windows.Forms.MenuStrip();
             this.SeckillMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,7 +78,7 @@
             this.startTabPage = new System.Windows.Forms.TabPage();
             this.startPageBrowser = new System.Windows.Forms.WebBrowser();
             this.tabControlMain = new System.Windows.Forms.TabControl();
-            this.stl_Status = new System.Windows.Forms.ToolStripStatusLabel();
+            this.button1 = new System.Windows.Forms.Button();
             this.gbx_taobaoLogin.SuspendLayout();
             this.gbx_goodsinfo.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -122,12 +130,60 @@
             // 
             // gbx_goodsinfo
             // 
+            this.gbx_goodsinfo.Controls.Add(this.lbl_GoodsStock);
+            this.gbx_goodsinfo.Controls.Add(this.lbl_GoodsPrice);
+            this.gbx_goodsinfo.Controls.Add(this.lbl_GoodsStatus);
+            this.gbx_goodsinfo.Controls.Add(this.lbl_GoodsTitle);
+            this.gbx_goodsinfo.Controls.Add(this.label4);
+            this.gbx_goodsinfo.Controls.Add(this.label3);
+            this.gbx_goodsinfo.Controls.Add(this.label2);
+            this.gbx_goodsinfo.Controls.Add(this.label1);
             this.gbx_goodsinfo.Controls.Add(this.btn_openGoods);
             this.gbx_goodsinfo.Controls.Add(this.tbx_goodsUrl);
             this.gbx_goodsinfo.Controls.Add(this.lbl_goodsUrl);
             resources.ApplyResources(this.gbx_goodsinfo, "gbx_goodsinfo");
             this.gbx_goodsinfo.Name = "gbx_goodsinfo";
             this.gbx_goodsinfo.TabStop = false;
+            // 
+            // lbl_GoodsStock
+            // 
+            resources.ApplyResources(this.lbl_GoodsStock, "lbl_GoodsStock");
+            this.lbl_GoodsStock.Name = "lbl_GoodsStock";
+            // 
+            // lbl_GoodsPrice
+            // 
+            resources.ApplyResources(this.lbl_GoodsPrice, "lbl_GoodsPrice");
+            this.lbl_GoodsPrice.Name = "lbl_GoodsPrice";
+            // 
+            // lbl_GoodsStatus
+            // 
+            resources.ApplyResources(this.lbl_GoodsStatus, "lbl_GoodsStatus");
+            this.lbl_GoodsStatus.Name = "lbl_GoodsStatus";
+            // 
+            // lbl_GoodsTitle
+            // 
+            resources.ApplyResources(this.lbl_GoodsTitle, "lbl_GoodsTitle");
+            this.lbl_GoodsTitle.Name = "lbl_GoodsTitle";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // btn_openGoods
             // 
@@ -159,12 +215,10 @@
             this.sslabelMessage.Name = "sslabelMessage";
             resources.ApplyResources(this.sslabelMessage, "sslabelMessage");
             // 
-            // button1
+            // stl_Status
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.stl_Status.Name = "stl_Status";
+            resources.ApplyResources(this.stl_Status, "stl_Status");
             // 
             // skin
             // 
@@ -373,10 +427,12 @@
             this.tabControlMain.Name = "tabControlMain";
             this.tabControlMain.SelectedIndex = 0;
             // 
-            // stl_Status
+            // button1
             // 
-            this.stl_Status.Name = "stl_Status";
-            resources.ApplyResources(this.stl_Status, "stl_Status");
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainForm
             // 
@@ -419,7 +475,6 @@
         private System.Windows.Forms.Button btn_openGoods;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel sslabelMessage;
-        private System.Windows.Forms.Button button1;
         private Sunisoft.IrisSkin.SkinEngine skin;
         private System.Windows.Forms.MenuStrip menu;
         private System.Windows.Forms.ToolStripMenuItem SeckillMenuItem;
@@ -450,6 +505,15 @@
         private System.Windows.Forms.TabControl tabControlMain;
         private System.Windows.Forms.WebBrowser startPageBrowser;
         private System.Windows.Forms.ToolStripStatusLabel stl_Status;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lbl_GoodsTitle;
+        private System.Windows.Forms.Label lbl_GoodsStatus;
+        private System.Windows.Forms.Label lbl_GoodsPrice;
+        private System.Windows.Forms.Label lbl_GoodsStock;
     }
 }
 

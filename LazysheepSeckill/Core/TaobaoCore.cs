@@ -101,6 +101,33 @@ namespace Core
             }
         }
 
+        public GoodsEntity GetGoodsInfo(string goodsUrl)
+        {
+            string html = string.Empty;
+            http.Method = "GET";
+            html = http.RequestUrl(goodsUrl);
+            int start = html.IndexOf("<div id=\"detail\" class=\"tshop-psm tb-box\">");
+            if (start > 0)
+            {
+                int end = html.IndexOf("<div id=\"description\" class=\"tshop-psm ke-post J_DetailSection\">");
+                html = html.Substring(0, end).Substring(start);
+
+                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                doc.LoadHtml(html);
+
+                GoodsEntity goods = new GoodsEntity();
+                goods.Title = doc.DocumentNode.SelectSingleNode("//input[@name='title']").Attributes["value"].Value;
+                goods.Price = TryConvert.ToDouble(doc.DocumentNode.SelectSingleNode("//input[@name='current_price']").Attributes["value"].Value);
+                goods.Stock = TryConvert.ToInt32(doc.DocumentNode.SelectSingleNode("//input[@name='allow_quantity']").Attributes["value"].Value);
+                goods.Status = doc.GetElementbyId("J_LinkBuy").InnerText;
+                return goods;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public string ErrorMsg
         {
             get { return m_ErrorMsg; }

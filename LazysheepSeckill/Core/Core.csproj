@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoreFactory.cs" />
+    <Compile Include="GoodsEntity.cs" />
     <Compile Include="ICore.cs" />
     <Compile Include="CheckCodeForm.cs">
       <SubType>Form</SubType>

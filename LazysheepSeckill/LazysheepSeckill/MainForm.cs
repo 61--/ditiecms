@@ -45,9 +45,9 @@ namespace LazysheepSeckill
         {
             HttpUtils http = new HttpUtils();
             http.Method = "GET";
-            string newVersions = http.RequestUrl("http://amazweb.googlecode.com/svn/trunk/Lazysheep/versions.txt");
+            string newVersions = http.RequestUrl("http://amazweb.googlecode.com/svn/trunk/Lazysheep/versions2.txt");
             string curVersions = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            if (curVersions.Equals(newVersions))
+            if (curVersions.Equals(newVersions) || http.Error)
                 return false;
             else
                 return true;
@@ -167,11 +167,21 @@ namespace LazysheepSeckill
                     InternetSetCookie(goodsUrl, c.Name, c.Value);
                 }
             }
-            mUserBrowser.Url = goodsUri;
+            mUserBrowser.Navigate(goodsUri);
             mUserBrowser.Navigated += new WebBrowserNavigatedEventHandler(UserBrowser_Navigate);
             mUserBrowser.NewWindow += new System.ComponentModel.CancelEventHandler(UserBrowser_NewWindow);
             mUserBrowser.StatusTextChanged += new EventHandler(UserBrowser_StatusTextChanged);
             mUserBrowser.Dock = DockStyle.Fill;
+
+            GoodsEntity goods = CoreFactory.GetInstance().GetGoodsInfo(goodsUrl);
+            if (goods == null)
+            {
+                return;
+            }
+            this.lbl_GoodsTitle.Text = goods.Title;
+            this.lbl_GoodsPrice.Text = string.Format("{0} 元", goods.Price);
+            this.lbl_GoodsStock.Text = string.Format("{0} 件", goods.Stock);
+            this.lbl_GoodsStatus.Text = goods.Status;
             //mUserBrowser.Document.Cookie;
 
             //string html = string.Empty;
