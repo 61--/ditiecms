@@ -52,7 +52,7 @@ namespace Core
                 }
                 string checkCode = ccForm.CheckCode;
 
-                http.AddPostKey("TPL_checkcode", checkCode == null ? "" : checkCode.ToString());
+                http.AddPostKey("TPL_checkcode", checkCode);
                 http.EditPostKey("need_check_code", "true");
             }
             else
