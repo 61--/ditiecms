@@ -106,10 +106,10 @@ namespace Core
             string html = string.Empty;
             http.Method = "GET";
             html = http.RequestUrl(goodsUrl);
-            int start = html.IndexOf("<div id=\"detail\" class=\"tshop-psm tb-box\">");
+            int start = html.IndexOf("<div id=\"detail\"");
             if (start > 0)
             {
-                int end = html.IndexOf("<div id=\"description\" class=\"tshop-psm ke-post J_DetailSection\">");
+                int end = html.IndexOf("<div id=\"description\"");
                 html = html.Substring(0, end).Substring(start);
 
                 HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
@@ -119,7 +119,18 @@ namespace Core
                 goods.Title = doc.DocumentNode.SelectSingleNode("//input[@name='title']").Attributes["value"].Value;
                 goods.Price = TryConvert.ToDouble(doc.DocumentNode.SelectSingleNode("//input[@name='current_price']").Attributes["value"].Value);
                 goods.Stock = TryConvert.ToInt32(doc.DocumentNode.SelectSingleNode("//input[@name='allow_quantity']").Attributes["value"].Value);
-                goods.Status = doc.GetElementbyId("J_LinkBuy").InnerText;
+                if (html.IndexOf("立即购买") > 0)
+                {
+                    goods.Status = "立即购买";
+                }
+                else if (html.IndexOf("此宝贝已下架") > 0)
+                {
+                    goods.Status = "此宝贝已下架";
+                }
+                else if (html.IndexOf("即将开始") > 0)
+                {
+                    goods.Status = "即将开始";
+                }
                 return goods;
             }
             else
