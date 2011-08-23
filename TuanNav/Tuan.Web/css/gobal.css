@@ -47,6 +47,9 @@ code{
 	margin:0 auto;
 	width:980px;
 }
+.margintop{
+	margin-top:8px;
+}
 #ajaxloading
 {
 	color:#FFF;
@@ -622,11 +625,41 @@ code{
 }
 #tuan_bar{
 	float:left;
-    width:246px;
+    width:248px;
     height:706px;
     margin-left:10px;
-    border:1px #DCDCDC solid;
-    background:#EEE;
+}
+#content .newlist{
+	border:1px #DCDCDC solid;
+}
+#content .newlist .title{
+	height:32px;
+	background:url(../images/blue/rigth_title.gif) 1px 1px no-repeat;
+}
+#content .newlist .title h5{
+	color:#FFF;
+	float:left;
+	font-size:13px;
+	line-height:30px;
+	text-indent:10px;
+}
+#content .newlist ul li {
+	height: 24px;
+	line-height: 24px;
+	overflow: hidden;
+	font-size: 13px;
+	border-bottom:1px #ddd dotted;
+}
+#content .newlist .style_1 li {
+	text-indent: 14px;
+	background: url(../images/list_ico_1.gif) 0px 6px no-repeat;
+}
+#content .newlist .style_2 li {
+	text-indent: 12px;
+	background: url(../images/list_ico_2.gif) 0px 6px no-repeat;
+}
+#tuan_bar .main {
+	padding: 8px;
 }
 #footer{
 	margin-top:10px;
