@@ -1,0 +1,36 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DigitRec - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/DigitRec.res" /d "_DEBUG" /d "_AFXDLL" "E:\Test\VC6\数字识别系统\DigitRec.rc"" 
+Creating temporary file "C:\DOCUME~1\loogon\LOCALS~1\Temp\RSP5D.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/DigitRec.pdb" /debug /machine:I386 /out:"Debug/DigitRec.exe" /pdbtype:sept 
+".\Debug\ChildView.obj"
+".\Debug\DBpParamater.obj"
+".\Debug\DIBAPI.OBJ"
+".\Debug\DigitRec.obj"
+".\Debug\INPUT1.obj"
+".\Debug\MainFrm.obj"
+".\Debug\StdAfx.obj"
+".\Debug\DigitRec.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\loogon\LOCALS~1\Temp\RSP5D.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/DigitRec.bsc"  ".\Debug\StdAfx.sbr" ".\Debug\ChildView.sbr" ".\Debug\DBpParamater.sbr" ".\Debug\DIBAPI.SBR" ".\Debug\DigitRec.sbr" ".\Debug\INPUT1.sbr" ".\Debug\MainFrm.sbr""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+DigitRec.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
